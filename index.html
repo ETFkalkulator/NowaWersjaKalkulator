@@ -8,17 +8,37 @@
   <!-- SEO: tytuł i opis widoczne w wynikach Google -->
   <title>ETFkalkulator.pl — Kalkulator inwestycyjny dla Polaków</title>
   <meta name="description" content="Bezpłatny kalkulator obligacji skarbowych, wolności finansowej i porównywarki ETF. Sprawdź ile realnie zarobisz po podatkach i inflacji.">
+  <meta name="keywords" content="kalkulator obligacji, ETF, wolność finansowa, FIRE, podatek Belki, inflacja, inwestycje, obligacje skarbowe">
+  <meta name="author" content="ETFkalkulator.pl">
+  <meta name="robots" content="index, follow">
 
   <!-- SEO: Open Graph — jak strona wygląda gdy ktoś udostępni link na Facebooku / Twitterze -->
   <meta property="og:title" content="ETFkalkulator.pl — Kalkulator inwestycyjny dla Polaków">
   <meta property="og:description" content="Sprawdź ile realnie zarobisz na obligacjach i ETFach po podatku Belki i inflacji.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://etfkalkulator.pl">
+  <meta property="og:url" content="https://etfkalkulator.pl/">
+  <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:site_name" content="ETFkalkulator.pl">
+
+  <!-- SEO: Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ETFkalkulator.pl — Kalkulator inwestycyjny dla Polaków">
+  <meta name="twitter:description" content="Sprawdź ile realnie zarobisz na obligacjach i ETFach po podatku Belki i inflacji.">
+  <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.jpg">
+
+  <!-- SEO: Kanoniczny URL -->
+  <link rel="canonical" href="https://etfkalkulator.pl/" />
 
   <!-- Favicon — ikona w zakładce przeglądarki (dodamy później) -->
   <!-- <link rel="icon" href="/assets/favicon/favicon.ico"> -->
 
   <!-- Nasze pliki CSS — kolejność ma znaczenie! -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/main.css">
@@ -42,7 +62,7 @@
       transform: translateX(-50%);
       width: 800px;
       height: 800px;
-      background: radial-gradient(circle, var(--color-green-100) 0%, transparent 70%);
+      background: radial-gradient(circle, var(--color-primary-100) 0%, transparent 70%);
       pointer-events: none; /* nie blokuje kliknięć */
       z-index: 0;
     }
@@ -57,11 +77,13 @@
       align-items: center;
       gap: var(--space-2);
       padding: var(--space-2) var(--space-4);
-      background: var(--color-green-100);
-      color: var(--color-green-700);
+      background: var(--color-primary-100);
+      color: var(--color-primary-700);
       border-radius: var(--radius-full);
       font-size: var(--text-sm);
       font-weight: var(--weight-medium);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
       margin-bottom: var(--space-6);
     }
 
@@ -76,10 +98,10 @@
       margin-bottom: var(--space-6);
     }
 
-    /* Zielone słowo w tytule */
+    /* Granatowe słowo w tytule */
     .hero__title em {
       font-style: normal;
-      color: var(--color-green-500);
+      color: var(--color-primary-500);
     }
 
     .hero__subtitle {
@@ -97,6 +119,17 @@
       gap: var(--space-4);
       justify-content: center;
       flex-wrap: wrap;
+    }
+    
+    @media (max-width: 639px) {
+      .hero__cta {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .hero__cta .btn--primary {
+        order: -1;
+      }
     }
 
     /* Siatka kalkulatorów */
@@ -131,20 +164,22 @@
     }
 
     .kalkulator-karta:hover {
-      box-shadow: var(--shadow-lg);
-      transform: translateY(-4px); /* uniesienie przy hover */
-      border-color: var(--color-green-200);
+      box-shadow: var(--shadow-primary-hover);
+      transform: translateY(-8px) scale(1.02); /* subtelne powiększenie jak Apple */
+      border-color: var(--color-primary-200);
     }
 
     .kalkulator-karta__ikona {
       width: 55px;
       height: 55px;
-      border-radius: var(--radius-md);
-      background: var(--color-green-100);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-primary-100) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-normal);
     }
 
     .kalkulator-karta__numer {
@@ -175,7 +210,7 @@
       gap: var(--space-2);
       font-size: var(--text-sm);
       font-weight: var(--weight-medium);
-      color: var(--color-green-500);
+      color: var(--color-primary-500);
       margin-top: auto;
     }
 
@@ -224,10 +259,14 @@
     }
 
     .newsletter__karta {
-      background: var(--color-green-900);
+      background: var(--color-primary-900);
       border-radius: var(--radius-xl);
       padding: var(--space-12) var(--space-8);
       color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
     }
 
     .newsletter__tytul {
@@ -238,7 +277,7 @@
     }
 
     .newsletter__opis {
-      color: var(--color-green-300);
+      color: var(--color-primary-300);
       font-size: var(--text-md);
       margin-bottom: var(--space-8);
       max-width: 500px;
@@ -268,18 +307,18 @@
     }
 
     .newsletter__input::placeholder {
-      color: var(--color-green-300);
+      color: var(--color-primary-300);
     }
 
     .newsletter__input:focus {
-      outline: 2px solid var(--color-green-300);
+      outline: 2px solid var(--color-primary-300);
       outline-offset: 2px;
     }
 
     .newsletter__btn {
       padding: var(--space-3) var(--space-6);
       background: white;
-      color: var(--color-green-700);
+      color: var(--color-primary-700);
       border: none;
       border-radius: var(--radius-full);
       font-family: var(--font-sans);
@@ -290,14 +329,14 @@
     }
 
     .newsletter__btn:hover {
-      background: var(--color-green-100);
+      background: var(--color-primary-50);
       transform: translateY(-1px);
     }
 
     .newsletter__rodo {
       margin-top: var(--space-4);
       font-size: var(--text-xs);
-      color: var(--color-green-300);
+      color: var(--color-primary-300);
       opacity: 0.7;
     }
 
@@ -395,7 +434,7 @@
         <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
       </svg>
     </button>
-    <a href="#newsletter" class="btn btn--sm" style="border: 1.5px solid var(--color-green-300); color: var(--color-green-700); background: white; border-radius: var(--radius-full);">Newsletter</a>
+    <a href="#newsletter" class="btn btn--sm" style="border: 1.5px solid var(--color-primary-300); color: var(--color-primary-700); background: white; border-radius: var(--radius-full);">Newsletter</a>
         </nav>
 
       </div>
@@ -411,7 +450,7 @@
       <a href="pages/porownywarka.html" class="mobile-nav-bar__link">Porównywarka ETF</a>
       <span class="mobile-nav-bar__separator"></span>
       <div class="mobile-nav-bar__newsletter">
-        <a href="#newsletter" class="btn btn--sm" style="font-size:12px;padding:4px 12px;border:1.5px solid var(--color-green-300);color:var(--color-green-700);background:white;border-radius:var(--radius-full);white-space:nowrap">Newsletter</a>
+        <a href="#newsletter" class="btn btn--sm" style="font-size:12px;padding:4px 12px;border:1.5px solid var(--color-primary-300);color:var(--color-primary-700);background:white;border-radius:var(--radius-full);white-space:nowrap">Newsletter</a>
       </div>
     </div>
   </div>
@@ -425,9 +464,9 @@
         <div class="hero__inner">
 
           <div class="hero__tag">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-green-700, #2D6A4F)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M2 22c0 0 4-2 8-6s6-9 6-9-5 2-9 6-5 9-5 9z"/>
-  <path d="M22 2s-4 2-8 6"/>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-700)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+  <path d="M9 12l2 2 4-4"/>
 </svg> Bezpłatne narzędzie edukacyjne
           </div>
 
@@ -443,11 +482,14 @@
           </p>
 
           <div class="hero__cta">
-            <a href="pages/kalkulator-obligacji.html" class="btn btn--primary">
-              Oblicz zysk z obligacji
+            <a href="pages/porownywarka.html" class="btn btn--primary">
+              Porównaj inwestycje
             </a>
-            <a href="#kalkulatory" class="btn btn--secondary">
-              Zobacz wszystkie narzędzia
+            <a href="pages/kalkulator-obligacji.html" class="btn btn--secondary">
+              Kalkulator obligacji
+            </a>
+            <a href="pages/kalkulator-wolnosci.html" class="btn btn--secondary">
+              Wolność finansowa
             </a>
           </div>
 
@@ -469,9 +511,9 @@
 
           <!-- Karta 1: Obligacje -->
           <a href="pages/kalkulator-obligacji.html" class="kalkulator-karta" id="karta-obligacje">
-            <div class="kalkulator-karta__ikona"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-green-600, #2D6A4F)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-  <polyline points="3 17 8 11 13 14 21 6"/>
-  <line x1="3" y1="21" x2="21" y2="21"/>
+            <div class="kalkulator-karta__ikona"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/>
+  <circle cx="12" cy="12" r="3"/>
 </svg></div>
             <div>
               <div class="kalkulator-karta__numer">Kalkulator 01</div>
@@ -488,10 +530,8 @@
 
           <!-- Karta 2: Wolność finansowa -->
           <a href="pages/kalkulator-wolnosci.html" class="kalkulator-karta" id="karta-wolnosc">
-            <div class="kalkulator-karta__ikona"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-green-600, #2D6A4F)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-  <circle cx="12" cy="12" r="9"/>
-  <circle cx="12" cy="12" r="5"/>
-  <circle cx="12" cy="12" r="1" fill="var(--color-green-600, #2D6A4F)" stroke="none"/>
+            <div class="kalkulator-karta__ikona"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
 </svg></div>
             <div>
               <div class="kalkulator-karta__numer">Kalkulator 02</div>
@@ -508,11 +548,10 @@
 
           <!-- Karta 3: Porównywarka -->
           <a href="pages/porownywarka.html" class="kalkulator-karta" id="karta-porownywarka">
-            <div class="kalkulator-karta__ikona"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-green-600, #2D6A4F)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-  <line x1="12" y1="3" x2="12" y2="21"/>
-  <path d="M5 7l7-4 7 4"/>
-  <path d="M3 13c0 2 2 3.5 4.5 3.5S12 15 12 13 9.5 9.5 7.5 9.5 3 11 3 13z"/>
-  <path d="M21 13c0 2-2 3.5-4.5 3.5S12 15 12 13s2.5-3.5 4.5-3.5S21 11 21 13z"/>
+            <div class="kalkulator-karta__ikona"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M18 20V10"/>
+  <path d="M12 20V4"/>
+  <path d="M6 20v-6"/>
 </svg></div>
             <div>
               <div class="kalkulator-karta__numer">Kalkulator 03</div>
@@ -544,38 +583,38 @@
         <div class="dlaczego__siatka">
 
           <div class="cecha">
-            <div class="cecha__ikona"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-green-600, #2D6A4F)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/>
-  <path d="M9 21V12h6v9"/>
+            <div class="cecha__ikona"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+  <polyline points="9 22 9 12 15 12 15 22"/>
 </svg></div>
             <div class="cecha__tytul">Polskie realia</div>
             <p class="cecha__opis">Podatek Belki, inflacja GUS, obligacje EDO — nie kalkulatory z amerykańskich blogów.</p>
           </div>
 
           <div class="cecha">
-            <div class="cecha__ikona"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-green-600, #2D6A4F)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
-  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
-  <line x1="9" y1="7" x2="15" y2="7"/>
-  <line x1="9" y1="11" x2="13" y2="11"/>
+            <div class="cecha__ikona"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+  <polyline points="14 2 14 8 20 8"/>
+  <line x1="16" y1="13" x2="8" y2="13"/>
+  <line x1="16" y1="17" x2="8" y2="17"/>
+  <polyline points="10 9 9 9 8 9"/>
 </svg></div>
             <div class="cecha__tytul">Edukacyjnie</div>
             <p class="cecha__opis">Każdy wynik jest wyjaśniony. Rozumiesz skąd pochodzi liczba, nie tylko ją widzisz.</p>
           </div>
 
           <div class="cecha">
-            <div class="cecha__ikona"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-green-600, #2D6A4F)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-  <polyline points="9 12 11 14 15 10"/>
+            <div class="cecha__ikona"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
 </svg></div>
             <div class="cecha__tytul">Bezpiecznie</div>
             <p class="cecha__opis">Żadnych danych osobowych, żadnej rejestracji. Kalkulacje wykonywane lokalnie w Twojej przeglądarce.</p>
           </div>
 
           <div class="cecha">
-            <div class="cecha__ikona"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-green-600, #2D6A4F)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-  <rect x="7" y="2" width="10" height="20" rx="2"/>
-  <circle cx="12" cy="18" r="1" fill="var(--color-green-600, #2D6A4F)" stroke="none"/>
+            <div class="cecha__ikona"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+  <line x1="12" y1="18" x2="12.01" y2="18"/>
 </svg></div>
             <div class="cecha__tytul">Na każdym urządzeniu</div>
             <p class="cecha__opis">Działa tak samo dobrze na telefonie, tablecie i komputerze.</p>
@@ -629,9 +668,9 @@
           <a href="pages/kalkulator-obligacji.html">Kalkulator obligacji</a>
           <a href="pages/kalkulator-wolnosci.html">Wolność finansowa</a>
           <a href="pages/porownywarka.html">Porównywarka ETF</a>
-          <a href="#">O projekcie</a>
-          <a href="#">Polityka prywatności</a>
-          <a href="#">Regulamin</a>
+          <a href="pages/o-projekcie.html">O projekcie</a>
+          <a href="pages/polityka-prywatnosci.html">Polityka prywatności</a>
+          <a href="pages/regulamin.html">Regulamin</a>
         </div>
 
         <p class="disclaimer">

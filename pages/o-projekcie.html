@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+  <title>O projekcie ETFkalkulator.pl | Kim jesteśmy i co robimy</title>
+  <meta name="description" content="Poznaj ETFkalkulator.pl - bezpłatne narzędzie edukacyjne dla polskich inwestorów. Nasza misja, wizja i zespół.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/main.css">
+
+  <!-- SEO: Kanoniczny URL -->
+  <link rel="canonical" href="https://etfkalkulator.pl/pages/o-projekcie.html" />
+
+  <style>
+    .page-hero {
+      padding-block: var(--space-16) var(--space-12);
+      text-align: center;
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+    .page-hero__bread {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-4);
+    }
+    .page-hero__bread a { color: var(--color-primary-500); }
+    .page-hero__bread a:hover { text-decoration: underline; }
+    .page-hero__title {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-4);
+    }
+    .page-hero__subtitle {
+      font-size: var(--text-lg);
+      color: var(--color-text-secondary);
+      max-width: var(--max-width-text);
+      margin: 0 auto;
+    }
+
+    .content-section {
+      padding-block: var(--space-16);
+    }
+    .content-section__title {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-6);
+      text-align: center;
+    }
+    .content-section__text {
+      font-size: var(--text-base);
+      line-height: var(--leading-relaxed);
+      color: var(--color-text-secondary);
+      max-width: var(--max-width-text);
+      margin: 0 auto var(--space-8);
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-6);
+      margin-top: var(--space-8);
+    }
+    .value-card {
+      background: var(--color-bg-elevated);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      border: 1px solid var(--color-border-subtle);
+      text-align: center;
+    }
+    .value-card__icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto var(--space-4);
+      background: var(--color-primary-100);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .value-card__title {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-3);
+    }
+    .value-card__description {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    .team-section {
+      background: var(--color-bg-secondary);
+      border-radius: var(--radius-xl);
+      padding: var(--space-12);
+      margin: var(--space-16) 0;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-8);
+      margin-top: var(--space-8);
+    }
+    .team-member {
+      text-align: center;
+    }
+    .team-member__avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-full);
+      background: var(--color-primary-100);
+      margin: 0 auto var(--space-4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary-600);
+    }
+    .team-member__name {
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-2);
+    }
+    .team-member__role {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+    }
+
+    @media (max-width: 768px) {
+      .page-hero { padding-block: var(--space-12) var(--space-8); }
+      .content-section { padding-block: var(--space-12); }
+      .team-section { padding: var(--space-8); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="../index.html" class="header__logo">ETF<span>kalkulator</span>.pl</a>
+      <nav class="header__nav" aria-label="Nawigacja główna">
+        <a href="../pages/kalkulator-obligacji.html">Obligacje</a>
+        <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
+        <a href="../pages/porownywarka.html">Porównywarka</a>
+        <button id="btn-darkmode" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="
+          width: 38px; height: 38px; border-radius: var(--radius-full); 
+          border: 1.5px solid var(--color-border); background: var(--color-bg-elevated); 
+          cursor: pointer; display: flex; align-items: center; justify-content: center; 
+          transition: all var(--transition-fast); flex-shrink: 0;
+        ">
+          <svg id="ikona-slonce" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg id="ikona-ksiezyc" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+          </svg>
+        </button>
+        <a href="../index.html#newsletter" class="btn btn--sm" style="border: 1.5px solid var(--color-primary-300); color: var(--color-primary-700); background: white; border-radius: var(--radius-full);">Newsletter</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav-bar">
+    <div class="mobile-nav-bar__inner">
+      <a href="../pages/kalkulator-obligacji.html" class="mobile-nav-bar__link">Obligacje</a>
+      <span class="mobile-nav-bar__separator"></span>
+      <a href="../pages/kalkulator-wolnosci.html" class="mobile-nav-bar__link">Wolność finansowa</a>
+      <span class="mobile-nav-bar__separator"></span>
+      <a href="../pages/porownywarka.html" class="mobile-nav-bar__link">Porównywarka ETF</a>
+      <span class="mobile-nav-bar__separator"></span>
+      <div class="mobile-nav-bar__newsletter">
+        <a href="../index.html#newsletter" class="btn btn--sm" style="font-size:12px;padding:4px 12px;border:1.5px solid var(--color-primary-300);color:var(--color-primary-700);background:white;border-radius:var(--radius-full);white-space:nowrap">Newsletter</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- GŁÓWNA TREŚĆ -->
+  <main class="container">
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <p class="page-hero__bread">
+        <a href="../index.html">ETFkalkulator.pl</a> › O projekcie
+      </p>
+      <h1 class="page-hero__title">O ETFkalkulator.pl</h1>
+      <p class="page-hero__subtitle">Bezpłatne narzędzie edukacyjne dla polskich inwestorów</p>
+    </section>
+
+    <!-- NASZA MISJA -->
+    <section class="content-section">
+      <h2 class="content-section__title">Nasza misja</h2>
+      <p class="content-section__text">
+        ETFkalkulator.pl powstał z prostego powodu: pomóc Polakom podejmować mądrzejsze decyzje finansowe. 
+        Wierzymy, że każdy zasługuje na dostęp do prostych, przejrzystych narzędzi, które uwzględniają 
+        polskie realia podatkowe i rynkowe.
+      </p>
+      <p class="content-section__text">
+        Nie jesteśmy bankiem, nie sprzedajemy produktów inwestycyjnych i nie pobieramy żadnych opłat. 
+        Naszym celem jest edukacja finansowa w czystej formie - bez ukrytych kosztów i skomplikowanego żargonu.
+      </p>
+    </section>
+
+    <!-- WARTOŚCI -->
+    <section class="content-section">
+      <h2 class="content-section__title">Nasze wartości</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <h3 class="value-card__title">Jakość</h3>
+          <p class="value-card__description">
+            Każde narzędzie jest dokładnie przetestowane. Wyniki oparte na rzeczywistych danych i przepisach.
+          </p>
+        </div>
+        <div class="value-card">
+          <div class="value-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
+          <h3 class="value-card__title">Bezpieczeństwo</h3>
+          <p class="value-card__description">
+            Żadnych danych osobowych, żadnej rejestracji. Wszystkie obliczenia wykonywane lokalnie w Twojej przeglądarce.
+          </p>
+        </div>
+        <div class="value-card">
+          <div class="value-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
+          <h3 class="value-card__title">Edukacja</h3>
+          <p class="value-card__description">
+            Nie tylko liczby, ale też wyjaśnienia. Rozumiesz co oznacza podatek Belki, inflacja i realny zysk.
+          </p>
+        </div>
+        <div class="value-card">
+          <div class="value-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <h3 class="value-card__title">Polskie realia</h3>
+          <p class="value-card__description">
+            Uwzględniamy polskie przepisy, podatki i specyfikę rynku. Nie kalkulatory z amerykańskich blogów.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ZESPÓŁ -->
+    <section class="team-section">
+      <h2 class="content-section__title">Nasz zespół</h2>
+      <p class="content-section__text">
+        ETFkalkulator.pl tworzy zespół pasjonatów finansów i technologii, którzy wierzą w demokratyzację dostępu do wiedzy inwestycyjnej.
+      </p>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="team-member__avatar">ET</div>
+          <h3 class="team-member__name">Ekipa Tech</h3>
+          <p class="team-member__role">Twórcy narzędzi</p>
+        </div>
+        <div class="team-member">
+          <div class="team-member__avatar">EF</div>
+          <h3 class="team-member__name">Eksperci Finansowi</h3>
+          <p class="team-member__role">Weryfikacja modeli</p>
+        </div>
+        <div class="team-member">
+          <div class="team-member__avatar">UU</div>
+          <h3 class="team-member__name">Użytkownicy</h3>
+          <p class="team-member__role">Feedback i sugestie</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section class="content-section">
+      <h2 class="content-section__title">Kontakt</h2>
+      <p class="content-section__text">
+        Masz pytania, sugestie lub znalazłeś błąd? Chętnie usłyszymy od Ciebie! 
+        Najlepszym sposobem kontaktu jest nasz newsletter - tam odpisujemy na każde wiadomość.
+      </p>
+      <div style="text-align: center; margin-top: var(--space-8);">
+        <a href="../index.html#newsletter" class="btn btn--primary">
+          Napisz do nas przez newsletter
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__links">
+        <a href="../index.html">Strona główna</a>
+        <a href="../pages/kalkulator-obligacji.html">Obligacje</a>
+        <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
+        <a href="../pages/porownywarka.html">Porównywarka ETF</a>
+        <a href="../pages/o-projekcie.html">O projekcie</a>
+        <a href="../pages/polityka-prywatnosci.html">Polityka prywatności</a>
+        <a href="../pages/regulamin.html">Regulamin</a>
+      </div>
+      <p class="disclaimer">
+        ETFkalkulator.pl to narzędzie edukacyjne. Nie stanowi porady inwestycyjnej w rozumieniu Ustawy o obrocie instrumentami finansowymi.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    function przelaczTryb() {
+      var html    = document.documentElement;
+      var slonce  = document.getElementById('ikona-slonce');
+      var ksiezyc = document.getElementById('ikona-ksiezyc');
+      var ciemny  = html.classList.contains('dark-mode') ||
+        (!html.classList.contains('light-mode') &&
+         window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+      if (ciemny) {
+        html.classList.remove('dark-mode');
+        html.classList.add('light-mode');
+        if (slonce)  slonce.style.display = 'block';
+        if (ksiezyc) ksiezyc.style.display = 'none';
+        localStorage.setItem('etf-tryb', 'jasny');
+      } else {
+        html.classList.remove('light-mode');
+        html.classList.add('dark-mode');
+        if (slonce)  slonce.style.display = 'none';
+        if (ksiezyc) ksiezyc.style.display = 'block';
+        localStorage.setItem('etf-tryb', 'ciemny');
+      }
+    }
+    
+    // Inicjalizacja przy ładowaniu strony
+    (function() {
+      var html     = document.documentElement;
+      var zapisany = localStorage.getItem('etf-tryb');
+      var slonce   = document.getElementById('ikona-slonce');
+      var ksiezyc  = document.getElementById('ikona-ksiezyc');
+      var systemCiemny = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      if (zapisany === 'ciemny' || (!zapisany && systemCiemny)) {
+        html.classList.add('dark-mode');
+        html.classList.remove('light-mode');
+        if (slonce) slonce.style.display = 'none';
+        if (ksiezyc) ksiezyc.style.display = 'block';
+      } else {
+        html.classList.add('light-mode');
+        html.classList.remove('dark-mode');
+        if (slonce) slonce.style.display = 'block';
+        if (ksiezyc) ksiezyc.style.display = 'none';
+      }
+    })();
+  </script>
+
+</body>
+</html>

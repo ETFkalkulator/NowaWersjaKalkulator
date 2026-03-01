@@ -6,8 +6,8 @@
 :root {
 
   /* --- Fonty --- */
-  --font-sans:    'DM Sans', system-ui, sans-serif;
-  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-sans:    'Inter', 'Lato', system-ui, sans-serif;
+  --font-display: 'Inter', 'Lato', system-ui, sans-serif;
 
   /* --- Kolory — jasny tryb (domyślny) --- */
   --color-bg:              #F8F7F2;
@@ -21,7 +21,19 @@
   --color-border:          #E5E7EB;
   --color-border-subtle:   #F0F0F0;
 
-  /* Zielona paleta */
+  /* --- Granat paleta (główna) --- */
+  --color-primary-50:   #e8f0fe;
+  --color-primary-100:  #c3daf7;
+  --color-primary-200:  #9ec4f0;
+  --color-primary-300:  #79ade9;
+  --color-primary-400:  #5497e2;
+  --color-primary-500:  #1A56A0;
+  --color-primary-600:  #144a8a;
+  --color-primary-700:  #0f3e74;
+  --color-primary-800:  #0a325e;
+  --color-primary-900:  #052648;
+
+  /* --- Zielona paleta (akcenty) --- */
   --color-green-50:   #d8f3dc;
   --color-green-100:  #b7e4c7;
   --color-green-200:  #95d5b2;
@@ -32,6 +44,18 @@
   --color-green-700:  #2D6A4F;
   --color-green-800:  #1b4332;
   --color-green-900:  #081c15;
+
+  /* --- Pomarańczowa paleta (akcenty) --- */
+  --color-orange-50:   #fff4e6;
+  --color-orange-100:  #ffe0cc;
+  --color-orange-200:  #ffcc99;
+  --color-orange-300:  #ffb866;
+  --color-orange-400:  #ffa433;
+  --color-orange-500:  #ff9000;
+  --color-orange-600:  #e67e00;
+  --color-orange-700:  #cc6c00;
+  --color-orange-800:  #b35a00;
+  --color-orange-900:  #994800;
 
   /* Inne */
   --color-error:   #dc2626;
@@ -80,10 +104,30 @@
   --radius-2xl:  24px;
   --radius-full: 9999px;
 
-  /* --- Cienie --- */
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
-  --shadow-lg: 0 10px 30px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.05);
+  /* --- Cienie — styl Apple z lepszą głębią --- */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
+  --shadow-lg: 0 10px 40px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,0.12), 0 8px 32px rgba(0,0,0,0.08);
+  
+  /* Specjalne cienie dla kolorów */
+  --shadow-primary: 0 8px 32px rgba(26, 86, 160, 0.15), 0 4px 16px rgba(26, 86, 160, 0.1);
+  --shadow-primary-hover: 0 12px 48px rgba(26, 86, 160, 0.25), 0 6px 24px rgba(26, 86, 160, 0.15);
+  --shadow-green: 0 8px 32px rgba(64, 145, 108, 0.15), 0 4px 16px rgba(64, 145, 108, 0.1);
+  --shadow-orange: 0 8px 32px rgba(255, 144, 0, 0.15), 0 4px 16px rgba(255, 144, 0, 0.1);
+
+  /* --- Standardowe style Apple dla głównych wyników --- */
+  --result-bg: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary-700) 50%, var(--color-primary-500) 100%);
+  --result-border: 1px solid rgba(255, 255, 255, 0.1);
+  --result-shadow: 0 8px 32px rgba(26, 86, 160, 0.3), 0 2px 8px rgba(26, 86, 160, 0.15);
+  --result-shadow-hover: 0 12px 48px rgba(26, 86, 160, 0.4), 0 4px 16px rgba(26, 86, 160, 0.2);
+  --result-radius: var(--radius-xl);
+  --result-padding: var(--space-10) var(--space-8);
+  --result-text-color: white;
+  --result-label-size: var(--text-sm);
+  --result-value-size: clamp(2.5rem, 5vw, 4rem);
+  --result-description-size: var(--text-base);
+  --result-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* --- Animacje --- */
   --transition-fast:   150ms ease;

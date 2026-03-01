@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://etfkalkulator.pl/sitemap.xml
+
+# Crawl-delay (opcjonalnie, jeśli serwer jest obciążony)
+# Crawl-delay: 1

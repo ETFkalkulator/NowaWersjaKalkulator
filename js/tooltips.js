@@ -95,6 +95,37 @@ var TOOLTIPS = {
     tekst: 'Inflacja to wzrost cen. Musisz zarabiać więcej niż wynosi inflacja — inaczej realnie tracisz.',
     przyklad: 'Lokata 3%, inflacja 5% = tracisz 2% rocznie mimo że nominalnie zarabiasz. Obligacje EDO z marżą 2% = zawsze na plusie realnie.'
   },
+  // Moduł 3 — Porównywarka
+  'pojecie-etf': {
+    tytul: 'ETF — fundusze indeksowe',
+    tekst: 'Fundusze które automatycznie śledzą indeks giełdowy jak MSCI World. Niskie koszty, pełna dywersyfikacja. Idealne dla długoterminowych inwestorów.',
+    przyklad: '1 ETF = udział w 1000+ spółkach z całego świata. Nie musisz wybierać akcje samodzielnie.'
+  },
+  'pojecie-obligacje': {
+    tytul: 'Obligacje EDO — indeksowane inflacją',
+    tekst: 'Obligacje skarbowe chronione przed inflacją. Rok 1: stała stopa. Lata 2+: inflacja + marża. Gwarancja Skarbu Państwa.',
+    przyklad: 'EDO 10 lat: inflacja 3,5% + marża 2% = 5,5% nominalnie. Realnie zawsze na plusie.'
+  },
+  'pojecie-lokata': {
+    tytul: 'Lokata bankowa — depozyt bankowy',
+    tekst: 'Tradycyjny produkt bankowy z gwarantowaną stopą. Bezpieczny ale często poniżej inflacji. Podatek Belki pobierany co roku.',
+    przyklad: 'Lokata 4,5% przy inflacji 3,5% = realnie tracisz 1% rocznie. Dobra tylko na krótki termin.'
+  },
+  'pojecie-kiedy-etf': {
+    tytul: 'Kiedy ETF wygrywa?',
+    tekst: 'Przy długim horyzoncie (10+ lat) i wyższej tolerancji na ryzyko. Efekt procentu składanego potrzebuje czasu.',
+    przyklad: 'Pierwsze 3 lata: ETF i obligacje podobne. Po 10 latach: ETF wygrywa 2-3x więcej dzięki procentowi składanemu.'
+  },
+  'pojecie-kiedy-obligacje': {
+    tytul: 'Kiedy obligacje wygrywają?',
+    tekst: 'Przy wysokiej inflacji, gdy realna stopa obligacji jest bliska stopie ETF. Też gdy inwestor nie toleruje ryzyka.',
+    przyklad: 'Inflacja 8%, marża 2% = obligacje dają 10% realnie. ETF może mieć podobną stopę ale z ryzykiem.'
+  },
+  'pojecie-portfel-mieszany': {
+    tytul: 'Portfel mieszany — złoty środek',
+    tekst: 'Kombinacja różnych aktywów dla optymalizacji stosunku ryzyko/zysk. Zwykle 80% wzrostowe + 20% bezpieczne.',
+    przyklad: '80% ETF (wzrost) + 20% obligacje (bezpieczeństwo) = stabilniejszy portfel z dobrym zyskiem.'
+  },
 
   /* --------------------------------------------------------
      MODUŁ 2 — Kalkulator Wolności Finansowej
@@ -177,6 +208,76 @@ var TOOLTIPS = {
     tytul: 'Kapitał końcowy Lokata',
     tekst: 'Wartość lokaty bankowej przy założeniu stałej stopy przez cały okres i reinwestowaniu odsetek (procent składany). Podatek Belki pobierany co rok.',
     przyklad: '10 000 zł + 500 zł/mies., stopa 4,5% przez 10 lat → ok. 84 000 zł po podatku.'
+  },
+  'por-etf-realny': {
+    tytul: 'Kapitał ETF realny (po inflacji)',
+    tekst: 'Kapitał końcowy ETF skorygowany o inflację. Pokazuje prawdziwą siłę nabywczą Twoich pieniędzy w przyszłości.',
+    przyklad: 'Kapitał nominalny 100 000 zł, inflacja 3,5% przez 10 lat → realny kapitał ok. 71 000 zł.'
+  },
+  'por-obligacje-realny': {
+    tytul: 'Kapitał Obligacji realny (po inflacji)',
+    tekst: 'Kapitał końcowy obligacji skorygowany o inflację. Dzięki indeksacji EDO realnie chroni siłę nabywczą.',
+    przyklad: 'Kapitał nominalny 93 000 zł, inflacja 3,5% → realny kapitał ok. 66 000 zł.'
+  },
+  'por-lokata-realny': {
+    tytul: 'Kapitał Lokata realny (po inflacji)',
+    tekst: 'Kapitał końcowy lokaty skorygowany o inflację. Pokazuje ile naprawdę możesz kupić za pieniądze z lokaty.',
+    przyklad: 'Kapitał nominalny 84 000 zł, inflacja 3,5% → realny kapitał ok. 60 000 zł.'
+  },
+  'por-etf-cagr-r': {
+    tytul: 'CAGR ETF realny (po inflacji)',
+    tekst: 'Roczna stopa zwrotu ETF po odjęciu inflacji. To prawdziwy przyrost Twojego bogactwa.',
+    przyklad: 'CAGR nominalny 3,6%, inflacja 3,5% → realny CAGR ≈ 0,1%/rok.'
+  },
+  'por-obligacje-cagr': {
+    tytul: 'CAGR Obligacji',
+    tekst: 'Roczna stopa zwrotu obligacji EDO po podatku Belki. Uwzględnia procent składany i marżę.',
+    przyklad: '10 000 zł → 93 000 zł po 10 latach → CAGR ≈ 5,8%/rok po podatku.'
+  },
+  'por-obligacje-cagr-r': {
+    tytul: 'CAGR Obligacji realny (po inflacji)',
+    tekst: 'Roczna stopa zwrotu obligacji po odjęciu inflacji. Dla EDO powinna być zbliżona do marży.',
+    przyklad: 'CAGR nominalny 5,8%, inflacja 3,5% → realny CAGR ≈ 2,3%/rok.'
+  },
+  'por-lokata-cagr': {
+    tytul: 'CAGR Lokata',
+    tekst: 'Roczna stopa zwrotu lokaty po podatku Belki. Niska ale pewna.',
+    przyklad: '10 000 zł → 84 000 zł po 10 latach → CAGR ≈ 4,2%/rok po podatku.'
+  },
+  'por-lokata-cagr-r': {
+    tytul: 'CAGR Lokata realny (po inflacji)',
+    tekst: 'Roczna stopa zwrotu lokaty po odjęciu inflacji. Zazwyczaj ujemna — traci na wartości.',
+    przyklad: 'CAGR nominalny 4,2%, inflacja 3,5% → realny CAGR ≈ 0,7%/rok.'
+  },
+  'por-obligacje-zysk': {
+    tytul: 'Zysk Obligacji po podatku',
+    tekst: 'Różnica między kapitałem końcowym a sumą wpłat dla obligacji EDO. Po odliczeniu podatku Belki.',
+    przyklad: 'Wpłaciłeś 70 000 zł, masz 93 000 zł → zysk po podatku = 23 000 zł.'
+  },
+  'por-obligacje-zysk-r': {
+    tytul: 'Zysk Obligacji realny (po inflacji)',
+    tekst: 'Zysk obligacji po podatku dodatkowo skorygowany o inflację. Dla EDO zazwyczaj niewielki.',
+    przyklad: 'Zysk nominalny 23 000 zł, inflacja 3,5% → realny zysk ok. 730 zł.'
+  },
+  'por-lokata-zysk': {
+    tytul: 'Zysk Lokata po podatku',
+    tekst: 'Różnica między kapitałem końcowym a sumą wpłat dla lokaty bankowej. Po odliczeniu podatku.',
+    przyklad: 'Wpłaciłeś 70 000 zł, masz 84 000 zł → zysk po podatku = 14 000 zł.'
+  },
+  'por-lokata-zysk-r': {
+    tytul: 'Zysk Lokata realny (po inflacji)',
+    tekst: 'Zysk lokaty po podatku dodatkowo skorygowany o inflację. Zazwyczaj ujemny.',
+    przyklad: 'Zysk nominalny 14 000 zł, inflacja 3,5% → realny zysk ok. -1 200 zł (strata).'
+  },
+  'por-obligacje-podatek': {
+    tytul: 'Podatek Belki — Obligacje',
+    tekst: 'Kwota podatku od zysku kapitałowego (19%) odprowadzona przy wykupie obligacji. Przy IKE/IKZE = 0 zł.',
+    przyklad: 'Zysk brutto 28 400 zł × 19% = 5 400 zł podatku. Z IKE zaoszczędziłbyś te 5 400 zł.'
+  },
+  'por-lokata-podatek': {
+    tytul: 'Podatek Belki — Lokata',
+    tekst: 'Kwota podatku od zysków kapitałowych (19%) pobierana co roku z odsetek lokaty. Zmniejsza zysk.',
+    przyklad: 'Roczny zysk z lokaty 4 500 zł × 19% = 855 zł podatku co roku.'
   }
 };
 
@@ -454,10 +555,13 @@ function podepnijTooltips() {
     'wf-wynik-wymagane', 'wf-wynik-wklad', 'wf-wynik-fire-trwa',
     'wf-wynik-stopa', 'wf-wynik-stopa-realna',
     /* Moduł 3 — Porównywarka */
-    'por-etf-kapital', 'por-etf-zysk', 'por-etf-zysk-r',
-    'por-etf-podatek', 'por-etf-cagr',
-    'por-obligacje-kapital',
-    'por-lokata-kapital',
+    'por-etf-kapital', 'por-etf-realny', 'por-etf-zysk', 'por-etf-zysk-r',
+    'por-etf-podatek', 'por-etf-cagr', 'por-etf-cagr-r',
+    'por-obligacje-kapital', 'por-obligacje-realny', 'por-lokata-kapital',
+    'por-obligacje-zysk', 'por-obligacje-zysk-r', 'por-lokata-realny',
+    'por-obligacje-cagr', 'por-obligacje-cagr-r', 'por-lokata-cagr',
+    'por-lokata-zysk', 'por-lokata-zysk-r', 'por-lokata-cagr-r',
+    'por-obligacje-podatek', 'por-lokata-podatek',
   ];
 
   kafelkiIds.forEach(function(id) {
@@ -483,6 +587,13 @@ function podepnijTooltips() {
     { selektor: '.pojecie:nth-child(1)', id: 'pojecie-procent-skladany' },
     { selektor: '.pojecie:nth-child(2)', id: 'pojecie-podatek' },
     { selektor: '.pojecie:nth-child(3)', id: 'pojecie-zysk-realny' },
+    // Moduł 3 — Porównywarka
+    { selektor: '.pojecie:nth-child(4)', id: 'pojecie-etf' },
+    { selektor: '.pojecie:nth-child(5)', id: 'pojecie-obligacje' },
+    { selektor: '.pojecie:nth-child(6)', id: 'pojecie-lokata' },
+    { selektor: '.pojecie:nth-child(7)', id: 'pojecie-kiedy-etf' },
+    { selektor: '.pojecie:nth-child(8)', id: 'pojecie-kiedy-obligacje' },
+    { selektor: '.pojecie:nth-child(9)', id: 'pojecie-portfel-mieszany' },
   ];
   pojecia.forEach(function(p) {
     var el = document.querySelector(p.selektor);

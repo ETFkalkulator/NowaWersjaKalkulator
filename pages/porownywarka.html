@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
   <title>Porównywarka ETF vs Obligacje vs Lokata | ETFkalkulator.pl</title>
   <meta name="description" content="Porównaj ETF, obligacje skarbowe EDO i lokaty bankowe. Zobacz który instrument daje najwyższy zysk po podatku i inflacji.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/main.css">
@@ -92,19 +95,71 @@
     /* Prawa kolumna */
     .por-wyniki { display: flex; flex-direction: column; gap: var(--space-5); }
 
-    /* Banner zwycięzcy */
+    /* Banner zwycięzcy — standard Apple */
     .zwyciezca-banner {
-      background: linear-gradient(135deg, var(--color-green-800), var(--color-green-600));
-      color: white;
-      border-radius: var(--radius-xl);
-      padding: var(--space-5) var(--space-6);
-      font-size: var(--text-base);
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-3);
-      box-shadow: 0 4px 20px rgba(64,145,108,0.3);
+      background: var(--result-bg);
+      border: var(--result-border);
+      border-radius: var(--result-radius);
+      padding: var(--result-padding);
+      color: var(--result-text-color);
+      text-align: center;
+      box-shadow: var(--result-shadow);
+      transition: var(--result-transition);
+      position: relative;
+      overflow: hidden;
       word-break: break-word;
       overflow-wrap: break-word;
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+    }
+    
+    .zwyciezca-banner:hover {
+      box-shadow: var(--result-shadow-hover);
+      transform: translateY(-2px);
+    }
+    
+    .zwyciezca-banner__ikona {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg);
+      color: currentColor;
+      flex-shrink: 0;
+    }
+    
+    .zwyciezca-banner__content {
+      flex: 1;
+      text-align: left;
+    }
+    
+    .zwyciezca-banner .winner {
+      font-size: var(--result-label-size);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.9;
+      margin-bottom: var(--space-2);
+    }
+    
+    .zwyciezca-banner .amount {
+      font-family: var(--font-display);
+      font-size: var(--result-value-size);
+      font-weight: var(--weight-bold);
+      line-height: 1;
+      margin-bottom: var(--space-2);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    
+    .zwyciezca-banner .description {
+      font-size: var(--result-description-size);
+      font-weight: var(--weight-medium);
+      opacity: 0.8;
+      max-width: 320px;
+      line-height: var(--leading-relaxed);
     }
 
     /* Trzy panele wyników */
@@ -125,7 +180,7 @@
       display: flex; flex-direction: column; gap: var(--space-3);
       transition: border-color 0.2s ease;
     }
-    .por-panel--etf      { border-color: rgba(64,145,108,0.35); }
+    .por-panel--etf      { border-color: rgba(26, 86, 160, 0.35); }
     .por-panel--obligacje{ border-color: rgba(245,158,11,0.35); }
     .por-panel--lokata   { border-color: rgba(148,163,184,0.35); }
 
@@ -139,7 +194,7 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 1rem; flex-shrink: 0;
     }
-    .ikona-etf       { background: rgba(64,145,108,0.12); }
+    .ikona-etf       { background: rgba(26, 86, 160, 0.12); }
     .ikona-obligacje { background: rgba(245,158,11,0.12); }
     .ikona-lokata    { background: rgba(148,163,184,0.12); }
 
@@ -167,7 +222,7 @@
     .por-wiersz__wartosc--glowna {
       font-size: var(--text-lg); color: var(--color-text-primary);
     }
-    .por-wiersz__wartosc--zielony { color: var(--color-green-600) !important; }
+    .por-wiersz__wartosc--zielony { color: var(--color-primary-600) !important; }
     .por-wiersz__wartosc--czerwony { color: var(--color-error) !important; }
     .por-wiersz__wartosc--muted { color: var(--color-text-muted) !important; font-weight: var(--weight-normal) !important; }
 
@@ -214,7 +269,7 @@
       color: var(--color-text-primary); margin-bottom: var(--space-1);
     }
     .scen-box__zysk {
-      font-size: var(--text-xs); color: var(--color-green-600); font-weight: var(--weight-medium);
+      font-size: var(--text-xs); color: var(--color-primary-600); font-weight: var(--weight-medium);
     }
     .scen-box__cagr {
       font-size: var(--text-xs); color: var(--color-text-muted);
@@ -264,25 +319,25 @@
     .tabela tr:hover td { background: var(--color-bg-secondary); }
 
     /* Legenda kolorów w headerze tabeli */
-    .tabela-eth  { color: var(--color-green-600) !important; }
+    .tabela-eth  { color: var(--color-primary-600) !important; }
     .tabela-obl  { color: #b45309 !important; }
     .tabela-lok  { color: var(--color-text-muted) !important; }
 
     /* IKE row */
     .ike-row {
       display: flex; align-items: flex-start; gap: var(--space-3);
-      padding: var(--space-3); background: var(--color-green-50);
-      border-radius: var(--radius-md); border: 1px solid var(--color-green-100);
+      padding: var(--space-3); background: var(--color-primary-50);
+      border-radius: var(--radius-md); border: 1px solid var(--color-primary-100);
       cursor: pointer; overflow: hidden;
     }
     .ike-row input[type="checkbox"] {
       width: 16px !important; min-width: 16px !important; max-width: 16px !important;
-      height: 16px; margin-top: 2px; accent-color: var(--color-green-500);
+      height: 16px; margin-top: 2px; accent-color: var(--color-primary-500);
       cursor: pointer; flex-shrink: 0;
     }
     .ike-row__tekst { flex: 1; min-width: 0; }
     .ike-row__tekst strong {
-      color: var(--color-green-700); font-weight: var(--weight-medium);
+      color: var(--color-primary-700); font-weight: var(--weight-medium);
       font-size: var(--text-xs); display: block; margin-bottom: 1px;
     }
     .ike-row__tekst span { font-size: var(--text-xs); color: var(--color-text-secondary); word-wrap: break-word; }
@@ -299,15 +354,15 @@
       transition: all var(--transition-fast);
     }
     .btn-okres--aktywny {
-      background: var(--color-green-500);
-      border-color: var(--color-green-500); color: white;
+      background: var(--color-primary-500);
+      border-color: var(--color-primary-500); color: white;
     }
 
     /* Słowniczek */
     .edukacja { margin-top: var(--space-16); padding-top: var(--space-12); border-top: 1px solid var(--color-border-subtle); }
     .edukacja__siatka { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-4); margin-top: var(--space-8); }
     .pojecie { padding: var(--space-5); background: var(--color-bg-secondary); border-radius: var(--radius-md); }
-    .pojecie__term { font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--color-green-700); margin-bottom: var(--space-2); }
+    .pojecie__term { font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--color-primary-700); margin-bottom: var(--space-2); }
     .pojecie__def { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: var(--leading-relaxed); }    body, .header, .formularz-karta, .por-panel, .wykres-karta, .tabela-karta, .scenariusze-karta, .pojecie {
       transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     }
@@ -321,9 +376,9 @@
       <div class="header__inner">
         <a href="../index.html" class="header__logo">ETF<span>kalkulator</span>.pl</a>
                         <nav class="header__nav" aria-label="Nawigacja główna">
-          <a href="kalkulator-obligacji.html">Obligacje</a>
-          <a href="kalkulator-wolnosci.html">Wolność finansowa</a>
-          <a href="porownywarka.html" style="color: var(--color-green-500)">Porównywarka</a>
+          <a href="../pages/kalkulator-obligacji.html">Obligacje</a>
+          <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
+          <a href="../pages/porownywarka.html" style="color: var(--color-primary-500)">Porównywarka</a>
           <button id="btn-darkmode" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="width: 38px; height: 38px; border-radius: var(--radius-full); border: 1.5px solid var(--color-border); background: var(--color-bg-elevated); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all var(--transition-fast); flex-shrink: 0;">
       <svg id="ikona-slonce" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="5"/>
@@ -336,7 +391,7 @@
         <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
       </svg>
     </button>
-    <a href="../index.html#newsletter" class="btn btn--sm" style="border: 1.5px solid var(--color-green-300); color: var(--color-green-700); background: white; border-radius: var(--radius-full);">Newsletter</a>
+    <a href="../index.html#newsletter" class="btn btn--sm" style="border: 1.5px solid var(--color-primary-300); color: var(--color-primary-700); background: white; border-radius: var(--radius-full);">Newsletter</a>
         </nav>
       </div>
     </div>
@@ -344,14 +399,14 @@
 
       <div class="mobile-nav-bar" id="mobile-nav-bar">
     <div class="mobile-nav-bar__inner">
-      <a href="kalkulator-obligacji.html" class="mobile-nav-bar__link">Obligacje</a>
+      <a href="../pages/kalkulator-obligacji.html" class="mobile-nav-bar__link">Obligacje</a>
       <span class="mobile-nav-bar__separator"></span>
-      <a href="kalkulator-wolnosci.html" class="mobile-nav-bar__link">Wolność finansowa</a>
+      <a href="../pages/kalkulator-wolnosci.html" class="mobile-nav-bar__link">Wolność finansowa</a>
       <span class="mobile-nav-bar__separator"></span>
-      <a href="porownywarka.html" class="mobile-nav-bar__link aktywna">Porównywarka ETF</a>
+      <a href="../pages/porownywarka.html" class="mobile-nav-bar__link aktywna">Porównywarka ETF</a>
       <span class="mobile-nav-bar__separator"></span>
       <div class="mobile-nav-bar__newsletter">
-        <a href="../index.html#newsletter" class="btn btn--sm" style="font-size:12px;padding:4px 12px;border:1.5px solid var(--color-green-300);color:var(--color-green-700);background:white;border-radius:var(--radius-full);white-space:nowrap">Newsletter</a>
+        <a href="../index.html#newsletter" class="btn btn--sm" style="font-size:12px;padding:4px 12px;border:1.5px solid var(--color-primary-300);color:var(--color-primary-700);background:white;border-radius:var(--radius-full);white-space:nowrap">Newsletter</a>
       </div>
     </div>
   </div>
@@ -491,8 +546,16 @@
 
           <!-- BANNER ZWYCIĘZCY -->
           <div class="zwyciezca-banner" id="por-zwyciezca">
-            <span style="font-size:1.5rem">🏆</span>
-            <span>Obliczam...</span>
+            <div class="zwyciezca-banner__ikona">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </div>
+            <div class="zwyciezca-banner__content">
+              <div class="zwyciezca-banner__winner">Obliczam...</div>
+              <div class="zwyciezca-banner__amount">—</div>
+              <div class="zwyciezca-banner__description">Sprawdź która strategia daje najlepszy wynik</div>
+            </div>
           </div>
 
           <!-- TRZY PANELE -->
@@ -631,8 +694,8 @@
                 <p class="scen-box__zysk" id="scen-pes-zysk">—</p>
                 <p class="scen-box__cagr" id="scen-pes-cagr">—</p>
               </div>
-              <div class="scen-box" style="border:1.5px solid var(--color-green-100)">
-                <p class="scen-box__nazwa" style="color:var(--color-green-600)">📈 Bazowy</p>
+              <div class="scen-box" style="border:1.5px solid var(--color-primary-100)">
+                <p class="scen-box__nazwa" style="color:var(--color-primary-600)">📈 Bazowy</p>
                 <p class="scen-box__stopa">7% / rok — historyczna średnia</p>
                 <p class="scen-box__kapital" id="scen-baz-kapital">—</p>
                 <p class="scen-box__zysk" id="scen-baz-zysk">—</p>
@@ -653,7 +716,7 @@
             <div class="wykres-naglowek">
               <p class="wykres-tytul">Wzrost kapitału — porównanie</p>
               <p class="wykres-opis">
-                <span style="color:var(--color-green-600)">■</span> ETF &nbsp;
+                <span style="color:var(--color-primary-600)">■</span> ETF &nbsp;
                 <span style="color:#f59e0b">■</span> Obligacje EDO &nbsp;
                 <span style="color:#94a3b8">■</span> Lokata
               </p>
@@ -726,11 +789,11 @@
     <div class="container">
       <div class="footer__inner">
         <div class="footer__links">
-          <a href="kalkulator-obligacji.html">Kalkulator obligacji</a>
-          <a href="kalkulator-wolnosci.html">Wolność finansowa</a>
-          <a href="porownywarka.html">Porównywarka ETF</a>
+          <a href="../pages/kalkulator-obligacji.html">Kalkulator obligacji</a>
+          <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
+          <a href="../pages/porownywarka.html">Porównywarka ETF</a>
           <a href="../index.html">Strona główna</a>
-          <a href="#">Polityka prywatności</a>
+          <a href="../pages/polityka-prywatnosci.html">Polityka prywatności</a>
         </div>
         <p class="text-muted">© 2025 ETFkalkulator.pl — narzędzie edukacyjne dla polskich inwestorów</p>
       </div>

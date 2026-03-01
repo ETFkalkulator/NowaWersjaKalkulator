@@ -188,6 +188,12 @@ function aktualizujWolnosc() {
     }
   }
 
+  // --- Aktualizacja etykiety lat w wymaganym oszczędzaniu ---
+  var elLataCelLabel = document.getElementById('wf-lata-cel-label');
+  if (elLataCelLabel) {
+    elLataCelLabel.textContent = latCelowe;
+  }
+
   // --- Wymagane oszczędności ---
   animuj('wf-wynik-wymagane', wyniki.wymaganeOszczednosci, formatujZl);
 
