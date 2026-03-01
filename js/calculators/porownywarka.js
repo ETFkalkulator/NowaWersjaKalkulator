@@ -5,6 +5,9 @@
 
 'use strict';
 
+// Funkcje z utils.js są już dostępne globalnie jako window.formatujZl itp.
+// Nie deklarujemy ich ponownie, tylko używamy istniejących
+
 var PODATEK_BELKI = 0.19;
 
 /* ----------------------------------------------------------
@@ -142,6 +145,12 @@ function obliczEDO(params) {
 var wykresPorown = null;
 
 function obliczPorownanie() {
+  // Sprawdź dostępność funkcji
+  if (!window.formatujZl || !window.pobierzWartosc || !window.animuj) {
+    console.error('❌ Brakujące funkcje z utils.js!');
+    return;
+  }
+  
   var kapital   = pobierzWartosc('por-kapital',   10000);
   var doplata   = pobierzWartosc('por-doplata',   500);
   var lata      = pobierzWartosc('por-lata',      10);
@@ -182,11 +191,12 @@ function obliczPorownanie() {
   // Zwycięzca
   var elZw = document.getElementById('por-zwyciezca');
   if (elZw) {
+    var formatujZlLocal = window.formatujZl || function(x) { return x.toFixed(2) + ' zł'; };
     var rozn = zwyciezca.wynik - strategie[1].wynik;
     elZw.innerHTML =
       '<span style="font-size:1.5rem">🏆</span> ' +
       '<strong>' + zwyciezca.nazwa + '</strong> wygrywa o ' +
-      formatujZl(rozn) + ' więcej niż drugie miejsce';
+      formatujZlLocal(rozn) + ' więcej niż drugie miejsce';
   }
 
   // Tabela rok po roku
@@ -203,15 +213,35 @@ function obliczPorownanie() {
    AKTUALIZACJA JEDNEGO PANELU WYNIKU
    ---------------------------------------------------------- */
 function aktualizujWynikPorown(prefix, w, nazwa) {
+  // Fallback funkcji jeśli nie są dostępne
+  var formatujZlLocal = window.formatujZl || function(x) { return x.toFixed(2) + ' zł'; };
+  var animujLocal = window.animuj || function(id, val, fmt) { 
+    var el = document.getElementById(id); 
+    if (el) el.textContent = fmt ? fmt(val) : val; 
+  };
+  
   var set = function(id, val) {
     var el = document.getElementById(prefix + '-' + id);
-    if (el) el.textContent = val;
+    if (el) {
+      el.textContent = val;
+    }
   };
-  animuj(prefix + '-kapital',  w.kapitalNetto,  formatujZl);
-  animuj(prefix + '-realny',   w.kapitalRealny, formatujZl);
-  animuj(prefix + '-zysk',     w.zyskPoDataku,  formatujZl);
-  animuj(prefix + '-zysk-r',   w.zyskRealny,    formatujZl);
-  animuj(prefix + '-podatek',  w.podatekKwota,  formatujZl);
+  
+  // Próbuj użyć animacji, jeśli nie działa - użyj bezpośredniego ustawienia
+  try {
+    animujLocal(prefix + '-kapital',  w.kapitalNetto,  formatujZlLocal);
+    animujLocal(prefix + '-realny',   w.kapitalRealny, formatujZlLocal);
+    animujLocal(prefix + '-zysk',     w.zyskPoDataku,  formatujZlLocal);
+    animujLocal(prefix + '-zysk-r',   w.zyskRealny,    formatujZlLocal);
+    animujLocal(prefix + '-podatek',  w.podatekKwota,  formatujZlLocal);
+  } catch (e) {
+    set('kapital', formatujZlLocal(w.kapitalNetto));
+    set('realny', formatujZlLocal(w.kapitalRealny));
+    set('zysk', formatujZlLocal(w.zyskPoDataku));
+    set('zysk-r', formatujZlLocal(w.zyskRealny));
+    set('podatek', formatujZlLocal(w.podatekKwota));
+  }
+  
   set('cagr',      (w.cagr      * 100).toFixed(2) + '%');
   set('cagr-r',    (w.cagrRealny * 100).toFixed(2) + '%');
 }
@@ -220,10 +250,16 @@ function aktualizujWynikPorown(prefix, w, nazwa) {
    SCENARIUSZE ETF
    ---------------------------------------------------------- */
 function aktualizujScenariusze(pes, baz, opt) {
+  var formatujZlLocal = window.formatujZl || function(x) { return x.toFixed(2) + ' zł'; };
+  var animujLocal = window.animuj || function(id, val, fmt) { 
+    var el = document.getElementById(id); 
+    if (el) el.textContent = fmt ? fmt(val) : val; 
+  };
+  
   var sc = { pes, baz, opt };
   ['pes','baz','opt'].forEach(function(k) {
-    animuj('scen-' + k + '-kapital', sc[k].kapitalNetto,  formatujZl);
-    animuj('scen-' + k + '-zysk',   sc[k].zyskPoDataku,  formatujZl);
+    animujLocal('scen-' + k + '-kapital', sc[k].kapitalNetto,  formatujZlLocal);
+    animujLocal('scen-' + k + '-zysk',   sc[k].zyskPoDataku,  formatujZlLocal);
     var el = document.getElementById('scen-' + k + '-cagr');
     if (el) el.textContent = (sc[k].cagr * 100).toFixed(2) + '%';
   });
