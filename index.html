@@ -202,6 +202,9 @@
       color: var(--color-text-secondary);
       line-height: var(--leading-relaxed);
       flex: 1; /* wypełnia pozostałą przestrzeń */
+      margin-top: var(--space-2);
+      margin-bottom: var(--space-4);
+      text-align: left;
     }
 
     .kalkulator-karta__link {
@@ -522,6 +525,8 @@
       <span class="mobile-nav-bar__separator"></span>
       <a href="pages/porownywarka.html" class="mobile-nav-bar__link">Porównywarka ETF</a>
       <span class="mobile-nav-bar__separator"></span>
+      <a href="pages/o-projekcie.html" class="mobile-nav-bar__link">O projekcie</a>
+      <span class="mobile-nav-bar__separator"></span>
       <div class="mobile-nav-bar__newsletter">
         <a href="#newsletter" class="btn btn--sm" style="font-size:12px;padding:4px 12px;border:1.5px solid var(--color-primary-300);color:var(--color-primary-700);background:white;border-radius:var(--radius-full);white-space:nowrap">Newsletter</a>
       </div>
@@ -803,8 +808,8 @@
 
 
   <!-- Nasze pliki JavaScript -->
-  <script src="js/utils.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/utils.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 
   <script>
     // Wykres porównawczy na stronie głównej
@@ -913,8 +918,8 @@
   <script>
   </script>
 
-  <script src="js/tooltips.js"></script>
-  <script>
+  <script src="js/tooltips.js" defer></script>
+  <script defer>
     document.addEventListener('DOMContentLoaded', function() {
 
       // Tooltips dla kart kalkulatorów
@@ -944,7 +949,7 @@
     });
   </script>
 
-  <script>
+  <script defer>
     function przelaczTryb() {
       var html    = document.documentElement;
       var slonce  = document.getElementById('ikona-slonce');
