@@ -388,8 +388,80 @@
     /* Dark mode */
     /* Płynne przejście */
     body, .header, .card, .kafelek, .formularz-karta, .wyniki-kolumna,
-    .porownanie, .wykres-karta, .tabela-karta, .pojecie {
+    .porownanie, .wykres-karta, .tabela-karta, .pojecie, .wykres-porownawczy {
       transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    /* Wykres porównawczy na stronie głównej */
+    .wykres-porownawczy {
+      padding: var(--space-20) 0;
+      background: var(--color-bg);
+    }
+
+    .wykres-porownawczy__kontener {
+      background: var(--color-bg-elevated);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      border: 1px solid var(--color-border-subtle);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .wykres-porownawczy__wykres {
+      position: relative;
+      height: 300px;
+      margin-bottom: var(--space-6);
+    }
+
+    .wykres-porownawczy__opis {
+      text-align: center;
+    }
+
+    .wykres-porownawczy__legenda {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-6);
+      margin-bottom: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+    }
+
+    .legend-kolor {
+      width: 12px;
+      height: 12px;
+      border-radius: var(--radius-sm);
+    }
+
+    .wykres-porownawczy__tekst {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: var(--leading-relaxed);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .wykres-porownawczy__kontener {
+        padding: var(--space-6);
+      }
+      
+      .wykres-porownawczy__wykres {
+        height: 250px;
+      }
+      
+      .wykres-porownawczy__legenda {
+        gap: var(--space-4);
+      }
+      
+      .legend-item {
+        font-size: var(--text-xs);
+      }
     }
   </style>
 </head>
@@ -409,6 +481,7 @@
           <a href="pages/kalkulator-obligacji.html">Obligacje</a>
           <a href="pages/kalkulator-wolnosci.html">Wolność finansowa</a>
           <a href="pages/porownywarka.html">Porównywarka</a>
+          <a href="pages/o-projekcie.html">O projekcie</a>
           <button id="btn-darkmode" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="
       width: 38px; height: 38px;
       border-radius: var(--radius-full);
@@ -571,6 +644,45 @@
     </section>
 
 
+    <!-- WYKRES PORÓWNAWCZY -->
+    <section class="wykres-porownawczy">
+      <div class="container container--narrow">
+        
+        <div class="text-center">
+          <h2 class="heading-2">ETF vs Obligacje vs Lokata</h2>
+          <p class="text-lead mt-2">Zobacz jak różne strategie zachowują się na przestrzeni 10 lat</p>
+        </div>
+
+        <div class="wykres-porownawczy__kontener">
+          <div class="wykres-porownawczy__wykres">
+            <canvas id="glowny-wykres-porownawczy" aria-label="Wykres porównawczy ETF vs Obligacje vs Lokata"></canvas>
+          </div>
+          <div class="wykres-porownawczy__opis">
+            <div class="wykres-porownawczy__legenda">
+              <div class="legend-item">
+                <div class="legend-kolor" style="background: #40916C;"></div>
+                <span>ETF globalny (7% rocznie)</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-kolor" style="background: #b45309;"></div>
+                <span>Obligacje EDO (inflacja + 2%)</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-kolor" style="background: #64748b;"></div>
+                <span>Lokata bankowa (4.5% rocznie)</span>
+              </div>
+            </div>
+            <p class="wykres-porownawczy__tekst">
+              Przykład: 10 000 zł startu + 500 zł miesięcznie przez 10 lat przy inflacji 3.5%.
+              <a href="pages/porownywarka.html" class="link">Sprawdź swoje parametry →</a>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
     <!-- DLACZEGO ETFkalkulator -->
     <section class="dlaczego">
       <div class="container">
@@ -692,6 +804,110 @@
 
   <!-- Nasze pliki JavaScript -->
   <script src="js/utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    // Wykres porównawczy na stronie głównej
+    document.addEventListener('DOMContentLoaded', function() {
+      var ctx = document.getElementById('glowny-wykres-porownawczy');
+      if (!ctx) return;
+
+      // Dane przykładowe dla 10 lat
+      var lata = Array.from({length: 11}, (_, i) => 2025 + i);
+      
+      // Symulacja wzrostu kapitału dla różnych strategii
+      var daneETF = [10000];
+      var daneObligacje = [10000];
+      var daneLokata = [10000];
+      
+      for (var i = 1; i <= 10; i++) {
+        // ETF: 7% rocznie + dopłaty 500 zł/miesiąc
+        daneETF[i] = daneETF[i-1] * 1.07 + 500 * 12;
+        
+        // Obligacje: inflacja 3.5% + marża 2% + dopłaty
+        daneObligacje[i] = daneObligacje[i-1] * 1.055 + 500 * 12;
+        
+        // Lokata: 4.5% rocznie + dopłaty
+        daneLokata[i] = daneLokata[i-1] * 1.045 + 500 * 12;
+      }
+
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: lata.map(String),
+          datasets: [
+            {
+              label: 'ETF globalny',
+              data: daneETF,
+              borderColor: '#40916C',
+              backgroundColor: 'rgba(64, 145, 108, 0.1)',
+              borderWidth: 3,
+              fill: true,
+              tension: 0.4
+            },
+            {
+              label: 'Obligacje EDO',
+              data: daneObligacje,
+              borderColor: '#b45309',
+              backgroundColor: 'rgba(180, 83, 9, 0.1)',
+              borderWidth: 3,
+              fill: true,
+              tension: 0.4
+            },
+            {
+              label: 'Lokata bankowa',
+              data: daneLokata,
+              borderColor: '#64748b',
+              backgroundColor: 'rgba(100, 116, 139, 0.1)',
+              borderWidth: 3,
+              fill: true,
+              tension: 0.4
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              callbacks: {
+                label: function(ctx) {
+                  return ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString('pl-PL', {
+                    style: 'currency',
+                    currency: 'PLN',
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0
+                  });
+                }
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: false,
+              ticks: {
+                callback: function(value) {
+                  return value.toLocaleString('pl-PL', {
+                    style: 'currency',
+                    currency: 'PLN',
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0
+                  });
+                }
+              }
+            }
+          },
+          interaction: {
+            intersect: false,
+            mode: 'index'
+          }
+        }
+      });
+    });
+  </script>
 
 
   <script>

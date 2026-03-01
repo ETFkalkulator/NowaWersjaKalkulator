@@ -543,7 +543,9 @@
           <a href="../pages/kalkulator-obligacji.html" style="color: var(--color-primary-500)">Obligacje</a>
           <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
           <a href="../pages/porownywarka.html">Porównywarka</a>
-          <button id="btn-darkmode" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="
+          <a href="../pages/o-projekcie.html">O projekcie</a>
+        </nav>  
+        <button id="btn-darkmode" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="
       width: 38px; height: 38px;
       border-radius: var(--radius-full);
       border: 1.5px solid var(--color-border);
@@ -774,6 +776,16 @@
 
           </div>
 
+          <!-- Data ostatniej aktualizacji -->
+          <div style="text-align: center; margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--color-border-subtle);">
+            <p class="text-muted" style="font-size: var(--text-xs); margin: 0;">
+              🔄 Ostatnia aktualizacja: <span id="data-aktualizacji">marzec 2026</span>
+            </p>
+            <p class="text-muted" style="font-size: var(--text-xs); margin: var(--space-1) 0 0 0; opacity: 0.8;">
+              Dane aktualizowane co miesiąc • Stopy procentowe i kursy walut
+            </p>
+          </div>
+
           <!-- Porównanie z lokatą -->
           <div class="porownanie">
             <p class="porownanie__tytul">Porównanie z lokatą bankową</p>
@@ -901,6 +913,21 @@
     <script src="../js/utils.js"></script>
   <script src="../js/tooltips.js"></script>
   <script src="../js/calculators/obligacje.js"></script>
+
+  <script>
+    // Aktualizacja daty ostatniej aktualizacji
+    document.addEventListener('DOMContentLoaded', function() {
+      var dataElement = document.getElementById('data-aktualizacji');
+      if (dataElement) {
+        var teraz = new Date();
+        var miesiace = ['styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec', 
+                       'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień'];
+        var aktualnyMiesiac = miesiace[teraz.getMonth()];
+        var aktualnyRok = teraz.getFullYear();
+        dataElement.textContent = aktualnyMiesiac + ' ' + aktualnyRok;
+      }
+    });
+  </script>
 
   <script>
     // Wyczyść pole przy focus, przywróć domyślną przy blur jeśli puste

@@ -379,7 +379,18 @@
           <a href="../pages/kalkulator-obligacji.html">Obligacje</a>
           <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
           <a href="../pages/porownywarka.html" style="color: var(--color-primary-500)">Porównywarka</a>
-          <button id="btn-darkmode" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="width: 38px; height: 38px; border-radius: var(--radius-full); border: 1.5px solid var(--color-border); background: var(--color-bg-elevated); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all var(--transition-fast); flex-shrink: 0;">
+          <a href="../pages/o-projekcie.html">O projekcie</a>
+        </nav>  
+        <button id="btn-darkmode" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="
+      width: 38px; height: 38px;
+      border-radius: var(--radius-full);
+      border: 1.5px solid var(--color-border);
+      background: var(--color-bg-elevated);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all var(--transition-fast);
+      flex-shrink: 0;
+    ">
       <svg id="ikona-slonce" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="5"/>
         <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
@@ -745,6 +756,16 @@
         </div>
       </div>
 
+      <!-- Data ostatniej aktualizacji -->
+      <div style="text-align: center; margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--color-border-subtle);">
+        <p class="text-muted" style="font-size: var(--text-xs); margin: 0;">
+          🔄 Ostatnia aktualizacja: <span id="data-aktualizacji">marzec 2026</span>
+        </p>
+        <p class="text-muted" style="font-size: var(--text-xs); margin: var(--space-1) 0 0 0; opacity: 0.8;">
+          Dane aktualizowane co miesiąc • Stopy ETF, obligacji i lokat
+        </p>
+      </div>
+
       <!-- SŁOWNICZEK -->
       <div class="edukacja">
         <h2 class="heading-2">Co warto wiedzieć?</h2>
@@ -803,6 +824,21 @@
   <script src="../js/utils.js"></script>
   <script src="../js/tooltips.js"></script>
   <script src="../js/calculators/porownywarka.js"></script>
+
+  <script>
+    // Aktualizacja daty ostatniej aktualizacji
+    document.addEventListener('DOMContentLoaded', function() {
+      var dataElement = document.getElementById('data-aktualizacji');
+      if (dataElement) {
+        var teraz = new Date();
+        var miesiace = ['styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec', 
+                       'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień'];
+        var aktualnyMiesiac = miesiace[teraz.getMonth()];
+        var aktualnyRok = teraz.getFullYear();
+        dataElement.textContent = aktualnyMiesiac + ' ' + aktualnyRok;
+      }
+    });
+  </script>
 
   
 

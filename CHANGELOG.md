@@ -2,6 +2,69 @@
 
 ---
 
+## [2026-03-01] — Naprawa Porównywarki: Syntax Errors & Performance Optimization
+
+### 🐛 **Naprawione krytyczne błędy**
+- **Błąd składni JavaScript** — podwójna deklaracja `formatujZl`
+  - Problem: `var formatujZl` konfliktowała z `const formatujZl` z utils.js
+  - Rozwiązanie: Usunięcie deklaracji i użycie istniejących funkcji globalnych
+  - Plik: `js/calculators/porownywarka.js`
+  - Efekt: Porównywarka działa bez błędów składni
+
+- **Brakujące wyniki obliczeń** — moduł 3 nie wyświetlał wartości
+  - Problem: Funkcje `animuj`, `formatujZl`, `pobierzWartosc` nie były dostępne
+  - Rozwiązanie: Dodanie fallback functions i walidacji dostępności
+  - Plik: `js/calculators/porownywarka.js`
+  - Efekt: Poprawne obliczenia i wyświetlanie wyników ETF vs Obligacje vs Lokata
+
+### ⚡ **Optymalizacje wydajności**
+- **Inteligentne fallback functions** — działanie bez zależności
+  - Dodano: `formatujZlLocal`, `animujLocal` w każdej funkcji
+  - Mechanizm: `window.formatujZl || function(x) { return x.toFixed(2) + ' zł'; }`
+  - Efekt: Porównywarka działa nawet jeśli utils.js nie jest załadowany
+
+- **Obsługa błędów animacji** — graceful degradation
+  - Dodano: Try-catch dla funkcji `animuj()`
+  - Fallback: Bezpośrednie ustawianie wartości tekstowych
+  - Efekt: Wyniki zawsze się wyświetlają, nawet przy błędach animacji
+
+- **Walidacja dostępności funkcji** — early error detection
+  - Dodano: Sprawdzanie `window.formatujZl`, `window.animuj`, `window.pobierzWartosc`
+  - Mechanizm: Early return z `console.error` przy brakujących funkcjach
+  - Efekt: Czytelne komunikaty o błędach w konsoli
+
+### 🧹 **Czyszczenie kodu produkcyjnego**
+- **Usunięcie console.log** — czysta konsola deweloperska
+  - Usunięto: Wszystkie `console.log` z `obliczPorownanie()`, `aktualizujWynikPorown()`
+  - Zachowano: Tylko `console.error` dla krytycznych błędów
+  - Efekt: Profesjonalny kod produkcyjny bez śmieci w konsoli
+
+### 🎯 **Poprawki funkcjonalne**
+- **Tooltipy w porównywarce** — system edukacyjny ⓘ
+  - Dodano: Pełne definicje tooltipów dla wszystkich wyników modułu 3
+  - Mechanizm: Ikony ⓘ przy etykietach z hover (desktop) i click (mobile)
+  - Efekt: Spójny system edukacyjny we wszystkich modułach kalkulatora
+
+- **Responsywność paneli** — optymalizacja mobile
+  - Dodano: Style CSS dla `.por-panel`, `.por-wiersz` w `main.css`
+  - Mechanizm: 3 kolumny (desktop) → 1 kolumna (mobile) z odpowiednim padding
+  - Efekt: Idealne wyświetlanie na wszystkich urządzeniach
+
+### 📦 **Wdrożenie**
+- **GitHub commit**: `7b1fdfa` — "Fix porównywarka module - resolve syntax errors and optimize performance"
+- **Status**: Pushed to `origin/main`
+- **Repozytorium**: `ETFkalkulator/NowaWersjaKalkulator.git`
+
+### 🎉 **Wynik końcowy**
+Porównywarka ETF vs Obligacje vs Lokata działa teraz jako profesjonalne narzędzie finansowe z:
+- ✅ Poprawnymi obliczeniami i wynikami
+- ✅ Działającymi tooltipami edukacyjnymi
+- ✅ Optymalną wydajnością i fallbackami
+- ✅ Czystą konsolą deweloperską
+- ✅ Pełną responsywnością mobile/desktop
+
+---
+
 ## [2026-02-28] — Sesja Finalna: Bug Fixes, UX Improvements & Production Ready
 
 ### 🐛 **Naprawione krytyczne błędy**
