@@ -83,6 +83,13 @@
       color: var(--color-primary-500);
       font-weight: bold;
     }
+    .privacy-section__subtitle {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-primary);
+      margin: var(--space-6) 0 var(--space-3) 0;
+      line-height: var(--leading-tight);
+    }
     .privacy-section__highlight {
       background: var(--color-primary-50);
       border-left: 3px solid var(--color-primary-500);
@@ -211,19 +218,55 @@
       </section>
 
       <!-- PLIKI COOKIES -->
-      <section class="privacy-section">
+      <section class="privacy-section" id="cookies">
         <h2 class="privacy-section__title">4. Pliki cookies</h2>
         <p class="privacy-section__text">
-          ETFkalkulator.pl używa plików cookies w następujących celach:
+          ETFkalkulator.pl używa plików cookies zgodnie z RODO (GDPR) w następujących celach:
         </p>
         <ul class="privacy-section__list">
-          <li><strong>Cookies techniczne:</strong> niezbędne do działania strony (np. zapamiętywanie ustawień)</li>
-          <li><strong>Cookies analityczne:</strong> anonimowe statystyki odwiedzin (Google Analytics)</li>
-          <li><strong>Cookies funkcjonalne:</strong> zapamiętywanie preferencji (np. tryb jasny/ciemny)</li>
+          <li><strong>Cookies techniczne:</strong> niezbędne do działania strony (np. zapamiętywanie ustawień trybu jasny/ciemny)</li>
+          <li><strong>Cookies analityczne:</strong> anonimowe statystyki odwiedzin (Google Analytics) - ładowane tylko po Twojej zgodzie</li>
+          <li><strong>Cookies funkcjonalne:</strong> zapamiętywanie preferencji i wyborów na stronie</li>
+        </ul>
+        
+        <h3 class="privacy-section__subtitle">Zarządzanie cookies</h3>
+        <p class="privacy-section__text">
+          Podczas pierwszej wizyty na stronie zobaczysz banner z prośbą o zgodę na cookies. Masz pełną kontrolę:
+        </p>
+        <ul class="privacy-section__list">
+          <li><strong>Akceptuj:</strong> zezwalasz na wszystkie cookies (w tym analityczne)</li>
+          <li><strong>Odrzuć:</strong> blokujesz cookies analityczne (strona nadal działa poprawnie)</li>
+          <li><strong>Ustawienia:</strong> możesz zmienić preferencje w każdej chwili</li>
+        </ul>
+        
+        <h3 class="privacy-section__subtitle">Google Analytics</h3>
+        <p class="privacy-section__text">
+          Jeśli wyrazisz zgodę, używamy Google Analytics do zbierania anonimowych statystyk:
+        </p>
+        <ul class="privacy-section__list">
+          <li>Liczba odwiedzin i popularność stron</li>
+          <li>Czas spędzony na stronie</li>
+          <li>Źródła ruchu (skąd przychodzą użytkownicy)</li>
+          <li>Informacje techniczne (przeglądarka, urządzenie)</li>
         </ul>
         <p class="privacy-section__text">
-          Możesz wyłączyć cookies w ustawieniach przeglądarki. Strona będzie działać bez cookies technicznych, 
-          ale niektóre funkcje mogą być ograniczone.
+          <strong>Ważne:</strong> Google Analytics jest skonfigurowany z anonimizacją IP - nie identyfikujemy Ciebie osobiście.
+        </p>
+        
+        <h3 class="privacy-section__subtitle">Twoje prawa</h3>
+        <p class="privacy-section__text">
+          Zgodnie z RODO masz prawo do:
+        </p>
+        <ul class="privacy-section__list">
+          <li>Wycofania zgody na cookies w każdej chwili</li>
+          <li>Sprawdzenia jakie cookies są przechowywane</li>
+          <li>Usunięcia cookies w ustawieniach przeglądarki</li>
+          <li>Zgłoszenia skargi do organu nadzorczego (UODO)</li>
+        </ul>
+        
+        <p class="privacy-section__text">
+          Możesz wyłączyć cookies w ustawieniach przeglądarki. Strona będzie działać bez cookies analitycznych, 
+          ale niektóre funkcje personalizacji mogą być ograniczone.
         </p>
       </section>
 
