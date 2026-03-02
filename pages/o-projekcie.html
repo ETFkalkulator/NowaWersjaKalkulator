@@ -134,6 +134,16 @@
       font-size: var(--text-sm);
       color: var(--color-text-secondary);
     }
+    
+    .content-section__link {
+      color: var(--color-primary-500);
+      text-decoration: none;
+      font-weight: var(--weight-medium);
+    }
+    
+    .content-section__link:hover {
+      text-decoration: underline;
+    }
 
     @media (max-width: 768px) {
       .page-hero { padding-block: var(--space-12) var(--space-8); }
@@ -305,7 +315,8 @@
       <h2 class="content-section__title">Kontakt</h2>
       <p class="content-section__text">
         Masz pytania, sugestie lub znalazłeś błąd? Chętnie usłyszymy od Ciebie! 
-        Najlepszym sposobem kontaktu jest nasz newsletter - tam odpisujemy na każde wiadomość.
+        Skontaktuj się z nami przez email: <a href="mailto:kontakt@etfkalkulator.pl" class="content-section__link">kontakt@etfkalkulator.pl</a>
+        lub formularz newsletter na stronie głównej - tam odpisujemy na każde wiadomość.
       </p>
       <div style="text-align: center; margin-top: var(--space-8);">
         <a href="../index.html#newsletter" class="btn btn--primary">
