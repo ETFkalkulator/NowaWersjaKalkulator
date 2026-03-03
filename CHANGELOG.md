@@ -2,6 +2,75 @@
 
 ---
 
+## [2026-03-02] — Kompleksowa aktualizacja: Contact Information, Legal Compliance & Branding
+
+### 📧 **Refine Contact Information**
+- **Email-only contact** — kontakt@etfkalkulator.pl jako jedyny kanał komunikacji
+  - Usunięcie newsletter jako formularza kontaktowego z wszystkich sekcji
+  - Zachowanie newsletter jako osobnej funkcjonalności do zapisu
+  - Aktualizacja przycisku: "Napisz przez newsletter" → "Zapisz się na newsletter"
+  - Pliki: `pages/polityka-prywatnosci.html`, `pages/o-projekcie.html`, `pages/regulamin.html`
+
+### ⚖️ **Expert Legal Compliance — Terms of Service**
+- **Wymagania techniczne** — obowiązek ustawowy spełniony
+  - Dodanie sekcji 3.1: Wymagania techniczne (Internet, JavaScript, przeglądarka)
+  - Definicja Administratora jako osoba fizyczna świadcząca usługi niekomercyjnie
+  - Dodanie procedury reklamacyjnej (sekcja 10) z 14-dniowym terminem
+  - Poprawiona numeracja sekcji (12 sekcji total)
+
+### 🔒 **Expert Privacy Policy Improvements**
+- **Poprawka definicji Administratora** — naprawa błędu logicznego
+  - Zmiana: "Administratorem jest ETFkalkulator.pl" → "Administratorem jest Właściciel serwisu ETFkalkulator.pl, będący osobą fizyczną"
+  - Zachowanie prywatności przy spełnieniu wymogów RODO
+  
+- **Bezpiecznik matematyczny** — ochrona przed odpowiedzialnością za błędy kodu
+  - Dodanie klauzuli: obliczenia mają charakter poglądowy i symulacyjny
+  - Brak gwarancji bezbłędności i przydatności do decyzji inwestycyjnych
+  
+- **Google Analytics compliance** — najnowsze wytyczne GDPR
+  - Dodanie informacji o Google Ireland Ltd. jako przetwarzającym dane
+  - Dysklosure transferu danych poza Europejski Obszar Gospodarczy
+  - Potwierdzenie funkcji anonimizacji IP
+
+### 📅 **Date Updates Across All Pages**
+- **Aktualizacja dat** — spójność na 02.03.2026
+  - Polityka prywatności: Data ostatniej aktualizacji
+  - Regulamin: Data wejścia w życie
+  - Sitemap.xml: Wszystkie lastmod dates
+  - Stopki: © 2026 zamiast © 2025
+  - Wykresy: Start roku 2026 zamiast 2025
+  - IKE/IKZE: Limity 2026 (wartości bez zmian)
+
+### 🎨 **Personal Branding**
+- **Creator identification** — osobisty charakter projektu
+  - Dodanie "Made with ❤️ by Florian" do stopki strony głównej
+  - Zachowanie ETFkalkulator.pl jako marki serwisu
+  - Jasne rozgraniczenie twórcy i usługi
+
+### 🛡️ **Legal Protection Benefits**
+- **KNF defense** — mocna linia obrony przed zarzutami o działalność komercyjną
+- **Technical requirements** — zabezpieczenie przed roszczeniami o niedziałanie
+- **Complaints procedure** — standardowy proces rozwiązywania problemów
+- **Privacy protection** — pełna zgodność z RODO przy zachowaniu anonimowości
+
+### 📁 **Files Modified**
+- `pages/polityka-prywatnosci.html` — 3 sekcje kontaktowe + bezpiecznik + Google Analytics
+- `pages/regulamin.html` — wymagania techniczne + reklamacje + definicja administratora
+- `pages/o-projekcie.html` — sekcja kontakt + przycisk newsletter
+- `index.html` — stopka z brandingiem osobistym
+- `sitemap.xml` — wszystkie daty aktualizacji
+- `pages/kalkulator-obligacji.html` — stopka + limity IKE/IKZE
+- `pages/kalkulator-wolnosci.html` — stopka
+- `pages/porownywarka.html` — stopka
+
+### 🎯 **Status**
+- **Legal compliance**: ✅ Pełna zgodność z polskim prawem i RODO
+- **Contact clarity**: ✅ Jeden kanał komunikacji, brak pomyłek
+- **Privacy protection**: ✅ Anonimowość zachowana przy wymaganych dysklosurach
+- **Professional appearance**: ✅ Ekspertowski poziom dokumentów prawnych
+
+---
+
 ## [2026-03-01] — Naprawa Porównywarki: Syntax Errors & Performance Optimization
 
 ### 🐛 **Naprawione krytyczne błędy**
