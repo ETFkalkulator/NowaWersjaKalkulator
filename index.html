@@ -1602,27 +1602,85 @@
             i jeden praktyczny tip inwestycyjny.
           </p>
 
-          <!-- MailerLite Universal Form -->
+          <!-- MailerLite Complete Form -->
           <div class="newsletter__form" style="max-width: 100%; width: 100%;">
-            <div id="mlb2-37996059" class="ml-form-embedContainer">
-              <div class="ml-form-embedWrapper embedDefault">
-                <div class="ml-form-embedBody ml-form-embedBodyHorizontal">
-                  <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/37996059/forms/102535726837931/subscribe" data-code="" method="POST" target="_blank">
-                    <div class="ml-form-formContent">
-                      <div class="ml-form-fieldRow">
-                        <div class="ml-field-group ml-field-email">
-                          <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" id="field-email" name="fields[email]" placeholder="twoj@email.pl" autocomplete="email" spellcheck="false" autocapitalize="off" autocorrect="off">
-                        </div>
-                      </div>
-                      <div class="ml-form-fieldRow ml-last-item">
-                        <div class="ml-field-group">
-                          <button type="submit" class="primary">
-                            Zapisz się
-                          </button>
-                        </div>
-                      </div>
+            <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
+              <div class="ml-form-align-center">
+                <div class="ml-form-embedWrapper embedForm">
+                  <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                    <div class="ml-form-embedContent" style=" ">
+                      <h4>Newsletter ETFkalkulator.pl</h4>
+                      <p>Obligacje, ETFy, wolność finansowa - prosto na Twój email.</p>
                     </div>
-                  </form>
+                    <form class="ml-block-form" action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe" data-code="" method="post" target="_blank">
+                      <div class="ml-form-formContent">
+                        <div class="ml-form-fieldRow ml-last-item">
+                          <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                            <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Email" autocomplete="email">
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <!-- Privacy policy -->
+                      <div class="ml-form-embedPermissions" style="">
+                        <div class="ml-form-embedPermissionsContent default">
+                          <h4>Zgoda na przetwarzanie danych</h4>
+                          <p>Twój adres e-mail będzie wykorzystywany wyłącznie do wysyłki newslettera ETFkalkulator.pl. Nie udostępniamy danych osobom trzecim. Możesz wypisać się w każdej chwili.</p>
+                          <div class="ml-form-embedPermissionsOptions">
+                            <div class="ml-form-embedPermissionsOptionsCheckbox">
+                              <label>
+                                <input type="checkbox" name="gdpr[]" value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl">
+                                <div class="label-description">Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl</div>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="ml-form-embedMailerLite-GDPR">
+                          <p>Zapisując się akceptujesz politykę prywatności. Możesz wypisać się w każdej chwili.</p>
+                        </div>
+                      </div>
+
+                      <div class="ml-form-recaptcha ml-validate-required" style="float: left;">
+                        <style type="text/css">
+                          .ml-form-recaptcha {
+                            margin-bottom: 20px;
+                          }
+                          .ml-form-recaptcha.ml-error iframe {
+                            border: solid 1px #ff0000;
+                          }
+                          @media screen and (max-width: 480px) {
+                            .ml-form-recaptcha {
+                              width: 220px!important
+                            }
+                            .g-recaptcha {
+                              transform: scale(0.78);
+                              -webkit-transform: scale(0.78);
+                              transform-origin: 0 0;
+                              -webkit-transform-origin: 0 0;
+                            }
+                          }
+                        </style>
+                        <script src="https://www.google.com/recaptcha/api.js"></script>
+                        <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                      </div>
+
+                      <input type="hidden" name="ml-submit" value="1">
+                      <div class="ml-form-embedSubmit">
+                        <button type="submit" class="primary">Zapisz się</button>
+                        <button disabled="disabled" style="display: none;" type="button" class="loading">
+                          <div class="ml-form-embedSubmitLoad"></div>
+                          <span class="sr-only">Loading...</span>
+                        </button>
+                      </div>
+                      <input type="hidden" name="anticsrf" value="true">
+                    </form>
+                  </div>
+                  <div class="ml-form-successBody row-success" style="display: none">
+                    <div class="ml-form-successContent">
+                      <h4>Dziękujemy za zapis!</h4>
+                      <p>Właśnie dołączyłeś do społeczności ETFkalkulator.pl. Wkrótce otrzymasz od nas pierwszą wiadomość.</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1635,14 +1693,15 @@
       </div>
     </section>
 
-    <!-- MailerLite Universal Script -->
+    <!-- MailerLite Complete Script -->
     <script>
-    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-    ml('account', '2161270');
+      function ml_webform_success_37996059() {
+        var $ = ml_jQuery || jQuery;
+        $('.ml-subscribe-form-37996059 .row-success').show();
+        $('.ml-subscribe-form-37996059 .row-form').hide();
+      }
     </script>
+    <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
 
   </main>
 
