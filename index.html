@@ -1845,43 +1845,32 @@
     }
   </script>
 
-  <!-- Nasze pliki JavaScript -->
+  <!-- Optimized JavaScript Loading -->
   <script src="js/utils.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-
-  <script>
-    // Wykres porównawczy na stronie głównej
+  <script src="js/tooltips.js" defer></script>
+  
+  <!-- Tooltips initialization -->
+  <script defer>
     document.addEventListener('DOMContentLoaded', function() {
-      var ctx = document.getElementById('glowny-wykres-porownawczy');
-      if (!ctx) return;
+      const karty = [
+        { id: 'karta-obligacje', tooltipId: 'karta-obligacje' },
+        { id: 'karta-wolnosc', tooltipId: 'karta-wolnosc' },
+        { id: 'karta-porownywarka', tooltipId: 'karta-porownywarka' },
+      ];
 
-      // Dane przykładowe dla 10 lat
-      var lata = Array.from({length: 11}, (_, i) => 2026 + i);
-      
-      // Symulacja wzrostu kapitału dla różnych strategii
-      var daneETF = [10000];
-      var daneObligacje = [10000];
-      var daneLokata = [10000];
-      
-      for (var i = 1; i <= 10; i++) {
-        // ETF: 7% rocznie + dopłaty 500 zł/miesiąc
-        daneETF[i] = daneETF[i-1] * 1.07 + 500 * 12;
+      karty.forEach(function(karta) {
+        const element = document.getElementById(karta.id);
+        const tooltip = document.getElementById(karta.tooltipId);
         
-        // Obligacje: inflacja 3.5% + marża 2% + dopłaty
-        daneObligacje[i] = daneObligacje[i-1] * 1.055 + 500 * 12;
-        
-        // Lokata: 4.5% rocznie + dopłaty
-        daneLokata[i] = daneLokata[i-1] * 1.045 + 500 * 12;
-        if (!tytul || tytul.querySelector('[data-tooltip]')) return;
-
-        tytul.style.display    = 'flex';
-        tytul.style.alignItems = 'center';
-        tytul.style.gap        = '6px';
-
-        var ikona = stworzIkoneInfo(k.tooltipId);
-        // Na karcie kliknięcie ikony nie powinno przechodzić do linku
-        ikona.addEventListener('click', function(e) { e.preventDefault(); });
-        tytul.appendChild(ikona);
+        if (element && tooltip) {
+          element.addEventListener('mouseenter', function() {
+            tooltip.style.display = 'block';
+          });
+          
+          element.addEventListener('mouseleave', function() {
+            tooltip.style.display = 'none';
+          });
+        }
       });
     });
   </script>
