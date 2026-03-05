@@ -123,15 +123,16 @@
   <!-- <link rel="icon" href="/assets/favicon/favicon.ico"> -->
 
   <!-- Nasze pliki CSS — kolejność ma znaczenie! -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/main.css">
-
-  <!-- MailerLite Styles -->
-  <style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1772539");</style>
+  
+  <!-- Fonts - optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  </noscript>
   <style type="text/css">
     /* LOADER */
     .ml-form-embedSubmitLoad {
@@ -1822,14 +1823,28 @@
     </section>
 
     <!-- MailerLite Complete Script -->
-    <script defer>
-      function ml_webform_success_37996059() {
-        var $ = ml_jQuery || jQuery;
-        $('.ml-subscribe-form-37996059 .row-success').show();
-        $('.ml-subscribe-form-37996059 .row-form').hide();
-      }
-    </script>
-    <script defer src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
+  <script defer>
+    function ml_webform_success_37996059() {
+      var $ = ml_jQuery || jQuery;
+      $('.ml-subscribe-form-37996059 .row-success').show();
+      $('.ml-subscribe-form-37996059 .row-form').hide();
+    }
+  </script>
+  
+  <!-- reCAPTCHA - async loading -->
+  <script async defer src="https://www.google.com/recaptcha/api.js"></script>
+  
+  <!-- MailerLite - async loading -->
+  <script async defer src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"></script>
+  
+  <!-- MailerLite CSS - async loading -->
+  <link rel="stylesheet" href="https://assets.mlcdn.com/ml.css" media="print" onload="this.media='all'">
+  <style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1772539");</style>
+  
+  <noscript>
+    <link rel="stylesheet" href="https://assets.mlcdn.com/ml.css">
+    <style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1772539");</style>
+  </noscript>
 
   </main>
 
