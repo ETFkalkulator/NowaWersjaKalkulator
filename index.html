@@ -1605,10 +1605,6 @@
                 <span>ETF globalny (7% rocznie)</span>
               </div>
               <div class="legend-item">
-                <div class="legend-kolor" style="background: #b45309;"></div>
-                <span>Obligacje EDO (inflacja + 2%)</span>
-              </div>
-              <div class="legend-item">
                 <div class="legend-kolor" style="background: #64748b;"></div>
                 <span>Lokata bankowa (4.5% rocznie)</span>
               </div>
@@ -1848,6 +1844,70 @@
   <!-- Optimized JavaScript Loading -->
   <script src="js/utils.js" defer></script>
   <script src="js/tooltips.js" defer></script>
+  
+  <!-- Simple Chart Script -->
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+      const canvas = document.getElementById('glowny-wykres-porownawczy');
+      if (!canvas) return;
+      
+      const ctx = canvas.getContext('2d');
+      const width = canvas.width = canvas.offsetWidth;
+      const height = canvas.height = 300;
+      
+      // Proste dane dla wykresu
+      const labels = ['Start', 'Rok 1', 'Rok 2', 'Rok 3', 'Rok 4', 'Rok 5'];
+      const dataETF = [10000, 10800, 11664, 12597, 13605, 14693];
+      const dataLokata = [10000, 10300, 10609, 10927, 11255, 11593];
+      
+      // Rysowanie prostego wykresu
+      const padding = 40;
+      const chartWidth = width - padding * 2;
+      const chartHeight = height - padding * 2;
+      const stepX = chartWidth / (labels.length - 1);
+      
+      // Czyszczenie canvas
+      ctx.clearRect(0, 0, width, height);
+      
+      // Rysowanie osi
+      ctx.strokeStyle = '#ddd';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(padding, height - padding);
+      ctx.lineTo(width - padding, height - padding);
+      ctx.stroke();
+      
+      // Rysowanie linii ETF
+      ctx.strokeStyle = '#40916C';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      dataETF.forEach((value, index) => {
+        const x = padding + index * stepX;
+        const y = height - padding - ((value - 10000) / 5000) * chartHeight;
+        if (index === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      });
+      ctx.stroke();
+      
+      // Rysowanie linii Lokata
+      ctx.strokeStyle = '#64748b';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      dataLokata.forEach((value, index) => {
+        const x = padding + index * stepX;
+        const y = height - padding - ((value - 10000) / 2000) * chartHeight;
+        if (index === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      });
+      ctx.stroke();
+    });
+  </script>
   
   <!-- Tooltips initialization -->
   <script defer>
