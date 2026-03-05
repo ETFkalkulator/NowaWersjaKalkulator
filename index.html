@@ -87,9 +87,6 @@
   
   <!-- Performance optimization -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="css/reset.css" as="style">
-  <link rel="preload" href="css/variables.css" as="style">
-  <link rel="preload" href="css/main.css" as="style">
   
   <!-- Critical CSS inline -->
   <style>
@@ -103,12 +100,19 @@
       font-family: 'Inter', sans-serif;
       line-height: 1.6;
       color: var(--text-color);
+      margin: 0;
+      padding: 0;
     }
     
     .newsletter-form-centered {
       margin: 0 auto;
       text-align: center;
       max-width: 500px;
+    }
+    
+    /* Critical CSS for above-the-fold content */
+    .header, .hero, .calculator__intro {
+      display: block !important;
     }
   </style>
   
@@ -1818,14 +1822,14 @@
     </section>
 
     <!-- MailerLite Complete Script -->
-    <script>
+    <script defer>
       function ml_webform_success_37996059() {
         var $ = ml_jQuery || jQuery;
         $('.ml-subscribe-form-37996059 .row-success').show();
         $('.ml-subscribe-form-37996059 .row-form').hide();
       }
     </script>
-    <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
+    <script defer src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
 
   </main>
 
