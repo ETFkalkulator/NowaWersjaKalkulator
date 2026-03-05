@@ -2,73 +2,17 @@
 <html lang="pl">
 
 <head>
-  <meta name="description" content="ETFkalkulator.pl - darmowy kalkulator ETF, IKE, IKZE i obligacji. Oblicz swoje inwestycje i planuj emeryturę.">
-  <meta name="keywords" content="ETF, IKE, IKZE, obligacje, kalkulator inwestycyjny, emerytura, wolność finansowa">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="ETFkalkulator.pl - Darmowy kalkulator ETF i inwestycji">
-  <meta property="og:description" content="Darmowy kalkulator ETF, IKE, IKZE i obligacji. Oblicz swoje inwestycje i planuj emeryturę.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://etfkalkulator.pl">
-  <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ETFkalkulator.pl - Darmowy kalkulator ETF i inwestycji">
-  <meta name="twitter:description" content="Darmowy kalkulator ETF, IKE, IKZE i obligacji. Oblicz swoje inwestycje i planuj emeryturę.">
-  <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.jpg">
-  
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://assets.mailerlite.com">
-  <link rel="preconnect" href="https://www.google.com">
-  <link rel="preconnect" href="https://www.gstatic.com">
-  
-  <!-- DNS prefetch for performance -->
-  <link rel="dns-prefetch" href="//fonts.googleapis.com">
-  <link rel="dns-prefetch" href="//assets.mailerlite.com">
-  <link rel="dns-prefetch" href="//www.google.com">
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Structured Data for SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "ETFkalkulator.pl",
-    "description": "Darmowy kalkulator ETF, IKE, IKZE i obligacji. Oblicz swoje inwestycje i planuj emeryturę.",
-    "url": "https://etfkalkulator.pl",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "Web Browser",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "PLN"
-    },
-    "author": {
-      "@type": "Person",
-      "name": "Florian"
-    }
-  }
-  </script>
-  
-  <!-- Critical CSS for performance -->
-  <style>
-    .newsletter-form-centered {
-      margin: 0 auto;
-      text-align: center;
-      max-width: 500px;
-    }
-  </style>
-
-  <!-- SEO: tytuł i opis widoczne w wynikach Google -->
+  <!-- Critical SEO Meta Tags -->
   <title>ETFkalkulator.pl — Kalkulator inwestycyjny dla Polaków</title>
   <meta name="description" content="Bezpłatny kalkulator obligacji skarbowych, wolności finansowej i porównywarki ETF. Sprawdź ile realnie zarobisz po podatkach i inflacji.">
   <meta name="keywords" content="kalkulator obligacji, ETF, wolność finansowa, FIRE, podatek Belki, inflacja, inwestycje, obligacje skarbowe">
   <meta name="author" content="ETFkalkulator.pl">
   <meta name="robots" content="index, follow">
-
-  <!-- SEO: Open Graph — jak strona wygląda gdy ktoś udostępni link na Facebooku / Twitterze -->
+  
+  <!-- Open Graph -->
   <meta property="og:title" content="ETFkalkulator.pl — Kalkulator inwestycyjny dla Polaków">
   <meta property="og:description" content="Sprawdź ile realnie zarobisz na obligacjach i ETFach po podatku Belki i inflacji.">
   <meta property="og:type" content="website">
@@ -1928,107 +1872,6 @@
         
         // Lokata: 4.5% rocznie + dopłaty
         daneLokata[i] = daneLokata[i-1] * 1.045 + 500 * 12;
-      }
-
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: lata.map(String),
-          datasets: [
-            {
-              label: 'ETF globalny',
-              data: daneETF,
-              borderColor: '#40916C',
-              backgroundColor: 'rgba(64, 145, 108, 0.1)',
-              borderWidth: 3,
-              fill: true,
-              tension: 0.4
-            },
-            {
-              label: 'Obligacje EDO',
-              data: daneObligacje,
-              borderColor: '#b45309',
-              backgroundColor: 'rgba(180, 83, 9, 0.1)',
-              borderWidth: 3,
-              fill: true,
-              tension: 0.4
-            },
-            {
-              label: 'Lokata bankowa',
-              data: daneLokata,
-              borderColor: '#64748b',
-              backgroundColor: 'rgba(100, 116, 139, 0.1)',
-              borderWidth: 3,
-              fill: true,
-              tension: 0.4
-            }
-          ]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: false
-            },
-            tooltip: {
-              callbacks: {
-                label: function(ctx) {
-                  return ctx.dataset.label + ': ' + ctx.parsed.y.toLocaleString('pl-PL', {
-                    style: 'currency',
-                    currency: 'PLN',
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0
-                  });
-                }
-              }
-            }
-          },
-          scales: {
-            y: {
-              beginAtZero: false,
-              ticks: {
-                callback: function(value) {
-                  return value.toLocaleString('pl-PL', {
-                    style: 'currency',
-                    currency: 'PLN',
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0
-                  });
-                }
-              }
-            }
-          },
-          interaction: {
-            intersect: false,
-            mode: 'index'
-          }
-        }
-      });
-    });
-  </script>
-
-
-  <script>
-  </script>
-
-  <script src="js/tooltips.js" defer></script>
-  <script defer>
-    document.addEventListener('DOMContentLoaded', function() {
-
-      // Tooltips dla kart kalkulatorów
-      var karty = [
-        { id: 'karta-obligacje',    tooltipId: 'karta-obligacje' },
-        { id: 'karta-wolnosc',      tooltipId: 'karta-wolnosc' },
-        { id: 'karta-porownywarka', tooltipId: 'karta-porownywarka' },
-      ];
-
-      karty.forEach(function(k) {
-        var karta = document.getElementById(k.id);
-        if (!karta) return;
-
-        // Znajdź tytuł karty i dodaj ikonę ⓘ
-        var tytul = karta.querySelector('.kalkulator-karta__tytul');
         if (!tytul || tytul.querySelector('[data-tooltip]')) return;
 
         tytul.style.display    = 'flex';
