@@ -161,10 +161,10 @@ window.ETF.utils = {
    Dla wygody — wszystkie kalkulatory mogą używać
    tych funkcji bezpośrednio bez window.ETF.utils.
    ---------------------------------------------------------- */
-window.formatujZl      = formatujZl;
+window.formatujZl = formatujZl;
 window.formatujProcent = formatujProcent;
-window.formatujLiczbe  = formatujLiczbe;
-window.czyPoprawnaCyfra= czyPoprawnaCyfra;
-window.pobierzWartosc  = pobierzWartosc;
-window.zaokraglij      = zaokraglij;
-window.animuj          = animujLiczbe;  /* alias: animuj() = animujLiczbe() */
+window.formatujLiczbe = formatujLiczbe;
+window.czyPoprawnaCyfra = czyPoprawnaCyfra;
+window.pobierzWartosc = pobierzWartosc;
+window.zaokraglij = zaokraglij;
+window.animuj = animujLiczbe;  /* alias: animuj() = animujLiczbe() */

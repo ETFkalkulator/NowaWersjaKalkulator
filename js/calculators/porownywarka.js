@@ -14,9 +14,9 @@ var PODATEK_BELKI = 0.19;
    SCENARIUSZE ETF
    ---------------------------------------------------------- */
 var SCENARIUSZE_ETF = {
-  pesymistyczny: { nazwa: 'Pesymistyczny',  stopa: 4,  opis: 'Słaba dekada, kryzys' },
-  bazowy:        { nazwa: 'Bazowy',          stopa: 7,  opis: 'Historyczna średnia' },
-  optymistyczny: { nazwa: 'Optymistyczny',   stopa: 10, opis: 'Dobra koniunktura' },
+  pesymistyczny: { nazwa: 'Pesymistyczny', stopa: 4, opis: 'Słaba dekada, kryzys' },
+  bazowy: { nazwa: 'Bazowy', stopa: 7, opis: 'Historyczna średnia' },
+  optymistyczny: { nazwa: 'Optymistyczny', stopa: 10, opis: 'Dobra koniunktura' },
 };
 
 /* ----------------------------------------------------------
@@ -24,15 +24,15 @@ var SCENARIUSZE_ETF = {
    ---------------------------------------------------------- */
 
 function obliczStrategie(params) {
-  var kapital     = params.kapital;
-  var doplata     = params.doplata;       // miesięczna
-  var lata        = params.lata;
+  var kapital = params.kapital;
+  var doplata = params.doplata;       // miesięczna
+  var lata = params.lata;
   var stopaRoczna = params.stopa / 100;
-  var inflacja    = params.inflacja / 100;
-  var podatek     = params.bezPodatku ? 0 : PODATEK_BELKI;
+  var inflacja = params.inflacja / 100;
+  var podatek = params.bezPodatku ? 0 : PODATEK_BELKI;
 
   var stopaMies = stopaRoczna / 12;
-  var historia  = [];
+  var historia = [];
   var kapitalBiezacy = kapital;
 
   for (var m = 1; m <= lata * 12; m++) {
@@ -41,40 +41,40 @@ function obliczStrategie(params) {
 
     if (m % 12 === 0) {
       historia.push({
-        rok:     m / 12,
+        rok: m / 12,
         kapital: kapitalBiezacy,
       });
     }
   }
 
-  var wkladLaczny       = kapital + doplata * lata * 12;
-  var kapitalBrutto     = kapitalBiezacy;
-  var zyskNominalny     = kapitalBrutto - wkladLaczny;
-  var podatekKwota      = zyskNominalny * podatek;
-  var kapitalNetto      = kapitalBrutto - podatekKwota;
-  var zyskPoDataku      = kapitalNetto - wkladLaczny;
+  var wkladLaczny = kapital + doplata * lata * 12;
+  var kapitalBrutto = kapitalBiezacy;
+  var zyskNominalny = kapitalBrutto - wkladLaczny;
+  var podatekKwota = zyskNominalny * podatek;
+  var kapitalNetto = kapitalBrutto - podatekKwota;
+  var zyskPoDataku = kapitalNetto - wkladLaczny;
 
   // Realny (po inflacji)
-  var wsplInfl          = Math.pow(1 + inflacja, lata);
-  var kapitalRealny     = kapitalNetto / wsplInfl;
-  var zyskRealny        = kapitalRealny - wkladLaczny;
+  var wsplInfl = Math.pow(1 + inflacja, lata);
+  var kapitalRealny = kapitalNetto / wsplInfl;
+  var zyskRealny = kapitalRealny - wkladLaczny;
 
   // CAGR
-  var podstawa          = Math.max(wkladLaczny, 1);
-  var cagr              = Math.pow(kapitalNetto / podstawa, 1 / lata) - 1;
-  var cagrRealny        = Math.pow(kapitalRealny / podstawa, 1 / lata) - 1;
+  var podstawa = Math.max(wkladLaczny, 1);
+  var cagr = Math.pow(kapitalNetto / podstawa, 1 / lata) - 1;
+  var cagrRealny = Math.pow(kapitalRealny / podstawa, 1 / lata) - 1;
 
   return {
-    wkladLaczny:    zaokraglij(wkladLaczny, 0),
-    kapitalNetto:   zaokraglij(kapitalNetto, 0),
-    kapitalRealny:  zaokraglij(kapitalRealny, 0),
-    zyskNominalny:  zaokraglij(zyskNominalny, 0),
-    zyskPoDataku:   zaokraglij(zyskPoDataku, 0),
-    zyskRealny:     zaokraglij(zyskRealny, 0),
-    podatekKwota:   zaokraglij(podatekKwota, 0),
-    cagr:           cagr,
-    cagrRealny:     cagrRealny,
-    historia:       historia,
+    wkladLaczny: zaokraglij(wkladLaczny, 0),
+    kapitalNetto: zaokraglij(kapitalNetto, 0),
+    kapitalRealny: zaokraglij(kapitalRealny, 0),
+    zyskNominalny: zaokraglij(zyskNominalny, 0),
+    zyskPoDataku: zaokraglij(zyskPoDataku, 0),
+    zyskRealny: zaokraglij(zyskRealny, 0),
+    podatekKwota: zaokraglij(podatekKwota, 0),
+    cagr: cagr,
+    cagrRealny: cagrRealny,
+    historia: historia,
   };
 }
 
@@ -82,14 +82,14 @@ function obliczStrategie(params) {
    OBLICZENIA EDO (indeksowane inflacją)
    ---------------------------------------------------------- */
 function obliczEDO(params) {
-  var kapital   = params.kapital;
-  var doplata   = params.doplata;
-  var lata      = params.lata;
-  var inflacja  = params.inflacja / 100;
-  var marza     = params.marza / 100;       // np. 0.02
+  var kapital = params.kapital;
+  var doplata = params.doplata;
+  var lata = params.lata;
+  var inflacja = params.inflacja / 100;
+  var marza = params.marza / 100;       // np. 0.02
   var stopaRok1 = params.stopaRok1 / 100;   // np. 0.066
   var bezPodatku = params.bezPodatku || false;
-  var podatek   = bezPodatku ? 0 : PODATEK_BELKI;
+  var podatek = bezPodatku ? 0 : PODATEK_BELKI;
 
   var historia = [];
   var kapitalBiezacy = kapital;
@@ -110,32 +110,32 @@ function obliczEDO(params) {
     historia.push({ rok: r, kapital: kapitalBiezacy });
   }
 
-  var wkladLaczny   = kapital + doplata * lata * 12;
+  var wkladLaczny = kapital + doplata * lata * 12;
   var kapitalBrutto = kapitalBiezacy;
-  var zysk          = kapitalBrutto - wkladLaczny;
-  var podatekKwota  = zysk * podatek;
-  var kapitalNetto  = kapitalBrutto - podatekKwota;
-  var zyskPoDataku  = kapitalNetto - wkladLaczny;
+  var zysk = kapitalBrutto - wkladLaczny;
+  var podatekKwota = zysk * podatek;
+  var kapitalNetto = kapitalBrutto - podatekKwota;
+  var zyskPoDataku = kapitalNetto - wkladLaczny;
 
-  var wsplInfl     = Math.pow(1 + inflacja, lata);
+  var wsplInfl = Math.pow(1 + inflacja, lata);
   var kapitalRealny = kapitalNetto / wsplInfl;
-  var zyskRealny   = kapitalRealny - wkladLaczny;
+  var zyskRealny = kapitalRealny - wkladLaczny;
 
-  var podstawa  = Math.max(wkladLaczny, 1);
-  var cagr      = Math.pow(kapitalNetto  / podstawa, 1 / lata) - 1;
+  var podstawa = Math.max(wkladLaczny, 1);
+  var cagr = Math.pow(kapitalNetto / podstawa, 1 / lata) - 1;
   var cagrRealny = Math.pow(kapitalRealny / podstawa, 1 / lata) - 1;
 
   return {
-    wkladLaczny:   zaokraglij(wkladLaczny, 0),
-    kapitalNetto:  zaokraglij(kapitalNetto, 0),
+    wkladLaczny: zaokraglij(wkladLaczny, 0),
+    kapitalNetto: zaokraglij(kapitalNetto, 0),
     kapitalRealny: zaokraglij(kapitalRealny, 0),
     zyskNominalny: zaokraglij(zysk, 0),
-    zyskPoDataku:  zaokraglij(zyskPoDataku, 0),
-    zyskRealny:    zaokraglij(zyskRealny, 0),
-    podatekKwota:  zaokraglij(podatekKwota, 0),
-    cagr:          cagr,
-    cagrRealny:    cagrRealny,
-    historia:      historia,
+    zyskPoDataku: zaokraglij(zyskPoDataku, 0),
+    zyskRealny: zaokraglij(zyskRealny, 0),
+    podatekKwota: zaokraglij(podatekKwota, 0),
+    cagr: cagr,
+    cagrRealny: cagrRealny,
+    historia: historia,
   };
 }
 
@@ -150,24 +150,24 @@ function obliczPorownanie() {
     console.error('❌ Brakujące funkcje z utils.js!');
     return;
   }
-  
-  var kapital   = pobierzWartosc('por-kapital',   10000);
-  var doplata   = pobierzWartosc('por-doplata',   500);
-  var lata      = pobierzWartosc('por-lata',      10);
-  var inflacja  = pobierzWartosc('por-inflacja',  3.5);
-  var stopaETF  = pobierzWartosc('por-stopa-etf', 7);
-  var stopaLok  = pobierzWartosc('por-stopa-lok', 4.5);
-  var marza     = pobierzWartosc('por-marza',     2.0);
-  var stopaRok1 = pobierzWartosc('por-stopa-rok1',6.6);
-  var wIKE      = document.getElementById('por-ike')
-                  ? document.getElementById('por-ike').checked : false;
+
+  var kapital = pobierzWartosc('por-kapital', 10000);
+  var doplata = pobierzWartosc('por-doplata', 500);
+  var lata = pobierzWartosc('por-lata', 10);
+  var inflacja = pobierzWartosc('por-inflacja', 3.5);
+  var stopaETF = pobierzWartosc('por-stopa-etf', 7);
+  var stopaLok = pobierzWartosc('por-stopa-lok', 4.5);
+  var marza = pobierzWartosc('por-marza', 2.0);
+  var stopaRok1 = pobierzWartosc('por-stopa-rok1', 6.6);
+  var wIKE = document.getElementById('por-ike')
+    ? document.getElementById('por-ike').checked : false;
 
   var wspolne = { kapital, doplata, lata, inflacja, bezPodatku: wIKE };
 
   // Oblicz wszystkie strategie
-  var etf       = obliczStrategie(Object.assign({}, wspolne, { stopa: stopaETF }));
+  var etf = obliczStrategie(Object.assign({}, wspolne, { stopa: stopaETF }));
   var obligacje = obliczEDO(Object.assign({}, wspolne, { marza: marza, stopaRok1: stopaRok1 }));
-  var lokata    = obliczStrategie(Object.assign({}, wspolne, { stopa: stopaLok }));
+  var lokata = obliczStrategie(Object.assign({}, wspolne, { stopa: stopaLok }));
 
   // Scenariusze ETF
   var scenPes = obliczStrategie(Object.assign({}, wspolne, { stopa: SCENARIUSZE_ETF.pesymistyczny.stopa }));
@@ -176,22 +176,22 @@ function obliczPorownanie() {
 
   // Wyznacz zwycięzcę
   var strategie = [
-    { nazwa: 'ETF',      wynik: etf.kapitalNetto,    kolor: '#40916C' },
-    { nazwa: 'Obligacje',wynik: obligacje.kapitalNetto, kolor: '#2d6a4f' },
-    { nazwa: 'Lokata',   wynik: lokata.kapitalNetto,  kolor: '#74c69d' },
+    { nazwa: 'ETF', wynik: etf.kapitalNetto, kolor: '#40916C' },
+    { nazwa: 'Obligacje', wynik: obligacje.kapitalNetto, kolor: '#2d6a4f' },
+    { nazwa: 'Lokata', wynik: lokata.kapitalNetto, kolor: '#74c69d' },
   ];
-  strategie.sort(function(a, b) { return b.wynik - a.wynik; });
+  strategie.sort(function (a, b) { return b.wynik - a.wynik; });
   var zwyciezca = strategie[0];
 
   // Aktualizuj UI
-  aktualizujWynikPorown('por-etf',      etf,      'ETF');
-  aktualizujWynikPorown('por-obligacje',obligacje,'Obligacje EDO');
-  aktualizujWynikPorown('por-lokata',   lokata,   'Lokata');
+  aktualizujWynikPorown('por-etf', etf, 'ETF');
+  aktualizujWynikPorown('por-obligacje', obligacje, 'Obligacje EDO');
+  aktualizujWynikPorown('por-lokata', lokata, 'Lokata');
 
   // Zwycięzca
   var elZw = document.getElementById('por-zwyciezca');
   if (elZw) {
-    var formatujZlLocal = window.formatujZl || function(x) { return x.toFixed(2) + ' zł'; };
+    var formatujZlLocal = window.formatujZl || function (x) { return x.toFixed(2) + ' zł'; };
     var rozn = zwyciezca.wynik - strategie[1].wynik;
     elZw.innerHTML =
       '<span style="font-size:1.5rem">🏆</span> ' +
@@ -214,26 +214,26 @@ function obliczPorownanie() {
    ---------------------------------------------------------- */
 function aktualizujWynikPorown(prefix, w, nazwa) {
   // Fallback funkcji jeśli nie są dostępne
-  var formatujZlLocal = window.formatujZl || function(x) { return x.toFixed(2) + ' zł'; };
-  var animujLocal = window.animuj || function(id, val, fmt) { 
-    var el = document.getElementById(id); 
-    if (el) el.textContent = fmt ? fmt(val) : val; 
+  var formatujZlLocal = window.formatujZl || function (x) { return x.toFixed(2) + ' zł'; };
+  var animujLocal = window.animuj || function (id, val, fmt) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = fmt ? fmt(val) : val;
   };
-  
-  var set = function(id, val) {
+
+  var set = function (id, val) {
     var el = document.getElementById(prefix + '-' + id);
     if (el) {
       el.textContent = val;
     }
   };
-  
+
   // Próbuj użyć animacji, jeśli nie działa - użyj bezpośredniego ustawienia
   try {
-    animujLocal(prefix + '-kapital',  w.kapitalNetto,  formatujZlLocal);
-    animujLocal(prefix + '-realny',   w.kapitalRealny, formatujZlLocal);
-    animujLocal(prefix + '-zysk',     w.zyskPoDataku,  formatujZlLocal);
-    animujLocal(prefix + '-zysk-r',   w.zyskRealny,    formatujZlLocal);
-    animujLocal(prefix + '-podatek',  w.podatekKwota,  formatujZlLocal);
+    animujLocal(prefix + '-kapital', w.kapitalNetto, formatujZlLocal);
+    animujLocal(prefix + '-realny', w.kapitalRealny, formatujZlLocal);
+    animujLocal(prefix + '-zysk', w.zyskPoDataku, formatujZlLocal);
+    animujLocal(prefix + '-zysk-r', w.zyskRealny, formatujZlLocal);
+    animujLocal(prefix + '-podatek', w.podatekKwota, formatujZlLocal);
   } catch (e) {
     set('kapital', formatujZlLocal(w.kapitalNetto));
     set('realny', formatujZlLocal(w.kapitalRealny));
@@ -241,25 +241,25 @@ function aktualizujWynikPorown(prefix, w, nazwa) {
     set('zysk-r', formatujZlLocal(w.zyskRealny));
     set('podatek', formatujZlLocal(w.podatekKwota));
   }
-  
-  set('cagr',      (w.cagr      * 100).toFixed(2) + '%');
-  set('cagr-r',    (w.cagrRealny * 100).toFixed(2) + '%');
+
+  set('cagr', (w.cagr * 100).toFixed(2) + '%');
+  set('cagr-r', (w.cagrRealny * 100).toFixed(2) + '%');
 }
 
 /* ----------------------------------------------------------
    SCENARIUSZE ETF
    ---------------------------------------------------------- */
 function aktualizujScenariusze(pes, baz, opt) {
-  var formatujZlLocal = window.formatujZl || function(x) { return x.toFixed(2) + ' zł'; };
-  var animujLocal = window.animuj || function(id, val, fmt) { 
-    var el = document.getElementById(id); 
-    if (el) el.textContent = fmt ? fmt(val) : val; 
+  var formatujZlLocal = window.formatujZl || function (x) { return x.toFixed(2) + ' zł'; };
+  var animujLocal = window.animuj || function (id, val, fmt) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = fmt ? fmt(val) : val;
   };
-  
+
   var sc = { pes, baz, opt };
-  ['pes','baz','opt'].forEach(function(k) {
-    animujLocal('scen-' + k + '-kapital', sc[k].kapitalNetto,  formatujZlLocal);
-    animujLocal('scen-' + k + '-zysk',   sc[k].zyskPoDataku,  formatujZlLocal);
+  ['pes', 'baz', 'opt'].forEach(function (k) {
+    animujLocal('scen-' + k + '-kapital', sc[k].kapitalNetto, formatujZlLocal);
+    animujLocal('scen-' + k + '-zysk', sc[k].zyskPoDataku, formatujZlLocal);
     var el = document.getElementById('scen-' + k + '-cagr');
     if (el) el.textContent = (sc[k].cagr * 100).toFixed(2) + '%';
   });
@@ -274,13 +274,13 @@ function rysujTabele(lata, etf, obl, lok) {
 
   var html = '';
   for (var r = 1; r <= lata; r++) {
-    var eH = etf.historia[r-1]      || { kapital: 0 };
-    var oH = obl.historia[r-1]      || { kapital: 0 };
-    var lH = lok.historia[r-1]      || { kapital: 0 };
+    var eH = etf.historia[r - 1] || { kapital: 0 };
+    var oH = obl.historia[r - 1] || { kapital: 0 };
+    var lH = lok.historia[r - 1] || { kapital: 0 };
 
     var max = Math.max(eH.kapital, oH.kapital, lH.kapital);
 
-    var klas = function(v) {
+    var klas = function (v) {
       return v === max ? ' style="color:var(--color-green-600);font-weight:600"' : '';
     };
 
@@ -298,98 +298,36 @@ function rysujTabele(lata, etf, obl, lok) {
    WYKRES PORÓWNAWCZY
    ---------------------------------------------------------- */
 function rysujWykresPorown(lata, etf, obl, lok) {
-  var ctx = document.getElementById('por-wykres');
-  if (!ctx) return;
+  var canvas = document.getElementById('por-wykres');
+  if (!canvas || !window.ETF || !window.ETF.charts) return;
+  var ctx = canvas.getContext('2d');
 
-  var etykiety = etf.historia.map(function(d) { return 'Rok ' + d.rok; });
-  var etfDane  = etf.historia.map(function(d) { return Math.round(d.kapital); });
-  var oblDane  = obl.historia.map(function(d) { return Math.round(d.kapital); });
-  var lokDane  = lok.historia.map(function(d) { return Math.round(d.kapital); });
+  var etykiety = etf.historia.map(function (d) { return 'Rok ' + d.rok; });
+  var etfDane = etf.historia.map(function (d) { return Math.round(d.kapital); });
+  var oblDane = obl.historia.map(function (d) { return Math.round(d.kapital); });
+  var lokDane = lok.historia.map(function (d) { return Math.round(d.kapital); });
 
-  if (wykresPorown) { wykresPorown.destroy(); wykresPorown = null; }
+  if (wykresPorown) { 
+    wykresPorown.destroy(); 
+    wykresPorown = null; 
+  }
 
-  var isDark = document.documentElement.classList.contains('dark-mode') ||
-    (!document.documentElement.classList.contains('light-mode') &&
-     window.matchMedia('(prefers-color-scheme: dark)').matches);
-  var gridColor  = isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.06)';
-  var labelColor = isDark ? '#AEAEB2' : '#6E6E73';
+  const baseOptions = window.ETF.charts.getBaseOptions();
 
   wykresPorown = new Chart(ctx, {
     type: 'line',
     data: {
       labels: etykiety,
       datasets: [
-        {
-          label: 'ETF',
-          data:  etfDane,
-          borderColor: '#40916C',
-          backgroundColor: 'rgba(64,145,108,0.08)',
-          borderWidth: 2.5,
-          fill: false,
-          tension: 0.4,
-          pointRadius: 0,
-          pointHoverRadius: 5,
-        },
-        {
-          label: 'Obligacje EDO',
-          data:  oblDane,
-          borderColor: '#f59e0b',
-          backgroundColor: 'rgba(245,158,11,0.06)',
-          borderWidth: 2.5,
-          fill: false,
-          tension: 0.3,
-          pointRadius: 0,
-          pointHoverRadius: 5,
-        },
-        {
-          label: 'Lokata',
-          data:  lokDane,
-          borderColor: '#94a3b8',
-          backgroundColor: 'rgba(148,163,184,0.06)',
-          borderWidth: 2,
-          borderDash: [5, 4],
-          fill: false,
-          tension: 0.2,
-          pointRadius: 0,
-          pointHoverRadius: 5,
-        },
+        window.ETF.charts.createDataset(ctx, 'ETF globalny', etfDane, window.ETF.charts.colors.success),
+        window.ETF.charts.createDataset(ctx, 'Obligacje EDO', oblDane, window.ETF.charts.colors.accent),
+        window.ETF.charts.createDataset(ctx, 'Lokata bankowa', lokDane, window.ETF.charts.colors.muted)
       ]
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      interaction: { mode: 'index', intersect: false },
-      plugins: {
-        legend: { labels: { color: labelColor, font: { size: 12 }, boxWidth: 14, padding: 16 } },
-        tooltip: {
-          callbacks: {
-            label: function(ctx) {
-              return ctx.dataset.label + ': ' + formatujZl(ctx.raw);
-            }
-          }
-        }
-      },
-      scales: {
-        x: {
-          grid:  { color: gridColor },
-          ticks: { color: labelColor, maxTicksLimit: 10, font: { size: 11 } }
-        },
-        y: {
-          grid:  { color: gridColor },
-          ticks: {
-            color: labelColor,
-            font: { size: 11 },
-            callback: function(v) {
-              if (v >= 1000000) return (v/1000000).toFixed(1) + 'M';
-              if (v >= 1000)    return (v/1000).toFixed(0) + 'k';
-              return v;
-            }
-          }
-        }
-      }
-    }
+    options: baseOptions
   });
 }
+
 
 /* ----------------------------------------------------------
    SCENARIUSZE — przyciski
@@ -405,7 +343,7 @@ function ustawScenariusz(scen) {
   }
 
   // Podświetl aktywny przycisk
-  ['pesymistyczny','bazowy','optymistyczny'].forEach(function(k) {
+  ['pesymistyczny', 'bazowy', 'optymistyczny'].forEach(function (k) {
     var btn = document.getElementById('scen-btn-' + k);
     if (btn) {
       btn.classList.toggle('btn-okres--aktywny', k === scen);
@@ -416,16 +354,16 @@ function ustawScenariusz(scen) {
 /* ----------------------------------------------------------
    PODPIĘCIE EVENTÓW
    ---------------------------------------------------------- */
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   var inputy = [
-    'por-kapital','por-doplata','por-lata','por-inflacja',
-    'por-stopa-etf','por-stopa-lok','por-marza','por-stopa-rok1'
+    'por-kapital', 'por-doplata', 'por-lata', 'por-inflacja',
+    'por-stopa-etf', 'por-stopa-lok', 'por-marza', 'por-stopa-rok1'
   ];
 
-  inputy.forEach(function(id) {
+  inputy.forEach(function (id) {
     var el = document.getElementById(id);
     if (!el) return;
-    el.addEventListener('input',  obliczPorownanie);
+    el.addEventListener('input', obliczPorownanie);
     el.addEventListener('change', obliczPorownanie);
   });
 

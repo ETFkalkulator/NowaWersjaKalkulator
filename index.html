@@ -4,20 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Critical SEO Meta Tags -->
+
+  <!-- SEO: tytuł i opis widoczne w wynikach Google -->
   <title>ETFkalkulator.pl — Kalkulator inwestycyjny dla Polaków</title>
-  <meta name="description" content="Bezpłatny kalkulator obligacji skarbowych, wolności finansowej i porównywarki ETF. Sprawdź ile realnie zarobisz po podatkach i inflacji.">
-  <meta name="keywords" content="kalkulator obligacji, ETF, wolność finansowa, FIRE, podatek Belki, inflacja, inwestycje, obligacje skarbowe">
+  <meta name="description"
+    content="Bezpłatny kalkulator obligacji skarbowych, wolności finansowej i porównywarki ETF. Sprawdź ile realnie zarobisz po podatkach i inflacji.">
+  <meta name="keywords"
+    content="kalkulator obligacji, ETF, wolność finansowa, FIRE, podatek Belki, inflacja, inwestycje, obligacje skarbowe">
   <meta name="author" content="ETFkalkulator.pl">
   <meta name="robots" content="index, follow">
-  
-  <!-- Open Graph -->
+
+  <!-- SEO: Open Graph — jak strona wygląda gdy ktoś udostępni link na Facebooku / Twitterze -->
   <meta property="og:title" content="ETFkalkulator.pl — Kalkulator inwestycyjny dla Polaków">
-  <meta property="og:description" content="Sprawdź ile realnie zarobisz na obligacjach i ETFach po podatku Belki i inflacji.">
+  <meta property="og:description"
+    content="Sprawdź ile realnie zarobisz na obligacjach i ETFach po podatku Belki i inflacji.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://etfkalkulator.pl/">
-  <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.jpg">
+  <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="pl_PL">
@@ -26,57 +29,29 @@
   <!-- SEO: Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ETFkalkulator.pl — Kalkulator inwestycyjny dla Polaków">
-  <meta name="twitter:description" content="Sprawdź ile realnie zarobisz na obligacjach i ETFach po podatku Belki i inflacji.">
-  <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.jpg">
-  
-  <!-- Performance optimization -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
-  <!-- Critical CSS inline -->
-  <style>
-    :root {
-      --primary-color: #1A56A0;
-      --background-color: #F8F7F2;
-      --text-color: #1C1C1E;
-    }
-    
-    body {
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      color: var(--text-color);
-      margin: 0;
-      padding: 0;
-    }
-    
-    .newsletter-form-centered {
-      margin: 0 auto;
-      text-align: center;
-      max-width: 500px;
-    }
-    
-    /* Critical CSS for above-the-fold content */
-    .header, .hero, .calculator__intro {
-      display: block !important;
-    }
-  </style>
-  
+  <meta name="twitter:description"
+    content="Sprawdź ile realnie zarobisz na obligacjach i ETFach po podatku Belki i inflacji.">
+  <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png">
+
   <!-- SEO: Kanoniczny URL -->
   <link rel="canonical" href="https://etfkalkulator.pl/" />
 
-  <!-- Favicon — ikona w zakładce przeglądarki (dodamy później) -->
-  <!-- <link rel="icon" href="/assets/favicon/favicon.ico"> -->
+  <!-- Favicon — ikona w zakładce przeglądarki -->
+  <link rel="icon" href="images/og-image.png">
 
   <!-- Nasze pliki CSS — kolejność ma znaczenie! -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/main.css">
-  
-  <!-- Fonts - optimized loading -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  
-  <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-  </noscript>
+
+  <!-- MailerLite Styles -->
+  <style type="text/css">
+    @import url("https://assets.mlcdn.com/fonts.css?version=1772539");
+  </style>
   <style type="text/css">
     /* LOADER */
     .ml-form-embedSubmitLoad {
@@ -86,10 +61,10 @@
     }
 
     .g-recaptcha {
-    transform: scale(1);
-    -webkit-transform: scale(1);
-    transform-origin: 0 0;
-    -webkit-transform-origin: 0 0;
+      transform: scale(1);
+      -webkit-transform: scale(1);
+      transform-origin: 0 0;
+      -webkit-transform-origin: 0 0;
     }
 
     .sr-only {
@@ -99,7 +74,7 @@
       padding: 0;
       margin: -1px;
       overflow: hidden;
-      clip: rect(0,0,0,0);
+      clip: rect(0, 0, 0, 0);
       border: 0;
     }
 
@@ -111,17 +86,20 @@
       margin: 1px;
       border-radius: 50%;
       border: 4px solid #fff;
-    border-color: #FFFFFF #FFFFFF #FFFFFF transparent;
-    animation: ml-form-embedSubmitLoad 1.2s linear infinite;
+      border-color: #FFFFFF #FFFFFF #FFFFFF transparent;
+      animation: ml-form-embedSubmitLoad 1.2s linear infinite;
     }
+
     @keyframes ml-form-embedSubmitLoad {
       0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
       }
+
       100% {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
       }
     }
+
     #mlb2-37996059.ml-form-embedContainer {
       box-sizing: border-box;
       display: table;
@@ -129,6 +107,7 @@
       position: static;
       width: 100% !important;
     }
+
     #mlb2-37996059.ml-form-embedContainer h4,
     #mlb2-37996059.ml-form-embedContainer p,
     #mlb2-37996059.ml-form-embedContainer span,
@@ -136,43 +115,63 @@
       text-transform: none !important;
       letter-spacing: normal !important;
     }
-    .newsletter-form-centered {
-      margin: 0 auto;
-      text-align: center;
-      max-width: 500px;
-    }
 
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper {
-        background-color: #F8F7F2;
-        border-width: 0px;
-        border-color: transparent;
-        border-radius: 4px;
-        border-style: solid;
-        box-sizing: border-box;
-        display: inline-block !important;
-        margin: 0;
-        padding: 0;
-        position: relative;
+      background-color: #F8F7F2;
+      border-width: 0px;
+      border-color: transparent;
+      border-radius: 4px;
+      border-style: solid;
+      box-sizing: border-box;
+      display: inline-block !important;
+      margin: 0;
+      padding: 0;
+      position: relative;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper.embedPopup,
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper.embedDefault { width: 100%; }
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper.embedForm { max-width: 100%; width: 100%; }
-    #mlb2-37996059.ml-form-embedContainer .ml-form-align-left { text-align: left; }
-    #mlb2-37996059.ml-form-embedContainer .ml-form-align-center { text-align: center; }
-    #mlb2-37996059.ml-form-embedContainer .ml-form-align-default { display: table-cell !important; vertical-align: middle !important; text-align: center !important; }
-    #mlb2-37996059.ml-form-embedContainer .ml-form-align-right { text-align: right; }
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper.embedDefault {
+      width: 100%;
+    }
+
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper.embedForm {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    #mlb2-37996059.ml-form-embedContainer .ml-form-align-left {
+      text-align: left;
+    }
+
+    #mlb2-37996059.ml-form-embedContainer .ml-form-align-center {
+      text-align: center;
+    }
+
+    #mlb2-37996059.ml-form-embedContainer .ml-form-align-default {
+      display: table-cell !important;
+      vertical-align: middle !important;
+      text-align: center !important;
+    }
+
+    #mlb2-37996059.ml-form-embedContainer .ml-form-align-right {
+      text-align: right;
+    }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody,
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody {
       padding: 20px 20px 0 20px;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody.ml-form-embedBodyHorizontal {
       padding-bottom: 0;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent,
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent {
       text-align: left;
       margin: 0 0 20px 0;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent h4,
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4 {
       color: #000000;
@@ -183,6 +182,7 @@
       text-align: left;
       word-break: break-word;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p,
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p {
       color: #000000;
@@ -193,6 +193,7 @@
       margin: 0 0 10px 0;
       text-align: left;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ul,
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ol,
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent ul,
@@ -201,14 +202,17 @@
       font-family: 'Open Sans', Arial, Helvetica, sans-serif;
       font-size: 14px;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ol ol,
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent ol ol {
       list-style-type: lower-alpha;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ol ol ol,
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent ol ol ol {
       list-style-type: lower-roman;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p a,
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p a {
       color: #000000;
@@ -216,7 +220,7 @@
     }
 
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-block-form .ml-field-group {
-      text-align: left!important;
+      text-align: left !important;
     }
 
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-block-form .ml-field-group label {
@@ -224,26 +228,34 @@
       color: #1C1C1E;
       font-size: 14px;
       font-family: 'Inter', sans-serif;
-      font-weight: normal; font-style: normal; text-decoration: none;;
+      font-weight: normal;
+      font-style: normal;
+      text-decoration: none;
+      ;
       display: inline-block;
       line-height: 20px;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p:last-child,
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p:last-child {
       margin: 0;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody form {
       margin: 0;
       width: 100%;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-formContent,
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow {
       margin: 0 0 20px 0;
       width: 100%;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow {
       float: left;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-formContent.horozintalForm {
       margin: 0;
       padding: 0 0 20px 0;
@@ -251,16 +263,20 @@
       height: auto;
       float: left;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow {
       margin: 0 0 10px 0;
       width: 100%;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow.ml-last-item {
       margin: 0;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow.ml-formfieldHorizintal {
       margin: 0;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input {
       background-color: #ffffff !important;
       color: #1C1C1E !important;
@@ -281,19 +297,29 @@
       box-sizing: border-box !important;
       max-width: 100% !important;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::-webkit-input-placeholder,
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-webkit-input-placeholder { color: #1C1C1E; }
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-webkit-input-placeholder {
+      color: #1C1C1E;
+    }
 
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::-moz-placeholder,
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-moz-placeholder { color: #1C1C1E; }
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-moz-placeholder {
+      color: #1C1C1E;
+    }
 
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:-ms-input-placeholder,
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input:-ms-input-placeholder { color: #1C1C1E; }
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input:-ms-input-placeholder {
+      color: #1C1C1E;
+    }
 
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:-moz-placeholder,
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input:-moz-placeholder { color: #1C1C1E; }
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input:-moz-placeholder {
+      color: #1C1C1E;
+    }
 
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow textarea, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow textarea {
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow textarea,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow textarea {
       background-color: #ffffff !important;
       color: #1C1C1E !important;
       border-color: #E5E7EB;
@@ -312,9 +338,15 @@
       max-width: 100% !important;
     }
 
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label::before, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label::before, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::before, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::before, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before {
-      border-color: #E5E7EB!important;
-      background-color: #ffffff!important;
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label::before,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label::before,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::before,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::before,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before {
+      border-color: #E5E7EB !important;
+      background-color: #ffffff !important;
     }
 
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox input[type="checkbox"] {
@@ -329,84 +361,104 @@
     }
 
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox input[type=checkbox]:checked~.label-description::after {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
-      }
-
-      #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox input[type=checkbox]:checked~.label-description::before {
-          border-color: #E5E7EB!important;
-          background-color: #1A56A0!important;
-      }
-
-      #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before {
-          position: absolute;
-          top: 4px;
-          left: -1.5rem;
-          display: block;
-          width: 16px;
-          height: 16px;
-          pointer-events: none;
-          content: "";
-          background-color: #ffffff;
-          border: #adb5bd solid 1px;
-          border-radius: 4px;
-      }
-
-      #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::after {
-          position: absolute;
-          top: 4px!important;
-          left: -1.5rem;
-          display: block;
-          width: 1rem;
-          height: 1rem;
-          content: "";
-          background: no-repeat 50%/50% 50%;
-      }
-
-      #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox label {
-          color: #1C1C1E;
-          font-size: 14px!important;
-          font-family: 'Inter', sans-serif;
-          line-height: 24px;
-          margin-bottom: 0;
-          position: relative;
-          vertical-align: top;
-          font-style: normal;
-          font-weight: 400;
-          display: block;
-          min-height: 24px;
-          padding-left: 24px;
-      }
-
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::before, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::before, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before {
-      border-radius: 4px!important;
-    }
-
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type=checkbox]:checked~.label-description::after, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox input[type=checkbox]:checked~.label-description::after, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-input:checked~.custom-control-label::after, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-input:checked~.custom-control-label::after, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox input[type=checkbox]:checked~.label-description::after {
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
     }
 
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-input:checked~.custom-control-label::after, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-input:checked~.custom-control-label::after {
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox input[type=checkbox]:checked~.label-description::before {
+      border-color: #E5E7EB !important;
+      background-color: #1A56A0 !important;
+    }
+
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before {
+      position: absolute;
+      top: 4px;
+      left: -1.5rem;
+      display: block;
+      width: 16px;
+      height: 16px;
+      pointer-events: none;
+      content: "";
+      background-color: #ffffff;
+      border: #adb5bd solid 1px;
+      border-radius: 4px;
+    }
+
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::after {
+      position: absolute;
+      top: 4px !important;
+      left: -1.5rem;
+      display: block;
+      width: 1rem;
+      height: 1rem;
+      content: "";
+      background: no-repeat 50%/50% 50%;
+    }
+
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox label {
+      color: #1C1C1E;
+      font-size: 14px !important;
+      font-family: 'Inter', sans-serif;
+      line-height: 24px;
+      margin-bottom: 0;
+      position: relative;
+      vertical-align: top;
+      font-style: normal;
+      font-weight: 400;
+      display: block;
+      min-height: 24px;
+      padding-left: 24px;
+    }
+
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::before,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::before,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before {
+      border-radius: 4px !important;
+    }
+
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type=checkbox]:checked~.label-description::after,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox input[type=checkbox]:checked~.label-description::after,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-input:checked~.custom-control-label::after,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-input:checked~.custom-control-label::after,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox input[type=checkbox]:checked~.label-description::after {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+    }
+
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-input:checked~.custom-control-label::after,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-input:checked~.custom-control-label::after {
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
     }
 
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label::before, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label::before, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label::after, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::before, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::before, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before {
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label::before,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label::before,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label::after,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::before,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::before,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before {
       top: 4px;
       box-sizing: border-box;
     }
 
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::after, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
-      top: 2px!important;
-      box-sizing: border-box!important;
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::after,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
+      top: 2px !important;
+      box-sizing: border-box !important;
     }
 
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
-      top: 0px!important;
-      box-sizing: border-box!important;
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
+      top: 0px !important;
+      box-sizing: border-box !important;
     }
 
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::after {
-      top: 0px!important;
-      box-sizing: border-box!important;
+      top: 0px !important;
+      box-sizing: border-box !important;
       position: absolute;
       left: -1.5rem;
       display: block;
@@ -416,8 +468,8 @@
     }
 
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before {
-      top: 0px!important;
-      box-sizing: border-box!important;
+      top: 0px !important;
+      box-sizing: border-box !important;
     }
 
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .custom-control-label::before {
@@ -436,7 +488,7 @@
 
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .custom-control-label::after {
       position: absolute;
-      top: 4px!important;
+      top: 4px !important;
       left: -1.5rem;
       display: block;
       width: 1rem;
@@ -444,7 +496,9 @@
       content: "";
     }
 
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before {
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before {
       position: absolute;
       top: 4px;
       left: -1.5rem;
@@ -460,7 +514,7 @@
 
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::after {
       position: absolute;
-      top: 2px!important;
+      top: 2px !important;
       left: -1.5rem;
       display: block;
       width: 1rem;
@@ -470,7 +524,7 @@
 
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
       position: absolute;
-      top: 0px!important;
+      top: 0px !important;
       left: -1.5rem;
       display: block;
       width: 1rem;
@@ -481,18 +535,26 @@
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .custom-radio .custom-control-label::after {
       background: no-repeat 50%/50% 50%;
     }
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .custom-checkbox .custom-control-label::after, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::after, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::after, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
+
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .custom-checkbox .custom-control-label::after,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::after,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::after,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
       background: no-repeat 50%/50% 50%;
     }
 
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-control, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-control {
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-control,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-control {
       position: relative;
       display: block;
       min-height: 1.5rem;
       padding-left: 1.5rem;
     }
 
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-input, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-input, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-input, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-input {
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-input,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-input,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-input,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-input {
       position: absolute;
       z-index: -1;
       opacity: 0;
@@ -500,9 +562,12 @@
       padding: 0;
     }
 
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label {
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label {
       color: #1C1C1E;
-      font-size: 14px!important;
+      font-size: 14px !important;
       font-family: 'Inter', sans-serif;
       line-height: 24px;
       margin-bottom: 0;
@@ -512,7 +577,8 @@
       font-weight: 400;
     }
 
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-select, #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-select {
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-select,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-select {
       background-color: #ffffff !important;
       color: #1C1C1E !important;
       border-color: #E5E7EB;
@@ -542,10 +608,27 @@
       width: 100%;
       float: left;
     }
-    .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-input-horizontal { width: 70%; float: left; }
-    .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-button-horizontal { width: 30%; float: left; }
-    .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-button-horizontal.labelsOn { padding-top: 25px;  }
-    .ml-form-formContent.horozintalForm .ml-form-horizontalRow .horizontal-fields { box-sizing: border-box; float: left; padding-right: 10px;  }
+
+    .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-input-horizontal {
+      width: 70%;
+      float: left;
+    }
+
+    .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-button-horizontal {
+      width: 30%;
+      float: left;
+    }
+
+    .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-button-horizontal.labelsOn {
+      padding-top: 25px;
+    }
+
+    .ml-form-formContent.horozintalForm .ml-form-horizontalRow .horizontal-fields {
+      box-sizing: border-box;
+      float: left;
+      padding-right: 10px;
+    }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input {
       background-color: #ffffff;
       color: #1C1C1E;
@@ -563,6 +646,7 @@
       box-sizing: border-box;
       overflow-y: initial;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow button {
       background-color: #1A56A0 !important;
       border-color: #1A56A0;
@@ -581,10 +665,12 @@
       width: 100%;
       height: auto;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow button:hover {
       background-color: #124680 !important;
       border-color: #124680 !important;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type="checkbox"] {
       box-sizing: border-box;
       padding: 0;
@@ -595,6 +681,7 @@
       margin-left: -1.5rem;
       overflow: visible;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description {
       color: #000000;
       display: block;
@@ -605,6 +692,7 @@
       position: relative;
       vertical-align: top;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label {
       font-weight: normal;
       margin: 0;
@@ -615,10 +703,12 @@
       padding-left: 24px;
 
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label a {
       color: #000000;
       text-decoration: underline;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label p {
       color: #000000 !important;
       font-family: 'Open Sans', Arial, Helvetica, sans-serif !important;
@@ -628,14 +718,17 @@
       padding: 0 !important;
       margin: 0 5px 0 0 !important;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label p:last-child {
       margin: 0;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit {
       margin: 0 0 20px 0;
       float: left;
       width: 100%;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button {
       background-color: #1A56A0 !important;
       border: none !important;
@@ -652,12 +745,15 @@
       width: 100% !important;
       box-sizing: border-box !important;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.loading {
       display: none;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover {
       background-color: #124680 !important;
     }
+
     .ml-subscribe-close {
       width: 30px;
       height: 30px;
@@ -670,8 +766,11 @@
       top: 0;
       right: 0;
     }
-    .ml-error input, .ml-error textarea, .ml-error select {
-      border-color: red!important;
+
+    .ml-error input,
+    .ml-error textarea,
+    .ml-error select {
+      border-color: red !important;
     }
 
     .ml-error .custom-checkbox-radio-list {
@@ -691,28 +790,60 @@
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow.ml-error .label-description p:first-letter {
       color: #ff0000 !important;
     }
-    @media only screen and (max-width: 400px){
 
-    .ml-form-embedWrapper.embedDefault, .ml-form-embedWrapper.embedPopup { width: 100%!important; }
-    .ml-form-formContent.horozintalForm { float: left!important; }
-    .ml-form-formContent.horozintalForm .ml-form-horizontalRow { height: auto!important; width: 100%!important; float: left!important; }
-    .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-input-horizontal { width: 100%!important; }
-    .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-input-horizontal > div { padding-right: 0px!important; padding-bottom: 10px; }
-    .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-button-horizontal { width: 100%!important; }
-    .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-button-horizontal.labelsOn { padding-top: 0px!important; }
+    @media only screen and (max-width: 400px) {
+
+      .ml-form-embedWrapper.embedDefault,
+      .ml-form-embedWrapper.embedPopup {
+        width: 100% !important;
+      }
+
+      .ml-form-formContent.horozintalForm {
+        float: left !important;
+      }
+
+      .ml-form-formContent.horozintalForm .ml-form-horizontalRow {
+        height: auto !important;
+        width: 100% !important;
+        float: left !important;
+      }
+
+      .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-input-horizontal {
+        width: 100% !important;
+      }
+
+      .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-input-horizontal>div {
+        padding-right: 0px !important;
+        padding-bottom: 10px;
+      }
+
+      .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-button-horizontal {
+        width: 100% !important;
+      }
+
+      .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-button-horizontal.labelsOn {
+        padding-top: 0px !important;
+      }
 
     }
   </style>
 
   <style type="text/css">
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions { text-align: left; float: left; width: 100%; }
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions {
+      text-align: left;
+      float: left;
+      width: 100%;
+    }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent {
       margin: 0 0 15px 0;
       text-align: left;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent.horizontal {
       margin: 0 0 15px 0;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent h4 {
       color: #000000;
       font-family: 'Open Sans', Arial, Helvetica, sans-serif;
@@ -722,6 +853,7 @@
       margin: 0 0 10px 0;
       word-break: break-word;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent p {
       color: #000000;
       font-family: 'Open Sans', Arial, Helvetica, sans-serif;
@@ -750,17 +882,24 @@
       color: #000000;
       text-decoration: underline;
     }
-    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent p:last-child { margin: 0 0 15px 0; }
+
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent p:last-child {
+      margin: 0 0 15px 0;
+    }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptions {
       margin: 0;
       padding: 0;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox {
       margin: 0 0 10px 0;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox:last-child {
       margin: 0;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox label {
       font-weight: normal;
       margin: 0;
@@ -770,6 +909,7 @@
       min-height: 24px;
       padding-left: 24px;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description {
       color: #1C1C1E;
       font-family: 'Inter', sans-serif;
@@ -782,6 +922,7 @@
       font-style: normal;
       font-weight: 400;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .description {
       color: #6E6E73;
       font-family: 'Inter', sans-serif;
@@ -791,6 +932,7 @@
       line-height: 18px;
       margin: 5px 0 0 0;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox input[type="checkbox"] {
       box-sizing: border-box;
       padding: 0;
@@ -801,9 +943,11 @@
       margin-left: -1.5rem;
       overflow: visible;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedMailerLite-GDPR {
       padding-bottom: 20px;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedMailerLite-GDPR p {
       color: #000000;
       font-family: 'Open Sans', Arial, Helvetica, sans-serif;
@@ -812,16 +956,19 @@
       margin: 0;
       padding: 0;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedMailerLite-GDPR p a {
       color: #000000;
       text-decoration: underline;
 
     }
+
     @media (max-width: 768px) {
       #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsContent p {
         font-size: 12px !important;
         line-height: 18px !important;
       }
+
       #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedMailerLite-GDPR p {
         font-size: 10px !important;
         line-height: 14px !important;
@@ -849,7 +996,8 @@
       width: 800px;
       height: 800px;
       background: radial-gradient(circle, var(--color-primary-100) 0%, transparent 70%);
-      pointer-events: none; /* nie blokuje kliknięć */
+      pointer-events: none;
+      /* nie blokuje kliknięć */
       z-index: 0;
     }
 
@@ -875,7 +1023,8 @@
 
     .hero__title {
       font-family: var(--font-display);
-      font-size: clamp(2.4rem, 5vw, 3.5rem); /* clamp = responsywny rozmiar */
+      font-size: clamp(2.4rem, 5vw, 3.5rem);
+      /* clamp = responsywny rozmiar */
       line-height: var(--leading-tight);
       letter-spacing: -0.02em;
       color: var(--color-text-primary);
@@ -906,13 +1055,13 @@
       justify-content: center;
       flex-wrap: wrap;
     }
-    
+
     @media (max-width: 639px) {
       .hero__cta {
         flex-direction: column;
         align-items: center;
       }
-      
+
       .hero__cta .btn--primary {
         order: -1;
       }
@@ -951,7 +1100,8 @@
 
     .kalkulator-karta:hover {
       box-shadow: var(--shadow-primary-hover);
-      transform: translateY(-8px) scale(1.02); /* subtelne powiększenie jak Apple */
+      transform: translateY(-8px) scale(1.02);
+      /* subtelne powiększenie jak Apple */
       border-color: var(--color-primary-200);
     }
 
@@ -987,7 +1137,8 @@
       font-size: var(--text-sm);
       color: var(--color-text-secondary);
       line-height: var(--leading-relaxed);
-      flex: 1; /* wypełnia pozostałą przestrzeń */
+      flex: 1;
+      /* wypełnia pozostałą przestrzeń */
       margin-top: var(--space-2);
       margin-bottom: var(--space-4);
       text-align: left;
@@ -1008,7 +1159,8 @@
       padding-block: var(--space-20);
       background: var(--color-bg-secondary);
       border-radius: var(--radius-xl);
-      margin-inline: calc(-1 * var(--space-5)); /* wychodzi poza container */
+      margin-inline: calc(-1 * var(--space-5));
+      /* wychodzi poza container */
       padding-inline: var(--space-5);
     }
 
@@ -1090,7 +1242,7 @@
       border: none;
       font-family: var(--font-sans);
       font-size: var(--text-base);
-      background: rgba(255,255,255,0.12);
+      background: rgba(255, 255, 255, 0.12);
       color: white;
       backdrop-filter: blur(8px);
     }
@@ -1135,49 +1287,74 @@
         opacity: 0;
         transform: translateY(24px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
-    .hero__tag     { animation: fadeInUp 0.5s ease both; }
-    .hero__title   { animation: fadeInUp 0.5s ease 0.1s both; }
-    .hero__subtitle{ animation: fadeInUp 0.5s ease 0.2s both; }
-    .hero__cta     { animation: fadeInUp 0.5s ease 0.3s both; }
+    .hero__tag {
+      animation: fadeInUp 0.5s ease both;
+    }
+
+    .hero__title {
+      animation: fadeInUp 0.5s ease 0.1s both;
+    }
+
+    .hero__subtitle {
+      animation: fadeInUp 0.5s ease 0.2s both;
+    }
+
+    .hero__cta {
+      animation: fadeInUp 0.5s ease 0.3s both;
+    }
 
     html.dark-mode {
-      --color-bg:              #1C1C1E;
-      --color-bg-secondary:    #2C2C2E;
-      --color-bg-elevated:     #3A3A3C;
-      --color-text-primary:    #F5F5F7;
-      --color-text-secondary:  #AEAEB2;
-      --color-text-muted:      #6E6E73;
-      --color-border:          #48484A;
-      --color-border-subtle:   #3A3A3C;
-      --color-green-50:        #1a2e23;
-      --color-green-100:       #1f3829;
+      --color-bg: #1C1C1E;
+      --color-bg-secondary: #2C2C2E;
+      --color-bg-elevated: #3A3A3C;
+      --color-text-primary: #F5F5F7;
+      --color-text-secondary: #AEAEB2;
+      --color-text-muted: #6E6E73;
+      --color-border: #48484A;
+      --color-border-subtle: #3A3A3C;
+      --color-green-50: #1a2e23;
+      --color-green-100: #1f3829;
     }
+
     html.light-mode {
-      --color-bg:              #F8F7F2;
-      --color-bg-secondary:    #F0EFE8;
-      --color-bg-elevated:     #FFFFFF;
-      --color-text-primary:    #1C1C1E;
-      --color-text-secondary:  #6E6E73;
-      --color-text-muted:      #AEAEB2;
-      --color-border:          #E5E7EB;
-      --color-border-subtle:   #F0F0F0;
-      --color-green-50:        #d8f3dc;
-      --color-green-100:       #b7e4c7;
+      --color-bg: #F8F7F2;
+      --color-bg-secondary: #F0EFE8;
+      --color-bg-elevated: #FFFFFF;
+      --color-text-primary: #1C1C1E;
+      --color-text-secondary: #6E6E73;
+      --color-text-muted: #AEAEB2;
+      --color-border: #E5E7EB;
+      --color-border-subtle: #F0F0F0;
+      --color-green-50: #d8f3dc;
+      --color-green-100: #b7e4c7;
     }
-    html.dark-mode .header { background: rgba(28,28,30,0.9); }
+
+    html.dark-mode .header {
+      background: rgba(28, 28, 30, 0.9);
+    }
   </style>
 
   <style>
     /* Dark mode */
     /* Płynne przejście */
-    body, .header, .card, .kafelek, .formularz-karta, .wyniki-kolumna,
-    .porownanie, .wykres-karta, .tabela-karta, .pojecie, .wykres-porownawczy {
+    body,
+    .header,
+    .card,
+    .kafelek,
+    .formularz-karta,
+    .wyniki-kolumna,
+    .porownanie,
+    .wykres-karta,
+    .tabela-karta,
+    .pojecie,
+    .wykres-porownawczy {
       transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     }
 
@@ -1239,15 +1416,15 @@
       .wykres-porownawczy__kontener {
         padding: var(--space-6);
       }
-      
+
       .wykres-porownawczy__wykres {
         height: 250px;
       }
-      
+
       .wykres-porownawczy__legenda {
         gap: var(--space-4);
       }
-      
+
       .legend-item {
         font-size: var(--text-xs);
       }
@@ -1388,8 +1565,8 @@
       <div class="cookie-consent__content">
         <h4 class="cookie-consent__title">Prywatność i pliki cookies</h4>
         <p class="cookie-consent__text">
-          ETFkalkulator.pl używa plików cookies do analizy ruchu i personalizacji treści. 
-          Kontynuując przeglądanie zgadzasz się na naszą 
+          ETFkalkulator.pl używa plików cookies do analizy ruchu i personalizacji treści.
+          Kontynuując przeglądanie zgadzasz się na naszą
           <a href="pages/polityka-prywatnosci.html#cookies" class="cookie-consent__link">politykę cookies</a>.
         </p>
       </div>
@@ -1417,6 +1594,7 @@
         </a>
 
         <nav class="header__nav" aria-label="Nawigacja główna">
+          <a href="pages/kalkulator-etf.html">Kalkulator ETF</a>
           <a href="pages/kalkulator-obligacji.html">Obligacje</a>
           <a href="pages/kalkulator-wolnosci.html">Wolność finansowa</a>
           <a href="pages/porownywarka.html">Porównywarka</a>
@@ -1431,22 +1609,26 @@
       transition: all var(--transition-fast);
       flex-shrink: 0;
     ">
-      <svg id="ikona-slonce" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="5"/>
-        <line x1="12" y1="1" x2="12" y2="3"/>
-        <line x1="12" y1="21" x2="12" y2="23"/>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-        <line x1="1" y1="12" x2="3" y2="12"/>
-        <line x1="21" y1="12" x2="23" y2="12"/>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-      </svg>
-      <svg id="ikona-ksiezyc" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
-        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
-      </svg>
-    </button>
-    <a href="#newsletter" class="btn btn--sm" style="border: 1.5px solid var(--color-primary-300); color: var(--color-primary-700); background: white; border-radius: var(--radius-full);">Newsletter</a>
+            <svg id="ikona-slonce" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+            <svg id="ikona-ksiezyc" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              style="display:none">
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+            </svg>
+          </button>
+          <a href="#newsletter" class="btn btn--sm"
+            style="border: 1.5px solid var(--color-primary-300); color: var(--color-primary-700); background: white; border-radius: var(--radius-full);">Newsletter</a>
         </nav>
 
       </div>
@@ -1455,6 +1637,8 @@
 
   <div class="mobile-nav-bar" id="mobile-nav-bar">
     <div class="mobile-nav-bar__inner">
+      <a href="pages/kalkulator-etf.html" class="mobile-nav-bar__link">ETF</a>
+      <span class="mobile-nav-bar__separator"></span>
       <a href="pages/kalkulator-obligacji.html" class="mobile-nav-bar__link">Obligacje</a>
       <span class="mobile-nav-bar__separator"></span>
       <a href="pages/kalkulator-wolnosci.html" class="mobile-nav-bar__link">Wolność finansowa</a>
@@ -1462,10 +1646,6 @@
       <a href="pages/porownywarka.html" class="mobile-nav-bar__link">Porównywarka ETF</a>
       <span class="mobile-nav-bar__separator"></span>
       <a href="pages/o-projekcie.html" class="mobile-nav-bar__link">O projekcie</a>
-      <span class="mobile-nav-bar__separator"></span>
-      <div class="mobile-nav-bar__newsletter">
-        <a href="#newsletter" class="btn btn--sm" style="font-size:12px;padding:4px 12px;border:1.5px solid var(--color-primary-300);color:var(--color-primary-700);background:white;border-radius:var(--radius-full);white-space:nowrap">Newsletter</a>
-      </div>
     </div>
   </div>
 
@@ -1478,10 +1658,11 @@
         <div class="hero__inner">
 
           <div class="hero__tag">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-700)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
-  <path d="M9 12l2 2 4-4"/>
-</svg> Bezpłatne narzędzie edukacyjne
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-700)"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" />
+              <path d="M9 12l2 2 4-4" />
+            </svg> Bezpłatne narzędzie edukacyjne
           </div>
 
           <h1 class="hero__title">
@@ -1496,7 +1677,10 @@
           </p>
 
           <div class="hero__cta">
-            <a href="pages/porownywarka.html" class="btn btn--primary">
+            <a href="pages/kalkulator-etf.html" class="btn btn--primary">
+              Kalkulator ETF
+            </a>
+            <a href="pages/porownywarka.html" class="btn btn--secondary">
               Porównaj inwestycje
             </a>
             <a href="pages/kalkulator-obligacji.html" class="btn btn--secondary">
@@ -1523,12 +1707,32 @@
 
         <div class="kalkulatory__siatka">
 
+          <!-- Karta 0: ETF -->
+          <a href="pages/kalkulator-etf.html" class="kalkulator-karta" id="karta-etf">
+            <div class="kalkulator-karta__ikona"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              </svg></div>
+            <div>
+              <div class="kalkulator-karta__numer">NOWOŚĆ</div>
+              <div class="kalkulator-karta__tytul">Kalkulator ETF</div>
+            </div>
+            <p class="kalkulator-karta__opis">
+              Zysk z funduszy ETF, podatek Belki, inflacja i IKE/IKZE.
+              Podejmuj mądre decyzje inwestycyjne.
+            </p>
+            <span class="kalkulator-karta__link">
+              Otwórz kalkulator →
+            </span>
+          </a>
+
           <!-- Karta 1: Obligacje -->
           <a href="pages/kalkulator-obligacji.html" class="kalkulator-karta" id="karta-obligacje">
-            <div class="kalkulator-karta__ikona"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/>
-  <circle cx="12" cy="12" r="3"/>
-</svg></div>
+            <div class="kalkulator-karta__ikona"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg></div>
             <div>
               <div class="kalkulator-karta__numer">Kalkulator 01</div>
               <div class="kalkulator-karta__tytul">Obligacje Skarbowe</div>
@@ -1544,9 +1748,10 @@
 
           <!-- Karta 2: Wolność finansowa -->
           <a href="pages/kalkulator-wolnosci.html" class="kalkulator-karta" id="karta-wolnosc">
-            <div class="kalkulator-karta__ikona"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-</svg></div>
+            <div class="kalkulator-karta__ikona"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+              </svg></div>
             <div>
               <div class="kalkulator-karta__numer">Kalkulator 02</div>
               <div class="kalkulator-karta__tytul">Wolność Finansowa</div>
@@ -1562,11 +1767,12 @@
 
           <!-- Karta 3: Porównywarka -->
           <a href="pages/porownywarka.html" class="kalkulator-karta" id="karta-porownywarka">
-            <div class="kalkulator-karta__ikona"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M18 20V10"/>
-  <path d="M12 20V4"/>
-  <path d="M6 20v-6"/>
-</svg></div>
+            <div class="kalkulator-karta__ikona"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 20V10" />
+                <path d="M12 20V4" />
+                <path d="M6 20v-6" />
+              </svg></div>
             <div>
               <div class="kalkulator-karta__numer">Kalkulator 03</div>
               <div class="kalkulator-karta__tytul">ETF vs Obligacje</div>
@@ -1588,7 +1794,7 @@
     <!-- WYKRES PORÓWNAWCZY -->
     <section class="wykres-porownawczy">
       <div class="container container--narrow">
-        
+
         <div class="text-center">
           <h2 class="heading-2">ETF vs Obligacje vs Lokata</h2>
           <p class="text-lead mt-2">Zobacz jak różne strategie zachowują się na przestrzeni 10 lat</p>
@@ -1603,6 +1809,10 @@
               <div class="legend-item">
                 <div class="legend-kolor" style="background: #40916C;"></div>
                 <span>ETF globalny (7% rocznie)</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-kolor" style="background: #b45309;"></div>
+                <span>Obligacje EDO (inflacja + 2%)</span>
               </div>
               <div class="legend-item">
                 <div class="legend-kolor" style="background: #64748b;"></div>
@@ -1632,39 +1842,47 @@
         <div class="dlaczego__siatka">
 
           <div class="cecha">
-            <div class="cecha__ikona"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-  <polyline points="9 22 9 12 15 12 15 22"/>
-</svg></div>
+            <div class="cecha__ikona"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"
+                stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                <polyline points="9 22 9 12 15 12 15 22" />
+              </svg></div>
             <div class="cecha__tytul">Polskie realia</div>
-            <p class="cecha__opis">Podatek Belki, inflacja GUS, obligacje EDO — nie kalkulatory z amerykańskich blogów.</p>
+            <p class="cecha__opis">Podatek Belki, inflacja GUS, obligacje EDO — nie kalkulatory z amerykańskich blogów.
+            </p>
           </div>
 
           <div class="cecha">
-            <div class="cecha__ikona"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-  <polyline points="14 2 14 8 20 8"/>
-  <line x1="16" y1="13" x2="8" y2="13"/>
-  <line x1="16" y1="17" x2="8" y2="17"/>
-  <polyline points="10 9 9 9 8 9"/>
-</svg></div>
+            <div class="cecha__ikona"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"
+                stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+                <polyline points="10 9 9 9 8 9" />
+              </svg></div>
             <div class="cecha__tytul">Edukacyjnie</div>
-            <p class="cecha__opis">Każdy wynik jest wyjaśniony. Rozumiesz skąd pochodzi liczba, nie tylko ją widzisz.</p>
+            <p class="cecha__opis">Każdy wynik jest wyjaśniony. Rozumiesz skąd pochodzi liczba, nie tylko ją widzisz.
+            </p>
           </div>
 
           <div class="cecha">
-            <div class="cecha__ikona"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-</svg></div>
+            <div class="cecha__ikona"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"
+                stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg></div>
             <div class="cecha__tytul">Bezpiecznie</div>
-            <p class="cecha__opis">Żadnych danych osobowych, żadnej rejestracji. Kalkulacje wykonywane lokalnie w Twojej przeglądarce.</p>
+            <p class="cecha__opis">Żadnych danych osobowych, żadnej rejestracji. Kalkulacje wykonywane lokalnie w Twojej
+              przeglądarce.</p>
           </div>
 
           <div class="cecha">
-            <div class="cecha__ikona"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-  <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-  <line x1="12" y1="18" x2="12.01" y2="18"/>
-</svg></div>
+            <div class="cecha__ikona"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"
+                stroke="var(--color-primary-600)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                <line x1="12" y1="18" x2="12.01" y2="18" />
+              </svg></div>
             <div class="cecha__tytul">Na każdym urządzeniu</div>
             <p class="cecha__opis">Działa tak samo dobrze na telefonie, tablecie i komputerze.</p>
           </div>
@@ -1677,82 +1895,94 @@
     <!-- NEWSLETTER -->
     <section class="newsletter" id="newsletter">
       <div class="container container--narrow">
-        <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
-          <div class="ml-form-align-center">
-            <div class="ml-form-embedWrapper embedForm newsletter-form-centered">
-              <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
-                    <div class="ml-form-embedContent">
-                      <h2>Newsletter ETFkalkulator.pl</h2>
-                      <p>Obligacje, ETFy, wolność finansowa - prosto na Twój email.</p>
-                    </div>
-                    <form class="ml-block-form" action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe" data-code="" method="post" target="_blank">
-                      <div class="ml-form-formContent">
-                        <div class="ml-form-fieldRow ml-last-item">
-                          <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
-                            <input aria-label="Adres email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Wprowadź swój adres email" autocomplete="email">
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <!-- Privacy policy -->
-                      <div class="ml-form-embedPermissions">
-                        <div class="ml-form-embedPermissionsContent default">
-                          <h3>Zgoda na przetwarzanie danych</h3>
-                          <p>Twój adres e-mail będzie wykorzystywany wyłącznie do wysyłki newslettera ETFkalkulator.pl. Nie udostępniamy danych osobom trzecim. Możesz wypisać się w każdej chwili.</p>
-                          <div class="ml-form-embedPermissionsOptions">
-                            <div class="ml-form-embedPermissionsOptionsCheckbox">
-                              <label>
-                                <input type="checkbox" name="gdpr[]" value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl">
-                                <div class="label-description">Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl</div>
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="ml-form-embedMailerLite-GDPR">
-                          <p>Zapisując się akceptujesz politykę prywatności. Możesz wypisać się w każdej chwili.</p>
-                        </div>
-                      </div>
 
-                      <div class="ml-form-recaptcha ml-validate-required" style="float: left;">
-                        <style type="text/css">
-                          .ml-form-recaptcha {
-                            margin-bottom: 20px;
-                          }
-                          .ml-form-recaptcha.ml-error iframe {
-                            border: solid 1px #ff0000;
-                          }
-                          @media screen and (max-width: 480px) {
-                            .ml-form-recaptcha {
-                              width: 220px!important
-                            }
-                            .g-recaptcha {
-                              transform: scale(0.78);
-                              -webkit-transform: scale(0.78);
-                              transform-origin: 0 0;
-                              -webkit-transform-origin: 0 0;
-                            }
-                          }
-                        </style>
-                        <script src="https://www.google.com/recaptcha/api.js"></script>
-                        <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
-                      </div>
-
-                      <input type="hidden" name="ml-submit" value="1">
-                      <div class="ml-form-embedSubmit">
-                        <button type="submit" class="primary">Zapisz się</button>
-                        <button disabled="disabled" style="display: none;" type="button" class="loading">
-                          <div class="ml-form-embedSubmitLoad"></div>
-                          <span class="sr-only">Loading...</span>
-                        </button>
-                      </div>
-                      <input type="hidden" name="anticsrf" value="true">
-                    </form>
+        <!-- MailerLite Complete Form -->
+        <div style="max-width: 500px; margin: 0 auto; width: 100%;">
+          <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
+            <div class="ml-form-align-center">
+              <div class="ml-form-embedWrapper embedForm">
+                <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                  <div class="ml-form-embedContent" style=" ">
+                    <h4>Newsletter ETFkalkulator.pl</h4>
+                    <p>Obligacje, ETFy, wolność finansowa - prosto na Twój email.</p>
                   </div>
-                  <div class="ml-form-successBody row-success" style="display: none">
-                    <div class="ml-form-successContent">
-                      <h4>Dziękujemy za zapis!</h4>
-                      <p>Właśnie dołączyłeś do społeczności ETFkalkulator.pl. Wkrótce otrzymasz od nas pierwszą wiadomość.</p>
+                  <form class="ml-block-form"
+                    action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe"
+                    data-code="" method="post" target="_blank">
+                    <div class="ml-form-formContent">
+                      <div class="ml-form-fieldRow ml-last-item">
+                        <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                          <input aria-label="email" aria-required="true" type="email" class="form-control"
+                            data-inputmask="" name="fields[email]" placeholder="Email" autocomplete="email">
+                        </div>
+                      </div>
                     </div>
+
+                    <!-- Privacy policy -->
+                    <div class="ml-form-embedPermissions" style="">
+                      <div class="ml-form-embedPermissionsContent default">
+                        <h4>Zgoda na przetwarzanie danych</h4>
+                        <p>Twój adres e-mail będzie wykorzystywany wyłącznie do wysyłki newslettera ETFkalkulator.pl.
+                          Nie udostępniamy danych osobom trzecim. Możesz wypisać się w każdej chwili.</p>
+                        <div class="ml-form-embedPermissionsOptions">
+                          <div class="ml-form-embedPermissionsOptionsCheckbox">
+                            <label>
+                              <input type="checkbox" name="gdpr[]"
+                                value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl">
+                              <div class="label-description">Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl
+                              </div>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ml-form-embedMailerLite-GDPR">
+                        <p>Zapisując się akceptujesz politykę prywatności. Możesz wypisać się w każdej chwili.</p>
+                      </div>
+                    </div>
+
+                    <div class="ml-form-recaptcha ml-validate-required" style="float: left;">
+                      <style type="text/css">
+                        .ml-form-recaptcha {
+                          margin-bottom: 20px;
+                        }
+
+                        .ml-form-recaptcha.ml-error iframe {
+                          border: solid 1px #ff0000;
+                        }
+
+                        @media screen and (max-width: 480px) {
+                          .ml-form-recaptcha {
+                            width: 220px !important
+                          }
+
+                          .g-recaptcha {
+                            transform: scale(0.78);
+                            -webkit-transform: scale(0.78);
+                            transform-origin: 0 0;
+                            -webkit-transform-origin: 0 0;
+                          }
+                        }
+                      </style>
+                      <script src="https://www.google.com/recaptcha/api.js"></script>
+                      <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                    </div>
+
+                    <input type="hidden" name="ml-submit" value="1">
+                    <div class="ml-form-embedSubmit">
+                      <button type="submit" class="primary">Zapisz się</button>
+                      <button disabled="disabled" style="display: none;" type="button" class="loading">
+                        <div class="ml-form-embedSubmitLoad"></div>
+                        <span class="sr-only">Loading...</span>
+                      </button>
+                    </div>
+                    <input type="hidden" name="anticsrf" value="true">
+                  </form>
+                </div>
+                <div class="ml-form-successBody row-success" style="display: none">
+                  <div class="ml-form-successContent">
+                    <h4>Dziękujemy za zapis!</h4>
+                    <p>Właśnie dołączyłeś do społeczności ETFkalkulator.pl. Wkrótce otrzymasz od nas pierwszą wiadomość.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -1763,28 +1993,15 @@
     </section>
 
     <!-- MailerLite Complete Script -->
-  <script defer>
-    function ml_webform_success_37996059() {
-      var $ = ml_jQuery || jQuery;
-      $('.ml-subscribe-form-37996059 .row-success').show();
-      $('.ml-subscribe-form-37996059 .row-form').hide();
-    }
-  </script>
-  
-  <!-- reCAPTCHA - async loading -->
-  <script async defer src="https://www.google.com/recaptcha/api.js"></script>
-  
-  <!-- MailerLite - async loading -->
-  <script async defer src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"></script>
-  
-  <!-- MailerLite CSS - async loading -->
-  <link rel="stylesheet" href="https://assets.mlcdn.com/ml.css" media="print" onload="this.media='all'">
-  <style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1772539");</style>
-  
-  <noscript>
-    <link rel="stylesheet" href="https://assets.mlcdn.com/ml.css">
-    <style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1772539");</style>
-  </noscript>
+    <script>
+      function ml_webform_success_37996059() {
+        var $ = ml_jQuery || jQuery;
+        $('.ml-subscribe-form-37996059 .row-success').show();
+        $('.ml-subscribe-form-37996059 .row-form').hide();
+      }
+    </script>
+    <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
+      type="text/javascript"></script>
 
   </main>
 
@@ -1813,7 +2030,8 @@
 
         <p class="text-muted">
           © 2026 ETFkalkulator.pl — narzędzie edukacyjne dla polskich inwestorów<br>
-          <a href="mailto:kontakt@etfkalkulator.pl" style="color: var(--color-text-muted); text-decoration: none; font-size: var(--text-sm);">kontakt@etfkalkulator.pl</a><br>
+          <a href="mailto:kontakt@etfkalkulator.pl"
+            style="color: var(--color-text-muted); text-decoration: none; font-size: var(--text-sm);">kontakt@etfkalkulator.pl</a><br>
           <span style="color: var(--color-text-muted); font-size: var(--text-sm);">Made with ❤️ by Florian</span>
         </p>
 
@@ -1826,13 +2044,15 @@
   <script>
     // Funkcja do ładowania Google Analytics
     function loadGoogleAnalytics() {
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX');
-      
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX');
+
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag() { dataLayer.push(arguments); }
       gtag('js', new Date());
       gtag('config', 'G-XXXXXXXXXX', {
         'anonymize_ip': true,
@@ -1841,135 +2061,122 @@
     }
   </script>
 
-  <!-- Optimized JavaScript Loading -->
+  <!-- Nasze pliki JavaScript -->
   <script src="js/utils.js" defer></script>
-  <script src="js/tooltips.js" defer></script>
-  
-  <!-- Simple Chart Script -->
-  <script defer>
-    document.addEventListener('DOMContentLoaded', function() {
-      const canvas = document.getElementById('glowny-wykres-porownawczy');
-      if (!canvas) return;
-      
-      const ctx = canvas.getContext('2d');
-      const width = canvas.width = canvas.offsetWidth;
-      const height = canvas.height = 300;
-      
-      // Proste dane dla wykresu
-      const labels = ['Start', 'Rok 1', 'Rok 2', 'Rok 3', 'Rok 4', 'Rok 5'];
-      const dataETF = [10000, 10800, 11664, 12597, 13605, 14693];
-      const dataLokata = [10000, 10300, 10609, 10927, 11255, 11593];
-      
-      // Rysowanie prostego wykresu
-      const padding = 40;
-      const chartWidth = width - padding * 2;
-      const chartHeight = height - padding * 2;
-      const stepX = chartWidth / (labels.length - 1);
-      
-      // Czyszczenie canvas
-      ctx.clearRect(0, 0, width, height);
-      
-      // Rysowanie osi
-      ctx.strokeStyle = '#ddd';
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(padding, height - padding);
-      ctx.lineTo(width - padding, height - padding);
-      ctx.stroke();
-      
-      // Rysowanie linii ETF
-      ctx.strokeStyle = '#40916C';
-      ctx.lineWidth = 3;
-      ctx.beginPath();
-      dataETF.forEach((value, index) => {
-        const x = padding + index * stepX;
-        const y = height - padding - ((value - 10000) / 5000) * chartHeight;
-        if (index === 0) {
-          ctx.moveTo(x, y);
-        } else {
-          ctx.lineTo(x, y);
-        }
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  <script src="js/charts-config.js" defer></script>
+
+  <script>
+    // Wykres porównawczy na stronie głównej
+    document.addEventListener('DOMContentLoaded', function () {
+      var canvas = document.getElementById('glowny-wykres-porownawczy');
+      if (!canvas || !window.ETF || !window.ETF.charts) return;
+      var ctx = canvas.getContext('2d');
+
+      // Dane przykładowe dla 10 lat
+      var lata = Array.from({ length: 11 }, (_, i) => 2026 + i);
+
+      // Symulacja wzrostu kapitału dla różnych strategii
+      var daneETF = [10000];
+      var daneObligacje = [10000];
+      var daneLokata = [10000];
+
+      for (var i = 1; i <= 10; i++) {
+        daneETF[i] = daneETF[i - 1] * 1.07 + 500 * 12;
+        daneObligacje[i] = daneObligacje[i - 1] * 1.055 + 500 * 12;
+        daneLokata[i] = daneLokata[i - 1] * 1.045 + 500 * 12;
+      }
+
+      var chartOptions = window.ETF.charts.getBaseOptions();
+      // On the home page we explicitly want the legend visible
+      chartOptions.plugins.legend.display = true;
+
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: lata.map(String),
+          datasets: [
+            window.ETF.charts.createDataset(ctx, 'ETF globalny', daneETF, window.ETF.charts.colors.success),
+            window.ETF.charts.createDataset(ctx, 'Obligacje EDO', daneObligacje, window.ETF.charts.colors.accent),
+            window.ETF.charts.createDataset(ctx, 'Lokata bankowa', daneLokata, window.ETF.charts.colors.muted)
+          ]
+        },
+        options: chartOptions
       });
-      ctx.stroke();
-      
-      // Rysowanie linii Lokata
-      ctx.strokeStyle = '#64748b';
-      ctx.lineWidth = 3;
-      ctx.beginPath();
-      dataLokata.forEach((value, index) => {
-        const x = padding + index * stepX;
-        const y = height - padding - ((value - 10000) / 2000) * chartHeight;
-        if (index === 0) {
-          ctx.moveTo(x, y);
-        } else {
-          ctx.lineTo(x, y);
-        }
-      });
-      ctx.stroke();
+
     });
   </script>
-  
-  <!-- Tooltips initialization -->
+
+
+  <script>
+  </script>
+
+  <script src="js/tooltips.js" defer></script>
   <script defer>
-    document.addEventListener('DOMContentLoaded', function() {
-      const karty = [
+    document.addEventListener('DOMContentLoaded', function () {
+
+      // Tooltips dla kart kalkulatorów
+      var karty = [
         { id: 'karta-obligacje', tooltipId: 'karta-obligacje' },
         { id: 'karta-wolnosc', tooltipId: 'karta-wolnosc' },
         { id: 'karta-porownywarka', tooltipId: 'karta-porownywarka' },
       ];
 
-      karty.forEach(function(karta) {
-        const element = document.getElementById(karta.id);
-        const tooltip = document.getElementById(karta.tooltipId);
-        
-        if (element && tooltip) {
-          element.addEventListener('mouseenter', function() {
-            tooltip.style.display = 'block';
-          });
-          
-          element.addEventListener('mouseleave', function() {
-            tooltip.style.display = 'none';
-          });
-        }
+      karty.forEach(function (k) {
+        var karta = document.getElementById(k.id);
+        if (!karta) return;
+
+        // Znajdź tytuł karty i dodaj ikonę ⓘ
+        var tytul = karta.querySelector('.kalkulator-karta__tytul');
+        if (!tytul || tytul.querySelector('[data-tooltip]')) return;
+
+        tytul.style.display = 'flex';
+        tytul.style.alignItems = 'center';
+        tytul.style.gap = '6px';
+
+        var ikona = stworzIkoneInfo(k.tooltipId);
+        // Na karcie kliknięcie ikony nie powinno przechodzić do linku
+        ikona.addEventListener('click', function (e) { e.preventDefault(); });
+        tytul.appendChild(ikona);
       });
     });
   </script>
 
   <script defer>
     function przelaczTryb() {
-      var html    = document.documentElement;
-      var slonce  = document.getElementById('ikona-slonce');
+      var html = document.documentElement;
+      var slonce = document.getElementById('ikona-slonce');
       var ksiezyc = document.getElementById('ikona-ksiezyc');
-      var ciemny  = html.classList.contains('dark-mode') ||
+      var ciemny = html.classList.contains('dark-mode') ||
         (!html.classList.contains('light-mode') &&
-         window.matchMedia('(prefers-color-scheme: dark)').matches);
+          window.matchMedia('(prefers-color-scheme: dark)').matches);
 
       if (ciemny) {
         html.classList.remove('dark-mode');
         html.classList.add('light-mode');
-        if (slonce)  slonce.style.display = 'block';
+        if (slonce) slonce.style.display = 'block';
         if (ksiezyc) ksiezyc.style.display = 'none';
         localStorage.setItem('etf-tryb', 'jasny');
       } else {
         html.classList.remove('light-mode');
         html.classList.add('dark-mode');
-        if (slonce)  slonce.style.display = 'none';
+        if (slonce) slonce.style.display = 'none';
         if (ksiezyc) ksiezyc.style.display = 'block';
         localStorage.setItem('etf-tryb', 'ciemny');
       }
     }
 
     // Inicjalizacja przy ładowaniu strony
-    (function() {
-      var html     = document.documentElement;
+    (function () {
+      var html = document.documentElement;
       var zapisany = localStorage.getItem('etf-tryb');
-      var slonce   = document.getElementById('ikona-slonce');
-      var ksiezyc  = document.getElementById('ikona-ksiezyc');
+      var slonce = document.getElementById('ikona-slonce');
+      var ksiezyc = document.getElementById('ikona-ksiezyc');
       var systemCiemny = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
       if (zapisany === 'ciemny' || (!zapisany && systemCiemny)) {
         html.classList.add('dark-mode');
-        if (slonce)  slonce.style.display = 'none';
+        if (slonce) slonce.style.display = 'none';
         if (ksiezyc) ksiezyc.style.display = 'block';
       } else if (zapisany === 'jasny') {
         html.classList.add('light-mode');
@@ -1980,14 +2187,14 @@
   <!-- Cookie Consent Script -->
   <script defer>
     // Cookie Consent Management
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       var cookieConsent = document.getElementById('cookie-consent');
       var acceptBtn = document.getElementById('cookie-accept');
       var rejectBtn = document.getElementById('cookie-reject');
-      
+
       // Sprawdź czy użytkownik już wybrał
       var cookieChoice = localStorage.getItem('etf-cookie-consent');
-      
+
       if (!cookieChoice) {
         // Pokaż banner jeśli nie ma wyboru
         cookieConsent.style.display = 'block';
@@ -1997,17 +2204,17 @@
           loadGoogleAnalytics();
         }
       }
-      
+
       // Akceptacja cookies
-      acceptBtn.addEventListener('click', function() {
+      acceptBtn.addEventListener('click', function () {
         localStorage.setItem('etf-cookie-consent', 'accepted');
         cookieConsent.style.display = 'none';
-        
+
         // Załaduj Google Analytics
         if (typeof loadGoogleAnalytics === 'function') {
           loadGoogleAnalytics();
         }
-        
+
         // Wyślij zdarzenie do Analytics
         if (typeof gtag === 'function') {
           gtag('event', 'cookie_consent_accepted', {
@@ -2016,18 +2223,18 @@
           });
         }
       });
-      
+
       // Odrzucenie cookies
-      rejectBtn.addEventListener('click', function() {
+      rejectBtn.addEventListener('click', function () {
         localStorage.setItem('etf-cookie-consent', 'rejected');
         cookieConsent.style.display = 'none';
-        
+
         // Nie ładuj Analytics przy odrzuceniu
         console.log('Google Analytics zablokowany - użytkownik odrzucił cookies');
       });
-      
+
       // Automatyczne ukrycie po 30 sekundach (opcjonalne)
-      setTimeout(function() {
+      setTimeout(function () {
         if (cookieConsent.style.display !== 'none') {
           cookieConsent.style.opacity = '0.7';
         }
@@ -2035,4 +2242,5 @@
     });
   </script>
 </body>
+
 </html>

@@ -278,8 +278,56 @@ var TOOLTIPS = {
     tytul: 'Podatek Belki — Lokata',
     tekst: 'Kwota podatku od zysków kapitałowych (19%) pobierana co roku z odsetek lokaty. Zmniejsza zysk.',
     przyklad: 'Roczny zysk z lokaty 4 500 zł × 19% = 855 zł podatku co roku.'
+  },
+
+  /* Moduł 4 — Kalkulator ETF */
+  'etf-wynik-kapital-koncowy': {
+    tytul: 'Kapitał końcowy (ETF)',
+    tekst: 'Całkowita wartość Twojej inwestycji w fundusze ETF po wybranym okresie, po uwzględnieniu procentu składanego, dopłat i ewentualnego podatku Belki.',
+    przyklad: 'Zainwestowałeś 10 000 zł, dopłacasz 500 zł co miesiąc. Po 10 latach przy stopie 7% masz ok. 100 000 zł netto.'
+  },
+  'etf-wynik-zysk-realny': {
+    tytul: 'Zysk realny (czysty przyrost)',
+    tekst: 'Pokazuje ile naprawdę przybyło Ci siły nabywczej po odjęciu inflacji i podatków. To najważniejsza miara Twojego wzbogacenia się.',
+    przyklad: 'Masz 100 000 zł, ale przez 10 lat ceny wzrosły o 30%. Realnie Twój kapitał jest wart tyle, co ~77 000 zł dzisiaj. Zysk realny to nadwyżka ponad tę kwotę.'
+  },
+  'etf-wynik-podatek-belki': {
+    tytul: 'Podatek od zysków (19%)',
+    tekst: 'Podatek Belki naliczany od wypracowanego zysku przy wyjściu z inwestycji (lub co roku przy niektórych funduszach/dywidendach). Korzystając z IKE/IKZE legalnie unikasz tego podatku.',
+    przyklad: 'Zysk 40 000 zł → podatek ok. 7 600 zł. Z IKE te pieniądze zostają w Twoim portfelu.'
+  },
+  'etf-wynik-wklad-wlasny': {
+    tytul: 'Wkład własny (ETF)',
+    tekst: 'Suma Twojego kapitału startowego oraz wszystkich wpłaconych dopłat. To środki, które "wyjąłeś z kieszeni" i zainwestowałeś.',
+    przyklad: 'Start: 5 000 zł. Dopłaty: 500 zł/mies. przez 10 lat = 60 000 zł. Łącznie wkład własny: 65 000 zł.'
+  },
+  'etf-wynik-doplata-laczna': {
+    tytul: 'Łączne dopłaty (ETF)',
+    tekst: 'Suma wszystkich regularnych wpłat dokonanych w trakcie trwania inwestycji, bez uwzględnienia kapitału początkowego.',
+    przyklad: 'Dopłacasz 500 zł miesięcznie przez 5 lat (60 miesięcy) = 30 000 zł łącznych dopłat.'
+  },
+  'etf-wynik-zysk-nominalny': {
+    tytul: 'Zysk nominalny (ETF)',
+    tekst: 'Całkowity zarobek wygenerowany przez fundusze ETF przed odjęciem podatku Belki i przed uwzględnieniem inflacji.',
+    przyklad: 'Wpłaciłeś 50 000 zł, wartość portfela to 75 000 zł. Zysk nominalny wynosi 25 000 zł.'
+  },
+  'etf-wynik-zysk-po-podatku': {
+    tytul: 'Zysk po podatku (ETF)',
+    tekst: 'Twój faktyczny zarobek w złotówkach po odliczeniu 19% podatku Belki. Jeśli korzystasz z IKE/IKZE, ta wartość będzie równa zyskowi nominalnemu.',
+    przyklad: 'Zysk nominalny 20 000 zł - 19% podatku (3 800 zł) = 16 200 zł zysku "na rękę".'
+  },
+  'etf-wynik-cagr': {
+    tytul: 'Roczna stopa zwrotu (CAGR)',
+    tekst: 'Średni roczny wzrost Twojej inwestycji po uwzględnieniu procentu składanego i podatków. Pozwala łatwo porównać ETF z innymi aktywami.',
+    przyklad: 'Inwestycja rosła średnio o 5,5% rocznie po odliczeniu kosztów i podatków.'
+  },
+  'etf-wynik-cagr-realny': {
+    tytul: 'Realna stopa zwrotu (CAGR)',
+    tekst: 'Najważniejszy wskaźnik skuteczności Twojej inwestycji. Pokazuje średnioroczny wzrost siły nabywczej Twoich pieniędzy po uwzględnieniu inflacji i podatków.',
+    przyklad: 'Inwestycja urosła o 6% po podatku, ale inflacja wyniosła 3%. Twój realny zysk to ok. 3% rocznie.'
   }
 };
+
 
 /* ----------------------------------------------------------
    WYKRYWANIE MOBILE
@@ -562,20 +610,26 @@ function podepnijTooltips() {
     'por-obligacje-cagr', 'por-obligacje-cagr-r', 'por-lokata-cagr',
     'por-lokata-zysk', 'por-lokata-zysk-r', 'por-lokata-cagr-r',
     'por-obligacje-podatek', 'por-lokata-podatek',
+    /* Moduł 4 — ETF */
+    'etf-wynik-kapital-koncowy', 'etf-wynik-zysk-realny', 'etf-wynik-podatek-belki',
+    'etf-wynik-wklad-wlasny', 'etf-wynik-doplata-laczna', 'etf-wynik-zysk-nominalny',
+    'etf-wynik-zysk-po-podatku', 'etf-wynik-cagr', 'etf-wynik-cagr-realny'
   ];
+
 
   kafelkiIds.forEach(function(id) {
     var el = document.getElementById(id);
     if (!el || !TOOLTIPS[id]) return;
 
-    var kafelek = el.closest('.kafelek, .porownanie__wiersz, .wynik-glowny, .wynik-glowny-fire, .por-panel, .por-wiersz');
+    var kafelek = el.closest('.kafelek, .porownanie__wiersz, .wynik-glowny, .wynik-glowny-fire, .por-panel, .por-wiersz, .premium-result');
     if (!kafelek) return;
 
     // Dodaj efekt kliknięcia na kafelek (mobile)
     dodajEfektKafelka(kafelek, id);
 
     // Dodaj ikonę ⓘ do etykiety (desktop)
-    var etykieta = kafelek.querySelector('.kafelek__etykieta, .porownanie__nazwa, .wynik-glowny__etykieta, .wynik-glowny-fire__etykieta, .por-panel__tytul, .por-wiersz__label');
+    var etykieta = kafelek.querySelector('.kafelek__label, .kafelek__etykieta, .porownanie__nazwa, .wynik-glowny__etykieta, .wynik-glowny-fire__etykieta, .por-panel__tytul, .por-wiersz__label, .premium-result__label');
+
     if (!etykieta || etykieta.querySelector('[data-tooltip]')) return;
     etykieta.style.display    = 'flex';
     etykieta.style.alignItems = 'center';

@@ -1,274 +1,100 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
   <title>Kalkulator Wolności Finansowej — FIRE | ETFkalkulator.pl</title>
-  <meta name="description" content="Oblicz ile kapitału potrzebujesz do wolności finansowej, ile lat zajmie Ci oszczędzanie i jak długo wystarczy Twój kapitał.">
+  <meta name="description"
+    content="Oblicz ile kapitału potrzebujesz do wolności finansowej, ile lat zajmie Ci oszczędzanie i jak długo wystarczy Twój kapitał.">
+
+  <meta property="og:title" content="Kalkulator Wolności Finansowej — FIRE | ETFkalkulator.pl">
+  <meta property="og:description"
+    content="Oblicz ile kapitału potrzebujesz do wolności finansowej, ile lat zajmie Ci oszczędzanie i jak długo wystarczy Twój kapitał.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://etfkalkulator.pl/pages/kalkulator-wolnosci.html">
+  <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png">
+  <meta property="og:site_name" content="ETFkalkulator.pl">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kalkulator Wolności Finansowej — FIRE | ETFkalkulator.pl">
+  <meta name="twitter:description"
+    content="Oblicz ile kapitału potrzebujesz do wolności finansowej, ile lat zajmie Ci oszczędzanie i jak długo wystarczy Twój kapitał.">
+  <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="../images/og-image.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/main.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="../js/charts-config.js"></script>
 
   <style>
-
-    /* Fix mobile */
-    html { overflow-x: hidden; }
-    body { overflow-x: hidden; max-width: 100vw; }
-    *, *::before, *::after { box-sizing: border-box; }
-    input[type="text"], input[type="number"], input[type="email"], select {
-      min-width: 0 !important; max-width: 100% !important;
-      width: 100% !important; font-size: 16px !important;
-    }
-
-    /* Layout */
     .kalkulator-uklad {
       display: grid;
       grid-template-columns: 1fr 1.6fr;
-      gap: var(--space-6);
+      gap: var(--space-8);
       margin-top: var(--space-8);
       align-items: start;
-      width: 100%;
-      overflow: hidden;
     }
-    @media (max-width: 860px) {
+
+    @media (max-width: 900px) {
       .kalkulator-uklad {
         grid-template-columns: 1fr;
-        overflow: hidden;
-        max-width: 100%;
-      }
-      .formularz-karta {
-        position: static !important;
-        max-height: none !important;
-        overflow: visible !important;
       }
     }
-
-    /* Formularz */
-    .formularz-karta {
-      background: var(--color-bg-elevated);
-      border-radius: var(--radius-xl);
-      padding: var(--space-8);
-      border: 1px solid var(--color-border-subtle);
-      box-shadow: var(--shadow-sm);
-      position: sticky;
-      top: calc(var(--header-height) + var(--space-4));
-      max-height: calc(100vh - var(--header-height) - var(--space-8));
-      overflow-y: auto;
-      min-width: 0;
-    }
-    .formularz-sekcja {
-      font-size: var(--text-xs);
-      font-weight: var(--weight-semibold);
-      color: var(--color-text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-top: var(--space-6);
-      margin-bottom: var(--space-4);
-      padding-top: var(--space-4);
-      border-top: 1px solid var(--color-border-subtle);
-    }
-    .formularz-sekcja:first-child {
-      margin-top: 0; padding-top: 0; border-top: none;
-    }
-    .formularz-pola {
-      display: flex; flex-direction: column;
-      gap: var(--space-4); min-width: 0; width: 100%;
-    }
-
-    /* Główny wynik — standard Apple */
-    .wynik-glowny-fire {
-      background: var(--result-bg);
-      border: var(--result-border);
-      border-radius: var(--result-radius);
-      padding: var(--result-padding);
-      color: var(--result-text-color);
-      text-align: center;
-      box-shadow: var(--result-shadow);
-      transition: var(--result-transition);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .wynik-glowny-fire:hover {
-      box-shadow: var(--result-shadow-hover);
-      transform: translateY(-2px);
-    }
-    
-    .wynik-glowny-fire::before {
-      content: '';
-      position: absolute;
-      top: -60px;
-      left: -60px;
-      width: 120px;
-      height: 120px;
-      background: rgba(255,255,255,0.04);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    .wynik-glowny-fire__etykieta {
-      font-size: var(--result-label-size);
-      font-weight: var(--weight-semibold);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      opacity: 0.9;
-      margin-bottom: var(--space-4);
-    }
-    .wynik-glowny-fire__wartosc {
-      font-family: var(--font-display);
-      font-size: var(--result-value-size);
-      font-weight: var(--weight-bold);
-      line-height: 1;
-      margin-bottom: var(--space-4);
-      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    }
-    .wynik-glowny-fire__opis {
-      font-size: var(--result-description-size);
-      font-weight: var(--weight-medium);
-      opacity: 0.8;
-      max-width: 320px;
-      margin: 0 auto;
-      line-height: var(--leading-relaxed);
-    }
-
-    /* Progress bar */
-    .progress-section {
-      background: var(--color-bg-elevated);
-      border-radius: var(--radius-xl);
-      padding: var(--space-6);
-      border: 1px solid var(--color-border-subtle);
-    }
-    .progress-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: var(--space-3);
-    }
-    .progress-tytul {
-      font-size: var(--text-sm);
-      font-weight: var(--weight-semibold);
-      color: var(--color-text-secondary);
-    }
-    .progress-procent {
-      font-size: var(--text-sm);
-      font-weight: var(--weight-bold);
-      color: var(--color-primary-600);
-    }
-    .progress-track {
-      background: var(--color-bg-secondary);
-      border-radius: var(--radius-full);
-      height: 10px;
-      overflow: hidden;
-      margin-bottom: var(--space-2);
-    }
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--color-primary-400), var(--color-primary-600));
-      border-radius: var(--radius-full);
-      transition: width 0.6s ease;
-      width: 0%;
-    }
-    .progress-opis {
-      font-size: var(--text-xs);
-      color: var(--color-text-muted);
-    }
-
-    /* Siatka kafelków */
-    .wyniki-siatka {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-3);
-    }
-    @media (max-width: 500px) { .wyniki-siatka { grid-template-columns: 1fr; } }
-
-    .kafelek {
-      background: var(--color-bg-elevated);
-      border-radius: var(--radius-lg);
-      padding: var(--space-5);
-      border: 1px solid var(--color-border-subtle);
-      cursor: pointer;
-      transition: background-color 0.15s ease;
-    }
-    .kafelek:hover { background: var(--color-primary-50); }
-    .kafelek__etykieta {
-      font-size: var(--text-xs);
-      font-weight: var(--weight-medium);
-      color: var(--color-text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: var(--space-2);
-      display: flex;
-      align-items: center;
-    }
-    .kafelek__wartosc {
-      font-size: var(--text-xl);
-      font-weight: var(--weight-semibold);
-      color: var(--color-text-primary);
-      line-height: 1;
-    }
-    .kafelek__podpis {
-      font-size: var(--text-xs);
-      color: var(--color-text-muted);
-      margin-top: var(--space-1);
-    }
-    .kafelek--zielony {
-      background: var(--color-primary-50);
-      border-color: var(--color-primary-100);
-    }
-    .kafelek--zielony .kafelek__wartosc { color: var(--color-primary-700); }
-    .kafelek--pelny { grid-column: 1 / -1; }
-
-    /* Wykresy */
-    .wykres-karta {
-      background: var(--color-bg-elevated);
-      border-radius: var(--radius-xl);
-      padding: var(--space-6);
-      border: 1px solid var(--color-border-subtle);
-      box-shadow: var(--shadow-sm);
-    }
-    .wykres-karta__naglowek {
-      margin-bottom: var(--space-5);
-    }
-    .wykres-karta__tytul {
-      font-size: var(--text-base);
-      font-weight: var(--weight-semibold);
-      color: var(--color-text-primary);
-      margin-bottom: var(--space-1);
-    }
-    .wykres-karta__opis {
-      font-size: var(--text-xs);
-      color: var(--color-text-muted);
-    }
-    .wykres-container { position: relative; height: 280px; }
 
     /* IKE row */
     .ike-row {
-      display: flex; align-items: flex-start;
-      gap: var(--space-3); padding: var(--space-4);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      padding: var(--space-4);
       background: var(--color-primary-50);
       border-radius: var(--radius-md);
       border: 1px solid var(--color-primary-100);
-      cursor: pointer; width: 100%; box-sizing: border-box;
+      cursor: pointer;
+      width: 100%;
+      box-sizing: border-box;
       overflow: hidden;
     }
+
     .ike-row input[type="checkbox"] {
-      width: 18px !important; min-width: 18px !important;
-      max-width: 18px !important; height: 18px;
-      margin-top: 2px; accent-color: var(--color-primary-500);
-      cursor: pointer; flex-shrink: 0;
+      width: 18px !important;
+      min-width: 18px !important;
+      max-width: 18px !important;
+      height: 18px;
+      margin-top: 2px;
+      accent-color: var(--color-primary-500);
+      cursor: pointer;
+      flex-shrink: 0;
     }
-    .ike-row__tekst { flex: 1; min-width: 0; overflow: hidden; }
+
+    .ike-row__tekst {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+    }
+
     .ike-row__tekst strong {
       color: var(--color-primary-700);
       font-weight: var(--weight-medium);
-      font-size: var(--text-sm); display: block; margin-bottom: 2px;
+      font-size: var(--text-sm);
+      display: block;
+      margin-bottom: 2px;
     }
+
     .ike-row__tekst span {
-      font-size: var(--text-xs); color: var(--color-text-secondary);
-      display: block; word-wrap: break-word;
+      font-size: var(--text-xs);
+      color: var(--color-text-secondary);
+      display: block;
+      word-wrap: break-word;
     }
 
     /* Słowniczek */
@@ -277,22 +103,52 @@
       padding-top: var(--space-12);
       border-top: 1px solid var(--color-border-subtle);
     }
+
     .edukacja__siatka {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: var(--space-4); margin-top: var(--space-8);
+      gap: var(--space-4);
+      margin-top: var(--space-8);
     }
-    .pojecie { padding: var(--space-5); background: var(--color-bg-secondary); border-radius: var(--radius-md); }
-    .pojecie__term { font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--color-primary-700); margin-bottom: var(--space-2); }
-    .pojecie__def { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: var(--leading-relaxed); }
+
+    .pojecie {
+      padding: var(--space-5);
+      background: var(--color-bg-secondary);
+      border-radius: var(--radius-md);
+    }
+
+    .pojecie__term {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-primary-700);
+      margin-bottom: var(--space-2);
+    }
+
+    .pojecie__def {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+    }
 
     /* Mobile */
     @media (max-width: 640px) {
-      .formularz-karta { padding: var(--space-5); }
-      .wynik-glowny-fire { padding: var(--space-8) var(--space-5); }
+      .formularz-karta {
+        padding: var(--space-5);
+      }
+
+      .wynik-glowny-fire {
+        padding: var(--space-8) var(--space-5);
+      }
     }
 
-    /* Dark mode inline */    body, .header, .formularz-karta, .kafelek, .wykres-karta, .pojecie, .progress-section {
+    /* Dark mode inline */
+    body,
+    .header,
+    .formularz-karta,
+    .kafelek,
+    .wykres-karta,
+    .pojecie,
+    .progress-section {
       transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     }
   </style>
@@ -304,13 +160,13 @@
     <div class="container">
       <div class="header__inner">
         <a href="../index.html" class="header__logo">ETF<span>kalkulator</span>.pl</a>
-                        <nav class="header__nav" aria-label="Nawigacja główna">
+        <nav class="header__nav" aria-label="Nawigacja główna">
+          <a href="../pages/kalkulator-etf.html">Kalkulator ETF</a>
           <a href="../pages/kalkulator-obligacji.html">Obligacje</a>
           <a href="../pages/kalkulator-wolnosci.html" style="color: var(--color-primary-500)">Wolność finansowa</a>
           <a href="../pages/porownywarka.html">Porównywarka</a>
           <a href="../pages/o-projekcie.html">O projekcie</a>
-        </nav>  
-        <button id="btn-darkmode" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="
+          <button id="btn-darkmode" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="
       width: 38px; height: 38px;
       border-radius: var(--radius-full);
       border: 1.5px solid var(--color-border);
@@ -320,34 +176,40 @@
       transition: all var(--transition-fast);
       flex-shrink: 0;
     ">
-      <svg id="ikona-slonce" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="5"/>
-        <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-      </svg>
-      <svg id="ikona-ksiezyc" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
-        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
-      </svg>
-    </button>
-    <a href="../index.html#newsletter" class="btn btn--sm" style="border: 1.5px solid var(--color-primary-300); color: var(--color-primary-700); background: white; border-radius: var(--radius-full);">Newsletter</a>
+            <svg id="ikona-slonce" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+            <svg id="ikona-ksiezyc" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              style="display:none">
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+            </svg>
+          </button>
+          <a href="../index.html#newsletter" class="btn btn--sm"
+            style="border: 1.5px solid var(--color-primary-300); color: var(--color-primary-700); background: white; border-radius: var(--radius-full);">Newsletter</a>
         </nav>
       </div>
     </div>
   </header>
 
-      <div class="mobile-nav-bar" id="mobile-nav-bar">
+  <div class="mobile-nav-bar" id="mobile-nav-bar">
     <div class="mobile-nav-bar__inner">
+      <a href="../pages/kalkulator-etf.html" class="mobile-nav-bar__link">ETF</a>
+      <span class="mobile-nav-bar__separator"></span>
       <a href="../pages/kalkulator-obligacji.html" class="mobile-nav-bar__link">Obligacje</a>
       <span class="mobile-nav-bar__separator"></span>
       <a href="../pages/kalkulator-wolnosci.html" class="mobile-nav-bar__link aktywna">Wolność finansowa</a>
       <span class="mobile-nav-bar__separator"></span>
       <a href="../pages/porownywarka.html" class="mobile-nav-bar__link">Porównywarka ETF</a>
-      <span class="mobile-nav-bar__separator"></span>
-      <div class="mobile-nav-bar__newsletter">
-        <a href="../index.html#newsletter" class="btn btn--sm" style="font-size:12px;padding:4px 12px;border:1.5px solid var(--color-primary-300);color:var(--color-primary-700);background:white;border-radius:var(--radius-full);white-space:nowrap">Newsletter</a>
-      </div>
     </div>
   </div>
 
@@ -377,8 +239,7 @@
             <div class="form-group">
               <label class="form-label" for="wf-wydatki">Miesięczne wydatki</label>
               <div class="form-input-wrapper">
-                <input type="text" inputmode="decimal" id="wf-wydatki" class="form-input"
-                  value="3000" maxlength="8"
+                <input type="text" inputmode="decimal" id="wf-wydatki" class="form-input" value="3000" maxlength="8"
                   onfocus="clearOnFocus(this, 3000)" onblur="restoreOnBlur(this, 3000)">
                 <span class="form-input-suffix">zł</span>
               </div>
@@ -390,9 +251,8 @@
             <div class="form-group">
               <label class="form-label" for="wf-oszczednosci">Miesięczne oszczędności</label>
               <div class="form-input-wrapper">
-                <input type="text" inputmode="decimal" id="wf-oszczednosci" class="form-input"
-                  value="1000" maxlength="7"
-                  onfocus="clearOnFocus(this, 1000)" onblur="restoreOnBlur(this, 1000)">
+                <input type="text" inputmode="decimal" id="wf-oszczednosci" class="form-input" value="1000"
+                  maxlength="7" onfocus="clearOnFocus(this, 1000)" onblur="restoreOnBlur(this, 1000)">
                 <span class="form-input-suffix">zł</span>
               </div>
               <p class="form-hint">Ile miesięcznie odkładasz na inwestycje?</p>
@@ -401,8 +261,7 @@
             <div class="form-group">
               <label class="form-label" for="wf-kapital">Kapitał startowy</label>
               <div class="form-input-wrapper">
-                <input type="text" inputmode="decimal" id="wf-kapital" class="form-input"
-                  value="0" maxlength="9"
+                <input type="text" inputmode="decimal" id="wf-kapital" class="form-input" value="0" maxlength="9"
                   onfocus="clearOnFocus(this, 0)" onblur="restoreOnBlur(this, 0)">
                 <span class="form-input-suffix">zł</span>
               </div>
@@ -414,8 +273,7 @@
             <div class="form-group">
               <label class="form-label" for="wf-stopa">Oczekiwana stopa zwrotu</label>
               <div class="form-input-wrapper">
-                <input type="text" inputmode="decimal" id="wf-stopa" class="form-input"
-                  value="7" maxlength="5"
+                <input type="text" inputmode="decimal" id="wf-stopa" class="form-input" value="7" maxlength="5"
                   onfocus="clearOnFocus(this, 7)" onblur="restoreOnBlur(this, 7)">
                 <span class="form-input-suffix">%</span>
               </div>
@@ -425,8 +283,7 @@
             <div class="form-group">
               <label class="form-label" for="wf-inflacja">Oczekiwana inflacja</label>
               <div class="form-input-wrapper">
-                <input type="text" inputmode="decimal" id="wf-inflacja" class="form-input"
-                  value="3.5" maxlength="5"
+                <input type="text" inputmode="decimal" id="wf-inflacja" class="form-input" value="3.5" maxlength="5"
                   onfocus="clearOnFocus(this, 3.5)" onblur="restoreOnBlur(this, 3.5)">
                 <span class="form-input-suffix">%</span>
               </div>
@@ -435,8 +292,7 @@
             <div class="form-group">
               <label class="form-label" for="wf-stopa-wyplat">Stopa wypłat</label>
               <div class="form-input-wrapper">
-                <input type="text" inputmode="decimal" id="wf-stopa-wyplat" class="form-input"
-                  value="4" maxlength="4"
+                <input type="text" inputmode="decimal" id="wf-stopa-wyplat" class="form-input" value="4" maxlength="4"
                   onfocus="clearOnFocus(this, 4)" onblur="restoreOnBlur(this, 4)">
                 <span class="form-input-suffix">%</span>
               </div>
@@ -448,8 +304,7 @@
             <div class="form-group">
               <label class="form-label" for="wf-lata-cel">Chcę osiągnąć wolność za</label>
               <div class="form-input-wrapper">
-                <input type="text" inputmode="decimal" id="wf-lata-cel" class="form-input"
-                  value="20" maxlength="3"
+                <input type="text" inputmode="decimal" id="wf-lata-cel" class="form-input" value="20" maxlength="3"
                   onfocus="clearOnFocus(this, 20)" onblur="restoreOnBlur(this, 20)">
                 <span class="form-input-suffix">lat</span>
               </div>
@@ -473,10 +328,10 @@
         <div class="wyniki-kolumna" style="display:flex;flex-direction:column;gap:var(--space-5)">
 
           <!-- GŁÓWNY WYNIK: CEL FIRE -->
-          <div class="wynik-glowny-fire">
-            <p class="wynik-glowny-fire__etykieta">Twój cel FIRE — potrzebujesz</p>
-            <p class="wynik-glowny-fire__wartosc" id="wf-wynik-cel">—</p>
-            <p class="wynik-glowny-fire__opis">To kwota przy której Twoje oszczędności utrzymają Cię bez pracy</p>
+          <div class="premium-result">
+            <p class="premium-result__label">Twój cel FIRE — potrzebujesz</p>
+            <p class="premium-result__value" id="wf-wynik-cel">0,00 zł</p>
+            <p class="premium-result__description">To kwota przy której Twoje oszczędności utrzymają Cię bez pracy</p>
           </div>
 
           <!-- PROGRESS BAR -->
@@ -506,9 +361,12 @@
               <p class="kafelek__podpis">Podstawa obliczeń</p>
             </div>
 
-            <div class="kafelek kafelek--pelny" style="background:var(--color-primary-50);border-color:var(--color-primary-100)">
-              <p class="kafelek__etykieta" style="color:var(--color-primary-700)">Ile miesięcznie odkładać żeby osiągnąć cel za <span id="wf-lata-cel-label">20</span> lat</p>
-              <p class="kafelek__wartosc" id="wf-wynik-wymagane" style="color:var(--color-primary-700);font-size:var(--text-2xl)">—</p>
+            <div class="kafelek kafelek--pelny"
+              style="background:var(--color-primary-50);border-color:var(--color-primary-100)">
+              <p class="kafelek__etykieta" style="color:var(--color-primary-700)">Ile miesięcznie odkładać żeby osiągnąć
+                cel za <span id="wf-lata-cel-label">20</span> lat</p>
+              <p class="kafelek__wartosc" id="wf-wynik-wymagane"
+                style="color:var(--color-primary-700);font-size:var(--text-2xl)">—</p>
               <p class="kafelek__podpis">miesięcznie — przy podanej stopie zwrotu</p>
             </div>
 
@@ -564,7 +422,8 @@
       </div>
 
       <!-- Data ostatniej aktualizacji -->
-      <div style="text-align: center; margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--color-border-subtle);">
+      <div
+        style="text-align: center; margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--color-border-subtle);">
         <p class="text-muted" style="font-size: var(--text-xs); margin: 0;">
           🔄 Ostatnia aktualizacja: <span id="data-aktualizacji">marzec 2026</span>
         </p>
@@ -580,36 +439,51 @@
         <div class="edukacja__siatka">
           <div class="pojecie">
             <p class="pojecie__term">FIRE — Financial Independence, Retire Early</p>
-            <p class="pojecie__def">Ruch finansowy którego celem jest osiągnięcie niezależności finansowej wcześnie. "Retire Early" nie zawsze oznacza emeryturę — chodzi o wolność wyboru: czy pracujesz bo chcesz, nie bo musisz.</p>
+            <p class="pojecie__def">Ruch finansowy którego celem jest osiągnięcie niezależności finansowej wcześnie.
+              "Retire Early" nie zawsze oznacza emeryturę — chodzi o wolność wyboru: czy pracujesz bo chcesz, nie bo
+              musisz.</p>
           </div>
           <div class="pojecie">
             <p class="pojecie__term">Reguła 4%</p>
-            <p class="pojecie__def">Badanie "Trinity Study" wykazało że wypłacanie 4% kapitału rocznie jest bezpieczne przez 30+ lat przy zdywersyfikowanym portfelu. Cel FIRE = wydatki roczne ÷ 4% = wydatki × 25.</p>
+            <p class="pojecie__def">Badanie "Trinity Study" wykazało że wypłacanie 4% kapitału rocznie jest bezpieczne
+              przez 30+ lat przy zdywersyfikowanym portfelu. Cel FIRE = wydatki roczne ÷ 4% = wydatki × 25.</p>
           </div>
           <div class="pojecie">
             <p class="pojecie__term">Stopa wypłat</p>
-            <p class="pojecie__def">Procent kapitału który wypłacasz rocznie na życie. Niższa stopa (3%) = bezpieczniej ale potrzebujesz więcej kapitału. Wyższa (5%) = mniej kapitału ale większe ryzyko wyczerpania.</p>
+            <p class="pojecie__def">Procent kapitału który wypłacasz rocznie na życie. Niższa stopa (3%) = bezpieczniej
+              ale potrzebujesz więcej kapitału. Wyższa (5%) = mniej kapitału ale większe ryzyko wyczerpania.</p>
           </div>
           <div class="pojecie">
             <p class="pojecie__term">Realna stopa zwrotu</p>
-            <p class="pojecie__def">Stopa zwrotu po odjęciu inflacji. Jeśli zarabiasz 7% a inflacja wynosi 3,5% — realnie zarabiasz ~3,4%. To prawdziwy przyrost Twojego bogactwa.</p>
+            <p class="pojecie__def">Stopa zwrotu po odjęciu inflacji. Jeśli zarabiasz 7% a inflacja wynosi 3,5% —
+              realnie zarabiasz ~3,4%. To prawdziwy przyrost Twojego bogactwa.</p>
           </div>
           <div class="pojecie">
             <p class="pojecie__term">IKE / IKZE</p>
-            <p class="pojecie__def">Konta emerytalne bez podatku Belki (19%). Na długim horyzoncie to ogromna różnica — zamiast oddawać 19% zysku państwu, cały zysk reinwestujesz. To efekt procentu składanego bez "dziury podatkowej".</p>
+            <p class="pojecie__def">Konta emerytalne bez podatku Belki (19%). Na długim horyzoncie to ogromna różnica —
+              zamiast oddawać 19% zysku państwu, cały zysk reinwestujesz. To efekt procentu składanego bez "dziury
+              podatkowej".</p>
           </div>
           <div class="pojecie">
             <p class="pojecie__term">Procent składany</p>
-            <p class="pojecie__def">Zarabiasz odsetki od odsetek. Im dłużej inwestujesz, tym efekt mocniejszy. Einstein podobno nazwał go "ósmym cudem świata". Czas jest Twoim najcenniejszym aktywem — zacznij jak najwcześniej.</p>
+            <p class="pojecie__def">Zarabiasz odsetki od odsetek. Im dłużej inwestujesz, tym efekt mocniejszy. Einstein
+              podobno nazwał go "ósmym cudem świata". Czas jest Twoim najcenniejszym aktywem — zacznij jak najwcześniej.
+            </p>
           </div>
         </div>
       </div>
 
       <!-- DISCLAIMER -->
-      <div style="margin-top: var(--space-16)">
-        <p class="disclaimer" style="font-size:var(--text-sm);color:var(--color-text-secondary);background:var(--color-bg-elevated);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-4);line-height:1.6;">
-          ⚠️ Kalkulator ma charakter wyłącznie edukacyjny i informacyjny. Obliczenia opierają się na założeniach które mogą się nie sprawdzić w rzeczywistości. Historyczne stopy zwrotu nie gwarantują przyszłych wyników. Nie stanowi rekomendacji inwestycyjnej. Przed podjęciem decyzji skonsultuj się z licencjonowanym doradcą finansowym.
-        </p>
+      <div class="disclaimer-box" style="margin-top: var(--space-16)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <div>
+          <strong>Ważna informacja (Disclaimer)</strong>
+          Symulacja wolności finansowej opiera się na wielu zmiennych rynkowych, które mogą ulec drastycznym zmianom w przyszłości. "Reguła 4%" jest modelem historycznym i nie gwarantuje bezpieczeństwa kapitału w każdym scenariuszu. Narzędzie ma charakter wyłącznie edukacyjny — przed podjęciem decyzji o rezygnacji z pracy, skonsultuj się z profesjonalnym planistą finansowym.
+        </div>
       </div>
 
     </div>
@@ -619,6 +493,7 @@
     <div class="container">
       <div class="footer__inner">
         <div class="footer__links">
+          <a href="../pages/kalkulator-etf.html">Kalkulator ETF</a>
           <a href="../pages/kalkulator-obligacji.html">Kalkulator obligacji</a>
           <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
           <a href="../pages/porownywarka.html">Porównywarka ETF</a>
@@ -646,35 +521,35 @@
       }
     }
     function przelaczTryb() {
-      var html    = document.documentElement;
-      var slonce  = document.getElementById('ikona-slonce');
+      var html = document.documentElement;
+      var slonce = document.getElementById('ikona-slonce');
       var ksiezyc = document.getElementById('ikona-ksiezyc');
-      var ciemny  = html.classList.contains('dark-mode') ||
+      var ciemny = html.classList.contains('dark-mode') ||
         (!html.classList.contains('light-mode') &&
-         window.matchMedia('(prefers-color-scheme: dark)').matches);
+          window.matchMedia('(prefers-color-scheme: dark)').matches);
       if (ciemny) {
         html.classList.remove('dark-mode');
         html.classList.add('light-mode');
-        if (slonce)  slonce.style.display = 'block';
+        if (slonce) slonce.style.display = 'block';
         if (ksiezyc) ksiezyc.style.display = 'none';
         localStorage.setItem('etf-tryb', 'jasny');
       } else {
         html.classList.remove('light-mode');
         html.classList.add('dark-mode');
-        if (slonce)  slonce.style.display = 'none';
+        if (slonce) slonce.style.display = 'none';
         if (ksiezyc) ksiezyc.style.display = 'block';
         localStorage.setItem('etf-tryb', 'ciemny');
       }
     }
-    (function() {
-      var html         = document.documentElement;
-      var zapisany     = localStorage.getItem('etf-tryb');
-      var slonce       = document.getElementById('ikona-slonce');
-      var ksiezyc      = document.getElementById('ikona-ksiezyc');
+    (function () {
+      var html = document.documentElement;
+      var zapisany = localStorage.getItem('etf-tryb');
+      var slonce = document.getElementById('ikona-slonce');
+      var ksiezyc = document.getElementById('ikona-ksiezyc');
       var systemCiemny = window.matchMedia('(prefers-color-scheme: dark)').matches;
       if (zapisany === 'ciemny' || (!zapisany && systemCiemny)) {
         html.classList.add('dark-mode');
-        if (slonce)  slonce.style.display = 'none';
+        if (slonce) slonce.style.display = 'none';
         if (ksiezyc) ksiezyc.style.display = 'block';
       } else if (zapisany === 'jasny') {
         html.classList.add('light-mode');
@@ -682,4 +557,5 @@
     })();
   </script>
 </body>
+
 </html>

@@ -6,90 +6,91 @@
 :root {
 
   /* --- Fonty --- */
-  --font-sans:    'Inter', 'Lato', system-ui, sans-serif;
+  --font-sans: 'Inter', 'Lato', system-ui, sans-serif;
   --font-display: 'Inter', 'Lato', system-ui, sans-serif;
 
   /* --- Kolory — jasny tryb (domyślny) --- */
-  --color-bg:              #F8F7F2;
-  --color-bg-secondary:    #F0EFE8;
-  --color-bg-elevated:     #FFFFFF;
+  --color-bg: #F8F7F2;
+  --color-bg-secondary: #F0EFE8;
+  --color-bg-elevated: #FFFFFF;
 
-  --color-text-primary:    #1C1C1E;
-  --color-text-secondary:  #6E6E73;
-  --color-text-muted:      #AEAEB2;
+  --color-text-primary: #1C1C1E;
+  --color-text-secondary: #6E6E73;
+  --color-text-muted: #AEAEB2;
 
-  --color-border:          #E5E7EB;
-  --color-border-subtle:   #F0F0F0;
+  --color-border: #E5E7EB;
+  --color-border-subtle: #F0F0F0;
 
-  /* --- Granat paleta (główna) --- */
-  --color-primary-50:   #e8f0fe;
-  --color-primary-100:  #c3daf7;
-  --color-primary-200:  #9ec4f0;
-  --color-primary-300:  #79ade9;
-  --color-primary-400:  #5497e2;
-  --color-primary-500:  #1A56A0;
-  --color-primary-600:  #144a8a;
-  --color-primary-700:  #0f3e74;
-  --color-primary-800:  #0a325e;
-  --color-primary-900:  #052648;
+  /* --- Granat / Brand Blue (Tech & Stability) --- */
+  --color-primary-50: #f0f7ff;
+  --color-primary-100: #e0effe;
+  --color-primary-200: #bae0fd;
+  --color-primary-300: #7cc8fb;
+  --color-primary-400: #38abf8;
+  --color-primary-500: #1A56A0; /* Brand Blue from PRD */
+  --color-primary-600: #0e4484;
+  --color-primary-700: #0d386b;
+  --color-primary-800: #102f57;
+  --color-primary-900: #12294a;
 
-  /* --- Zielona paleta (akcenty) --- */
-  --color-green-50:   #d8f3dc;
-  --color-green-100:  #b7e4c7;
-  --color-green-200:  #95d5b2;
-  --color-green-300:  #74c69d;
-  --color-green-400:  #52b788;
-  --color-green-500:  #40916c;
-  --color-green-600:  #2d6a4f;
-  --color-green-700:  #2D6A4F;
-  --color-green-800:  #1b4332;
-  --color-green-900:  #081c15;
 
-  /* --- Pomarańczowa paleta (akcenty) --- */
-  --color-orange-50:   #fff4e6;
-  --color-orange-100:  #ffe0cc;
-  --color-orange-200:  #ffcc99;
-  --color-orange-300:  #ffb866;
-  --color-orange-400:  #ffa433;
-  --color-orange-500:  #ff9000;
-  --color-orange-600:  #e67e00;
-  --color-orange-700:  #cc6c00;
-  --color-orange-800:  #b35a00;
-  --color-orange-900:  #994800;
+  /* --- Zielona / Deep Emerald (Trust) --- */
+  --color-green-50: #ecfdf5;
+  --color-green-100: #d1fae5;
+  --color-green-200: #a7f3d0;
+  --color-green-300: #6ee7b7;
+  --color-green-400: #34d399;
+  --color-green-500: #10B981; /* Emerald */
+  --color-green-600: #059669;
+  --color-green-700: #047857;
+  --color-green-800: #065f46;
+  --color-green-900: #064e3b;
+
+  /* --- Złota / Accent Gold (Growth & Results) --- */
+  --color-gold-50: #fffbeb;
+  --color-gold-100: #fef3c7;
+  --color-gold-200: #fde68a;
+  --color-gold-300: #fcd34d;
+  --color-gold-400: #fbbf24;
+  --color-gold-500: #F59E0B; /* Gold-ish */
+  --color-gold-600: #D97706;
+  --color-gold-700: #B45309;
+  --color-gold-800: #92400e;
+  --color-gold-900: #78350f;
 
   /* Inne */
-  --color-error:   #dc2626;
-  --color-warning: #f59e0b;
-  --color-info:    #3b82f6;
+  --color-error: #FF3B30; /* Apple Red */
+  --color-warning: #FF9500; /* Apple Orange */
+  --color-info: #5856D6; /* Apple Indigo */
 
   /* --- Typografia --- */
-  --text-xs:   0.75rem;
-  --text-sm:   0.875rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
   --text-base: 1rem;
-  --text-lg:   1.125rem;
-  --text-xl:   1.25rem;
-  --text-2xl:  1.5rem;
-  --text-3xl:  1.875rem;
-  --text-4xl:  2.25rem;
-  --text-5xl:  3rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
 
-  --weight-normal:   400;
-  --weight-medium:   500;
+  --weight-normal: 400;
+  --weight-medium: 500;
   --weight-semibold: 600;
-  --weight-bold:     700;
+  --weight-bold: 700;
 
-  --leading-tight:   1.25;
-  --leading-normal:  1.5;
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
   --leading-relaxed: 1.7;
 
   /* --- Odstępy --- */
-  --space-1:  0.25rem;
-  --space-2:  0.5rem;
-  --space-3:  0.75rem;
-  --space-4:  1rem;
-  --space-5:  1.25rem;
-  --space-6:  1.5rem;
-  --space-8:  2rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
   --space-10: 2.5rem;
   --space-12: 3rem;
   --space-16: 4rem;
@@ -97,24 +98,25 @@
   --space-24: 6rem;
 
   /* --- Zaokrąglenia --- */
-  --radius-sm:   4px;
-  --radius-md:   8px;
-  --radius-lg:   12px;
-  --radius-xl:   16px;
-  --radius-2xl:  24px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
   --radius-full: 9999px;
 
   /* --- Cienie — styl Apple z lepszą głębią --- */
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04);
-  --shadow-lg: 0 10px 40px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
-  --shadow-xl: 0 20px 60px rgba(0,0,0,0.12), 0 8px 32px rgba(0,0,0,0.08);
-  
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.12), 0 8px 32px rgba(0, 0, 0, 0.08);
+
   /* Specjalne cienie dla kolorów */
   --shadow-primary: 0 8px 32px rgba(26, 86, 160, 0.15), 0 4px 16px rgba(26, 86, 160, 0.1);
   --shadow-primary-hover: 0 12px 48px rgba(26, 86, 160, 0.25), 0 6px 24px rgba(26, 86, 160, 0.15);
-  --shadow-green: 0 8px 32px rgba(64, 145, 108, 0.15), 0 4px 16px rgba(64, 145, 108, 0.1);
-  --shadow-orange: 0 8px 32px rgba(255, 144, 0, 0.15), 0 4px 16px rgba(255, 144, 0, 0.1);
+
+  --shadow-green: 0 8px 32px rgba(16, 185, 129, 0.15), 0 4px 16px rgba(16, 185, 129, 0.1);
+  --shadow-gold: 0 8px 32px rgba(245, 158, 11, 0.15), 0 4px 16px rgba(245, 158, 11, 0.1);
 
   /* --- Standardowe style Apple dla głównych wyników --- */
   --result-bg: linear-gradient(135deg, var(--color-primary-900) 0%, var(--color-primary-700) 50%, var(--color-primary-500) 100%);
@@ -130,14 +132,14 @@
   --result-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* --- Animacje --- */
-  --transition-fast:   150ms ease;
+  --transition-fast: 150ms ease;
   --transition-normal: 250ms ease;
-  --transition-slow:   400ms ease;
+  --transition-slow: 400ms ease;
 
   /* --- Layout --- */
-  --max-width:      960px;
+  --max-width: 960px;
   --max-width-text: 680px;
-  --header-height:  64px;
+  --header-height: 64px;
 }
 
 
@@ -148,17 +150,18 @@
 /* Systemowy dark mode */
 @media (prefers-color-scheme: dark) {
   html:not(.light-mode) {
-    --color-bg:              #1C1C1E;
-    --color-bg-secondary:    #2C2C2E;
-    --color-bg-elevated:     #3A3A3C;
-    --color-text-primary:    #F5F5F7;
-    --color-text-secondary:  #AEAEB2;
-    --color-text-muted:      #6E6E73;
-    --color-border:          #48484A;
-    --color-border-subtle:   #3A3A3C;
-    --color-green-50:        #1a2e23;
-    --color-green-100:       #1f3829;
+    --color-bg: #1C1C1E;
+    --color-bg-secondary: #2C2C2E;
+    --color-bg-elevated: #3A3A3C;
+    --color-text-primary: #F5F5F7;
+    --color-text-secondary: #AEAEB2;
+    --color-text-muted: #6E6E73;
+    --color-border: #48484A;
+    --color-border-subtle: #3A3A3C;
+    --color-green-50: #1a2e23;
+    --color-green-100: #1f3829;
   }
+
   html:not(.light-mode) .header {
     background: rgba(28, 28, 30, 0.9);
   }
@@ -166,31 +169,32 @@
 
 /* Wymuszony ciemny — przez przycisk */
 html.dark-mode {
-  --color-bg:              #1C1C1E;
-  --color-bg-secondary:    #2C2C2E;
-  --color-bg-elevated:     #3A3A3C;
-  --color-text-primary:    #F5F5F7;
-  --color-text-secondary:  #AEAEB2;
-  --color-text-muted:      #6E6E73;
-  --color-border:          #48484A;
-  --color-border-subtle:   #3A3A3C;
-  --color-green-50:        #1a2e23;
-  --color-green-100:       #1f3829;
+  --color-bg: #1C1C1E;
+  --color-bg-secondary: #2C2C2E;
+  --color-bg-elevated: #3A3A3C;
+  --color-text-primary: #F5F5F7;
+  --color-text-secondary: #AEAEB2;
+  --color-text-muted: #6E6E73;
+  --color-border: #48484A;
+  --color-border-subtle: #3A3A3C;
+  --color-green-50: #1a2e23;
+  --color-green-100: #1f3829;
 }
+
 html.dark-mode .header {
   background: rgba(28, 28, 30, 0.9);
 }
 
 /* Wymuszony jasny — nadpisuje systemowy dark */
 html.light-mode {
-  --color-bg:              #F8F7F2 !important;
-  --color-bg-secondary:    #F0EFE8 !important;
-  --color-bg-elevated:     #FFFFFF !important;
-  --color-text-primary:    #1C1C1E !important;
-  --color-text-secondary:  #6E6E73 !important;
-  --color-text-muted:      #AEAEB2 !important;
-  --color-border:          #E5E7EB !important;
-  --color-border-subtle:   #F0F0F0 !important;
-  --color-green-50:        #d8f3dc !important;
-  --color-green-100:       #b7e4c7 !important;
+  --color-bg: #F8F7F2 !important;
+  --color-bg-secondary: #F0EFE8 !important;
+  --color-bg-elevated: #FFFFFF !important;
+  --color-text-primary: #1C1C1E !important;
+  --color-text-secondary: #6E6E73 !important;
+  --color-text-muted: #AEAEB2 !important;
+  --color-border: #E5E7EB !important;
+  --color-border-subtle: #F0F0F0 !important;
+  --color-green-50: #d8f3dc !important;
+  --color-green-100: #b7e4c7 !important;
 }

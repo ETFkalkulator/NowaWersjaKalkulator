@@ -1,19 +1,40 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
   <title>Kalkulator Obligacji Skarbowych — EDO, ROS, ROD | ETFkalkulator.pl</title>
-  <meta name="description" content="Oblicz realny zysk z obligacji skarbowych EDO, ROS i ROD po podatku Belki i inflacji. Bezpłatny kalkulator dla polskich inwestorów.">
+  <meta name="description"
+    content="Oblicz realny zysk z obligacji skarbowych EDO, ROS i ROD po podatku Belki i inflacji. Bezpłatny kalkulator dla polskich inwestorów.">
+
+  <meta property="og:title" content="Kalkulator Obligacji Skarbowych — EDO, ROS, ROD | ETFkalkulator.pl">
+  <meta property="og:description"
+    content="Oblicz realny zysk z obligacji skarbowych EDO, ROS i ROD po podatku Belki i inflacji. Bezpłatny kalkulator dla polskich inwestorów.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://etfkalkulator.pl/pages/kalkulator-obligacji.html">
+  <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png">
+  <meta property="og:site_name" content="ETFkalkulator.pl">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kalkulator Obligacji Skarbowych — EDO, ROS, ROD | ETFkalkulator.pl">
+  <meta name="twitter:description"
+    content="Oblicz realny zysk z obligacji skarbowych EDO, ROS i ROD po podatku Belki i inflacji. Bezpłatny kalkulator dla polskich inwestorów.">
+  <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="../images/og-image.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/main.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="../js/charts-config.js"></script>
   <style>
-
     /* Hint "kliknij" na kafelkach — widoczny tylko na mobile */
     @media (max-width: 768px) {
       .kafelek::after {
@@ -30,13 +51,18 @@
     html {
       overflow-x: hidden;
     }
+
     body {
       overflow-x: hidden;
       max-width: 100vw;
     }
-    *, *::before, *::after {
+
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
     }
+
     /* Wszystkie inputy i selecty — nie rozszerzają rodzica */
     input[type="number"],
     input[type="text"],
@@ -48,6 +74,7 @@
       /* iOS: font >= 16px zapobiega auto-zoom */
       font-size: 16px !important;
     }
+
     /* Wrapper inputa nie może rosnąć */
     .form-input-wrapper,
     .form-group,
@@ -56,11 +83,13 @@
       min-width: 0;
       max-width: 100%;
     }
+
     /* Przyciski miesięcznie/rocznie nie mogą wychodzić poza kontener */
     .btn-okres-grupa {
       max-width: 100%;
       overflow: hidden;
     }
+
     .btn-okres {
       min-width: 0;
       overflow: hidden;
@@ -70,44 +99,15 @@
 
     .kalkulator-uklad {
       display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: var(--space-6);
+      grid-template-columns: 1fr 1.6fr;
+      gap: var(--space-8);
       margin-top: var(--space-8);
       align-items: start;
-      /* Kluczowe: grid nie rozszerza się ponad szerokość ekranu */
-      width: 100%;
-      max-width: 100%;
-      overflow: hidden;
     }
 
-    /* Lewa kolumna — formularz przyklejony podczas scrollowania */
-    .formularz-karta {
-      position: sticky;
-      top: calc(var(--header-height) + var(--space-4));
-      max-height: calc(100vh - var(--header-height) - var(--space-8));
-      overflow-y: auto;
-      overflow-x: hidden;
-      scrollbar-width: thin;
-      scrollbar-color: var(--color-primary-200) transparent;
-    }
-
-    /* Prawa kolumna — normalne scrollowanie strony */
-    .wyniki-kolumna {
-      min-height: 0;
-    }
-
-    @media (max-width: 860px) {
+    @media (max-width: 900px) {
       .kalkulator-uklad {
         grid-template-columns: 1fr;
-        overflow: hidden;
-        max-width: 100%;
-      }
-      .formularz-karta {
-        position: static;
-        max-height: none;
-        overflow: hidden;
-        width: 100%;
-        max-width: 100%;
       }
     }
 
@@ -119,6 +119,7 @@
       box-shadow: var(--shadow-sm);
       border: 1px solid var(--color-border-subtle);
     }
+
     .formularz-sekcja {
       font-size: var(--text-xs);
       font-weight: var(--weight-semibold);
@@ -130,11 +131,13 @@
       padding-top: var(--space-4);
       border-top: 1px solid var(--color-border-subtle);
     }
+
     .formularz-sekcja:first-child {
       margin-top: 0;
       padding-top: 0;
       border-top: none;
     }
+
     .formularz-pola {
       display: flex;
       flex-direction: column;
@@ -147,6 +150,7 @@
       gap: var(--space-2);
       margin-top: var(--space-2);
     }
+
     .btn-okres {
       flex: 1;
       padding: var(--space-2) var(--space-3);
@@ -160,6 +164,7 @@
       cursor: pointer;
       transition: all var(--transition-fast);
     }
+
     .btn-okres--aktywny {
       background: var(--color-primary-500);
       border-color: var(--color-primary-500);
@@ -180,6 +185,7 @@
       box-sizing: border-box;
       overflow: hidden;
     }
+
     .ike-row input[type="checkbox"] {
       width: 18px !important;
       min-width: 18px !important;
@@ -190,11 +196,13 @@
       cursor: pointer;
       flex-shrink: 0;
     }
+
     .ike-row__tekst {
       flex: 1;
       min-width: 0;
       overflow: hidden;
     }
+
     .ike-row__tekst strong {
       color: var(--color-primary-700);
       font-weight: var(--weight-medium);
@@ -203,6 +211,7 @@
       margin-bottom: 2px;
       word-wrap: break-word;
     }
+
     .ike-row__tekst span {
       font-size: var(--text-xs);
       color: var(--color-text-secondary);
@@ -217,72 +226,13 @@
       gap: var(--space-5);
     }
 
-    /* Główny wynik — standard Apple */
+    /* Wyniki — standard Apple */
     .wynik-glowny {
-      background: var(--result-bg);
-      border: var(--result-border);
-      border-radius: var(--result-radius);
-      padding: var(--result-padding);
-      color: var(--result-text-color);
-      text-align: center;
-      box-shadow: var(--result-shadow);
-      transition: var(--result-transition);
-      position: relative;
-      overflow: hidden;
+      margin-bottom: var(--space-6);
     }
-    
-    .wynik-glowny:hover {
-      box-shadow: var(--result-shadow-hover);
-      transform: translateY(-2px);
-    }
-    
-    .wynik-glowny::before {
-      content: '';
-      position: absolute;
-      top: -60px;
-      right: -60px;
-      width: 200px;
-      height: 200px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    .wynik-glowny::after {
-      content: '';
-      position: absolute;
-      bottom: -40px;
-      left: -40px;
-      width: 150px;
-      height: 150px;
-      background: rgba(255,255,255,0.04);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    .wynik-glowny__etykieta {
-      font-size: var(--result-label-size);
-      font-weight: var(--weight-semibold);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      opacity: 0.9;
-      margin-bottom: var(--space-4);
-    }
-    
-    .wynik-glowny__wartosc {
-      font-family: var(--font-display);
-      font-size: var(--result-value-size);
-      font-weight: var(--weight-bold);
-      line-height: 1;
-      margin-bottom: var(--space-4);
-      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    }
-    
-    .wynik-glowny__opis {
-      font-size: var(--result-description-size);
-      font-weight: var(--weight-medium);
-      opacity: 0.8;
-      max-width: 320px;
-      margin: 0 auto;
-      line-height: var(--leading-relaxed);
+
+    .kafelek-grid {
+      margin-bottom: var(--space-6);
     }
 
     /* Siatka kafelków */
@@ -291,16 +241,27 @@
       grid-template-columns: 1fr 1fr;
       gap: var(--space-3);
     }
-    @media (max-width: 500px) { .wyniki-siatka { grid-template-columns: 1fr; } }
+
+    @media (max-width: 500px) {
+      .wyniki-siatka {
+        grid-template-columns: 1fr;
+      }
+    }
 
     /* Mobile — wyśrodkowanie i czytelność */
     @media (max-width: 640px) {
-      .page-hero { padding-block: var(--space-8) var(--space-4); }
-      .page-hero__bread { font-size: var(--text-xs); }
+      .page-hero {
+        padding-block: var(--space-8) var(--space-4);
+      }
+
+      .page-hero__bread {
+        font-size: var(--text-xs);
+      }
 
       .wynik-glowny {
         padding: var(--space-8) var(--space-6);
       }
+
       .wynik-glowny__wartosc {
         font-size: clamp(1.8rem, 8vw, 2.4rem);
       }
@@ -309,9 +270,11 @@
         padding: var(--space-4);
         text-align: center;
       }
+
       .kafelek__etykieta {
         justify-content: center;
       }
+
       .kafelek__podpis {
         text-align: center;
       }
@@ -334,42 +297,13 @@
       .tabela {
         font-size: var(--text-xs);
       }
-      .tabela td, .tabela th {
+
+      .tabela td,
+      .tabela th {
         padding: var(--space-2);
       }
     }
 
-    .kafelek {
-      background: var(--color-bg-elevated);
-      border-radius: var(--radius-lg);
-      padding: var(--space-5);
-      border: 1px solid var(--color-border-subtle);
-    }
-    .kafelek__etykieta {
-      font-size: var(--text-xs);
-      font-weight: var(--weight-medium);
-      color: var(--color-text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: var(--space-2);
-    }
-    .kafelek__wartosc {
-      font-size: var(--text-xl);
-      font-weight: var(--weight-semibold);
-      color: var(--color-text-primary);
-      line-height: 1;
-    }
-    .kafelek__podpis {
-      font-size: var(--text-xs);
-      color: var(--color-text-muted);
-      margin-top: var(--space-1);
-    }
-    .kafelek--negatywny .kafelek__wartosc { color: var(--color-error); }
-    .kafelek--realny {
-      background: var(--color-primary-50);
-      border-color: var(--color-primary-100);
-    }
-    .kafelek--realny .kafelek__wartosc { color: var(--color-primary-700); }
 
     /* Porównanie z lokatą */
     .porownanie {
@@ -378,6 +312,7 @@
       padding: var(--space-6);
       border: 1px solid var(--color-border-subtle);
     }
+
     .porownanie__tytul {
       font-size: var(--text-sm);
       font-weight: var(--weight-semibold);
@@ -386,6 +321,7 @@
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
+
     .porownanie__wiersz {
       display: flex;
       justify-content: space-between;
@@ -393,9 +329,22 @@
       padding-block: var(--space-3);
       border-bottom: 1px solid var(--color-border-subtle);
     }
-    .porownanie__wiersz:last-child { border-bottom: none; padding-bottom: 0; }
-    .porownanie__nazwa { font-size: var(--text-sm); color: var(--color-text-secondary); }
-    .porownanie__kwota { font-size: var(--text-base); font-weight: var(--weight-semibold); }
+
+    .porownanie__wiersz:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .porownanie__nazwa {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+    }
+
+    .porownanie__kwota {
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+    }
+
     .porownanie__roznica {
       font-size: var(--text-sm);
       font-weight: var(--weight-semibold);
@@ -413,6 +362,7 @@
       border: 1px solid var(--color-border-subtle);
       box-shadow: var(--shadow-sm);
     }
+
     .wykres-karta__naglowek {
       display: flex;
       justify-content: space-between;
@@ -421,11 +371,13 @@
       flex-wrap: wrap;
       gap: var(--space-3);
     }
+
     .wykres-karta__tytul {
       font-size: var(--text-base);
       font-weight: var(--weight-semibold);
       color: var(--color-text-primary);
     }
+
     .wykres-container {
       position: relative;
       height: 300px;
@@ -439,13 +391,19 @@
       border: 1px solid var(--color-border-subtle);
       overflow-x: auto;
     }
+
     .tabela-karta__tytul {
       font-size: var(--text-base);
       font-weight: var(--weight-semibold);
       color: var(--color-text-primary);
       margin-bottom: var(--space-5);
     }
-    .tabela { width: 100%; font-size: var(--text-sm); }
+
+    .tabela {
+      width: 100%;
+      font-size: var(--text-sm);
+    }
+
     .tabela th {
       text-align: left;
       padding: var(--space-2) var(--space-3);
@@ -456,15 +414,25 @@
       letter-spacing: 0.06em;
       border-bottom: 1px solid var(--color-border);
     }
+
     .tabela td {
       padding: var(--space-3);
       color: var(--color-text-primary);
       border-bottom: 1px solid var(--color-border-subtle);
     }
-    .tabela tr:last-child td { border-bottom: none; }
-    .tabela tr:hover td { background: var(--color-bg-secondary); }
+
+    .tabela tr:last-child td {
+      border-bottom: none;
+    }
+
+    .tabela tr:hover td {
+      background: var(--color-bg-secondary);
+    }
+
     .tabela td:not(:first-child),
-    .tabela th:not(:first-child) { text-align: right; }
+    .tabela th:not(:first-child) {
+      text-align: right;
+    }
 
     /* Słowniczek */
     .edukacja {
@@ -472,23 +440,27 @@
       padding-top: var(--space-12);
       border-top: 1px solid var(--color-border-subtle);
     }
+
     .edukacja__siatka {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: var(--space-4);
       margin-top: var(--space-8);
     }
+
     .pojecie {
       padding: var(--space-5);
       background: var(--color-bg-secondary);
       border-radius: var(--radius-md);
     }
+
     .pojecie__term {
       font-size: var(--text-sm);
       font-weight: var(--weight-semibold);
       color: var(--color-primary-700);
       margin-bottom: var(--space-2);
     }
+
     .pojecie__def {
       font-size: var(--text-sm);
       color: var(--color-text-secondary);
@@ -496,23 +468,31 @@
     }
 
     /* Hero podstrony */
-    .page-hero { padding-block: var(--space-12) var(--space-6); }
+    .page-hero {
+      padding-block: var(--space-12) var(--space-6);
+    }
+
     .page-hero__bread {
       font-size: var(--text-sm);
       color: var(--color-text-muted);
       margin-bottom: var(--space-4);
     }
-    .page-hero__bread a { color: var(--color-primary-500); }
-    .page-hero__bread a:hover { text-decoration: underline; }
 
+    .page-hero__bread a {
+      color: var(--color-primary-500);
+    }
+
+    .page-hero__bread a:hover {
+      text-decoration: underline;
+    }
   </style>
 
-  
+
 
   <script>
     // Fix: klawiatura mobilna przesuwa viewport przy chowaniu
     if ('visualViewport' in window) {
-      window.visualViewport.addEventListener('resize', function() {
+      window.visualViewport.addEventListener('resize', function () {
         // Gdy klawiatura się chowa (viewport wraca do pełnej wysokości)
         if (window.visualViewport.height > window.innerHeight * 0.75) {
           // Reset pozycji — wróć do lewej krawędzi
@@ -523,9 +503,9 @@
     }
 
     // Dodatkowo — po każdym blur (opuszczeniu pola) resetuj scroll X
-    document.addEventListener('focusout', function(e) {
+    document.addEventListener('focusout', function (e) {
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') {
-        setTimeout(function() {
+        setTimeout(function () {
           window.scrollTo({ left: 0, behavior: 'instant' });
         }, 100);
       }
@@ -666,8 +646,8 @@
       <div class="cookie-consent__content">
         <h4 class="cookie-consent__title">Prywatność i pliki cookies</h4>
         <p class="cookie-consent__text">
-          ETFkalkulator.pl używa plików cookies do analizy ruchu i personalizacji treści. 
-          Kontynuując przeglądanie zgadzasz się na naszą 
+          ETFkalkulator.pl używa plików cookies do analizy ruchu i personalizacji treści.
+          Kontynuując przeglądanie zgadzasz się na naszą
           <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__link">politykę cookies</a>.
         </p>
       </div>
@@ -690,12 +670,12 @@
       <div class="header__inner">
         <a href="../index.html" class="header__logo">ETF<span>kalkulator</span>.pl</a>
         <nav class="header__nav" aria-label="Nawigacja główna">
+          <a href="../pages/kalkulator-etf.html">Kalkulator ETF</a>
           <a href="../pages/kalkulator-obligacji.html" style="color: var(--color-primary-500)">Obligacje</a>
           <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
           <a href="../pages/porownywarka.html">Porównywarka</a>
           <a href="../pages/o-projekcie.html">O projekcie</a>
-        </nav>  
-        <button id="btn-darkmode" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="
+          <button id="btn-darkmode" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="
       width: 38px; height: 38px;
       border-radius: var(--radius-full);
       border: 1.5px solid var(--color-border);
@@ -705,34 +685,40 @@
       transition: all var(--transition-fast);
       flex-shrink: 0;
     ">
-      <svg id="ikona-slonce" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="5"/>
-        <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-      </svg>
-      <svg id="ikona-ksiezyc" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
-        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
-      </svg>
-    </button>
-    <a href="../index.html#newsletter" class="btn btn--sm" style="border: 1.5px solid var(--color-primary-300); color: var(--color-primary-700); background: white; border-radius: var(--radius-full);">Newsletter</a>
+            <svg id="ikona-slonce" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+            <svg id="ikona-ksiezyc" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              style="display:none">
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+            </svg>
+          </button>
+          <a href="../index.html#newsletter" class="btn btn--sm"
+            style="border: 1.5px solid var(--color-primary-300); color: var(--color-primary-700); background: white; border-radius: var(--radius-full);">Newsletter</a>
         </nav>
       </div>
     </div>
   </header>
 
-    <div class="mobile-nav-bar" id="mobile-nav-bar">
+  <div class="mobile-nav-bar" id="mobile-nav-bar">
     <div class="mobile-nav-bar__inner">
+      <a href="../pages/kalkulator-etf.html" class="mobile-nav-bar__link">ETF</a>
+      <span class="mobile-nav-bar__separator"></span>
       <a href="../pages/kalkulator-obligacji.html" class="mobile-nav-bar__link aktywna">Obligacje</a>
       <span class="mobile-nav-bar__separator"></span>
       <a href="../pages/kalkulator-wolnosci.html" class="mobile-nav-bar__link">Wolność finansowa</a>
       <span class="mobile-nav-bar__separator"></span>
       <a href="../pages/porownywarka.html" class="mobile-nav-bar__link">Porównywarka ETF</a>
-      <span class="mobile-nav-bar__separator"></span>
-      <div class="mobile-nav-bar__newsletter">
-        <a href="../index.html#newsletter" class="btn btn--sm" style="font-size:12px;padding:4px 12px;border:1.5px solid var(--color-primary-300);color:var(--color-primary-700);background:white;border-radius:var(--radius-full);white-space:nowrap">Newsletter</a>
-      </div>
     </div>
   </div>
 
@@ -762,9 +748,8 @@
             <div class="form-group">
               <label class="form-label" for="input-kapital">Kapitał startowy</label>
               <div class="form-input-wrapper">
-                <input type="text" inputmode="decimal" id="input-kapital" class="form-input"
-                  value="10000" min="100" step="100" maxlength="10"
-                  onfocus="clearOnFocus(this, 10000)" onblur="restoreOnBlur(this, 10000)">
+                <input type="text" inputmode="decimal" id="input-kapital" class="form-input" value="10000" min="100"
+                  step="100" maxlength="10" onfocus="clearOnFocus(this, 10000)" onblur="restoreOnBlur(this, 10000)">
                 <span class="form-input-suffix">zł</span>
               </div>
             </div>
@@ -782,16 +767,15 @@
             <div class="form-group">
               <label class="form-label" for="input-stopa">Oprocentowanie rok 1</label>
               <div class="form-input-wrapper">
-                <input type="text" inputmode="decimal" id="input-stopa" class="form-input"
-                  value="6.6" min="0" max="20" step="0.1" maxlength="5"
-                  aria-describedby="hint-stopa"
-                  onfocus="clearOnFocus(this, 6.6)" onblur="restoreOnBlur(this, 6.6)">
+                <input type="text" inputmode="decimal" id="input-stopa" class="form-input" value="6.6" min="0" max="20"
+                  step="0.1" maxlength="5" aria-describedby="hint-stopa" onfocus="clearOnFocus(this, 6.6)"
+                  onblur="restoreOnBlur(this, 6.6)">
                 <span class="form-input-suffix">%</span>
               </div>
               <p class="form-hint" id="hint-stopa">
                 Sprawdź aktualne na
                 <a href="https://www.obligacjeskarbowe.pl" target="_blank" rel="noopener"
-                   style="color: var(--color-primary-500)">obligacjeskarbowe.pl</a>
+                  style="color: var(--color-primary-500)">obligacjeskarbowe.pl</a>
               </p>
             </div>
 
@@ -800,22 +784,18 @@
             <div class="form-group">
               <label class="form-label" for="input-doplata">Regularna dopłata</label>
               <div class="form-input-wrapper">
-                <input type="text" inputmode="decimal" id="input-doplata" class="form-input"
-                  value="0" min="0" step="50" maxlength="8"
-                  aria-describedby="hint-doplata"
-                  onfocus="clearOnFocus(this, 0)" onblur="restoreOnBlur(this, 0)">
+                <input type="text" inputmode="decimal" id="input-doplata" class="form-input" value="0" min="0" step="50"
+                  maxlength="8" aria-describedby="hint-doplata" onfocus="clearOnFocus(this, 0)"
+                  onblur="restoreOnBlur(this, 0)">
                 <span class="form-input-suffix">zł</span>
               </div>
               <!-- Przełącznik miesięcznie / rocznie -->
               <div class="btn-okres-grupa">
-                <button type="button" id="btn-miesiecznie"
-                  class="btn-okres btn-okres--aktywny"
+                <button type="button" id="btn-miesiecznie" class="btn-okres btn-okres--aktywny"
                   onclick="ustawOkres('miesiecznie')">
                   Miesięcznie
                 </button>
-                <button type="button" id="btn-rocznie"
-                  class="btn-okres"
-                  onclick="ustawOkres('rocznie')">
+                <button type="button" id="btn-rocznie" class="btn-okres" onclick="ustawOkres('rocznie')">
                   Rocznie
                 </button>
               </div>
@@ -829,25 +809,23 @@
             <div class="form-group">
               <label class="form-label" for="input-inflacja">Oczekiwana inflacja</label>
               <div class="form-input-wrapper">
-                <input type="text" inputmode="decimal" id="input-inflacja" class="form-input"
-                  value="3.5" min="0" max="30" step="0.1" maxlength="5"
-                  aria-describedby="hint-inflacja"
-                  onfocus="clearOnFocus(this, 3.5)" onblur="restoreOnBlur(this, 3.5)">
+                <input type="text" inputmode="decimal" id="input-inflacja" class="form-input" value="3.5" min="0"
+                  max="30" step="0.1" maxlength="5" aria-describedby="hint-inflacja" onfocus="clearOnFocus(this, 3.5)"
+                  onblur="restoreOnBlur(this, 3.5)">
                 <span class="form-input-suffix">%</span>
               </div>
               <p class="form-hint" id="hint-inflacja">
                 Aktualna inflacja GUS:
                 <a href="https://stat.gov.pl" target="_blank" rel="noopener"
-                   style="color: var(--color-primary-500)">stat.gov.pl</a>
+                  style="color: var(--color-primary-500)">stat.gov.pl</a>
               </p>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="input-lokata">Oprocentowanie lokaty (do porównania)</label>
               <div class="form-input-wrapper">
-                <input type="text" inputmode="decimal" id="input-lokata" class="form-input"
-                  value="4.5" min="0" max="20" step="0.1" maxlength="5"
-                  onfocus="clearOnFocus(this, 4.5)" onblur="restoreOnBlur(this, 4.5)">
+                <input type="text" inputmode="decimal" id="input-lokata" class="form-input" value="4.5" min="0" max="20"
+                  step="0.1" maxlength="5" onfocus="clearOnFocus(this, 4.5)" onblur="restoreOnBlur(this, 4.5)">
                 <span class="form-input-suffix">%</span>
               </div>
             </div>
@@ -868,66 +846,58 @@
         <!-- WYNIKI -->
         <div class="wyniki-kolumna">
 
-          <div class="wynik-glowny">
-            <p class="wynik-glowny__etykieta">Kapitał końcowy po opodatkowaniu</p>
-            <p class="wynik-glowny__wartosc" id="wynik-kapital-koncowy">—</p>
-            <p class="wynik-glowny__opis">Po uwzględnieniu podatku Belki i wszystkich dopłat</p>
+          <div class="premium-result">
+            <p class="premium-result__label">Kapitał końcowy po opodatkowaniu</p>
+            <p class="premium-result__value" id="wynik-kapital-koncowy">0,00 zł</p>
+            <p class="premium-result__description">Po uwzględnieniu podatku Belki i wszystkich dopłat</p>
           </div>
 
-          <div class="wyniki-siatka">
-
+          <div class="kafelek-grid">
             <div class="kafelek">
-              <p class="kafelek__etykieta">Wkład własny</p>
-              <p class="kafelek__wartosc" id="wynik-wklad-wlasny">—</p>
-              <p class="kafelek__podpis">Start + wszystkie dopłaty</p>
+              <p class="kafelek__label">Wkład własny</p>
+              <p class="kafelek__value" id="wynik-wklad-wlasny">0,00 zł</p>
+              <p class="kafelek__hint">Start + wszystkie dopłaty</p>
             </div>
-
             <div class="kafelek">
-              <p class="kafelek__etykieta">Łączne dopłaty</p>
-              <p class="kafelek__wartosc" id="wynik-doplata-laczna">—</p>
-              <p class="kafelek__podpis">Suma regularnych wpłat</p>
+              <p class="kafelek__label">Łączne dopłaty</p>
+              <p class="kafelek__value" id="wynik-doplata-laczna">0,00 zł</p>
+              <p class="kafelek__hint">Suma regularnych wpłat</p>
             </div>
-
             <div class="kafelek">
-              <p class="kafelek__etykieta">Zysk nominalny</p>
-              <p class="kafelek__wartosc" id="wynik-zysk-nominalny">—</p>
-              <p class="kafelek__podpis">Przed podatkiem</p>
+              <p class="kafelek__label">Zysk nominalny</p>
+              <p class="kafelek__value" id="wynik-zysk-nominalny">0,00 zł</p>
+              <p class="kafelek__hint">Przed podatkiem</p>
             </div>
-
-            <div class="kafelek kafelek--negatywny">
-              <p class="kafelek__etykieta">Podatek Belki (19%)</p>
-              <p class="kafelek__wartosc" id="wynik-podatek-belki">—</p>
-              <p class="kafelek__podpis">Odprowadzony do US</p>
-            </div>
-
             <div class="kafelek">
-              <p class="kafelek__etykieta">Zysk po podatku</p>
-              <p class="kafelek__wartosc" id="wynik-zysk-po-podatku">—</p>
-              <p class="kafelek__podpis">Twój realny zysk nominalny</p>
+              <p class="kafelek__label">Podatek Belki (19%)</p>
+              <p class="kafelek__value" style="color: var(--color-error)" id="wynik-podatek-belki">0,00 zł</p>
+              <p class="kafelek__hint">Odprowadzony do US</p>
             </div>
-
-            <div class="kafelek kafelek--realny">
-              <p class="kafelek__etykieta">Zysk realny</p>
-              <p class="kafelek__wartosc" id="wynik-zysk-realny">—</p>
-              <p class="kafelek__podpis">Po podatku i inflacji</p>
-            </div>
-
             <div class="kafelek">
-              <p class="kafelek__etykieta">Stopa zwrotu (CAGR)</p>
-              <p class="kafelek__wartosc" id="wynik-cagr">—</p>
-              <p class="kafelek__podpis">Roczna, po podatku</p>
+              <p class="kafelek__label">Zysk po podatku</p>
+              <p class="kafelek__value" id="wynik-zysk-po-podatku">0,00 zł</p>
+              <p class="kafelek__hint">Twój realny zysk nominalny</p>
             </div>
-
-            <div class="kafelek kafelek--realny">
-              <p class="kafelek__etykieta">Realna stopa zwrotu</p>
-              <p class="kafelek__wartosc" id="wynik-cagr-realny">—</p>
-              <p class="kafelek__podpis">Roczna, po podatku i inflacji</p>
+            <div class="kafelek" style="background: var(--color-green-50); border-color: var(--color-green-100)">
+              <p class="kafelek__label">Zysk realny</p>
+              <p class="kafelek__value" style="color: var(--color-green-700)" id="wynik-zysk-realny">0,00 zł</p>
+              <p class="kafelek__hint">Po podatku i inflacji</p>
             </div>
-
+            <div class="kafelek">
+              <p class="kafelek__label">Stopa zwrotu (CAGR)</p>
+              <p class="kafelek__value" id="wynik-cagr">0,00%</p>
+              <p class="kafelek__hint">Roczna, po podatku</p>
+            </div>
+            <div class="kafelek" style="background: var(--color-green-50); border-color: var(--color-green-100)">
+              <p class="kafelek__label">Realna stopa zwrotu</p>
+              <p class="kafelek__value" style="color: var(--color-green-700)" id="wynik-cagr-realny">0,00%</p>
+              <p class="kafelek__hint">Roczna, po podatku i inflacji</p>
+            </div>
           </div>
 
           <!-- Data ostatniej aktualizacji -->
-          <div style="text-align: center; margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--color-border-subtle);">
+          <div
+            style="text-align: center; margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--color-border-subtle);">
             <p class="text-muted" style="font-size: var(--text-xs); margin: 0;">
               🔄 Ostatnia aktualizacja: <span id="data-aktualizacji">marzec 2026</span>
             </p>
@@ -958,13 +928,11 @@
             <div class="wykres-karta__naglowek">
               <p class="wykres-karta__tytul">Wzrost kapitału</p>
               <div class="btn-okres-grupa" style="width: auto;">
-                <button type="button" id="btn-wykres-lata"
-                  class="btn-okres btn-okres--aktywny"
+                <button type="button" id="btn-wykres-lata" class="btn-okres btn-okres--aktywny"
                   onclick="ustawWidokWykresu('lata')">
                   Rocznie
                 </button>
-                <button type="button" id="btn-wykres-miesiace"
-                  class="btn-okres"
+                <button type="button" id="btn-wykres-miesiace" class="btn-okres"
                   onclick="ustawWidokWykresu('miesiace')">
                   Miesięcznie
                 </button>
@@ -1001,44 +969,49 @@
         <div class="edukacja__siatka">
           <div class="pojecie">
             <p class="pojecie__term">Procent składany + dopłaty</p>
-            <p class="pojecie__def">Każda miesięczna dopłata natychmiast zaczyna generować odsetki. Im wcześniej wpłacasz, tym dłużej pieniądze pracują. Dlatego regularne małe wpłaty biją jednorazową dużą wpłatę na końcu.</p>
+            <p class="pojecie__def">Każda miesięczna dopłata natychmiast zaczyna generować odsetki. Im wcześniej
+              wpłacasz, tym dłużej pieniądze pracują. Dlatego regularne małe wpłaty biją jednorazową dużą wpłatę na
+              końcu.</p>
           </div>
           <div class="pojecie">
             <p class="pojecie__term">Podatek Belki (19%)</p>
-            <p class="pojecie__def">Podatek od zysków kapitałowych w Polsce. Pobierany od zysku z obligacji jednorazowo na końcu inwestycji. W IKE/IKZE możesz go legalnie uniknąć.</p>
+            <p class="pojecie__def">Podatek od zysków kapitałowych w Polsce. Pobierany od zysku z obligacji jednorazowo
+              na końcu inwestycji. W IKE/IKZE możesz go legalnie uniknąć.</p>
           </div>
           <div class="pojecie">
             <p class="pojecie__term">Zysk realny</p>
-            <p class="pojecie__def">Zysk po odjęciu wpływu inflacji. Jeśli zarobiłeś 500 zł ale ceny wzrosły o 300 zł — Twój realny zysk to tylko 200 zł. To prawdziwy przyrost bogactwa.</p>
+            <p class="pojecie__def">Zysk po odjęciu wpływu inflacji. Jeśli zarobiłeś 500 zł ale ceny wzrosły o 300 zł —
+              Twój realny zysk to tylko 200 zł. To prawdziwy przyrost bogactwa.</p>
           </div>
           <div class="pojecie">
             <p class="pojecie__term">IKE / IKZE</p>
-            <p class="pojecie__def">Konto emerytalne które pozwala inwestować bez podatku Belki. Limity 2026: IKE ~24 tys. zł/rok, IKZE ~9 tys. zł/rok. Dla długoterminowych oszczędności to ogromna różnica.</p>
+            <p class="pojecie__def">Konto emerytalne które pozwala inwestować bez podatku Belki. Limity 2026: IKE ~24
+              tys. zł/rok, IKZE ~9 tys. zł/rok. Dla długoterminowych oszczędności to ogromna różnica.</p>
           </div>
           <div class="pojecie">
             <p class="pojecie__term">CAGR</p>
-            <p class="pojecie__def">Średnioroczna stopa zwrotu z uwzględnieniem procentu składanego. Pozwala porównywać inwestycje o różnych horyzontach czasowych.</p>
+            <p class="pojecie__def">Średnioroczna stopa zwrotu z uwzględnieniem procentu składanego. Pozwala porównywać
+              inwestycje o różnych horyzontach czasowych.</p>
           </div>
           <div class="pojecie">
             <p class="pojecie__term">EDO vs ROS vs ROD</p>
-            <p class="pojecie__def">Różnią się głównie okresem i marżą. EDO (10 lat, +2%) i ROD (12 lat, +2,5%) dają wyższą marżę za dłuższe zamrożenie kapitału. ROS (6 lat) to kompromis.</p>
+            <p class="pojecie__def">Różnią się głównie okresem i marżą. EDO (10 lat, +2%) i ROD (12 lat, +2,5%) dają
+              wyższą marżę za dłuższe zamrożenie kapitału. ROS (6 lat) to kompromis.</p>
           </div>
         </div>
       </div>
 
       <!-- DISCLAIMER -->
-      <div style="margin-top: var(--space-16)">
-        <p class="disclaimer">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:6px;flex-shrink:0">
-  <circle cx="12" cy="12" r="10"/>
-  <line x1="12" y1="8" x2="12" y2="12"/>
-  <line x1="12" y1="16" x2="12.01" y2="16"/>
-</svg>Kalkulator ma charakter wyłącznie edukacyjny i informacyjny. Prezentowane obliczenia są uproszczeniem
-          rzeczywistości i nie uwzględniają wszystkich czynników. Nie stanowią rekomendacji inwestycyjnej
-          w rozumieniu Ustawy o obrocie instrumentami finansowymi. Przed podjęciem decyzji inwestycyjnej
-          skonsultuj się z licencjonowanym doradcą finansowym.
-          Inwestowanie wiąże się z ryzykiem utraty części lub całości zainwestowanego kapitału.
-        </p>
+      <div class="disclaimer-box" style="margin-top: var(--space-16)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <div>
+          <strong>Ważna informacja (Disclaimer)</strong>
+          Materiały na stronie mają charakter wyłącznie edukacyjny i poglądowy. Nie stanowią rekomendacji inwestycyjnej ani porady podatkowej w rozumieniu przepisów prawa. Inwestowanie w obligacje skarbowe jest uznawane za bezpieczne, ale nadal wiąże się z ryzykiem inflacyjnym oraz płynności. Narzędzie jest symulacją — zawsze sprawdzaj aktualne warunki emisji na stronach Ministerstwa Finansów.
+        </div>
       </div>
 
     </div>
@@ -1048,6 +1021,7 @@
     <div class="container">
       <div class="footer__inner">
         <div class="footer__links">
+          <a href="../pages/kalkulator-etf.html">Kalkulator ETF</a>
           <a href="../pages/kalkulator-obligacji.html">Kalkulator obligacji</a>
           <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
           <a href="../pages/porownywarka.html">Porównywarka ETF</a>
@@ -1060,18 +1034,18 @@
     </div>
   </footer>
 
-    <script src="../js/utils.js" defer></script>
+  <script src="../js/utils.js" defer></script>
   <script src="../js/tooltips.js" defer></script>
   <script src="../js/calculators/obligacje.js" defer></script>
 
   <script>
     // Aktualizacja daty ostatniej aktualizacji
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       var dataElement = document.getElementById('data-aktualizacji');
       if (dataElement) {
         var teraz = new Date();
-        var miesiace = ['styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec', 
-                       'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień'];
+        var miesiace = ['styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec',
+          'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień'];
         var aktualnyMiesiac = miesiace[teraz.getMonth()];
         var aktualnyRok = teraz.getFullYear();
         dataElement.textContent = aktualnyMiesiac + ' ' + aktualnyRok;
@@ -1097,78 +1071,83 @@
 
   <script>
     function przelaczTryb() {
-      var html    = document.documentElement;
-      var slonce  = document.getElementById('ikona-slonce');
+      var html = document.documentElement;
+      var slonce = document.getElementById('ikona-slonce');
       var ksiezyc = document.getElementById('ikona-ksiezyc');
-      var ciemny  = html.classList.contains('dark-mode') ||
+      var ciemny = html.classList.contains('dark-mode') ||
         (!html.classList.contains('light-mode') &&
-         window.matchMedia('(prefers-color-scheme: dark)').matches);
+          window.matchMedia('(prefers-color-scheme: dark)').matches);
 
       if (ciemny) {
         html.classList.remove('dark-mode');
         html.classList.add('light-mode');
-        if (slonce)  slonce.style.display = 'block';
+        if (slonce) slonce.style.display = 'block';
         if (ksiezyc) ksiezyc.style.display = 'none';
         localStorage.setItem('etf-tryb', 'jasny');
       } else {
         html.classList.remove('light-mode');
         html.classList.add('dark-mode');
-        if (slonce)  slonce.style.display = 'none';
+        if (slonce) slonce.style.display = 'none';
         if (ksiezyc) ksiezyc.style.display = 'block';
         localStorage.setItem('etf-tryb', 'ciemny');
       }
     }
 
     // Inicjalizacja przy ładowaniu strony
-    (function() {
-      var html     = document.documentElement;
+    (function () {
+      var html = document.documentElement;
       var zapisany = localStorage.getItem('etf-tryb');
-      var slonce   = document.getElementById('ikona-slonce');
-      var ksiezyc  = document.getElementById('ikona-ksiezyc');
+      var slonce = document.getElementById('ikona-slonce');
+      var ksiezyc = document.getElementById('ikona-ksiezyc');
       var systemCiemny = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
       if (zapisany === 'ciemny' || (!zapisany && systemCiemny)) {
         html.classList.add('dark-mode');
-        if (slonce)  slonce.style.display = 'none';
+        if (slonce) slonce.style.display = 'none';
         if (ksiezyc) ksiezyc.style.display = 'block';
-      } else if (zapisany === 'jasny') {
-        html.classList.add('light-mode');
       }
     })();
   </script>
 
+  <!-- Scripts -->
+  <script src="../js/utils.js"></script>
+  <script src="../js/tooltips.js"></script>
+  <script src="../js/calculators/obligacje.js"></script>
+
   <!-- Cookie Consent Script -->
-  <script defer>
+  <script>
+
+
     // Cookie Consent Management
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       var cookieConsent = document.getElementById('cookie-consent');
       var acceptBtn = document.getElementById('cookie-accept');
       var rejectBtn = document.getElementById('cookie-reject');
-      
+
       // Sprawdź czy użytkownik już wybrał
       var cookieChoice = localStorage.getItem('etf-cookie-consent');
-      
+
       if (!cookieChoice) {
         // Pokaż banner jeśli nie ma wyboru
         cookieConsent.style.display = 'block';
       }
-      
+
       // Akceptacja cookies
-      acceptBtn.addEventListener('click', function() {
+      acceptBtn.addEventListener('click', function () {
         localStorage.setItem('etf-cookie-consent', 'accepted');
         cookieConsent.style.display = 'none';
         console.log('Cookie consent zaakceptowany');
       });
-      
+
       // Odrzucenie cookies
-      rejectBtn.addEventListener('click', function() {
+      rejectBtn.addEventListener('click', function () {
         localStorage.setItem('etf-cookie-consent', 'rejected');
         cookieConsent.style.display = 'none';
         console.log('Cookie consent odrzucony');
       });
-      
+
       // Automatyczne ukrycie po 30 sekundach (opcjonalne)
-      setTimeout(function() {
+      setTimeout(function () {
         if (cookieConsent.style.display !== 'none') {
           cookieConsent.style.opacity = '0.7';
         }
@@ -1176,4 +1155,5 @@
     });
   </script>
 </body>
+
 </html>

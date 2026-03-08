@@ -12,13 +12,13 @@ var PODATEK_BELKI = 0.19;
    ---------------------------------------------------------- */
 
 function obliczWolnosc(params) {
-  var wydatkiMiesieczne  = params.wydatkiMiesieczne;
-  var oszczednosciMies   = params.oszczednosciMiesieczne;
-  var kapitalStartowy    = params.kapitalStartowy    || 0;
-  var stopaZwrotu        = params.stopaZwrotu        / 100; // np. 0.07
-  var inflacja           = params.inflacja            / 100; // np. 0.03
-  var stopaWyplat        = params.stopaWyplat         / 100; // np. 0.04
-  var wIKE               = params.wIKE               || false;
+  var wydatkiMiesieczne = params.wydatkiMiesieczne;
+  var oszczednosciMies = params.oszczednosciMiesieczne;
+  var kapitalStartowy = params.kapitalStartowy || 0;
+  var stopaZwrotu = params.stopaZwrotu / 100; // np. 0.07
+  var inflacja = params.inflacja / 100; // np. 0.03
+  var stopaWyplat = params.stopaWyplat / 100; // np. 0.04
+  var wIKE = params.wIKE || false;
 
   // Realna stopa zwrotu (wzór Fishera)
   var stopaRealna = (1 + stopaZwrotu) / (1 + inflacja) - 1;
@@ -33,17 +33,17 @@ function obliczWolnosc(params) {
 
   // --- KROK 1: Ile kapitału potrzebujesz (cel FIRE) ---
   // Wydatki roczne / stopa wypłat = wymagany kapitał
-  var wydatkiRoczne     = wydatkiMiesieczne * 12;
-  var celFIRE           = wydatkiRoczne / stopaWyplat;
+  var wydatkiRoczne = wydatkiMiesieczne * 12;
+  var celFIRE = wydatkiRoczne / stopaWyplat;
 
   // Realny cel FIRE (w dzisiejszych złotówkach)
-  var celFIRERealny     = celFIRE; // punkt wyjścia, nie inflacja-adjusted tutaj
+  var celFIRERealny = celFIRE; // punkt wyjścia, nie inflacja-adjusted tutaj
 
   // --- KROK 2: Ile lat do wolności finansowej ---
   // Symulacja miesiąc po miesiącu
-  var kapital           = kapitalStartowy;
-  var miesiacyDoFIRE    = 0;
-  var MAX_LAT           = 100;
+  var kapital = kapitalStartowy;
+  var miesiacyDoFIRE = 0;
+  var MAX_LAT = 100;
   var historiaMiesieczna = [];
   var stopaMiesPoDataku = stopaNomPoDataku / 12;
 
@@ -53,9 +53,9 @@ function obliczWolnosc(params) {
 
     if (m % 12 === 0) {
       historiaMiesieczna.push({
-        rok:     m / 12,
+        rok: m / 12,
         kapital: kapital,
-        cel:     celFIRE
+        cel: celFIRE
       });
     }
 
@@ -70,7 +70,7 @@ function obliczWolnosc(params) {
 
   // --- KROK 3: Ile miesięcznie odkładać żeby osiągnąć cel w N lat ---
   // Odwrotna kalkulacja: przy danej liczbie lat, ile miesięcznie trzeba oszczędzać?
-  var latCelowe      = params.latCelowe || 20;
+  var latCelowe = params.latCelowe || 20;
   var miesiacyCelowe = latCelowe * 12;
 
   // FV = PV*(1+r)^n + PMT * ((1+r)^n - 1) / r
@@ -84,9 +84,9 @@ function obliczWolnosc(params) {
   wymaganeOszczednosci = Math.max(0, wymaganeOszczednosci);
 
   // --- KROK 4: Symulacja fazy FIRE (wypłaty z kapitału) ---
-  var kapitalFIRE       = celFIRE;
-  var wyplataMies       = wydatkiMiesieczne;
-  var historiaFIRE      = [];
+  var kapitalFIRE = celFIRE;
+  var wyplataMies = wydatkiMiesieczne;
+  var historiaFIRE = [];
   var kapitalWyczerpany = null;
 
   for (var f = 1; f <= 50 * 12; f++) {
@@ -97,7 +97,7 @@ function obliczWolnosc(params) {
 
     if (f % 12 === 0) {
       historiaFIRE.push({
-        rok:     f / 12,
+        rok: f / 12,
         kapital: Math.max(0, kapitalFIRE)
       });
       if (kapitalFIRE <= 0 && kapitalWyczerpany === null) {
@@ -112,32 +112,32 @@ function obliczWolnosc(params) {
 
   return {
     // Dane wejściowe
-    wydatkiMiesieczne:  wydatkiMiesieczne,
-    wydatkiRoczne:      wydatkiRoczne,
-    oszczednosciMies:   oszczednosciMies,
-    kapitalStartowy:    kapitalStartowy,
-    stopaZwrotu:        stopaZwrotu,
-    stopaRealna:        stopaRealna,
-    stopaNomPoDataku:   stopaNomPoDataku,
-    stopaWyplat:        stopaWyplat,
-    wIKE:               wIKE,
+    wydatkiMiesieczne: wydatkiMiesieczne,
+    wydatkiRoczne: wydatkiRoczne,
+    oszczednosciMies: oszczednosciMies,
+    kapitalStartowy: kapitalStartowy,
+    stopaZwrotu: stopaZwrotu,
+    stopaRealna: stopaRealna,
+    stopaNomPoDataku: stopaNomPoDataku,
+    stopaWyplat: stopaWyplat,
+    wIKE: wIKE,
 
     // Wyniki
-    celFIRE:              zaokraglij(celFIRE, 0),
-    latDoFIRE:            latDoFIRE ? zaokraglij(latDoFIRE, 1) : null,
-    miesiacyDoFIRE:       miesiacyDoFIRE || null,
+    celFIRE: zaokraglij(celFIRE, 0),
+    latDoFIRE: latDoFIRE ? zaokraglij(latDoFIRE, 1) : null,
+    miesiacyDoFIRE: miesiacyDoFIRE || null,
     wymaganeOszczednosci: zaokraglij(wymaganeOszczednosci, 0),
-    latCelowe:            latCelowe,
-    wkladLaczny:          zaokraglij(wkladLaczny, 0),
+    latCelowe: latCelowe,
+    wkladLaczny: zaokraglij(wkladLaczny, 0),
 
     // Faza FIRE
-    kapitalWyczerpany:  kapitalWyczerpany,
-    historiaFIRE:       historiaFIRE,
+    kapitalWyczerpany: kapitalWyczerpany,
+    historiaFIRE: historiaFIRE,
     historiaMiesieczna: historiaMiesieczna,
 
     // Pomocnicze
-    stopaZwrotuProc:     (stopaNomPoDataku * 100).toFixed(2),
-    stopaRealnaProc:     (stopaRealnaPoDataku * 100).toFixed(2),
+    stopaZwrotuProc: (stopaNomPoDataku * 100).toFixed(2),
+    stopaRealnaProc: (stopaRealnaPoDataku * 100).toFixed(2),
   };
 }
 
@@ -147,29 +147,29 @@ function obliczWolnosc(params) {
    ---------------------------------------------------------- */
 
 var wykresAkumulacji = null;
-var wykresFirePhase  = null;
+var wykresFirePhase = null;
 
 function aktualizujWolnosc() {
-  var wydatki    = pobierzWartosc('wf-wydatki',    3000);
-  var oszcz      = pobierzWartosc('wf-oszczednosci', 1000);
-  var start      = pobierzWartosc('wf-kapital',    0);
-  var stopa      = pobierzWartosc('wf-stopa',      7);
-  var inflacja   = pobierzWartosc('wf-inflacja',   3.5);
-  var stopaWyp   = pobierzWartosc('wf-stopa-wyplat', 4);
-  var latCelowe  = pobierzWartosc('wf-lata-cel',   20);
-  var wIKE       = document.getElementById('wf-ike')
-                   ? document.getElementById('wf-ike').checked
-                   : false;
+  var wydatki = pobierzWartosc('wf-wydatki', 3000);
+  var oszcz = pobierzWartosc('wf-oszczednosci', 1000);
+  var start = pobierzWartosc('wf-kapital', 0);
+  var stopa = pobierzWartosc('wf-stopa', 7);
+  var inflacja = pobierzWartosc('wf-inflacja', 3.5);
+  var stopaWyp = pobierzWartosc('wf-stopa-wyplat', 4);
+  var latCelowe = pobierzWartosc('wf-lata-cel', 20);
+  var wIKE = document.getElementById('wf-ike')
+    ? document.getElementById('wf-ike').checked
+    : false;
 
   var wyniki = obliczWolnosc({
-    wydatkiMiesieczne:   wydatki,
+    wydatkiMiesieczne: wydatki,
     oszczednosciMiesieczne: oszcz,
-    kapitalStartowy:     start,
-    stopaZwrotu:         stopa,
-    inflacja:            inflacja,
-    stopaWyplat:         stopaWyp,
-    latCelowe:           latCelowe,
-    wIKE:                wIKE,
+    kapitalStartowy: start,
+    stopaZwrotu: stopa,
+    inflacja: inflacja,
+    stopaWyplat: stopaWyp,
+    latCelowe: latCelowe,
+    wIKE: wIKE,
   });
 
   // --- Główny wynik: CEL FIRE ---
@@ -180,8 +180,8 @@ function aktualizujWolnosc() {
   if (elLata) {
     if (wyniki.latDoFIRE) {
       var l = wyniki.latDoFIRE;
-      var lata  = Math.floor(l);
-      var mies  = Math.round((l - lata) * 12);
+      var lata = Math.floor(l);
+      var mies = Math.round((l - lata) * 12);
       elLata.textContent = lata + ' lat' + (mies > 0 ? ' ' + mies + ' mies.' : '');
     } else {
       elLata.textContent = 'Nigdy';
@@ -235,8 +235,8 @@ function aktualizujWolnosc() {
    ---------------------------------------------------------- */
 
 function aktualizujProgressBar(wyniki) {
-  var kapital    = pobierzWartosc('wf-kapital', 0);
-  var procent    = wyniki.celFIRE > 0
+  var kapital = pobierzWartosc('wf-kapital', 0);
+  var procent = wyniki.celFIRE > 0
     ? Math.min(100, (kapital / wyniki.celFIRE) * 100)
     : 0;
 
@@ -260,13 +260,14 @@ function aktualizujProgressBar(wyniki) {
    ---------------------------------------------------------- */
 
 function rysujWykresAkumulacji(wyniki) {
-  var ctx = document.getElementById('wf-wykres-akumulacja');
-  if (!ctx) return;
+  const canvas = document.getElementById('wf-wykres-akumulacja');
+  if (!canvas || !window.ETF || !window.ETF.charts) return;
+  const ctx = canvas.getContext('2d');
 
-  var dane     = wyniki.historiaMiesieczna;
-  var etykiety = dane.map(function(d) { return 'Rok ' + d.rok; });
-  var kapitaly = dane.map(function(d) { return Math.round(d.kapital); });
-  var cele     = dane.map(function(d) { return Math.round(d.cel); });
+  var dane = wyniki.historiaMiesieczna;
+  var etykiety = dane.map(function (d) { return 'Rok ' + d.rok; });
+  var kapitaly = dane.map(function (d) { return Math.round(d.kapital); });
+  var cele = dane.map(function (d) { return Math.round(d.cel); });
 
   // Punkt osiągnięcia FIRE
   var fireRok = wyniki.latDoFIRE ? Math.ceil(wyniki.latDoFIRE) : null;
@@ -276,96 +277,41 @@ function rysujWykresAkumulacji(wyniki) {
     wykresAkumulacji = null;
   }
 
-  var isDark = document.documentElement.classList.contains('dark-mode') ||
-    (!document.documentElement.classList.contains('light-mode') &&
-     window.matchMedia('(prefers-color-scheme: dark)').matches);
-
-  var gridColor  = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)';
-  var labelColor = isDark ? '#AEAEB2' : '#6E6E73';
+  const baseOptions = window.ETF.charts.getBaseOptions();
 
   wykresAkumulacji = new Chart(ctx, {
     type: 'line',
     data: {
       labels: etykiety,
       datasets: [
-        {
-          label: 'Twój kapitał',
-          data: kapitaly,
-          borderColor: '#40916C',
-          backgroundColor: 'rgba(64,145,108,0.12)',
-          borderWidth: 2.5,
-          fill: true,
-          tension: 0.4,
-          pointRadius: 0,
-          pointHoverRadius: 5,
-        },
-        {
-          label: 'Cel FIRE',
-          data: cele,
-          borderColor: '#f59e0b',
-          borderWidth: 1.5,
-          borderDash: [6, 4],
-          fill: false,
-          tension: 0,
-          pointRadius: 0,
-          pointHoverRadius: 0,
-        },
+        window.ETF.charts.createDataset(ctx, 'Twój kapitał', kapitaly, window.ETF.charts.colors.success),
+        window.ETF.charts.createDataset(ctx, 'Cel FIRE', cele, window.ETF.charts.colors.accent)
       ]
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      interaction: { mode: 'index', intersect: false },
-      plugins: {
-        legend: {
-          labels: { color: labelColor, font: { size: 12 }, boxWidth: 14 }
-        },
-        tooltip: {
-          callbacks: {
-            label: function(ctx) {
-              return ctx.dataset.label + ': ' + formatujZl(ctx.raw);
-            }
-          }
-        },
+
+    options: Object.assign({}, baseOptions, {
+      plugins: Object.assign({}, baseOptions.plugins, {
         annotation: fireRok ? {
           annotations: {
             firePoint: {
               type: 'line',
               xMin: 'Rok ' + fireRok,
               xMax: 'Rok ' + fireRok,
-              borderColor: '#40916C',
+              borderColor: window.ETF.charts.colors.success,
               borderWidth: 1.5,
               borderDash: [4, 3],
               label: {
                 display: true,
                 content: '🎯 FIRE!',
                 position: 'start',
-                color: '#40916C',
-                font: { size: 11 },
+                color: window.ETF.charts.colors.success,
+                font: { size: 11, weight: 'bold' },
               }
             }
           }
         } : {}
-      },
-      scales: {
-        x: {
-          grid:  { color: gridColor },
-          ticks: { color: labelColor, maxTicksLimit: 10, font: { size: 11 } }
-        },
-        y: {
-          grid:  { color: gridColor },
-          ticks: {
-            color: labelColor,
-            font: { size: 11 },
-            callback: function(v) {
-              if (v >= 1000000) return (v/1000000).toFixed(1) + 'M';
-              if (v >= 1000)    return (v/1000).toFixed(0) + 'k';
-              return v;
-            }
-          }
-        }
-      }
-    }
+      })
+    })
   });
 }
 
@@ -375,73 +321,31 @@ function rysujWykresAkumulacji(wyniki) {
    ---------------------------------------------------------- */
 
 function rysujWykresFirePhase(wyniki) {
-  var ctx = document.getElementById('wf-wykres-fire');
-  if (!ctx) return;
+  const canvas = document.getElementById('wf-wykres-fire');
+  if (!canvas || !window.ETF || !window.ETF.charts) return;
+  const ctx = canvas.getContext('2d');
 
-  var dane     = wyniki.historiaFIRE;
-  var etykiety = dane.map(function(d) { return 'Rok ' + d.rok; });
-  var kapitaly = dane.map(function(d) { return d.kapital; });
+  var dane = wyniki.historiaFIRE;
+  var etykiety = dane.map(function (d) { return 'Rok ' + d.rok; });
+  var kapitaly = dane.map(function (d) { return d.kapital; });
 
   if (wykresFirePhase) {
     wykresFirePhase.destroy();
     wykresFirePhase = null;
   }
 
-  var isDark = document.documentElement.classList.contains('dark-mode') ||
-    (!document.documentElement.classList.contains('light-mode') &&
-     window.matchMedia('(prefers-color-scheme: dark)').matches);
-
-  var gridColor  = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.06)';
-  var labelColor = isDark ? '#AEAEB2' : '#6E6E73';
+  const baseOptions = window.ETF.charts.getBaseOptions();
 
   wykresFirePhase = new Chart(ctx, {
     type: 'line',
     data: {
       labels: etykiety,
-      datasets: [{
-        label: 'Kapitał podczas emerytury',
-        data: kapitaly,
-        borderColor: '#40916C',
-        backgroundColor: 'rgba(64,145,108,0.10)',
-        borderWidth: 2.5,
-        fill: true,
-        tension: 0.3,
-        pointRadius: 0,
-        pointHoverRadius: 5,
-      }]
+      datasets: [
+        window.ETF.charts.createDataset(ctx, 'Kapitał podczas emerytury', kapitaly, window.ETF.charts.colors.success)
+      ]
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { labels: { color: labelColor, font: { size: 12 }, boxWidth: 14 } },
-        tooltip: {
-          callbacks: {
-            label: function(ctx) {
-              return 'Kapitał: ' + formatujZl(ctx.raw);
-            }
-          }
-        }
-      },
-      scales: {
-        x: {
-          grid:  { color: gridColor },
-          ticks: { color: labelColor, maxTicksLimit: 10, font: { size: 11 } }
-        },
-        y: {
-          grid:  { color: gridColor },
-          ticks: {
-            color: labelColor,
-            font: { size: 11 },
-            callback: function(v) {
-              if (v >= 1000000) return (v/1000000).toFixed(1) + 'M';
-              if (v >= 1000)    return (v/1000).toFixed(0) + 'k';
-              return v;
-            }
-          }
-        }
-      }
-    }
+
+    options: baseOptions
   });
 }
 
@@ -450,14 +354,14 @@ function rysujWykresFirePhase(wyniki) {
    PODPIĘCIE EVENTÓW
    ---------------------------------------------------------- */
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   var inputy = [
     'wf-wydatki', 'wf-oszczednosci', 'wf-kapital',
     'wf-stopa', 'wf-inflacja', 'wf-stopa-wyplat',
     'wf-lata-cel'
   ];
 
-  inputy.forEach(function(id) {
+  inputy.forEach(function (id) {
     var el = document.getElementById(id);
     if (!el) return;
     el.addEventListener('input', aktualizujWolnosc);
