@@ -1364,6 +1364,83 @@
       background: var(--color-bg);
     }
 
+    .chart-controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-6);
+      margin-bottom: var(--space-8);
+      padding: var(--space-6);
+      background: var(--color-bg-elevated);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .control-group label {
+      font-weight: 500;
+      color: var(--color-text-primary);
+      font-size: var(--text-sm);
+    }
+
+    .slider {
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: #e5e7eb;
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #1A56A0;
+      cursor: pointer;
+      border: 2px solid #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #1A56A0;
+      cursor: pointer;
+      border: 2px solid #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .value-display {
+      font-weight: 600;
+      color: #1A56A0;
+      font-size: var(--text-base);
+    }
+
+    .chart-wrapper {
+      position: relative;
+      width: 100%;
+      height: 320px;
+    }
+
+    @media (max-width: 768px) {
+      .chart-controls {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+      
+      .chart-wrapper {
+        height: 220px;
+      }
+    }
+
     .wykres-porownawczy__kontener {
       background: var(--color-bg-elevated);
       border-radius: var(--radius-xl);
@@ -1796,36 +1873,62 @@
       <div class="container container--narrow">
 
         <div class="text-center">
-          <h2 class="heading-2">ETF vs Obligacje vs Lokata</h2>
-          <p class="text-lead mt-2">Zobacz jak różne strategie zachowują się na przestrzeni 10 lat</p>
+          <h2 class="section-title">Porównanie strategii inwestycyjnych</h2>
+          <p class="text-lead mt-2">Dostosuj parametry i zobacz jak różne strategie zachowują się na przestrzeni czasu</p>
+        </div>
+
+        <!-- Interactive Controls -->
+        <div class="chart-controls">
+          <div class="control-group">
+            <label for="start-capital">Kapitał początkowy</label>
+            <input type="range" id="start-capital" min="1000" max="100000" value="10000" step="1000" class="slider">
+            <span class="value-display" id="start-capital-display">10 000 zł</span>
+          </div>
+          
+          <div class="control-group">
+            <label for="monthly-contribution">Miesięczna wpłata</label>
+            <input type="range" id="monthly-contribution" min="0" max="5000" value="500" step="100" class="slider">
+            <span class="value-display" id="monthly-contribution-display">500 zł</span>
+          </div>
+          
+          <div class="control-group">
+            <label for="time-horizon">Horyzont czasowy (lata)</label>
+            <input type="range" id="time-horizon" min="1" max="30" value="10" step="1" class="slider">
+            <span class="value-display" id="time-horizon-display">10 lat</span>
+          </div>
+          
+          <div class="control-group">
+            <label for="inflation-rate">Inflacja (%)</label>
+            <input type="range" id="inflation-rate" min="0" max="10" value="3.5" step="0.1" class="slider">
+            <span class="value-display" id="inflation-rate-display">3.5%</span>
+          </div>
         </div>
 
         <div class="wykres-porownawczy__kontener">
-          <div class="wykres-porownawczy__wykres">
+          <div class="chart-wrapper">
             <canvas id="glowny-wykres-porownawczy" aria-label="Wykres porównawczy ETF vs Obligacje vs Lokata"></canvas>
           </div>
           <div class="wykres-porownawczy__opis">
             <div class="wykres-porownawczy__legenda">
               <div class="legend-item">
-                <div class="legend-kolor" style="background: #40916C;"></div>
+                <div class="legend-kolor" style="background: #1A56A0;"></div>
                 <span>ETF globalny (7% rocznie)</span>
               </div>
               <div class="legend-item">
-                <div class="legend-kolor" style="background: #b45309;"></div>
-                <span>Obligacje EDO (inflacja + 2%)</span>
+                <div class="legend-kolor" style="background: #40916C;"></div>
+                <span>Obligacje skarbowe (5.5% rocznie)</span>
               </div>
               <div class="legend-item">
-                <div class="legend-kolor" style="background: #64748b;"></div>
+                <div class="legend-kolor" style="background: #f4a261;"></div>
                 <span>Lokata bankowa (4.5% rocznie)</span>
               </div>
             </div>
             <p class="wykres-porownawczy__tekst">
-              Przykład: 10 000 zł startu + 500 zł miesięcznie przez 10 lat przy inflacji 3.5%.
-              <a href="pages/porownywarka.html" class="link">Sprawdź swoje parametry →</a>
+              Symulacja uwzględnia inflację i realne zwroty z inwestycji.
+              <a href="pages/porownywarka.html" class="link">Sprawdź szczegółowe parametry →</a>
             </p>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -2063,47 +2166,220 @@
 
   <!-- Nasze pliki JavaScript -->
   <script src="js/utils.js" defer></script>
+  <!-- Chart.js Library -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-  <script src="js/charts-config.js" defer></script>
-
-  <script>
-    // Wykres porównawczy na stronie głównej
-    document.addEventListener('DOMContentLoaded', function () {
-      var canvas = document.getElementById('glowny-wykres-porownawczy');
-      if (!canvas || !window.ETF || !window.ETF.charts) return;
-      var ctx = canvas.getContext('2d');
-
-      // Dane przykładowe dla 10 lat
-      var lata = Array.from({ length: 11 }, (_, i) => 2026 + i);
-
-      // Symulacja wzrostu kapitału dla różnych strategii
-      var daneETF = [10000];
-      var daneObligacje = [10000];
-      var daneLokata = [10000];
-
-      for (var i = 1; i <= 10; i++) {
-        daneETF[i] = daneETF[i - 1] * 1.07 + 500 * 12;
-        daneObligacje[i] = daneObligacje[i - 1] * 1.055 + 500 * 12;
-        daneLokata[i] = daneLokata[i - 1] * 1.045 + 500 * 12;
+  
+  <!-- Optimized JavaScript Loading -->
+  <script src="js/utils.js" defer></script>
+  <script src="js/tooltips.js" defer></script>
+  
+  <!-- Interactive Chart Script -->
+  <script defer>
+    let mainChart = null;
+    
+    // Helper function for PLN formatting
+    function formatZl(val) {
+      if (val >= 1000000) return (val/1000000).toFixed(1) + 'M zł';
+      if (val >= 1000) return (val/1000).toFixed(0) + 'k zł';
+      return val.toFixed(0) + ' zł';
+    }
+    
+    // Calculate investment growth
+    function calculateGrowth(startCapital, monthlyContribution, years, rate) {
+      let data = [startCapital];
+      let current = startCapital;
+      
+      for (let i = 1; i <= years; i++) {
+        current = current * (1 + rate) + monthlyContribution * 12;
+        data.push(current);
       }
-
-      var chartOptions = window.ETF.charts.getBaseOptions();
-      // On the home page we explicitly want the legend visible
-      chartOptions.plugins.legend.display = true;
-
-      new Chart(ctx, {
+      
+      return data;
+    }
+    
+    // Update chart with new data
+    function updateChart() {
+      const startCapital = parseFloat(document.getElementById('start-capital').value);
+      const monthlyContribution = parseFloat(document.getElementById('monthly-contribution').value);
+      const timeHorizon = parseInt(document.getElementById('time-horizon').value);
+      const inflationRate = parseFloat(document.getElementById('inflation-rate').value) / 100;
+      
+      // Calculate data for each strategy
+      const etfData = calculateGrowth(startCapital, monthlyContribution, timeHorizon, 0.07);
+      const bondsData = calculateGrowth(startCapital, monthlyContribution, timeHorizon, 0.055);
+      const depositData = calculateGrowth(startCapital, monthlyContribution, timeHorizon, 0.045);
+      
+      // Generate labels
+      const labels = [];
+      for (let i = 0; i <= timeHorizon; i++) {
+        labels.push(`Rok ${i}`);
+      }
+      
+      // Destroy existing chart
+      if (mainChart) {
+        mainChart.destroy();
+      }
+      
+      // Create new chart
+      const ctx = document.getElementById('glowny-wykres-porownawczy').getContext('2d');
+      mainChart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: lata.map(String),
+          labels: labels,
           datasets: [
-            window.ETF.charts.createDataset(ctx, 'ETF globalny', daneETF, window.ETF.charts.colors.success),
-            window.ETF.charts.createDataset(ctx, 'Obligacje EDO', daneObligacje, window.ETF.charts.colors.accent),
-            window.ETF.charts.createDataset(ctx, 'Lokata bankowa', daneLokata, window.ETF.charts.colors.muted)
+            {
+              label: 'ETF globalny',
+              data: etfData,
+              borderColor: '#1A56A0',
+              backgroundColor: 'rgba(26, 86, 160, 0.15)',
+              borderWidth: 3,
+              fill: true,
+              tension: 0.4,
+              pointRadius: 4,
+              pointHoverRadius: 6
+            },
+            {
+              label: 'Obligacje skarbowe',
+              data: bondsData,
+              borderColor: '#40916C',
+              backgroundColor: 'rgba(64, 145, 108, 0.15)',
+              borderWidth: 3,
+              fill: true,
+              tension: 0.4,
+              pointRadius: 4,
+              pointHoverRadius: 6
+            },
+            {
+              label: 'Lokata bankowa',
+              data: depositData,
+              borderColor: '#f4a261',
+              backgroundColor: 'rgba(244, 162, 97, 0.15)',
+              borderWidth: 3,
+              fill: true,
+              tension: 0.4,
+              pointRadius: 4,
+              pointHoverRadius: 6
+            }
           ]
         },
-        options: chartOptions
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: {
+            mode: 'index',
+            intersect: false,
+          },
+          plugins: {
+            legend: {
+              position: 'top',
+              align: 'start',
+              labels: {
+                usePointStyle: true,
+                font: {
+                  size: 12,
+                  family: "'Inter', sans-serif"
+                },
+                color: '#1c1c1e'
+              }
+            },
+            tooltip: {
+              backgroundColor: '#1c1c1e',
+              titleColor: '#ffffff',
+              bodyColor: '#ffffff',
+              borderColor: '#1c1c1e',
+              borderWidth: 0,
+              cornerRadius: 8,
+              padding: 10,
+              displayColors: true,
+              callbacks: {
+                title: function(context) {
+                  return context[0].label;
+                },
+                label: function(context) {
+                  return 'Wartość: ' + formatZl(context.parsed.y);
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: {
+                display: false
+              },
+              ticks: {
+                color: '#6e6e73',
+                font: {
+                  size: 11,
+                  family: "'Inter', sans-serif"
+                }
+              }
+            },
+            y: {
+              position: 'left',
+              grid: {
+                color: '#e5e7eb',
+                drawBorder: false,
+                borderDash: []
+              },
+              ticks: {
+                color: '#6e6e73',
+                font: {
+                  size: 11,
+                  family: "'Inter', sans-serif"
+                },
+                callback: function(value) {
+                  return formatZl(value);
+                }
+              }
+            }
+          },
+          animation: {
+            duration: 800,
+            easing: 'easeInOutQuart'
+          }
+        }
       });
-
+    }
+    
+    // Initialize interactive controls
+    document.addEventListener('DOMContentLoaded', function() {
+      // Update display values
+      function updateDisplays() {
+        const startCapital = parseFloat(document.getElementById('start-capital').value);
+        const monthlyContribution = parseFloat(document.getElementById('monthly-contribution').value);
+        const timeHorizon = parseInt(document.getElementById('time-horizon').value);
+        const inflationRate = parseFloat(document.getElementById('inflation-rate').value);
+        
+        document.getElementById('start-capital-display').textContent = formatZl(startCapital);
+        document.getElementById('monthly-contribution-display').textContent = formatZl(monthlyContribution);
+        document.getElementById('time-horizon-display').textContent = timeHorizon + ' lat';
+        document.getElementById('inflation-rate-display').textContent = inflationRate.toFixed(1) + '%';
+      }
+      
+      // Add event listeners
+      document.getElementById('start-capital').addEventListener('input', function() {
+        updateDisplays();
+        updateChart();
+      });
+      
+      document.getElementById('monthly-contribution').addEventListener('input', function() {
+        updateDisplays();
+        updateChart();
+      });
+      
+      document.getElementById('time-horizon').addEventListener('input', function() {
+        updateDisplays();
+        updateChart();
+      });
+      
+      document.getElementById('inflation-rate').addEventListener('input', function() {
+        updateDisplays();
+        updateChart();
+      });
+      
+      // Initialize
+      updateDisplays();
+      updateChart();
     });
   </script>
 
