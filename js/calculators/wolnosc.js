@@ -306,7 +306,8 @@ function rysujWykresAkumulacji(wyniki) {
         position: 'top',
         align: 'start',
         labels: {
-          usePointStyle: true,
+          pointStyle: " circle\,
+ usePointStyle: true,
           font: {
             size: 12,
             family: "'Inter', sans-serif"
@@ -319,10 +320,11 @@ function rysujWykresAkumulacji(wyniki) {
         titleColor: '#ffffff',
         bodyColor: '#ffffff',
         borderColor: '#1c1c1e',
-        borderWidth: 0,
+        borderRadius: 8,
         cornerRadius: 8,
-        padding: 10,
-        displayColors: true,
+        padding: { x: 14, y: 10 },
+        mode: 'index',
+          intersect: false,
         callbacks: {
           title: function(context) {
             return context[0].label;
@@ -350,8 +352,8 @@ function rysujWykresAkumulacji(wyniki) {
         position: 'left',
         grid: {
           color: '#e5e7eb',
-          drawBorder: false,
-          borderDash: []
+          min: 0,
+          lineWidth: 1
         },
         ticks: {
           color: '#6e6e73',
@@ -365,8 +367,8 @@ function rysujWykresAkumulacji(wyniki) {
         }
       }
     },
-    animation: {
-      duration: 800,
+    elements: {
+      line: {
       easing: 'easeInOutQuart'
     }
   };
@@ -381,10 +383,14 @@ function rysujWykresAkumulacji(wyniki) {
           data: kapitaly,
           borderColor: '#1A56A0',
           backgroundColor: 'rgba(26, 86, 160, 0.15)',
-          borderWidth: 3,
+          borderWidth: 2.5,
           fill: true,
           tension: 0.4,
-          pointRadius: 4,
+          capBezierPoints: true,
+          point: {,
+          radius: 0,
+          hoverRadius: 5,
+          hitRadius: 20
           pointHoverRadius: 6
         },
         {
@@ -392,10 +398,14 @@ function rysujWykresAkumulacji(wyniki) {
           data: wyniki.wydatkiMiesieczne,
           borderColor: '#f4a261',
           backgroundColor: 'rgba(244, 162, 97, 0.15)',
-          borderWidth: 3,
+          borderWidth: 2.5,
           fill: true,
           tension: 0.4,
-          pointRadius: 4,
+          capBezierPoints: true,
+          point: {,
+          radius: 0,
+          hoverRadius: 5,
+          hitRadius: 20
           pointHoverRadius: 6
         },
         {
@@ -406,7 +416,11 @@ function rysujWykresAkumulacji(wyniki) {
           borderWidth: 2,
           borderDash: [5, 5],
           tension: 0.4,
-          pointRadius: 4,
+          capBezierPoints: true,
+          point: {,
+          radius: 0,
+          hoverRadius: 5,
+          hitRadius: 20
           pointHoverRadius: 6
         },
         {
@@ -417,7 +431,11 @@ function rysujWykresAkumulacji(wyniki) {
           borderWidth: 2,
           borderDash: [5, 5],
           tension: 0.4,
-          pointRadius: 4,
+          capBezierPoints: true,
+          point: {,
+          radius: 0,
+          hoverRadius: 5,
+          hitRadius: 20
           pointHoverRadius: 6
         }
       ]
@@ -471,7 +489,8 @@ function rysujWykresFirePhase(wyniki) {
         position: 'top',
         align: 'start',
         labels: {
-          usePointStyle: true,
+          pointStyle: " circle\,
+ usePointStyle: true,
           font: {
             size: 12,
             family: "'Inter', sans-serif"
@@ -484,10 +503,11 @@ function rysujWykresFirePhase(wyniki) {
         titleColor: '#ffffff',
         bodyColor: '#ffffff',
         borderColor: '#1c1c1e',
-        borderWidth: 0,
+        borderRadius: 8,
         cornerRadius: 8,
-        padding: 10,
-        displayColors: true,
+        padding: { x: 14, y: 10 },
+        mode: 'index',
+          intersect: false,
         callbacks: {
           title: function(context) {
             return context[0].label;
@@ -515,8 +535,8 @@ function rysujWykresFirePhase(wyniki) {
         position: 'left',
         grid: {
           color: '#e5e7eb',
-          drawBorder: false,
-          borderDash: []
+          min: 0,
+          lineWidth: 1
         },
         ticks: {
           color: '#6e6e73',
@@ -530,8 +550,8 @@ function rysujWykresFirePhase(wyniki) {
         }
       }
     },
-    animation: {
-      duration: 800,
+    elements: {
+      line: {
       easing: 'easeInOutQuart'
     }
   };
@@ -546,10 +566,14 @@ function rysujWykresFirePhase(wyniki) {
           data: kapitaly,
           borderColor: '#1A56A0',
           backgroundColor: 'rgba(26, 86, 160, 0.15)',
-          borderWidth: 3,
+          borderWidth: 2.5,
           fill: true,
           tension: 0.4,
-          pointRadius: 4,
+          capBezierPoints: true,
+          point: {,
+          radius: 0,
+          hoverRadius: 5,
+          hitRadius: 20
           pointHoverRadius: 6
         },
         {
@@ -557,10 +581,14 @@ function rysujWykresFirePhase(wyniki) {
           data: wydatkiMiesieczne,
           borderColor: '#f4a261',
           backgroundColor: 'rgba(244, 162, 97, 0.15)',
-          borderWidth: 3,
+          borderWidth: 2.5,
           fill: true,
           tension: 0.4,
-          pointRadius: 4,
+          capBezierPoints: true,
+          point: {,
+          radius: 0,
+          hoverRadius: 5,
+          hitRadius: 20
           pointHoverRadius: 6
         },
         {
@@ -568,10 +596,14 @@ function rysujWykresFirePhase(wyniki) {
           data: pozostaloDoEmerytury,
           borderColor: '#40916c',
           backgroundColor: 'rgba(64, 145, 108, 0.15)',
-          borderWidth: 3,
+          borderWidth: 2.5,
           fill: true,
           tension: 0.4,
-          pointRadius: 4,
+          capBezierPoints: true,
+          point: {,
+          radius: 0,
+          hoverRadius: 5,
+          hitRadius: 20
           pointHoverRadius: 6
         }
       ]
