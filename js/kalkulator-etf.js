@@ -157,26 +157,136 @@ function obliczWszystko() {
 }
 
 /**
- * Inicjalizacja Chart.js
+ * Inicjalizacja Chart.js - Revolut/Trading212 Style
  */
 function initChart() {
     const canvas = document.getElementById('chartInwestycja');
-    if (!canvas || !window.ETF || !window.ETF.charts) return;
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
-
-    const baseOptions = window.ETF.charts.getBaseOptions();
+    
+    // Helper function for PLN formatting
+    function formatZl(val) {
+      if (val >= 1000000) return (val/1000000).toFixed(1) + 'M zł';
+      if (val >= 1000) return (val/1000).toFixed(0) + 'k zł';
+      return val.toFixed(0) + ' zł';
+    }
     
     myChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: [],
             datasets: [
-                window.ETF.charts.createDataset(ctx, 'Portfel ETF', [], window.ETF.charts.colors.success),
-                window.ETF.charts.createDataset(ctx, 'Wkład własny', [], window.ETF.charts.colors.muted),
-                window.ETF.charts.createDataset(ctx, 'Wartość realna', [], window.ETF.charts.colors.accent)
+                {
+                    label: 'Portfel ETF',
+                    data: [],
+                    borderColor: '#1A56A0',
+                    backgroundColor: 'rgba(26, 86, 160, 0.15)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                },
+                {
+                    label: 'Wkład własny',
+                    data: [],
+                    borderColor: '#f4a261',
+                    backgroundColor: 'rgba(244, 162, 97, 0.15)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                },
+                {
+                    label: 'Wartość realna',
+                    data: [],
+                    borderColor: '#6b7280',
+                    backgroundColor: 'rgba(107, 114, 128, 0.15)',
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    tension: 0.4,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                }
             ]
         },
-        options: baseOptions
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+                mode: 'index',
+                intersect: false,
+            },
+            plugins: {
+                legend: {
+                    position: 'top',
+                    align: 'start',
+                    labels: {
+                        usePointStyle: true,
+                        font: {
+                            size: 12,
+                            family: "'Inter', sans-serif"
+                        },
+                        color: '#1c1c1e'
+                    }
+                },
+                tooltip: {
+                    backgroundColor: '#1c1c1e',
+                    titleColor: '#ffffff',
+                    bodyColor: '#ffffff',
+                    borderColor: '#1c1c1e',
+                    borderWidth: 0,
+                    cornerRadius: 8,
+                    padding: 10,
+                    displayColors: true,
+                    callbacks: {
+                        title: function(context) {
+                            return context[0].label;
+                        },
+                        label: function(context) {
+                            return 'Wartość: ' + formatZl(context.parsed.y);
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        color: '#6e6e73',
+                        font: {
+                            size: 11,
+                            family: "'Inter', sans-serif"
+                        }
+                    }
+                },
+                y: {
+                    position: 'left',
+                    grid: {
+                        color: '#e5e7eb',
+                        drawBorder: false,
+                        borderDash: []
+                    },
+                    ticks: {
+                        color: '#6e6e73',
+                        font: {
+                            size: 11,
+                            family: "'Inter', sans-serif"
+                        },
+                        callback: function(value) {
+                            return formatZl(value);
+                        }
+                    }
+                }
+            },
+            animation: {
+                duration: 800,
+                easing: 'easeInOutQuart'
+            }
+        }
     });
 }
 
