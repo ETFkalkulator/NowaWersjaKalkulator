@@ -323,17 +323,34 @@ function ustawWidokWykresu(widok) {
 
 function rysujWykres(wyniki, kapitalPoczatkowy, stopaLokaty, wIKE, doplataRoczna) {
   var canvas = document.getElementById('wykres-obligacji');
-  if (!canvas || typeof Chart === 'undefined' || !window.ETF || !window.ETF.charts) return;
+  if (!canvas || typeof Chart === 'undefined') return;
   if (aktualnyWykres) aktualnyWykres.destroy();
+
+  // Sprawdzenie czy dane są dostępne
+  if (!wyniki || !wyniki.historiaRoczna || !wyniki.historiaMiesieczna) {
+    console.error('Brak danych do wyświetlenia wykresu', wyniki);
+    return;
+  }
 
   var ctx = canvas.getContext('2d');
   var historia = (widokWykresu === 'lata') ? wyniki.historiaRoczna : wyniki.historiaMiesieczna;
+
+  if (!historia || historia.length === 0) {
+    console.error('Historia jest pusta', historia);
+    return;
+  }
 
   var etykiety = historia.map(function (p) {
     return widokWykresu === 'lata' ? 'Rok ' + p.rok : 'M' + p.miesiac;
   });
 
   var daneObligacji = historia.map(function (p) { return p.kapital; });
+
+  // Sprawdzenie czy dane obligacji są poprawne
+  if (!daneObligacji || daneObligacji.length === 0) {
+    console.error('Dane obligacji są puste', daneObligacji);
+    return;
+  }
 
   // Lokata — obliczamy punkty do wykresu
   var daneLokaty = [];
@@ -430,7 +447,7 @@ function rysujWykres(wyniki, kapitalPoczatkowy, stopaLokaty, wIKE, doplataRoczna
             family: "'Inter', sans-serif"
           },
           callback: function(value) {
-            return formatZl(value);
+            return window.formatujZl(value);
           }
         }
       }
