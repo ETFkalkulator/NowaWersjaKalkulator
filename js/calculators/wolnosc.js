@@ -261,27 +261,31 @@ function aktualizujProgressBar(wyniki) {
 
 function rysujWykresAkumulacji(wyniki) {
   const canvas = document.getElementById('wf-wykres-akumulacja');
-  if (!canvas || !window.ETF || !window.ETF.charts) return;
+  if (!canvas || typeof Chart === 'undefined') return;
   const ctx = canvas.getContext('2d');
 
   var dane = wyniki.historiaMiesieczna;
-  var etykiety = dane.map(function (d) { return 'Rok ' + d.rok; });
+  // Poprawka: etykiety co 5 lat z informacją o FIRE
+  var etykiety = [];
+  var fireRok = wyniki.latDoFIRE ? Math.ceil(wyniki.latDoFIRE) : null;
+  
+  for (var i = 0; i < dane.length; i++) {
+    var d = dane[i];
+    if (fireRok && d.rok === fireRok) {
+      etykiety.push('Rok ' + d.rok + ' 🎯 FIRE');
+    } else if (d.rok % 5 === 0) {
+      etykiety.push('Rok ' + d.rok + ' (co 5 lat)');
+    } else {
+      etykiety.push('Rok ' + d.rok);
+    }
+  }
+  
   var kapitaly = dane.map(function (d) { return Math.round(d.kapital); });
   var cele = dane.map(function (d) { return Math.round(d.cel); });
-
-  // Punkt osiągnięcia FIRE
-  var fireRok = wyniki.latDoFIRE ? Math.ceil(wyniki.latDoFIRE) : null;
 
   if (wykresAkumulacji) {
     wykresAkumulacji.destroy();
     wykresAkumulacji = null;
-  }
-
-  // Helper function for PLN formatting
-  function formatZl(val) {
-    if (val >= 1000000) return (val/1000000).toFixed(1) + 'M zł';
-    if (val >= 1000) return (val/1000).toFixed(0) + 'k zł';
-    return val.toFixed(0) + ' zł';
   }
   
   // Chart configuration for FIRE charts
@@ -319,7 +323,7 @@ function rysujWykresAkumulacji(wyniki) {
             return context[0].label;
           },
           label: function(context) {
-            return 'Wartość: ' + formatZl(context.parsed.y);
+            return 'Wartość: ' + (window.formatujZl ? window.formatujZl(context.parsed.y) : context.parsed.y.toFixed(2) + ' zł');
           }
         }
       }
@@ -424,19 +428,108 @@ function rysujWykresAkumulacji(wyniki) {
 
 function rysujWykresFirePhase(wyniki) {
   const canvas = document.getElementById('wf-wykres-fire');
-  if (!canvas || !window.ETF || !window.ETF.charts) return;
+  if (!canvas || typeof Chart === 'undefined') return;
   const ctx = canvas.getContext('2d');
 
+  // Sprawdzenie czy dane są dostępne
+  if (!wyniki || !wyniki.historiaFIRE) {
+    console.error('Brak danych do wyświetlenia wykresu fazy emerytury', wyniki);
+    return;
+  }
+
   var dane = wyniki.historiaFIRE;
+  if (!dane || dane.length === 0) {
+    console.error('Historia FIRE jest pusta', dane);
+    return;
+  }
+
   var etykiety = dane.map(function (d) { return 'Rok ' + d.rok; });
   var kapitaly = dane.map(function (d) { return d.kapital; });
+  var wydatkiMiesieczne = dane.map(function (d) { return wyniki.wydatkiMiesieczne; });
+  var pozostaloDoEmerytury = dane.map(function (d) { return d.kapital - (wyniki.wydatkiMiesieczne * 12 * d.rok); });
 
   if (wykresFirePhase) {
     wykresFirePhase.destroy();
     wykresFirePhase = null;
   }
 
-  const baseOptions = window.ETF.charts.getBaseOptions();
+  // Chart configuration for FIRE charts
+  const fireChartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: {
+      mode: 'index',
+      intersect: false,
+    },
+    plugins: {
+      legend: {
+        position: 'top',
+        align: 'start',
+        labels: {
+          usePointStyle: true,
+          font: {
+            size: 12,
+            family: "'Inter', sans-serif"
+          },
+          color: '#1c1c1e'
+        }
+      },
+      tooltip: {
+        backgroundColor: '#1c1c1e',
+        titleColor: '#ffffff',
+        bodyColor: '#ffffff',
+        borderColor: '#1c1c1e',
+        borderWidth: 0,
+        cornerRadius: 8,
+        padding: 10,
+        displayColors: true,
+        callbacks: {
+          title: function(context) {
+            return context[0].label;
+          },
+          label: function(context) {
+            return 'Wartość: ' + (window.formatujZl ? window.formatujZl(context.parsed.y) : context.parsed.y.toFixed(2) + ' zł');
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: {
+          display: false
+        },
+        ticks: {
+          color: '#6e6e73',
+          font: {
+            size: 11,
+            family: "'Inter', sans-serif"
+          }
+        }
+      },
+      y: {
+        position: 'left',
+        grid: {
+          color: '#e5e7eb',
+          drawBorder: false,
+          borderDash: []
+        },
+        ticks: {
+          color: '#6e6e73',
+          font: {
+            size: 11,
+            family: "'Inter', sans-serif"
+          },
+          callback: function(value) {
+            return window.formatujZl ? window.formatujZl(value) : value.toFixed(2) + ' zł';
+          }
+        }
+      }
+    },
+    animation: {
+      duration: 800,
+      easing: 'easeInOutQuart'
+    }
+  };
 
   wykresFirePhase = new Chart(ctx, {
     type: 'line',
@@ -468,18 +561,17 @@ function rysujWykresFirePhase(wyniki) {
         {
           label: 'Pozostało do emerytury',
           data: pozostaloDoEmerytury,
-          borderColor: '#6b7280',
-          backgroundColor: 'rgba(107, 114, 128, 0.15)',
-          borderWidth: 2,
-          borderDash: [5, 5],
+          borderColor: '#40916c',
+          backgroundColor: 'rgba(64, 145, 108, 0.15)',
+          borderWidth: 3,
+          fill: true,
           tension: 0.4,
           pointRadius: 4,
           pointHoverRadius: 6
         }
       ]
     },
-
-    options: baseOptions
+    options: fireChartOptions
   });
 }
 
