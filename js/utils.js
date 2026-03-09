@@ -13,13 +13,17 @@
    przecinek jako separator dziesiętny.
    ---------------------------------------------------------- */
 
-const formatujProcent = (liczba) => {
+/**
+ * Formatuje liczbę jako procent
+ * Przykład: formatujProcent(0.065) → "6,50%"
+ */
+function formatujProcent(liczba) {
   return new Intl.NumberFormat('pl-PL', {
     style: 'percent',
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(liczba);
-};
+}
 
 /**
  * Formatuje liczbę jako kwotę w złotych
@@ -38,9 +42,9 @@ function formatujZl(liczba) {
  * Formatuje dużą liczbę z separatorem tysięcy (bez waluty)
  * Przykład: formatujLiczbe(10500) → "10 500"
  */
-const formatujLiczbe = (liczba) => {
+function formatujLiczbe(liczba) {
   return new Intl.NumberFormat('pl-PL').format(liczba);
-};
+}
 
 
 /* ----------------------------------------------------------
@@ -56,22 +60,22 @@ const formatujLiczbe = (liczba) => {
  *           czyPoprawnaCyfra(-5)    → false
  *           czyPoprawnaCyfra(1000)  → true
  */
-const czyPoprawnaCyfra = (wartosc) => {
+function czyPoprawnaCyfra(wartosc) {
   const liczba = parseFloat(wartosc);
   return !isNaN(liczba) && liczba > 0;
-};
+}
 
 /**
  * Pobiera wartość z pola input i konwertuje na liczbę
  * Jeśli pole jest puste lub niepoprawne — zwraca wartość domyślną
  * Przykład: pobierzWartosc('kwota', 10000) → 10000 (jeśli pole puste)
  */
-const pobierzWartosc = (idPola, domyslna = 0) => {
+function pobierzWartosc(idPola, domyslna = 0) {
   const pole = document.getElementById(idPola);
   if (!pole) return domyslna;
   const wartosc = parseFloat(pole.value);
   return isNaN(wartosc) ? domyslna : wartosc;
-};
+}
 
 
 /* ----------------------------------------------------------
@@ -85,9 +89,9 @@ const pobierzWartosc = (idPola, domyslna = 0) => {
  * Zaokrągla liczbę do n miejsc po przecinku
  * Przykład: zaokraglij(10500.567, 2) → 10500.57
  */
-const zaokraglij = (liczba, miejsca = 2) => {
+function zaokraglij(liczba, miejsca = 2) {
   return Math.round(liczba * Math.pow(10, miejsca)) / Math.pow(10, miejsca);
-};
+}
 
 
 /* ----------------------------------------------------------
@@ -104,7 +108,7 @@ const zaokraglij = (liczba, miejsca = 2) => {
  * @param {Function} formatuj - funkcja formatowania (np. formatujZl)
  * @param {number} czas - czas animacji w ms (domyślnie 600ms)
  */
-const animujLiczbe = (idElementu, nowaWartosc, formatuj = formatujZl, czas = 600) => {
+function animujLiczbe(idElementu, nowaWartosc, formatuj = formatujZl, czas = 600) {
   const element = document.getElementById(idElementu);
   if (!element) return;
 
