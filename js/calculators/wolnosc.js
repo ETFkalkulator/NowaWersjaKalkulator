@@ -150,13 +150,18 @@ var wykresAkumulacji = null;
 var wykresFirePhase = null;
 
 function aktualizujWolnosc() {
-  var wydatki = pobierzWartosc('wf-wydatki', 3000);
-  var oszcz = pobierzWartosc('wf-oszczednosci', 1000);
-  var start = pobierzWartosc('wf-kapital', 0);
-  var stopa = pobierzWartosc('wf-stopa', 7);
-  var inflacja = pobierzWartosc('wf-inflacja', 3.5);
-  var stopaWyp = pobierzWartosc('wf-stopa-wyplat', 4);
-  var latCelowe = pobierzWartosc('wf-lata-cel', 20);
+  var pobierzWartoscLocal = window.pobierzWartosc || function(id, def) { 
+    var el = document.getElementById(id); 
+    return el ? parseFloat(el.value) || def : def; 
+  };
+  
+  var wydatki = pobierzWartoscLocal('wf-wydatki', 3000);
+  var oszcz = pobierzWartoscLocal('wf-oszczednosci', 1000);
+  var start = pobierzWartoscLocal('wf-kapital', 0);
+  var stopa = pobierzWartoscLocal('wf-stopa', 7);
+  var inflacja = pobierzWartoscLocal('wf-inflacja', 3.5);
+  var stopaWyp = pobierzWartoscLocal('wf-stopa-wyplat', 4);
+  var latCelowe = pobierzWartoscLocal('wf-lata-cel', 20);
   var wIKE = document.getElementById('wf-ike')
     ? document.getElementById('wf-ike').checked
     : false;
@@ -355,7 +360,7 @@ function rysujWykresAkumulacji(wyniki) {
             family: "'Inter', sans-serif"
           },
           callback: function(value) {
-            return formatZl(value);
+            return window.formatujZl ? window.formatujZl(value) : value.toFixed(2) + ' zł';
           }
         }
       }
