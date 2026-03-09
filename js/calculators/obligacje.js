@@ -361,16 +361,121 @@ function rysujWykres(wyniki, kapitalPoczatkowy, stopaLokaty, wIKE, doplataRoczna
     return zaokraglij(kapitalPoczatkowy + p.doplataLaczna);
   });
 
-  const baseOptions = window.ETF.charts.getBaseOptions();
+  const baseOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: {
+      mode: 'index',
+      intersect: false,
+    },
+    plugins: {
+      legend: {
+        position: 'top',
+        align: 'start',
+        labels: {
+          usePointStyle: true,
+          font: {
+            size: 12,
+            family: "'Inter', sans-serif"
+          },
+          color: '#1c1c1e'
+        }
+      },
+      tooltip: {
+        backgroundColor: '#1c1c1e',
+        titleColor: '#ffffff',
+        bodyColor: '#ffffff',
+        borderColor: '#1c1c1e',
+        borderWidth: 0,
+        cornerRadius: 8,
+        padding: 10,
+        displayColors: true,
+        callbacks: {
+          title: function(context) {
+            return context[0].label;
+          },
+          label: function(context) {
+            return 'Wartość: ' + formatZl(context.parsed.y);
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: {
+          display: false
+        },
+        ticks: {
+          color: '#6e6e73',
+          font: {
+            size: 11,
+            family: "'Inter', sans-serif"
+          }
+        }
+      },
+      y: {
+        position: 'left',
+        grid: {
+          color: '#e5e7eb',
+          drawBorder: false,
+          borderDash: []
+        },
+        ticks: {
+          color: '#6e6e73',
+          font: {
+            size: 11,
+            family: "'Inter', sans-serif"
+          },
+          callback: function(value) {
+            return formatZl(value);
+          }
+        }
+      }
+    },
+    animation: {
+      duration: 800,
+      easing: 'easeInOutQuart'
+    }
+  };
   
   aktualnyWykres = new Chart(ctx, {
     type: 'line',
     data: {
       labels: etykiety,
       datasets: [
-        window.ETF.charts.createDataset(ctx, 'Obligacje skarbowe', daneObligacji, window.ETF.charts.colors.success),
-        window.ETF.charts.createDataset(ctx, 'Lokata bankowa', daneLokaty, window.ETF.charts.colors.muted),
-        window.ETF.charts.createDataset(ctx, 'Wkład własny', daneWklad, window.ETF.charts.colors.accent)
+        {
+          label: 'Obligacje skarbowe',
+          data: daneObligacji,
+          borderColor: '#40916C',
+          backgroundColor: 'rgba(64, 145, 108, 0.15)',
+          borderWidth: 3,
+          fill: true,
+          tension: 0.4,
+          pointRadius: 4,
+          pointHoverRadius: 6
+        },
+        {
+          label: 'Lokata bankowa',
+          data: daneLokaty,
+          borderColor: '#f4a261',
+          backgroundColor: 'rgba(244, 162, 97, 0.15)',
+          borderWidth: 3,
+          fill: true,
+          tension: 0.4,
+          pointRadius: 4,
+          pointHoverRadius: 6
+        },
+        {
+          label: 'Wkład własny',
+          data: daneWklad,
+          borderColor: '#1A56A0',
+          backgroundColor: 'rgba(26, 86, 160, 0.15)',
+          borderWidth: 3,
+          fill: true,
+          tension: 0.4,
+          pointRadius: 4,
+          pointHoverRadius: 6
+        }
       ]
     },
     options: baseOptions
