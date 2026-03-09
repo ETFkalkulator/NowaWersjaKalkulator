@@ -186,20 +186,38 @@ var widokWykresu = 'lata';
 var aktualnyOkres = 'miesiecznie';
 
 function aktualizujKalkulator() {
-  var utils = window.ETF.utils;
-  var formatujZl = utils.formatujZl;
-  var formatujProc = utils.formatujProcent;
-  var animuj = utils.animujLiczbe;
+  var utils = window.ETF.utils || {};
+  var formatujZl = utils.formatujZl || window.formatujZl || function(x) { return x.toFixed(2) + ' zł'; };
+  var formatujProc = utils.formatujProcent || window.formatujProcent || function(x) { return (x * 100).toFixed(2) + '%'; };
+  var animuj = utils.animujLiczbe || window.animuj || function(id, val, fmt) { 
+    var el = document.getElementById(id); 
+    if (el) el.textContent = fmt ? fmt(val) : val; 
+  };
 
-  var kapital = utils.pobierzWartosc('input-kapital', 10000);
+  var kapital = (utils.pobierzWartosc || window.pobierzWartosc || function(id, def) { 
+  var el = document.getElementById(id); 
+  return el ? parseFloat(el.value) || def : def; 
+})('input-kapital', 10000);
   var typEl = document.getElementById('input-typ');
   var typ = typEl ? typEl.value : 'EDO';
-  var stopaRok1 = utils.pobierzWartosc('input-stopa', 6.6) / 100;
-  var inflacja = utils.pobierzWartosc('input-inflacja', 3.5) / 100;
+  var stopaRok1 = (utils.pobierzWartosc || window.pobierzWartosc || function(id, def) { 
+  var el = document.getElementById(id); 
+  return el ? parseFloat(el.value) || def : def; 
+})('input-stopa', 6.6) / 100;
+  var inflacja = (utils.pobierzWartosc || window.pobierzWartosc || function(id, def) { 
+  var el = document.getElementById(id); 
+  return el ? parseFloat(el.value) || def : def; 
+})('input-inflacja', 3.5) / 100;
   var ikeEl = document.getElementById('input-ike');
   var wIKE = ikeEl ? ikeEl.checked : false;
-  var stopaLokaty = utils.pobierzWartosc('input-lokata', 4.5) / 100;
-  var doplata = utils.pobierzWartosc('input-doplata', 0);
+  var stopaLokaty = (utils.pobierzWartosc || window.pobierzWartosc || function(id, def) { 
+  var el = document.getElementById(id); 
+  return el ? parseFloat(el.value) || def : def; 
+})('input-lokata', 4.5) / 100;
+  var doplata = (utils.pobierzWartosc || window.pobierzWartosc || function(id, def) { 
+  var el = document.getElementById(id); 
+  return el ? parseFloat(el.value) || def : def; 
+})('input-doplata', 0);
 
   // Przeliczamy na roczną
   var doplataRoczna = (aktualnyOkres === 'miesiecznie') ? doplata * 12 : doplata;

@@ -1,9 +1,18 @@
-VM487 obligacje.js:444 Uncaught SyntaxError: Unexpected token ':'
-utils.js:1 Uncaught SyntaxError: Identifier 'formatujZl' has already been declared
-obligacje.js:444 Uncaught SyntaxError: Unexpected token ':'
- * Formatuje liczbę jako procent
- * Przykład: formatujProcent(0.065) → "6,50%"
- */
+/* ============================================================
+   utils.js — ETFkalkulator.pl
+   Pomocnicze funkcje używane przez wszystkie kalkulatory.
+   Zasada DRY: piszemy raz, używamy wszędzie.
+   ============================================================ */
+
+
+/* ----------------------------------------------------------
+   FORMATOWANIE LICZB
+   Intl.NumberFormat to wbudowany mechanizm przeglądarki
+   który formatuje liczby według lokalnych zasad danego kraju.
+   'pl-PL' = format polski: spacja jako separator tysięcy,
+   przecinek jako separator dziesiętny.
+   ---------------------------------------------------------- */
+
 const formatujProcent = (liczba) => {
   return new Intl.NumberFormat('pl-PL', {
     style: 'percent',
