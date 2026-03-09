@@ -39,11 +39,12 @@
   <!-- Favicon — ikona w zakładce przeglądarki -->
   <link rel="icon" href="images/og-image.png">
 
-  <!-- Nasze pliki CSS — kolejność ma znaczenie! -->
+  <!-- Optyamizowany ładunek czcionek z Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap"
-    rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap"></noscript>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/main.css">
@@ -2005,7 +2006,7 @@
             <div class="ml-form-align-center">
               <div class="ml-form-embedWrapper embedForm">
                 <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
-                  <div class="ml-form-embedContent" style=" ">
+                  <div class="ml-form-embedContent">
                     <h4>Newsletter ETFkalkulator.pl</h4>
                     <p>Obligacje, ETFy, wolność finansowa - prosto na Twój email.</p>
                   </div>
@@ -2022,7 +2023,7 @@
                     </div>
 
                     <!-- Privacy policy -->
-                    <div class="ml-form-embedPermissions" style="">
+                    <div class="ml-form-embedPermissions">
                       <div class="ml-form-embedPermissionsContent default">
                         <h4>Zgoda na przetwarzanie danych</h4>
                         <p>Twój adres e-mail będzie wykorzystywany wyłącznie do wysyłki newslettera ETFkalkulator.pl.
@@ -2147,12 +2148,14 @@
   <script>
     // Funkcja do ładowania Google Analytics
     function loadGoogleAnalytics() {
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX');
+      if (document.getElementById('ga-script')) return; // Zapobieganie wielokrotnemu pobieraniu
+
+      var tag = document.createElement('script');
+      tag.id = 'ga-script';
+      tag.async = true;
+      tag.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+      var firstScript = document.getElementsByTagName('script')[0];
+      firstScript.parentNode.insertBefore(tag, firstScript);
 
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
@@ -2164,12 +2167,10 @@
     }
   </script>
 
-  <!-- Nasze pliki JavaScript -->
-  <script src="js/utils.js" defer></script>
-  <!-- Chart.js Library -->
+  <!-- Biblioteki zewnętrzne -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
   
-  <!-- Optimized JavaScript Loading -->
+  <!-- Nasze pliki JavaScript -->
   <script src="js/utils.js" defer></script>
   <script src="js/tooltips.js" defer></script>
   

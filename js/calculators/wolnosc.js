@@ -100,11 +100,21 @@ function obliczWolnosc(params) {
         rok: f / 12,
         kapital: Math.max(0, kapitalFIRE)
       });
-      if (kapitalFIRE <= 0 && kapitalWyczerpany === null) {
-        kapitalWyczerpany = f / 12;
-      }
     }
-    if (kapitalFIRE <= 0) break;
+
+    if (kapitalFIRE <= 0) {
+      if (kapitalWyczerpany === null) {
+        kapitalWyczerpany = Math.ceil(f / 12);
+      }
+      // Jeśli nie zrzuciło wyniku na koniec roku - sztucznie dodaj zjechanie na ziemię celem poprawnego rysowania okrągłego zera
+      if (f % 12 !== 0) {
+         historiaFIRE.push({
+            rok: Math.ceil(f / 12),
+            kapital: 0
+         });
+      }
+      break;
+    }
   }
 
   // --- Statystyki końcowe ---
@@ -261,117 +271,54 @@ function aktualizujProgressBar(wyniki) {
 
 
 /* ----------------------------------------------------------
-   WYKRES 1: Akumulacja kapitału
+   WYKRES 1: Droga do Wolności Finansowej
    ---------------------------------------------------------- */
 
 function rysujWykresAkumulacji(wyniki) {
-  const canvas = document.getElementById('wf-wykres-akumulacja');
+  var canvas = document.getElementById('wf-wykres-akumulacja');
   if (!canvas || typeof Chart === 'undefined') return;
-  const ctx = canvas.getContext('2d');
+  var ctx = canvas.getContext('2d');
 
   var dane = wyniki.historiaMiesieczna;
-  // Poprawka: etykiety co 5 lat z informacją o FIRE
-  var etykiety = [];
+  if (!dane || dane.length === 0) return;
+
+  // Skrócenie osi czasu: FIRE + 5 lat (max 50), lub latCelowe + 10
   var fireRok = wyniki.latDoFIRE ? Math.ceil(wyniki.latDoFIRE) : null;
+  var maxRok = fireRok
+    ? Math.min(fireRok + 5, 50)
+    : Math.min((wyniki.latCelowe || 20) + 10, 50);
+
+  var danePrzycięte = dane.filter(function(d) { return d.rok <= maxRok; });
+  if (danePrzycięte.length === 0) danePrzycięte = dane.slice(0, 50);
+
+  var etykiety = danePrzycięte.map(function(d) { return 'Rok ' + d.rok; });
+  var kapitaly = danePrzycięte.map(function(d) { return Math.round(d.kapital); });
+  var cele = danePrzycięte.map(function(d) { return Math.round(d.cel); });
   
-  for (var i = 0; i < dane.length; i++) {
-    var d = dane[i];
-    if (fireRok && d.rok === fireRok) {
-      etykiety.push('Rok ' + d.rok + ' 🎯 FIRE');
-    } else if (d.rok % 5 === 0) {
-      etykiety.push('Rok ' + d.rok + ' (co 5 lat)');
-    } else {
-      etykiety.push('Rok ' + d.rok);
-    }
-  }
-  
-  var kapitaly = dane.map(function (d) { return Math.round(d.kapital); });
-  var cele = dane.map(function (d) { return Math.round(d.cel); });
+  // Pokaż kropki tylko co 5 lat oraz w roku osiągnięcia celu FIRE
+  var promieniePunktowAkumulacja = danePrzycięte.map(function(d, i) { 
+    return (i % 5 === 0 || d.rok === fireRok) ? 4 : 0; 
+  });
 
   if (wykresAkumulacji) {
     wykresAkumulacji.destroy();
     wykresAkumulacji = null;
   }
-  
-  // Chart configuration for FIRE charts
-  const fireChartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    interaction: {
-      mode: 'index',
-      intersect: false,
-    },
-    plugins: {
-      legend: {
-        position: 'top',
-        align: 'start',
-        labels: {
-          pointStyle: " circle\,
- usePointStyle: true,
-          font: {
-            size: 12,
-            family: "'Inter', sans-serif"
-          },
-          color: '#1c1c1e'
-        }
-      },
-      tooltip: {
-        backgroundColor: '#1c1c1e',
-        titleColor: '#ffffff',
-        bodyColor: '#ffffff',
-        borderColor: '#1c1c1e',
-        borderRadius: 8,
-        cornerRadius: 8,
-        padding: { x: 14, y: 10 },
-        mode: 'index',
-          intersect: false,
-        callbacks: {
-          title: function(context) {
-            return context[0].label;
-          },
-          label: function(context) {
-            return 'Wartość: ' + (window.formatujZl ? window.formatujZl(context.parsed.y) : context.parsed.y.toFixed(2) + ' zł');
-          }
-        }
-      }
-    },
-    scales: {
-      x: {
-        grid: {
-          display: false
-        },
-        ticks: {
-          color: '#6e6e73',
-          font: {
-            size: 11,
-            family: "'Inter', sans-serif"
-          }
-        }
-      },
-      y: {
-        position: 'left',
-        grid: {
-          color: '#e5e7eb',
-          min: 0,
-          lineWidth: 1
-        },
-        ticks: {
-          color: '#6e6e73',
-          font: {
-            size: 11,
-            family: "'Inter', sans-serif"
-          },
-          callback: function(value) {
-            return window.formatujZl ? window.formatujZl(value) : value.toFixed(2) + ' zł';
-          }
-        }
-      }
-    },
-    elements: {
-      line: {
-      easing: 'easeInOutQuart'
-    }
-  };
+
+  // Helper formatowania kwot na osi Y
+  function formatujOs(value) {
+    if (value >= 1000000) return (value / 1000000).toFixed(1) + ' mln';
+    if (value >= 1000) return (value / 1000).toFixed(0) + ' tys.';
+    return value + ' zł';
+  }
+
+  // Helper formatowania kwot w tooltip
+  function formatujTooltip(value) {
+    if (window.formatujZl) return window.formatujZl(value);
+    return new Intl.NumberFormat('pl-PL', { style: 'currency', currency: 'PLN', maximumFractionDigits: 0 }).format(value);
+  }
+
+  var isMobile = window.innerWidth < 768;
 
   wykresAkumulacji = new Chart(ctx, {
     type: 'line',
@@ -383,178 +330,152 @@ function rysujWykresAkumulacji(wyniki) {
           data: kapitaly,
           borderColor: '#1A56A0',
           backgroundColor: 'rgba(26, 86, 160, 0.15)',
-          borderWidth: 2.5,
+          borderWidth: 3,
           fill: true,
           tension: 0.4,
-          capBezierPoints: true,
-          point: {,
-          radius: 0,
-          hoverRadius: 5,
-          hitRadius: 20
-          pointHoverRadius: 6
-        },
-        {
-          label: 'Wypłaty miesięczne',
-          data: wyniki.wydatkiMiesieczne,
-          borderColor: '#f4a261',
-          backgroundColor: 'rgba(244, 162, 97, 0.15)',
-          borderWidth: 2.5,
-          fill: true,
-          tension: 0.4,
-          capBezierPoints: true,
-          point: {,
-          radius: 0,
-          hoverRadius: 5,
-          hitRadius: 20
-          pointHoverRadius: 6
-        },
-        {
-          label: 'Pozostało do emerytury',
-          data: wyniki.pozostaloDoEmerytury,
-          borderColor: '#6b7280',
-          backgroundColor: 'rgba(107, 114, 128, 0.15)',
-          borderWidth: 2,
-          borderDash: [5, 5],
-          tension: 0.4,
-          capBezierPoints: true,
-          point: {,
-          radius: 0,
-          hoverRadius: 5,
-          hitRadius: 20
-          pointHoverRadius: 6
+          pointRadius: promieniePunktowAkumulacja,
+          pointHoverRadius: 6,
+          pointHitRadius: 15
         },
         {
           label: 'Cel FIRE',
           data: cele,
           borderColor: '#6b7280',
-          backgroundColor: 'rgba(107, 114, 128, 0.15)',
+          backgroundColor: 'rgba(107, 114, 128, 0.08)',
           borderWidth: 2,
           borderDash: [5, 5],
-          tension: 0.4,
-          capBezierPoints: true,
-          point: {,
-          radius: 0,
-          hoverRadius: 5,
-          hitRadius: 20
-          pointHoverRadius: 6
+          fill: false,
+          tension: 0,
+          pointRadius: 0,
+          pointHoverRadius: 4,
+          pointHitRadius: 10
         }
       ]
     },
-    options: fireChartOptions
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: {
+        mode: 'index',
+        intersect: false
+      },
+      plugins: {
+        legend: {
+          position: 'top',
+          align: 'start',
+          labels: {
+            usePointStyle: true,
+            font: {
+              size: 12,
+              family: "'Inter', sans-serif"
+            },
+            color: '#1c1c1e'
+          }
+        },
+        tooltip: {
+          backgroundColor: '#1c1c1e',
+          titleColor: '#ffffff',
+          bodyColor: '#ffffff',
+          borderColor: '#1c1c1e',
+          borderWidth: 0,
+          cornerRadius: 8,
+          padding: 10,
+          displayColors: true,
+          callbacks: {
+            title: function(context) {
+              var rok = danePrzycięte[context[0].dataIndex].rok;
+              if (fireRok && rok === fireRok) return 'Rok ' + rok + ' 🎯 Cel FIRE!';
+              return context[0].label;
+            },
+            label: function(context) {
+              return context.dataset.label + ': ' + formatujTooltip(context.parsed.y);
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: {
+            color: '#6e6e73',
+            font: { size: 11, family: "'Inter', sans-serif" },
+            maxTicksLimit: isMobile ? 6 : 12,
+            autoSkip: true
+          }
+        },
+        y: {
+          beginAtZero: true,
+          position: 'left',
+          grid: {
+            color: '#e5e7eb',
+            drawBorder: false,
+            borderDash: []
+          },
+          ticks: {
+            color: '#6e6e73',
+            font: { size: 11, family: "'Inter', sans-serif" },
+            maxTicksLimit: 6,
+            callback: function(value) { return formatujOs(value); }
+          }
+        }
+      },
+      animation: {
+        duration: 800,
+        easing: 'easeInOutQuart'
+      }
+    }
   });
 }
 
 
 /* ----------------------------------------------------------
-   WYKRES 2: Faza FIRE — wypłaty
+   WYKRES 2: Faza Emerytury (FIRE)
    ---------------------------------------------------------- */
 
 function rysujWykresFirePhase(wyniki) {
-  const canvas = document.getElementById('wf-wykres-fire');
+  var canvas = document.getElementById('wf-wykres-fire');
   if (!canvas || typeof Chart === 'undefined') return;
-  const ctx = canvas.getContext('2d');
+  var ctx = canvas.getContext('2d');
 
-  // Sprawdzenie czy dane są dostępne
-  if (!wyniki || !wyniki.historiaFIRE) {
-    console.error('Brak danych do wyświetlenia wykresu fazy emerytury', wyniki);
-    return;
-  }
+  if (!wyniki || !wyniki.historiaFIRE || wyniki.historiaFIRE.length === 0) return;
 
   var dane = wyniki.historiaFIRE;
-  if (!dane || dane.length === 0) {
-    console.error('Historia FIRE jest pusta', dane);
-    return;
-  }
-
-  var etykiety = dane.map(function (d) { return 'Rok ' + d.rok; });
-  var kapitaly = dane.map(function (d) { return d.kapital; });
-  var wydatkiMiesieczne = dane.map(function (d) { return wyniki.wydatkiMiesieczne; });
-  var pozostaloDoEmerytury = dane.map(function (d) { return d.kapital - (wyniki.wydatkiMiesieczne * 12 * d.rok); });
+  var etykiety = dane.map(function(d) { return 'Rok ' + d.rok; });
+  var kapitaly = dane.map(function(d) { return Math.max(0, Math.round(d.kapital)); });
+  
+  // Pokaż kropki tylko co 5 lat na głównym wykresie
+  var promieniePunktowFIRE = dane.map(function(d, i) { 
+    return (i % 5 === 0) ? 4 : 0; 
+  });
+  
+  // Roczna wypłata indeksowana inflacją dla każdego roku
+  // Inflacja z wyników: (1 + stopa nominalna) / (1 + stopa realna) - 1
+  var inflacjaRoczna = (wyniki.stopaZwrotu && wyniki.stopaRealna !== undefined)
+    ? ((1 + wyniki.stopaZwrotu) / (1 + wyniki.stopaRealna) - 1)
+    : 0.035;
+  var wydatkiRoczne = wyniki.wydatkiMiesieczne * 12;
+  var wyplatyRoczne = dane.map(function(d) {
+    return Math.round(wydatkiRoczne * Math.pow(1 + inflacjaRoczna, d.rok));
+  });
 
   if (wykresFirePhase) {
     wykresFirePhase.destroy();
     wykresFirePhase = null;
   }
 
-  // Chart configuration for FIRE charts
-  const fireChartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    interaction: {
-      mode: 'index',
-      intersect: false,
-    },
-    plugins: {
-      legend: {
-        position: 'top',
-        align: 'start',
-        labels: {
-          pointStyle: " circle\,
- usePointStyle: true,
-          font: {
-            size: 12,
-            family: "'Inter', sans-serif"
-          },
-          color: '#1c1c1e'
-        }
-      },
-      tooltip: {
-        backgroundColor: '#1c1c1e',
-        titleColor: '#ffffff',
-        bodyColor: '#ffffff',
-        borderColor: '#1c1c1e',
-        borderRadius: 8,
-        cornerRadius: 8,
-        padding: { x: 14, y: 10 },
-        mode: 'index',
-          intersect: false,
-        callbacks: {
-          title: function(context) {
-            return context[0].label;
-          },
-          label: function(context) {
-            return 'Wartość: ' + (window.formatujZl ? window.formatujZl(context.parsed.y) : context.parsed.y.toFixed(2) + ' zł');
-          }
-        }
-      }
-    },
-    scales: {
-      x: {
-        grid: {
-          display: false
-        },
-        ticks: {
-          color: '#6e6e73',
-          font: {
-            size: 11,
-            family: "'Inter', sans-serif"
-          }
-        }
-      },
-      y: {
-        position: 'left',
-        grid: {
-          color: '#e5e7eb',
-          min: 0,
-          lineWidth: 1
-        },
-        ticks: {
-          color: '#6e6e73',
-          font: {
-            size: 11,
-            family: "'Inter', sans-serif"
-          },
-          callback: function(value) {
-            return window.formatujZl ? window.formatujZl(value) : value.toFixed(2) + ' zł';
-          }
-        }
-      }
-    },
-    elements: {
-      line: {
-      easing: 'easeInOutQuart'
-    }
-  };
+  // Helper formatowania
+  function formatujOs(value) {
+    if (value >= 1000000) return (value / 1000000).toFixed(1) + ' mln';
+    if (value >= 1000) return (value / 1000).toFixed(0) + ' tys.';
+    return value + ' zł';
+  }
+
+  function formatujTooltip(value) {
+    if (window.formatujZl) return window.formatujZl(value);
+    return new Intl.NumberFormat('pl-PL', { style: 'currency', currency: 'PLN', maximumFractionDigits: 0 }).format(value);
+  }
+
+  var isMobile = window.innerWidth < 768;
 
   wykresFirePhase = new Chart(ctx, {
     type: 'line',
@@ -566,49 +487,99 @@ function rysujWykresFirePhase(wyniki) {
           data: kapitaly,
           borderColor: '#1A56A0',
           backgroundColor: 'rgba(26, 86, 160, 0.15)',
-          borderWidth: 2.5,
+          borderWidth: 3,
           fill: true,
           tension: 0.4,
-          capBezierPoints: true,
-          point: {,
-          radius: 0,
-          hoverRadius: 5,
-          hitRadius: 20
-          pointHoverRadius: 6
+          pointRadius: promieniePunktowFIRE,
+          pointHoverRadius: 6,
+          pointHitRadius: 15
         },
         {
-          label: 'Wypłaty miesięczne',
-          data: wydatkiMiesieczne,
+          label: 'Roczne wypłaty',
+          data: wyplatyRoczne,
           borderColor: '#f4a261',
-          backgroundColor: 'rgba(244, 162, 97, 0.15)',
-          borderWidth: 2.5,
-          fill: true,
-          tension: 0.4,
-          capBezierPoints: true,
-          point: {,
-          radius: 0,
-          hoverRadius: 5,
-          hitRadius: 20
-          pointHoverRadius: 6
-        },
-        {
-          label: 'Pozostało do emerytury',
-          data: pozostaloDoEmerytury,
-          borderColor: '#40916c',
-          backgroundColor: 'rgba(64, 145, 108, 0.15)',
-          borderWidth: 2.5,
-          fill: true,
-          tension: 0.4,
-          capBezierPoints: true,
-          point: {,
-          radius: 0,
-          hoverRadius: 5,
-          hitRadius: 20
-          pointHoverRadius: 6
+          backgroundColor: 'rgba(244, 162, 97, 0.08)',
+          borderWidth: 2,
+          borderDash: [5, 5],
+          fill: false,
+          tension: 0,
+          pointRadius: 0,
+          pointHoverRadius: 4,
+          pointHitRadius: 10
         }
       ]
     },
-    options: fireChartOptions
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: {
+        mode: 'index',
+        intersect: false
+      },
+      plugins: {
+        legend: {
+          position: 'top',
+          align: 'start',
+          labels: {
+            usePointStyle: true,
+            font: {
+              size: 12,
+              family: "'Inter', sans-serif"
+            },
+            color: '#1c1c1e'
+          }
+        },
+        tooltip: {
+          backgroundColor: '#1c1c1e',
+          titleColor: '#ffffff',
+          bodyColor: '#ffffff',
+          borderColor: '#1c1c1e',
+          borderWidth: 0,
+          cornerRadius: 8,
+          padding: 10,
+          displayColors: true,
+          callbacks: {
+            title: function(context) {
+              return context[0].label + ' emerytury';
+            },
+            label: function(context) {
+              return context.dataset.label + ': ' + formatujTooltip(context.parsed.y);
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: {
+            color: '#6e6e73',
+            font: { size: 11, family: "'Inter', sans-serif" },
+            maxTicksLimit: isMobile ? 6 : 10,
+            autoSkip: true
+          }
+        },
+        y: {
+          beginAtZero: true,
+          min: 0,
+          position: 'left',
+          grid: {
+            color: '#e5e7eb',
+            drawBorder: false,
+            borderDash: []
+          },
+          ticks: {
+            color: '#6e6e73',
+            font: { size: 11, family: "'Inter', sans-serif" },
+            maxTicksLimit: 6,
+            callback: function(value) { return formatujOs(value); }
+          }
+        }
+      },
+      animation: {
+        duration: 800,
+        easing: 'easeInOutQuart'
+      }
+    }
   });
 }
 
@@ -636,4 +607,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Pierwsze obliczenie
   aktualizujWolnosc();
-});
+});
