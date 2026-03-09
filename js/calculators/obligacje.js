@@ -222,6 +222,9 @@ function aktualizujKalkulator() {
   // Kafelek porównania — osobne ID żeby uniknąć duplikatu
   animuj('wynik-obligacje-porownanie', wyniki.zyskPoOpodatkowaniu, formatujZl);
 
+  // Aktualizujemy wykres
+  aktualizujWykres(wyniki);
+
   var elCagr = document.getElementById('wynik-cagr');
   if (elCagr) elCagr.textContent = formatujProc(wyniki.cagrNominalny);
 

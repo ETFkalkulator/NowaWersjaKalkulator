@@ -379,6 +379,28 @@ function rysujWykresAkumulacji(wyniki) {
           pointHoverRadius: 6
         },
         {
+          label: 'Wypłaty miesięczne',
+          data: wyniki.wydatkiMiesieczne,
+          borderColor: '#f4a261',
+          backgroundColor: 'rgba(244, 162, 97, 0.15)',
+          borderWidth: 3,
+          fill: true,
+          tension: 0.4,
+          pointRadius: 4,
+          pointHoverRadius: 6
+        },
+        {
+          label: 'Pozostało do emerytury',
+          data: wyniki.pozostaloDoEmerytury,
+          borderColor: '#6b7280',
+          backgroundColor: 'rgba(107, 114, 128, 0.15)',
+          borderWidth: 2,
+          borderDash: [5, 5],
+          tension: 0.4,
+          pointRadius: 4,
+          pointHoverRadius: 6
+        },
+        {
           label: 'Cel FIRE',
           data: cele,
           borderColor: '#6b7280',
@@ -392,13 +414,6 @@ function rysujWykresAkumulacji(wyniki) {
       ]
     },
     options: fireChartOptions
-                font: { size: 11, weight: 'bold' },
-              }
-            }
-          }
-        } : {}
-      })
-    })
   });
 }
 
@@ -428,7 +443,39 @@ function rysujWykresFirePhase(wyniki) {
     data: {
       labels: etykiety,
       datasets: [
-        window.ETF.charts.createDataset(ctx, 'Kapitał podczas emerytury', kapitaly, window.ETF.charts.colors.success)
+        {
+          label: 'Kapitał podczas emerytury',
+          data: kapitaly,
+          borderColor: '#1A56A0',
+          backgroundColor: 'rgba(26, 86, 160, 0.15)',
+          borderWidth: 3,
+          fill: true,
+          tension: 0.4,
+          pointRadius: 4,
+          pointHoverRadius: 6
+        },
+        {
+          label: 'Wypłaty miesięczne',
+          data: wydatkiMiesieczne,
+          borderColor: '#f4a261',
+          backgroundColor: 'rgba(244, 162, 97, 0.15)',
+          borderWidth: 3,
+          fill: true,
+          tension: 0.4,
+          pointRadius: 4,
+          pointHoverRadius: 6
+        },
+        {
+          label: 'Pozostało do emerytury',
+          data: pozostaloDoEmerytury,
+          borderColor: '#6b7280',
+          backgroundColor: 'rgba(107, 114, 128, 0.15)',
+          borderWidth: 2,
+          borderDash: [5, 5],
+          tension: 0.4,
+          pointRadius: 4,
+          pointHoverRadius: 6
+        }
       ]
     },
 
