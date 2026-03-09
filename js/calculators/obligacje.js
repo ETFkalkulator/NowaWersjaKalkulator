@@ -223,7 +223,7 @@ function aktualizujKalkulator() {
   animuj('wynik-obligacje-porownanie', wyniki.zyskPoOpodatkowaniu, formatujZl);
 
   // Aktualizujemy wykres
-  aktualizujWykres(wyniki);
+  rysujWykres(wyniki, kapital, stopaLokaty, wIKE, doplataRoczna);
 
   var elCagr = document.getElementById('wynik-cagr');
   if (elCagr) elCagr.textContent = formatujProc(wyniki.cagrNominalny);
@@ -398,7 +398,82 @@ function rysujWykres(wyniki, kapitalPoczatkowy, stopaLokaty, wIKE, doplataRoczna
             return context[0].label;
           },
           label: function(context) {
-            return 'Wartość: ' + formatZl(context.parsed.y);
+            return 'Wartość: ' + window.formatujZl(context.parsed.y);
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: {
+          display: false
+        },
+        ticks: {
+          color: '#6e6e73',
+          font: {
+            size: 11,
+            family: "'Inter', sans-serif"
+          }
+        }
+      },
+      y: {
+        position: 'left',
+        grid: {
+          color: '#e5e7eb',
+          drawBorder: false,
+          borderDash: []
+        },
+        ticks: {
+          color: '#6e6e73',
+          font: {
+            size: 11,
+            family: "'Inter', sans-serif"
+          },
+          callback: function(value) {
+            return formatZl(value);
+          }
+        }
+      }
+    },
+    animation: {
+      duration: 800,
+      easing: 'easeInOutQuart'
+    }
+  };
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: {
+      mode: 'index',
+      intersect: false,
+    },
+    plugins: {
+      legend: {
+        position: 'top',
+        align: 'start',
+        labels: {
+          usePointStyle: true,
+          font: {
+            size: 12,
+            family: "'Inter', sans-serif"
+          },
+          color: '#1c1c1e'
+        }
+      },
+      tooltip: {
+        backgroundColor: '#1c1c1e',
+        titleColor: '#ffffff',
+        bodyColor: '#ffffff',
+        borderColor: '#1c1c1e',
+        borderWidth: 0,
+        cornerRadius: 8,
+        padding: 10,
+        displayColors: true,
+        callbacks: {
+          title: function(context) {
+            return context[0].label;
+          },
+          label: function(context) {
+            return 'Wartość: ' + window.formatujZl(context.parsed.y);
           }
         }
       }
