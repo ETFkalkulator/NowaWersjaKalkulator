@@ -97,11 +97,158 @@
         grid-template-columns: 1fr;
       }
     }
-  </style>
+
+    /* Cookie Consent Styles */
+    .cookie-consent {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+      z-index: 9999;
+      padding: var(--space-4);
+      transition: all var(--transition-normal);
+    }
+
+    .cookie-consent__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .cookie-consent__content {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .cookie-consent__title {
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-primary);
+      margin: 0 0 var(--space-2) 0;
+    }
+
+    .cookie-consent__text {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+      margin: 0;
+    }
+
+    .cookie-consent__link {
+      color: var(--color-primary-500);
+      text-decoration: none;
+      font-weight: var(--weight-medium);
+    }
+
+    .cookie-consent__link:hover {
+      text-decoration: underline;
+    }
+
+    .cookie-consent__actions {
+      display: flex;
+      gap: var(--space-3);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .cookie-consent__btn {
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      text-decoration: none;
+      cursor: pointer;
+      transition: all var(--transition-normal);
+      border: none;
+      white-space: nowrap;
+    }
+
+    .cookie-consent__btn--accept {
+      background: var(--color-primary-500);
+      color: white;
+    }
+
+    .cookie-consent__btn--accept:hover {
+      background: var(--color-primary-600);
+      transform: translateY(-1px);
+    }
+
+    .cookie-consent__btn--reject {
+      background: transparent;
+      color: var(--color-text-secondary);
+      border: 1px solid var(--color-border);
+    }
+
+    .cookie-consent__btn--reject:hover {
+      background: var(--color-bg-secondary);
+      border-color: var(--color-border-subtle);
+    }
+
+    .cookie-consent__btn--settings {
+      background: transparent;
+      color: var(--color-primary-500);
+      border: 1px solid var(--color-primary-200);
+    }
+
+    .cookie-consent__btn--settings:hover {
+      background: var(--color-primary-50);
+      border-color: var(--color-primary-300);
+    }
+
+    @media (max-width: 768px) {
+      .cookie-consent__inner {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-4);
+      }
+
+      .cookie-consent__actions {
+        flex-direction: column;
+        width: 100%;
+        gap: var(--space-2);
+      }
+
+      .cookie-consent__btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-consent" class="cookie-consent" style="display: none;">
+    <div class="cookie-consent__inner">
+      <div class="cookie-consent__content">
+        <h4 class="cookie-consent__title">Prywatność i pliki cookies</h4>
+        <p class="cookie-consent__text">
+          ETFkalkulator.pl używa plików cookies do analizy ruchu i personalizacji treści.
+          Kontynuując przeglądanie zgadzasz się na naszą
+          <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__link">politykę cookies</a>.
+        </p>
+      </div>
+      <div class="cookie-consent__actions">
+        <button id="cookie-accept" class="cookie-consent__btn cookie-consent__btn--accept">
+          Akceptuję
+        </button>
+        <button id="cookie-reject" class="cookie-consent__btn cookie-consent__btn--reject">
+          Odrzuć
+        </button>
+        <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__btn cookie-consent__btn--settings">
+          Ustawienia
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- HEADER -->
   <header class="header">
@@ -459,6 +606,37 @@
         if (typeof obliczWszystko === 'function') obliczWszystko();
       }
     }
+  </script>
+
+  <!-- Cookie Consent Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var cookieConsent = document.getElementById('cookie-consent');
+      var acceptBtn = document.getElementById('cookie-accept');
+      var rejectBtn = document.getElementById('cookie-reject');
+
+      var cookieChoice = localStorage.getItem('etf-cookie-consent');
+
+      if (!cookieChoice) {
+        cookieConsent.style.display = 'block';
+      }
+
+      acceptBtn.addEventListener('click', function () {
+        localStorage.setItem('etf-cookie-consent', 'accepted');
+        cookieConsent.style.display = 'none';
+      });
+
+      rejectBtn.addEventListener('click', function () {
+        localStorage.setItem('etf-cookie-consent', 'rejected');
+        cookieConsent.style.display = 'none';
+      });
+
+      setTimeout(function () {
+        if (cookieConsent.style.display !== 'none') {
+          cookieConsent.style.opacity = '0.7';
+        }
+      }, 30000);
+    });
   </script>
 </body>
 

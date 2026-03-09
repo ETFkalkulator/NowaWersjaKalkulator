@@ -298,51 +298,104 @@ body {
 }
 
 .premium-result {
-  background: var(--result-bg);
-  border: var(--result-border);
-  border-radius: var(--result-radius);
-  padding: var(--result-padding);
-  color: var(--result-text-color);
+  /* Bardziej wytrzymały fallback dla tła na Androidzie/Chrome, wyłączający auto-inwersję */
+  background: #0d386b;
+  background: linear-gradient(135deg, #12294a 0%, #0d386b 40%, #1A56A0 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-xl);
+  padding: var(--space-10) var(--space-6);
+  color: #FFFFFF;
   text-align: center;
-  box-shadow: var(--result-shadow);
-  transition: var(--result-transition);
+  box-shadow: 0 10px 40px rgba(26, 86, 160, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* FIX dla Android Chrome (naprawia znikanie tła na mobilkach z clip-text / border-radius): */
+  isolation: isolate;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Subtelny odblask u góry (szklisty efekt) */
+.premium-result::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+}
+
+/* Dekoracyjna poświata w prawym dolnym rogu */
+.premium-result::after {
+  content: '';
+  position: absolute;
+  bottom: -50%; right: -10%;
+  width: 250px; height: 250px;
+  background: radial-gradient(circle, rgba(124, 200, 251, 0.15) 0%, rgba(124, 200, 251, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .premium-result:hover {
-  box-shadow: var(--result-shadow-hover);
+  box-shadow: 0 16px 48px rgba(26, 86, 160, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
 }
 
 .premium-result__label {
-  font-size: var(--result-label-size);
-  font-weight: var(--weight-semibold);
+  font-size: 0.85rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  opacity: 0.9;
-  margin-bottom: var(--space-4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: var(--space-3);
+  position: relative;
+  z-index: 1;
 }
 
 .premium-result__value {
   font-family: var(--font-display);
-  font-size: var(--result-value-size);
-  font-weight: var(--weight-bold);
-  line-height: 1;
-  margin-bottom: var(--space-4);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-3);
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  
+  /* Fallback koloru przed gradientem tekstowym - ważne jeśli background-clip nie zadziała */
+  color: #FFFFFF;
+  background: linear-gradient(180deg, #FFFFFF 0%, #E0EFFE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  position: relative;
+  z-index: 1;
 }
 
 .premium-result__description {
-  font-size: var(--result-description-size);
-  font-weight: var(--weight-medium);
-  opacity: 0.8;
-  max-width: 320px;
-  margin: 0 auto;
-  line-height: var(--leading-relaxed);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 340px;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+/* Konkretne dostosowanie wysokości na mniejszych urządzeniach aby cała karta mieściła się na ekranie */
+@media (max-width: 640px) {
+  .premium-result {
+    padding: var(--space-8) var(--space-4);
+    border-radius: var(--radius-lg);
+  }
 }
 
 .kafelek-grid {
