@@ -42,9 +42,14 @@
   <!-- Optyamizowany ładunek czcionek z Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap"></noscript>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap"
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
+  </noscript>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/main.css">
@@ -52,12 +57,17 @@
   <!-- MailerLite Styles — loaded async for performance -->
   <link rel="preload" as="style" href="css/mailerlite.css">
   <link href="css/mailerlite.css" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="css/mailerlite.css"></noscript>
+  <noscript>
+    <link rel="stylesheet" href="css/mailerlite.css">
+  </noscript>
 
   <!-- MailerLite fonts — async, non-render-blocking -->
   <link rel="preload" as="style" href="https://assets.mlcdn.com/fonts.css?version=1772539">
-  <link href="https://assets.mlcdn.com/fonts.css?version=1772539" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://assets.mlcdn.com/fonts.css?version=1772539"></noscript>
+  <link href="https://assets.mlcdn.com/fonts.css?version=1772539" rel="stylesheet" media="print"
+    onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://assets.mlcdn.com/fonts.css?version=1772539">
+  </noscript>
 
   <!-- Inline: only critical MailerLite loader animation -->
   <style type="text/css">
@@ -452,8 +462,6 @@
     .hero__cta {
       animation: fadeInUp 0.5s ease 0.3s both;
     }
-
-
   </style>
 
   <style>
@@ -509,6 +517,7 @@
       background: #e5e7eb;
       outline: none;
       -webkit-appearance: none;
+      appearance: none;
     }
 
     .slider::-webkit-slider-thumb {
@@ -520,7 +529,7 @@
       background: #1A56A0;
       cursor: pointer;
       border: 2px solid #ffffff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .slider::-moz-range-thumb {
@@ -530,7 +539,7 @@
       background: #1A56A0;
       cursor: pointer;
       border: 2px solid #ffffff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .value-display {
@@ -550,7 +559,7 @@
         grid-template-columns: 1fr;
         gap: var(--space-4);
       }
-      
+
       .chart-wrapper {
         height: 220px;
       }
@@ -868,7 +877,8 @@
 
         <div class="text-center">
           <h2 class="section-title">Porównanie strategii inwestycyjnych</h2>
-          <p class="text-lead mt-2">Dostosuj parametry i zobacz jak różne strategie zachowują się na przestrzeni czasu</p>
+          <p class="text-lead mt-2">Dostosuj parametry i zobacz jak różne strategie zachowują się na przestrzeni czasu
+          </p>
         </div>
 
         <!-- Interactive Controls -->
@@ -878,19 +888,19 @@
             <input type="range" id="start-capital" min="1000" max="100000" value="10000" step="1000" class="slider">
             <span class="value-display" id="start-capital-display">10 000 zł</span>
           </div>
-          
+
           <div class="control-group">
             <label for="monthly-contribution">Miesięczna wpłata</label>
             <input type="range" id="monthly-contribution" min="0" max="5000" value="500" step="100" class="slider">
             <span class="value-display" id="monthly-contribution-display">500 zł</span>
           </div>
-          
+
           <div class="control-group">
             <label for="time-horizon">Horyzont czasowy (lata)</label>
             <input type="range" id="time-horizon" min="1" max="30" value="10" step="1" class="slider">
             <span class="value-display" id="time-horizon-display">10 lat</span>
           </div>
-          
+
           <div class="control-group">
             <label for="inflation-rate">Inflacja (%)</label>
             <input type="range" id="inflation-rate" min="0" max="10" value="3.5" step="0.1" class="slider">
@@ -1162,58 +1172,58 @@
 
   <!-- Biblioteki zewnętrzne -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-  
+
   <!-- Nasze pliki JavaScript -->
   <script src="js/utils.js" defer></script>
   <script src="js/tooltips.js" defer></script>
-  
+
   <!-- Interactive Chart Script -->
   <script defer>
     let mainChart = null;
-    
+
     // Helper function for PLN formatting
     function formatZl(val) {
-      if (val >= 1000000) return (val/1000000).toFixed(1) + 'M zł';
-      if (val >= 1000) return (val/1000).toFixed(0) + 'k zł';
+      if (val >= 1000000) return (val / 1000000).toFixed(1) + 'M zł';
+      if (val >= 1000) return (val / 1000).toFixed(0) + 'k zł';
       return val.toFixed(0) + ' zł';
     }
-    
+
     // Calculate investment growth
     function calculateGrowth(startCapital, monthlyContribution, years, rate) {
       let data = [startCapital];
       let current = startCapital;
-      
+
       for (let i = 1; i <= years; i++) {
         current = current * (1 + rate) + monthlyContribution * 12;
         data.push(current);
       }
-      
+
       return data;
     }
-    
+
     // Update chart with new data
     function updateChart() {
       const startCapital = parseFloat(document.getElementById('start-capital').value);
       const monthlyContribution = parseFloat(document.getElementById('monthly-contribution').value);
       const timeHorizon = parseInt(document.getElementById('time-horizon').value);
       const inflationRate = parseFloat(document.getElementById('inflation-rate').value) / 100;
-      
+
       // Calculate data for each strategy
       const etfData = calculateGrowth(startCapital, monthlyContribution, timeHorizon, 0.07);
       const bondsData = calculateGrowth(startCapital, monthlyContribution, timeHorizon, 0.055);
       const depositData = calculateGrowth(startCapital, monthlyContribution, timeHorizon, 0.045);
-      
+
       // Generate labels
       const labels = [];
       for (let i = 0; i <= timeHorizon; i++) {
         labels.push(`Rok ${i}`);
       }
-      
+
       // Destroy existing chart
       if (mainChart) {
         mainChart.destroy();
       }
-      
+
       // Create new chart
       const ctx = document.getElementById('glowny-wykres-porownawczy').getContext('2d');
       mainChart = new Chart(ctx, {
@@ -1286,10 +1296,10 @@
               padding: 10,
               displayColors: true,
               callbacks: {
-                title: function(context) {
+                title: function (context) {
                   return context[0].label;
                 },
-                label: function(context) {
+                label: function (context) {
                   return 'Wartość: ' + formatZl(context.parsed.y);
                 }
               }
@@ -1321,7 +1331,7 @@
                   size: 11,
                   family: "'Inter', sans-serif"
                 },
-                callback: function(value) {
+                callback: function (value) {
                   return formatZl(value);
                 }
               }
@@ -1334,43 +1344,43 @@
         }
       });
     }
-    
+
     // Initialize interactive controls
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       // Update display values
       function updateDisplays() {
         const startCapital = parseFloat(document.getElementById('start-capital').value);
         const monthlyContribution = parseFloat(document.getElementById('monthly-contribution').value);
         const timeHorizon = parseInt(document.getElementById('time-horizon').value);
         const inflationRate = parseFloat(document.getElementById('inflation-rate').value);
-        
+
         document.getElementById('start-capital-display').textContent = formatZl(startCapital);
         document.getElementById('monthly-contribution-display').textContent = formatZl(monthlyContribution);
         document.getElementById('time-horizon-display').textContent = timeHorizon + ' lat';
         document.getElementById('inflation-rate-display').textContent = inflationRate.toFixed(1) + '%';
       }
-      
+
       // Add event listeners
-      document.getElementById('start-capital').addEventListener('input', function() {
+      document.getElementById('start-capital').addEventListener('input', function () {
         updateDisplays();
         updateChart();
       });
-      
-      document.getElementById('monthly-contribution').addEventListener('input', function() {
+
+      document.getElementById('monthly-contribution').addEventListener('input', function () {
         updateDisplays();
         updateChart();
       });
-      
-      document.getElementById('time-horizon').addEventListener('input', function() {
+
+      document.getElementById('time-horizon').addEventListener('input', function () {
         updateDisplays();
         updateChart();
       });
-      
-      document.getElementById('inflation-rate').addEventListener('input', function() {
+
+      document.getElementById('inflation-rate').addEventListener('input', function () {
         updateDisplays();
         updateChart();
       });
-      
+
       // Initialize
       updateDisplays();
       updateChart();
