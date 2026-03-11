@@ -482,7 +482,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!el) return;
     
     // Stwórz debounced version funkcji obliczającej
-    var debouncedObliczPorownanie = window.debounce ? window.debounce(obliczPorownanie, 300) : obliczPorownanie;
+    var debouncedObliczPorownanie = window.debounce ? window.debounce(obliczPorownanie, 150) : obliczPorownanie;
     
     el.addEventListener('input', debouncedObliczPorownanie);
     el.addEventListener('change', obliczPorownanie);

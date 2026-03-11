@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // Stwórz debounced version funkcji obliczającej
-    const debouncedObliczWszystko = window.debounce ? window.debounce(obliczWszystko, 300) : obliczWszystko;
+    const debouncedObliczWszystko = window.debounce ? window.debounce(obliczWszystko, 150) : obliczWszystko;
 
     inputs.forEach(id => {
         const el = document.getElementById(id);
@@ -53,22 +53,23 @@ function setStopa(wartosc, btn) {
  * Główna funkcja obliczeniowa
  */
 function obliczWszystko() {
-    // Pobranie i walidacja danych z bezpieczeństwem
-    const wynik = window.safeExecute ? window.safeExecute(function() {
-        const start = window.walidujKwote ? window.walidujKwote(pobierzWartosc('input-kapital', 10000), 'kapital', 0, VALIDATION_CONSTANTS.KAPITAL_MAX) : parseFloat(pobierzWartosc('input-kapital', 10000));
-        const doplata = window.walidujKwote ? window.walidujKwote(pobierzWartosc('input-doplata', 500), 'doplata', 0, VALIDATION_CONSTANTS.WPLATA_MAX) : parseFloat(pobierzWartosc('input-doplata', 500));
-        const lata = window.walidujKwote ? window.walidujKwote(pobierzWartosc('input-horyzont', 10), 'horyzont', VALIDATION_CONSTANTS.LATA_MIN, VALIDATION_CONSTANTS.LATA_MAX) : parseFloat(pobierzWartosc('input-horyzont', 10));
-        const stopaNom = window.walidujProcent ? window.walidujProcent(pobierzWartosc('input-stopa', 7), 'stopa') : parseFloat(pobierzWartosc('input-stopa', 7)) / 100;
-        const inflacjaRoczna = window.walidujProcent ? window.walidujProcent(pobierzWartosc('input-inflacja', 2.5), 'inflacja') : parseFloat(pobierzWartosc('input-inflacja', 2.5)) / 100;
-        
-        // Early return jeśli walidacja się nie powiodła
-        if (start === null || doplata === null || lata === null || stopaNom === null || inflacjaRoczna === null) {
-            console.error('❌ Przerwano obliczenia - błędne dane wejściowe');
-            updateChart([]);
-            return null;
-        }
-        
-        const isIKE = document.getElementById('input-ike').checked;
+    // Pobranie danych bez nadmiernego sprawdzania (cache availability)
+    const hasValidation = window.walidujKwote && window.walidujProcent;
+    
+    const start = hasValidation ? window.walidujKwote(pobierzWartosc('input-kapital', 10000), 'kapital', 0, VALIDATION_CONSTANTS.KAPITAL_MAX) : parseFloat(pobierzWartosc('input-kapital', 10000));
+    const doplata = hasValidation ? window.walidujKwote(pobierzWartosc('input-doplata', 500), 'doplata', 0, VALIDATION_CONSTANTS.WPLATA_MAX) : parseFloat(pobierzWartosc('input-doplata', 500));
+    const lata = hasValidation ? window.walidujKwote(pobierzWartosc('input-horyzont', 10), 'horyzont', VALIDATION_CONSTANTS.LATA_MIN, VALIDATION_CONSTANTS.LATA_MAX) : parseFloat(pobierzWartosc('input-horyzont', 10));
+    const stopaNom = hasValidation ? window.walidujProcent(pobierzWartosc('input-stopa', 7), 'stopa') : parseFloat(pobierzWartosc('input-stopa', 7)) / 100;
+    const inflacjaRoczna = hasValidation ? window.walidujProcent(pobierzWartosc('input-inflacja', 2.5), 'inflacja') : parseFloat(pobierzWartosc('input-inflacja', 2.5)) / 100;
+    
+    // Early return jeśli walidacja się nie powiodła
+    if (start === null || doplata === null || lata === null || stopaNom === null || inflacjaRoczna === null) {
+        console.error('❌ Przerwano obliczenia - błędne dane wejściowe');
+        updateChart([]);
+        return;
+    }
+    
+    const isIKE = document.getElementById('input-ike').checked;
 
         const stopaMsc = stopaNom / 12;
         const msc = lata * 12;
@@ -171,10 +172,6 @@ function obliczWszystko() {
         if (typeof gtag === 'function') {
             gtag('event', 'calculate', { 'calculator_type': 'etf' });
         }
-    }, function() {
-        console.error('❌ Błąd w obliczeniach ETF:', error);
-        window.clearErrorMessages && window.clearErrorMessages();
-    });
 }
 
 /**

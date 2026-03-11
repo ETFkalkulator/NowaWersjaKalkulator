@@ -605,7 +605,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!el) return;
     
     // Stwórz debounced version funkcji aktualizującej
-    var debouncedAktualizujWolnosc = window.debounce ? window.debounce(aktualizujWolnosc, 300) : aktualizujWolnosc;
+    var debouncedAktualizujWolnosc = window.debounce ? window.debounce(aktualizujWolnosc, 150) : aktualizujWolnosc;
     
     el.addEventListener('input', debouncedAktualizujWolnosc);
     el.addEventListener('change', aktualizujWolnosc);

@@ -552,7 +552,7 @@ function init() {
   aktualizujKalkulator();
 
   // Stwórz debounced version funkcji aktualizującej
-  const debouncedAktualizujKalkulator = window.debounce ? window.debounce(aktualizujKalkulator, 300) : aktualizujKalkulator;
+  const debouncedAktualizujKalkulator = window.debounce ? window.debounce(aktualizujKalkulator, 150) : aktualizujKalkulator;
 
   ['input-kapital', 'input-typ', 'input-stopa', 'input-inflacja', 'input-lokata', 'input-doplata']
     .forEach(function (id) {
