@@ -154,7 +154,7 @@ function obliczPorownanie() {
   var kapital = pobierzWartosc('por-kapital', 10000);
   var doplata = pobierzWartosc('por-doplata', 500);
   var lata = pobierzWartosc('por-lata', 10);
-  var inflacja = pobierzWartosc('por-inflacja', 3.5);
+  var inflacja = pobierzWartosc('por-inflacja', 2.5);  // Poprawka: 2.5% jak w ETF
   var stopaETF = pobierzWartosc('por-stopa-etf', 7);
   var stopaLok = pobierzWartosc('por-stopa-lok', 4.5);
   var marza = pobierzWartosc('por-marza', 2.0);
