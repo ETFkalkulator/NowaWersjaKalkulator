@@ -309,3 +309,11 @@ window.czyPoprawnaCyfra = czyPoprawnaCyfra;
 window.pobierzWartosc = pobierzWartosc;
 window.zaokraglij = zaokraglij;
 window.animuj = animujLiczbe;  /* alias: animuj() = animujLiczbe() */
+
+// Export validation constants and functions
+window.VALIDATION_CONSTANTS = VALIDATION_CONSTANTS;
+window.walidujProcent = walidujProcent;
+window.walidujKwote = walidujKwote;
+window.debounce = debounce;
+window.safeExecute = safeExecute;
+window.clearErrorMessages = clearErrorMessages;

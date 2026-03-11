@@ -53,14 +53,19 @@ function setStopa(wartosc, btn) {
  * Główna funkcja obliczeniowa
  */
 function obliczWszystko() {
+    console.log('🔄 obliczWszystko() called');
+    
     // Pobranie danych bez nadmiernego sprawdzania (cache availability)
     const hasValidation = window.walidujKwote && window.walidujProcent;
+    console.log('🔍 hasValidation:', hasValidation);
     
     const start = hasValidation ? window.walidujKwote(pobierzWartosc('input-kapital', 10000), 'kapital', 0, VALIDATION_CONSTANTS.KAPITAL_MAX) : parseFloat(pobierzWartosc('input-kapital', 10000));
     const doplata = hasValidation ? window.walidujKwote(pobierzWartosc('input-doplata', 500), 'doplata', 0, VALIDATION_CONSTANTS.WPLATA_MAX) : parseFloat(pobierzWartosc('input-doplata', 500));
     const lata = hasValidation ? window.walidujKwote(pobierzWartosc('input-horyzont', 10), 'horyzont', VALIDATION_CONSTANTS.LATA_MIN, VALIDATION_CONSTANTS.LATA_MAX) : parseFloat(pobierzWartosc('input-horyzont', 10));
-    const stopaNom = hasValidation ? window.walidujProcent(pobierzWartosc('input-stopa', 7), 'stopa') : parseFloat(pobierzWartosc('input-stopa', 7)) / 100;
-    const inflacjaRoczna = hasValidation ? window.walidujProcent(pobierzWartosc('input-inflacja', 2.5), 'inflacja') : parseFloat(pobierzWartosc('input-inflacja', 2.5)) / 100;
+    const stopaNom = hasValidation ? window.walidujProcent(pobierzWartosc('input-stopa', 7), 'stopa') / 100 : parseFloat(pobierzWartosc('input-stopa', 7)) / 100;
+    const inflacjaRoczna = hasValidation ? window.walidujProcent(pobierzWartosc('input-inflacja', 2.5), 'inflacja') / 100 : parseFloat(pobierzWartosc('input-inflacja', 2.5)) / 100;
+    
+    console.log('📊 Pobrane wartości:', { start, doplata, lata, stopaNom, inflacjaRoczna });
     
     // Early return jeśli walidacja się nie powiodła
     if (start === null || doplata === null || lata === null || stopaNom === null || inflacjaRoczna === null) {
@@ -69,6 +74,7 @@ function obliczWszystko() {
         return;
     }
     
+    console.log('✅ Walidacja passed, kontynuuję obliczenia');
     const isIKE = document.getElementById('input-ike').checked;
 
         const stopaMsc = stopaNom / 12;
