@@ -26,8 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Inicjalizacja wykresu
-    if (window.ETF && window.ETF.charts) {
+    console.log('🔍 Chart available:', typeof Chart);
+    console.log('🔍 window.ETF.charts available:', !!window.ETF.charts);
+    
+    if (typeof Chart !== 'undefined' && window.ETF && window.ETF.charts) {
+        console.log('✅ Inicjalizuję wykres');
         initChart();
+    } else {
+        console.error('❌ Chart.js lub ETF.charts nie dostępne');
     }
 
     // Pierwsze obliczenie
@@ -314,14 +320,22 @@ function initChart() {
  * Aktualizacja danych na wykresie
  */
 function updateChart(dane) {
-    if (!myChart) return;
+    console.log(' updateChart called with:', dane);
+    console.log(' myChart exists:', !!myChart);
+    
+    if (!myChart) {
+        console.error(' myChart not initialized');
+        return;
+    }
 
+    console.log(' Updating chart with data length:', dane.labels?.length);
     myChart.data.labels = dane.labels;
     myChart.data.datasets[1].data = dane.wplacone;
     myChart.data.datasets[0].data = dane.nominalny;
     myChart.data.datasets[2].data = dane.realny;
 
     myChart.update('none');
+    console.log(' Chart updated successfully');
     
     // GA4 tracking event
     if (typeof gtag === 'function') {
