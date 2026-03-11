@@ -18,6 +18,22 @@
   <meta property="og:image:height" content="630">
   <link rel="icon" href="../images/favicon.png">
 
+  <!-- Google Analytics 4 — loads only after cookie consent -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    // Default: analytics denied until user accepts
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied'
+    });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
+  <script>
+    gtag('config', 'G-GZECMECQ15', { 'send_page_view': false });
+  </script>
+
   <!-- Optyamizowany ładunek czcionek z Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -498,16 +514,33 @@
 
       if (!cookieChoice) {
         cookieConsent.style.display = 'block';
+      } else if (cookieChoice === 'accepted') {
+        // Update GA4 consent if previously accepted
+        if (typeof gtag === 'function') {
+          gtag('consent', 'update', { 'analytics_storage': 'granted' });
+          gtag('event', 'page_view');
+        }
       }
 
       acceptBtn.addEventListener('click', function () {
         localStorage.setItem('etf-cookie-consent', 'accepted');
         cookieConsent.style.display = 'none';
+
+        // Update GA4 consent
+        if (typeof gtag === 'function') {
+          gtag('consent', 'update', { 'analytics_storage': 'granted' });
+          gtag('event', 'page_view');
+        }
       });
 
       rejectBtn.addEventListener('click', function () {
         localStorage.setItem('etf-cookie-consent', 'rejected');
         cookieConsent.style.display = 'none';
+
+        // Update GA4 consent
+        if (typeof gtag === 'function') {
+          gtag('consent', 'update', { 'analytics_storage': 'denied' });
+        }
       });
 
       setTimeout(function () {

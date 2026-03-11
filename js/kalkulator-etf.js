@@ -303,6 +303,11 @@ function updateChart(dane) {
     myChart.data.datasets[2].data = dane.realny;
 
     myChart.update('none');
+    
+    // GA4 tracking event
+    if (typeof gtag === 'function') {
+        gtag('event', 'calculate', { 'calculator_type': 'etf' });
+    }
 }
 
 // Globalny alias dla HTML

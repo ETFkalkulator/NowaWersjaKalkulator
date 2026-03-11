@@ -207,6 +207,11 @@ function obliczPorownanie() {
 
   // Wykres
   rysujWykresPorown(lata, etf, obligacje, lokata);
+  
+  // GA4 tracking event
+  if (typeof gtag === 'function') {
+    gtag('event', 'calculate', { 'calculator_type': 'porownywarka' });
+  }
 }
 
 /* ----------------------------------------------------------

@@ -242,6 +242,11 @@ function aktualizujWolnosc() {
   // Wykresy
   rysujWykresAkumulacji(wyniki);
   rysujWykresFirePhase(wyniki);
+  
+  // GA4 tracking event
+  if (typeof gtag === 'function') {
+    gtag('event', 'calculate', { 'calculator_type': 'fire' });
+  }
 }
 
 
@@ -607,4 +612,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Pierwsze obliczenie
   aktualizujWolnosc();
-});
+});

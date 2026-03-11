@@ -263,6 +263,11 @@ function aktualizujKalkulator() {
   // Wykres i tabela
   rysujWykres(wyniki, kapital, stopaLokaty, wIKE, doplataRoczna);
   aktualizujTabele(wyniki, formatujZl, formatujProc);
+  
+  // GA4 tracking event
+  if (typeof gtag === 'function') {
+    gtag('event', 'calculate', { 'calculator_type': 'obligacje' });
+  }
 }
 
 /* ----------------------------------------------------------
