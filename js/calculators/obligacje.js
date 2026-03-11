@@ -207,7 +207,7 @@ function aktualizujKalkulator() {
   var inflacja = (utils.pobierzWartosc || window.pobierzWartosc || function(id, def) { 
   var el = document.getElementById(id); 
   return el ? parseFloat(el.value) || def : def; 
-})('input-inflacja', 3.5) / 100;
+})('input-inflacja', 2.5) / 100;
   var ikeEl = document.getElementById('input-ike');
   var wIKE = ikeEl ? ikeEl.checked : false;
   var stopaLokaty = (utils.pobierzWartosc || window.pobierzWartosc || function(id, def) { 
@@ -551,14 +551,11 @@ function aktualizujTabele(wyniki, formatujZl, formatujProc) {
 function init() {
   aktualizujKalkulator();
 
-  // Stwórz debounced version funkcji aktualizującej
-  const debouncedAktualizujKalkulator = window.debounce ? window.debounce(aktualizujKalkulator, 150) : aktualizujKalkulator;
-
   ['input-kapital', 'input-typ', 'input-stopa', 'input-inflacja', 'input-lokata', 'input-doplata']
     .forEach(function (id) {
       var pole = document.getElementById(id);
       if (pole) {
-        pole.addEventListener('input', debouncedAktualizujKalkulator);
+        pole.addEventListener('input', aktualizujKalkulator);
         pole.addEventListener('change', aktualizujKalkulator);
       }
     });

@@ -997,13 +997,6 @@
         if (ksiezyc) ksiezyc.style.display = 'block';
         localStorage.setItem('etf-tryb', 'ciemny');
       }
-      
-      // Safari iOS fix - force repaint
-      if (navigator.userAgent.includes('Safari') && navigator.userAgent.includes('iPhone')) {
-        html.style.display = 'none';
-        html.offsetHeight; // Force reflow
-        html.style.display = '';
-      }
     }
 
     // Inicjalizacja przy ładowaniu strony

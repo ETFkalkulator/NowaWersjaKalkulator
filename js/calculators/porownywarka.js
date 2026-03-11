@@ -154,7 +154,7 @@ function obliczPorownanie() {
   var kapital = pobierzWartosc('por-kapital', 10000);
   var doplata = pobierzWartosc('por-doplata', 500);
   var lata = pobierzWartosc('por-lata', 10);
-  var inflacja = pobierzWartosc('por-inflacja', 2.5);  // Poprawka: 2.5% jak w ETF
+  var inflacja = pobierzWartosc('por-inflacja', 2.5);
   var stopaETF = pobierzWartosc('por-stopa-etf', 7);
   var stopaLok = pobierzWartosc('por-stopa-lok', 4.5);
   var marza = pobierzWartosc('por-marza', 2.0);
@@ -480,11 +480,7 @@ document.addEventListener('DOMContentLoaded', function () {
   inputy.forEach(function (id) {
     var el = document.getElementById(id);
     if (!el) return;
-    
-    // Stwórz debounced version funkcji obliczającej
-    var debouncedObliczPorownanie = window.debounce ? window.debounce(obliczPorownanie, 150) : obliczPorownanie;
-    
-    el.addEventListener('input', debouncedObliczPorownanie);
+    el.addEventListener('input', obliczPorownanie);
     el.addEventListener('change', obliczPorownanie);
   });
 

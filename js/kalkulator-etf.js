@@ -15,25 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
         'input-stopa', 'input-inflacja', 'input-ike'
     ];
 
-    // Stwórz debounced version funkcji obliczającej
-    const debouncedObliczWszystko = window.debounce ? window.debounce(obliczWszystko, 150) : obliczWszystko;
-
     inputs.forEach(id => {
         const el = document.getElementById(id);
         if (el) {
-            el.addEventListener('input', debouncedObliczWszystko);
+            el.addEventListener('input', obliczWszystko);
         }
     });
 
     // Inicjalizacja wykresu
-    console.log('🔍 Chart available:', typeof Chart);
-    console.log('🔍 window.ETF.charts available:', !!window.ETF.charts);
-    
-    if (typeof Chart !== 'undefined' && window.ETF && window.ETF.charts) {
-        console.log('✅ Inicjalizuję wykres');
+    if (window.ETF && window.ETF.charts) {
         initChart();
-    } else {
-        console.error('❌ Chart.js lub ETF.charts nie dostępne');
     }
 
     // Pierwsze obliczenie
@@ -59,110 +50,110 @@ function setStopa(wartosc, btn) {
  * Główna funkcja obliczeniowa
  */
 function obliczWszystko() {
-    // Pobranie danych bez nadmiernego sprawdzania (cache availability)
-    const hasValidation = window.walidujKwote && window.walidujProcent;
-    
-    const start = hasValidation ? window.walidujKwote(pobierzWartosc('input-kapital', 10000), 'kapital', 0, VALIDATION_CONSTANTS.KAPITAL_MAX) : parseFloat(pobierzWartosc('input-kapital', 10000));
-    const doplata = hasValidation ? window.walidujKwote(pobierzWartosc('input-doplata', 500), 'doplata', 0, VALIDATION_CONSTANTS.WPLATA_MAX) : parseFloat(pobierzWartosc('input-doplata', 500));
-    const lata = hasValidation ? window.walidujKwote(pobierzWartosc('input-horyzont', 10), 'horyzont', VALIDATION_CONSTANTS.LATA_MIN, VALIDATION_CONSTANTS.LATA_MAX) : parseFloat(pobierzWartosc('input-horyzont', 10));
-    const stopaNom = hasValidation ? window.walidujProcent(pobierzWartosc('input-stopa', 7), 'stopa') / 100 : parseFloat(pobierzWartosc('input-stopa', 7)) / 100;
-    const inflacjaRoczna = hasValidation ? window.walidujProcent(pobierzWartosc('input-inflacja', 2.5), 'inflacja') / 100 : parseFloat(pobierzWartosc('input-inflacja', 2.5)) / 100;
-    
-    // Early return jeśli walidacja się nie powiodła
-    if (start === null || doplata === null || lata === null || stopaNom === null || inflacjaRoczna === null) {
-        console.error('❌ Przerwano obliczenia - błędne dane wejściowe');
-        updateChart([]);
-        return;
-    }
-    
+    // Pobranie danych przez utils
+    const start = pobierzWartosc('input-kapital', 10000);
+    const doplata = pobierzWartosc('input-doplata', 500);
+    const lata = pobierzWartosc('input-horyzont', 10);
+    const stopaNom = pobierzWartosc('input-stopa', 7) / 100;
+    const inflacjaRoczna = pobierzWartosc('input-inflacja', 2.5) / 100;
     const isIKE = document.getElementById('input-ike').checked;
 
-        const stopaMsc = stopaNom / 12;
-        const msc = lata * 12;
+    const stopaMsc = stopaNom / 12;
+    const msc = lata * 12;
 
-        let kapitalNominalny = start;
-        let sumaWplat = start;
-        let doplataLaczna = 0;
-        let kapitalRealny = start; // Zdefiniuj przed pętlą
+    let kapitalNominalny = start;
+    let sumaWplat = start;
+    let doplataLaczna = 0;
 
-        const daneWykresu = {
-            labels: [],
-            nominalny: [],
-            wplacone: [],
-            realny: []
-        };
+    const daneWykresu = {
+        labels: [],
+        nominalny: [],
+        wplacone: [],
+        realny: []
+    };
 
-        const tabelaBody = document.getElementById('tabela-body');
-        if (tabelaBody) tabelaBody.innerHTML = '';
+    const tabelaBody = document.getElementById('tabela-body');
+    if (tabelaBody) tabelaBody.innerHTML = '';
 
-        // Symulacja miesiąc po miesiącu
-        for (let m = 0; m <= msc; m++) {
-            if (m > 0) {
-                kapitalNominalny = kapitalNominalny * (1 + stopaMsc) + doplata;
-                sumaWplat += doplata;
-                doplataLaczna += doplata;
-            }
+    // Symulacja miesiąc po miesiącu
+    for (let m = 0; m <= msc; m++) {
+        if (m > 0) {
+            kapitalNominalny = kapitalNominalny * (1 + stopaMsc) + doplata;
+            sumaWplat += doplata;
+            doplataLaczna += doplata;
+        }
 
-            kapitalRealny = kapitalNominalny / Math.pow(1 + inflacjaRoczna / 12, m / 12);
+        // Zbieranie danych do wykresu i tabeli (co roku)
+        if (m % 12 === 0) {
+            const rok = m / 12;
+            const infSkumulowana = Math.pow(1 + inflacjaRoczna, rok);
+            const kapitalRealny = kapitalNominalny / infSkumulowana;
 
-            daneWykresu.labels.push(m > 0 ? `Rok ${Math.ceil(m / 12)}` : 'Start');
-            daneWykresu.nominalny.push(kapitalNominalny);
-            daneWykresu.wplacone.push(sumaWplat);
-            daneWykresu.realny.push(kapitalRealny);
+            daneWykresu.labels.push(`Rok ${rok}`);
+            daneWykresu.nominalny.push(zaokraglij(kapitalNominalny));
+            daneWykresu.wplacone.push(zaokraglij(sumaWplat));
+            daneWykresu.realny.push(zaokraglij(kapitalRealny));
 
             // Wypełnianie tabeli
-            if (Math.floor(m / 12) > 0 && tabelaBody) {
+            if (rok > 0 && tabelaBody) {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td>Rok ${Math.ceil(m / 12)}</td>
+                    <td>Rok ${rok}</td>
                     <td>${formatujZl(zaokraglij(sumaWplat))}</td>
                     <td>${formatujZl(zaokraglij(kapitalNominalny - sumaWplat))}</td>
-                    <td>${formatujZl(zaokraglij(kapitalRealny))}</td>
+                    <td><strong>${formatujZl(zaokraglij(kapitalNominalny))}</strong></td>
+                    <td style="color: var(--color-primary-500)">${formatujZl(zaokraglij(kapitalRealny))}</td>
                 `;
                 tabelaBody.appendChild(tr);
             }
         }
+    }
 
-        // Obliczenia końcowe
-        const zyskNominalny = kapitalNominalny - sumaWplat;
-        const zyskRealny = kapitalRealny - sumaWplat;
+    // Podatki i wyniki końcowe
+    const zyskBrutto = kapitalNominalny - sumaWplat;
+    const podatek = isIKE ? 0 : Math.max(0, zyskBrutto * 0.19);
+    const kapitalNetto = kapitalNominalny - podatek;
+    const zyskNetto = zyskBrutto - podatek;
 
-        // CAGR
-        const cagrNominalny = Math.pow(kapitalNominalny / start, 1 / lata) - 1;
-        const cagrRealny = Math.pow(kapitalRealny / start, 1 / lata) - 1;
+    // Realna wartość netto (po podatku i inflacji)
+    // Obliczamy realny wzrost ponad inflację
+    const infDocelowa = Math.pow(1 + inflacjaRoczna, lata);
+    const kapitalRealnyNetto = kapitalNetto / infDocelowa;
+    const zyskRealny = (kapitalNetto / infDocelowa) - (sumaWplat / 1); // Bardzo uproszczone
 
-        // Aktualizacja UI
-        animuj('etf-wynik-kapital-koncowy', kapitalNominalny, formatujZl);
-        animuj('etf-wynik-zysk-po-podatku', zyskNominalny, formatujZl);
-        animuj('etf-wynik-zysk-realny', zyskRealny, formatujZl); // Zysk realny (czysty przyrost siły nabywczej)
+    // CAGR (Netto)
+    const cagrNominalny = Math.pow(kapitalNetto / sumaWplat, 1 / lata) - 1 || 0;
+    const cagrRealny = Math.pow(kapitalRealnyNetto / (sumaWplat / 1), 1 / lata) - 1 || 0;
 
-        document.getElementById('etf-wynik-cagr').textContent = formatujProcent(cagrNominalny);
-        document.getElementById('etf-wynik-cagr-realny').textContent = formatujProcent(cagrRealny);
+    // Aktualizacja UI (używając animuj z utils.js)
+    animuj('etf-wynik-kapital-koncowy', kapitalNetto);
+    animuj('etf-wynik-wklad-wlasny', sumaWplat);
+    animuj('etf-wynik-doplata-laczna', doplataLaczna);
+    animuj('etf-wynik-zysk-nominalny', zyskBrutto);
 
-        // Tekst podatku
-        const txtPodatek = document.getElementById('txt-podatek');
-        if (txtPodatek) {
-            if (isIKE) {
-                txtPodatek.textContent = '0% (Konto IKE/IKZE zwolnione)';
-                txtPodatek.style.color = 'var(--color-green-500)';
-            } else {
-                txtPodatek.textContent = '19% podatek Belki od zysku';
-                txtPodatek.style.color = '';
-            }
+    animuj('etf-wynik-podatek-belki', podatek);
+    animuj('etf-wynik-zysk-po-podatku', zyskNetto);
+
+    animuj('etf-wynik-zysk-realny', kapitalRealnyNetto - sumaWplat); // Zysk realny (czysty przyrost siły nabywczej)
+
+    document.getElementById('etf-wynik-cagr').textContent = formatujProcent(cagrNominalny);
+    document.getElementById('etf-wynik-cagr-realny').textContent = formatujProcent(cagrRealny);
+
+
+    // Tekst podatku
+    const txtPodatek = document.getElementById('txt-podatek');
+    if (txtPodatek) {
+        if (isIKE) {
+            txtPodatek.textContent = "0% (Konto IKE/IKZE zwolnione)";
+            txtPodatek.style.color = "var(--color-green-500)";
+        } else {
+            txtPodatek.textContent = "19% podatek Belki od zysku";
+            txtPodatek.style.color = "";
         }
+    }
 
-        // Wykres
-        updateChart({
-            labels: daneWykresu.labels,
-            nominalny: daneWykresu.nominalny,
-            wplacone: daneWykresu.wplacone,
-            realny: daneWykresu.realny
-        });
-        
-        // GA4 tracking event
-        if (typeof gtag === 'function') {
-            gtag('event', 'calculate', { 'calculator_type': 'etf' });
-        }
+    // Aktualizacja wykresu
+    updateChart(daneWykresu);
 }
 
 /**
@@ -304,22 +295,19 @@ function initChart() {
  * Aktualizacja danych na wykresie
  */
 function updateChart(dane) {
-    console.log(' updateChart called with:', dane);
-    console.log(' myChart exists:', !!myChart);
-    
-    if (!myChart) {
-        console.error(' myChart not initialized');
-        return;
-    }
+    if (!myChart) return;
 
-    console.log(' Updating chart with data length:', dane.labels?.length);
     myChart.data.labels = dane.labels;
     myChart.data.datasets[1].data = dane.wplacone;
     myChart.data.datasets[0].data = dane.nominalny;
     myChart.data.datasets[2].data = dane.realny;
 
     myChart.update('none');
-    console.log(' Chart updated successfully');
+    
+    // GA4 tracking event
+    if (typeof gtag === 'function') {
+        gtag('event', 'calculate', { 'calculator_type': 'etf' });
+    }
 }
 
 // Globalny alias dla HTML
