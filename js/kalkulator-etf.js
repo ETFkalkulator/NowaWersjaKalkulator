@@ -154,25 +154,9 @@ function obliczWszystko() {
         // Wykres
         updateChart({
             labels: daneWykresu.labels,
-            datasets: [{
-                label: 'Kapitał nominalny (brutto)',
-                data: daneWykresu.nominalny,
-                borderColor: 'rgb(75, 192, 192)',
-                backgroundColor: 'rgba(75, 192, 192, 0.1)',
-                tension: 0.1
-            }, {
-                label: 'Wpłacone',
-                data: daneWykresu.wplacone,
-                borderColor: 'rgb(255, 159, 64)',
-                backgroundColor: 'rgba(255, 159, 64, 0.1)',
-                tension: 0.1
-            }, {
-                label: 'Kapitał realny (inflacja)',
-                data: daneWykresu.realny,
-                borderColor: 'rgb(54, 162, 235)',
-                backgroundColor: 'rgba(54, 162, 235, 0.1)',
-                tension: 0.1
-            }]
+            nominalny: daneWykresu.nominalny,
+            wplacone: daneWykresu.wplacone,
+            realny: daneWykresu.realny
         });
         
         // GA4 tracking event
@@ -336,11 +320,6 @@ function updateChart(dane) {
 
     myChart.update('none');
     console.log(' Chart updated successfully');
-    
-    // GA4 tracking event
-    if (typeof gtag === 'function') {
-        gtag('event', 'calculate', { 'calculator_type': 'etf' });
-    }
 }
 
 // Globalny alias dla HTML
