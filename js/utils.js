@@ -34,9 +34,9 @@ function debounce(func, delay) {
  */
 const VALIDATION_CONSTANTS = {
   STOPA_MIN: 0,
-  STOPA_MAX: 1,           // 100%
+  STOPA_MAX: 100,         // 100% - zmiana z 1 na 100
   INFLACJA_MIN: 0,
-  INFLACJA_MAX: 0.5,     // 50%
+  INFLACJA_MAX: 50,       // 50% - zmiana z 0.5 na 50
   KAPITAL_MIN: 0,
   KAPITAL_MAX: 10000000,  // 10M zł
   WPLATA_MIN: 0,
