@@ -77,6 +77,7 @@ function obliczWszystko() {
         let kapitalNominalny = start;
         let sumaWplat = start;
         let doplataLaczna = 0;
+        let kapitalRealny = start; // Zdefiniuj przed pętlą
 
         const daneWykresu = {
             labels: [],
@@ -96,7 +97,7 @@ function obliczWszystko() {
                 doplataLaczna += doplata;
             }
 
-            const kapitalRealny = kapitalNominalny / Math.pow(1 + inflacjaRoczna / 12, m / 12);
+            kapitalRealny = kapitalNominalny / Math.pow(1 + inflacjaRoczna / 12, m / 12);
 
             daneWykresu.labels.push(m > 0 ? `Rok ${Math.ceil(m / 12)}` : 'Start');
             daneWykresu.nominalny.push(kapitalNominalny);
