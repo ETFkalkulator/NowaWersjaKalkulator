@@ -551,11 +551,14 @@ function aktualizujTabele(wyniki, formatujZl, formatujProc) {
 function init() {
   aktualizujKalkulator();
 
+  // Stwórz debounced version funkcji aktualizującej
+  const debouncedAktualizujKalkulator = window.debounce ? window.debounce(aktualizujKalkulator, 300) : aktualizujKalkulator;
+
   ['input-kapital', 'input-typ', 'input-stopa', 'input-inflacja', 'input-lokata', 'input-doplata']
     .forEach(function (id) {
       var pole = document.getElementById(id);
       if (pole) {
-        pole.addEventListener('input', aktualizujKalkulator);
+        pole.addEventListener('input', debouncedAktualizujKalkulator);
         pole.addEventListener('change', aktualizujKalkulator);
       }
     });

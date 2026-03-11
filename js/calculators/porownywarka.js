@@ -480,7 +480,11 @@ document.addEventListener('DOMContentLoaded', function () {
   inputy.forEach(function (id) {
     var el = document.getElementById(id);
     if (!el) return;
-    el.addEventListener('input', obliczPorownanie);
+    
+    // Stwórz debounced version funkcji obliczającej
+    var debouncedObliczPorownanie = window.debounce ? window.debounce(obliczPorownanie, 300) : obliczPorownanie;
+    
+    el.addEventListener('input', debouncedObliczPorownanie);
     el.addEventListener('change', obliczPorownanie);
   });
 

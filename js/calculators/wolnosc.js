@@ -603,7 +603,11 @@ document.addEventListener('DOMContentLoaded', function () {
   inputy.forEach(function (id) {
     var el = document.getElementById(id);
     if (!el) return;
-    el.addEventListener('input', aktualizujWolnosc);
+    
+    // Stwórz debounced version funkcji aktualizującej
+    var debouncedAktualizujWolnosc = window.debounce ? window.debounce(aktualizujWolnosc, 300) : aktualizujWolnosc;
+    
+    el.addEventListener('input', debouncedAktualizujWolnosc);
     el.addEventListener('change', aktualizujWolnosc);
   });
 
