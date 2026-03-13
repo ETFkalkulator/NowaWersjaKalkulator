@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
   <title>Kalkulator Obligacji Skarbowych — EDO, ROS, ROD | ETFkalkulator.pl</title>
   <meta name="description"
-    content="Oblicz realny zysk z obligacji skarbowych EDO, ROS i ROD po podatku Belki i inflacji. Bezpłatny kalkulator dla polskich inwestorów.">
+    content="Oblicz zysk z obligacji skarbowych indeksowanych inflacją (4-letnie COI, 10-letnie EDO, 12-letnie ROD). Symulacja z podatkiem Belki i kontem IKE.">
+  <link rel="canonical" href="https://etfkalkulator.pl/pages/kalkulator-obligacji.html">
 
   <meta property="og:title" content="Kalkulator Obligacji Skarbowych — EDO, ROS, ROD | ETFkalkulator.pl">
   <meta property="og:description"
@@ -30,9 +31,9 @@
   <!-- Google Analytics 4 — loads only after cookie consent -->
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    
+
     // Default: analytics denied until user accepts
     gtag('consent', 'default', {
       'analytics_storage': 'denied'
@@ -46,9 +47,14 @@
   <!-- Optyamizowany ładunek czcionek z Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap"></noscript>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap"
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
+  </noscript>
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/main.css">
@@ -912,14 +918,18 @@
 
       <!-- DISCLAIMER -->
       <div class="disclaimer-box" style="margin-top: var(--space-16)">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"></circle>
           <line x1="12" y1="8" x2="12" y2="12"></line>
           <line x1="12" y1="16" x2="12.01" y2="16"></line>
         </svg>
         <div>
           <strong>Ważna informacja (Disclaimer)</strong>
-          Materiały na stronie mają charakter wyłącznie edukacyjny i poglądowy. Nie stanowią rekomendacji inwestycyjnej ani porady podatkowej w rozumieniu przepisów prawa. Inwestowanie w obligacje skarbowe jest uznawane za bezpieczne, ale nadal wiąże się z ryzykiem inflacyjnym oraz płynności. Narzędzie jest symulacją — zawsze sprawdzaj aktualne warunki emisji na stronach Ministerstwa Finansów.
+          Materiały na stronie mają charakter wyłącznie edukacyjny i poglądowy. Nie stanowią rekomendacji inwestycyjnej
+          ani porady podatkowej w rozumieniu przepisów prawa. Inwestowanie w obligacje skarbowe jest uznawane za
+          bezpieczne, ale nadal wiąże się z ryzykiem inflacyjnym oraz płynności. Narzędzie jest symulacją — zawsze
+          sprawdzaj aktualne warunki emisji na stronach Ministerstwa Finansów.
         </div>
       </div>
 
