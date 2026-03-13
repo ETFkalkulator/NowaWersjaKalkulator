@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+  <title>Kalkulator ETF — jak obliczyć realny zysk po podatku Belki i inflacji | ETFkalkulator.pl</title>
+  <meta name="description"
+    content="Jak obliczyć realny zysk z inwestycji w ETF? Praktyczny przewodnik krok po kroku. Podatek Belki, inflacja, IKE/IKZE — konkretne liczby i przykłady dla polskich inwestorów.">
+
+  <!-- SEO: Open Graph — jak strona wygląda gdy ktoś udostępni link na Facebooku / Twitterze -->
+  <meta property="og:title" content="Kalkulator ETF — jak obliczyć realny zysk po podatku Belki i inflacji">
+  <meta property="og:description"
+    content="Jak obliczyć realny zysk z inwestycji w ETF? Praktyczny przewodnik krok po kroku. Podatek Belki, inflacja, IKE/IKZE — konkretne liczby i przykłady dla polskich inwestorów.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://etfkalkulator.pl/blog/kalkulator-etf-jak-obliczyc-realny-zysk.html">
+  <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:site_name" content="ETFkalkulator.pl">
+
+  <!-- SEO: Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kalkulator ETF — jak obliczyć realny zysk po podatku Belki i inflacji">
+  <meta name="twitter:description"
+    content="Jak obliczyć realny zysk z inwestycji w ETF? Praktyczny przewodnik krok po kroku. Podatek Belki, inflacja, IKE/IKZE — konkretne liczby i przykłady dla polskich inwestorów.">
+  <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png">
+
+  <!-- SEO: Kanoniczny URL -->
+  <link rel="canonical" href="https://etfkalkulator.pl/blog/kalkulator-etf-jak-obliczyc-realny-zysk.html" />
+
+  <!-- Favicon — ikona w zakładce przeglądarki -->
+  <link rel="icon" href="../images/favicon.png">
+
+  <!-- Google Analytics 4 — loads only after cookie consent -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    // Default: analytics denied until user accepts
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied'
+    });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
+  <script>
+    gtag('config', 'G-GZECMECQ15', { 'send_page_view': false });
+  </script>
+
+  <!-- Optymalizowany ładunek czcionek z Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap"></noscript>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+  <script src="../js/charts-config.js" defer></script>
+
+  <style>
+    /* Stylowanie specyficzne dla tego artykułu */
+    .article-hero {
+      background: linear-gradient(135deg, var(--color-primary-700) 0%, var(--color-primary-500) 100%);
+      color: var(--color-bg-elevated);
+      padding: 80px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .article-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .article-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    .article-content h2 {
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-primary);
+      margin: 48px 0 24px 0;
+      line-height: var(--leading-tight);
+    }
+
+    .article-content h3 {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-primary);
+      margin: 32px 0 16px 0;
+      line-height: var(--leading-tight);
+    }
+
+    .article-content p {
+      font-size: var(--text-base);
+      line-height: var(--leading-relaxed);
+      color: var(--color-text-secondary);
+      margin: 0 0 24px 0;
+    }
+
+    .article-content ul {
+      margin: 0 0 24px 0;
+      padding-left: 24px;
+    }
+
+    .article-content li {
+      font-size: var(--text-base);
+      line-height: var(--leading-relaxed);
+      color: var(--color-text-secondary);
+      margin: 0 0 12px 0;
+    }
+
+    .article-content strong {
+      color: var(--color-text-primary);
+      font-weight: var(--weight-semibold);
+    }
+
+    .article-content code {
+      background: var(--color-bg-secondary);
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      color: var(--color-primary-600);
+    }
+
+    .article-content blockquote {
+      border-left: 3px solid var(--color-primary-200);
+      padding-left: 24px;
+      margin: 24px 0;
+      font-style: italic;
+      color: var(--color-text-muted);
+    }
+
+    .calc-example {
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin: 32px 0;
+    }
+
+    .calc-example h4 {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-primary);
+      margin: 0 0 16px 0;
+    }
+
+    .calc-formula {
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      color: var(--color-text-primary);
+      margin: 16px 0;
+      overflow-x: auto;
+    }
+
+    .highlight-box {
+      background: var(--color-primary-50);
+      border-left: 4px solid var(--color-primary-500);
+      padding: 24px;
+      margin: 32px 0;
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    }
+
+    .highlight-box h4 {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-primary-700);
+      margin: 0 0 12px 0;
+    }
+
+    .highlight-box p {
+      font-size: var(--text-base);
+      line-height: var(--leading-relaxed);
+      color: var(--color-text-secondary);
+      margin: 0;
+    }
+
+    .back-to-blog {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-6);
+      background: var(--color-primary-500);
+      color: var(--color-bg-elevated);
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      font-weight: var(--weight-medium);
+      transition: all var(--transition-normal);
+      margin-top: 48px;
+    }
+
+    .back-to-blog:hover {
+      background: var(--color-primary-600);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {
+      .article-hero {
+        padding: 60px 20px;
+      }
+
+      .article-content {
+        padding: 40px 20px;
+      }
+
+      .calc-example {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-consent" class="cookie-consent" style="display: none;">
+    <div class="cookie-consent__inner">
+      <div class="cookie-consent__content">
+        <h4 class="cookie-consent__title">Prywatność i pliki cookies</h4>
+        <p class="cookie-consent__text">
+          ETFkalkulator.pl używa plików cookies do analizy ruchu i personalizacji treści.
+          Kontynuując przeglądanie zgadzasz się na naszą
+          <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__link">politykę cookies</a>.
+        </p>
+      </div>
+      <div class="cookie-consent__actions">
+        <button id="cookie-accept" class="cookie-consent__btn cookie-consent__btn--accept">
+          Akceptuję
+        </button>
+        <button id="cookie-reject" class="cookie-consent__btn cookie-consent__btn--reject">
+          Odrzuć
+        </button>
+        <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__btn cookie-consent__btn--settings">
+          Ustawienia
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">ETFkalkulator.pl</a>
+      <ul class="nav-links">
+        <li><a href="../pages/kalkulator-etf.html">Kalkulator ETF</a></li>
+        <li><a href="../pages/kalkulator-obligacji.html">Obligacje</a></li>
+        <li><a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a></li>
+        <li><a href="../pages/porownywarka.html">Porównywarka</a></li>
+        <li><a href="./" class="active">Blog</a></li>
+        <li><a href="../pages/o-projekcie.html">O projekcie</a></li>
+        <button id="btn-darkmode" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="
+            width: 38px; height: 38px; border-radius: var(--radius-full); 
+            border: 1.5px solid var(--color-border); background: var(--color-bg-elevated); 
+            cursor: pointer; display: flex; align-items: center; justify-content: center; 
+            transition: all var(--transition-fast); flex-shrink: 0;
+          ">
+            <svg id="ikona-slonce" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+            <svg id="ikona-ksiezyc" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              style="display:none">
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+            </svg>
+          </button>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero article-hero">
+    <div class="hero-inner">
+      <h1>Kalkulator ETF — jak obliczyć realny zysk</h1>
+      <p class="hero-lead">
+        Praktyczny przewodnik krok po kroku. Oblicz realny zysk z inwestycji w ETF po podatku Belki i inflacji.
+      </p>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="article-content">
+    <p>
+      Inwestowanie w ETF to popularny sposób na budowanie kapitału, ale <strong>ile naprawdę zarabiasz</strong>? 
+      Wiele osób patrzy tylko na nominalne wzrosty, zapominając o kluczowych czynnikach: 
+      <strong>podatku Belki</strong> i <strong>inflacji</strong>. Ten artykuł pokaże Ci krok po kroku, 
+      jak obliczyć <strong>realny zysk</strong> z inwestycji w ETF.
+    </p>
+
+    <h2>Dlaczego nominalny zysk to nie to samo?</h2>
+    <p>
+      Kiedy patrzysz na wykres ETF i widzisz +15% rocznie, to może się wydawać świetnie. 
+      Ale po odliczeniu <strong>19% podatku Belki</strong> i uwzględnieniu <strong>inflacji</strong> 
+      (nawet 5-6% rocznie), realna siła nabywcza Twoich pieniędzy jest znacznie niższa.
+    </p>
+
+    <h3>Trzy kluczowe czynniki</h3>
+    <ul>
+      <li><strong>Podatek Belki (19%)</strong> — od każdego zysku brutto z odsetek i dywidendów</li>
+      <li><strong>Inflacja (historycznie 3-6%)</strong> — spadek siły nabywczej pieniądza</li>
+      <li><strong>Czas inwestycji</strong> — procent składany działa tylko z czasem</li>
+    </ul>
+
+    <div class="highlight-box">
+      <h4>💡 Ważna uwaga</h4>
+      <p>
+        Wiele kalkulatorów online pokazuje tylko wzrost nominalny. To może prowadzić do błędnych decyzji inwestycyjnych, 
+        bo realny zysk bywa nawet o połowę niższy! Zawsze sprawdzaj, czy kalkulator uwzględnia podatek i inflację.
+      </p>
+    </div>
+
+    <h2>Jak obliczyć realny zysk krok po kroku</h2>
+    
+    <div class="calc-example">
+      <h4>📊 Przykład: Inwestycja 10 000 zł na 10 lat</h4>
+      
+      <p><strong>Scenariusz optymistyczny (bez podatków i inflacji):</strong></p>
+      <ul>
+        <li>Kapitał początkowy: 10 000 zł</li>
+        <li>Miesięczna wpłata: 500 zł</li>
+        <li>Roczna stopa zwrotu: 10%</li>
+        <li><strong>Wynik nominalny po 10 latach: ~206 000 zł</strong></li>
+      </ul>
+
+      <p><strong>Scenariusz realistyczny (z podatkami i inflacją):</strong></p>
+      <ul>
+        <li>Kapitał początkowy: 10 000 zł</li>
+        <li>Miesięczna wpłata: 500 zł</li>
+        <li>Roczna stopa zwrotu: 10%</li>
+        <li>Podatek Belki: 19% od zysków</li>
+        <li>Inflacja: 4% rocznie</li>
+        <li><strong>Wynik realny po 10 latach: ~135 000 zł</strong></li>
+      </ul>
+
+      <div class="calc-formula">
+        <strong>Wzór na realny zysk:</strong><br>
+        Zysk Realny = [(Kapitał Końcowy × (1 - stopa inflacji)) / (1 + stopa podatku)] - Kapitał Początkowy
+      </div>
+    </div>
+
+    <h3>🛡️ Oszczędności podatkowe — IKE i IKZE</h3>
+    <p>
+      <strong>IKE (Indywidualne Konto Emerytalne)</strong> i <strong>IKZE (Indywidualne Konto Zabezpieczenia Emerytalnego)</strong> 
+      to konta, które pozwalają <strong>odroczyć podatek Belki</strong> od zysków z inwestycji.
+    </p>
+
+    <div class="highlight-box">
+      <h4>⚡ Efekt procentu składanego</h4>
+      <p>
+        Przy inwestycjach długoterminowych <strong>procent składany</strong> działa na Twoją korzyść. 
+        W powyższym przykładzie, przy 10% rocznie przez 10 lat:
+      </p>
+      <ul>
+        <li>Bez wpłat: 10 000 zł → 25 937 zł</li>
+        <li>Z wpłatami 500 zł miesięcznie: 206 000 zł</li>
+        <li><strong>Różnica: aż 46% więcej kapitału dzięki regularnym wpłatom!</strong></li>
+      </ul>
+    </div>
+
+    <h3>📈 Jak inflacja wpływa na realny zysk</h3>
+    <p>
+      Inflacja to <strong>ukryty wróg</strong> Twojego kapitału. Przy inflacji 5% rocznie, 
+      pieniądz straca połowę swojej wartości co 14 lat! Dlatego tak ważne jest, 
+      aby stopa zwrotu z inwestycji <strong>przewyższa inflację</strong>.
+    </p>
+
+    <div class="calc-formula">
+      <strong>Przykład inflacji:</strong><br>
+      100 000 zł dzisiaj przy 5% inflacji → 95 238 zł za 5 lat<br>
+      → 90 703 zł za 10 lat → 81 874 zł za 15 lat
+    </div>
+
+    <h2>Praktyczne narzędzia i kalkulatory</h2>
+    <p>
+      Aby ułatwić Ci obliczenia, przygotowałem <strong>dedykowany kalkulator ETF</strong>, 
+      który uwzględnia wszystkie kluczowe czynniki:
+    </p>
+
+    <ul>
+      <li><strong>Podatek Belki (19%)</strong> — automatycznie odliczany od zysków</li>
+      <li><strong>Inflacja</strong> — możesz ustawić historyczną lub prognozowaną</li>
+      <li><strong>IKE/IKZE</strong> — opcja odroczenia podatku</li>
+      <li><strong>Procent składany</strong> — dokładne obliczenia miesięczne</li>
+      <li><strong>Wyniki nominalne i realne</strong> — jasne porównanie</li>
+    </ul>
+
+    <div class="highlight-box">
+      <h4>🎯 Nasz kalkulator ETF</h4>
+      <p>
+        Przygotowałem specjalny kalkulator, który pomoże Ci obliczyć realny zysk z inwestycji w ETF. 
+        Uwzględnia wszystkie kluczowe czynniki: podatek Belki, inflację, procent składany i opcje IKE/IKZE.
+      </p>
+      <p style="text-align: center; margin-top: 16px;">
+        <a href="../pages/kalkulator-etf.html" class="btn btn--primary">
+          Wypróbuj nasz kalkulator ETF →
+        </a>
+      </p>
+    </div>
+
+    <h2>Podsumowanie — kluczowe wnioski</h2>
+    <ul>
+      <li><strong>Sprawdzaj zawsze realny zysk</strong>, nie tylko nominalny</li>
+      <li><strong>Uwzględnij podatek Belki (19%)</strong> w obliczeniach</li>
+      <li><strong>Odliczaj inflację</strong> — historyczna 3-6% rocznie to realistyczne założenie</li>
+      <li><strong>Rozważ IKE/IKZE</strong> — legalne oszczędności podatkowe</li>
+      <li><strong>Inwestuj długoterminowo</strong> — procent składany potrzebuje czasu</li>
+    </ul>
+
+    <div class="highlight-box">
+      <h4>🔮 Złota zasada inwestowania</h4>
+      <p>
+        <strong>Czas w rynku > próby czasowania rynku</strong>. Zamiast próbować wygrać z rynkiem, 
+        regularnie inwestuj i trzymaj strategię. To procent składany i dyscyplina 
+        zbudują Twój kapitał znacznie skuteczniej niż próby przewidywania krótkoterminowych ruchów.
+      </p>
+    </div>
+
+    <h2>Częste pytania i odpowiedzi</h2>
+    
+    <h3>💬 Czy 19% podatku Belki to zawsze?</h3>
+    <p>
+      <strong>Tak</strong>, dla większości inwestycji na giełdzie. Podatek dotyczy zysków 
+      z odsetek i dywidendów z funduszy inwestycyjnych, w tym ETF. Wyjątki to m.in. 
+      obligacje skarbowe i niektóre produkty strukturyzowane.
+    </p>
+
+    <h3>💬 Czy inflacja 4% to dużo?</h3>
+    <p>
+      <strong>Historycznie tak</strong>. W ostatnich 30 latach Polska miała średnio 4-6% inflacji rocznie. 
+      Przy planowaniu długoterminowym warto założyć konserwatywnie 4-5%, aby nie być niemiło zaskoczonym.
+    </p>
+
+    <h3>💬 Co lepsze — IKE czy IKZE?</h3>
+    <p>
+      <strong>Zależy od sytuacji podatkowej</strong>. IKZE pozwala odliczyć wpłaty od podatku, 
+      ale ma limity wpłat. IKE nie pozwala odliczać wpłaty, ale nie ma limitu. 
+      Dla większości osób <strong>IKE będzie prostszy i bardziej elastyczny</strong>.
+    </p>
+
+    <div style="text-align: center; margin: 48px 0;">
+      <a href="./" class="back-to-blog">
+        ← Wróć do bloga
+      </a>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer__links">
+      <a href="../pages/kalkulator-etf.html">Kalkulator ETF</a>
+      <a href="../pages/kalkulator-obligacji.html">Kalkulator obligacji</a>
+      <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
+      <a href="../pages/porownywarka.html">Porównywarka ETF</a>
+      <a href="./">Blog</a>
+      <a href="../pages/o-projekcie.html">O projekcie</a>
+      <a href="../pages/polityka-prywatnosci.html">Polityka prywatności</a>
+      <a href="../pages/regulamin.html">Regulamin</a>
+    </div>
+    <p>© 2026 ETFkalkulator.pl — narzędzie edukacyjne dla polskich inwestorów</p>
+    <p style="margin-top:6px; font-size:13px;">Made with ❤️ by Florian</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../js/utils.js"></script>
+  <script>
+    // Dark mode toggle
+    function przelaczTryb() {
+      const body = document.body;
+      const ikonaSlonce = document.getElementById('ikona-slonce');
+      const ikonaKsiezyc = document.getElementById('ikona-ksiezyc');
+
+      if (body.classList.contains('dark-mode')) {
+        // Przełącz na tryb jasny
+        body.classList.remove('dark-mode');
+        localStorage.setItem('darkMode', 'false');
+        if (ikonaSlonce) ikonaSlonce.style.display = 'block';
+        if (ikonaKsiezyc) ikonaKsiezyc.style.display = 'none';
+      } else {
+        // Przełącz na tryb ciemny
+        body.classList.add('dark-mode');
+        localStorage.setItem('darkMode', 'true');
+        if (ikonaSlonce) ikonaSlonce.style.display = 'none';
+        if (ikonaKsiezyc) ikonaKsiezyc.style.display = 'block';
+      }
+    }
+
+    // Cookie Consent
+    document.addEventListener('DOMContentLoaded', function () {
+      var cookieConsent = document.getElementById('cookie-consent');
+      var acceptBtn = document.getElementById('cookie-accept');
+      var rejectBtn = document.getElementById('cookie-reject');
+
+      var cookieChoice = localStorage.getItem('etf-cookie-consent');
+
+      if (!cookieChoice) {
+        cookieConsent.style.display = 'block';
+      } else if (cookieChoice === 'rejected') {
+        cookieConsent.style.display = 'none';
+      }
+
+      acceptBtn.addEventListener('click', function () {
+        localStorage.setItem('etf-cookie-consent', 'accepted');
+        cookieConsent.style.display = 'none';
+
+        // Update GA4 consent
+        if (typeof gtag === 'function') {
+          gtag('consent', 'update', {
+            'analytics_storage': 'granted'
+          });
+        }
+      });
+
+      rejectBtn.addEventListener('click', function () {
+        localStorage.setItem('etf-cookie-consent', 'rejected');
+        cookieConsent.style.display = 'none';
+
+        // Update GA4 consent
+        if (typeof gtag === 'function') {
+          gtag('consent', 'update', {
+            'analytics_storage': 'denied'
+          });
+        }
+      });
+    });
+
+    // Load dark mode preference
+    document.addEventListener('DOMContentLoaded', function () {
+      const darkModePreference = localStorage.getItem('darkMode');
+      const ikonaSlonce = document.getElementById('ikona-slonce');
+      const ikonaKsiezyc = document.getElementById('ikona-ksiezyc');
+
+      if (darkModePreference === 'true') {
+        document.body.classList.add('dark-mode');
+        if (ikonaSlonce) ikonaSlonce.style.display = 'none';
+        if (ikonaKsiezyc) ikonaKsiezyc.style.display = 'block';
+      }
+    });
+  </script>
+
+</body>
+</html>
