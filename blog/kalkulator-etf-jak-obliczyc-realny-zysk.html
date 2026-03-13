@@ -804,6 +804,45 @@
       color: #f6ad55;
     }
 
+    /* Callout fixes for Dark Mode contrast */
+    html.dark-mode .callout-key {
+      background: #1a2634;
+      border-color: #3498db;
+    }
+
+    html.dark-mode .callout-example {
+      background: #162a1c;
+      border-color: #2ecc71;
+    }
+
+    html.dark-mode .callout-warning {
+      background: #2d2312;
+      border-color: #f39c12;
+    }
+
+    html.dark-mode .callout-title {
+      color: #f5f5f7;
+    }
+
+    html.dark-mode .callout-key {
+      background: #1a2634;
+      border-color: #3498db;
+    }
+
+    html.dark-mode .callout-example {
+      background: #162a1c;
+      border-color: #2ecc71;
+    }
+
+    html.dark-mode .callout-warning {
+      background: #2d2312;
+      border-color: #f39c12;
+    }
+
+    html.dark-mode .callout-title {
+      color: #f5f5f7;
+    }
+
     html.dark-mode .bar-wrap,
     html:not(.light-mode) .bar-wrap {
       background: var(--color-border);
@@ -860,6 +899,47 @@
       .hero h1 {
         font-size: 24px;
       }
+    }
+
+    /* User Requested Dark Mode Overrides */
+    html.dark-mode .calc-example,
+    html.dark-mode .key-number {
+      background: #2C2C2E !important;
+      border-color: #48484A !important;
+      color: #F5F5F7 !important;
+    }
+
+    html.dark-mode .calc-example *,
+    html.dark-mode .key-number * {
+      color: #F5F5F7 !important;
+    }
+
+    html.dark-mode .calc-row-value.red {
+      color: #fc8181 !important;
+    }
+
+    html.dark-mode .calc-row-value.blue {
+      color: #7cc8fb !important;
+    }
+
+    html.dark-mode .calc-row-value.green {
+      color: #68d391 !important;
+    }
+
+    html.dark-mode .calc-example-title {
+      color: #AEAEB2 !important;
+    }
+
+    html.dark-mode .calc-row.highlight {
+      background: #0d2137 !important;
+    }
+
+    html.dark-mode .key-number-value {
+      color: #7cc8fb !important;
+    }
+
+    html.dark-mode .key-number-label {
+      color: #AEAEB2 !important;
     }
   </style>
 </head>
@@ -1428,6 +1508,22 @@
       A jeśli zastanawiasz się jak ETF-y wypadają w porównaniu do obligacji skarbowych —
       to temat na osobny artykuł. Zajrzyj wkrótce.
     </p>
+
+    <div class="disclaimer-box">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="8" x2="12" y2="12"></line>
+        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+      </svg>
+      <div>
+        <strong>Ważna informacja (Disclaimer)</strong>
+        Materiały na stronie mają charakter wyłącznie edukacyjny i poglądowy. Nie stanowią rekomendacji inwestycyjnej
+        ani porady podatkowej w rozumieniu przepisów prawa. Inwestowanie na giełdzie zawsze wiąże się z ryzykiem utraty
+        części lub całości kapitału. Narzędzie może zawierać uproszczenia — zawsze weryfikuj wyniki z prospektem
+        emisyjnym funduszu.
+      </div>
+    </div>
 
   </main>
 
