@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
   <title>Kalkulator ETF — jak obliczyć realny zysk po podatku Belki i inflacji | ETFkalkulator.pl</title>
-  <meta name="description" content="Dowiedz się ile naprawdę zarobisz inwestując w ETF. Podatek Belki, inflacja, IKE i IKZE — konkretne liczby i przykłady. Użyj bezpłatnego kalkulatora ETF." />
-  <meta name="author" content="ETFkalkulator.pl" />
-  <link rel="canonical" href="https://etfkalkulator.pl/blog/kalkulator-etf-jak-obliczyc-realny-zysk" />
+  <meta name="description" content="Dowiedz się ile naprawdę zarobisz inwestując w ETF. Podatek Belki, inflacja, IKE i IKZE — konkretne liczby i przykłady. Użyj bezpłatnego kalkulatora ETF.">
+  <meta name="author" content="ETFkalkulator.pl">
+  <link rel="canonical" href="https://etfkalkulator.pl/blog/kalkulator-etf-jak-obliczyc-realny-zysk">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Kalkulator ETF — jak obliczyć realny zysk po podatku Belki i inflacji" />
-  <meta property="og:description" content="Ile naprawdę zarobisz na ETF po podatkach i inflacji? Konkretne przykłady i bezpłatny kalkulator." />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://etfkalkulator.pl/blog/kalkulator-etf-jak-obliczyc-realny-zysk" />
-  <meta property="og:site_name" content="ETFkalkulator.pl" />
+  <meta property="og:title" content="Kalkulator ETF — jak obliczyć realny zysk po podatku Belki i inflacji">
+  <meta property="og:description" content="Ile naprawdę zarobisz na ETF po podatkach i inflacji? Konkretne przykłady i bezpłatny kalkulator.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://etfkalkulator.pl/blog/kalkulator-etf-jak-obliczyc-realny-zysk">
+  <meta property="og:site_name" content="ETFkalkulator.pl">
 
   <!-- Schema.org Article -->
   <script type="application/ld+json">
@@ -31,36 +31,36 @@
   }
   </script>
 
-  <!-- Google Fonts -->
+  <!-- Google Analytics 4 — loads only after cookie consent -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    // Default: analytics denied until user accepts
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied'
+    });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
+  <script>
+    gtag('config', 'G-GZECMECQ15', { 'send_page_view': false });
+  </script>
+
+  <!-- Optyamizowany ładunek czcionek z Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap"></noscript>
-  
-  <!-- Site CSS -->
+
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../css/dark.css">
-  
+
   <!-- Favicon -->
   <link rel="icon" href="../images/favicon.png">
-  
-  <!-- Dark mode init (runs before page paint) -->
-  <script>
-    (function () {
-      var html = document.documentElement;
-      var zapisany = localStorage.getItem('etf-tryb');
-      var systemCiemny = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-      if (zapisany === 'ciemny' || (!zapisany && systemCiemny)) {
-        html.classList.add('dark-mode');
-      } else if (zapisany === 'jasny') {
-        html.classList.add('light-mode');
-      }
-    })();
-  </script>
   <style>
     /* Article-specific styles */
     :root {
@@ -457,22 +457,94 @@
       .nav-links { display: none; }
       .calc-row { flex-direction: column; align-items: flex-start; gap: 2px; }
     }
-  </style>
+</style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a href="https://etfkalkulator.pl/index.html" class="nav-logo">ETFkalkulator.pl</a>
-    <ul class="nav-links">
-      <li><a href="https://etfkalkulator.pl/pages/kalkulator-etf.html">Kalkulator ETF</a></li>
-      <li><a href="https://etfkalkulator.pl/pages/kalkulator-obligacji.html">Obligacje</a></li>
-      <li><a href="https://etfkalkulator.pl/pages/kalkulator-wolnosci.html">Wolność finansowa</a></li>
-      <li><a href="https://etfkalkulator.pl/pages/porownywarka.html">Porównywarka</a></li>
-    </ul>
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-consent" class="cookie-consent" style="display: none;">
+    <div class="cookie-consent__inner">
+      <div class="cookie-consent__content">
+        <h4 class="cookie-consent__title">Prywatność i pliki cookies</h4>
+        <p class="cookie-consent__text">
+          ETFkalkulator.pl używa plików cookies do analizy ruchu i personalizacji treści.
+          Kontynuując przeglądanie zgadzasz się na naszą
+          <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__link">politykę cookies</a>.
+        </p>
+      </div>
+      <div class="cookie-consent__actions">
+        <button id="cookie-accept" class="cookie-consent__btn cookie-consent__btn--accept">
+          Akceptuję
+        </button>
+        <button id="cookie-reject" class="cookie-consent__btn cookie-consent__btn--reject">
+          Odrzuć
+        </button>
+        <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__btn cookie-consent__btn--settings">
+          Ustawienia
+        </a>
+      </div>
+    </div>
   </div>
-</nav>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <a href="../index.html" class="header__logo">ETF<span>kalkulator</span>.pl</a>
+        <nav class="header__nav" aria-label="Nawigacja główna">
+          <a href="../pages/kalkulator-etf.html">Kalkulator ETF</a>
+          <a href="../pages/kalkulator-obligacji.html">Obligacje</a>
+          <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
+          <a href="../pages/porownywarka.html">Porównywarka</a>
+          <a href="../blog/" style="color: var(--color-primary-500)">Blog</a>
+          <a href="../pages/o-projekcie.html">O projekcie</a>
+          <button id="btn-darkmode" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="
+            width: 38px; height: 38px; border-radius: var(--radius-full); 
+            border: 1.5px solid var(--color-border); background: var(--color-bg-elevated); 
+            cursor: pointer; display: flex; align-items: center; justify-content: center; 
+            transition: all var(--transition-fast); flex-shrink: 0;
+          ">
+            <svg id="ikona-slonce" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+            <svg id="ikona-ksiezyc" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              style="display:none">
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+            </svg>
+          </button>
+          <a href="../index.html#newsletter" class="btn btn--sm"
+            style="border: 1.5px solid var(--color-primary-300); color: var(--color-primary-700); background: white; border-radius: var(--radius-full);">Newsletter</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav-bar" id="mobile-nav-bar">
+    <div class="mobile-nav-bar__inner">
+      <a href="../pages/kalkulator-etf.html" class="mobile-nav-bar__link">ETF</a>
+      <span class="mobile-nav-bar__separator"></span>
+      <a href="../pages/kalkulator-obligacji.html" class="mobile-nav-bar__link">Obligacje</a>
+      <span class="mobile-nav-bar__separator"></span>
+      <a href="../pages/kalkulator-wolnosci.html" class="mobile-nav-bar__link">Wolność finansowa</a>
+      <span class="mobile-nav-bar__separator"></span>
+      <a href="../pages/porownywarka.html" class="mobile-nav-bar__link">Porównywarka ETF</a>
+      <span class="mobile-nav-bar__separator"></span>
+      <a href="../blog/" class="mobile-nav-bar__link aktywna">Blog</a>
+      <span class="mobile-nav-bar__separator"></span>
+      <a href="../pages/o-projekcie.html" class="mobile-nav-bar__link">O projekcie</a>
+    </div>
+  </div>
 
 <!-- HERO -->
 <header class="hero">
@@ -960,13 +1032,13 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-links">
-    <a href="https://etfkalkulator.pl/pages/kalkulator-etf.html">Kalkulator ETF</a>
-    <a href="https://etfkalkulator.pl/pages/kalkulator-obligacji.html">Kalkulator obligacji</a>
-    <a href="https://etfkalkulator.pl/pages/kalkulator-wolnosci.html">Wolność finansowa</a>
-    <a href="https://etfkalkulator.pl/pages/porownywarka.html">Porównywarka ETF</a>
-    <a href="https://etfkalkulator.pl/index.html">Strona główna</a>
-    <a href="https://etfkalkulator.pl/pages/polityka-prywatnosci.html">Polityka prywatności</a>
-    <a href="https://etfkalkulator.pl/pages/regulamin.html">Regulamin</a>
+    <a href="../pages/kalkulator-etf.html">Kalkulator ETF</a>
+    <a href="../pages/kalkulator-obligacji.html">Kalkulator obligacji</a>
+    <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
+    <a href="../pages/porownywarka.html">Porównywarka ETF</a>
+    <a href="../index.html">Strona główna</a>
+    <a href="../pages/polityka-prywatnosci.html">Polityka prywatności</a>
+    <a href="../pages/regulamin.html">Regulamin</a>
   </div>
   <p>
     Serwis ETFkalkulator.pl ma charakter wyłącznie edukacyjny i informacyjny.
@@ -975,5 +1047,95 @@
   <p style="margin-top:8px">© 2026 ETFkalkulator.pl — Made with ❤️ by Florian</p>
 </footer>
 
+  <!-- Dark mode script -->
+  <script>
+    // Inicjalizacja przy ładowaniu strony
+    (function () {
+      var html = document.documentElement;
+      var zapisany = localStorage.getItem('etf-tryb');
+      var slonce = document.getElementById('ikona-slonce');
+      var ksiezyc = document.getElementById('ikona-ksiezyc');
+      var systemCiemny = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      if (zapisany === 'ciemny' || (!zapisany && systemCiemny)) {
+        html.classList.add('dark-mode');
+        if (slonce) slonce.style.display = 'none';
+        if (ksiezyc) ksiezyc.style.display = 'block';
+      } else if (zapisany === 'jasny') {
+        html.classList.add('light-mode');
+      }
+    })();
+
+    function przelaczTryb() {
+      var html = document.documentElement;
+      var slonce = document.getElementById('ikona-slonce');
+      var ksiezyc = document.getElementById('ikona-ksiezyc');
+      var ciemny = html.classList.contains('dark-mode') ||
+        (!html.classList.contains('light-mode') &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+      if (ciemny) {
+        html.classList.remove('dark-mode');
+        html.classList.add('light-mode');
+        if (slonce) slonce.style.display = 'block';
+        if (ksiezyc) ksiezyc.style.display = 'none';
+        localStorage.setItem('etf-tryb', 'jasny');
+      } else {
+        html.classList.remove('light-mode');
+        html.classList.add('dark-mode');
+        if (slonce) slonce.style.display = 'none';
+        if (ksiezyc) ksiezyc.style.display = 'block';
+        localStorage.setItem('etf-tryb', 'ciemny');
+      }
+    }
+  </script>
+
+  <!-- Cookie Consent Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var cookieConsent = document.getElementById('cookie-consent');
+      var acceptBtn = document.getElementById('cookie-accept');
+      var rejectBtn = document.getElementById('cookie-reject');
+
+      var cookieChoice = localStorage.getItem('etf-cookie-consent');
+
+      if (!cookieChoice) {
+        cookieConsent.style.display = 'block';
+      } else if (cookieChoice === 'accepted') {
+        // Update GA4 consent if previously accepted
+        if (typeof gtag === 'function') {
+          gtag('consent', 'update', { 'analytics_storage': 'granted' });
+          gtag('event', 'page_view');
+        }
+      }
+
+      acceptBtn.addEventListener('click', function () {
+        localStorage.setItem('etf-cookie-consent', 'accepted');
+        cookieConsent.style.display = 'none';
+
+        // Update GA4 consent
+        if (typeof gtag === 'function') {
+          gtag('consent', 'update', { 'analytics_storage': 'granted' });
+          gtag('event', 'page_view');
+        }
+      });
+
+      rejectBtn.addEventListener('click', function () {
+        localStorage.setItem('etf-cookie-consent', 'rejected');
+        cookieConsent.style.display = 'none';
+
+        // Update GA4 consent
+        if (typeof gtag === 'function') {
+          gtag('consent', 'update', { 'analytics_storage': 'denied' });
+        }
+      });
+
+      setTimeout(function () {
+        if (cookieConsent.style.display !== 'none') {
+          cookieConsent.style.opacity = '0.7';
+        }
+      }, 30000);
+    });
+  </script>
 </body>
 </html>

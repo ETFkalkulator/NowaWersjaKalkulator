@@ -27,7 +27,7 @@
   <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png">
 
   <!-- SEO: Kanoniczny URL -->
-  <link rel="canonical" href="https://etfkalkulator.pl/blog/" />
+  <link rel="canonical" href="https://etfkalkulator.pl/blog/">
 
   <!-- Favicon — ikona w zakładce przeglądarki -->
   <link rel="icon" href="../images/favicon.png">
@@ -54,11 +54,10 @@
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap"></noscript>
+
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/main.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
-  <script src="../js/charts-config.js" defer></script>
 
   <!-- Schema.org Blog structured data -->
   <script type="application/ld+json">
@@ -592,18 +591,19 @@
     </div>
   </div>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a href="../index.html" class="nav-logo">ETFkalkulator.pl</a>
-    <ul class="nav-links">
-      <li><a href="../pages/kalkulator-etf.html">Kalkulator ETF</a></li>
-      <li><a href="../pages/kalkulator-obligacji.html">Obligacje</a></li>
-      <li><a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a></li>
-      <li><a href="../pages/porownywarka.html">Porównywarka</a></li>
-      <li><a href="./" class="active">Blog</a></li>
-      <li><a href="../pages/o-projekcie.html">O projekcie</a></li>
-      <button id="btn-darkmode" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <a href="../index.html" class="header__logo">ETF<span>kalkulator</span>.pl</a>
+        <nav class="header__nav" aria-label="Nawigacja główna">
+          <a href="../pages/kalkulator-etf.html">Kalkulator ETF</a>
+          <a href="../pages/kalkulator-obligacji.html">Obligacje</a>
+          <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
+          <a href="../pages/porownywarka.html">Porównywarka</a>
+          <a href="../blog/" style="color: var(--color-primary-500)">Blog</a>
+          <a href="../pages/o-projekcie.html">O projekcie</a>
+          <button id="btn-darkmode" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="
             width: 38px; height: 38px; border-radius: var(--radius-full); 
             border: 1.5px solid var(--color-border); background: var(--color-bg-elevated); 
             cursor: pointer; display: flex; align-items: center; justify-content: center; 
@@ -627,9 +627,29 @@
               <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
             </svg>
           </button>
-    </ul>
+          <a href="../index.html#newsletter" class="btn btn--sm"
+            style="border: 1.5px solid var(--color-primary-300); color: var(--color-primary-700); background: white; border-radius: var(--radius-full);">Newsletter</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav-bar" id="mobile-nav-bar">
+    <div class="mobile-nav-bar__inner">
+      <a href="../pages/kalkulator-etf.html" class="mobile-nav-bar__link">ETF</a>
+      <span class="mobile-nav-bar__separator"></span>
+      <a href="../pages/kalkulator-obligacji.html" class="mobile-nav-bar__link">Obligacje</a>
+      <span class="mobile-nav-bar__separator"></span>
+      <a href="../pages/kalkulator-wolnosci.html" class="mobile-nav-bar__link">Wolność finansowa</a>
+      <span class="mobile-nav-bar__separator"></span>
+      <a href="../pages/porownywarka.html" class="mobile-nav-bar__link">Porównywarka ETF</a>
+      <span class="mobile-nav-bar__separator"></span>
+      <a href="../blog/" class="mobile-nav-bar__link aktywna">Blog</a>
+      <span class="mobile-nav-bar__separator"></span>
+      <a href="../pages/o-projekcie.html" class="mobile-nav-bar__link">O projekcie</a>
+    </div>
   </div>
-</nav>
 
 <!-- HERO -->
 <header class="hero">
@@ -809,80 +829,97 @@
 
 <!-- Scripts -->
 <script src="../js/utils.js"></script>
-<script>
-  // Dark mode toggle
-  function przelaczTryb() {
-    const body = document.body;
-    const ikonaSlonce = document.getElementById('ikona-slonce');
-    const ikonaKsiezyc = document.getElementById('ikona-ksiezyc');
 
-    if (body.classList.contains('dark-mode')) {
-      // Przełącz na tryb jasny
-      body.classList.remove('dark-mode');
-      localStorage.setItem('darkMode', 'false');
-      if (ikonaSlonce) ikonaSlonce.style.display = 'block';
-      if (ikonaKsiezyc) ikonaKsiezyc.style.display = 'none';
-    } else {
-      // Przełącz na tryb ciemny
-      body.classList.add('dark-mode');
-      localStorage.setItem('darkMode', 'true');
-      if (ikonaSlonce) ikonaSlonce.style.display = 'none';
-      if (ikonaKsiezyc) ikonaKsiezyc.style.display = 'block';
-    }
-  }
+  <!-- Dark mode script -->
+  <script>
+    // Inicjalizacja przy ładowaniu strony
+    (function () {
+      var html = document.documentElement;
+      var zapisany = localStorage.getItem('etf-tryb');
+      var slonce = document.getElementById('ikona-slonce');
+      var ksiezyc = document.getElementById('ikona-ksiezyc');
+      var systemCiemny = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-  // Cookie Consent
-  document.addEventListener('DOMContentLoaded', function () {
-    var cookieConsent = document.getElementById('cookie-consent');
-    var acceptBtn = document.getElementById('cookie-accept');
-    var rejectBtn = document.getElementById('cookie-reject');
-
-    var cookieChoice = localStorage.getItem('etf-cookie-consent');
-
-    if (!cookieChoice) {
-      cookieConsent.style.display = 'block';
-    } else if (cookieChoice === 'rejected') {
-      cookieConsent.style.display = 'none';
-    }
-
-    acceptBtn.addEventListener('click', function () {
-      localStorage.setItem('etf-cookie-consent', 'accepted');
-      cookieConsent.style.display = 'none';
-
-      // Update GA4 consent
-      if (typeof gtag === 'function') {
-        gtag('consent', 'update', {
-          'analytics_storage': 'granted'
-        });
+      if (zapisany === 'ciemny' || (!zapisany && systemCiemny)) {
+        html.classList.add('dark-mode');
+        if (slonce) slonce.style.display = 'none';
+        if (ksiezyc) ksiezyc.style.display = 'block';
+      } else if (zapisany === 'jasny') {
+        html.classList.add('light-mode');
       }
-    });
+    })();
 
-    rejectBtn.addEventListener('click', function () {
-      localStorage.setItem('etf-cookie-consent', 'rejected');
-      cookieConsent.style.display = 'none';
+    function przelaczTryb() {
+      var html = document.documentElement;
+      var slonce = document.getElementById('ikona-slonce');
+      var ksiezyc = document.getElementById('ikona-ksiezyc');
+      var ciemny = html.classList.contains('dark-mode') ||
+        (!html.classList.contains('light-mode') &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches);
 
-      // Update GA4 consent
-      if (typeof gtag === 'function') {
-        gtag('consent', 'update', {
-          'analytics_storage': 'denied'
-        });
+      if (ciemny) {
+        html.classList.remove('dark-mode');
+        html.classList.add('light-mode');
+        if (slonce) slonce.style.display = 'block';
+        if (ksiezyc) ksiezyc.style.display = 'none';
+        localStorage.setItem('etf-tryb', 'jasny');
+      } else {
+        html.classList.remove('light-mode');
+        html.classList.add('dark-mode');
+        if (slonce) slonce.style.display = 'none';
+        if (ksiezyc) ksiezyc.style.display = 'block';
+        localStorage.setItem('etf-tryb', 'ciemny');
       }
-    });
-  });
-
-  // Load dark mode preference
-  document.addEventListener('DOMContentLoaded', function () {
-    const darkModePreference = localStorage.getItem('darkMode');
-    const ikonaSlonce = document.getElementById('ikona-slonce');
-    const ikonaKsiezyc = document.getElementById('ikona-ksiezyc');
-
-    if (darkModePreference === 'true') {
-      document.body.classList.add('dark-mode');
-      if (ikonaSlonce) ikonaSlonce.style.display = 'none';
-      if (ikonaKsiezyc) ikonaKsiezyc.style.display = 'block';
     }
-  });
-</script>
+  </script>
+
+  <!-- Cookie Consent Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var cookieConsent = document.getElementById('cookie-consent');
+      var acceptBtn = document.getElementById('cookie-accept');
+      var rejectBtn = document.getElementById('cookie-reject');
+
+      var cookieChoice = localStorage.getItem('etf-cookie-consent');
+
+      if (!cookieChoice) {
+        cookieConsent.style.display = 'block';
+      } else if (cookieChoice === 'accepted') {
+        // Update GA4 consent if previously accepted
+        if (typeof gtag === 'function') {
+          gtag('consent', 'update', { 'analytics_storage': 'granted' });
+          gtag('event', 'page_view');
+        }
+      }
+
+      acceptBtn.addEventListener('click', function () {
+        localStorage.setItem('etf-cookie-consent', 'accepted');
+        cookieConsent.style.display = 'none';
+
+        // Update GA4 consent
+        if (typeof gtag === 'function') {
+          gtag('consent', 'update', { 'analytics_storage': 'granted' });
+          gtag('event', 'page_view');
+        }
+      });
+
+      rejectBtn.addEventListener('click', function () {
+        localStorage.setItem('etf-cookie-consent', 'rejected');
+        cookieConsent.style.display = 'none';
+
+        // Update GA4 consent
+        if (typeof gtag === 'function') {
+          gtag('consent', 'update', { 'analytics_storage': 'denied' });
+        }
+      });
+
+      setTimeout(function () {
+        if (cookieConsent.style.display !== 'none') {
+          cookieConsent.style.opacity = '0.7';
+        }
+      }, 30000);
+    });
+  </script>
 
 </body>
 </html>
