@@ -76,12 +76,15 @@ function obliczWszystko() {
     if (tabelaBody) tabelaBody.innerHTML = '';
 
     // Symulacja miesiąc po miesiącu
-    for (let m = 0; m <= msc; m++) {
-        if (m > 0) {
-            kapitalNominalny = kapitalNominalny * (1 + stopaMsc) + doplata;
-            sumaWplat += doplata;
-            doplataLaczna += doplata;
-        }
+    for (let m = 1; m <= msc; m++) {
+        // Zgodnie ze standardem BGN (jak w Porównywarce i Wolności)
+        // Dopłata jest dodawana na początku miesiąca i od razu pracuje
+        kapitalNominalny += doplata;
+        sumaWplat += doplata;
+        doplataLaczna += doplata;
+
+        // Następnie całość (kapitał początkowy + nowa wpłata) podlega kapitalizacji
+        kapitalNominalny = kapitalNominalny * (1 + stopaMsc);
 
         // Zbieranie danych do wykresu i tabeli (co roku)
         if (m % 12 === 0) {
@@ -111,30 +114,30 @@ function obliczWszystko() {
 
     // Podatki i wyniki końcowe
     const zyskBrutto = kapitalNominalny - sumaWplat;
-    const podatek = isIKE ? 0 : Math.max(0, zyskBrutto * 0.19);
-    const kapitalNetto = kapitalNominalny - podatek;
-    const zyskNetto = zyskBrutto - podatek;
+    const podatekKwota = isIKE ? 0 : zyskBrutto * 0.19; // bez funkcji max, po prostu wg zysku (zakładamy zysk dodatni)
+    const kapitalNetto = kapitalNominalny - podatekKwota;
+    const zyskPoDataku = kapitalNetto - sumaWplat;
 
     // Realna wartość netto (po podatku i inflacji)
-    // Obliczamy realny wzrost ponad inflację
-    const infDocelowa = Math.pow(1 + inflacjaRoczna, lata);
-    const kapitalRealnyNetto = kapitalNetto / infDocelowa;
-    const zyskRealny = (kapitalNetto / infDocelowa) - (sumaWplat / 1); // Bardzo uproszczone
+    const wsplInfl = Math.pow(1 + inflacjaRoczna, lata);
+    const kapitalRealny = kapitalNetto / wsplInfl;
+    const zyskRealny = kapitalRealny - sumaWplat;
 
     // CAGR (Netto)
-    const cagrNominalny = Math.pow(kapitalNetto / sumaWplat, 1 / lata) - 1 || 0;
-    const cagrRealny = Math.pow(kapitalRealnyNetto / (sumaWplat / 1), 1 / lata) - 1 || 0;
+    const podstawa = Math.max(sumaWplat, 1);
+    const cagrNominalny = (Math.pow(kapitalNetto / podstawa, 1 / lata) - 1) || 0;
+    const cagrRealny = (Math.pow(kapitalRealny / podstawa, 1 / lata) - 1) || 0;
 
     // Aktualizacja UI (używając animuj z utils.js)
-    animuj('etf-wynik-kapital-koncowy', kapitalNetto);
-    animuj('etf-wynik-wklad-wlasny', sumaWplat);
-    animuj('etf-wynik-doplata-laczna', doplataLaczna);
-    animuj('etf-wynik-zysk-nominalny', zyskBrutto);
+    animuj('etf-wynik-kapital-koncowy', zaokraglij(kapitalNetto, 0));
+    animuj('etf-wynik-wklad-wlasny', zaokraglij(sumaWplat, 0));
+    animuj('etf-wynik-doplata-laczna', zaokraglij(doplataLaczna, 0));
+    animuj('etf-wynik-zysk-nominalny', zaokraglij(zyskBrutto, 0));
 
-    animuj('etf-wynik-podatek-belki', podatek);
-    animuj('etf-wynik-zysk-po-podatku', zyskNetto);
+    animuj('etf-wynik-podatek-belki', zaokraglij(podatekKwota, 0));
+    animuj('etf-wynik-zysk-po-podatku', zaokraglij(zyskPoDataku, 0));
 
-    animuj('etf-wynik-zysk-realny', kapitalRealnyNetto - sumaWplat); // Zysk realny (czysty przyrost siły nabywczej)
+    animuj('etf-wynik-zysk-realny', zaokraglij(zyskRealny, 0));
 
     document.getElementById('etf-wynik-cagr').textContent = formatujProcent(cagrNominalny);
     document.getElementById('etf-wynik-cagr-realny').textContent = formatujProcent(cagrRealny);
@@ -163,14 +166,14 @@ function initChart() {
     const canvas = document.getElementById('chartInwestycja');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    
+
     // Helper function for PLN formatting
     function formatZl(val) {
-      if (val >= 1000000) return (val/1000000).toFixed(1) + 'M zł';
-      if (val >= 1000) return (val/1000).toFixed(0) + 'k zł';
-      return val.toFixed(0) + ' zł';
+        if (val >= 1000000) return (val / 1000000).toFixed(1) + 'M zł';
+        if (val >= 1000) return (val / 1000).toFixed(0) + 'k zł';
+        return val.toFixed(0) + ' zł';
     }
-    
+
     myChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -241,10 +244,10 @@ function initChart() {
                     padding: 10,
                     displayColors: true,
                     callbacks: {
-                        title: function(context) {
+                        title: function (context) {
                             return context[0].label;
                         },
-                        label: function(context) {
+                        label: function (context) {
                             return 'Wartość: ' + formatZl(context.parsed.y);
                         }
                     }
@@ -276,7 +279,7 @@ function initChart() {
                             size: 11,
                             family: "'Inter', sans-serif"
                         },
-                        callback: function(value) {
+                        callback: function (value) {
                             return formatZl(value);
                         }
                     }
@@ -303,7 +306,7 @@ function updateChart(dane) {
     myChart.data.datasets[2].data = dane.realny;
 
     myChart.update('none');
-    
+
     // GA4 tracking event
     if (typeof gtag === 'function') {
         gtag('event', 'calculate', { 'calculator_type': 'etf' });
