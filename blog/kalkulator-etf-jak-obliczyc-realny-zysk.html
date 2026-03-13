@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
   <title>Kalkulator ETF — jak obliczyć realny zysk po podatku Belki i inflacji | ETFkalkulator.pl</title>
-  <meta name="description" content="Dowiedz się ile naprawdę zarobisz inwestując w ETF. Podatek Belki, inflacja, IKE i IKZE — konkretne liczby i przykłady. Użyj bezpłatnego kalkulatora ETF.">
+  <meta name="description"
+    content="Dowiedz się ile naprawdę zarobisz inwestując w ETF. Podatek Belki, inflacja, IKE i IKZE — konkretne liczby i przykłady. Użyj bezpłatnego kalkulatora ETF.">
   <meta name="author" content="ETFkalkulator.pl">
   <link rel="canonical" href="https://etfkalkulator.pl/blog/kalkulator-etf-jak-obliczyc-realny-zysk">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Kalkulator ETF — jak obliczyć realny zysk po podatku Belki i inflacji">
-  <meta property="og:description" content="Ile naprawdę zarobisz na ETF po podatkach i inflacji? Konkretne przykłady i bezpłatny kalkulator.">
+  <meta property="og:description"
+    content="Ile naprawdę zarobisz na ETF po podatkach i inflacji? Konkretne przykłady i bezpłatny kalkulator.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://etfkalkulator.pl/blog/kalkulator-etf-jak-obliczyc-realny-zysk">
   <meta property="og:site_name" content="ETFkalkulator.pl">
@@ -34,9 +37,9 @@
   <!-- Google Analytics 4 — loads only after cookie consent -->
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    
+
     // Default: analytics denied until user accepts
     gtag('consent', 'default', {
       'analytics_storage': 'denied'
@@ -50,9 +53,14 @@
   <!-- Optyamizowany ładunek czcionek z Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap"></noscript>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap"
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
+  </noscript>
 
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/variables.css">
@@ -64,41 +72,119 @@
   <style>
     /* Article-specific styles */
     :root {
+      --white: var(--color-bg-elevated);
+      --bg: var(--color-bg);
+      --text: var(--color-text-primary);
+      --text-muted: var(--color-text-secondary);
+      --border: var(--color-border-subtle);
       --blue: var(--color-primary-500);
       --blue-light: var(--color-primary-50);
       --blue-dark: var(--color-primary-700);
       --green: var(--color-primary-500);
       --orange: var(--color-warning);
       --red: #E74C3C;
-      --text: var(--color-text-primary);
-      --text-muted: var(--color-text-secondary);
-      --bg: var(--color-bg-secondary);
-      --border: var(--color-border-subtle);
-      --white: var(--color-bg-elevated);
-      --font-body: 'Georgia', 'Times New Roman', serif;
-      --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: var(--font-sans);
+      --font-ui: var(--font-sans);
     }
 
     html.dark-mode,
     html:not(.light-mode) {
-      --white: var(--color-bg-elevated);
-      --bg: var(--color-bg);
-      --text: var(--color-text-primary);
-      --text-muted: var(--color-text-secondary);
-      --border: var(--color-border);
-      --blue-light: #1a2a3f;
-      --green: #38a169;
-      --red: #fc8181;
+      --white: #3A3A3C;
+      --bg: #1C1C1E;
+      --text: #F5F5F7;
+      --text-muted: #AEAEB2;
+      --border: #48484A;
+      --blue-light: #0d2137;
+      --font-body: 'Inter', system-ui, sans-serif;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html.dark-mode .comparison-table tr:nth-child(even) td,
+    html:not(.light-mode):not([style]) .comparison-table tr:nth-child(even) td,
+    html.dark-mode .age-table tr:nth-child(even) td,
+    html:not(.light-mode):not([style]) .age-table tr:nth-child(even) td {
+      background: #2C2C2E;
+    }
+
+    html.dark-mode .comparison-table td,
+    html.dark-mode .age-table td,
+    html.dark-mode .comparison-table th,
+    html.dark-mode .age-table th {
+      color: #F5F5F7;
+      border-color: #48484A;
+    }
+
+    html.dark-mode .tag-green {
+      background: #1a2e23;
+      color: #68d391;
+    }
+
+    html.dark-mode .tag-orange {
+      background: #2d1f0e;
+      color: #f6ad55;
+    }
+
+    html.dark-mode .bar-wrap {
+      background: #48484A;
+    }
+
+    html.dark-mode .disclaimer {
+      background: #2C2C2E;
+      color: #AEAEB2;
+      border-color: #48484A;
+    }
+
+    html.dark-mode .calc-row-label {
+      color: #AEAEB2;
+    }
+
+    html.dark-mode .calc-row-value {
+      color: #F5F5F7;
+    }
+
+    html.dark-mode h2 {
+      color: #7cc8fb;
+      border-color: #48484A;
+    }
+
+    html.dark-mode h3 {
+      color: #F5F5F7;
+    }
+
+    html.dark-mode strong {
+      color: #F5F5F7;
+    }
+
+    html.dark-mode p {
+      color: #F5F5F7;
+    }
+
+    html.dark-mode li {
+      color: #F5F5F7;
+    }
+
+    html.dark-mode .toc a,
+    html.dark-mode .toc-title {
+      color: #7cc8fb;
+    }
+
+    html.dark-mode .hero-lead,
+    html.dark-mode .hero-meta,
+    html.dark-mode .breadcrumb {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
-      font-family: var(--font-body);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.75;
-      font-size: 18px;
+      font-family: var(--font-sans);
+      font-size: var(--text-base);
+      line-height: var(--leading-relaxed);
+      color: var(--color-text-primary);
+      background: var(--color-bg);
     }
 
     /* NAV */
@@ -110,6 +196,7 @@
       top: 0;
       z-index: 100;
     }
+
     .nav-inner {
       max-width: 1100px;
       margin: 0 auto;
@@ -118,6 +205,7 @@
       justify-content: space-between;
       height: 60px;
     }
+
     .nav-logo {
       font-family: var(--font-ui);
       font-weight: 700;
@@ -125,11 +213,13 @@
       color: var(--blue);
       text-decoration: none;
     }
+
     .nav-links {
       display: flex;
       gap: 28px;
       list-style: none;
     }
+
     .nav-links a {
       font-family: var(--font-ui);
       font-size: 14px;
@@ -137,7 +227,10 @@
       text-decoration: none;
       transition: color .2s;
     }
-    .nav-links a:hover { color: var(--blue); }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
 
     /* HERO */
     .hero {
@@ -145,15 +238,28 @@
       color: white;
       padding: 64px 24px 56px;
     }
-    .hero-inner { max-width: 760px; margin: 0 auto; }
+
+    .hero-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
     .breadcrumb {
       font-family: var(--font-ui);
       font-size: 13px;
       opacity: .7;
       margin-bottom: 20px;
     }
-    .breadcrumb a { color: white; text-decoration: none; }
-    .breadcrumb a:hover { text-decoration: underline; }
+
+    .breadcrumb a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
     .hero h1 {
       font-family: var(--font-ui);
       font-size: clamp(26px, 4vw, 40px);
@@ -161,12 +267,14 @@
       line-height: 1.2;
       margin-bottom: 20px;
     }
+
     .hero-lead {
       font-size: 18px;
       opacity: .9;
       margin-bottom: 28px;
       line-height: 1.6;
     }
+
     .hero-meta {
       font-family: var(--font-ui);
       font-size: 13px;
@@ -175,7 +283,7 @@
 
     /* CONTENT */
     .content-wrapper {
-      max-width: 760px;
+      max-width: var(--max-width-text);
       margin: 0 auto;
       padding: 48px 24px 80px;
     }
@@ -188,6 +296,7 @@
       padding: 24px 28px;
       margin-bottom: 48px;
     }
+
     .toc-title {
       font-family: var(--font-ui);
       font-size: 13px;
@@ -197,41 +306,54 @@
       color: var(--blue);
       margin-bottom: 12px;
     }
+
     .toc ol {
       padding-left: 20px;
     }
+
     .toc li {
       margin-bottom: 6px;
     }
+
     .toc a {
       font-family: var(--font-ui);
       font-size: 15px;
       color: var(--blue);
       text-decoration: none;
     }
-    .toc a:hover { text-decoration: underline; }
+
+    .toc a:hover {
+      text-decoration: underline;
+    }
 
     /* TYPOGRAPHY */
     h2 {
-      font-family: var(--font-ui);
-      font-size: clamp(20px, 3vw, 26px);
-      font-weight: 800;
-      color: var(--blue-dark);
-      margin-top: 56px;
-      margin-bottom: 20px;
-      padding-top: 16px;
-      border-top: 2px solid var(--border);
+      font-family: var(--font-sans);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-bold);
+      color: var(--color-primary-700);
+      margin-top: var(--space-16);
+      margin-bottom: var(--space-6);
+      padding-top: var(--space-4);
+      border-top: 2px solid var(--color-border-subtle);
     }
+
     h3 {
-      font-family: var(--font-ui);
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text);
-      margin-top: 36px;
-      margin-bottom: 14px;
+      font-family: var(--font-sans);
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-primary);
+      margin-top: var(--space-8);
+      margin-bottom: var(--space-4);
     }
-    p { margin-bottom: 20px; }
-    strong { color: var(--text); }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    strong {
+      color: var(--text);
+    }
 
     /* CALLOUT BOXES */
     .callout {
@@ -242,18 +364,22 @@
       font-size: 15px;
       line-height: 1.6;
     }
+
     .callout-key {
       background: var(--blue-light);
       border-left: 4px solid var(--blue);
     }
+
     .callout-example {
       background: var(--color-primary-50);
       border-left: 4px solid var(--green);
     }
+
     .callout-warning {
       background: var(--color-bg-secondary);
       border-left: 4px solid var(--orange);
     }
+
     .callout-title {
       font-weight: 700;
       font-size: 13px;
@@ -261,9 +387,18 @@
       letter-spacing: .06em;
       margin-bottom: 8px;
     }
-    .callout-key .callout-title { color: var(--blue); }
-    .callout-example .callout-title { color: var(--green); }
-    .callout-warning .callout-title { color: var(--orange); }
+
+    .callout-key .callout-title {
+      color: var(--blue);
+    }
+
+    .callout-example .callout-title {
+      color: var(--green);
+    }
+
+    .callout-warning .callout-title {
+      color: var(--orange);
+    }
 
     /* COMPARISON TABLE */
     .comparison-table {
@@ -274,8 +409,9 @@
       font-size: 15px;
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,.08);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .08);
     }
+
     .comparison-table th {
       background: var(--blue);
       color: white;
@@ -286,13 +422,21 @@
       text-transform: uppercase;
       letter-spacing: .04em;
     }
+
     .comparison-table td {
       padding: 12px 16px;
       border-bottom: 1px solid var(--border);
       vertical-align: top;
     }
-    .comparison-table tr:last-child td { border-bottom: none; }
-    .comparison-table tr:nth-child(even) td { background: var(--color-bg-secondary); }
+
+    .comparison-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .comparison-table tr:nth-child(even) td {
+      background: var(--color-bg-secondary);
+    }
+
     .tag-green {
       display: inline-block;
       background: #e8f8ef;
@@ -302,6 +446,7 @@
       padding: 2px 8px;
       border-radius: 4px;
     }
+
     .tag-orange {
       display: inline-block;
       background: #fff2e6;
@@ -319,8 +464,9 @@
       border-radius: 12px;
       padding: 28px;
       margin: 32px 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
     }
+
     .calc-example-title {
       font-family: var(--font-ui);
       font-size: 13px;
@@ -330,6 +476,7 @@
       color: var(--text-muted);
       margin-bottom: 16px;
     }
+
     .calc-row {
       display: flex;
       justify-content: space-between;
@@ -339,13 +486,39 @@
       font-family: var(--font-ui);
       font-size: 15px;
     }
-    .calc-row:last-child { border-bottom: none; }
-    .calc-row-label { color: var(--text-muted); }
-    .calc-row-value { font-weight: 600; color: var(--text); }
-    .calc-row-value.green { color: var(--green); }
-    .calc-row-value.red { color: var(--red); }
-    .calc-row-value.blue { color: var(--blue); font-size: 18px; }
-    .calc-row.highlight { background: var(--blue-light); margin: 0 -28px; padding: 12px 28px; border-radius: 0; }
+
+    .calc-row:last-child {
+      border-bottom: none;
+    }
+
+    .calc-row-label {
+      color: var(--text-muted);
+    }
+
+    .calc-row-value {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .calc-row-value.green {
+      color: var(--green);
+    }
+
+    .calc-row-value.red {
+      color: var(--red);
+    }
+
+    .calc-row-value.blue {
+      color: var(--blue);
+      font-size: 18px;
+    }
+
+    .calc-row.highlight {
+      background: var(--blue-light);
+      margin: 0 -28px;
+      padding: 12px 28px;
+      border-radius: 0;
+    }
 
     /* AGE TABLE */
     .age-table {
@@ -357,20 +530,40 @@
       border-radius: 8px;
       overflow: hidden;
     }
+
     .age-table th {
       background: var(--blue-dark);
       color: white;
       padding: 12px 16px;
       font-size: 13px;
     }
+
     .age-table td {
       padding: 11px 16px;
       border-bottom: 1px solid var(--border);
     }
-    .age-table tr:nth-child(even) td { background: var(--color-bg-secondary); }
-    .bar-wrap { background: #e8e8e0; border-radius: 4px; height: 8px; width: 100%; margin-top: 4px; }
-    .bar-fill { height: 8px; border-radius: 4px; background: var(--blue); }
-    .bar-fill.green { background: var(--green); }
+
+    .age-table tr:nth-child(even) td {
+      background: var(--color-bg-secondary);
+    }
+
+    .bar-wrap {
+      background: #e8e8e0;
+      border-radius: 4px;
+      height: 8px;
+      width: 100%;
+      margin-top: 4px;
+    }
+
+    .bar-fill {
+      height: 8px;
+      border-radius: 4px;
+      background: var(--blue);
+    }
+
+    .bar-fill.green {
+      background: var(--green);
+    }
 
     /* CTA */
     .cta-box {
@@ -381,6 +574,7 @@
       text-align: center;
       margin: 48px 0;
     }
+
     .cta-box h3 {
       font-family: var(--font-ui);
       font-size: 22px;
@@ -389,12 +583,14 @@
       margin-bottom: 12px;
       margin-top: 0;
     }
+
     .cta-box p {
       opacity: .85;
       font-size: 16px;
       margin-bottom: 24px;
       font-family: var(--font-ui);
     }
+
     .btn-cta {
       display: inline-block;
       background: var(--color-bg-elevated);
@@ -407,7 +603,11 @@
       text-decoration: none;
       transition: transform .15s, box-shadow .15s;
     }
-    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.2); }
+
+    .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .2);
+    }
 
     /* KEY NUMBER BLOCKS */
     .key-numbers {
@@ -416,6 +616,7 @@
       gap: 16px;
       margin: 28px 0;
     }
+
     .key-number {
       background: var(--white);
       border: 1px solid var(--border);
@@ -423,6 +624,7 @@
       padding: 20px;
       text-align: center;
     }
+
     .key-number-value {
       font-family: var(--font-ui);
       font-size: 28px;
@@ -431,6 +633,7 @@
       display: block;
       margin-bottom: 4px;
     }
+
     .key-number-label {
       font-family: var(--font-ui);
       font-size: 13px;
@@ -460,27 +663,56 @@
       font-size: 14px;
       color: var(--text-muted);
     }
-    footer a { color: var(--blue); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-    .footer-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; }
+
+    footer a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
 
     @media (max-width: 640px) {
-      body { font-size: 16px; }
-      .nav-links { display: none; }
-      .calc-row { flex-direction: column; align-items: flex-start; gap: 2px; }
+      body {
+        font-size: 16px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .calc-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+      }
+
       .content-wrapper {
         padding: 32px 16px 60px;
       }
+
       .calc-example {
         padding: 20px 16px;
       }
+
       .calc-row.highlight {
         margin: 0 -16px;
         padding: 12px 16px;
       }
+
       .key-numbers {
         grid-template-columns: 1fr 1fr;
       }
+
       .cta-box {
         padding: 28px 20px;
       }
@@ -491,50 +723,64 @@
       background: var(--color-bg-elevated);
       border-color: var(--color-border-subtle);
     }
+
     html.dark-mode .calc-example-title {
       color: var(--color-text-muted);
     }
+
     html.dark-mode .calc-row-label {
       color: var(--color-text-secondary);
     }
+
     html.dark-mode .calc-row-value {
       color: var(--color-text-primary);
     }
+
     html.dark-mode .calc-row.highlight {
       background: var(--color-primary-50);
     }
+
     html.dark-mode .key-number {
       background: var(--color-bg-elevated);
       border-color: var(--color-border-subtle);
     }
+
     html.dark-mode .key-number-label {
       color: var(--color-text-muted);
     }
+
     html.dark-mode .toc {
       background: var(--color-primary-50);
     }
+
     html.dark-mode .callout-key,
     html.dark-mode .callout-example {
       background: var(--color-primary-50);
     }
+
     html.dark-mode .callout-warning {
       background: var(--color-bg-secondary);
     }
+
     html.dark-mode .comparison-table tr:nth-child(even) td,
     html.dark-mode .age-table tr:nth-child(even) td {
       background: var(--color-bg-secondary);
     }
+
     html.dark-mode .comparison-table td,
     html.dark-mode .age-table td {
       color: var(--color-text-primary);
     }
+
     html.dark-mode .disclaimer {
       background: var(--color-bg-secondary);
       color: var(--color-text-secondary);
     }
+
     html.dark-mode .tag-green {
       background: var(--color-primary-50);
     }
+
     html.dark-mode .tag-orange {
       background: var(--color-bg-secondary);
     }
@@ -572,12 +818,52 @@
 
     html.dark-mode .disclaimer,
     html:not(.light-mode) .disclaimer {
-      background: var(--color-bg-secondary);
-      color: var(--color-text-secondary);
       border-color: var(--color-border);
+    }
+
+    @media (max-width: 640px) {
+      .content-wrapper {
+        padding: 32px 16px 60px;
+      }
+
+      .calc-example {
+        padding: 20px 16px;
+      }
+
+      .calc-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+      }
+
+      .calc-row.highlight {
+        margin: 0 -16px;
+        padding: 12px 16px;
+      }
+
+      .key-numbers {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cta-box {
+        padding: 28px 20px;
+      }
+
+      .key-number-value {
+        font-size: 22px;
+      }
+
+      .hero {
+        padding: 40px 20px 36px;
+      }
+
+      .hero h1 {
+        font-size: 24px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Cookie Consent Banner -->
@@ -665,482 +951,486 @@
     </div>
   </div>
 
-<!-- HERO -->
-<header class="hero">
-  <div class="hero-inner">
-    <div class="breadcrumb">
-      <a href="https://etfkalkulator.pl/index.html">ETFkalkulator.pl</a> ›
-      <a href="https://etfkalkulator.pl/blog/">Blog</a> ›
-      Kalkulator ETF
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="breadcrumb">
+        <a href="../index.html">ETFkalkulator.pl</a> ›
+        <a href="../blog/">Blog</a> ›
+        Kalkulator ETF
+      </div>
+      <h1>Kalkulator ETF — jak obliczyć realny zysk po podatku Belki i inflacji</h1>
+      <p class="hero-lead">
+        Większość kalkulatorów pokazuje zysk brutto. Ty chcesz wiedzieć ile zostanie
+        w kieszeni — po 19% podatku i po tym, co zrobi z pieniędzmi inflacja.
+        Oto jak to liczyć i dlaczego ta różnica jest ogromna.
+      </p>
+      <div class="hero-meta">ETFkalkulator.pl &nbsp;·&nbsp; marzec 2026 &nbsp;·&nbsp; 8 minut czytania</div>
     </div>
-    <h1>Kalkulator ETF — jak obliczyć realny zysk po podatku Belki i inflacji</h1>
-    <p class="hero-lead">
-      Większość kalkulatorów pokazuje zysk brutto. Ty chcesz wiedzieć ile zostanie
-      w kieszeni — po 19% podatku i po tym, co zrobi z pieniędzmi inflacja.
-      Oto jak to liczyć i dlaczego ta różnica jest ogromna.
-    </p>
-    <div class="hero-meta">ETFkalkulator.pl &nbsp;·&nbsp; marzec 2026 &nbsp;·&nbsp; 8 minut czytania</div>
-  </div>
-</header>
+  </header>
 
-<!-- CONTENT -->
-<main class="content-wrapper">
+  <!-- CONTENT -->
+  <main class="content-wrapper">
 
-  <!-- TOC -->
-  <nav class="toc" aria-label="Spis treści">
-    <div class="toc-title">Spis treści</div>
-    <ol>
-      <li><a href="#co-to-etf">Czym jest ETF i dlaczego Polacy coraz częściej w niego inwestują</a></li>
-      <li><a href="#podatek-belki">Podatek Belki — co to jest i jak go obliczyć</a></li>
-      <li><a href="#inflacja">Inflacja — cichy złodziej zysku</a></li>
-      <li><a href="#przyklad">Konkretny przykład: 10 000 zł przez 10 lat</a></li>
-      <li><a href="#ike-ikze">IKE i IKZE — jak legalnie uniknąć podatku</a></li>
-      <li><a href="#wiek">Ile ETF, ile bezpiecznych inwestycji — podział według wieku</a></li>
-      <li><a href="#kalkulator">Policz to sam — bezpłatny kalkulator</a></li>
-    </ol>
-  </nav>
+    <!-- TOC -->
+    <nav class="toc" aria-label="Spis treści">
+      <div class="toc-title">Spis treści</div>
+      <ol>
+        <li><a href="#co-to-etf">Czym jest ETF i dlaczego Polacy coraz częściej w niego inwestują</a></li>
+        <li><a href="#podatek-belki">Podatek Belki — co to jest i jak go obliczyć</a></li>
+        <li><a href="#inflacja">Inflacja — cichy złodziej zysku</a></li>
+        <li><a href="#przyklad">Konkretny przykład: 10 000 zł przez 10 lat</a></li>
+        <li><a href="#ike-ikze">IKE i IKZE — jak legalnie uniknąć podatku</a></li>
+        <li><a href="#wiek">Ile ETF, ile bezpiecznych inwestycji — podział według wieku</a></li>
+        <li><a href="#kalkulator">Policz to sam — bezpłatny kalkulator</a></li>
+      </ol>
+    </nav>
 
-  <!-- SECTION 1 -->
-  <h2 id="co-to-etf">1. Czym jest ETF i dlaczego Polacy coraz częściej w niego inwestują</h2>
+    <!-- SECTION 1 -->
+    <h2 id="co-to-etf">1. Czym jest ETF i dlaczego Polacy coraz częściej w niego inwestują</h2>
 
-  <p>
-    ETF (Exchange Traded Fund) to fundusz inwestycyjny notowany na giełdzie, którego zadaniem
-    jest naśladowanie zachowania całego indeksu — na przykład 500 największych spółek
-    w USA (S&P 500) albo kilku tysięcy firm z całego świata (MSCI World).
-  </p>
-
-  <p>
-    Zamiast analizować pojedyncze akcje i zgadywać, która spółka urośnie — kupujesz
-    kawałek całego rynku. Jeśli gospodarka rośnie, rośnie też wartość Twojego ETF-u.
-  </p>
-
-  <div class="callout callout-key">
-    <div class="callout-title">🔑 Dlaczego ETF, a nie fundusze tradycyjne?</div>
-    Fundusze zarządzane aktywnie pobierają często 2–3% rocznie za zarządzanie.
-    ETF-y indeksowe kosztują zazwyczaj 0,07–0,20% rocznie. Na 20 latach inwestowania
-    ta różnica przekłada się na dziesiątki tysięcy złotych.
-  </div>
-
-  <p>
-    W Polsce ETF-y można kupować m.in. przez XTB i Dom Maklerski PKO. Najpopularniejsze
-    wśród polskich inwestorów to fundusze śledzące MSCI World oraz S&P 500 —
-    czyli szeroko zdywersyfikowane portfele globalnych spółek.
-  </p>
-
-  <div class="key-numbers">
-    <div class="key-number">
-      <span class="key-number-value">~7–10%</span>
-      <span class="key-number-label">średni roczny zwrot MSCI World historycznie (nominalnie)</span>
-    </div>
-    <div class="key-number">
-      <span class="key-number-value">0,07%</span>
-      <span class="key-number-label">roczny koszt najtańszych ETF-ów indeksowych</span>
-    </div>
-    <div class="key-number">
-      <span class="key-number-value">19%</span>
-      <span class="key-number-label">podatek Belki od zysku kapitałowego w Polsce</span>
-    </div>
-  </div>
-
-  <!-- SECTION 2 -->
-  <h2 id="podatek-belki">2. Podatek Belki — co to jest i jak go obliczyć</h2>
-
-  <p>
-    Podatek Belki to 19% podatku od zysków kapitałowych. Płacisz go tylko od zysku
-    — nie od całej kwoty którą wypłacasz.
-  </p>
-
-  <p>
-    Jeśli wpłaciłeś 50 000 zł, a po 10 latach masz 90 000 zł — Twój zysk wynosi
-    40 000 zł. Podatek Belki: 40 000 × 19% = <strong>7 600 zł</strong>.
-    Do kieszeni trafia 82 400 zł, nie 90 000 zł.
-  </p>
-
-  <div class="callout callout-warning">
-    <div class="callout-title">⚠️ Ważna zasada dla ETF-ów akumulujących</div>
-    ETF-y akumulujące (Acc) nie wypłacają dywidend — dodają je do wartości funduszu.
-    Dzięki temu podatek Belki płacisz dopiero przy sprzedaży, a nie co roku.
-    To ogromna przewaga nad funduszami wypłacającymi dywidendy — przez lata
-    reinwestujesz 100% zysku bez oddawania 19% co roku.
-  </div>
-
-  <h3>Jak liczyć podatek Belki przy ETF?</h3>
-
-  <p>
-    Wzór jest prosty:
-  </p>
-
-  <div class="calc-example">
-    <div class="calc-example-title">Wzór na podatek Belki</div>
-    <div class="calc-row">
-      <span class="calc-row-label">Kapitał końcowy brutto</span>
-      <span class="calc-row-value">= wynik kalkulatora przed podatkiem</span>
-    </div>
-    <div class="calc-row">
-      <span class="calc-row-label">Łączne wpłaty (koszt)</span>
-      <span class="calc-row-value">= kapitał startowy + wszystkie dopłaty</span>
-    </div>
-    <div class="calc-row">
-      <span class="calc-row-label">Zysk brutto</span>
-      <span class="calc-row-value">= Kapitał końcowy − Łączne wpłaty</span>
-    </div>
-    <div class="calc-row">
-      <span class="calc-row-label">Podatek Belki</span>
-      <span class="calc-row-value red">= Zysk brutto × 19%</span>
-    </div>
-    <div class="calc-row highlight">
-      <span class="calc-row-label"><strong>Kapitał końcowy NETTO</strong></span>
-      <span class="calc-row-value blue">= Kapitał końcowy − Podatek Belki</span>
-    </div>
-  </div>
-
-  <!-- SECTION 3 -->
-  <h2 id="inflacja">3. Inflacja — cichy złodziej zysku</h2>
-
-  <p>
-    Nawet po zapłaceniu podatku Twój zysk może być złudzeniem. Jeśli przez 10 lat
-    zarobiłeś 30 000 zł nominalnie, ale ceny w tym czasie wzrosły o 40% — Twoja
-    realna siła nabywcza spadła, mimo że na koncie jest więcej cyfr.
-  </p>
-
-  <p>
-    Dlatego warto liczyć <strong>zysk realny</strong> — czyli zysk po podatku,
-    pomniejszony o wpływ inflacji.
-  </p>
-
-  <div class="callout callout-key">
-    <div class="callout-title">🔑 Zysk realny vs nominalny</div>
-    <strong>Nominalny</strong> — ile złotówek masz więcej na koncie.<br/>
-    <strong>Realny</strong> — ile więcej możesz kupić za te pieniądze w dzisiejszych cenach.<br/><br/>
-    Tylko zysk realny powie Ci czy naprawdę się wzbogaciłeś.
-  </div>
-
-  <p>
-    Inflacja w Polsce w 2026 roku wynosi około 2,2% rocznie — jeden z najniższych
-    poziomów od lat. Ale przy planowaniu inwestycji na 10–30 lat rozsądnie jest
-    przyjąć wyższe założenie (3–4%), bo inflacja jest nieprzewidywalna.
-    Lepiej mile się zaskoczyć niż zawieść.
-  </p>
-
-  <!-- SECTION 4 -->
-  <h2 id="przyklad">4. Konkretny przykład: 10 000 zł przez 10 lat</h2>
-
-  <p>
-    Przestańmy mówić abstrakcyjnie. Oto co dzieje się z <strong>10 000 zł kapitału
-    startowego i dopłatą 500 zł miesięcznie przez 10 lat</strong>, przy założeniu
-    7% rocznego zwrotu i 3,5% inflacji.
-  </p>
-
-  <div class="calc-example">
-    <div class="calc-example-title">📊 Przykład: 10 000 zł + 500 zł/mies. × 10 lat @ 7%</div>
-    <div class="calc-row">
-      <span class="calc-row-label">Łączne wpłaty</span>
-      <span class="calc-row-value">70 000 zł</span>
-    </div>
-    <div class="calc-row">
-      <span class="calc-row-label">Kapitał brutto po 10 latach</span>
-      <span class="calc-row-value">~106 100 zł</span>
-    </div>
-    <div class="calc-row">
-      <span class="calc-row-label">Zysk brutto</span>
-      <span class="calc-row-value">~36 100 zł</span>
-    </div>
-    <div class="calc-row">
-      <span class="calc-row-label">Podatek Belki (19%)</span>
-      <span class="calc-row-value red">−6 859 zł</span>
-    </div>
-    <div class="calc-row">
-      <span class="calc-row-label">Kapitał netto po podatku</span>
-      <span class="calc-row-value">~99 240 zł</span>
-    </div>
-    <div class="calc-row highlight">
-      <span class="calc-row-label"><strong>Zysk realny (po podatku i inflacji)</strong></span>
-      <span class="calc-row-value blue">~+29 240 zł</span>
-    </div>
-  </div>
-
-  <p>
-    Wpłaciłeś 70 000 zł, a masz realnie (w dzisiejszych cenach) o <strong>~29 000 zł więcej</strong>.
-    Twój majątek naprawdę wzrósł — to właściwy sposób myślenia o inwestowaniu.
-  </p>
-
-  <h3>Co gdybyś nic nie robił z pieniędzmi?</h3>
-
-  <p>
-    Gdybyś trzymał te 70 000 zł na koncie bez oprocentowania przez 10 lat,
-    przy inflacji 3,5% ich realna wartość spadłaby do około <strong>49 500 zł</strong>.
-    Czyli straciłbyś ponad 20 000 zł siły nabywczej — nic nie robiąc.
-  </p>
-
-  <div class="callout callout-example">
-    <div class="callout-title">✅ Wniosek</div>
-    Nie inwestowanie to nie "brak decyzji" — to decyzja o powolnym traceniu wartości
-    pieniędzy. ETF przy 7% przez 10 lat daje realny zysk ~29 000 zł.
-    Konto bez oprocentowania daje realną stratę ~20 000 zł.
-    Różnica: <strong>prawie 50 000 zł</strong>.
-  </div>
-
-  <!-- SECTION 5 -->
-  <h2 id="ike-ikze">5. IKE i IKZE — jak legalnie uniknąć podatku</h2>
-
-  <p>
-    Podatku Belki możesz w Polsce legalnie uniknąć, inwestując w ramach
-    <strong>IKE</strong> (Indywidualnego Konta Emerytalnego) lub
-    <strong>IKZE</strong> (Indywidualnego Konta Zabezpieczenia Emerytalnego).
-    Oba konta pozwalają inwestować w ETF-y — przez biuro maklerskie takie jak
-    XTB czy Dom Maklerski PKO.
-  </p>
-
-  <div style="overflow-x:auto">
-  <table class="comparison-table">
-    <thead>
-      <tr>
-        <th>Cecha</th>
-        <th>IKE</th>
-        <th>IKZE</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Limit wpłat 2026</strong></td>
-        <td>28 260 zł/rok</td>
-        <td>11 304 zł/rok<br/><small>(samozatrudnieni: 16 956 zł)</small></td>
-      </tr>
-      <tr>
-        <td><strong>Ulga podatkowa teraz</strong></td>
-        <td><span class="tag-orange">Brak</span></td>
-        <td><span class="tag-green">Tak — odliczasz od PIT</span></td>
-      </tr>
-      <tr>
-        <td><strong>Podatek przy wypłacie</strong></td>
-        <td><span class="tag-green">0% (po 60. roku życia)</span></td>
-        <td>10% ryczałt (po 65. roku życia)</td>
-      </tr>
-      <tr>
-        <td><strong>Wcześniejsza wypłata</strong></td>
-        <td>Płacisz podatek Belki (19%)</td>
-        <td>Doliczasz do PIT — może być drogie</td>
-      </tr>
-      <tr>
-        <td><strong>Dla kogo?</strong></td>
-        <td>Każdy inwestor długoterminowy</td>
-        <td>Szczególnie opłacalne przy 32% PIT</td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
-
-  <h3>Ile realnie oszczędzasz na IKE?</h3>
-
-  <p>
-    Wróćmy do naszego przykładu: 10 000 zł + 500 zł/mies. przez 10 lat @ 7%.
-    Różnica między kontem standardowym a IKE:
-  </p>
-
-  <div class="calc-example">
-    <div class="calc-example-title">💡 Porównanie: konto standardowe vs IKE</div>
-    <div class="calc-row">
-      <span class="calc-row-label">Kapitał końcowy — konto standardowe</span>
-      <span class="calc-row-value">~99 240 zł</span>
-    </div>
-    <div class="calc-row">
-      <span class="calc-row-label">Kapitał końcowy — IKE (0% podatku)</span>
-      <span class="calc-row-value green">~106 100 zł</span>
-    </div>
-    <div class="calc-row highlight">
-      <span class="calc-row-label"><strong>Różnica po 10 latach</strong></span>
-      <span class="calc-row-value blue">+6 860 zł</span>
-    </div>
-  </div>
-
-  <p>
-    Po 20 latach ta różnica urośnie do kilkudziesięciu tysięcy złotych — bo zysk
-    który normalnie oddałbyś w podatkach, na IKE dalej pracuje i generuje kolejne zyski.
-    To jest właśnie efekt procentu składanego połączony z zerowym podatkiem.
-  </p>
-
-  <!-- SECTION 6 -->
-  <h2 id="wiek">6. Ile ETF, ile bezpiecznych inwestycji — podział według wieku</h2>
-
-  <p>
-    Nie ma jednej właściwej odpowiedzi na pytanie "ile procent w ETF?".
-    Zależy to przede wszystkim od jednej rzeczy: <strong>ile czasu masz przed sobą</strong>.
-  </p>
-
-  <p>
-    ETF-y potrafią w kryzysie stracić 30–50% wartości. Ale historycznie zawsze
-    wracały do poprzednich poziomów i rosły wyżej. Czas to Twoja największa
-    przewaga — im więcej go masz, tym więcej ryzyka możesz sobie pozwolić.
-  </p>
-
-  <div style="overflow-x:auto">
-  <table class="age-table">
-    <thead>
-      <tr>
-        <th>Wiek</th>
-        <th>ETF (akcje)</th>
-        <th>Bezpieczne (obligacje/lokaty)</th>
-        <th>Logika</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>25–35 lat</strong></td>
-        <td>
-          <strong>80–100%</strong>
-          <div class="bar-wrap"><div class="bar-fill" style="width:90%"></div></div>
-        </td>
-        <td>
-          0–20%
-          <div class="bar-wrap"><div class="bar-fill green" style="width:10%"></div></div>
-        </td>
-        <td>Masz 30+ lat do emerytury — kryzysy to okazje, nie problem</td>
-      </tr>
-      <tr>
-        <td><strong>35–45 lat</strong></td>
-        <td>
-          <strong>70–80%</strong>
-          <div class="bar-wrap"><div class="bar-fill" style="width:75%"></div></div>
-        </td>
-        <td>
-          20–30%
-          <div class="bar-wrap"><div class="bar-fill green" style="width:25%"></div></div>
-        </td>
-        <td>Wciąż długi horyzont, zacznij budować poduszkę bezpieczeństwa</td>
-      </tr>
-      <tr>
-        <td><strong>45–55 lat</strong></td>
-        <td>
-          <strong>50–70%</strong>
-          <div class="bar-wrap"><div class="bar-fill" style="width:60%"></div></div>
-        </td>
-        <td>
-          30–50%
-          <div class="bar-wrap"><div class="bar-fill green" style="width:40%"></div></div>
-        </td>
-        <td>Zbliżasz się do momentu wypłat — stabilizuj portfel stopniowo</td>
-      </tr>
-      <tr>
-        <td><strong>55–65 lat</strong></td>
-        <td>
-          <strong>30–50%</strong>
-          <div class="bar-wrap"><div class="bar-fill" style="width:40%"></div></div>
-        </td>
-        <td>
-          50–70%
-          <div class="bar-wrap"><div class="bar-fill green" style="width:60%"></div></div>
-        </td>
-        <td>Bezpieczeństwo ważniejsze — nie chcesz sprzedawać ETF po krachu</td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
-
-  <div class="callout callout-warning">
-    <div class="callout-title">⚠️ To są wskazówki ogólne, nie porady inwestycyjne</div>
-    Podział portfela zależy od Twojej indywidualnej sytuacji — regularności dochodów,
-    poduszki bezpieczeństwa, tolerancji na ryzyko i celów. Powyższa tabela to punkt
-    wyjścia do myślenia, nie gotowa recepta. Przed podjęciem decyzji warto skonsultować
-    się z licencjonowanym doradcą finansowym.
-  </div>
-
-  <h3>Dlaczego starsze osoby potrzebują więcej bezpiecznych aktywów?</h3>
-
-  <p>
-    Wyobraź sobie dwie osoby które mają po 1 000 000 zł w ETF-ach i planują zacząć
-    z nich korzystać. Nagle przychodzi kryzys i portfel spada o 40% — zostaje 600 000 zł.
-  </p>
-
-  <p>
-    <strong>Osoba 35-letnia</strong> może poczekać 5–7 lat i nie ruszać portfela.
-    Rynek wróci i urośnie wyżej.<br/>
-    <strong>Osoba 62-letnia</strong> potrzebuje pieniędzy teraz na życie.
-    Musi sprzedawać po niskich cenach — i to jest problem.
-  </p>
-
-  <p>
-    Dlatego z wiekiem zwiększasz udział obligacji i bezpiecznych instrumentów —
-    nie dlatego że są lepsze, ale dlatego że dają <strong>spokój i przewidywalność</strong>
-    w momencie kiedy zaczynasz z kapitału korzystać.
-  </p>
-
-  <!-- CTA -->
-  <div class="cta-box">
-    <h3>Policz swój konkretny scenariusz</h3>
     <p>
-      Wiesz już jak działają ETF-y, podatek Belki i IKE. Teraz wpisz swoje liczby
-      i sprawdź ile będziesz mieć po tylu latach ile planujesz.
+      ETF (Exchange Traded Fund) to fundusz inwestycyjny notowany na giełdzie, którego zadaniem
+      jest naśladowanie zachowania całego indeksu — na przykład 500 największych spółek
+      w USA (S&P 500) albo kilku tysięcy firm z całego świata (MSCI World).
     </p>
-    <a href="https://etfkalkulator.pl/pages/kalkulator-etf.html" class="btn-cta">
-      Otwórz kalkulator ETF →
-    </a>
-  </div>
 
-  <!-- SECTION 7 -->
-  <h2 id="kalkulator">7. Jak korzystać z kalkulatora ETF — krok po kroku</h2>
+    <p>
+      Zamiast analizować pojedyncze akcje i zgadywać, która spółka urośnie — kupujesz
+      kawałek całego rynku. Jeśli gospodarka rośnie, rośnie też wartość Twojego ETF-u.
+    </p>
 
-  <p>
-    Kalkulator ETF na ETFkalkulator.pl wymaga tylko czterech wartości:
-  </p>
+    <div class="callout callout-key">
+      <div class="callout-title">🔑 Dlaczego ETF, a nie fundusze tradycyjne?</div>
+      Fundusze zarządzane aktywnie pobierają często 2–3% rocznie za zarządzanie.
+      ETF-y indeksowe kosztują zazwyczaj 0,07–0,20% rocznie. Na 20 latach inwestowania
+      ta różnica przekłada się na dziesiątki tysięcy złotych.
+    </div>
 
-  <p>
-    <strong>1. Kapitał startowy</strong> — ile masz już odłożone (możesz wpisać 0).<br/>
-    <strong>2. Miesięczna dopłata</strong> — ile co miesiąc będziesz dokładać.<br/>
-    <strong>3. Horyzont inwestycji</strong> — ile lat planujesz inwestować.<br/>
-    <strong>4. Stopa zwrotu</strong> — masz gotowe przyciski: pesymistyczny 4%,
-    bazowy 7%, optymistyczny 10%. Bazowy (7%) to dobre założenie dla MSCI World
-    w długim terminie.
-  </p>
+    <p>
+      W Polsce ETF-y można kupować m.in. przez XTB i Dom Maklerski PKO. Najpopularniejsze
+      wśród polskich inwestorów to fundusze śledzące MSCI World oraz S&P 500 —
+      czyli szeroko zdywersyfikowane portfele globalnych spółek.
+    </p>
 
-  <p>
-    Kalkulator pokaże Ci od razu: kapitał końcowy netto po podatku Belki,
-    zysk realny po inflacji, CAGR (roczna stopa zwrotu) oraz tabelę rok po roku.
-    Możesz też zaznaczyć IKE/IKZE i od razu zobaczyć różnicę.
-  </p>
+    <div class="key-numbers">
+      <div class="key-number">
+        <span class="key-number-value">~7–10%</span>
+        <span class="key-number-label">średni roczny zwrot MSCI World historycznie (nominalnie)</span>
+      </div>
+      <div class="key-number">
+        <span class="key-number-value">0,07%</span>
+        <span class="key-number-label">roczny koszt najtańszych ETF-ów indeksowych</span>
+      </div>
+      <div class="key-number">
+        <span class="key-number-value">19%</span>
+        <span class="key-number-label">podatek Belki od zysku kapitałowego w Polsce</span>
+      </div>
+    </div>
 
-  <div class="callout callout-example">
-    <div class="callout-title">✅ Wskazówka praktyczna</div>
-    Sprawdź oba scenariusze — z IKE i bez. Różnica po 20–30 latach jest zazwyczaj
-    tak duża, że decyzja o założeniu IKE staje się oczywista. Limit IKE w 2026 roku
-    wynosi 28 260 zł rocznie — to 2 355 zł miesięcznie. Przy typowych dopłatach
-    500–1 000 zł miesięcznie w zupełności wystarczy.
-  </div>
+    <!-- SECTION 2 -->
+    <h2 id="podatek-belki">2. Podatek Belki — co to jest i jak go obliczyć</h2>
 
-  <h3>Podsumowanie — co zapamiętać</h3>
+    <p>
+      Podatek Belki to 19% podatku od zysków kapitałowych. Płacisz go tylko od zysku
+      — nie od całej kwoty którą wypłacasz.
+    </p>
 
-  <p>
-    ETF to jeden z najefektywniejszych sposobów budowania kapitału dla osoby
-    indywidualnej. Niskie koszty, szeroka dywersyfikacja, dostępność przez
-    standardowe konto maklerskie. Ale żeby podejmować dobre decyzje, musisz
-    liczyć realnie — po podatku i po inflacji.
-  </p>
+    <p>
+      Jeśli wpłaciłeś 50 000 zł, a po 10 latach masz 90 000 zł — Twój zysk wynosi
+      40 000 zł. Podatek Belki: 40 000 × 19% = <strong>7 600 zł</strong>.
+      Do kieszeni trafia 82 400 zł, nie 90 000 zł.
+    </p>
 
-  <p>
-    Im wcześniej zaczniesz, tym lepiej. Nie dlatego że "czas to pieniądz" brzmi
-    mądrze — ale dlatego że matematyka procentu składanego naprawdę faworyzuje
-    tych którzy zaczynają wcześnie. 500 zł miesięcznie przez 30 lat robi
-    zdecydowanie więcej niż 1 500 zł miesięcznie przez 10 lat.
-  </p>
+    <div class="callout callout-warning">
+      <div class="callout-title">⚠️ Ważna zasada dla ETF-ów akumulujących</div>
+      ETF-y akumulujące (Acc) nie wypłacają dywidend — dodają je do wartości funduszu.
+      Dzięki temu podatek Belki płacisz dopiero przy sprzedaży, a nie co roku.
+      To ogromna przewaga nad funduszami wypłacającymi dywidendy — przez lata
+      reinwestujesz 100% zysku bez oddawania 19% co roku.
+    </div>
 
-  <p>
-    A jeśli zastanawiasz się jak ETF-y wypadają w porównaniu do obligacji skarbowych —
-    to temat na osobny artykuł. Zajrzyj wkrótce.
-  </p>
+    <h3>Jak liczyć podatek Belki przy ETF?</h3>
+
+    <p>
+      Wzór jest prosty:
+    </p>
+
+    <div class="calc-example">
+      <div class="calc-example-title">Wzór na podatek Belki</div>
+      <div class="calc-row">
+        <span class="calc-row-label">Kapitał końcowy brutto</span>
+        <span class="calc-row-value">= wynik kalkulatora przed podatkiem</span>
+      </div>
+      <div class="calc-row">
+        <span class="calc-row-label">Łączne wpłaty (koszt)</span>
+        <span class="calc-row-value">= kapitał startowy + wszystkie dopłaty</span>
+      </div>
+      <div class="calc-row">
+        <span class="calc-row-label">Zysk brutto</span>
+        <span class="calc-row-value">= Kapitał końcowy − Łączne wpłaty</span>
+      </div>
+      <div class="calc-row">
+        <span class="calc-row-label">Podatek Belki</span>
+        <span class="calc-row-value red">= Zysk brutto × 19%</span>
+      </div>
+      <div class="calc-row highlight">
+        <span class="calc-row-label"><strong>Kapitał końcowy NETTO</strong></span>
+        <span class="calc-row-value blue">= Kapitał końcowy − Podatek Belki</span>
+      </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <h2 id="inflacja">3. Inflacja — cichy złodziej zysku</h2>
+
+    <p>
+      Nawet po zapłaceniu podatku Twój zysk może być złudzeniem. Jeśli przez 10 lat
+      zarobiłeś 30 000 zł nominalnie, ale ceny w tym czasie wzrosły o 40% — Twoja
+      realna siła nabywcza spadła, mimo że na koncie jest więcej cyfr.
+    </p>
+
+    <p>
+      Dlatego warto liczyć <strong>zysk realny</strong> — czyli zysk po podatku,
+      pomniejszony o wpływ inflacji.
+    </p>
+
+    <div class="callout callout-key">
+      <div class="callout-title">🔑 Zysk realny vs nominalny</div>
+      <strong>Nominalny</strong> — ile złotówek masz więcej na koncie.<br />
+      <strong>Realny</strong> — ile więcej możesz kupić za te pieniądze w dzisiejszych cenach.<br /><br />
+      Tylko zysk realny powie Ci czy naprawdę się wzbogaciłeś.
+    </div>
+
+    <p>
+      Inflacja w Polsce w 2026 roku wynosi około 2,2% rocznie — jeden z najniższych
+      poziomów od lat. Ale przy planowaniu inwestycji na 10–30 lat rozsądnie jest
+      przyjąć wyższe założenie (3–4%), bo inflacja jest nieprzewidywalna.
+      Lepiej mile się zaskoczyć niż zawieść.
+    </p>
+
+    <!-- SECTION 4 -->
+    <h2 id="przyklad">4. Konkretny przykład: 10 000 zł przez 10 lat</h2>
+
+    <p>
+      Przestańmy mówić abstrakcyjnie. Oto co dzieje się z <strong>10 000 zł kapitału
+        startowego i dopłatą 500 zł miesięcznie przez 10 lat</strong>, przy założeniu
+      7% rocznego zwrotu i 3,5% inflacji.
+    </p>
+
+    <div class="calc-example">
+      <div class="calc-example-title">📊 Przykład: 10 000 zł + 500 zł/mies. × 10 lat @ 7%</div>
+      <div class="calc-row">
+        <span class="calc-row-label">Łączne wpłaty</span>
+        <span class="calc-row-value">70 000 zł</span>
+      </div>
+      <div class="calc-row">
+        <span class="calc-row-label">Kapitał brutto po 10 latach</span>
+        <span class="calc-row-value">~106 100 zł</span>
+      </div>
+      <div class="calc-row">
+        <span class="calc-row-label">Zysk brutto</span>
+        <span class="calc-row-value">~36 100 zł</span>
+      </div>
+      <div class="calc-row">
+        <span class="calc-row-label">Podatek Belki (19%)</span>
+        <span class="calc-row-value red">−6 859 zł</span>
+      </div>
+      <div class="calc-row">
+        <span class="calc-row-label">Kapitał netto po podatku</span>
+        <span class="calc-row-value">~99 240 zł</span>
+      </div>
+      <div class="calc-row highlight">
+        <span class="calc-row-label"><strong>Zysk realny (po podatku i inflacji)</strong></span>
+        <span class="calc-row-value blue">~+29 240 zł</span>
+      </div>
+    </div>
+
+    <p>
+      Wpłaciłeś 70 000 zł, a masz realnie (w dzisiejszych cenach) o <strong>~29 000 zł więcej</strong>.
+      Twój majątek naprawdę wzrósł — to właściwy sposób myślenia o inwestowaniu.
+    </p>
+
+    <h3>Co gdybyś nic nie robił z pieniędzmi?</h3>
+
+    <p>
+      Gdybyś trzymał te 70 000 zł na koncie bez oprocentowania przez 10 lat,
+      przy inflacji 3,5% ich realna wartość spadłaby do około <strong>49 500 zł</strong>.
+      Czyli straciłbyś ponad 20 000 zł siły nabywczej — nic nie robiąc.
+    </p>
+
+    <div class="callout callout-example">
+      <div class="callout-title">✅ Wniosek</div>
+      Nie inwestowanie to nie "brak decyzji" — to decyzja o powolnym traceniu wartości
+      pieniędzy. ETF przy 7% przez 10 lat daje realny zysk ~29 000 zł.
+      Konto bez oprocentowania daje realną stratę ~20 000 zł.
+      Różnica: <strong>prawie 50 000 zł</strong>.
+    </div>
+
+    <!-- SECTION 5 -->
+    <h2 id="ike-ikze">5. IKE i IKZE — jak legalnie uniknąć podatku</h2>
+
+    <p>
+      Podatku Belki możesz w Polsce legalnie uniknąć, inwestując w ramach
+      <strong>IKE</strong> (Indywidualnego Konta Emerytalnego) lub
+      <strong>IKZE</strong> (Indywidualnego Konta Zabezpieczenia Emerytalnego).
+      Oba konta pozwalają inwestować w ETF-y — przez biuro maklerskie takie jak
+      XTB czy Dom Maklerski PKO.
+    </p>
+
+    <div style="overflow-x:auto">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Cecha</th>
+            <th>IKE</th>
+            <th>IKZE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Limit wpłat 2026</strong></td>
+            <td>28 260 zł/rok</td>
+            <td>11 304 zł/rok<br /><small>(samozatrudnieni: 16 956 zł)</small></td>
+          </tr>
+          <tr>
+            <td><strong>Ulga podatkowa teraz</strong></td>
+            <td><span class="tag-orange">Brak</span></td>
+            <td><span class="tag-green">Tak — odliczasz od PIT</span></td>
+          </tr>
+          <tr>
+            <td><strong>Podatek przy wypłacie</strong></td>
+            <td><span class="tag-green">0% (po 60. roku życia)</span></td>
+            <td>10% ryczałt (po 65. roku życia)</td>
+          </tr>
+          <tr>
+            <td><strong>Wcześniejsza wypłata</strong></td>
+            <td>Płacisz podatek Belki (19%)</td>
+            <td>Doliczasz do PIT — może być drogie</td>
+          </tr>
+          <tr>
+            <td><strong>Dla kogo?</strong></td>
+            <td>Każdy inwestor długoterminowy</td>
+            <td>Szczególnie opłacalne przy 32% PIT</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Ile realnie oszczędzasz na IKE?</h3>
+
+    <p>
+      Wróćmy do naszego przykładu: 10 000 zł + 500 zł/mies. przez 10 lat @ 7%.
+      Różnica między kontem standardowym a IKE:
+    </p>
+
+    <div class="calc-example">
+      <div class="calc-example-title">💡 Porównanie: konto standardowe vs IKE</div>
+      <div class="calc-row">
+        <span class="calc-row-label">Kapitał końcowy — konto standardowe</span>
+        <span class="calc-row-value">~99 240 zł</span>
+      </div>
+      <div class="calc-row">
+        <span class="calc-row-label">Kapitał końcowy — IKE (0% podatku)</span>
+        <span class="calc-row-value green">~106 100 zł</span>
+      </div>
+      <div class="calc-row highlight">
+        <span class="calc-row-label"><strong>Różnica po 10 latach</strong></span>
+        <span class="calc-row-value blue">+6 860 zł</span>
+      </div>
+    </div>
+
+    <p>
+      Po 20 latach ta różnica urośnie do kilkudziesięciu tysięcy złotych — bo zysk
+      który normalnie oddałbyś w podatkach, na IKE dalej pracuje i generuje kolejne zyski.
+      To jest właśnie efekt procentu składanego połączony z zerowym podatkiem.
+    </p>
+
+    <!-- SECTION 6 -->
+    <h2 id="wiek">6. Ile ETF, ile bezpiecznych inwestycji — podział według wieku</h2>
+
+    <p>
+      Nie ma jednej właściwej odpowiedzi na pytanie "ile procent w ETF?".
+      Zależy to przede wszystkim od jednej rzeczy: <strong>ile czasu masz przed sobą</strong>.
+    </p>
+
+    <p>
+      ETF-y potrafią w kryzysie stracić 30–50% wartości. Ale historycznie zawsze
+      wracały do poprzednich poziomów i rosły wyżej. Czas to Twoja największa
+      przewaga — im więcej go masz, tym więcej ryzyka możesz sobie pozwolić.
+    </p>
+
+    <div style="overflow-x:auto">
+      <table class="age-table">
+        <thead>
+          <tr>
+            <th>Wiek</th>
+            <th>ETF (akcje)</th>
+            <th>Bezpieczne (obligacje/lokaty)</th>
+            <th>Logika</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>25–35 lat</strong></td>
+            <td>
+              <strong>80–100%</strong>
+              <div class="bar-wrap">
+                <div class="bar-fill" style="width:90%"></div>
+              </div>
+            </td>
+            <td>
+              0–20%
+              <div class="bar-wrap">
+                <div class="bar-fill green" style="width:10%"></div>
+              </div>
+            </td>
+            <td>Masz 30+ lat do emerytury — kryzysy to okazje, nie problem</td>
+          </tr>
+          <tr>
+            <td><strong>35–45 lat</strong></td>
+            <td>
+              <strong>70–80%</strong>
+              <div class="bar-wrap">
+                <div class="bar-fill" style="width:75%"></div>
+              </div>
+            </td>
+            <td>
+              20–30%
+              <div class="bar-wrap">
+                <div class="bar-fill green" style="width:25%"></div>
+              </div>
+            </td>
+            <td>Wciąż długi horyzont, zacznij budować poduszkę bezpieczeństwa</td>
+          </tr>
+          <tr>
+            <td><strong>45–55 lat</strong></td>
+            <td>
+              <strong>50–70%</strong>
+              <div class="bar-wrap">
+                <div class="bar-fill" style="width:60%"></div>
+              </div>
+            </td>
+            <td>
+              30–50%
+              <div class="bar-wrap">
+                <div class="bar-fill green" style="width:40%"></div>
+              </div>
+            </td>
+            <td>Zbliżasz się do momentu wypłat — stabilizuj portfel stopniowo</td>
+          </tr>
+          <tr>
+            <td><strong>55–65 lat</strong></td>
+            <td>
+              <strong>30–50%</strong>
+              <div class="bar-wrap">
+                <div class="bar-fill" style="width:40%"></div>
+              </div>
+            </td>
+            <td>
+              50–70%
+              <div class="bar-wrap">
+                <div class="bar-fill green" style="width:60%"></div>
+              </div>
+            </td>
+            <td>Bezpieczeństwo ważniejsze — nie chcesz sprzedawać ETF po krachu</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-title">⚠️ To są wskazówki ogólne, nie porady inwestycyjne</div>
+      Podział portfela zależy od Twojej indywidualnej sytuacji — regularności dochodów,
+      poduszki bezpieczeństwa, tolerancji na ryzyko i celów. Powyższa tabela to punkt
+      wyjścia do myślenia, nie gotowa recepta. Przed podjęciem decyzji warto skonsultować
+      się z licencjonowanym doradcą finansowym.
+    </div>
+
+    <h3>Dlaczego starsze osoby potrzebują więcej bezpiecznych aktywów?</h3>
+
+    <p>
+      Wyobraź sobie dwie osoby które mają po 1 000 000 zł w ETF-ach i planują zacząć
+      z nich korzystać. Nagle przychodzi kryzys i portfel spada o 40% — zostaje 600 000 zł.
+    </p>
+
+    <p>
+      <strong>Osoba 35-letnia</strong> może poczekać 5–7 lat i nie ruszać portfela.
+      Rynek wróci i urośnie wyżej.<br />
+      <strong>Osoba 62-letnia</strong> potrzebuje pieniędzy teraz na życie.
+      Musi sprzedawać po niskich cenach — i to jest problem.
+    </p>
+
+    <p>
+      Dlatego z wiekiem zwiększasz udział obligacji i bezpiecznych instrumentów —
+      nie dlatego że są lepsze, ale dlatego że dają <strong>spokój i przewidywalność</strong>
+      w momencie kiedy zaczynasz z kapitału korzystać.
+    </p>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <h3>Policz swój konkretny scenariusz</h3>
+      <p>
+        Wiesz już jak działają ETF-y, podatek Belki i IKE. Teraz wpisz swoje liczby
+        i sprawdź ile będziesz mieć po tylu latach ile planujesz.
+      </p>
+      <a href="../pages/kalkulator-etf.html" class="btn-cta">
+        Otwórz kalkulator ETF →
+      </a>
+    </div>
+
+    <!-- SECTION 7 -->
+    <h2 id="kalkulator">7. Jak korzystać z kalkulatora ETF — krok po kroku</h2>
+
+    <p>
+      Kalkulator ETF na ETFkalkulator.pl wymaga tylko czterech wartości:
+    </p>
+
+    <p>
+      <strong>1. Kapitał startowy</strong> — ile masz już odłożone (możesz wpisać 0).<br />
+      <strong>2. Miesięczna dopłata</strong> — ile co miesiąc będziesz dokładać.<br />
+      <strong>3. Horyzont inwestycji</strong> — ile lat planujesz inwestować.<br />
+      <strong>4. Stopa zwrotu</strong> — masz gotowe przyciski: pesymistyczny 4%,
+      bazowy 7%, optymistyczny 10%. Bazowy (7%) to dobre założenie dla MSCI World
+      w długim terminie.
+    </p>
+
+    <p>
+      Kalkulator pokaże Ci od razu: kapitał końcowy netto po podatku Belki,
+      zysk realny po inflacji, CAGR (roczna stopa zwrotu) oraz tabelę rok po roku.
+      Możesz też zaznaczyć IKE/IKZE i od razu zobaczyć różnicę.
+    </p>
+
+    <div class="callout callout-example">
+      <div class="callout-title">✅ Wskazówka praktyczna</div>
+      Sprawdź oba scenariusze — z IKE i bez. Różnica po 20–30 latach jest zazwyczaj
+      tak duża, że decyzja o założeniu IKE staje się oczywista. Limit IKE w 2026 roku
+      wynosi 28 260 zł rocznie — to 2 355 zł miesięcznie. Przy typowych dopłatach
+      500–1 000 zł miesięcznie w zupełności wystarczy.
+    </div>
+
+    <h3>Podsumowanie — co zapamiętać</h3>
+
+    <p>
+      ETF to jeden z najefektywniejszych sposobów budowania kapitału dla osoby
+      indywidualnej. Niskie koszty, szeroka dywersyfikacja, dostępność przez
+      standardowe konto maklerskie. Ale żeby podejmować dobre decyzje, musisz
+      liczyć realnie — po podatku i po inflacji.
+    </p>
+
+    <p>
+      Im wcześniej zaczniesz, tym lepiej. Nie dlatego że "czas to pieniądz" brzmi
+      mądrze — ale dlatego że matematyka procentu składanego naprawdę faworyzuje
+      tych którzy zaczynają wcześnie. 500 zł miesięcznie przez 30 lat robi
+      zdecydowanie więcej niż 1 500 zł miesięcznie przez 10 lat.
+    </p>
+
+    <p>
+      A jeśli zastanawiasz się jak ETF-y wypadają w porównaniu do obligacji skarbowych —
+      to temat na osobny artykuł. Zajrzyj wkrótce.
+    </p>
 
   </main>
 
-<!-- DISCLAIMER BOX -->
-<div class="disclaimer-box">
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="12" cy="12" r="10"></circle>
-    <line x1="12" y1="8" x2="12" y2="12"></line>
-    <line x1="12" y1="16" x2="12.01" y2="16"></line>
-  </svg>
-  <div>
-    <strong>Ważna informacja (Disclaimer)</strong>
-    Materiały na stronie mają charakter wyłącznie edukacyjny i poglądowy. Nie stanowią rekomendacji inwestycyjnej ani porady podatkowej w rozumieniu przepisów prawa. Inwestowanie na giełdzie zawsze wiąże się z ryzykiem utraty części lub całości kapitału. Narzędzie może zawierać uproszczenia — zawsze weryfikuj wyniki z prospektem emisyjnym funduszu.
-  </div>
-</div>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -1252,4 +1542,5 @@
     });
   </script>
 </body>
+
 </html>
