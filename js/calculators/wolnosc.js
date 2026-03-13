@@ -169,7 +169,7 @@ function aktualizujWolnosc() {
   var oszcz = pobierzWartoscLocal('wf-oszczednosci', 1000);
   var start = pobierzWartoscLocal('wf-kapital', 0);
   var stopa = pobierzWartoscLocal('wf-stopa', 7);
-  var inflacja = pobierzWartoscLocal('wf-inflacja', 2.5);
+  var inflacja = pobierzWartoscLocal('wf-inflacja', 3.5);
   var stopaWyp = pobierzWartoscLocal('wf-stopa-wyplat', 4);
   var latCelowe = pobierzWartoscLocal('wf-lata-cel', 20);
   var wIKE = document.getElementById('wf-ike')

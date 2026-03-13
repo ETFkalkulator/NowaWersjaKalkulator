@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Edukacja inwestycyjna | ETFkalkulator.pl</title>
+  <meta name="description" content="Artykuły o ETF, obligacjach skarbowych, wolności finansowej i podatkach. Konkretna wiedza dla polskich inwestorów — bez ściemy i żargonu." />
+  <link rel="canonical" href="https://etfkalkulator.pl/blog/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Blog ETFkalkulator.pl — Edukacja inwestycyjna" />
+  <meta property="og:description" content="Artykuły o ETF, obligacjach, IKE/IKZE i wolności finansowej. Konkretna wiedza dla polskich inwestorów." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://etfkalkulator.pl/blog/" />
+  <meta property="og:site_name" content="ETFkalkulator.pl" />
+
+  <!-- Schema.org Blog -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Blog ETFkalkulator.pl",
+    "description": "Artykuły o ETF, obligacjach skarbowych, wolności finansowej i podatkach dla polskich inwestorów.",
+    "url": "https://etfkalkulator.pl/blog/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ETFkalkulator.pl",
+      "url": "https://etfkalkulator.pl"
+    },
+    "inLanguage": "pl"
+  }
+  </script>
+
+  <style>
+    :root {
+      --blue:       #1A56A0;
+      --blue-light: #EBF3FB;
+      --blue-dark:  #0f3566;
+      --green:      #27AE60;
+      --orange:     #E67E22;
+      --text:       #1a1a2e;
+      --text-muted: #60607a;
+      --bg:         #FAFAF8;
+      --white:      #ffffff;
+      --border:     #E8E8E0;
+      --font-ui:    -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-serif: 'Georgia', 'Times New Roman', serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-ui);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 62px;
+    }
+    .nav-logo {
+      font-weight: 800;
+      font-size: 17px;
+      color: var(--blue);
+      text-decoration: none;
+      letter-spacing: -.3px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 6px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background .15s, color .15s;
+    }
+    .nav-links a:hover  { background: var(--blue-light); color: var(--blue); }
+    .nav-links a.active { background: var(--blue-light); color: var(--blue); font-weight: 700; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 60%, #2980b9 100%);
+      color: white;
+      padding: 60px 24px 52px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .breadcrumb {
+      font-size: 13px;
+      opacity: .65;
+      margin-bottom: 18px;
+    }
+    .breadcrumb a { color: white; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .hero h1 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      letter-spacing: -.5px;
+    }
+    .hero-lead {
+      font-size: 17px;
+      opacity: .88;
+      max-width: 580px;
+      line-height: 1.65;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .page-body {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 52px 24px 80px;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--blue);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── FEATURED ARTICLE ── */
+    .featured-article {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 36px;
+      transition: box-shadow .2s, transform .2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+    .featured-article:hover {
+      box-shadow: 0 8px 28px rgba(26,86,160,.14);
+      transform: translateY(-3px);
+    }
+    .featured-banner {
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+      padding: 36px 36px 32px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .featured-banner::after {
+      content: '📈';
+      position: absolute;
+      right: 32px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 56px;
+      opacity: .25;
+    }
+    .featured-tag {
+      display: inline-block;
+      background: rgba(255,255,255,.2);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .featured-banner h2 {
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 10px;
+      letter-spacing: -.3px;
+    }
+    .featured-banner p {
+      font-size: 15px;
+      opacity: .85;
+      line-height: 1.6;
+    }
+    .featured-body {
+      padding: 24px 32px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .featured-meta {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .meta-item {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .meta-item strong { color: var(--text); font-weight: 600; }
+    .btn-read {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--blue);
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background .15s, transform .15s;
+      flex-shrink: 0;
+    }
+    .btn-read:hover { background: var(--blue-dark); transform: translateX(2px); }
+
+    /* ── ARTICLE GRID (future articles) ── */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 8px;
+    }
+
+    /* ── COMING SOON CARD ── */
+    .coming-soon-card {
+      background: var(--white);
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      opacity: .7;
+    }
+    .coming-soon-tag {
+      display: inline-block;
+      background: #f0f0eb;
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      padding: 3px 8px;
+      border-radius: 4px;
+      width: fit-content;
+    }
+    .coming-soon-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .coming-soon-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar { display: flex; flex-direction: column; gap: 24px; }
+
+    .sidebar-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .sidebar-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--blue);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Tools list */
+    .tools-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .tools-list a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 500;
+      transition: background .15s;
+      border: 1px solid transparent;
+    }
+    .tools-list a:hover { background: var(--blue-light); border-color: #c8dff5; color: var(--blue); }
+    .tool-icon { font-size: 18px; flex-shrink: 0; }
+    .tool-desc { font-size: 12px; color: var(--text-muted); font-weight: 400; }
+
+    /* Topics */
+    .topics-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .topic-tag {
+      display: inline-block;
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: background .15s;
+    }
+    .topic-tag:hover { background: #d0e8f7; }
+
+    /* Newsletter CTA sidebar */
+    .newsletter-sidebar {
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+      border-radius: 12px;
+      padding: 24px;
+      color: white;
+      text-align: center;
+    }
+    .newsletter-sidebar h3 {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .newsletter-sidebar p {
+      font-size: 13px;
+      opacity: .85;
+      margin-bottom: 16px;
+      line-height: 1.55;
+    }
+    .btn-newsletter {
+      display: block;
+      background: white;
+      color: var(--blue-dark);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity .15s;
+    }
+    .btn-newsletter:hover { opacity: .9; }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      max-width: 1100px;
+      margin: 0 auto 0;
+      padding: 0 24px 48px;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .footer-links a { color: var(--blue); text-decoration: none; }
+    .footer-links a:hover { text-decoration: underline; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .featured-article { animation: fadeUp .4s ease both; }
+    .coming-soon-card:nth-child(1) { animation: fadeUp .4s .1s ease both; }
+    .coming-soon-card:nth-child(2) { animation: fadeUp .4s .2s ease both; }
+    .coming-soon-card:nth-child(3) { animation: fadeUp .4s .3s ease both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .page-body { grid-template-columns: 1fr; }
+      .sidebar { order: -1; }
+      .featured-body { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 540px) {
+      .nav-links { display: none; }
+      .featured-banner { padding: 24px 20px; }
+      .featured-body { padding: 18px 20px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">ETFkalkulator.pl</a>
+    <ul class="nav-links">
+      <li><a href="../pages/kalkulator-etf.html">Kalkulator ETF</a></li>
+      <li><a href="../pages/kalkulator-obligacji.html">Obligacje</a></li>
+      <li><a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a></li>
+      <li><a href="../pages/porownywarka.html">Porównywarka</a></li>
+      <li><a href="../blog/index.html" class="active">Blog</a></li>
+      <li><a href="../pages/o-projekcie.html">O projekcie</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="breadcrumb">
+      <a href="../index.html">ETFkalkulator.pl</a> › Blog
+    </div>
+    <h1>Wiedza która zarabia</h1>
+    <p class="hero-lead">
+      Artykuły o ETF, obligacjach skarbowych i wolności finansowej.
+      Konkretne liczby, polskie realia, zero żargonu.
+    </p>
+  </div>
+</header>
+
+<!-- MAIN -->
+<div class="page-body">
+
+  <!-- LEFT — ARTICLES -->
+  <main>
+
+    <div class="section-label">Najnowszy artykuł</div>
+
+    <!-- FEATURED -->
+    <a href="kalkulator-etf-jak-obliczyc-realny-zysk.html" class="featured-article">
+      <div class="featured-banner">
+        <span class="featured-tag">ETF · IKE/IKZE</span>
+        <h2>Kalkulator ETF — jak obliczyć realny zysk po podatku Belki i inflacji</h2>
+        <p>
+          Większość kalkulatorów pokazuje zysk brutto. Dowiedz się ile naprawdę
+          zostanie w kieszeni — po 19% podatku i inflacji. Konkretne liczby, przykłady
+          i porównanie IKE vs konto standardowe.
+        </p>
+      </div>
+      <div class="featured-body">
+        <div class="featured-meta">
+          <span class="meta-item">📅 <strong>Marzec 2026</strong></span>
+          <span class="meta-item">⏱ <strong>8 minut</strong> czytania</span>
+          <span class="meta-item">📂 ETF, podatki, IKE/IKZE</span>
+        </div>
+        <span class="btn-read">Czytaj artykuł →</span>
+      </div>
+    </a>
+
+    <!-- COMING SOON -->
+    <div class="section-label" style="margin-top: 40px;">Wkrótce</div>
+
+    <div class="articles-grid">
+
+      <div class="coming-soon-card">
+        <span class="coming-soon-tag">Wkrótce · Obligacje</span>
+        <div class="coming-soon-title">EDO vs ETF — co wybrać przy inflacji 2%?</div>
+        <div class="coming-soon-desc">
+          Obligacje czy ETF? Porównanie konkretnych wyników przy aktualnym
+          oprocentowaniu EDO i historycznej średniej ETF.
+        </div>
+      </div>
+
+      <div class="coming-soon-card">
+        <span class="coming-soon-tag">Wkrótce · FIRE</span>
+        <div class="coming-soon-title">Ile potrzebujesz żeby nie pracować — reguła 4% po polsku</div>
+        <div class="coming-soon-desc">
+          Trinity Study w polskich realiach. Podatek Belki, inflacja GUS
+          i realistyczny plan na wolność finansową.
+        </div>
+      </div>
+
+      <div class="coming-soon-card">
+        <span class="coming-soon-tag">Wkrótce · IKE/IKZE</span>
+        <div class="coming-soon-title">IKE czy IKZE — które konto emerytalne wybrać w 2026?</div>
+        <div class="coming-soon-desc">
+          Limity, ulgi podatkowe, różnice i konkretny kalkulator który
+          pokaże co lepsze przy Twoich dochodach.
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- RIGHT — SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- Tools -->
+    <div class="sidebar-card">
+      <div class="sidebar-title">🧮 Kalkulatory</div>
+      <ul class="tools-list">
+        <li>
+          <a href="../pages/kalkulator-etf.html">
+            <span class="tool-icon">📈</span>
+            <div>
+              <div>Kalkulator ETF</div>
+              <div class="tool-desc">Procent składany, IKE/IKZE, inflacja</div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="../pages/kalkulator-obligacji.html">
+            <span class="tool-icon">🏛️</span>
+            <div>
+              <div>Obligacje skarbowe</div>
+              <div class="tool-desc">EDO, ROS, ROD, COI — realny zysk</div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="../pages/kalkulator-wolnosci.html">
+            <span class="tool-icon">🔥</span>
+            <div>
+              <div>Wolność finansowa</div>
+              <div class="tool-desc">FIRE, reguła 4%, plan na emeryturę</div>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="../pages/porownywarka.html">
+            <span class="tool-icon">⚖️</span>
+            <div>
+              <div>Porównywarka ETF</div>
+              <div class="tool-desc">ETF vs Obligacje vs Lokata</div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Topics -->
+    <div class="sidebar-card">
+      <div class="sidebar-title">📌 Tematy</div>
+      <div class="topics-list">
+        <span class="topic-tag">ETF</span>
+        <span class="topic-tag">Obligacje EDO</span>
+        <span class="topic-tag">IKE / IKZE</span>
+        <span class="topic-tag">Podatek Belki</span>
+        <span class="topic-tag">FIRE</span>
+        <span class="topic-tag">Procent składany</span>
+        <span class="topic-tag">Inflacja</span>
+        <span class="topic-tag">Wolność finansowa</span>
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="newsletter-sidebar">
+      <h3>📬 Newsletter</h3>
+      <p>Nowe artykuły i aktualizacje kalkulatorów prosto na email. Bez spamu.</p>
+      <a href="../index.html#newsletter" class="btn-newsletter">Zapisz się bezpłatnie →</a>
+    </div>
+
+  </aside>
+
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <strong>Ważna informacja:</strong> Treści publikowane na ETFkalkulator.pl mają charakter
+  wyłącznie edukacyjny i informacyjny. Nie stanowią rekomendacji inwestycyjnej, porady finansowej
+  ani doradztwa podatkowego w rozumieniu obowiązujących przepisów prawa. Przed podjęciem decyzji
+  inwestycyjnej skonsultuj się z licencjonowanym doradcą finansowym. Inwestowanie wiąże się
+  z ryzykiem utraty części lub całości zainwestowanego kapitału.
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="../pages/kalkulator-etf.html">Kalkulator ETF</a>
+    <a href="../pages/kalkulator-obligacji.html">Kalkulator obligacji</a>
+    <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
+    <a href="../pages/porownywarka.html">Porównywarka ETF</a>
+    <a href="../index.html">Strona główna</a>
+    <a href="../pages/polityka-prywatnosci.html">Polityka prywatności</a>
+    <a href="../pages/regulamin.html">Regulamin</a>
+  </div>
+  <p>© 2026 ETFkalkulator.pl — narzędzie edukacyjne dla polskich inwestorów</p>
+  <p style="margin-top:6px; font-size:13px;">Made with ❤️ by Florian</p>
+</footer>
+
+</body>
+</html>

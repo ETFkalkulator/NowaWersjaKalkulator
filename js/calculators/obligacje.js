@@ -207,7 +207,7 @@ function aktualizujKalkulator() {
   var inflacja = (utils.pobierzWartosc || window.pobierzWartosc || function(id, def) { 
   var el = document.getElementById(id); 
   return el ? parseFloat(el.value) || def : def; 
-})('input-inflacja', 2.5) / 100;
+})('input-inflacja', 3.5) / 100;
   var ikeEl = document.getElementById('input-ike');
   var wIKE = ikeEl ? ikeEl.checked : false;
   var stopaLokaty = (utils.pobierzWartosc || window.pobierzWartosc || function(id, def) { 
