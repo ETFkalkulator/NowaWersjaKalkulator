@@ -457,7 +457,60 @@
       .nav-links { display: none; }
       .calc-row { flex-direction: column; align-items: flex-start; gap: 2px; }
     }
-</style>
+
+    /* Dark mode overrides */
+    html.dark-mode .calc-example {
+      background: var(--color-bg-elevated);
+      border-color: var(--color-border-subtle);
+    }
+    html.dark-mode .calc-example-title {
+      color: var(--color-text-muted);
+    }
+    html.dark-mode .calc-row-label {
+      color: var(--color-text-secondary);
+    }
+    html.dark-mode .calc-row-value {
+      color: var(--color-text-primary);
+    }
+    html.dark-mode .calc-row.highlight {
+      background: var(--color-primary-50);
+    }
+    html.dark-mode .key-number {
+      background: var(--color-bg-elevated);
+      border-color: var(--color-border-subtle);
+    }
+    html.dark-mode .key-number-label {
+      color: var(--color-text-muted);
+    }
+    html.dark-mode .toc {
+      background: var(--color-primary-50);
+    }
+    html.dark-mode .callout-key,
+    html.dark-mode .callout-example {
+      background: var(--color-primary-50);
+    }
+    html.dark-mode .callout-warning {
+      background: var(--color-bg-secondary);
+    }
+    html.dark-mode .comparison-table tr:nth-child(even) td,
+    html.dark-mode .age-table tr:nth-child(even) td {
+      background: var(--color-bg-secondary);
+    }
+    html.dark-mode .comparison-table td,
+    html.dark-mode .age-table td {
+      color: var(--color-text-primary);
+    }
+    html.dark-mode .disclaimer {
+      background: var(--color-bg-secondary);
+      color: var(--color-text-secondary);
+    }
+    html.dark-mode .tag-green {
+      background: var(--color-primary-50);
+    }
+    html.dark-mode .tag-orange {
+      background: var(--color-bg-secondary);
+    }
+  </style>
 </head>
 <body>
 
@@ -523,7 +576,7 @@
             </svg>
           </button>
           <a href="../index.html#newsletter" class="btn btn--sm"
-            style="border: 1.5px solid var(--color-primary-300); color: var(--color-primary-700); background: white; border-radius: var(--radius-full);">Newsletter</a>
+            style="border: 1.5px solid var(--color-primary-300); color: var(--color-primary-700); background: var(--color-bg-elevated); border-radius: var(--radius-full);">Newsletter</a>
         </nav>
       </div>
     </div>
@@ -1008,19 +1061,9 @@
     to temat na osobny artykuł. Zajrzyj wkrótce.
   </p>
 
-  <!-- DISCLAIMER -->
-  <div class="disclaimer">
-    <strong>Ważna informacja:</strong> Artykuł ma charakter wyłącznie edukacyjny i informacyjny.
-    Nie stanowi rekomendacji inwestycyjnej ani porady podatkowej w rozumieniu przepisów prawa.
-    Historyczne stopy zwrotu nie gwarantują przyszłych wyników. Inwestowanie zawsze wiąże się
-    z ryzykiem utraty części lub całości kapitału. Przed podjęciem decyzji inwestycyjnych
-    skonsultuj się z licencjonowanym doradcą finansowym. Dane podatkowe (limity IKE/IKZE)
-    aktualne na marzec 2026 — sprawdź aktualne wartości na oficjalnych stronach rządowych.
-  </div>
+  </main>
 
-</main>
-
-<!-- DISCLAIMER -->
+<!-- DISCLAIMER BOX -->
 <div class="disclaimer-box">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="12" cy="12" r="10"></circle>
@@ -1032,19 +1075,6 @@
     Materiały na stronie mają charakter wyłącznie edukacyjny i poglądowy. Nie stanowią rekomendacji inwestycyjnej ani porady podatkowej w rozumieniu przepisów prawa. Inwestowanie na giełdzie zawsze wiąże się z ryzykiem utraty części lub całości kapitału. Narzędzie może zawierać uproszczenia — zawsze weryfikuj wyniki z prospektem emisyjnym funduszu.
   </div>
 </div>
-
-  <!-- DISCLAIMER BOX -->
-  <div class="disclaimer-box">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="10"></circle>
-      <line x1="12" y1="8" x2="12" y2="12"></line>
-      <line x1="12" y1="16" x2="12.01" y2="16"></line>
-    </svg>
-    <div>
-      <strong>Ważna informacja (Disclaimer)</strong>
-      Materiały na stronie mają charakter wyłącznie edukacyjny i poglądowy. Nie stanowią rekomendacji inwestycyjnej ani porady podatkowej w rozumieniu przepisów prawa. Inwestowanie na giełdzie zawsze wiąże się z ryzykiem utraty części lub całości kapitału. Narzędzie może zawierać uproszczenia — zawsze weryfikuj wyniki z prospektem emisyjnym funduszu.
-    </div>
-  </div>
 
   <!-- FOOTER -->
   <footer class="footer">
