@@ -59,6 +59,11 @@
   <link rel="stylesheet" href="../css/main.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
   <script src="../js/charts-config.js" defer></script>
+
+  <!-- Schema.org Blog structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
     "@type": "Blog",
     "name": "Blog ETFkalkulator.pl",
     "description": "Artykuły o ETF, obligacjach skarbowych, wolności finansowej i podatkach dla polskich inwestorów.",
@@ -71,19 +76,19 @@
     "inLanguage": "pl"
   }
   </script>
-
+</head>
   <style>
     :root {
-      --blue:       #1A56A0;
-      --blue-light: #EBF3FB;
-      --blue-dark:  #0f3566;
-      --green:      #27AE60;
-      --orange:     #E67E22;
-      --text:       #1a1a2e;
-      --text-muted: #60607a;
-      --bg:         #FAFAF8;
-      --white:      #ffffff;
-      --border:     #E8E8E0;
+      --blue:       var(--color-primary-500);
+      --blue-light: var(--color-primary-50);
+      --blue-dark:  var(--color-primary-700);
+      --green:      var(--color-success-500);
+      --orange:     var(--color-warning-500);
+      --text:       var(--color-text-primary);
+      --text-muted: var(--color-text-muted);
+      --bg:         var(--color-bg);
+      --white:      var(--color-bg-elevated);
+      --border:     var(--color-border-subtle);
       --font-ui:    -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       --font-serif: 'Georgia', 'Times New Roman', serif;
     }
@@ -142,8 +147,8 @@
 
     /* ── HERO ── */
     .hero {
-      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 60%, #2980b9 100%);
-      color: white;
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 60%, var(--color-primary-600) 100%);
+      color: var(--color-bg-elevated);
       padding: 60px 24px 52px;
       position: relative;
       overflow: hidden;
@@ -325,7 +330,7 @@
     }
     .coming-soon-tag {
       display: inline-block;
-      background: #f0f0eb;
+      background: var(--color-bg-secondary);
       color: var(--text-muted);
       font-size: 11px;
       font-weight: 700;
@@ -382,7 +387,7 @@
       transition: background .15s;
       border: 1px solid transparent;
     }
-    .tools-list a:hover { background: var(--blue-light); border-color: #c8dff5; color: var(--blue); }
+    .tools-list a:hover { background: var(--blue-light); border-color: var(--color-primary-200); color: var(--blue); }
     .tool-icon { font-size: 18px; flex-shrink: 0; }
     .tool-desc { font-size: 12px; color: var(--text-muted); font-weight: 400; }
 
@@ -399,7 +404,7 @@
       text-decoration: none;
       transition: background .15s;
     }
-    .topic-tag:hover { background: #d0e8f7; }
+    .topic-tag:hover { background: var(--color-primary-100); }
 
     /* Newsletter CTA sidebar */
     .newsletter-sidebar {
@@ -497,16 +502,16 @@
     }
 
     body.dark-mode {
-      --bg: #0d1117;
-      --text: #ffffff;
-      --text-muted: #9ca3af;
-      --border: #374151;
-      --blue: #3b82f6;
-      --blue-light: #1e40af;
-      --blue-dark: #1e3a8a;
-      --green: #10b981;
-      --orange: #f59e0b;
-      --white: #ffffff;
+      --bg: var(--color-bg);
+      --text: var(--color-text-primary);
+      --text-muted: var(--color-text-muted);
+      --border: var(--color-border-subtle);
+      --blue: var(--color-primary-500);
+      --blue-light: var(--color-primary-50);
+      --blue-dark: var(--color-primary-700);
+      --green: var(--color-success-500);
+      --orange: var(--color-warning-500);
+      --white: var(--color-bg-elevated);
     }
 
     body.dark-mode .nav {
@@ -534,7 +539,7 @@
     }
 
     body.dark-mode .hero {
-      background: linear-gradient(135deg, var(--bg) 0%, #1a1a2e 100%);
+      background: linear-gradient(135deg, var(--bg) 0%, var(--color-bg-secondary) 100%);
       color: var(--text);
     }
 
