@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pl">
 
 <head>
@@ -583,7 +583,7 @@
         <a href="../index.html" class="header__logo">ETF<span>kalkulator</span>.pl</a>
         <nav class="header__nav" aria-label="Nawigacja główna">
           <a href="../pages/kalkulator-etf.html">Kalkulator ETF</a>
-          <a href="../pages/kalkulator-obligacji.html" style="color: var(--color-primary-500)">Obligacje</a>
+          <a href="../pages/kalkulator-obligacji.html" class="link-primary">Obligacje</a>
           <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
           <a href="../pages/porownywarka.html">Porównywarka</a>
           <a href="../blog/index.html">Blog</a>
@@ -616,8 +616,7 @@
               <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
             </svg>
           </button>
-          <a href="../index.html#newsletter" class="btn btn--sm"
-            style="border: 1.5px solid var(--color-primary-300); color: var(--color-primary-700); background: white; border-radius: var(--radius-full);">Newsletter</a>
+          <a href="../index.html#newsletter" class="btn btn--sm btn-newsletter">Newsletter</a>
         </nav>
       </div>
     </div>
@@ -690,7 +689,7 @@
               <p class="form-hint" id="hint-stopa">
                 Sprawdź aktualne na
                 <a href="https://www.obligacjeskarbowe.pl" target="_blank" rel="noopener"
-                  style="color: var(--color-primary-500)">obligacjeskarbowe.pl</a>
+                  class="link-primary">obligacjeskarbowe.pl</a>
               </p>
             </div>
 
@@ -731,8 +730,7 @@
               </div>
               <p class="form-hint" id="hint-inflacja">
                 Aktualna inflacja GUS:
-                <a href="https://stat.gov.pl" target="_blank" rel="noopener"
-                  style="color: var(--color-primary-500)">stat.gov.pl</a>
+                <a href="https://stat.gov.pl" target="_blank" rel="noopener" class="link-primary">stat.gov.pl</a>
               </p>
             </div>
 
@@ -785,7 +783,7 @@
             </div>
             <div class="kafelek">
               <p class="kafelek__label">Podatek Belki (19%)</p>
-              <p class="kafelek__value" style="color: var(--color-error)" id="wynik-podatek-belki">0,00 zł</p>
+              <p class="kafelek__value" id="wynik-podatek-belki">0,00 zł</p>
               <p class="kafelek__hint">Odprowadzony do US</p>
             </div>
             <div class="kafelek">
@@ -793,9 +791,9 @@
               <p class="kafelek__value" id="wynik-zysk-po-podatku">0,00 zł</p>
               <p class="kafelek__hint">Twój realny zysk nominalny</p>
             </div>
-            <div class="kafelek" style="background: var(--color-green-50); border-color: var(--color-green-100)">
+            <div class="kafelek kafelek--green">
               <p class="kafelek__label">Zysk realny</p>
-              <p class="kafelek__value" style="color: var(--color-green-700)" id="wynik-zysk-realny">0,00 zł</p>
+              <p class="kafelek__value" id="wynik-zysk-realny">0,00 zł</p>
               <p class="kafelek__hint">Po podatku i inflacji</p>
             </div>
             <div class="kafelek">
@@ -803,9 +801,9 @@
               <p class="kafelek__value" id="wynik-cagr">0,00%</p>
               <p class="kafelek__hint">Roczna, po podatku</p>
             </div>
-            <div class="kafelek" style="background: var(--color-green-50); border-color: var(--color-green-100)">
+            <div class="kafelek kafelek--green">
               <p class="kafelek__label">Realna stopa zwrotu</p>
-              <p class="kafelek__value" style="color: var(--color-green-700)" id="wynik-cagr-realny">0,00%</p>
+              <p class="kafelek__value" id="wynik-cagr-realny">0,00%</p>
               <p class="kafelek__hint">Roczna, po podatku i inflacji</p>
             </div>
           </div>

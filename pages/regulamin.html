@@ -1,13 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
   <title>Regulamin ETFkalkulator.pl | Warunki korzystania z serwisu</title>
-  <meta name="description" content="Regulamin ETFkalkulator.pl. Warunki korzystania z kalkulatorów, odpowiedzialność i ograniczenia.">
-  
+  <meta name="description"
+    content="Regulamin ETFkalkulator.pl. Warunki korzystania z kalkulatorów, odpowiedzialność i ograniczenia.">
+
   <meta property="og:title" content="Regulamin ETFkalkulator.pl | Warunki korzystania z serwisu">
-  <meta property="og:description" content="Regulamin ETFkalkulator.pl. Warunki korzystania z kalkulatorów, odpowiedzialność i ograniczenia.">
+  <meta property="og:description"
+    content="Regulamin ETFkalkulator.pl. Warunki korzystania z kalkulatorów, odpowiedzialność i ograniczenia.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://etfkalkulator.pl/pages/regulamin.html">
   <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png">
@@ -17,7 +20,8 @@
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Regulamin ETFkalkulator.pl | Warunki korzystania z serwisu">
-  <meta name="twitter:description" content="Regulamin ETFkalkulator.pl. Warunki korzystania z kalkulatorów, odpowiedzialność i ograniczenia.">
+  <meta name="twitter:description"
+    content="Regulamin ETFkalkulator.pl. Warunki korzystania z kalkulatorów, odpowiedzialność i ograniczenia.">
   <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png">
 
   <!-- Favicon -->
@@ -26,9 +30,9 @@
   <!-- Google Analytics 4 — loads only after cookie consent -->
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    
+
     // Default: analytics denied until user accepts
     gtag('consent', 'default', {
       'analytics_storage': 'denied'
@@ -42,9 +46,14 @@
   <!-- Optyamizowany ładunek czcionek z Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap"></noscript>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap"
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
+  </noscript>
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/main.css">
@@ -58,13 +67,21 @@
       text-align: center;
       border-bottom: 1px solid var(--color-border-subtle);
     }
+
     .page-hero__bread {
       font-size: var(--text-xs);
       color: var(--color-text-muted);
       margin-bottom: var(--space-4);
     }
-    .page-hero__bread a { color: var(--color-primary-500); }
-    .page-hero__bread a:hover { text-decoration: underline; }
+
+    .page-hero__bread a {
+      color: var(--color-primary-500);
+    }
+
+    .page-hero__bread a:hover {
+      text-decoration: underline;
+    }
+
     .page-hero__title {
       font-family: var(--font-display);
       font-size: var(--text-3xl);
@@ -72,6 +89,7 @@
       color: var(--color-text-primary);
       margin-bottom: var(--space-4);
     }
+
     .page-hero__subtitle {
       font-size: var(--text-lg);
       color: var(--color-text-secondary);
@@ -84,9 +102,11 @@
       margin: 0 auto;
       padding: var(--space-16) 0;
     }
+
     .regulamin-section {
       margin-bottom: var(--space-12);
     }
+
     .regulamin-section__title {
       font-family: var(--font-display);
       font-size: var(--text-xl);
@@ -94,17 +114,20 @@
       color: var(--color-text-primary);
       margin-bottom: var(--space-4);
     }
+
     .regulamin-section__text {
       font-size: var(--text-base);
       line-height: var(--leading-relaxed);
       color: var(--color-text-secondary);
       margin-bottom: var(--space-4);
     }
+
     .regulamin-section__list {
       list-style: none;
       padding: 0;
       margin: var(--space-4) 0;
     }
+
     .regulamin-section__list li {
       position: relative;
       padding-left: var(--space-6);
@@ -113,6 +136,7 @@
       line-height: var(--leading-relaxed);
       color: var(--color-text-secondary);
     }
+
     .regulamin-section__list li::before {
       content: "•";
       position: absolute;
@@ -120,6 +144,7 @@
       color: var(--color-primary-500);
       font-weight: bold;
     }
+
     .regulamin-section__subtitle {
       font-size: var(--text-lg);
       font-weight: var(--weight-semibold);
@@ -127,6 +152,7 @@
       margin: var(--space-6) 0 var(--space-3) 0;
       line-height: var(--leading-tight);
     }
+
     .regulamin-section__warning {
       background: var(--color-orange-50);
       border-left: 3px solid var(--color-orange-500);
@@ -134,11 +160,13 @@
       margin: var(--space-6) 0;
       border-radius: var(--radius-md);
     }
+
     .regulamin-section__warning p {
       margin: 0;
       font-size: var(--text-sm);
       color: var(--color-orange-700);
     }
+
     .regulamin-section__important {
       background: var(--color-primary-50);
       border-left: 3px solid var(--color-primary-500);
@@ -146,6 +174,7 @@
       margin: var(--space-6) 0;
       border-radius: var(--radius-md);
     }
+
     .regulamin-section__important p {
       margin: 0;
       font-size: var(--text-sm);
@@ -153,11 +182,17 @@
     }
 
     @media (max-width: 768px) {
-      .page-hero { padding-block: var(--space-12) var(--space-8); }
-      .regulamin-content { padding: var(--space-12) 0; }
+      .page-hero {
+        padding-block: var(--space-12) var(--space-8);
+      }
+
+      .regulamin-content {
+        padding: var(--space-12) 0;
+      }
     }
   </style>
 </head>
+
 <body>
   <!-- Cookie Consent Banner -->
   <div id="cookie-consent" class="cookie-consent" style="display: none;">
@@ -165,7 +200,7 @@
       <div class="cookie-consent__content">
         <h4 class="cookie-consent__title">Prywatno i pliki cookies</h4>
         <p class="cookie-consent__text">
-          ETFkalkulator.pl uywa plik�w cookies do analizy ruchu i personalizacji treci.
+          ETFkalkulator.pl uywa plik�w cookies do analizy ruchu i personalizacji treci.
           Kontynuujc przegldanie zgadzasz si na nasz
           <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__link">polityk cookies</a>.
         </p>
@@ -173,7 +208,8 @@
       <div class="cookie-consent__actions">
         <button id="cookie-accept" class="cookie-consent__btn cookie-consent__btn--accept">Akceptuj</button>
         <button id="cookie-reject" class="cookie-consent__btn cookie-consent__btn--reject">Odrzu</button>
-        <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__btn cookie-consent__btn--settings">Ustawienia</a>
+        <a href="../pages/polityka-prywatnosci.html#cookies"
+          class="cookie-consent__btn cookie-consent__btn--settings">Ustawienia</a>
       </div>
     </div>
   </div>
@@ -189,24 +225,31 @@
         <a href="../pages/porownywarka.html">Porównywarka</a>
         <a href="../blog/index.html">Blog</a>
         <a href="../pages/o-projekcie.html">O projekcie</a>
-      <button id="btn-darkmode" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="
+        <button id="btn-darkmode" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="
           width: 38px; height: 38px; border-radius: var(--radius-full); 
           border: 1.5px solid var(--color-border); background: var(--color-bg-elevated); 
           cursor: pointer; display: flex; align-items: center; justify-content: center; 
           transition: all var(--transition-fast); flex-shrink: 0;
         ">
-          <svg id="ikona-slonce" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"/>
-            <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          <svg id="ikona-slonce" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
           </svg>
-          <svg id="ikona-ksiezyc" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
-            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+          <svg id="ikona-ksiezyc" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            style="display:none">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
           </svg>
         </button>
-        <a href="../index.html#newsletter" class="btn btn--sm" style="border: 1.5px solid var(--color-primary-300); color: var(--color-primary-700); background: white; border-radius: var(--radius-full);">Newsletter</a>
+        <a href="../index.html#newsletter" class="btn btn--sm btn-newsletter">Newsletter</a>
       </nav>
     </div>
   </header>
@@ -243,7 +286,7 @@
       <section class="regulamin-section">
         <h2 class="regulamin-section__title">1. Wprowadzenie</h2>
         <p class="regulamin-section__text">
-          Niniejszy regulamin określa warunki korzystania z serwisu ETFkalkulator.pl. 
+          Niniejszy regulamin określa warunki korzystania z serwisu ETFkalkulator.pl.
           Korzystając z serwisu, potwierdzasz, że zapoznałeś się z regulaminem i akceptujesz jego postanowienia.
         </p>
         <p class="regulamin-section__text">
@@ -256,8 +299,10 @@
         <h2 class="regulamin-section__title">2. Definicje</h2>
         <p class="regulamin-section__text">W rozumieniu niniejszego regulaminu:</p>
         <ul class="regulamin-section__list">
-          <li><strong>Administrator</strong> - osoba fizyczna będąca właścicielem serwisu ETFkalkulator.pl, świadcząca usługi niekomercyjnie</li>
-          <li><strong>Serwis</strong> - strona internetowa ETFkalkulator.pl wraz z wszystkimi podstronami i narzędziami</li>
+          <li><strong>Administrator</strong> - osoba fizyczna będąca właścicielem serwisu ETFkalkulator.pl, świadcząca
+            usługi niekomercyjnie</li>
+          <li><strong>Serwis</strong> - strona internetowa ETFkalkulator.pl wraz z wszystkimi podstronami i narzędziami
+          </li>
           <li><strong>Użytkownik</strong> - osoba korzystająca z Serwisu</li>
           <li><strong>Kalkulatory</strong> - narzędzia do obliczania parametrów inwestycyjnych dostępne w Serwisie</li>
           <li><strong>Newsletter</strong> - usługa informacyjna świadczona przez Serwis</li>
@@ -280,11 +325,11 @@
         <p class="regulamin-section__text">
           Wszystkie narzędzia są dostępne bezpłatnie i nie wymagają rejestracji.
         </p>
-        
+
         <h3 class="regulamin-section__subtitle">Wymagania techniczne</h3>
         <p class="regulamin-section__text">
-          Do korzystania z Serwisu niezbędne jest urządzenie z dostępem do sieci Internet, 
-          przeglądarka internetowa obsługująca JavaScript (np. Chrome, Firefox, Safari) 
+          Do korzystania z Serwisu niezbędne jest urządzenie z dostępem do sieci Internet,
+          przeglądarka internetowa obsługująca JavaScript (np. Chrome, Firefox, Safari)
           oraz aktywne połączenie internetowe.
         </p>
       </section>
@@ -292,7 +337,7 @@
       <!-- PRAWA I OBOWIĄZKI UŻYTKOWNIKA -->
       <section class="regulamin-section">
         <h2 class="regulamin-section__title">4. Prawa i obowiązki użytkownika</h2>
-        
+
         <div class="regulamin-section__important">
           <p><strong>Ważne:</strong> Pamiętaj, że ETFkalkulator.pl to narzędzie edukacyjne, nie porada inwestycyjna.</p>
         </div>
@@ -303,7 +348,7 @@
           <li>Zapisu i rezygnacji z newslettera w dowolnym momencie</li>
           <li>Dostępu do informacji o polityce prywatności</li>
         </ul>
-        
+
         <p class="regulamin-section__text">Użytkownik zobowiązuje się do:</p>
         <ul class="regulamin-section__list">
           <li>Niekorzystania z Serwisu w celach niezgodnych z prawem</li>
@@ -315,7 +360,7 @@
       <!-- OGRANICZENIA ODPOWIEDZIALNOŚCI -->
       <section class="regulamin-section">
         <h2 class="regulamin-section__title">5. Ograniczenia odpowiedzialności</h2>
-        
+
         <div class="regulamin-section__warning">
           <p><strong>BARDZO WAŻNE:</strong> ETFkalkulator.pl nie świadczy usług doradztwa inwestycyjnego.</p>
         </div>
@@ -329,9 +374,9 @@
           <li>Straty finansowe Użytkownika wynikające z inwestycji</li>
           <li>Zmiany w przepisach prawnych lub podatkowych po dacie publikacji kalkulatorów</li>
         </ul>
-        
+
         <p class="regulamin-section__text">
-          Wszystkie obliczenia mają charakter wyłącznie edukacyjny i informacyjny. 
+          Wszystkie obliczenia mają charakter wyłącznie edukacyjny i informacyjny.
           Przed podjęciem decyzji inwestycyjnej skonsultuj się z licencjonowanym doradcą inwestycyjnym.
         </p>
       </section>
@@ -349,7 +394,7 @@
           <li>Inflacja jest zmienną trudną do przewidzenia</li>
         </ul>
         <p class="regulamin-section__text">
-          Administrator dokłada wszelkich starań, aby kalkulatory były aktualne, 
+          Administrator dokłada wszelkich starań, aby kalkulatory były aktualne,
           jednak nie gwarantuje ich pełnej dokładności w przyszłości.
         </p>
       </section>
@@ -358,11 +403,11 @@
       <section class="regulamin-section">
         <h2 class="regulamin-section__title">7. Prawa autorskie</h2>
         <p class="regulamin-section__text">
-          Wszystkie treści dostępne w Serwisie, w tym teksty, grafiki, kalkulatory i kody źródłowe, 
+          Wszystkie treści dostępne w Serwisie, w tym teksty, grafiki, kalkulatory i kody źródłowe,
           są chronione prawem autorskim i należą do ETFkalkulator.pl.
         </p>
         <p class="regulamin-section__text">
-          Zabrania się kopiowania, rozpowszechniania i modyfikowania treści Serwisu bez 
+          Zabrania się kopiowania, rozpowszechniania i modyfikowania treści Serwisu bez
           wyraźnej zgody Administratora.
         </p>
       </section>
@@ -371,11 +416,11 @@
       <section class="regulamin-section">
         <h2 class="regulamin-section__title">8. Newsletter</h2>
         <p class="regulamin-section__text">
-          Zapis na newsletter jest dobrowolny. Użytkownik może wypisać się z newslettera 
+          Zapis na newsletter jest dobrowolny. Użytkownik może wypisać się z newslettera
           w każdej chwili klikając link "unsubscribe" w wiadomości e-mail.
         </p>
         <p class="regulamin-section__text">
-          Newsletter zawiera informacje o nowych narzędziach, analizach rynku i aktualnościach 
+          Newsletter zawiera informacje o nowych narzędziach, analizach rynku i aktualnościach
           związanych z ETFkalkulator.pl.
         </p>
       </section>
@@ -384,11 +429,11 @@
       <section class="regulamin-section">
         <h2 class="regulamin-section__title">9. Przetwarzanie danych osobowych</h2>
         <p class="regulamin-section__text">
-          Szczegółowe zasady przetwarzania danych osobowych określa Polityka Prywatności 
+          Szczegółowe zasady przetwarzania danych osobowych określa Polityka Prywatności
           dostępna pod adresem: <a href="polityka-prywatnosci.html">polityka-prywatnosci.html</a>
         </p>
         <p class="regulamin-section__text">
-          Korzystanie z kalkulatorów nie wymaga podawania żadnych danych osobowych. 
+          Korzystanie z kalkulatorów nie wymaga podawania żadnych danych osobowych.
           Jedynym wyjątkiem jest zapis na newsletter, który wymaga podania adresu e-mail.
         </p>
       </section>
@@ -397,11 +442,11 @@
       <section class="regulamin-section">
         <h2 class="regulamin-section__title">10. Zmiany w regulaminie</h2>
         <p class="regulamin-section__text">
-          Administrator zastrzega sobie prawo do wprowadzania zmian w niniejszym regulaminie. 
+          Administrator zastrzega sobie prawo do wprowadzania zmian w niniejszym regulaminie.
           Wszelkie zmiany będą publikowane na tej stronie.
         </p>
         <p class="regulamin-section__text">
-          Zmiany w regulaminie wchodzą w życie z dniem publikacji. 
+          Zmiany w regulaminie wchodzą w życie z dniem publikacji.
           Kontynuowanie korzystania z Serwisu po zmianach oznacza akceptację nowego regulaminu.
         </p>
       </section>
@@ -410,8 +455,9 @@
       <section class="regulamin-section">
         <h2 class="regulamin-section__title">10. Reklamacje</h2>
         <p class="regulamin-section__text">
-          Reklamacje dotyczące działania Serwisu można zgłaszać na adres: 
-          <a href="mailto:kontakt@etfkalkulator.pl" style="color: var(--color-primary-500); text-decoration: none; font-weight: var(--weight-medium);">kontakt@etfkalkulator.pl</a>
+          Reklamacje dotyczące działania Serwisu można zgłaszać na adres:
+          <a href="mailto:kontakt@etfkalkulator.pl" class="link-primary"
+            style="text-decoration: none; font-weight: var(--weight-medium);">kontakt@etfkalkulator.pl</a>
         </p>
         <p class="regulamin-section__text">
           Administrator rozpatrzy reklamację w terminie 14 dni.
@@ -422,12 +468,12 @@
       <section class="regulamin-section">
         <h2 class="regulamin-section__title">11. Postanowienia końcowe</h2>
         <p class="regulamin-section__text">
-          W sprawach nieuregulowanych niniejszym regulaminem zastosowanie mają przepisy 
-          powszechnie obowiązującego prawa polskiego, w szczególności Kodeksu Cywilnego 
+          W sprawach nieuregulowanych niniejszym regulaminem zastosowanie mają przepisy
+          powszechnie obowiązującego prawa polskiego, w szczególności Kodeksu Cywilnego
           i ustawy o prawie autorskim i prawach pokrewnych.
         </p>
         <p class="regulamin-section__text">
-          Wszelkie spory wynikające z korzystania z Serwisu będą rozstrzygane przez sąd 
+          Wszelkie spory wynikające z korzystania z Serwisu będą rozstrzygane przez sąd
           właściwy dla siedziby Administratora.
         </p>
         <p class="regulamin-section__text">
@@ -439,8 +485,9 @@
       <section class="regulamin-section">
         <h2 class="regulamin-section__title">12. Kontakt</h2>
         <p class="regulamin-section__text">
-          W przypadku pytań dotyczących regulaminu lub spraw związanych z funkcjonowaniem serwisu, 
-          prosimy o kontakt przez email: <a href="mailto:kontakt@etfkalkulator.pl" style="color: var(--color-primary-500); text-decoration: none; font-weight: var(--weight-medium);">kontakt@etfkalkulator.pl</a>
+          W przypadku pytań dotyczących regulaminu lub spraw związanych z funkcjonowaniem serwisu,
+          prosimy o kontakt przez email: <a href="mailto:kontakt@etfkalkulator.pl" class="link-primary"
+            style="text-decoration: none; font-weight: var(--weight-medium);">kontakt@etfkalkulator.pl</a>
         </p>
         <p class="regulamin-section__text">
           Odpowiemy na Twoje zapytanie w ciągu 7 dni roboczych.
@@ -454,53 +501,54 @@
   <footer class="footer">
     <div class="footer__inner">
       <div class="footer__links">
-          <a href="../pages/kalkulator-etf.html">Kalkulator ETF</a>
-          <a href="../pages/kalkulator-obligacji.html">Kalkulator obligacji</a>
-          <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
-          <a href="../pages/porownywarka.html">Porównywarka ETF</a>
-          <a href="../blog/index.html">Blog</a>
-          <a href="../pages/o-projekcie.html">O projekcie</a>
-          <a href="../pages/polityka-prywatnosci.html">Polityka prywatności</a>
-          <a href="../pages/regulamin.html">Regulamin</a>
+        <a href="../pages/kalkulator-etf.html">Kalkulator ETF</a>
+        <a href="../pages/kalkulator-obligacji.html">Kalkulator obligacji</a>
+        <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
+        <a href="../pages/porownywarka.html">Porównywarka ETF</a>
+        <a href="../blog/index.html">Blog</a>
+        <a href="../pages/o-projekcie.html">O projekcie</a>
+        <a href="../pages/polityka-prywatnosci.html">Polityka prywatności</a>
+        <a href="../pages/regulamin.html">Regulamin</a>
       </div>
       <p class="disclaimer">
-        ETFkalkulator.pl to narzędzie edukacyjne. Nie stanowi porady inwestycyjnej w rozumieniu Ustawy o obrocie instrumentami finansowymi.
+        ETFkalkulator.pl to narzędzie edukacyjne. Nie stanowi porady inwestycyjnej w rozumieniu Ustawy o obrocie
+        instrumentami finansowymi.
       </p>
     </div>
   </footer>
 
   <script>
     function przelaczTryb() {
-      var html    = document.documentElement;
-      var slonce  = document.getElementById('ikona-slonce');
+      var html = document.documentElement;
+      var slonce = document.getElementById('ikona-slonce');
       var ksiezyc = document.getElementById('ikona-ksiezyc');
-      var ciemny  = html.classList.contains('dark-mode') ||
+      var ciemny = html.classList.contains('dark-mode') ||
         (!html.classList.contains('light-mode') &&
-         window.matchMedia('(prefers-color-scheme: dark)').matches);
+          window.matchMedia('(prefers-color-scheme: dark)').matches);
 
       if (ciemny) {
         html.classList.remove('dark-mode');
         html.classList.add('light-mode');
-        if (slonce)  slonce.style.display = 'block';
+        if (slonce) slonce.style.display = 'block';
         if (ksiezyc) ksiezyc.style.display = 'none';
         localStorage.setItem('etf-tryb', 'jasny');
       } else {
         html.classList.remove('light-mode');
         html.classList.add('dark-mode');
-        if (slonce)  slonce.style.display = 'none';
+        if (slonce) slonce.style.display = 'none';
         if (ksiezyc) ksiezyc.style.display = 'block';
         localStorage.setItem('etf-tryb', 'ciemny');
       }
     }
-    
+
     // Inicjalizacja przy ładowaniu strony
-    (function() {
-      var html     = document.documentElement;
+    (function () {
+      var html = document.documentElement;
       var zapisany = localStorage.getItem('etf-tryb');
-      var slonce   = document.getElementById('ikona-slonce');
-      var ksiezyc  = document.getElementById('ikona-ksiezyc');
+      var slonce = document.getElementById('ikona-slonce');
+      var ksiezyc = document.getElementById('ikona-ksiezyc');
       var systemCiemny = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      
+
       if (zapisany === 'ciemny' || (!zapisany && systemCiemny)) {
         html.classList.add('dark-mode');
         html.classList.remove('light-mode');
@@ -514,7 +562,7 @@
       }
     })();</script>
 
-<script>
+  <script>
     // Cookie Consent Management
     document.addEventListener('DOMContentLoaded', function () {
       var cookieConsent = document.getElementById('cookie-consent');
@@ -527,7 +575,7 @@
         gtag('consent', 'update', { 'analytics_storage': 'granted' });
         gtag('event', 'page_view');
       }
-      if(acceptBtn) {
+      if (acceptBtn) {
         acceptBtn.addEventListener('click', function () {
           localStorage.setItem('etf-cookie-consent', 'accepted');
           cookieConsent.style.display = 'none';
@@ -537,7 +585,7 @@
           }
         });
       }
-      if(rejectBtn) {
+      if (rejectBtn) {
         rejectBtn.addEventListener('click', function () {
           localStorage.setItem('etf-cookie-consent', 'rejected');
           cookieConsent.style.display = 'none';
@@ -549,4 +597,5 @@
     });
   </script>
 </body>
+
 </html>

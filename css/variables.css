@@ -27,7 +27,8 @@
   --color-primary-200: #bae0fd;
   --color-primary-300: #7cc8fb;
   --color-primary-400: #38abf8;
-  --color-primary-500: #1A56A0; /* Brand Blue from PRD */
+  --color-primary-500: #1A56A0;
+  /* Brand Blue from PRD */
   --color-primary-600: #0e4484;
   --color-primary-700: #0d386b;
   --color-primary-800: #102f57;
@@ -40,7 +41,8 @@
   --color-green-200: #a7f3d0;
   --color-green-300: #6ee7b7;
   --color-green-400: #34d399;
-  --color-green-500: #10B981; /* Emerald */
+  --color-green-500: #10B981;
+  /* Emerald */
   --color-green-600: #059669;
   --color-green-700: #047857;
   --color-green-800: #065f46;
@@ -52,16 +54,20 @@
   --color-gold-200: #fde68a;
   --color-gold-300: #fcd34d;
   --color-gold-400: #fbbf24;
-  --color-gold-500: #F59E0B; /* Gold-ish */
+  --color-gold-500: #F59E0B;
+  /* Gold-ish */
   --color-gold-600: #D97706;
   --color-gold-700: #B45309;
   --color-gold-800: #92400e;
   --color-gold-900: #78350f;
 
   /* Inne */
-  --color-error: #FF3B30; /* Apple Red */
-  --color-warning: #FF9500; /* Apple Orange */
-  --color-info: #5856D6; /* Apple Indigo */
+  --color-error: #FF3B30;
+  /* Apple Red */
+  --color-warning: #FF9500;
+  /* Apple Orange */
+  --color-info: #5856D6;
+  /* Apple Indigo */
 
   /* --- Typografia --- */
   --text-xs: 0.75rem;
@@ -140,61 +146,91 @@
   --max-width: 960px;
   --max-width-text: 680px;
   --header-height: 64px;
+  /* --- NOWE ZMIENNE SEMANTYCZNE (domyślnie tryb jasny) --- */
+  --bg-primary: var(--color-bg);
+  --bg-secondary: var(--color-bg-elevated);
+  --bg-tertiary: var(--color-bg-secondary);
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-text-secondary);
+  --text-muted: var(--color-text-muted);
+  --border-color: var(--color-border);
+  --accent-blue: var(--color-primary-500);
+  --accent-green: var(--color-green-600);
+  --accent-orange: var(--color-gold-500);
+  --input-bg: #ffffff;
+  --input-border: var(--color-border);
+  --result-card-bg: var(--color-bg-elevated);
+  --table-header-bg: var(--color-bg-secondary);
+  --table-row-alt: #fcfcfc;
+  --callout-bg: var(--color-bg-elevated);
+  --shadow: var(--shadow-sm);
 }
 
 
 /* ==========================================================
-   TRYB CIEMNY — zarządzany przez JS (klasa na html)
+   TRYB CIEMNY — Uruchamiany, gdy system wykryje prefers-color-scheme: dark
+   LUB aktywowany ręcznie klasą .dark-mode / .light-mode na tagu html
    ========================================================== */
 
-/* Systemowy dark mode */
 @media (prefers-color-scheme: dark) {
-  html:not(.light-mode) {
-    --color-bg: #1C1C1E;
-    --color-bg-secondary: #2C2C2E;
-    --color-bg-elevated: #3A3A3C;
-    --color-text-primary: #F5F5F7;
-    --color-text-secondary: #AEAEB2;
-    --color-text-muted: #6E6E73;
-    --color-border: #48484A;
-    --color-border-subtle: #3A3A3C;
-    --color-green-50: #1a2e23;
-    --color-green-100: #1f3829;
+  :root:not(.light-mode) {
+    --bg-primary: #0f1117;
+    --bg-secondary: #1a1d27;
+    --bg-tertiary: #22263a;
+    --text-primary: #e8eaf0;
+    --text-secondary: #9ba3b8;
+    --text-muted: #6b7280;
+    --border-color: #2e3347;
+    --accent-blue: #4d8ef0;
+    --accent-green: #4aab76;
+    --accent-orange: #f4a261;
+    --input-bg: #1e2235;
+    --input-border: #3a4060;
+    --result-card-bg: #1a2540;
+    --table-header-bg: #1a2540;
+    --table-row-alt: #1e2235;
+    --callout-bg: #1e2235;
+    --shadow: rgba(0, 0, 0, 0.4);
   }
-
-  html:not(.light-mode) .header {
-    background: rgba(28, 28, 30, 0.9);
-  }
 }
 
-/* Wymuszony ciemny — przez przycisk */
-html.dark-mode {
-  --color-bg: #1C1C1E;
-  --color-bg-secondary: #2C2C2E;
-  --color-bg-elevated: #3A3A3C;
-  --color-text-primary: #F5F5F7;
-  --color-text-secondary: #AEAEB2;
-  --color-text-muted: #6E6E73;
-  --color-border: #48484A;
-  --color-border-subtle: #3A3A3C;
-  --color-green-50: #1a2e23;
-  --color-green-100: #1f3829;
+html.dark-mode :root,
+html.dark-mode body {
+  --bg-primary: #0f1117;
+  --bg-secondary: #1a1d27;
+  --bg-tertiary: #22263a;
+  --text-primary: #e8eaf0;
+  --text-secondary: #9ba3b8;
+  --text-muted: #6b7280;
+  --border-color: #2e3347;
+  --accent-blue: #4d8ef0;
+  --accent-green: #4aab76;
+  --accent-orange: #f4a261;
+  --input-bg: #1e2235;
+  --input-border: #3a4060;
+  --result-card-bg: #1a2540;
+  --table-header-bg: #1a2540;
+  --table-row-alt: #1e2235;
+  --callout-bg: #1e2235;
+  --shadow: rgba(0, 0, 0, 0.4);
 }
 
-html.dark-mode .header {
-  background: rgba(28, 28, 30, 0.9);
-}
-
-/* Wymuszony jasny — nadpisuje systemowy dark */
-html.light-mode {
-  --color-bg: #F8F7F2 !important;
-  --color-bg-secondary: #F0EFE8 !important;
-  --color-bg-elevated: #FFFFFF !important;
-  --color-text-primary: #1C1C1E !important;
-  --color-text-secondary: #6E6E73 !important;
-  --color-text-muted: #AEAEB2 !important;
-  --color-border: #E5E7EB !important;
-  --color-border-subtle: #F0F0F0 !important;
-  --color-green-50: #d8f3dc !important;
-  --color-green-100: #b7e4c7 !important;
+html.light-mode :root {
+  --bg-primary: var(--color-bg);
+  --bg-secondary: var(--color-bg-elevated);
+  --bg-tertiary: var(--color-bg-secondary);
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-text-secondary);
+  --text-muted: var(--color-text-muted);
+  --border-color: var(--color-border);
+  --accent-blue: var(--color-primary-500);
+  --accent-green: var(--color-green-600);
+  --accent-orange: var(--color-gold-500);
+  --input-bg: #ffffff;
+  --input-border: var(--color-border);
+  --result-card-bg: var(--color-bg-elevated);
+  --table-header-bg: var(--color-bg-secondary);
+  --table-row-alt: #fcfcfc;
+  --callout-bg: var(--color-bg-elevated);
+  --shadow: var(--shadow-sm);
 }

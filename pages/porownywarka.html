@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pl">
 
 <head>
@@ -689,7 +689,7 @@
       <div class="cookie-consent__content">
         <h4 class="cookie-consent__title">Prywatno i pliki cookies</h4>
         <p class="cookie-consent__text">
-          ETFkalkulator.pl uywa plik�w cookies do analizy ruchu i personalizacji treci.
+          ETFkalkulator.pl uywa plik�w cookies do analizy ruchu i personalizacji treci.
           Kontynuujc przegldanie zgadzasz si na nasz
           <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__link">polityk cookies</a>.
         </p>
@@ -697,7 +697,8 @@
       <div class="cookie-consent__actions">
         <button id="cookie-accept" class="cookie-consent__btn cookie-consent__btn--accept">Akceptuj</button>
         <button id="cookie-reject" class="cookie-consent__btn cookie-consent__btn--reject">Odrzu</button>
-        <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__btn cookie-consent__btn--settings">Ustawienia</a>
+        <a href="../pages/polityka-prywatnosci.html#cookies"
+          class="cookie-consent__btn cookie-consent__btn--settings">Ustawienia</a>
       </div>
     </div>
   </div>
@@ -710,7 +711,7 @@
           <a href="../pages/kalkulator-etf.html">Kalkulator ETF</a>
           <a href="../pages/kalkulator-obligacji.html">Obligacje</a>
           <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
-          <a href="../pages/porownywarka.html" style="color: var(--color-primary-500)">Porównywarka</a>
+          <a href="../pages/porownywarka.html" class="link-primary">Porównywarka</a>
           <a href="../blog/index.html">Blog</a>
           <a href="../pages/o-projekcie.html">O projekcie</a>
           <button id="btn-darkmode" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="
@@ -741,8 +742,7 @@
               <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
             </svg>
           </button>
-          <a href="../index.html#newsletter" class="btn btn--sm"
-            style="border: 1.5px solid var(--color-primary-300); color: var(--color-primary-700); background: white; border-radius: var(--radius-full);">Newsletter</a>
+          <a href="../index.html#newsletter" class="btn btn--sm btn-newsletter">Newsletter</a>
         </nav>
       </div>
     </div>
@@ -1040,7 +1040,7 @@
                 <p class="scen-box__cagr" id="scen-pes-cagr">—</p>
               </div>
               <div class="scen-box" style="border:1.5px solid var(--color-primary-100)">
-                <p class="scen-box__nazwa" style="color:var(--color-primary-600)">📈 Bazowy</p>
+                <p class="scen-box__nazwa">📈 Bazowy</p>
                 <p class="scen-box__stopa">7% / rok — historyczna średnia</p>
                 <p class="scen-box__kapital" id="scen-baz-kapital">—</p>
                 <p class="scen-box__zysk" id="scen-baz-zysk">—</p>
@@ -1141,8 +1141,8 @@
       </div>
 
       <div style="margin-top: var(--space-16)">
-        <p class="disclaimer"
-          style="font-size:var(--text-sm);color:var(--color-text-secondary);background:var(--color-bg-elevated);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-4);line-height:1.6;">
+        <p class="disclaimer" class="disclaimer"
+          style="font-size:var(--text-sm);color:var(--text-secondary);background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:var(--space-4);line-height:1.6;">
           ⚠️ Kalkulator ma charakter wyłącznie edukacyjny. Stopy zwrotu ETF są hipotetyczne — przeszłe wyniki nie
           gwarantują przyszłych. Obligacje zakładają utrzymanie do wykupu. Lokata zakłada stałą stopę przez cały okres.
           Nie stanowi rekomendacji inwestycyjnej.
@@ -1239,7 +1239,7 @@
       }
     })();
   </script>
-<script>
+  <script>
     // Cookie Consent Management
     document.addEventListener('DOMContentLoaded', function () {
       var cookieConsent = document.getElementById('cookie-consent');
@@ -1252,7 +1252,7 @@
         gtag('consent', 'update', { 'analytics_storage': 'granted' });
         gtag('event', 'page_view');
       }
-      if(acceptBtn) {
+      if (acceptBtn) {
         acceptBtn.addEventListener('click', function () {
           localStorage.setItem('etf-cookie-consent', 'accepted');
           cookieConsent.style.display = 'none';
@@ -1262,7 +1262,7 @@
           }
         });
       }
-      if(rejectBtn) {
+      if (rejectBtn) {
         rejectBtn.addEventListener('click', function () {
           localStorage.setItem('etf-cookie-consent', 'rejected');
           cookieConsent.style.display = 'none';

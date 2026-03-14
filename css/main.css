@@ -327,7 +327,9 @@ body {
 .premium-result::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 40%;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
   pointer-events: none;
@@ -337,8 +339,10 @@ body {
 .premium-result::after {
   content: '';
   position: absolute;
-  bottom: -50%; right: -10%;
-  width: 250px; height: 250px;
+  bottom: -50%;
+  right: -10%;
+  width: 250px;
+  height: 250px;
   background: radial-gradient(circle, rgba(124, 200, 251, 0.15) 0%, rgba(124, 200, 251, 0) 70%);
   border-radius: 50%;
   pointer-events: none;
@@ -368,14 +372,14 @@ body {
   letter-spacing: -0.02em;
   margin-bottom: var(--space-3);
   text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  
+
   /* Fallback koloru przed gradientem tekstowym - ważne jeśli background-clip nie zadziała */
   color: #FFFFFF;
   background: linear-gradient(180deg, #FFFFFF 0%, #E0EFFE 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  
+
   position: relative;
   z-index: 1;
 }
@@ -2011,4 +2015,512 @@ body,
     width: 100%;
     text-align: center;
   }
+}
+
+/* ==========================================================
+   UTILITY CLASSES (Extracted from HTML inline styles)
+   ========================================================== */
+.btn-newsletter {
+  border: 1.5px solid var(--color-primary-300);
+  color: var(--color-primary-700);
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-full);
+}
+
+.link-primary {
+  color: var(--color-primary-500);
+}
+
+.kafelek--green {
+  background: var(--color-green-50);
+  border-color: var(--color-green-100);
+}
+
+.kafelek--green .kafelek__value {
+  color: var(--color-green-700);
+}
+
+.kafelek--red .kafelek__value {
+  color: var(--color-error);
+}
+
+/* ==========================================================
+   DARK MODE OVERRIDES (System-level preference)
+   ========================================================== */
+/* SYSTEM DARK MODE (z wyłączeniem wymuszonego light) */
+@media (prefers-color-scheme: dark) {
+
+  /* Podstawa */
+  html:not(.light-mode) body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+  }
+
+  /* Wybrane nagłówki i teksty ogólne */
+  html:not(.light-mode) h1,
+  html:not(.light-mode) h2,
+  html:not(.light-mode) h3,
+  html:not(.light-mode) h4,
+  html:not(.light-mode) h5,
+  html:not(.light-mode) h6,
+  html:not(.light-mode) label {
+    color: var(--text-primary);
+  }
+
+  html:not(.light-mode) .header-subtitle,
+  html:not(.light-mode) .hint,
+  html:not(.light-mode) .card p,
+  html:not(.light-mode) .section-desc {
+    color: var(--text-secondary);
+  }
+
+  /* Nawigacja (Nav bar) */
+  html:not(.light-mode) .header {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  html:not(.light-mode) .nav__item a,
+  html:not(.light-mode) .mobile-menu__nav a {
+    color: var(--text-primary);
+  }
+
+  html:not(.light-mode) .nav__item a:hover,
+  html:not(.light-mode) .nav__item a.active,
+  html:not(.light-mode) .mobile-menu__nav a:hover,
+  html:not(.light-mode) .mobile-menu__nav a.active {
+    color: var(--accent-blue);
+  }
+
+  /* Formularze i Inputy (Wyjątkowe reguły wspierające Android) */
+  html:not(.light-mode) .input-group label,
+  html:not(.light-mode) .form-label,
+  html:not(.light-mode) label {
+    color: var(--text-secondary) !important;
+  }
+
+  html:not(.light-mode) input,
+  html:not(.light-mode) select,
+  html:not(.light-mode) textarea {
+    background: var(--input-bg) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--input-border) !important;
+    caret-color: var(--accent-blue) !important;
+  }
+
+  html:not(.light-mode) input::placeholder,
+  html:not(.light-mode) select::placeholder,
+  html:not(.light-mode) textarea::placeholder {
+    color: var(--text-muted) !important;
+  }
+
+  /* GradientHero Fix */
+  html:not(.light-mode) .hero-section,
+  html:not(.light-mode) .hero,
+  html:not(.light-mode) .page-header {
+    background: #0d1b2e !important;
+    background: linear-gradient(135deg, #0d1b2e 0%, #0f1117 100%) !important;
+  }
+
+  /* Karty i sekcje ogólne (Kafelki, neutral tiles, blog cards) */
+  html:not(.light-mode) .card,
+  html:not(.light-mode) .sekcja-biznesowa,
+  html:not(.light-mode) .kalkulator-sekcja,
+  html:not(.light-mode) .scen-box,
+  html:not(.light-mode) .scenariusz-btn,
+  html:not(.light-mode) .calc-example,
+  html:not(.light-mode) .key-number,
+  html:not(.light-mode) .toc {
+    background: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+  }
+
+  /* Karty wynikowe konkretne (Kafelki) */
+  html:not(.light-mode) .kafelek[class*="wynik"],
+  html:not(.light-mode) .kafelek {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+  }
+
+  /* Karty zielone (zysk, kapitał końcowy) */
+  html:not(.light-mode) .kafelek.green,
+  html:not(.light-mode) .kafelek-zielony,
+  html:not(.light-mode) .kafelek--green {
+    background: #0d2e1a !important;
+    border-color: #1a4d2e !important;
+  }
+
+  html:not(.light-mode) .kafelek.green .kafelek__value,
+  html:not(.light-mode) .kafelek--green .kafelek__value {
+    color: var(--text-primary) !important;
+  }
+
+  /* Karty czerwone (Podatek Belki) */
+  html:not(.light-mode) .kafelek.red,
+  html:not(.light-mode) .kafelek--red {
+    background: #2e0d0d !important;
+    border-color: #4d1a1a !important;
+  }
+
+  html:not(.light-mode) .kafelek.red .kafelek__value,
+  html:not(.light-mode) .kafelek--red .kafelek__value,
+  html:not(.light-mode) #wynik-podatek-belki,
+  html:not(.light-mode) #etf-wynik-podatek-belki {
+    color: #ff8080 !important;
+  }
+
+  /* Tabela roczna / harmonogramy i tabele na blogu */
+  html:not(.light-mode) .table,
+  html:not(.light-mode) .comparison-table,
+  html:not(.light-mode) .age-table {
+    color: var(--text-primary);
+  }
+
+  html:not(.light-mode) .table th,
+  html:not(.light-mode) .comparison-table th,
+  html:not(.light-mode) .age-table th {
+    background: var(--table-header-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+  }
+
+  html:not(.light-mode) .table tr,
+  html:not(.light-mode) .comparison-table tr,
+  html:not(.light-mode) .age-table tr {
+    border-color: var(--border-color);
+  }
+
+  html:not(.light-mode) .table tr:nth-child(even),
+  html:not(.light-mode) .comparison-table tr:nth-child(even),
+  html:not(.light-mode) .age-table tr:nth-child(even) {
+    background: var(--table-row-alt);
+  }
+
+  html:not(.light-mode) .table td,
+  html:not(.light-mode) .comparison-table td,
+  html:not(.light-mode) .age-table td {
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+  }
+
+  /* Callouty w artykułach Bloga oraz standardowe */
+  html:not(.light-mode) .callout,
+  html:not(.light-mode) .callout-box,
+  html:not(.light-mode) .disclaimer,
+  html:not(.light-mode) .callout-title,
+  html:not(.light-mode) .calc-example-title,
+  html:not(.light-mode) .calc-row-label,
+  html:not(.light-mode) .key-number-label {
+    background: var(--callout-bg) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+  }
+
+  html:not(.light-mode) .calc-row-value.red {
+    color: #ff8080 !important;
+  }
+
+  html:not(.light-mode) .calc-row-value.blue {
+    color: var(--accent-blue) !important;
+  }
+
+  html:not(.light-mode) .calc-row-value.green {
+    color: var(--accent-green) !important;
+  }
+
+  html:not(.light-mode) .calc-row.highlight {
+    background: var(--bg-tertiary) !important;
+  }
+
+  /* Cienie na elementach */
+  html:not(.light-mode) .card,
+  html:not(.light-mode) .kalkulator,
+  html:not(.light-mode) .hero {
+    box-shadow: 0 4px 16px var(--shadow);
+  }
+
+  /* Cookie Consent Banner */
+  html:not(.light-mode) .cookie-consent,
+  html:not(.light-mode) #cookie-consent {
+    background: var(--bg-secondary) !important;
+    border-top: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+  }
+
+  /* Footer */
+  html:not(.light-mode) footer,
+  html:not(.light-mode) .footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+  }
+
+  html:not(.light-mode) footer a,
+  html:not(.light-mode) .footer a {
+    color: var(--accent-blue);
+  }
+
+  /* Chart Legends (Chart.js override of JS outputs) */
+  html:not(.light-mode) [style*="#1A56A0"] {
+    background: #4d8ef0 !important;
+  }
+
+  html:not(.light-mode) [style*="#40916C"] {
+    background: #4aab76 !important;
+  }
+
+  /* Chart.js generalna zasada przyciemniająca canvas */
+  html:not(.light-mode) canvas {
+    filter: brightness(0.9) contrast(1.1);
+  }
+
+  /* Dodatkowe czyszczenie inline nadpisanych szponów tekstowych */
+  html:not(.light-mode) [style*="color: var(--color-primary-600)"],
+  html:not(.light-mode) [style*="color: var(--color-primary-700)"],
+  html:not(.light-mode) [style*="color: var(--color-primary-500)"] {
+    color: var(--accent-blue) !important;
+  }
+
+  html:not(.light-mode) [style*="color: var(--color-text-muted)"] {
+    color: var(--text-muted) !important;
+  }
+
+}
+
+/* MANUAL DARK MODE CLASS */
+/* Podstawa */
+html.dark-mode body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Wybrane nagłówki i teksty ogólne */
+html.dark-mode h1,
+html.dark-mode h2,
+html.dark-mode h3,
+html.dark-mode h4,
+html.dark-mode h5,
+html.dark-mode h6,
+html.dark-mode label {
+  color: var(--text-primary);
+}
+
+html.dark-mode .header-subtitle,
+html.dark-mode .hint,
+html.dark-mode .card p,
+html.dark-mode .section-desc {
+  color: var(--text-secondary);
+}
+
+/* Nawigacja (Nav bar) */
+html.dark-mode .header {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+html.dark-mode .nav__item a,
+html.dark-mode .mobile-menu__nav a {
+  color: var(--text-primary);
+}
+
+html.dark-mode .nav__item a:hover,
+html.dark-mode .nav__item a.active,
+html.dark-mode .mobile-menu__nav a:hover,
+html.dark-mode .mobile-menu__nav a.active {
+  color: var(--accent-blue);
+}
+
+/* Formularze i Inputy (Wyjątkowe reguły wspierające Android) */
+html.dark-mode .input-group label,
+html.dark-mode .form-label,
+html.dark-mode label {
+  color: var(--text-secondary) !important;
+}
+
+html.dark-mode input,
+html.dark-mode select,
+html.dark-mode textarea {
+  background: var(--input-bg) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--input-border) !important;
+  caret-color: var(--accent-blue) !important;
+}
+
+html.dark-mode input::placeholder,
+html.dark-mode select::placeholder,
+html.dark-mode textarea::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* GradientHero Fix */
+html.dark-mode .hero-section,
+html.dark-mode .hero,
+html.dark-mode .page-header {
+  background: #0d1b2e !important;
+  background: linear-gradient(135deg, #0d1b2e 0%, #0f1117 100%) !important;
+}
+
+/* Karty i sekcje ogólne (Kafelki, neutral tiles, blog cards) */
+html.dark-mode .card,
+html.dark-mode .sekcja-biznesowa,
+html.dark-mode .kalkulator-sekcja,
+html.dark-mode .scen-box,
+html.dark-mode .scenariusz-btn,
+html.dark-mode .calc-example,
+html.dark-mode .key-number,
+html.dark-mode .toc {
+  background: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Karty wynikowe konkretne (Kafelki) */
+html.dark-mode .kafelek[class*="wynik"],
+html.dark-mode .kafelek {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+/* Karty zielone (zysk, kapitał końcowy) */
+html.dark-mode .kafelek.green,
+html.dark-mode .kafelek-zielony,
+html.dark-mode .kafelek--green {
+  background: #0d2e1a !important;
+  border-color: #1a4d2e !important;
+}
+
+html.dark-mode .kafelek.green .kafelek__value,
+html.dark-mode .kafelek--green .kafelek__value {
+  color: var(--text-primary) !important;
+}
+
+/* Karty czerwone (Podatek Belki) */
+html.dark-mode .kafelek.red,
+html.dark-mode .kafelek--red {
+  background: #2e0d0d !important;
+  border-color: #4d1a1a !important;
+}
+
+html.dark-mode .kafelek.red .kafelek__value,
+html.dark-mode .kafelek--red .kafelek__value,
+html.dark-mode #wynik-podatek-belki,
+html.dark-mode #etf-wynik-podatek-belki {
+  color: #ff8080 !important;
+}
+
+/* Tabela roczna / harmonogramy i tabele na blogu */
+html.dark-mode .table,
+html.dark-mode .comparison-table,
+html.dark-mode .age-table {
+  color: var(--text-primary);
+}
+
+html.dark-mode .table th,
+html.dark-mode .comparison-table th,
+html.dark-mode .age-table th {
+  background: var(--table-header-bg);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+html.dark-mode .table tr,
+html.dark-mode .comparison-table tr,
+html.dark-mode .age-table tr {
+  border-color: var(--border-color);
+}
+
+html.dark-mode .table tr:nth-child(even),
+html.dark-mode .comparison-table tr:nth-child(even),
+html.dark-mode .age-table tr:nth-child(even) {
+  background: var(--table-row-alt);
+}
+
+html.dark-mode .table td,
+html.dark-mode .comparison-table td,
+html.dark-mode .age-table td {
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+}
+
+/* Callouty w artykułach Bloga oraz standardowe */
+html.dark-mode .callout,
+html.dark-mode .callout-box,
+html.dark-mode .disclaimer,
+html.dark-mode .callout-title,
+html.dark-mode .calc-example-title,
+html.dark-mode .calc-row-label,
+html.dark-mode .key-number-label {
+  background: var(--callout-bg) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+html.dark-mode .calc-row-value.red {
+  color: #ff8080 !important;
+}
+
+html.dark-mode .calc-row-value.blue {
+  color: var(--accent-blue) !important;
+}
+
+html.dark-mode .calc-row-value.green {
+  color: var(--accent-green) !important;
+}
+
+html.dark-mode .calc-row.highlight {
+  background: var(--bg-tertiary) !important;
+}
+
+/* Cienie na elementach */
+html.dark-mode .card,
+html.dark-mode .kalkulator,
+html.dark-mode .hero {
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+/* Cookie Consent Banner */
+html.dark-mode .cookie-consent,
+html.dark-mode #cookie-consent {
+  background: var(--bg-secondary) !important;
+  border-top: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Footer */
+html.dark-mode footer,
+html.dark-mode .footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+html.dark-mode footer a,
+html.dark-mode .footer a {
+  color: var(--accent-blue);
+}
+
+/* Chart Legends (Chart.js override of JS outputs) */
+html.dark-mode [style*="#1A56A0"] {
+  background: #4d8ef0 !important;
+}
+
+html.dark-mode [style*="#40916C"] {
+  background: #4aab76 !important;
+}
+
+/* Chart.js generalna zasada przyciemniająca canvas */
+html.dark-mode canvas {
+  filter: brightness(0.9) contrast(1.1);
+}
+
+/* Dodatkowe czyszczenie inline nadpisanych szponów tekstowych */
+html.dark-mode [style*="color: var(--color-primary-600)"],
+html.dark-mode [style*="color: var(--color-primary-700)"],
+html.dark-mode [style*="color: var(--color-primary-500)"] {
+  color: var(--accent-blue) !important;
+}
+
+html.dark-mode [style*="color: var(--color-text-muted)"] {
+  color: var(--text-muted) !important;
 }

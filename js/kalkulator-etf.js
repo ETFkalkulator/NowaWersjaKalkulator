@@ -9,7 +9,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Inicjalizacja pól i zdarzeń (używając utils.js)
+    // Inicjalizacja pól i zdarzeń
     const inputs = [
         'input-kapital', 'input-doplata', 'input-horyzont',
         'input-stopa', 'input-inflacja', 'input-ike'
@@ -23,9 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Inicjalizacja wykresu
-    if (window.ETF && window.ETF.charts) {
-        initChart();
-    }
+    initChart();
 
     // Pierwsze obliczenie
     obliczWszystko();
@@ -36,12 +34,24 @@ let myChart = null;
 /**
  * Ustawia stopę zwrotu z predefiniowanych scenariuszy
  */
-function setStopa(wartosc, btn) {
-    document.getElementById('input-stopa').value = wartosc;
+function setStopa(val, inputEl) {
+    if (!inputEl) inputEl = document.getElementById('input-stopa');
+    inputEl.value = val;
 
-    // Klasy CSS dla przycisków
-    document.querySelectorAll('.btn-scenariusz').forEach(b => b.classList.remove('btn-scenariusz--aktywny'));
-    btn.classList.add('btn-scenariusz--aktywny');
+    // Obsługa klas Tailwind dla przycisków
+    const buttons = inputEl.parentElement.querySelectorAll('button');
+    buttons.forEach(btn => {
+        btn.classList.remove('border-primary/50', 'bg-primary/5', 'text-primary', 'border-2');
+        btn.classList.add('border-slate-200', 'dark:border-slate-800', 'bg-white', 'dark:bg-slate-900', 'text-slate-500');
+        btn.classList.remove('font-bold');
+    });
+    
+    // Znajdź przycisk zawierający wartość (np. "4%")
+    const activeBtn = Array.from(buttons).find(b => b.innerText.includes(val + '%'));
+    if (activeBtn) {
+        activeBtn.classList.remove('border-slate-200', 'dark:border-slate-800', 'bg-white', 'dark:bg-slate-900', 'text-slate-500');
+        activeBtn.classList.add('border-2', 'border-primary/50', 'bg-primary/5', 'text-primary', 'font-bold');
+    }
 
     obliczWszystko();
 }
@@ -50,7 +60,6 @@ function setStopa(wartosc, btn) {
  * Główna funkcja obliczeniowa
  */
 function obliczWszystko() {
-    // Pobranie danych przez utils
     const start = pobierzWartosc('input-kapital', 10000);
     const doplata = pobierzWartosc('input-doplata', 500);
     const lata = pobierzWartosc('input-horyzont', 10);
@@ -59,17 +68,17 @@ function obliczWszystko() {
     const isIKE = document.getElementById('input-ike').checked;
 
     const stopaMsc = stopaNom / 12;
-    const msc = lata * 12;
+    const msc = Math.max(lata * 12, 1);
 
     let kapitalNominalny = start;
     let sumaWplat = start;
     let doplataLaczna = 0;
 
     const daneWykresu = {
-        labels: [],
-        nominalny: [],
-        wplacone: [],
-        realny: []
+        labels: ["Start"],
+        nominalny: [start],
+        wplacone: [start],
+        realny: [start]
     };
 
     const tabelaBody = document.getElementById('tabela-body');
@@ -77,16 +86,11 @@ function obliczWszystko() {
 
     // Symulacja miesiąc po miesiącu
     for (let m = 1; m <= msc; m++) {
-        // Zgodnie ze standardem BGN (jak w Porównywarce i Wolności)
-        // Dopłata jest dodawana na początku miesiąca i od razu pracuje
         kapitalNominalny += doplata;
         sumaWplat += doplata;
         doplataLaczna += doplata;
-
-        // Następnie całość (kapitał początkowy + nowa wpłata) podlega kapitalizacji
         kapitalNominalny = kapitalNominalny * (1 + stopaMsc);
 
-        // Zbieranie danych do wykresu i tabeli (co roku)
         if (m % 12 === 0) {
             const rok = m / 12;
             const infSkumulowana = Math.pow(1 + inflacjaRoczna, rok);
@@ -97,82 +101,67 @@ function obliczWszystko() {
             daneWykresu.wplacone.push(zaokraglij(sumaWplat));
             daneWykresu.realny.push(zaokraglij(kapitalRealny));
 
-            // Wypełnianie tabeli
-            if (rok > 0 && tabelaBody) {
+            if (tabelaBody) {
                 const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50/50 dark:hover:bg-slate-900/50 transition-colors";
                 tr.innerHTML = `
-                    <td>Rok ${rok}</td>
-                    <td>${formatujZl(zaokraglij(sumaWplat))}</td>
-                    <td>${formatujZl(zaokraglij(kapitalNominalny - sumaWplat))}</td>
-                    <td><strong>${formatujZl(zaokraglij(kapitalNominalny))}</strong></td>
-                    <td style="color: var(--color-primary-500)">${formatujZl(zaokraglij(kapitalRealny))}</td>
+                    <td class="px-8 py-4 text-sm font-bold text-slate-900 dark:text-slate-100">Rok ${rok}</td>
+                    <td class="px-8 py-4 text-sm text-slate-600 dark:text-slate-400 font-medium">${formatujZl(zaokraglij(sumaWplat))}</td>
+                    <td class="px-8 py-4 text-sm text-slate-600 dark:text-slate-400">${formatujZl(zaokraglij(kapitalNominalny - sumaWplat))}</td>
+                    <td class="px-8 py-4 text-sm font-bold text-slate-900 dark:text-white">${formatujZl(zaokraglij(kapitalNominalny))}</td>
+                    <td class="px-8 py-4 text-sm font-bold text-emerald-500">${formatujZl(zaokraglij(kapitalRealny))}</td>
                 `;
                 tabelaBody.appendChild(tr);
             }
         }
     }
 
-    // Podatki i wyniki końcowe
     const zyskBrutto = kapitalNominalny - sumaWplat;
-    const podatekKwota = isIKE ? 0 : zyskBrutto * 0.19; // bez funkcji max, po prostu wg zysku (zakładamy zysk dodatni)
+    const podatekKwota = isIKE ? 0 : Math.max(0, zyskBrutto * 0.19);
     const kapitalNetto = kapitalNominalny - podatekKwota;
     const zyskPoDataku = kapitalNetto - sumaWplat;
 
-    // Realna wartość netto (po podatku i inflacji)
     const wsplInfl = Math.pow(1 + inflacjaRoczna, lata);
     const kapitalRealny = kapitalNetto / wsplInfl;
     const zyskRealny = kapitalRealny - sumaWplat;
 
-    // CAGR (Netto)
     const podstawa = Math.max(sumaWplat, 1);
     const cagrNominalny = (Math.pow(kapitalNetto / podstawa, 1 / lata) - 1) || 0;
     const cagrRealny = (Math.pow(kapitalRealny / podstawa, 1 / lata) - 1) || 0;
 
-    // Aktualizacja UI (używając animuj z utils.js)
-    animuj('etf-wynik-kapital-koncowy', zaokraglij(kapitalNetto, 0));
-    animuj('etf-wynik-wklad-wlasny', zaokraglij(sumaWplat, 0));
-    animuj('etf-wynik-doplata-laczna', zaokraglij(doplataLaczna, 0));
-    animuj('etf-wynik-zysk-nominalny', zaokraglij(zyskBrutto, 0));
+    // Aktualizacja UI
+    animuj('etf-wynik-kapital-koncowy', zaokraglij(kapitalNetto, 2));
+    animuj('etf-wynik-wklad-wlasny', zaokraglij(sumaWplat, 2));
+    animuj('etf-wynik-zysk-nominalny', zaokraglij(zyskBrutto, 2));
+    animuj('etf-wynik-podatek-belki', zaokraglij(podatekKwota, 2));
+    animuj('etf-wynik-zysk-realny', zaokraglij(zyskRealny, 2));
 
-    animuj('etf-wynik-podatek-belki', zaokraglij(podatekKwota, 0));
-    animuj('etf-wynik-zysk-po-podatku', zaokraglij(zyskPoDataku, 0));
+    const eCagr = document.getElementById('etf-wynik-cagr');
+    const eCagrR = document.getElementById('etf-wynik-cagr-realny');
+    if (eCagr) eCagr.textContent = formatujProcent(cagrNominalny);
+    if (eCagrR) eCagrR.textContent = formatujProcent(cagrRealny);
 
-    animuj('etf-wynik-zysk-realny', zaokraglij(zyskRealny, 0));
-
-    document.getElementById('etf-wynik-cagr').textContent = formatujProcent(cagrNominalny);
-    document.getElementById('etf-wynik-cagr-realny').textContent = formatujProcent(cagrRealny);
-
-
-    // Tekst podatku
-    const txtPodatek = document.getElementById('txt-podatek');
-    if (txtPodatek) {
-        if (isIKE) {
-            txtPodatek.textContent = "0% (Konto IKE/IKZE zwolnione)";
-            txtPodatek.style.color = "var(--color-green-500)";
-        } else {
-            txtPodatek.textContent = "19% podatek Belki od zysku";
-            txtPodatek.style.color = "";
-        }
+    // Tekst i status podatku
+    const txtPodatekStatus = document.getElementById('txt-podatek-status');
+    if (txtPodatekStatus) {
+        txtPodatekStatus.textContent = isIKE ? "Konto IKE/IKZE (0%)" : "Opodatkowanie 19%";
+        txtPodatekStatus.className = isIKE ? "font-bold text-emerald-400" : "font-bold text-white/90";
     }
 
-    // Aktualizacja wykresu
     updateChart(daneWykresu);
 }
 
 /**
- * Inicjalizacja Chart.js - Revolut/Trading212 Style
+ * Inicjalizacja Chart.js
  */
 function initChart() {
     const canvas = document.getElementById('chartInwestycja');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
-    // Helper function for PLN formatting
-    function formatZl(val) {
-        if (val >= 1000000) return (val / 1000000).toFixed(1) + 'M zł';
-        if (val >= 1000) return (val / 1000).toFixed(0) + 'k zł';
-        return val.toFixed(0) + ' zł';
-    }
+    const isDark = document.documentElement.classList.contains('dark');
+    const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
+    const textColor = isDark ? '#94a3b8' : '#64748b';
 
     myChart = new Chart(ctx, {
         type: 'line',
@@ -180,37 +169,38 @@ function initChart() {
             labels: [],
             datasets: [
                 {
-                    label: 'Portfel ETF',
+                    label: 'Kapitał Końcowy',
                     data: [],
-                    borderColor: '#1A56A0',
-                    backgroundColor: 'rgba(26, 86, 160, 0.15)',
-                    borderWidth: 3,
+                    borderColor: '#0d7ff2', // Primary Blue
+                    backgroundColor: 'rgba(13, 127, 242, 0.1)',
+                    borderWidth: 4,
                     fill: true,
                     tension: 0.4,
-                    pointRadius: 4,
-                    pointHoverRadius: 6
+                    pointRadius: 0,
+                    pointHoverRadius: 6,
+                    pointHoverBackgroundColor: '#0d7ff2',
+                    pointHoverBorderColor: '#fff',
+                    pointHoverBorderWidth: 2
                 },
                 {
-                    label: 'Wkład własny',
+                    label: 'Wkład Własny',
                     data: [],
-                    borderColor: '#f4a261',
-                    backgroundColor: 'rgba(244, 162, 97, 0.15)',
-                    borderWidth: 3,
-                    fill: true,
-                    tension: 0.4,
-                    pointRadius: 4,
-                    pointHoverRadius: 6
-                },
-                {
-                    label: 'Wartość realna',
-                    data: [],
-                    borderColor: '#6b7280',
-                    backgroundColor: 'rgba(107, 114, 128, 0.15)',
+                    borderColor: '#f59e0b', // Amber
                     borderWidth: 2,
                     borderDash: [5, 5],
+                    fill: false,
                     tension: 0.4,
-                    pointRadius: 4,
-                    pointHoverRadius: 6
+                    pointRadius: 0
+                },
+                {
+                    label: 'Wartość Realna',
+                    data: [],
+                    borderColor: '#10b981', // Emerald
+                    borderWidth: 2,
+                    borderDash: [2, 2],
+                    fill: false,
+                    tension: 0.4,
+                    pointRadius: 0
                 }
             ]
         },
@@ -223,96 +213,63 @@ function initChart() {
             },
             plugins: {
                 legend: {
-                    position: 'top',
-                    align: 'start',
-                    labels: {
-                        usePointStyle: true,
-                        font: {
-                            size: 12,
-                            family: "'Inter', sans-serif"
-                        },
-                        color: '#1c1c1e'
-                    }
+                    display: false
                 },
                 tooltip: {
-                    backgroundColor: '#1c1c1e',
-                    titleColor: '#ffffff',
-                    bodyColor: '#ffffff',
-                    borderColor: '#1c1c1e',
-                    borderWidth: 0,
-                    cornerRadius: 8,
-                    padding: 10,
-                    displayColors: true,
+                    backgroundColor: isDark ? '#1e293b' : '#fff',
+                    titleColor: isDark ? '#fff' : '#1e293b',
+                    bodyColor: isDark ? '#94a3b8' : '#64748b',
+                    borderColor: isDark ? '#334155' : '#e2e8f0',
+                    borderWidth: 1,
+                    padding: 12,
+                    cornerRadius: 12,
                     callbacks: {
-                        title: function (context) {
-                            return context[0].label;
-                        },
                         label: function (context) {
-                            return 'Wartość: ' + formatZl(context.parsed.y);
+                            return ` ${context.dataset.label}: ${formatujZl(context.parsed.y)}`;
                         }
                     }
                 }
             },
             scales: {
                 x: {
-                    grid: {
-                        display: false
-                    },
-                    ticks: {
-                        color: '#6e6e73',
-                        font: {
-                            size: 11,
-                            family: "'Inter', sans-serif"
-                        }
-                    }
+                    grid: { display: false },
+                    ticks: { color: textColor, font: { family: 'Inter' } }
                 },
                 y: {
-                    position: 'left',
-                    grid: {
-                        color: '#e5e7eb',
-                        drawBorder: false,
-                        borderDash: []
-                    },
+                    grid: { color: gridColor },
                     ticks: {
-                        color: '#6e6e73',
-                        font: {
-                            size: 11,
-                            family: "'Inter', sans-serif"
-                        },
-                        callback: function (value) {
-                            return formatZl(value);
-                        }
+                        color: textColor,
+                        font: { family: 'Inter' },
+                        callback: (val) => formatujZl(val).split(',')[0] + ' zł'
                     }
                 }
-            },
-            animation: {
-                duration: 800,
-                easing: 'easeInOutQuart'
             }
         }
     });
+
+    window.addEventListener('theme-changed', () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        myChart.options.scales.x.ticks.color = isDark ? '#94a3b8' : '#64748b';
+        myChart.options.scales.y.ticks.color = isDark ? '#94a3b8' : '#64748b';
+        myChart.options.scales.y.grid.color = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
+        myChart.options.plugins.tooltip.backgroundColor = isDark ? '#1e293b' : '#fff';
+        myChart.options.plugins.tooltip.titleColor = isDark ? '#fff' : '#1e293b';
+        myChart.update();
+    });
 }
 
-
-/**
- * Aktualizacja danych na wykresie
- */
 function updateChart(dane) {
     if (!myChart) return;
-
     myChart.data.labels = dane.labels;
-    myChart.data.datasets[1].data = dane.wplacone;
     myChart.data.datasets[0].data = dane.nominalny;
+    myChart.data.datasets[1].data = dane.wplacone;
     myChart.data.datasets[2].data = dane.realny;
+    myChart.update();
 
-    myChart.update('none');
-
-    // GA4 tracking event
     if (typeof gtag === 'function') {
         gtag('event', 'calculate', { 'calculator_type': 'etf' });
     }
 }
 
-// Globalny alias dla HTML
 window.setStopa = setStopa;
 window.obliczWszystko = obliczWszystko;
