@@ -35,10 +35,9 @@
     gtag('config', 'G-GZECMECQ15', { 'send_page_view': false });
   </script>
 
-  <!-- Tailwind CSS and Stitch Fonts Injection -->
+  <!-- Tailwind CSS and Fonts Injection -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap" rel="stylesheet"/>
   
   <script id="tailwind-config">
     tailwind.config = {
@@ -228,12 +227,12 @@
   <!-- NAGŁÓWEK TAILWIND -->
   <nav class="fixed top-0 w-full z-50 glass-effect border-b border-slate-200/50 dark:border-slate-800/50" style="font-family: 'Inter', sans-serif;">
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-2">
+      <div class="flex items-center">
         <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity" style="text-decoration:none;">
-          <div class="bg-primary p-1.5 rounded-lg text-white flex items-center justify-center" style="background-color: #0d7ff2;">
+          <div class="bg-primary p-1.5 rounded-xl text-white flex items-center justify-center" style="background-color: #0d7ff2;">
             <span class="material-symbols-outlined text-xl">account_balance_wallet</span>
           </div>
-          <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">ETF<span class="font-normal text-slate-500">kalkulator</span>.pl</span>
+          <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">ETFkalkulator.pl</span>
         </a>
       </div>
       <div class="hidden md:flex items-center gap-6">
@@ -266,27 +265,15 @@
           Newsletter
         </a>
       </div>
-      <div class="md:hidden flex items-center gap-4">
-        <a href="#newsletter" class="w-9 h-9 rounded-full border-[1.5px] border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors text-slate-600 dark:text-slate-400 no-underline" aria-label="Newsletter">
+      <div class="md:hidden flex items-center gap-3">
+        <a href="#newsletter" title="Newsletter" class="w-10 h-10 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors no-underline">
           <span class="material-symbols-outlined text-xl">mail</span>
         </a>
-        <button onclick="przelaczTryb()" class="w-9 h-9 rounded-full border-[1.5px] border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
-          <svg id="ikona-slonce-tw-mob" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-600 dark:text-slate-400 block dark:hidden">
-            <circle cx="12" cy="12" r="5" />
-            <line x1="12" y1="1" x2="12" y2="3" />
-            <line x1="12" y1="21" x2="12" y2="23" />
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-            <line x1="1" y1="12" x2="3" y2="12" />
-            <line x1="21" y1="12" x2="23" y2="12" />
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-          </svg>
-          <svg id="ikona-ksiezyc-tw-mob" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-600 dark:text-slate-400 hidden dark:block">
-            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-          </svg>
+        <button onclick="przelaczTryb()" aria-label="Przełącz tryb" class="w-10 h-10 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+          <span class="material-symbols-outlined text-xl block dark:hidden">light_mode</span>
+          <span class="material-symbols-outlined text-xl hidden dark:block">dark_mode</span>
         </button>
-        <button onclick="document.getElementById('mobile-nav-bar').classList.toggle('active')" class="text-slate-900 dark:text-slate-100 p-1 flex items-center">
+        <button onclick="document.getElementById('mobile-nav-bar').classList.toggle('active')" class="w-10 h-10 flex items-center justify-center text-slate-900 dark:text-slate-100">
           <span class="material-symbols-outlined text-3xl">menu</span>
         </button>
       </div>
@@ -296,13 +283,9 @@
   <div class="mobile-nav-bar" id="mobile-nav-bar">
     <div class="mobile-nav-bar__inner">
       <a href="kalkulator-etf.html" class="mobile-nav-bar__link aktywna">ETF</a>
-      <span class="mobile-nav-bar__separator"></span>
       <a href="kalkulator-obligacji.html" class="mobile-nav-bar__link">Obligacje</a>
-      <span class="mobile-nav-bar__separator"></span>
       <a href="kalkulator-wolnosci.html" class="mobile-nav-bar__link">Wolność finansowa</a>
-      <span class="mobile-nav-bar__separator"></span>
       <a href="porownywarka.html" class="mobile-nav-bar__link">Porównywarka ETF</a>
-      <span class="mobile-nav-bar__separator"></span>
       <a href="../blog/index.html" class="mobile-nav-bar__link">Blog</a>
     </div>
   </div>
@@ -604,23 +587,19 @@
             Zapisz się, aby otrzymywać powiadomienia o nowych artykułach i aktualizacjach kalkulatorów.
           </p>
           <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
-            <form class="ml-block-form space-y-3 row-form" action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe" data-code="" method="post" target="_blank">
+            <form class="ml-block-form space-y-3 row-form" action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe" method="post" target="_blank">
               <div class="relative">
-                <input type="email" name="fields[email]" placeholder="Twój adres e-mail" class="w-full h-12 pl-4 pr-12 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:border-primary outline-none transition-all dark:text-white" autocomplete="email">
+                <input type="email" name="fields[email]" placeholder="Twój adres e-mail" class="w-full h-12 pl-4 pr-12 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-primary/20 transition-all dark:text-white" autocomplete="email">
                 <input type="hidden" name="ml-submit" value="1">
                 <input type="hidden" name="anticsrf" value="true">
                 <button type="submit" class="absolute right-1.5 top-1.5 w-9 h-9 bg-primary text-white rounded-lg flex items-center justify-center hover:opacity-90 transition-opacity primary" style="background-color: #0d7ff2;">
                   <span class="material-symbols-outlined text-xl">east</span>
-                </button>
-                <button disabled="disabled" style="display: none;" type="button" class="absolute right-1.5 top-1.5 w-9 h-9 bg-primary/70 text-white rounded-lg flex items-center justify-center loading">
-                  <div class="ml-form-embedSubmitLoad"></div>
                 </button>
               </div>
             </form>
             <div class="ml-form-successBody row-success" style="display: none">
               <div class="ml-form-successContent p-4 rounded-xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50">
                 <h4 class="text-emerald-800 dark:text-emerald-400 font-bold text-sm">Dziękujemy za zapis!</h4>
-                <p class="text-emerald-700 dark:text-emerald-500 text-xs mt-1">Wkrótce otrzymasz od nas pierwszą wiadomość.</p>
               </div>
             </div>
             <p class="text-[10px] text-slate-400 italic mt-3">Klikając "Wyślij" akceptujesz regulamin i politykę prywatności.</p>
@@ -764,71 +743,80 @@
       modal.classList.add('hidden');
       document.body.style.overflow = '';
     }
-
-    // 2. DARK MODE LOGIC
-    (function initDarkMode() {
-      const html = document.documentElement;
-      const savedTheme = localStorage.getItem('etf-theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-        html.classList.add('dark');
-      } else {
-        html.classList.remove('dark');
-      }
-    })();
-
-    function przelaczTryb() {
-      const html = document.documentElement;
-      const isDark = html.classList.toggle('dark');
-      localStorage.setItem('etf-theme', isDark ? 'dark' : 'light');
-      window.dispatchEvent(new Event('theme-changed'));
-    }
-
-    // Input animations helpers
-    function clearOnFocus(el, domyslna) {
-      if (parseFloat(el.value) === domyslna) el.value = '';
-      el.select && el.select();
-    }
-    function restoreOnBlur(el, domyslna) {
-      if (el.value === '' || el.value === null) {
-        el.value = domyslna;
-        if (typeof obliczWszystko === 'function') obliczWszystko();
-      }
-    }
-
-    // 3. COOKIE CONSENT
-    document.addEventListener('DOMContentLoaded', function () {
-      const banner = document.getElementById('cookie-consent');
-      if (!banner) return;
-      const acceptBtn = document.getElementById('cookie-accept');
-      const rejectBtn = document.getElementById('cookie-reject');
-      const savedChoice = localStorage.getItem('etf-cookie-consent');
-      if (!savedChoice) {
-        banner.style.display = 'block';
-        setTimeout(() => banner.classList.remove('translate-y-20', 'opacity-0'), 100);
-      }
-      acceptBtn.addEventListener('click', () => {
-        localStorage.setItem('etf-cookie-consent', 'accepted');
-        banner.classList.add('translate-y-20', 'opacity-0');
-        setTimeout(() => banner.style.display = 'none', 500);
-        if (typeof gtag === 'function') gtag('consent', 'update', { 'analytics_storage': 'granted' });
-      });
-      rejectBtn.addEventListener('click', () => {
-        localStorage.setItem('etf-cookie-consent', 'rejected');
-        banner.classList.add('translate-y-20', 'opacity-0');
-        setTimeout(() => banner.style.display = 'none', 500);
-      });
-    });
   </script>
 
-  <!-- MailerLite Complete Script -->
+  <script defer>
+    // Dark Mode Toggle Logic (Tailwind + Custom)
+    function przelaczTryb() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains('dark') || html.classList.contains('dark-mode');
+      
+      if (isDark) {
+        html.classList.remove('dark', 'dark-mode');
+        html.classList.add('light-mode');
+        localStorage.setItem('etf-tryb', 'jasny');
+      } else {
+        html.classList.add('dark', 'dark-mode');
+        html.classList.remove('light-mode');
+        localStorage.setItem('etf-tryb', 'ciemny');
+      }
+    }
+
+    // Initialize Theme
+    (function () {
+      const html = document.documentElement;
+      const saved = localStorage.getItem('etf-tryb');
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      if (saved === 'ciemny' || (!saved && systemDark)) {
+        html.classList.add('dark', 'dark-mode');
+      } else if (saved === 'jasny') {
+        html.classList.add('light-mode');
+      }
+    })();
+  </script>
+
+  <!-- MailerLite Success Callback -->
   <script>
     function ml_webform_success_37996059() {
-      var $ = ml_jQuery || jQuery;
-      $('.ml-subscribe-form-37996059 .row-success').show();
-      $('.ml-subscribe-form-37996059 .row-form').hide();
+      const successBody = document.querySelector('.ml-subscribe-form-37996059 .row-success');
+      const formBody = document.querySelector('.ml-subscribe-form-37996059 .row-form');
+      if (successBody) successBody.style.display = 'block';
+      if (formBody) formBody.style.display = 'none';
     }
   </script>
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
+
+  <!-- Cookie Consent Script -->
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function () {
+      const cookieConsent = document.getElementById('cookie-consent');
+      if (!cookieConsent) return;
+      const acceptBtn = document.getElementById('cookie-accept');
+      const rejectBtn = document.getElementById('cookie-reject');
+      const choice = localStorage.getItem('etf-cookie-consent');
+
+      if (!choice) {
+        cookieConsent.style.display = 'block';
+        setTimeout(() => {
+          cookieConsent.style.opacity = '1';
+          cookieConsent.style.transform = 'translateY(0)';
+        }, 100);
+      }
+
+      acceptBtn?.addEventListener('click', () => {
+        localStorage.setItem('etf-cookie-consent', 'accepted');
+        cookieConsent.style.display = 'none';
+        if (typeof gtag === 'function') {
+          gtag('consent', 'update', { 'analytics_storage': 'granted' });
+        }
+      });
+
+      rejectBtn?.addEventListener('click', () => {
+        localStorage.setItem('etf-cookie-consent', 'rejected');
+        cookieConsent.style.display = 'none';
+      });
+    });
+  </script>
 </body>
 </html>

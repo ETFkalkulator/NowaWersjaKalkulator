@@ -59,11 +59,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   
-  <!-- Tailwind CSS and Stitch Fonts Injection -->
+  <!-- Tailwind CSS and Fonts Injection -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap" rel="stylesheet"/>
   
   <script id="tailwind-config">
     tailwind.config = {
@@ -759,27 +757,15 @@
           Newsletter
         </a>
       </div>
-      <div class="md:hidden flex items-center gap-4">
-        <a href="#newsletter" class="w-9 h-9 rounded-full border-[1.5px] border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors text-slate-600 dark:text-slate-400 no-underline" aria-label="Newsletter">
+      <div class="md:hidden flex items-center gap-3">
+        <a href="#newsletter" title="Newsletter" class="w-10 h-10 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors no-underline">
           <span class="material-symbols-outlined text-xl">mail</span>
         </a>
-        <button onclick="przelaczTryb()" class="w-9 h-9 rounded-full border-[1.5px] border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
-          <svg id="ikona-slonce-tw-mob" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-600 dark:text-slate-400 block dark:hidden">
-            <circle cx="12" cy="12" r="5" />
-            <line x1="12" y1="1" x2="12" y2="3" />
-            <line x1="12" y1="21" x2="12" y2="23" />
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-            <line x1="1" y1="12" x2="3" y2="12" />
-            <line x1="21" y1="12" x2="23" y2="12" />
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-          </svg>
-          <svg id="ikona-ksiezyc-tw-mob" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-600 dark:text-slate-400 hidden dark:block">
-            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-          </svg>
+        <button onclick="przelaczTryb()" aria-label="Przełącz tryb" class="w-10 h-10 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+          <span class="material-symbols-outlined text-xl block dark:hidden">light_mode</span>
+          <span class="material-symbols-outlined text-xl hidden dark:block">dark_mode</span>
         </button>
-        <button onclick="document.getElementById('mobile-nav-bar').classList.toggle('active')" class="text-slate-900 dark:text-slate-100 p-1">
+        <button onclick="document.getElementById('mobile-nav-bar').classList.toggle('active')" class="w-10 h-10 flex items-center justify-center text-slate-900 dark:text-slate-100">
           <span class="material-symbols-outlined text-3xl">menu</span>
         </button>
       </div>
@@ -789,15 +775,10 @@
   <div class="mobile-nav-bar" id="mobile-nav-bar">
     <div class="mobile-nav-bar__inner">
       <a href="pages/kalkulator-etf.html" class="mobile-nav-bar__link">ETF</a>
-      <span class="mobile-nav-bar__separator"></span>
       <a href="pages/kalkulator-obligacji.html" class="mobile-nav-bar__link">Obligacje</a>
-      <span class="mobile-nav-bar__separator"></span>
       <a href="pages/kalkulator-wolnosci.html" class="mobile-nav-bar__link">Wolność finansowa</a>
-      <span class="mobile-nav-bar__separator"></span>
       <a href="pages/porownywarka.html" class="mobile-nav-bar__link">Porównywarka ETF</a>
-      <span class="mobile-nav-bar__separator"></span>
       <a href="blog/index.html" class="mobile-nav-bar__link">Blog</a>
-      <span class="mobile-nav-bar__separator"></span>
       <a href="pages/o-projekcie.html" class="mobile-nav-bar__link">O projekcie</a>
     </div>
   </div>
@@ -1136,28 +1117,24 @@
             <div class="max-w-md">
               <h5 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-4">Newsletter rynkowy</h5>
               <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
-                <form class="ml-block-form flex flex-col sm:flex-row gap-3 row-form" action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe" data-code="" method="post" target="_blank">
+                <form class="ml-block-form flex flex-col sm:flex-row gap-3 row-form" action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe" method="post" target="_blank">
                   <div class="flex-1">
                     <input class="w-full h-11 px-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-primary/20 outline-none transition-all" name="fields[email]" placeholder="Twój e-mail" type="email" autocomplete="email">
                   </div>
                   <input type="hidden" name="ml-submit" value="1">
                   <input type="hidden" name="anticsrf" value="true">
                   <div class="ml-form-embedSubmit">
-                    <button type="submit" class="h-11 px-6 rounded-xl bg-primary text-white font-bold text-sm hover:opacity-90 transition-opacity whitespace-nowrap primary" style="background-color: #0d7ff2;">
+                    <button type="submit" class="h-11 px-8 rounded-xl bg-primary text-white font-bold text-sm hover:opacity-90 transition-opacity whitespace-nowrap primary" style="background-color: #0d7ff2;">
                       Zapisz się
-                    </button>
-                    <button disabled="disabled" style="display: none;" type="button" class="loading h-11 px-6 rounded-xl bg-primary/70 text-white font-bold text-sm">
-                      <div class="ml-form-embedSubmitLoad"></div>
                     </button>
                   </div>
                 </form>
                 <div class="ml-form-successBody row-success" style="display: none">
                   <div class="ml-form-successContent p-4 rounded-xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50">
                     <h4 class="text-emerald-800 dark:text-emerald-400 font-bold text-sm">Dziękujemy za zapis!</h4>
-                    <p class="text-emerald-700 dark:text-emerald-500 text-xs mt-1">Wkrótce otrzymasz od nas pierwszą wiadomość.</p>
                   </div>
                 </div>
-                <p class="mt-3 text-[11px] text-slate-400">Zapisując się akceptujesz <a href="pages/polityka-prywatnosci.html" class="underline hover:text-slate-300">politykę prywatności</a>. Możesz wypisać się w każdej chwili.</p>
+                <p class="mt-3 text-[11px] text-slate-400 italic">Zapisując się akceptujesz politykę prywatności. Możesz wypisać się w każdej chwili.</p>
               </div>
             </div>
           </div>
@@ -1508,119 +1485,78 @@
   </script>
 
   <script defer>
+    // Dark Mode Toggle Logic (Tailwind + Custom)
     function przelaczTryb() {
-      var html = document.documentElement;
-      var slonce = document.getElementById('ikona-slonce');
-      var ksiezyc = document.getElementById('ikona-ksiezyc');
-      var slonceTw = document.getElementById('ikona-slonce-tw');
-      var ksiezycTw = document.getElementById('ikona-ksiezyc-tw');
+      const html = document.documentElement;
+      const isDark = html.classList.contains('dark') || html.classList.contains('dark-mode');
       
-      var ciemny = html.classList.contains('dark-mode') ||
-        (!html.classList.contains('light-mode') &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches);
-
-      if (ciemny) {
-        html.classList.remove('dark-mode');
-        html.classList.remove('dark'); // Tailwind compatibility
+      if (isDark) {
+        html.classList.remove('dark', 'dark-mode');
         html.classList.add('light-mode');
-        if (slonce) slonce.style.display = 'block';
-        if (ksiezyc) ksiezyc.style.display = 'none';
-        if (slonceTw) slonceTw.classList.remove('hidden');
-        if (slonceTw) slonceTw.classList.add('block');
-        if (ksiezycTw) ksiezycTw.classList.remove('block');
-        if (ksiezycTw) ksiezycTw.classList.add('hidden');
         localStorage.setItem('etf-tryb', 'jasny');
       } else {
+        html.classList.add('dark', 'dark-mode');
         html.classList.remove('light-mode');
-        html.classList.add('dark-mode');
-        html.classList.add('dark'); // Tailwind compatibility
-        if (slonce) slonce.style.display = 'none';
-        if (ksiezyc) ksiezyc.style.display = 'block';
-        if (slonceTw) slonceTw.classList.remove('block');
-        if (slonceTw) slonceTw.classList.add('hidden');
-        if (ksiezycTw) ksiezycTw.classList.remove('hidden');
-        if (ksiezycTw) ksiezycTw.classList.add('block');
         localStorage.setItem('etf-tryb', 'ciemny');
       }
     }
 
-    // Inicjalizacja przy ładowaniu strony
+    // Initialize Theme
     (function () {
-      var html = document.documentElement;
-      var zapisany = localStorage.getItem('etf-tryb');
-      var slonce = document.getElementById('ikona-slonce');
-      var ksiezyc = document.getElementById('ikona-ksiezyc');
-      var systemCiemny = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const html = document.documentElement;
+      const saved = localStorage.getItem('etf-tryb');
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-      if (zapisany === 'ciemny' || (!zapisany && systemCiemny)) {
-        html.classList.add('dark-mode');
-        html.classList.add('dark'); // Tailwind
-        if (slonce) slonce.style.display = 'none';
-        if (ksiezyc) ksiezyc.style.display = 'block';
-        if (slonceTw) { slonceTw.classList.remove('block'); slonceTw.classList.add('hidden'); }
-        if (ksiezycTw) { ksiezycTw.classList.remove('hidden'); ksiezycTw.classList.add('block'); }
-      } else if (zapisany === 'jasny') {
+      if (saved === 'ciemny' || (!saved && systemDark)) {
+        html.classList.add('dark', 'dark-mode');
+      } else if (saved === 'jasny') {
         html.classList.add('light-mode');
         html.classList.remove('dark');
-        if (slonceTw) { slonceTw.classList.remove('hidden'); slonceTw.classList.add('block'); }
-        if (ksiezycTw) { ksiezycTw.classList.remove('block'); ksiezycTw.classList.add('hidden'); }
       }
     })();
   </script>
 
+  <!-- MailerLite Success Callback -->
+  <script>
+    function ml_webform_success_37996059() {
+      const successBody = document.querySelector('.ml-subscribe-form-37996059 .row-success');
+      const formBody = document.querySelector('.ml-subscribe-form-37996059 .row-form');
+      if (successBody) successBody.style.display = 'block';
+      if (formBody) formBody.style.display = 'none';
+    }
+  </script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
+
   <!-- Cookie Consent Script -->
   <script defer>
-    // Cookie Consent Management
     document.addEventListener('DOMContentLoaded', function () {
-      var cookieConsent = document.getElementById('cookie-consent');
-      var acceptBtn = document.getElementById('cookie-accept');
-      var rejectBtn = document.getElementById('cookie-reject');
+      const cookieConsent = document.getElementById('cookie-consent');
+      if (!cookieConsent) return;
+      const acceptBtn = document.getElementById('cookie-accept');
+      const rejectBtn = document.getElementById('cookie-reject');
+      const choice = localStorage.getItem('etf-cookie-consent');
 
-      // Sprawdź czy użytkownik już wybrał
-      var cookieChoice = localStorage.getItem('etf-cookie-consent');
-
-      if (!cookieChoice) {
-        // Pokaż banner jeśli nie ma wyboru
+      if (!choice) {
         cookieConsent.style.display = 'block';
-      } else if (cookieChoice === 'accepted') {
-        // Update GA4 consent if previously accepted
-        if (typeof gtag === 'function') {
-          gtag('consent', 'update', { 'analytics_storage': 'granted' });
-          gtag('event', 'page_view');
-        }
+        setTimeout(() => {
+          cookieConsent.style.opacity = '1';
+          cookieConsent.style.transform = 'translateY(0)';
+        }, 100);
       }
 
-      // Akceptacja cookies
-      acceptBtn.addEventListener('click', function () {
+      acceptBtn?.addEventListener('click', () => {
         localStorage.setItem('etf-cookie-consent', 'accepted');
         cookieConsent.style.display = 'none';
-
-        // Update GA4 consent
         if (typeof gtag === 'function') {
           gtag('consent', 'update', { 'analytics_storage': 'granted' });
-          gtag('event', 'page_view');
         }
       });
 
-      // Odrzucenie cookies
-      rejectBtn.addEventListener('click', function () {
+      rejectBtn?.addEventListener('click', () => {
         localStorage.setItem('etf-cookie-consent', 'rejected');
         cookieConsent.style.display = 'none';
-
-        // Update GA4 consent
-        if (typeof gtag === 'function') {
-          gtag('consent', 'update', { 'analytics_storage': 'denied' });
-        }
       });
-
-      // Automatyczne ukrycie po 30 sekundach (opcjonalne)
-      setTimeout(function () {
-        if (cookieConsent.style.display !== 'none') {
-          cookieConsent.style.opacity = '0.7';
-        }
-      }, 30000);
     });
   </script>
 </body>
-
 </html>
