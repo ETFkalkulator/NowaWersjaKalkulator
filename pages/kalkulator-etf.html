@@ -131,6 +131,16 @@
     input[type="checkbox"].custom-checkbox:checked::before {
       transform: scale(1);
     }
+
+    /* Premium Result Cards Enhancements */
+    @keyframes pulse-subtle {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.15); opacity: 1; }
+    }
+    .group:hover .animate-pulse-subtle {
+      animation: pulse-subtle 2s infinite ease-in-out;
+    }
+    .cursor-help { cursor: help; }
   </style>
 
   <link rel="stylesheet" href="../css/reset.css">
@@ -446,19 +456,21 @@
         <!-- PRAWA KOLUMNA: WYNIKI -->
         <div class="lg:col-span-8 space-y-8">
           <!-- GŁÓWNY WYNIK (Visual Priority) -->
-          <div onclick="openEduModal('kapital')" class="relative overflow-hidden group bg-primary p-10 md:p-14 rounded-[2.5rem] text-white shadow-2xl shadow-primary/30 transition-all hover:scale-[1.01] cursor-pointer" style="background-color: #0d7ff2;">
+          <div onclick="openEduModal('kapital')" class="relative overflow-hidden group bg-primary p-10 md:p-14 rounded-[2.5rem] text-white shadow-2xl shadow-primary/30 transition-all hover:scale-[1.01] hover:shadow-blue-500/40 hover:border-white/20 border-2 border-transparent cursor-help" style="background-color: #0d7ff2;">
             <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20 group-hover:scale-110 transition-transform duration-700"></div>
             <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
               <div>
-                <p class="text-primary-100 font-bold uppercase tracking-widest text-xs mb-3 opacity-90 flex items-center gap-2">
+                <p class="text-primary-100 font-bold uppercase tracking-widest text-xs mb-3 flex items-center gap-2">
                   Przewidywany kapitał końcowy
-                  <span class="material-symbols-outlined text-sm opacity-50">info</span>
+                  <span class="px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-white bg-white/20 rounded uppercase">INFO</span>
+                  <span class="material-symbols-outlined text-sm opacity-50 animate-pulse-subtle">help</span>
                 </p>
                 <p class="text-5xl md:text-7xl font-black tracking-tighter mb-4" id="etf-wynik-kapital-koncowy">0,00 zł</p>
                 <div class="flex items-center gap-2 text-primary-100/80 text-sm">
                   <span class="material-symbols-outlined text-base">verified</span>
                   <span>Kwota netto po uwzględnieniu podatku Belki i inflacji</span>
                 </div>
+                <p class="mt-4 text-[10px] text-white/60 opacity-0 group-hover:opacity-100 transition-opacity">Kliknij, aby zrozumieć ten wynik</p>
               </div>
               <div class="bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/20">
                 <p class="text-[10px] font-black uppercase tracking-widest text-white/60 mb-1">Status podatkowy</p>
@@ -469,53 +481,77 @@
 
           <!-- SIATKA DRUGORZĘDNYCH WYNIKÓW -->
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div onclick="openEduModal('wklad')" class="glass-effect p-8 rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-2xl transition-all hover:shadow-primary/10 cursor-pointer group">
+            <div onclick="openEduModal('wklad')" class="glass-effect p-8 rounded-[2rem] border-2 border-transparent dark:border-slate-800/50 shadow-2xl transition-all hover:border-blue-400/50 hover:shadow-xl cursor-help group">
               <div class="flex justify-between items-start mb-4">
-                <p class="text-slate-400 dark:text-slate-500 font-bold text-[10px] uppercase tracking-widest">Wkład własny</p>
-                <span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors text-xs">info</span>
+                <div class="flex items-center">
+                  <p class="text-slate-400 dark:text-slate-500 font-bold text-[10px] uppercase tracking-widest">Wkład własny</p>
+                  <span class="ml-2 px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400 rounded uppercase">INFO</span>
+                </div>
+                <span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors text-sm animate-pulse-subtle">help</span>
               </div>
               <p class="text-2xl font-black text-slate-800 dark:text-slate-100" id="etf-wynik-wklad-wlasny">0,00 zł</p>
               <p class="text-[10px] text-slate-400 mt-2">Suma wpłat i kapitału startowego</p>
+              <p class="mt-4 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity">Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div onclick="openEduModal('zysk')" class="glass-effect p-8 rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-2xl transition-all hover:shadow-primary/10 cursor-pointer group">
+            <div onclick="openEduModal('zysk')" class="glass-effect p-8 rounded-[2rem] border-2 border-transparent dark:border-slate-800/50 shadow-2xl transition-all hover:border-blue-400/50 hover:shadow-xl cursor-help group">
               <div class="flex justify-between items-start mb-4">
-                <p class="text-slate-400 dark:text-slate-500 font-bold text-[10px] uppercase tracking-widest">Zysk nominalny</p>
-                <span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors text-xs">info</span>
+                <div class="flex items-center">
+                  <p class="text-slate-400 dark:text-slate-500 font-bold text-[10px] uppercase tracking-widest">Zysk nominalny</p>
+                  <span class="ml-2 px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400 rounded uppercase">INFO</span>
+                </div>
+                <span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors text-sm animate-pulse-subtle">help</span>
               </div>
               <p class="text-2xl font-black text-slate-800 dark:text-slate-100" id="etf-wynik-zysk-nominalny">0,00 zł</p>
               <p class="text-[10px] text-slate-400 mt-2">Czysty zysk przed podatkiem</p>
+              <p class="mt-4 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity">Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div onclick="openEduModal('podatek')" class="glass-effect p-8 rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-2xl transition-all hover:shadow-rose-500/10 cursor-pointer group">
+            <div onclick="openEduModal('podatek')" class="glass-effect p-8 rounded-[2rem] border-2 border-transparent dark:border-slate-800/50 shadow-2xl transition-all hover:border-rose-400/50 hover:shadow-xl cursor-help group">
               <div class="flex justify-between items-start mb-4">
-                <p class="text-slate-400 dark:text-slate-500 font-bold text-[10px] uppercase tracking-widest">Podatek Belki</p>
-                <span class="material-symbols-outlined text-slate-300 group-hover:text-rose-500 transition-colors text-xs">info</span>
+                <div class="flex items-center">
+                  <p class="text-slate-400 dark:text-slate-500 font-bold text-[10px] uppercase tracking-widest">Podatek Belki</p>
+                  <span class="ml-2 px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-rose-600 bg-rose-50 dark:bg-rose-900/30 dark:text-rose-400 rounded uppercase">INFO</span>
+                </div>
+                <span class="material-symbols-outlined text-slate-300 group-hover:text-rose-500 transition-colors text-sm animate-pulse-subtle">help</span>
               </div>
               <p class="text-2xl font-black text-rose-500" id="etf-wynik-podatek-belki">0,00 zł</p>
               <p class="text-[10px] text-slate-400 mt-2" id="txt-podatek">Środki przekazane do fiskusa</p>
+              <p class="mt-4 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity">Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div onclick="openEduModal('realny')" class="glass-effect p-8 rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-2xl transition-all hover:shadow-emerald-500/10 cursor-pointer group">
+            <div onclick="openEduModal('realny')" class="glass-effect p-8 rounded-[2rem] border-2 border-transparent dark:border-slate-800/50 shadow-2xl transition-all hover:border-emerald-400/50 hover:shadow-xl cursor-help group">
               <div class="flex justify-between items-start mb-4">
-                <p class="text-slate-400 dark:text-slate-500 font-bold text-[10px] uppercase tracking-widest">Wartość realna</p>
-                <span class="material-symbols-outlined text-slate-300 group-hover:text-emerald-500 transition-colors text-xs">info</span>
+                <div class="flex items-center">
+                  <p class="text-slate-400 dark:text-slate-500 font-bold text-[10px] uppercase tracking-widest">Wartość realna</p>
+                  <span class="ml-2 px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 dark:text-emerald-400 rounded uppercase">INFO</span>
+                </div>
+                <span class="material-symbols-outlined text-slate-300 group-hover:text-emerald-500 transition-colors text-sm animate-pulse-subtle">help</span>
               </div>
               <p class="text-2xl font-black text-emerald-500" id="etf-wynik-zysk-realny">0,00 zł</p>
               <p class="text-[10px] text-slate-400 mt-2 uppercase tracking-tighter">Zysk po odliczeniu inflacji</p>
+              <p class="mt-4 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity">Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div onclick="openEduModal('cagr')" class="glass-effect p-8 rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-2xl transition-all hover:shadow-primary/10 cursor-pointer group">
+            <div onclick="openEduModal('cagr')" class="glass-effect p-8 rounded-[2rem] border-2 border-transparent dark:border-slate-800/50 shadow-2xl transition-all hover:border-blue-400/50 hover:shadow-xl cursor-help group">
               <div class="flex justify-between items-start mb-4">
-                <p class="text-slate-400 dark:text-slate-500 font-bold text-[10px] uppercase tracking-widest">Stopa CAGR</p>
-                <span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors text-xs">info</span>
+                <div class="flex items-center">
+                  <p class="text-slate-400 dark:text-slate-500 font-bold text-[10px] uppercase tracking-widest">Stopa CAGR</p>
+                  <span class="ml-2 px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400 rounded uppercase">INFO</span>
+                </div>
+                <span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors text-sm animate-pulse-subtle">help</span>
               </div>
               <p class="text-2xl font-black text-slate-800 dark:text-slate-100" id="etf-wynik-cagr">0,00%</p>
               <p class="text-[10px] text-slate-400 mt-2">Średnioroczny zwrot netto</p>
+              <p class="mt-4 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity">Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div onclick="openEduModal('cagr_real')" class="glass-effect p-8 rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-2xl transition-all hover:shadow-emerald-500/10 cursor-pointer group">
+            <div onclick="openEduModal('cagr_real')" class="glass-effect p-8 rounded-[2rem] border-2 border-transparent dark:border-slate-800/50 shadow-2xl transition-all hover:border-emerald-400/50 hover:shadow-xl cursor-help group">
               <div class="flex justify-between items-start mb-4">
-                <p class="text-slate-400 dark:text-slate-500 font-bold text-[10px] uppercase tracking-widest">Realny CAGR</p>
-                <span class="material-symbols-outlined text-slate-300 group-hover:text-emerald-500 transition-colors text-xs">info</span>
+                <div class="flex items-center">
+                  <p class="text-slate-400 dark:text-slate-500 font-bold text-[10px] uppercase tracking-widest">Realny CAGR</p>
+                  <span class="ml-2 px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 dark:text-emerald-400 rounded uppercase">INFO</span>
+                </div>
+                <span class="material-symbols-outlined text-slate-300 group-hover:text-emerald-500 transition-colors text-sm animate-pulse-subtle">help</span>
               </div>
-              <p class="text-2xl font-black text-emerald-500" id="etf-wynik-cagr-realny">0,00%</p>
-              <p class="text-[10px] text-slate-400 mt-2 uppercase tracking-tighter">Średni wzrost siły nabywczej</p>
+              <p class="text-2xl font-black text-emerald-500 uppercase tracking-tight" id="etf-wynik-cagr-real">0,00%</p>
+              <p class="text-[10px] text-slate-400 mt-2">Wzrost siły nabywczej r/r</p>
+              <p class="mt-4 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity">Kliknij, aby zrozumieć ten wynik</p>
             </div>
           </div>
 
@@ -800,7 +836,8 @@
       <div class="relative z-10">
         <div class="flex justify-between items-center mb-6">
           <h3 class="text-2xl font-black text-slate-900 dark:text-white" id="modal-title">Edukacja</h3>
-          <button onclick="closeEduModal()" class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-rose-500 hover:text-white transition-all">
+          <button onclick="closeEduModal()" class="group flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-rose-500 hover:text-white transition-all">
+            <span class="text-[10px] font-bold uppercase tracking-widest">Zamknij</span>
             <span class="material-symbols-outlined text-xl">close</span>
           </button>
         </div>
