@@ -1098,78 +1098,87 @@
       <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-12 lg:gap-16">
           
-          <!-- Kolumna 1: Marka i Newsletter -->
-          <div class="col-span-1 md:col-span-2 lg:col-span-2" id="newsletter">
-            <div class="flex items-center gap-2 mb-6">
-              <div class="bg-primary p-1.5 rounded-lg text-white flex items-center justify-center" style="background-color: #0d7ff2;">
-                <span class="material-symbols-outlined text-base">account_balance_wallet</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8 items-start">
+          
+          <!-- Column 1: Info & Newsletter -->
+          <div class="col-span-1 md:col-span-2 lg:col-span-3 space-y-8" id="newsletter">
+            <!-- Brand & Tagline -->
+            <div>
+              <div class="flex items-center gap-2 mb-4">
+                <div class="bg-primary p-1.5 rounded-lg text-white flex items-center justify-center" style="background-color: #0d7ff2;">
+                  <span class="material-symbols-outlined text-base">account_balance_wallet</span>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">ETF<span class="font-normal text-slate-500">kalkulator</span>.pl</span>
               </div>
-              <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">ETF<span class="font-normal text-slate-500">kalkulator</span>.pl</span>
+              <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed max-w-sm">
+                Najlepsze narzędzia do planowania Twojej finansowej przyszłości. Darmowe kalkulatory, rzetelna wiedza i najnowsze trendy z rynku ETF.
+              </p>
             </div>
-            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8 max-w-sm">
-              Najlepsze narzędzia do planowania Twojej finansowej przyszłości. Darmowe kalkulatory, rzetelna wiedza i najnowsze trendy z rynku ETF.
-            </p>
             
-            <!-- Zintegrowany Newsletter Official Redesign -->
-            <div class="max-w-xl mx-auto md:mx-0 p-8 rounded-[2rem] bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl border border-white/40 dark:border-slate-800/50 shadow-2xl relative z-10 transition-all duration-300">
-              <h5 class="text-sm font-extrabold text-slate-900 dark:text-white uppercase tracking-[0.2em] mb-6">Zapisz się na Newsletter</h5>
+            <!-- Premium Glass-morphism Newsletter Card -->
+            <div class="max-w-xl p-8 md:p-10 rounded-[2.5rem] bg-white/70 dark:bg-slate-900/70 backdrop-blur-3xl border border-white/40 dark:border-slate-800/50 shadow-2xl relative z-10">
+              <h5 class="text-xs font-black text-slate-900 dark:text-white uppercase tracking-[0.25em] mb-8 border-b border-slate-200/50 dark:border-slate-800/50 pb-4">ZAPISZ SIĘ NA NEWSLETTER</h5>
+              
               <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
                 <div class="ml-form-embedWrapper embedForm">
                   <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
-                    <form class="ml-block-form space-y-6" action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe" method="post" target="_blank">
-                      <div class="ml-form-formContent">
+                    <form class="ml-block-form" action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe" method="post" target="_blank">
+                      <div class="space-y-6">
+                        <!-- Email Input -->
                         <div class="ml-form-fieldRow">
-                          <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required relative">
-                            <input aria-label="email" aria-required="true" type="email" class="w-full h-14 px-5 rounded-2xl border-2 border-slate-200/50 dark:border-slate-800 bg-white/50 dark:bg-slate-950 text-slate-900 dark:text-white text-base font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all placeholder:text-slate-400" name="fields[email]" placeholder="Wprowadź swój e-mail" autocomplete="email">
+                          <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                            <input aria-label="email" aria-required="true" type="email" class="w-full h-15 px-6 rounded-2xl border-2 border-slate-200/60 dark:border-slate-800 bg-white/50 dark:bg-slate-950 text-slate-900 dark:text-white text-base font-semibold focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all placeholder:text-slate-400" name="fields[email]" placeholder="Wprowadź swój e-mail" style="height: 60px;">
                           </div>
                         </div>
-                      </div>
 
-                      <!-- Legal Consents -->
-                      <div class="ml-form-embedPermissions">
-                        <div class="ml-form-embedPermissionsContent bg-slate-50/50 dark:bg-slate-950/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800/50">
-                          <h4 class="text-slate-900 dark:text-white text-sm font-bold mb-2">Zgoda na komunikację</h4>
-                          <p class="text-slate-500 dark:text-slate-400 text-[11px] leading-relaxed mb-4">Twój adres e-mail będzie wykorzystywany wyłącznie do wysyłki newslettera ETFkalkulator.pl. Możesz wypisać się w każdej chwili.</p>
-                          <div class="ml-form-embedPermissionsOptions">
-                            <div class="ml-form-embedPermissionsOptionsCheckbox">
-                              <label class="flex items-center gap-3 cursor-pointer group">
-                                <div class="relative flex items-center justify-center">
-                                  <input type="checkbox" name="gdpr[]" value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl" required class="peer appearance-none w-5 h-5 rounded-md border-2 border-slate-300 dark:border-slate-700 checked:bg-primary checked:border-primary transition-all cursor-pointer z-20">
-                                  <span class="material-symbols-outlined text-white text-[16px] absolute opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none z-30">check</span>
+                        <!-- Legal Consents Wrapper -->
+                        <div class="ml-form-embedPermissions">
+                          <div class="ml-form-embedPermissionsContent bg-slate-50/80 dark:bg-slate-950/80 p-5 rounded-2xl border border-slate-100 dark:border-slate-800/50">
+                            <h4 class="text-slate-900 dark:text-white text-[13px] font-black mb-1">Zgoda na komunikację</h4>
+                            <p class="text-slate-500 dark:text-slate-400 text-[11px] leading-relaxed mb-4">Wypisz się w dowolnym momencie. Szanujemy Twoją prywatność.</p>
+                            
+                            <div class="ml-form-embedPermissionsOptions">
+                              <label class="flex items-start gap-3 cursor-pointer group">
+                                <div class="relative flex items-center justify-center shrink-0 mt-0.5">
+                                  <input type="checkbox" name="gdpr[]" value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl" required class="peer appearance-none w-5 h-5 rounded-md border-2 border-slate-300 dark:border-slate-700 checked:bg-primary checked:border-primary transition-all cursor-pointer">
+                                  <span class="material-symbols-outlined text-white text-[16px] absolute opacity-0 peer-checked:opacity-100 transition-opacity pointer-events-none">check</span>
                                 </div>
-                                <div class="label-description text-slate-600 dark:text-slate-300 text-xs font-medium group-hover:text-primary transition-colors">Zgadzam się na otrzymywanie newslettera</div>
+                                <span class="text-slate-600 dark:text-slate-300 text-xs font-semibold leading-snug group-hover:text-primary transition-colors">Zgadzam się na otrzymywanie newslettera</span>
                               </label>
                             </div>
                           </div>
                         </div>
-                      </div>
 
-                      <div class="ml-form-recaptcha ml-validate-required flex justify-center">
-                        <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
-                      </div>
+                        <!-- reCAPTCHA Container with explicit spacing -->
+                        <div class="ml-form-recaptcha ml-validate-required py-4 flex justify-center min-h-[80px]">
+                          <div class="g-recaptcha transform scale-90 md:scale-100" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                        </div>
 
-                      <input type="hidden" name="ml-submit" value="1">
-                      <input type="hidden" name="anticsrf" value="true">
-                      
-                      <div class="ml-form-embedSubmit">
-                        <button type="submit" class="w-full h-14 rounded-2xl bg-primary text-white font-black text-base uppercase tracking-widest hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/30 active:scale-95 transition-all duration-200 shadow-xl shadow-primary/20" style="background-color: #0d7ff2;">
-                          Zapisz się teraz
-                        </button>
-                        <button disabled="disabled" style="display: none;" type="button" class="loading w-full h-14 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-400 font-bold">
-                          <div class="ml-form-embedSubmitLoad inline-block w-5 h-5 border-2 border-slate-400 border-t-transparent rounded-full animate-spin"></div>
-                          <span class="ml-2">Przetwarzanie...</span>
-                        </button>
+                        <input type="hidden" name="ml-submit" value="1">
+                        <input type="hidden" name="anticsrf" value="true">
+                        
+                        <!-- Submit Button -->
+                        <div class="ml-form-embedSubmit">
+                          <button type="submit" class="w-full h-15 rounded-2xl bg-primary text-white font-black text-sm uppercase tracking-[0.15em] hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/40 active:scale-95 transition-all duration-300 shadow-xl shadow-primary/20" style="background-color: #0d7ff2; height: 60px;">
+                            ZAPISZ SIĘ TERAZ
+                          </button>
+                          <button disabled="disabled" style="display: none;" type="button" class="loading w-full h-15 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-400 font-bold" style="height: 60px;">
+                            <div class="ml-form-embedSubmitLoad inline-block w-5 h-5 border-2 border-slate-400 border-t-transparent rounded-full animate-spin"></div>
+                            <span class="ml-2">PRZETWARZANIE...</span>
+                          </button>
+                        </div>
                       </div>
                     </form>
                   </div>
+
                   <!-- Success State -->
                   <div class="ml-form-successBody row-success" style="display: none">
-                    <div class="ml-form-successContent p-8 rounded-3xl bg-emerald-50 dark:bg-emerald-900/20 border-2 border-emerald-100 dark:border-emerald-800/50 text-center scale-in">
-                      <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-4xl">verified</span>
+                    <div class="ml-form-successContent p-10 rounded-[2rem] bg-emerald-50 dark:bg-emerald-900/20 border-2 border-emerald-100 dark:border-emerald-800/50 text-center animate-in fade-in zoom-in duration-500">
+                      <div class="w-20 h-20 bg-emerald-100 dark:bg-emerald-800/50 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-emerald-200 dark:shadow-none">
+                        <span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-5xl">verified</span>
                       </div>
-                      <h4 class="text-emerald-900 dark:text-emerald-300 font-black text-xl mb-2">Sukces! Sprawdź skrzynkę.</h4>
-                      <p class="text-emerald-700 dark:text-emerald-500 text-sm font-medium">Właśnie dołączyłeś do elitarnego grona inwestorów.</p>
+                      <h4 class="text-emerald-900 dark:text-emerald-300 font-black text-2xl mb-2">Sukces!</h4>
+                      <p class="text-emerald-700 dark:text-emerald-500 text-sm font-bold uppercase tracking-wider">Potwierdź e-mail w skrzynce.</p>
                     </div>
                   </div>
                 </div>
@@ -1177,41 +1186,42 @@
             </div>
           </div>
 
-          <!-- Kolumna 2: Narzędzia -->
-          <div>
-            <h5 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Narzędzia</h5>
-            <ul class="space-y-4">
-              <li><a href="pages/kalkulator-etf.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Kalkulator ETF</a></li>
-              <li><a href="pages/kalkulator-obligacji.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Obligacje Skarbowe</a></li>
-              <li><a href="pages/kalkulator-wolnosci.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Wolność Finansowa</a></li>
-              <li><a href="pages/porownywarka.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Porównywarka ETF</a></li>
+          <!-- Column 2: Narzędzia -->
+          <div class="pt-2">
+            <h5 class="text-xs font-black text-slate-900 dark:text-white uppercase tracking-[0.2em] mb-8">Narzędzia</h5>
+            <ul class="space-y-5">
+              <li><a href="pages/kalkulator-etf.html" class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Kalkulator ETF</a></li>
+              <li><a href="pages/kalkulator-obligacji.html" class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Obligacje Skarbowe</a></li>
+              <li><a href="pages/kalkulator-wolnosci.html" class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Wolność Finansowa</a></li>
+              <li><a href="pages/porownywarka.html" class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Porównywarka ETF</a></li>
             </ul>
           </div>
 
-          <!-- Kolumna 3: Projekt -->
-          <div>
-            <h5 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Projekt</h5>
-            <ul class="space-y-4">
-              <li><a href="blog/index.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Blog i Wiedza</a></li>
-              <li><a href="pages/o-projekcie.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">O projekcie</a></li>
-              <li><a href="pages/regulamin.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Regulamin</a></li>
-              <li><a href="pages/polityka-prywatnosci.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Polityka prywatności</a></li>
+          <!-- Column 3: Projekt -->
+          <div class="pt-2">
+            <h5 class="text-xs font-black text-slate-900 dark:text-white uppercase tracking-[0.2em] mb-8">Projekt</h5>
+            <ul class="space-y-5">
+              <li><a href="blog/index.html" class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Blog i Wiedza</a></li>
+              <li><a href="pages/o-projekcie.html" class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">O projekcie</a></li>
+              <li><a href="pages/regulamin.html" class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Regulamin</a></li>
+              <li><a href="pages/polityka-prywatnosci.html" class="text-sm font-medium text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Polityka prywatności</a></li>
             </ul>
           </div>
 
-          <!-- Kolumna 4: Kontakt i Social -->
-          <div>
-            <h5 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Kontakt</h5>
-            <a href="mailto:kontakt@etfkalkulator.pl" class="text-sm text-slate-500 hover:text-primary transition-colors block mb-6" style="text-decoration:none;">kontakt@etfkalkulator.pl</a>
+          <!-- Column 4: Kontakt -->
+          <div class="pt-2">
+            <h5 class="text-xs font-black text-slate-900 dark:text-white uppercase tracking-[0.2em] mb-8">Kontakt</h5>
+            <a href="mailto:kontakt@etfkalkulator.pl" class="text-sm font-bold text-slate-500 hover:text-primary transition-colors block mb-8" style="text-decoration:none;">kontakt@etfkalkulator.pl</a>
             <div class="flex gap-4">
-              <a href="#" class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-500 hover:text-primary hover:border-primary transition-all">
-                <span class="material-symbols-outlined text-lg">share</span>
+              <a href="#" class="w-12 h-12 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-500 hover:text-primary hover:border-primary transition-all shadow-sm hover:shadow-md">
+                <span class="material-symbols-outlined text-xl">share</span>
               </a>
-              <a href="#" class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-500 hover:text-primary hover:border-primary transition-all">
-                <span class="material-symbols-outlined text-lg">alternate_email</span>
+              <a href="#" class="w-12 h-12 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-500 hover:text-primary hover:border-primary transition-all shadow-sm hover:shadow-md">
+                <span class="material-symbols-outlined text-xl">alternate_email</span>
               </a>
             </div>
           </div>
+        </div>
         </div>
 
         <!-- Dolny pasek i Disclaimer -->
