@@ -265,30 +265,33 @@
           Newsletter
         </a>
       </div>
-      <div class="md:hidden flex items-center gap-3">
-        <a href="#newsletter" title="Newsletter" class="w-10 h-10 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors no-underline">
-          <span class="material-symbols-outlined text-xl">mail</span>
+      <div class="md:hidden flex items-center gap-2">
+        <!-- Newsletter Button -->
+        <a href="#newsletter" class="h-9 px-4 rounded-full bg-primary text-white flex items-center justify-center text-[13px] font-bold hover:opacity-90 transition-opacity no-underline" style="background-color: #0d7ff2;">
+          Zapisz się
         </a>
-        <button onclick="przelaczTryb()" aria-label="Przełącz tryb" class="w-10 h-10 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
-          <span class="material-symbols-outlined text-xl block dark:hidden">light_mode</span>
-          <span class="material-symbols-outlined text-xl hidden dark:block">dark_mode</span>
-        </button>
-        <button onclick="document.getElementById('mobile-nav-bar').classList.toggle('active')" class="w-10 h-10 flex items-center justify-center text-slate-900 dark:text-slate-100">
-          <span class="material-symbols-outlined text-3xl">menu</span>
+        <!-- Theme Toggle -->
+        <button onclick="przelaczTryb()" aria-label="Przełącz tryb" class="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+          <span class="material-symbols-outlined text-[18px] block dark:hidden">light_mode</span>
+          <span class="material-symbols-outlined text-[18px] hidden dark:block">dark_mode</span>
         </button>
       </div>
     </div>
   </nav>
 
-  <div class="mobile-nav-bar" id="mobile-nav-bar">
-    <div class="mobile-nav-bar__inner">
-      <a href="kalkulator-etf.html" class="mobile-nav-bar__link aktywna">ETF</a>
-      <a href="kalkulator-obligacji.html" class="mobile-nav-bar__link">Obligacje</a>
-      <a href="kalkulator-wolnosci.html" class="mobile-nav-bar__link">Wolność finansowa</a>
-      <a href="porownywarka.html" class="mobile-nav-bar__link">Porównywarka ETF</a>
-      <a href="../blog/index.html" class="mobile-nav-bar__link">Blog</a>
-    </div>
-  </div>
+  <style>
+    /* MailerLite Form Custom Styling */
+    .ml-form-embedContainer .ml-block-form { margin-bottom: 0px; }
+    .ml-form-embedContainer .ml-form-embedPermissionsContent { text-align: left; }
+    .ml-form-embedContainer .ml-form-embedPermissionsContent h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--text-primary); }
+    .ml-form-embedContainer .ml-form-embedPermissionsContent p { font-size: 11px; color: var(--text-secondary); margin-bottom: 12px; }
+    .ml-form-embedContainer .ml-form-embedPermissionsOptionsCheckbox label { display: flex; align-items: flex-start; gap: 8px; cursor: pointer; }
+    .ml-form-embedContainer .ml-form-embedPermissionsOptionsCheckbox input[type="checkbox"] { width: 14px; height: 14px; margin-top: 3px; accent-color: #0d7ff2; }
+    .ml-form-embedContainer .label-description { font-size: 11px; color: var(--text-secondary); line-height: 1.4; }
+    .ml-form-embedContainer .ml-form-recaptcha { margin-top: 15px; }
+  </style>
+
+
 
   <main class="pt-32 pb-20 px-6 min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
@@ -582,29 +585,66 @@
           </ul>
         </div>
         <div class="lg:col-span-4" id="newsletter">
-          <h4 class="text-sm font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider mb-6">Newsletter</h4>
-          <p class="text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">
-            Zapisz się, aby otrzymywać powiadomienia o nowych artykułach i aktualizacjach kalkulatorów.
-          </p>
-          <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
-            <form class="ml-block-form space-y-3 row-form" action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe" method="post" target="_blank">
-              <div class="relative">
-                <input type="email" name="fields[email]" placeholder="Twój adres e-mail" class="w-full h-12 pl-4 pr-12 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-primary/20 transition-all dark:text-white" autocomplete="email">
-                <input type="hidden" name="ml-submit" value="1">
-                <input type="hidden" name="anticsrf" value="true">
-                <button type="submit" class="absolute right-1.5 top-1.5 w-9 h-9 bg-primary text-white rounded-lg flex items-center justify-center hover:opacity-90 transition-opacity primary" style="background-color: #0d7ff2;">
-                  <span class="material-symbols-outlined text-xl">east</span>
-                </button>
-              </div>
-            </form>
-            <div class="ml-form-successBody row-success" style="display: none">
-              <div class="ml-form-successContent p-4 rounded-xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50">
-                <h4 class="text-emerald-800 dark:text-emerald-400 font-bold text-sm">Dziękujemy za zapis!</h4>
+          <!-- Zintegrowany Newsletter Official -->
+          <div class="max-w-md p-6 rounded-3xl bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-white/20 dark:border-slate-800/50 shadow-xl">
+            <h4 class="text-sm font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider mb-4">Newsletter</h4>
+            <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
+              <div class="ml-form-embedWrapper embedForm">
+                <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                  <form class="ml-block-form space-y-4" action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe" method="post" target="_blank">
+                    <div class="ml-form-formContent">
+                      <div class="ml-form-fieldRow">
+                        <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                          <input aria-label="email" aria-required="true" type="email" class="w-full h-12 pl-4 pr-12 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-primary/20 transition-all dark:text-white" name="fields[email]" placeholder="Twój adres e-mail" autocomplete="email">
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Legal Consents -->
+                    <div class="ml-form-embedPermissions">
+                      <div class="ml-form-embedPermissionsContent">
+                        <h4 class="dark:text-white">Zgoda na przetwarzanie danych</h4>
+                        <p class="dark:text-slate-400">Twój adres e-mail będzie wykorzystywany wyłącznie do wysyłki newslettera ETFkalkulator.pl. Możesz wypisać się w każdej chwili.</p>
+                        <div class="ml-form-embedPermissionsOptions">
+                          <div class="ml-form-embedPermissionsOptionsCheckbox">
+                            <label>
+                              <input type="checkbox" name="gdpr[]" value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl" required>
+                              <div class="label-description dark:text-slate-400">Zgadzam się na otrzymywanie newslettera</div>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="ml-form-recaptcha ml-validate-required">
+                      <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                    </div>
+
+                    <input type="hidden" name="ml-submit" value="1">
+                    <input type="hidden" name="anticsrf" value="true">
+                    
+                    <div class="ml-form-embedSubmit">
+                      <button type="submit" class="w-full h-11 px-8 rounded-xl bg-primary text-white font-bold text-sm hover:opacity-90 transition-opacity primary" style="background-color: #0d7ff2;">
+                        Zapisz się
+                      </button>
+                      <button disabled="disabled" style="display: none;" type="button" class="loading w-full h-11 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-500">
+                        <div class="ml-form-embedSubmitLoad inline-block w-5 h-5 border-2 border-slate-400 border-t-transparent rounded-full animate-spin"></div>
+                        <span class="sr-only">Ładowanie...</span>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                <!-- Success State -->
+                <div class="ml-form-successBody row-success" style="display: none">
+                  <div class="ml-form-successContent p-6 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 text-center">
+                    <span class="material-symbols-outlined text-emerald-500 text-4xl mb-3">check_circle</span>
+                    <h4 class="text-emerald-800 dark:text-emerald-400 font-bold text-lg mb-2">Dziękujemy za zapis!</h4>
+                    <p class="text-emerald-600 dark:text-emerald-500 text-sm">Właśnie dołączyłeś do społeczności ETFkalkulator.pl.</p>
+                  </div>
+                </div>
               </div>
             </div>
-            <p class="text-[10px] text-slate-400 italic mt-3">Klikając "Wyślij" akceptujesz regulamin i politykę prywatności.</p>
           </div>
-        </div>
       </div>
       <div class="pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
         <p class="text-xs text-slate-400">© 2026 ETFkalkulator.pl — Wszelkie prawa zastrzeżone.</p>
@@ -776,16 +816,8 @@
     })();
   </script>
 
-  <!-- MailerLite Success Callback -->
-  <script>
-    function ml_webform_success_37996059() {
-      const successBody = document.querySelector('.ml-subscribe-form-37996059 .row-success');
-      const formBody = document.querySelector('.ml-subscribe-form-37996059 .row-form');
-      if (successBody) successBody.style.display = 'block';
-      if (formBody) formBody.style.display = 'none';
-    }
-  </script>
-  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
+  <script src="https://www.google.com/recaptcha/api.js" defer></script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript" defer></script>
 
   <!-- Cookie Consent Script -->
   <script defer>
