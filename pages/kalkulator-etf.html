@@ -228,6 +228,28 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+
+    /* MailerLite Centering & Reset Override */
+    #mlb2-37996059.ml-form-embedContainer,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody form {
+      width: 100% !important;
+      max-width: 100% !important;
+      float: none !important;
+      margin: 0 auto !important;
+    }
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit {
+      width: 100% !important;
+      float: none !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent {
+      text-align: center !important;
+    }
   </style>
   <link rel="preload" as="style" href="../css/mailerlite.css">
   <link href="../css/mailerlite.css" rel="stylesheet" media="print" onload="this.media='all'">
@@ -587,7 +609,7 @@
         <!-- Decorative element -->
         <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700"></div>
         
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center lg:justify-items-stretch relative z-10">
           <!-- Left Side: Content -->
           <div class="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
