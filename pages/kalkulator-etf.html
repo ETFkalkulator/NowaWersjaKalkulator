@@ -385,41 +385,61 @@
 
             <div class="space-y-8">
               <!-- Kapitał startowy -->
-              <div class="space-y-3">
-                <div class="flex justify-between items-center">
-                  <label for="input-kapital" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Kapitał startowy</label>
+              <div class="space-y-3 group">
+                <div class="flex justify-between items-center" onclick="openEduModal('kapital_start')">
+                  <label for="input-kapital" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center gap-2 cursor-help group-hover:text-primary transition-colors">
+                    Kapitał startowy
+                    <span class="px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400 rounded uppercase">INFO</span>
+                    <span class="material-symbols-outlined text-sm opacity-50 animate-pulse-subtle">help</span>
+                  </label>
                   <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">PLN</span>
                 </div>
                 <input type="text" inputmode="decimal" id="input-kapital" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" value="10000" min="100" step="1000" maxlength="10" onfocus="clearOnFocus(this, 10000)" onblur="restoreOnBlur(this, 10000)">
+                <p class="text-[11px] text-slate-400 mt-1.5">Kwota, od której zaczynasz budowę portfela.</p>
               </div>
 
               <!-- Miesięczna dopłata -->
-              <div class="space-y-3">
-                <div class="flex justify-between items-center">
-                  <label for="input-doplata" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Miesięczna dopłata</label>
+              <div class="space-y-3 group">
+                <div class="flex justify-between items-center" onclick="openEduModal('doplata_msc')">
+                  <label for="input-doplata" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center gap-2 cursor-help group-hover:text-primary transition-colors">
+                    Miesięczna dopłata
+                    <span class="px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400 rounded uppercase">INFO</span>
+                    <span class="material-symbols-outlined text-sm opacity-50 animate-pulse-subtle">help</span>
+                  </label>
                   <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">PLN</span>
                 </div>
                 <input type="text" inputmode="decimal" id="input-doplata" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" value="500" min="0" step="100" maxlength="8" onfocus="clearOnFocus(this, 500)" onblur="restoreOnBlur(this, 500)">
+                <p class="text-[11px] text-slate-400 mt-1.5">Regularność to klucz do potęgi procentu składanego.</p>
               </div>
 
               <!-- Horyzont -->
-              <div class="space-y-3">
-                <div class="flex justify-between items-center">
-                  <label for="input-horyzont" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Horyzont inwestycji</label>
+              <div class="space-y-3 group">
+                <div class="flex justify-between items-center" onclick="openEduModal('horyzont_lat')">
+                  <label for="input-horyzont" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center gap-2 cursor-help group-hover:text-primary transition-colors">
+                    Horyzont inwestycji
+                    <span class="px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400 rounded uppercase">INFO</span>
+                    <span class="material-symbols-outlined text-sm opacity-50 animate-pulse-subtle">help</span>
+                  </label>
                   <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">LATA</span>
                 </div>
                 <input type="text" inputmode="decimal" id="input-horyzont" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" value="10" min="1" max="50" step="1" maxlength="2" onfocus="clearOnFocus(this, 10)" onblur="restoreOnBlur(this, 10)">
+                <p class="text-[11px] text-slate-400 mt-1.5">Dłuższy czas to mniejsze ryzyko i większy zysk.</p>
               </div>
 
               <hr class="border-slate-100 dark:border-slate-800 my-8">
 
               <!-- Stopa zwrotu -->
-              <div class="space-y-4">
-                <div class="flex justify-between items-center">
-                  <label for="input-stopa" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Stopa zwrotu ETF (rocznie)</label>
+              <div class="space-y-4 group">
+                <div class="flex justify-between items-center" onclick="openEduModal('stopa_zwrotu')">
+                  <label for="input-stopa" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center gap-2 cursor-help group-hover:text-primary transition-colors">
+                    Stopa zwrotu ETF (rocznie)
+                    <span class="px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400 rounded uppercase">INFO</span>
+                    <span class="material-symbols-outlined text-sm opacity-50 animate-pulse-subtle">help</span>
+                  </label>
                   <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">%</span>
                 </div>
                 <input type="text" inputmode="decimal" id="input-stopa" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" value="7" step="0.5" maxlength="5" onfocus="clearOnFocus(this, 7)" onblur="restoreOnBlur(this, 7)">
+                <p class="text-[11px] text-slate-400 mt-1.5">Historycznie rynek akcji (S&P 500) dostarcza ok. 7-10% rocznie.</p>
                 
                 <div class="grid grid-cols-3 gap-2">
                   <button type="button" class="py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-[10px] font-bold uppercase tracking-tight text-slate-500 hover:border-primary/50 transition-all" onclick="setStopa(4, this.parentElement.parentElement.querySelector('input'))">4%<br><span class="font-normal lowercase opacity-70">Pesymistyczny</span></button>
@@ -429,12 +449,17 @@
               </div>
 
               <!-- Inflacja -->
-              <div class="space-y-3">
-                <div class="flex justify-between items-center">
-                  <label for="input-inflacja" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Oczekiwana inflacja</label>
+              <div class="space-y-3 group">
+                <div class="flex justify-between items-center" onclick="openEduModal('inflacja_nbp')">
+                  <label for="input-inflacja" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center gap-2 cursor-help group-hover:text-primary transition-colors">
+                    Oczekiwana inflacja
+                    <span class="px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400 rounded uppercase">INFO</span>
+                    <span class="material-symbols-outlined text-sm opacity-50 animate-pulse-subtle">help</span>
+                  </label>
                   <span class="text-xs font-bold text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">%</span>
                 </div>
                 <input type="text" inputmode="decimal" id="input-inflacja" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" value="2.5" step="0.1" maxlength="5" onfocus="clearOnFocus(this, 2.5)" onblur="restoreOnBlur(this, 2.5)">
+                <p class="text-[11px] text-slate-400 mt-1.5">Cel inflacyjny NBP to 2,5% (±1 p.p.).</p>
               </div>
 
               <!-- IKE/IKZE Toggle -->
@@ -874,6 +899,37 @@
   <script>
     // 1. EDU MODAL LOGIC
     const modalData = {
+      // PARAMETRY WEJŚCIOWE
+      kapital_start: {
+        title: "Kapitał Startowy",
+        desc: "To kwota, którą dysponujesz na samym początku inwestycji. Może pochodzić z oszczędności, sprzedaży innego aktywa lub spadku. Im większy kapitał na start, tym silniej działa procent składany od pierwszego dnia.",
+        formula: "Wartość Początkowa (PV)",
+        icon: "account_balance_wallet"
+      },
+      doplata_msc: {
+        title: "Miesięczna Dopłata",
+        desc: "Regularne dopłacanie nawet małych kwot to najskuteczniejszy sposób na budowę wielkiego majątku. Pozwala to na uśrednianie ceny zakupu (Dollar Cost Averaging) i systematyczne zwiększanie bazy, która na Ciebie zarabia.",
+        formula: "Annuity Payment (PMT)",
+        icon: "add_task"
+      },
+      horyzont_lat: {
+        title: "Horyzont Inwestycyjny",
+        desc: "Czas to najpotężniejszy sprzymierzeniec inwestora. Im dłużej Twoje pieniądze pracują na rynku, tym bardziej krzywa wzrostu staje się pionowa. Długi termin pozwala też przetrwać okresowe spadki na giełdzie.",
+        formula: "Liczba Okresów (n)",
+        icon: "event_repeat"
+      },
+      stopa_zwrotu: {
+        title: "Stopa Zwrotu",
+        desc: "Przewidywany roczny zysk z Twojego portfela ETF. Rynek akcji (np. S&P 500) historycznie dostarcza średnio 7-10% rocznie, ale pamiętaj, że wyniki historyczne nie gwarantują przyszłych zysków.",
+        formula: "Annual Return (r)",
+        icon: "show_chart"
+      },
+      inflacja_nbp: {
+        title: "Oczekiwana Inflacja",
+        desc: "Proces spadku wartości pieniądza w czasie. Cel inflacyjny NBP to 2,5%. Uwzględnienie inflacji w kalkulatorze pozwala zobaczyć, ile realnie będą warte Twoje pieniądze za X lat w dzisiejszych cenach sklepowych.",
+        formula: "Purchasing Power Factor",
+        icon: "shopping_cart"
+      },
       kapital: {
         title: "Kapitał Końcowy",
         desc: "To kwota netto, którą otrzymasz na koniec inwestycji. Uwzględnia ona wypracowany zysk, potrącony podatek Belki (19%) oraz spadek siły nabywczej pieniądza spowodowany inflacją.",

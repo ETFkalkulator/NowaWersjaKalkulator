@@ -10,41 +10,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // Inicjalizacja pól i zdarzeń
-    const modalData = {
-      // PARAMETRY WEJŚCIOWE
-      kapital_start: {
-        title: "Kapitał Startowy",
-        desc: "To kwota, którą dysponujesz na samym początku inwestycji. Może pochodzić z oszczędności, sprzedaży innego aktywa lub spadku. Im większy kapitał na start, tym silniej działa procent składany od pierwszego dnia.",
-        formula: "Wartość Początkowa (PV)",
-        icon: "account_balance_wallet"
-      },
-      doplata_msc: {
-        title: "Miesięczna Dopłata",
-        desc: "Regularne dopłacanie nawet małych kwot to najskuteczniejszy sposób na budowę wielkiego majątku. Pozwala to na uśrednianie ceny zakupu (Dollar Cost Averaging) i systematyczne zwiększanie bazy, która na Ciebie zarabia.",
-        formula: "Annuity Payment (PMT)",
-        icon: "add_task"
-      },
-      horyzont_lat: {
-        title: "Horyzont Inwestycyjny",
-        desc: "Czas to najpotężniejszy sprzymierzeniec inwestora. Im dłużej Twoje pieniądze pracują na rynku, tym bardziej krzywa wzrostu staje się pionowa. Długi termin pozwala też przetrwać okresowe spadki na giełdzie.",
-        formula: "Liczba Okresów (n)",
-        icon: "event_repeat"
-      },
-      stopa_zwrotu: {
-        title: "Stopa Zwrotu",
-        desc: "Przewidywany roczny zysk z Twojego portfela ETF. Rynek akcji (np. S&P 500) historycznie dostarcza średnio 7-10% rocznie, ale pamiętaj, że wyniki historyczne nie gwarantują przyszłych zysków.",
-        formula: "Annual Return (r)",
-        icon: "show_chart"
-      },
-      inflacja_nbp: {
-        title: "Oczekiwana Inflacja",
-        desc: "Proces spadku wartości pieniądza w czasie. Cel inflacyjny NBP to 2,5%. Uwzględnienie inflacji w kalkulatorze pozwala zobaczyć, ile realnie będą warte Twoje pieniądze za X lat w dzisiejszych cenach sklepowych.",
-        formula: "Purchasing Power Factor",
-        icon: "Shopping_Cart"
-      },
-      // WYNIKI
-    };
-
     const inputs = [
         'input-kapital', 'input-doplata', 'input-horyzont',
         'input-stopa', 'input-inflacja', 'input-ike'
