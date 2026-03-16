@@ -505,7 +505,7 @@
           </div>
 
           <!-- SIATKA DRUGORZĘDNYCH WYNIKÓW -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center lg:justify-items-stretch">
+          <div class="flex flex-col items-center justify-center w-full lg:grid lg:grid-cols-2 lg:gap-6 lg:items-start lg:justify-items-stretch gap-6">
             <div onclick="openEduModal('wklad')" class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none">
               <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"></div>
               <div class="flex items-center mb-0.5">
@@ -545,12 +545,12 @@
             <div onclick="openEduModal('realny')" class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-emerald-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none">
               <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent"></div>
               <div class="flex items-center mb-0.5">
-                <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Wartość realna</p>
+                <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Wartość realna zysku</p>
                 <span class="px-1.5 py-0.5 text-[9px] bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 rounded-md font-bold ml-2">INFO</span>
               </div>
               <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-emerald-500" id="etf-wynik-zysk-realny">0,00 zł</p>
               <div class="mt-auto pt-2">
-                <p class="text-[11px] text-slate-400/80">Zysk po odliczeniu inflacji</p>
+                <p class="text-[11px] text-slate-400/80">Zysk po odliczeniu podatku i inflacji</p>
               </div>
               <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center lg:text-left">Kliknij, aby zrozumieć ten wynik</p>
             </div>
@@ -955,7 +955,7 @@
         icon: "gavel"
       },
       realny: {
-        title: "Wartość Realna",
+        title: "Wartość Realna Zysku",
         desc: "Kluczowy wskaźnik pokazujący realną siłę nabywczą Twojego zysku. Inflacja sprawia, że za tę samą kwotę w przyszłości kupisz mniej niż dzisiaj. Wartość realna oczyszcza wynik z wpływu wzrostu cen.",
         formula: "Realny = Kapitał_Netto / (1 + Inflacja)^Lata",
         icon: "insights"
