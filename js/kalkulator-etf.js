@@ -105,11 +105,11 @@ function obliczWszystko() {
                 const tr = document.createElement('tr');
                 tr.className = "hover:bg-slate-50/50 dark:hover:bg-slate-900/50 transition-colors";
                 tr.innerHTML = `
-                    <td class="px-8 py-4 text-sm font-bold text-slate-900 dark:text-slate-100">Rok ${rok}</td>
-                    <td class="px-8 py-4 text-sm text-slate-600 dark:text-slate-400 font-medium">${formatujZl(zaokraglij(sumaWplat))}</td>
-                    <td class="px-8 py-4 text-sm text-slate-600 dark:text-slate-400">${formatujZl(zaokraglij(kapitalNominalny - sumaWplat))}</td>
-                    <td class="px-8 py-4 text-sm font-bold text-slate-900 dark:text-white">${formatujZl(zaokraglij(kapitalNominalny))}</td>
-                    <td class="px-8 py-4 text-sm font-bold text-emerald-500">${formatujZl(zaokraglij(kapitalRealny))}</td>
+                    <td class="sticky left-0 z-10 bg-white/95 dark:bg-slate-900/95 px-4 py-3 text-xs lg:text-sm font-semibold text-slate-900 dark:text-slate-100 border-r border-slate-100 dark:border-slate-800 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">Rok ${rok}</td>
+                    <td class="px-3 py-4 text-xs lg:text-sm text-slate-600 dark:text-slate-400 font-medium text-right whitespace-nowrap">${formatujZl(zaokraglij(sumaWplat))}</td>
+                    <td class="px-3 py-4 text-xs lg:text-sm text-slate-600 dark:text-slate-400 text-right whitespace-nowrap">${formatujZl(zaokraglij(kapitalNominalny - sumaWplat))}</td>
+                    <td class="px-3 py-4 text-xs lg:text-sm font-bold text-slate-900 dark:text-white text-right whitespace-nowrap">${formatujZl(zaokraglij(kapitalNominalny))}</td>
+                    <td class="px-3 py-4 text-xs lg:text-sm font-bold text-emerald-500 text-right whitespace-nowrap">${formatujZl(zaokraglij(kapitalRealny))}</td>
                 `;
                 tabelaBody.appendChild(tr);
             }
