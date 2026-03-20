@@ -342,8 +342,8 @@ function saveCurrentScenario() {
     const kapitalKoncowyEl = document.getElementById('etf-wynik-kapital-koncowy');
     const kapitalKoncowyStr = kapitalKoncowyEl ? kapitalKoncowyEl.innerText : '0,00 zł';
 
-    const zyskRealnyEl = document.getElementById('etf-wynik-zysk-realny');
-    const zyskRealnyStr = zyskRealnyEl ? zyskRealnyEl.innerText : '0,00 zł';
+    const zyskNominalnyEl = document.getElementById('etf-wynik-zysk-nominalny');
+    const zyskNominalnyStr = zyskNominalnyEl ? zyskNominalnyEl.innerText : '0,00 zł';
 
     const scenario = {
         kapital: kapital,
@@ -351,7 +351,7 @@ function saveCurrentScenario() {
         lata: lata,
         stopa: stopa,
         kapitalKoncowyStr: kapitalKoncowyStr,
-        zyskRealnyStr: zyskRealnyStr
+        zyskNominalnyStr: zyskNominalnyStr
     };
 
     savedScenarios.push(scenario);
@@ -407,8 +407,8 @@ function renderScenarios() {
                     <p class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white leading-none">${scen.kapitalKoncowyStr}</p>
                     <div class="flex items-center gap-1 mt-2 mb-1">
                         <span class="material-symbols-outlined text-[13px] text-emerald-500">trending_up</span>
-                        <p class="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold tracking-wide">
-                            w tym zysk realny: ${scen.zyskRealnyStr}
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 font-medium tracking-wide">
+                            w tym zysk nominalny: ${scen.zyskNominalnyStr}
                         </p>
                     </div>
                 </div>
