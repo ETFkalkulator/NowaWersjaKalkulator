@@ -28,10 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Smart Auto-Clearing: clear on focus
+            // Smart Auto-Selection: select on focus (delay for mobile OS stability)
             el.addEventListener('focus', function() {
                 this.dataset.previousValue = this.value;
-                this.value = '';
+                setTimeout(() => {
+                    this.select();
+                    // Some mobile browsers need a second trigger
+                    this.setSelectionRange(0, 9999);
+                }, 50);
             });
 
             // Safety Net: restore on blur if empty
