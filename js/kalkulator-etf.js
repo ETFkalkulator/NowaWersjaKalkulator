@@ -8,6 +8,8 @@
  * - Podatku Belki (z wyborem IKE/IKZE)
  */
 
+let savedScenarios = [];
+
 document.addEventListener('DOMContentLoaded', () => {
     // Inicjalizacja pól i zdarzeń
     const inputs = [
@@ -21,6 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
             el.addEventListener('input', obliczWszystko);
         }
     });
+
+    const btnSaveScenario = document.getElementById('btn-save-scenario');
+    if (btnSaveScenario) {
+        btnSaveScenario.addEventListener('click', saveCurrentScenario);
+    }
 
     // Inicjalizacja wykresu
     initChart();
@@ -270,3 +277,93 @@ function updateChart(dane) {
 
 window.setStopa = setStopa;
 window.obliczWszystko = obliczWszystko;
+
+/**
+ * SCENARIO HISTORY LOGIC
+ */
+function saveCurrentScenario() {
+    if (savedScenarios.length >= 6) {
+        alert("Możesz zapisać maksymalnie 6 scenariuszy.");
+        return;
+    }
+
+    const kapital = pobierzWartosc('input-kapital', 10000);
+    const doplata = pobierzWartosc('input-doplata', 500);
+    const lata = pobierzWartosc('input-horyzont', 10);
+    const stopa = pobierzWartosc('input-stopa', 7);
+    
+    // Read formatted result directly from UI
+    const kapitalKoncowyEl = document.getElementById('etf-wynik-kapital-koncowy');
+    const kapitalKoncowyStr = kapitalKoncowyEl ? kapitalKoncowyEl.innerText : '0,00 zł';
+
+    const zyskRealnyEl = document.getElementById('etf-wynik-zysk-realny');
+    const zyskRealnyStr = zyskRealnyEl ? zyskRealnyEl.innerText : '0,00 zł';
+
+    const scenario = {
+        kapital: kapital,
+        doplata: doplata,
+        lata: lata,
+        stopa: stopa,
+        kapitalKoncowyStr: kapitalKoncowyStr,
+        zyskRealnyStr: zyskRealnyStr
+    };
+
+    savedScenarios.push(scenario);
+    renderScenarios();
+}
+
+function renderScenarios() {
+    const section = document.getElementById('scenario-history-section');
+    const container = document.getElementById('scenario-cards-container');
+    if (!section || !container) return;
+
+    if (savedScenarios.length === 0) {
+        section.classList.add('hidden');
+        return;
+    }
+
+    section.classList.remove('hidden');
+    container.innerHTML = '';
+
+    savedScenarios.forEach((scen, index) => {
+        const div = document.createElement('div');
+        div.className = "min-w-[85%] sm:min-w-[300px] snap-center bg-white/70 dark:bg-slate-900/60 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-2xl p-4 relative group shrink-0 transition-transform duration-300 hover:shadow-lg";
+        
+        // Format z polskim separatorem spacji (np. "10 000")
+        const formatPl = new Intl.NumberFormat('pl-PL');
+        const kapitalStr = formatPl.format(scen.kapital);
+        const doplataStr = formatPl.format(scen.doplata);
+
+        div.innerHTML = `
+            <button class="absolute top-2 right-2 text-slate-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity p-1 z-10" onclick="deleteScenario(${index})" aria-label="Usuń scenariusz">
+                <span class="material-symbols-outlined text-[16px]">close</span>
+            </button>
+            <div class="flex flex-wrap gap-1 mb-4 pr-6 relative z-0">
+                <span class="text-[9px] bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-slate-600 dark:text-slate-300 font-medium">${kapitalStr} zł st.</span>
+                <span class="text-[9px] bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-slate-600 dark:text-slate-300 font-medium">${doplataStr} zł/msc</span>
+                <span class="text-[9px] bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-slate-600 dark:text-slate-300 font-medium">${scen.lata} lat</span>
+                <span class="text-[9px] bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-slate-600 dark:text-slate-300 font-medium">${scen.stopa}% zysk</span>
+            </div>
+            <div class="relative z-0">
+                <p class="text-[10px] text-slate-500 uppercase tracking-widest font-semibold mb-1">Przewidywany kapitał końcowy</p>
+                <p class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white leading-none">${scen.kapitalKoncowyStr}</p>
+                <div class="flex items-center gap-1 mt-2 mb-1">
+                    <span class="material-symbols-outlined text-[13px] text-emerald-500">trending_up</span>
+                    <p class="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold tracking-wide">
+                        w tym zysk realny: ${scen.zyskRealnyStr}
+                    </p>
+                </div>
+            </div>
+        `;
+        container.appendChild(div);
+    });
+}
+
+function deleteScenario(index) {
+    savedScenarios.splice(index, 1);
+    renderScenarios();
+}
+
+// Make functions globally accessible for inline handlers
+window.saveCurrentScenario = saveCurrentScenario;
+window.deleteScenario = deleteScenario;
