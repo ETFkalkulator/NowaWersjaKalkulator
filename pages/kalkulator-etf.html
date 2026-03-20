@@ -37,8 +37,10 @@
 
   <!-- Tailwind CSS and Fonts Injection -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap" rel="stylesheet"/>
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap"
+    rel="stylesheet" />
+
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: 'class',
@@ -52,7 +54,7 @@
           fontFamily: {
             "display": ["Inter", "sans-serif"]
           },
-          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1rem", "2xl": "1.5rem", "full": "9999px"},
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1rem", "2xl": "1.5rem", "full": "9999px" },
         },
       },
       corePlugins: { preflight: false }
@@ -65,11 +67,15 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
+
     .dark .glass-effect {
       background: rgba(15, 23, 42, 0.7);
     }
-    body { font-family: 'Inter', sans-serif; }
-    
+
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
     /* FIX: Material Symbols Rendering */
     .material-symbols-outlined {
       font-family: 'Material Symbols Outlined';
@@ -90,12 +96,25 @@
 
     /* Modal Animation */
     @keyframes modalFadeIn {
-      from { opacity: 0; transform: scale(0.95) translateY(10px); }
-      to { opacity: 1; transform: scale(1) translateY(0); }
+      from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
     }
-    .modal-anim { animation: modalFadeIn 0.3s ease-out forwards; }
-    html { scroll-behavior: smooth; }
-    
+
+    .modal-anim {
+      animation: modalFadeIn 0.3s ease-out forwards;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     /* Premium Checkbox Styling */
     input[type="checkbox"].custom-checkbox {
       appearance: none;
@@ -111,14 +130,17 @@
       transition: all 0.2s ease;
       position: relative;
     }
+
     .dark input[type="checkbox"].custom-checkbox {
       border-color: #334155;
       background-color: #0f172a;
     }
+
     input[type="checkbox"].custom-checkbox:checked {
       background-color: #0d7ff2;
       border-color: #0d7ff2;
     }
+
     input[type="checkbox"].custom-checkbox::before {
       content: "";
       width: 0.65rem;
@@ -128,19 +150,33 @@
       background-color: white;
       clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
     }
+
     input[type="checkbox"].custom-checkbox:checked::before {
       transform: scale(1);
     }
 
     /* Premium Result Cards Enhancements */
     @keyframes pulse-subtle {
-      0%, 100% { transform: scale(1); opacity: 0.8; }
-      50% { transform: scale(1.15); opacity: 1; }
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+
+      50% {
+        transform: scale(1.15);
+        opacity: 1;
+      }
     }
+
     .group:hover .animate-pulse-subtle {
       animation: pulse-subtle 2s infinite ease-in-out;
     }
-    .cursor-help { cursor: help; }
+
+    .cursor-help {
+      cursor: help;
+    }
 
     /* Mobile UX Fix: Info Touch Target */
     .touch-target-info {
@@ -232,6 +268,7 @@
       width: 20px;
       height: 20px;
     }
+
     .ml-form-embedSubmitLoad:after {
       content: " ";
       display: block;
@@ -243,9 +280,15 @@
       border-color: #FFFFFF #FFFFFF #FFFFFF transparent;
       animation: ml-form-embedSubmitLoad 1.2s linear infinite;
     }
+
     @keyframes ml-form-embedSubmitLoad {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
 
     /* MailerLite Centering & Reset Override */
@@ -258,6 +301,7 @@
       float: none !important;
       margin: 0 auto !important;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow,
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit {
       width: 100% !important;
@@ -265,6 +309,7 @@
       margin-left: auto !important;
       margin-right: auto !important;
     }
+
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent,
     #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent {
       text-align: center !important;
@@ -272,7 +317,9 @@
   </style>
   <link rel="preload" as="style" href="../css/mailerlite.css">
   <link href="../css/mailerlite.css" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="../css/mailerlite.css"></noscript>
+  <noscript>
+    <link rel="stylesheet" href="../css/mailerlite.css">
+  </noscript>
 </head>
 
 <body>
@@ -303,12 +350,15 @@
   </div>
 
   <!-- NAGŁÓWEK TAILWIND -->
-  <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-slate-200/50 dark:border-slate-800/50" style="font-family: 'Inter', sans-serif;">
+  <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-slate-200/50 dark:border-slate-800/50"
+    style="font-family: 'Inter', sans-serif;">
     <!-- Top Row: Logo & Main Actions -->
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
       <div class="flex items-center shrink-0">
-        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity" style="text-decoration:none;">
-          <div class="bg-primary p-1.5 rounded-xl text-white flex items-center justify-center" style="background-color: #0d7ff2;">
+        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity"
+          style="text-decoration:none;">
+          <div class="bg-primary p-1.5 rounded-xl text-white flex items-center justify-center"
+            style="background-color: #0d7ff2;">
             <span class="material-symbols-outlined text-xl">account_balance_wallet</span>
           </div>
           <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">ETFkalkulator.pl</span>
@@ -317,51 +367,98 @@
 
       <!-- Desktop Links: Visible on lg and up -->
       <div class="hidden lg:flex items-center gap-6 xl:gap-8 mx-6">
-        <a class="text-sm font-extrabold text-primary transition-colors hover:opacity-80" href="kalkulator-etf.html" style="text-decoration:none; color: #0d7ff2;">Kalkulator ETF</a>
-        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="kalkulator-obligacji.html" style="text-decoration:none;">Kalkulator Obligacji</a>
-        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="kalkulator-wolnosci.html" style="text-decoration:none;">Kalkulator Wolności</a>
-        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="porownywarka.html" style="text-decoration:none;">Porównywarka</a>
-        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="../blog/index.html" style="text-decoration:none;">Blog</a>
-        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="o-projekcie.html" style="text-decoration:none;">O projekcie</a>
+        <a class="text-sm font-extrabold text-primary transition-colors hover:opacity-80" href="kalkulator-etf.html"
+          style="text-decoration:none; color: #0d7ff2;">Kalkulator ETF</a>
+        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
+          href="kalkulator-obligacji.html" style="text-decoration:none;">Kalkulator Obligacji</a>
+        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
+          href="kalkulator-wolnosci.html" style="text-decoration:none;">Kalkulator Wolności</a>
+        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
+          href="porownywarka.html" style="text-decoration:none;">Porównywarka</a>
+        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
+          href="../blog/index.html" style="text-decoration:none;">Blog</a>
+        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
+          href="o-projekcie.html" style="text-decoration:none;">O projekcie</a>
       </div>
 
       <div class="flex items-center gap-3">
         <!-- Theme Toggle -->
-        <button onclick="przelaczTryb()" aria-label="Przełącz tryb" class="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center hover:bg-slate-50 transition-colors">
+        <button onclick="przelaczTryb()" aria-label="Przełącz tryb"
+          class="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center hover:bg-slate-50 transition-colors">
           <span class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
           <span class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
         </button>
         <!-- CTA Button -->
-        <a href="#newsletter-section" class="bg-primary text-white px-4 h-9 rounded-full flex items-center justify-center text-[13px] font-bold hover:opacity-90 transition-opacity no-underline" style="background-color: #0d7ff2;">
+        <a href="#newsletter-section"
+          class="bg-primary text-white px-4 h-9 rounded-full flex items-center justify-center text-[13px] font-bold hover:opacity-90 transition-opacity no-underline"
+          style="background-color: #0d7ff2;">
           Zapisz się
         </a>
       </div>
     </div>
 
     <!-- Bottom Row: Scrollable Menu (Mobile Only) -->
-    <div class="lg:hidden h-11 border-t border-slate-200/30 dark:border-slate-800/30 flex items-center overflow-x-auto overflow-y-hidden no-scrollbar px-4 gap-6 bg-white/10 dark:bg-slate-900/10" style="-webkit-overflow-scrolling: touch;">
-        <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap" href="kalkulator-etf.html" style="text-decoration:none;">Kalkulator ETF</a>
-        <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap" href="kalkulator-obligacji.html" style="text-decoration:none;">Obligacje</a>
-        <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap" href="kalkulator-wolnosci.html" style="text-decoration:none;">Wolność finansowa</a>
-        <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap" href="porownywarka.html" style="text-decoration:none;">Porównywarka</a>
-        <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap" href="../blog/index.html" style="text-decoration:none;">Blog</a>
-        <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap" href="o-projekcie.html" style="text-decoration:none;">O projekcie</a>
+    <div
+      class="lg:hidden h-11 border-t border-slate-200/30 dark:border-slate-800/30 flex items-center overflow-x-auto overflow-y-hidden no-scrollbar px-4 gap-6 bg-white/10 dark:bg-slate-900/10"
+      style="-webkit-overflow-scrolling: touch;">
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap"
+        href="kalkulator-etf.html" style="text-decoration:none;">Kalkulator ETF</a>
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap"
+        href="kalkulator-obligacji.html" style="text-decoration:none;">Obligacje</a>
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap"
+        href="kalkulator-wolnosci.html" style="text-decoration:none;">Wolność finansowa</a>
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap"
+        href="porownywarka.html" style="text-decoration:none;">Porównywarka</a>
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap"
+        href="../blog/index.html" style="text-decoration:none;">Blog</a>
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap"
+        href="o-projekcie.html" style="text-decoration:none;">O projekcie</a>
     </div>
-</nav>
+  </nav>
 
-<style>
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-</style>
+  <style>
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
 
   <style>
     /* MailerLite Form Custom Styling */
-    .ml-form-embedContainer .ml-block-form { margin-bottom: 0px; }
-    .ml-form-embedContainer .ml-form-embedPermissionsContent { text-align: left; }
-    .ml-form-embedContainer .ml-form-embedPermissionsContent h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--text-primary); }
-    .ml-form-embedContainer .ml-form-embedPermissionsContent p { font-size: 11px; color: var(--text-secondary); margin-bottom: 12px; }
-    .ml-form-embedContainer .label-description { font-size: 11px; color: var(--text-secondary); line-height: 1.4; }
-    .ml-form-embedContainer .ml-form-recaptcha { margin-top: 15px; }
+    .ml-form-embedContainer .ml-block-form {
+      margin-bottom: 0px;
+    }
+
+    .ml-form-embedContainer .ml-form-embedPermissionsContent {
+      text-align: left;
+    }
+
+    .ml-form-embedContainer .ml-form-embedPermissionsContent h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .ml-form-embedContainer .ml-form-embedPermissionsContent p {
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .ml-form-embedContainer .label-description {
+      font-size: 11px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .ml-form-embedContainer .ml-form-recaptcha {
+      margin-top: 15px;
+    }
   </style>
 
 
@@ -379,14 +476,16 @@
           Kalkulator Inwestycyjny <span class="text-primary" style="color:#0d7ff2;">ETF</span>
         </h1>
         <p class="text-lg text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed">
-          Oblicz jak zbudować kapitał korzystając z procentu składanego, optymalizacji podatkowej IKE/IKZE i niskokosztowych funduszy ETF.
+          Oblicz jak zbudować kapitał korzystając z procentu składanego, optymalizacji podatkowej IKE/IKZE i
+          niskokosztowych funduszy ETF.
         </p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         <!-- LEWA KOLUMNA: FORMULARZ -->
         <aside class="lg:col-span-4 space-y-6">
-          <div class="glass-effect p-8 rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-2xl shadow-slate-200/50 dark:shadow-none">
+          <div
+            class="glass-effect p-8 rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-2xl shadow-slate-200/50 dark:shadow-none">
             <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-8 flex items-center gap-3">
               <span class="material-symbols-outlined text-primary" style="color:#0d7ff2;">tune</span>
               Parametry inwestycji
@@ -396,54 +495,72 @@
               <!-- Kapitał startowy -->
               <div class="space-y-3 group">
                 <div class="flex justify-between items-center">
-                  <label for="input-kapital" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                  <label for="input-kapital"
+                    class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                     Kapitał startowy
                   </label>
                   <div class="flex items-center gap-2">
-                    <button type="button" onclick="openEduModal('kapital_start', event)" class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
+                    <button type="button" onclick="openEduModal('kapital_start', event)"
+                      class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
                       <span class="material-symbols-outlined text-sm">help</span>
                     </button>
-                    <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">PLN</span>
+                    <span
+                      class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md"
+                      style="color:#0d7ff2;">PLN</span>
                   </div>
                 </div>
-                <input type="text" inputmode="decimal" id="input-kapital" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" value="10000" min="100" step="1000" maxlength="10" autocomplete="off">
+                <input type="text" inputmode="decimal" id="input-kapital"
+                  class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
+                  value="10000" min="100" step="1000" maxlength="10" autocomplete="off">
                 <p class="text-[11px] text-slate-400 mt-1.5">Kwota, od której zaczynasz budowę portfela.</p>
               </div>
 
               <!-- Miesięczna dopłata -->
               <div class="space-y-3 group">
                 <div class="flex justify-between items-center">
-                  <label for="input-doplata" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                  <label for="input-doplata"
+                    class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                     Miesięczna dopłata
                   </label>
                   <div class="flex items-center gap-2">
-                    <button type="button" onclick="openEduModal('doplata_msc', event)" class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
+                    <button type="button" onclick="openEduModal('doplata_msc', event)"
+                      class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
                       <span class="material-symbols-outlined text-sm">help</span>
                     </button>
-                    <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">PLN</span>
+                    <span
+                      class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md"
+                      style="color:#0d7ff2;">PLN</span>
                   </div>
                 </div>
-                <input type="text" inputmode="decimal" id="input-doplata" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" value="500" min="0" step="100" maxlength="8" autocomplete="off">
+                <input type="text" inputmode="decimal" id="input-doplata"
+                  class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
+                  value="500" min="0" step="100" maxlength="8" autocomplete="off">
                 <p class="text-[11px] text-slate-400 mt-1.5">Regularność to klucz do potęgi procentu składanego.</p>
               </div>
 
               <!-- Horyzont -->
               <div class="space-y-3 group">
                 <div class="flex justify-between items-center">
-                  <label for="input-horyzont" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                  <label for="input-horyzont"
+                    class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                     Horyzont inwestycji
                   </label>
                   <div class="flex items-center gap-2">
-                    <button type="button" onclick="openEduModal('horyzont_lat', event)" class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
+                    <button type="button" onclick="openEduModal('horyzont_lat', event)"
+                      class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
                       <span class="material-symbols-outlined text-sm">help</span>
                     </button>
-                    <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">LATA</span>
+                    <span
+                      class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md"
+                      style="color:#0d7ff2;">LATA</span>
                   </div>
                 </div>
-                <input type="text" inputmode="decimal" id="input-horyzont" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" value="10" min="1" max="50" step="1" maxlength="2" autocomplete="off">
+                <input type="text" inputmode="decimal" id="input-horyzont"
+                  class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
+                  value="10" min="1" max="50" step="1" maxlength="2" autocomplete="off">
                 <p class="text-[11px] text-slate-400 mt-1.5">Dłuższy czas to mniejsze ryzyko i większy zysk.</p>
               </div>
 
@@ -452,55 +569,83 @@
               <!-- Stopa zwrotu -->
               <div class="space-y-4 group">
                 <div class="flex justify-between items-center">
-                  <label for="input-stopa" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                  <label for="input-stopa"
+                    class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                     Stopa zwrotu ETF (rocznie)
                   </label>
                   <div class="flex items-center gap-2">
-                    <button type="button" onclick="openEduModal('stopa_zwrotu', event)" class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
+                    <button type="button" onclick="openEduModal('stopa_zwrotu', event)"
+                      class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
                       <span class="material-symbols-outlined text-sm">help</span>
                     </button>
-                    <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">%</span>
+                    <span
+                      class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md"
+                      style="color:#0d7ff2;">%</span>
                   </div>
                 </div>
-                <input type="text" inputmode="decimal" id="input-stopa" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" value="7" step="0.5" maxlength="5" autocomplete="off">
-                <p class="text-[11px] text-slate-400 mt-1.5">Historycznie rynek akcji (S&P 500) dostarcza ok. 7-10% rocznie.</p>
-                
+                <input type="text" inputmode="decimal" id="input-stopa"
+                  class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
+                  value="7" step="0.5" maxlength="5" autocomplete="off">
+                <p class="text-[11px] text-slate-400 mt-1.5">Historycznie rynek akcji (S&P 500) dostarcza ok. 7-10%
+                  rocznie.</p>
+
                 <div class="grid grid-cols-3 gap-2">
-                  <button type="button" class="py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-[10px] font-bold uppercase tracking-tight text-slate-500 hover:border-primary/50 transition-all" onclick="setStopa(4, this.parentElement.parentElement.querySelector('input'))">4%<br><span class="font-normal lowercase opacity-70">Pesymistyczny</span></button>
-                  <button type="button" class="py-2.5 rounded-xl border-2 border-primary/50 bg-primary/5 text-[10px] font-bold uppercase tracking-tight text-primary hover:border-primary transition-all" onclick="setStopa(7, this.parentElement.parentElement.querySelector('input'))">7%<br><span class="font-normal lowercase opacity-70">Bazowy</span></button>
-                  <button type="button" class="py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-[10px] font-bold uppercase tracking-tight text-slate-500 hover:border-primary/50 transition-all" onclick="setStopa(10, this.parentElement.parentElement.querySelector('input'))">10%<br><span class="font-normal lowercase opacity-70">Optymistyczny</span></button>
+                  <button type="button"
+                    class="py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-[10px] font-bold uppercase tracking-tight text-slate-500 hover:border-primary/50 transition-all"
+                    onclick="setStopa(4, this.parentElement.parentElement.querySelector('input'))">4%<br><span
+                      class="font-normal lowercase opacity-70">Pesymistyczny</span></button>
+                  <button type="button"
+                    class="py-2.5 rounded-xl border-2 border-primary/50 bg-primary/5 text-[10px] font-bold uppercase tracking-tight text-primary hover:border-primary transition-all"
+                    onclick="setStopa(7, this.parentElement.parentElement.querySelector('input'))">7%<br><span
+                      class="font-normal lowercase opacity-70">Bazowy</span></button>
+                  <button type="button"
+                    class="py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-[10px] font-bold uppercase tracking-tight text-slate-500 hover:border-primary/50 transition-all"
+                    onclick="setStopa(10, this.parentElement.parentElement.querySelector('input'))">10%<br><span
+                      class="font-normal lowercase opacity-70">Optymistyczny</span></button>
                 </div>
               </div>
 
               <!-- Inflacja -->
               <div class="space-y-3 group">
                 <div class="flex justify-between items-center">
-                  <label for="input-inflacja" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                  <label for="input-inflacja"
+                    class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                     Oczekiwana inflacja
                   </label>
                   <div class="flex items-center gap-2">
-                    <button type="button" onclick="openEduModal('inflacja_nbp', event)" class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
+                    <button type="button" onclick="openEduModal('inflacja_nbp', event)"
+                      class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
                       <span class="material-symbols-outlined text-sm">help</span>
                     </button>
-                    <span class="text-xs font-bold text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">%</span>
+                    <span
+                      class="text-xs font-bold text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">%</span>
                   </div>
                 </div>
-                <input type="text" inputmode="decimal" id="input-inflacja" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" value="2.5" step="0.1" maxlength="5" autocomplete="off">
+                <input type="text" inputmode="decimal" id="input-inflacja"
+                  class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
+                  value="2.5" step="0.1" maxlength="5" autocomplete="off">
                 <p class="text-[11px] text-slate-400 mt-1.5">Cel inflacyjny NBP to 2,5% (±1 p.p.).</p>
               </div>
 
               <!-- IKE/IKZE Toggle -->
-              <label class="group flex items-start gap-4 p-4 rounded-2xl border-2 border-transparent hover:border-primary/20 hover:bg-primary/5 transition-all cursor-pointer">
+              <label
+                class="group flex items-start gap-4 p-4 rounded-2xl border-2 border-transparent hover:border-primary/20 hover:bg-primary/5 transition-all cursor-pointer">
                 <div class="relative flex items-center">
                   <input type="checkbox" id="input-ike" class="peer sr-only">
-                  <div class="w-12 h-6 bg-slate-200 dark:bg-slate-800 rounded-full peer peer-checked:bg-primary transition-colors"></div>
-                  <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-6"></div>
+                  <div
+                    class="w-12 h-6 bg-slate-200 dark:bg-slate-800 rounded-full peer peer-checked:bg-primary transition-colors">
+                  </div>
+                  <div
+                    class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-6">
+                  </div>
                 </div>
                 <div class="flex-1">
-                  <span class="block text-sm font-bold text-slate-900 dark:text-white mb-1">Konto IKE / IKZE (0% podatku)</span>
-                  <span class="block text-xs text-slate-500 dark:text-slate-400 leading-normal">Zaznacz, jeśli inwestujesz w ramach limitów bez podatku Belki.</span>
+                  <span class="block text-sm font-bold text-slate-900 dark:text-white mb-1">Konto IKE / IKZE (0%
+                    podatku)</span>
+                  <span class="block text-xs text-slate-500 dark:text-slate-400 leading-normal">Zaznacz, jeśli
+                    inwestujesz w ramach limitów bez podatku Belki.</span>
                 </div>
               </label>
             </div>
@@ -510,21 +655,29 @@
         <!-- PRAWA KOLUMNA: WYNIKI -->
         <div class="lg:col-span-8 space-y-8">
           <!-- GŁÓWNY WYNIK (Visual Priority) -->
-          <div onclick="openEduModal('kapital', event)" class="relative overflow-hidden group bg-primary p-10 md:p-14 rounded-[2.5rem] text-white shadow-2xl shadow-primary/30 transition-all hover:scale-[1.01] hover:shadow-blue-500/40 hover:border-white/20 border-2 border-transparent cursor-help" style="background-color: #0d7ff2;">
-            <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-            <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20 group-hover:scale-110 transition-transform duration-700"></div>
+          <div onclick="openEduModal('kapital', event)"
+            class="relative overflow-hidden group bg-primary p-10 md:p-14 rounded-[2.5rem] text-white shadow-2xl shadow-primary/30 transition-all hover:scale-[1.01] hover:shadow-blue-500/40 hover:border-white/20 border-2 border-transparent cursor-help"
+            style="background-color: #0d7ff2;">
+            <div
+              class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent">
+            </div>
+            <div
+              class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20 group-hover:scale-110 transition-transform duration-700">
+            </div>
             <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
               <div>
                 <p class="text-primary-100/80 font-bold uppercase tracking-widest text-[10px] mb-3 flex items-center">
                   Przewidywany kapitał końcowy
                   <span class="px-1.5 py-0.5 text-[9px] bg-white/10 text-white rounded-md font-bold ml-2">INFO</span>
                 </p>
-                <p class="text-5xl md:text-7xl font-black tracking-tighter mb-4" id="etf-wynik-kapital-koncowy">0,00 zł</p>
+                <p class="text-5xl md:text-7xl font-black tracking-tighter mb-4" id="etf-wynik-kapital-koncowy">0,00 zł
+                </p>
                 <div class="flex items-center gap-2 text-primary-100/80 text-sm">
                   <span class="material-symbols-outlined text-base">verified</span>
                   <span>Kwota netto po uwzględnieniu podatku Belki i inflacji</span>
                 </div>
-                <p class="mt-4 text-[10px] text-white/60 opacity-0 group-hover:opacity-100 transition-opacity">Kliknij, aby zrozumieć ten wynik</p>
+                <p class="mt-4 text-[10px] text-white/60 opacity-0 group-hover:opacity-100 transition-opacity">Kliknij,
+                  aby zrozumieć ten wynik</p>
               </div>
               <div class="bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/20">
                 <p class="text-[10px] font-black uppercase tracking-widest text-white/60 mb-1">Status podatkowy</p>
@@ -534,99 +687,148 @@
           </div>
 
           <!-- SIATKA DRUGORZĘDNYCH WYNIKÓW -->
-          <div class="flex flex-col items-center justify-center w-full lg:grid lg:grid-cols-2 lg:gap-6 lg:items-start lg:justify-items-stretch gap-6">
-            <div onclick="openEduModal('wklad', event)" class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
-              <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"></div>
+          <div
+            class="flex flex-col items-center justify-center w-full lg:grid lg:grid-cols-2 lg:gap-6 lg:items-start lg:justify-items-stretch gap-6">
+            <div onclick="openEduModal('wklad', event)"
+              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+              <div
+                class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent">
+              </div>
               <div class="flex items-center justify-center lg:justify-start mb-0.5">
                 <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Wkład własny</p>
-                <span class="px-1.5 py-0.5 text-[9px] bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 rounded-md font-bold ml-2">INFO</span>
+                <span
+                  class="px-1.5 py-0.5 text-[9px] bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 rounded-md font-bold ml-2">INFO</span>
               </div>
-              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-slate-900 dark:text-white" id="etf-wynik-wklad-wlasny">0,00 zł</p>
+              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-slate-900 dark:text-white"
+                id="etf-wynik-wklad-wlasny">0,00 zł</p>
               <div class="mt-auto pt-2">
                 <p class="text-[11px] text-slate-400/80">Suma wpłat i kapitału startowego</p>
               </div>
-              <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Kliknij, aby zrozumieć ten wynik</p>
+              <p
+                class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div onclick="openEduModal('zysk', event)" class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
-              <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"></div>
+            <div onclick="openEduModal('zysk', event)"
+              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+              <div
+                class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent">
+              </div>
               <div class="flex items-center justify-center lg:justify-start mb-0.5">
                 <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Zysk nominalny</p>
-                <span class="px-1.5 py-0.5 text-[9px] bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 rounded-md font-bold ml-2">INFO</span>
+                <span
+                  class="px-1.5 py-0.5 text-[9px] bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 rounded-md font-bold ml-2">INFO</span>
               </div>
-              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-slate-900 dark:text-white" id="etf-wynik-zysk-nominalny">0,00 zł</p>
+              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-slate-900 dark:text-white"
+                id="etf-wynik-zysk-nominalny">0,00 zł</p>
               <div class="mt-auto pt-2">
                 <p class="text-[11px] text-slate-400/80">Czysty zysk przed podatkiem</p>
               </div>
-              <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Kliknij, aby zrozumieć ten wynik</p>
+              <p
+                class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div onclick="openEduModal('podatek', event)" class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
-              <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-rose-500/40 to-transparent"></div>
+            <div onclick="openEduModal('podatek', event)"
+              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+              <div
+                class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-rose-500/40 to-transparent">
+              </div>
               <div class="flex items-center justify-center lg:justify-start mb-0.5">
                 <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Podatek Belki</p>
-                <span class="px-1.5 py-0.5 text-[9px] bg-rose-50 text-rose-600 dark:bg-rose-900/30 dark:text-rose-400 rounded-md font-bold ml-2">INFO</span>
+                <span
+                  class="px-1.5 py-0.5 text-[9px] bg-rose-50 text-rose-600 dark:bg-rose-900/30 dark:text-rose-400 rounded-md font-bold ml-2">INFO</span>
               </div>
-              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-rose-500" id="etf-wynik-podatek-belki">0,00 zł</p>
+              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-rose-500"
+                id="etf-wynik-podatek-belki">0,00 zł</p>
               <div class="mt-auto pt-2">
                 <p class="text-[11px] text-slate-400/80" id="txt-podatek">Środki przekazane do fiskusa</p>
               </div>
-              <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Kliknij, aby zrozumieć ten wynik</p>
+              <p
+                class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div onclick="openEduModal('realny', event)" class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-emerald-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
-              <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent"></div>
+            <div onclick="openEduModal('realny', event)"
+              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-emerald-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+              <div
+                class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent">
+              </div>
               <div class="flex items-center justify-center lg:justify-start mb-0.5">
                 <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Wartość realna zysku</p>
-                <span class="px-1.5 py-0.5 text-[9px] bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 rounded-md font-bold ml-2">INFO</span>
+                <span
+                  class="px-1.5 py-0.5 text-[9px] bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 rounded-md font-bold ml-2">INFO</span>
               </div>
-              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-emerald-500" id="etf-wynik-zysk-realny">0,00 zł</p>
+              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-emerald-500"
+                id="etf-wynik-zysk-realny">0,00 zł</p>
               <div class="mt-auto pt-2">
                 <p class="text-[11px] text-slate-400/80">Zysk po odliczeniu podatku i inflacji</p>
               </div>
-              <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Kliknij, aby zrozumieć ten wynik</p>
+              <p
+                class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div onclick="openEduModal('cagr', event)" class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
-              <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"></div>
+            <div onclick="openEduModal('cagr', event)"
+              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+              <div
+                class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent">
+              </div>
               <div class="flex items-center justify-center lg:justify-start mb-0.5">
                 <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Stopa CAGR</p>
-                <span class="px-1.5 py-0.5 text-[9px] bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 rounded-md font-bold ml-2">INFO</span>
+                <span
+                  class="px-1.5 py-0.5 text-[9px] bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 rounded-md font-bold ml-2">INFO</span>
               </div>
-              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-slate-900 dark:text-white" id="etf-wynik-cagr">0,00%</p>
+              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-slate-900 dark:text-white"
+                id="etf-wynik-cagr">0,00%</p>
               <div class="mt-auto pt-2">
                 <p class="text-[11px] text-slate-400/80">Średnioroczny zwrot netto</p>
               </div>
-              <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Kliknij, aby zrozumieć ten wynik</p>
+              <p
+                class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div onclick="openEduModal('cagr_real', event)" class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-emerald-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
-              <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent"></div>
+            <div onclick="openEduModal('cagr_real', event)"
+              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-emerald-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+              <div
+                class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent">
+              </div>
               <div class="flex items-center justify-center lg:justify-start mb-0.5">
                 <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Realny CAGR</p>
-                <span class="px-1.5 py-0.5 text-[9px] bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 rounded-md font-bold ml-2">INFO</span>
+                <span
+                  class="px-1.5 py-0.5 text-[9px] bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 rounded-md font-bold ml-2">INFO</span>
               </div>
-              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-emerald-500" id="etf-wynik-cagr-real">0,00%</p>
+              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-emerald-500"
+                id="etf-wynik-cagr-real">0,00%</p>
               <div class="mt-auto pt-2">
                 <p class="text-[11px] text-slate-400/80">Wzrost siły nabywczej r/r</p>
               </div>
-              <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Kliknij, aby zrozumieć ten wynik</p>
+              <p
+                class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Kliknij, aby zrozumieć ten wynik</p>
             </div>
           </div>
 
           <!-- SCENARIO HISTORY & SHARE -->
           <div class="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:max-w-xl mx-auto">
-            <button id="btn-save-scenario" class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-all font-semibold text-sm">
+            <button id="btn-save-scenario"
+              class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-all font-semibold text-sm">
               <span class="material-symbols-outlined text-[18px]">push_pin</span>
               Zapisz scenariusz
             </button>
-            <button id="btn-share-result" class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition-all font-semibold text-sm text-emerald-700 dark:text-emerald-400 group">
-              <span class="material-symbols-outlined text-[18px] group-hover:scale-110 transition-transform">share</span>
+            <button id="btn-share-result"
+              class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition-all font-semibold text-sm text-emerald-700 dark:text-emerald-400 group">
+              <span
+                class="material-symbols-outlined text-[18px] group-hover:scale-110 transition-transform">share</span>
               <span id="txt-btn-share">Udostępnij wynik</span>
             </button>
           </div>
-          
-          <div id="scenario-history-section" class="hidden mt-8 w-full p-6 glass-effect rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-xl overflow-hidden">
+
+          <div id="scenario-history-section"
+            class="hidden mt-8 w-full p-6 glass-effect rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-xl overflow-hidden">
             <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-3">
               <span class="material-symbols-outlined text-primary" style="color:#0d7ff2;">history</span>
               Porównanie scenariuszy
             </h3>
-            <div id="scenario-cards-container" class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 scrollbar-hide" style="-webkit-overflow-scrolling: touch;">
+            <div id="scenario-cards-container"
+              class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 scrollbar-hide"
+              style="-webkit-overflow-scrolling: touch;">
               <!-- Dynamically populated -->
             </div>
           </div>
@@ -645,7 +847,7 @@
                 </div>
               </div>
             </div>
-            <div class="h-[350px] relative">
+            <div class="relative">
               <canvas id="chartInwestycja" aria-label="Wykres wzrostu kapitału"></canvas>
             </div>
           </div>
@@ -655,19 +857,32 @@
               <span class="material-symbols-outlined text-primary" style="color:#0d7ff2;">table_chart</span>
               Szczegółowe zestawienie rok po roku
             </h3>
-            
-            <div class="relative overflow-x-auto scrollbar-hide shadow-inner rounded-xl border border-slate-200/50 dark:border-slate-700/50">
+
+            <div
+              class="relative overflow-x-auto scrollbar-hide shadow-inner rounded-xl border border-slate-200/50 dark:border-slate-700/50">
               <!-- Fade indicator for horizontal scroll -->
-              <div class="absolute top-0 right-0 bottom-0 w-8 bg-gradient-to-l from-white/20 to-transparent pointer-events-none z-30 lg:hidden"></div>
-              
+              <div
+                class="absolute top-0 right-0 bottom-0 w-8 bg-gradient-to-l from-white/20 to-transparent pointer-events-none z-30 lg:hidden">
+              </div>
+
               <table class="w-full text-left border-collapse" aria-label="Wyniki rok po roku">
                 <thead>
                   <tr class="bg-slate-50/50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-800">
-                    <th class="sticky left-0 z-20 bg-slate-50 dark:bg-slate-800 px-4 py-3 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)] whitespace-nowrap">Rok</th>
-                    <th class="px-3 py-4 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">Suma wpłat</th>
-                    <th class="px-3 py-4 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">Zysk nominalny</th>
-                    <th class="px-3 py-4 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">Kapitał końcowy</th>
-                    <th class="px-3 py-4 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">Wartość realna</th>
+                    <th
+                      class="sticky left-0 z-20 bg-slate-50 dark:bg-slate-800 px-4 py-3 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)] whitespace-nowrap">
+                      Rok</th>
+                    <th
+                      class="px-3 py-4 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">
+                      Suma wpłat</th>
+                    <th
+                      class="px-3 py-4 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">
+                      Zysk nominalny</th>
+                    <th
+                      class="px-3 py-4 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">
+                      Kapitał końcowy</th>
+                    <th
+                      class="px-3 py-4 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">
+                      Wartość realna</th>
                   </tr>
                 </thead>
                 <tbody id="tabela-body" class="divide-y divide-slate-50 dark:divide-slate-900">
@@ -681,35 +896,48 @@
 
       <!-- SŁOWNICZEK / EDUKACJA -->
       <section class="mt-24 py-20 border-t border-slate-200 dark:border-slate-900">
-        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-12 text-center italic">Co warto wiedzieć o inwestowaniu w ETF?</h2>
+        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-12 text-center italic">Co warto wiedzieć o
+          inwestowaniu w ETF?</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm transition-all hover:shadow-lg">
-            <span class="material-symbols-outlined text-4xl text-primary mb-6" style="color:#0d7ff2;">account_balance</span>
+          <div
+            class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm transition-all hover:shadow-lg">
+            <span class="material-symbols-outlined text-4xl text-primary mb-6"
+              style="color:#0d7ff2;">account_balance</span>
             <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Czym są fundusze ETF?</h4>
-            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Fundusze notowane na giełdzie, które z niskim kosztem naśladują całe rynki akcji lub obligacji.</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Fundusze notowane na giełdzie, które z
+              niskim kosztem naśladują całe rynki akcji lub obligacji.</p>
           </div>
-          <div class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm transition-all hover:shadow-lg">
+          <div
+            class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm transition-all hover:shadow-lg">
             <span class="material-symbols-outlined text-4xl text-emerald-500 mb-6">insights</span>
             <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Procent składany</h4>
-            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Twoje zyski generują własne zyski. W długim terminie to najpotężniejsza siła w finansach.</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Twoje zyski generują własne zyski. W
+              długim terminie to najpotężniejsza siła w finansach.</p>
           </div>
-          <div class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm transition-all hover:shadow-lg">
+          <div
+            class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm transition-all hover:shadow-lg">
             <span class="material-symbols-outlined text-4xl text-amber-500 mb-6">workspace_premium</span>
             <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">IKE oraz IKZE</h4>
-            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Konta, które chronią Twoje zyski przed 19% podatkiem Belki. Klucz do wyższej emerytury.</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Konta, które chronią Twoje zyski przed
+              19% podatkiem Belki. Klucz do wyższej emerytury.</p>
           </div>
-          <div class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm transition-all hover:shadow-lg">
+          <div
+            class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm transition-all hover:shadow-lg">
             <span class="material-symbols-outlined text-4xl text-rose-500 mb-6">payments</span>
             <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Wartość realna</h4>
-            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Wynik przeliczony na dzisiejszą siłę nabywczą pieniądza, uwzględniający wpływ inflacji.</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Wynik przeliczony na dzisiejszą siłę
+              nabywczą pieniądza, uwzględniający wpływ inflacji.</p>
           </div>
         </div>
-        
+
         <!-- DISCLAIMER -->
-        <div class="mt-8 p-8 rounded-3xl bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 flex gap-6 items-start">
+        <div
+          class="mt-8 p-8 rounded-3xl bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 flex gap-6 items-start">
           <span class="material-symbols-outlined text-slate-400">info</span>
           <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
-            <strong>Ważna informacja:</strong> Prezentowane obliczenia mają charakter wyłącznie edukacyjny i poglądowy. Inwestowanie na giełdzie wiąże się z ryzykiem utraty kapitału. Wyniki historyczne nie gwarantują podobnych stóp zwrotu w przyszłości. Zawsze weryfikuj dane z oficjalnymi dokumentami funduszy.
+            <strong>Ważna informacja:</strong> Prezentowane obliczenia mają charakter wyłącznie edukacyjny i poglądowy.
+            Inwestowanie na giełdzie wiąże się z ryzykiem utraty kapitału. Wyniki historyczne nie gwarantują podobnych
+            stóp zwrotu w przyszłości. Zawsze weryfikuj dane z oficjalnymi dokumentami funduszy.
           </p>
         </div>
       </section>
@@ -718,27 +946,36 @@
 
 
   <!-- NEWSLETTER SECTION (Wide Banner) -->
-  <section id="newsletter-section" class="pt-10 pb-20 px-6 bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 transition-colors">
+  <section id="newsletter-section"
+    class="pt-10 pb-20 px-6 bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 transition-colors">
     <div class="max-w-7xl mx-auto">
-      <div class="bg-white/70 dark:bg-slate-900/80 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 lg:p-16 shadow-2xl border border-white/50 dark:border-slate-800/50 relative overflow-hidden group">
+      <div
+        class="bg-white/70 dark:bg-slate-900/80 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 lg:p-16 shadow-2xl border border-white/50 dark:border-slate-800/50 relative overflow-hidden group">
         <!-- Decorative element -->
-        <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700"></div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center lg:justify-items-stretch relative z-10">
+        <div
+          class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700">
+        </div>
+
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center lg:justify-items-stretch relative z-10">
           <!-- Left Side: Content -->
           <div class="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
               <span class="relative flex h-2 w-2">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
               Newsletter
             </div>
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.1]">
-              Bądź na bieżąco z <span class="text-primary">rynkiem ETF</span> <span class="hidden md:inline">i finansami</span>
+            <h2
+              class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.1]">
+              Bądź na bieżąco z <span class="text-primary">rynkiem ETF</span> <span class="hidden md:inline">i
+                finansami</span>
             </h2>
             <p class="text-slate-500 dark:text-slate-400 text-lg leading-relaxed max-w-xl">
-              Dołącz do społeczności świadomych inwestorów. Otrzymuj analizy, nowe kalkulatory i rzetelną wiedzę prosto na swoją skrzynkę. Zero spamu.
+              Dołącz do społeczności świadomych inwestorów. Otrzymuj analizy, nowe kalkulatory i rzetelną wiedzę prosto
+              na swoją skrzynkę. Zero spamu.
             </p>
           </div>
 
@@ -747,34 +984,45 @@
             <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
               <div class="ml-form-embedWrapper embedForm">
                 <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
-                  <form class="ml-block-form" action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe" method="post" target="_blank">
+                  <form class="ml-block-form"
+                    action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe"
+                    method="post" target="_blank">
                     <div class="flex flex-col space-y-4">
                       <!-- Email Input -->
                       <div class="ml-form-fieldRow">
                         <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
-                          <input aria-label="email" aria-required="true" type="email" class="w-full h-14 px-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-white text-base font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all placeholder:text-slate-400" name="fields[email]" placeholder="Twój adres e-mail">
+                          <input aria-label="email" aria-required="true" type="email"
+                            class="w-full h-14 px-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-white text-base font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all placeholder:text-slate-400"
+                            name="fields[email]" placeholder="Twój adres e-mail">
                         </div>
                       </div>
 
                       <!-- Consents -->
                       <div class="ml-form-embedPermissions">
                         <label class="flex items-start gap-4 cursor-pointer group">
-                          <input type="checkbox" name="gdpr[]" value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl" required class="custom-checkbox mt-1 transition-all">
-                          <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium leading-relaxed group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors">Zgadzam się na otrzymywanie newslettera. Możesz się wypisać w każdej chwili.</span>
+                          <input type="checkbox" name="gdpr[]"
+                            value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl" required
+                            class="custom-checkbox mt-1 transition-all">
+                          <span
+                            class="text-[11px] text-slate-500 dark:text-slate-400 font-medium leading-relaxed group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors">Zgadzam
+                            się na otrzymywanie newslettera. Możesz się wypisać w każdej chwili.</span>
                         </label>
                       </div>
 
                       <!-- reCAPTCHA -->
                       <div class="ml-form-recaptcha ml-validate-required py-2 flex justify-center">
-                        <div class="g-recaptcha transform scale-[0.85] origin-center" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                        <div class="g-recaptcha transform scale-[0.85] origin-center"
+                          data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
                       </div>
 
                       <input type="hidden" name="ml-submit" value="1">
                       <input type="hidden" name="anticsrf" value="true">
-                      
+
                       <!-- Button -->
                       <div class="ml-form-embedSubmit">
-                        <button type="submit" class="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-sm md:text-base uppercase tracking-widest hover:scale-[1.01] active:scale-[0.98] transition-all shadow-xl shadow-primary/20" style="background-color: #0d7ff2;">
+                        <button type="submit"
+                          class="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-sm md:text-base uppercase tracking-widest hover:scale-[1.01] active:scale-[0.98] transition-all shadow-xl shadow-primary/20"
+                          style="background-color: #0d7ff2;">
                           Zapisz się teraz
                         </button>
                       </div>
@@ -782,7 +1030,10 @@
                       <!-- Legal & Financial Disclaimers -->
                       <div class="pt-6 border-t border-slate-100 dark:border-slate-800 mt-2">
                         <p class="text-[10px] text-slate-400 dark:text-slate-500 leading-relaxed mb-2">
-                          Zapisując się, akceptujesz <a href="regulamin.html" class="underline hover:text-primary">Regulamin</a> i <a href="polityka-prywatnosci.html" class="underline hover:text-primary">Politykę Prywatności</a>. Twoje dane są bezpieczne i służą wyłącznie do wysyłki newslettera.
+                          Zapisując się, akceptujesz <a href="regulamin.html"
+                            class="underline hover:text-primary">Regulamin</a> i <a href="polityka-prywatnosci.html"
+                            class="underline hover:text-primary">Politykę Prywatności</a>. Twoje dane są bezpieczne i
+                          służą wyłącznie do wysyłki newslettera.
                         </p>
                         <p class="text-[10px] text-slate-400 font-medium italic">
                           Prezentowane treści nie stanowią rekomendacji inwestycyjnej.
@@ -794,12 +1045,16 @@
 
                 <!-- Success -->
                 <div class="ml-form-successBody row-success" style="display: none">
-                  <div class="p-10 rounded-3xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 text-center">
-                    <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-3xl">verified</span>
+                  <div
+                    class="p-10 rounded-3xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 text-center">
+                    <div
+                      class="w-16 h-16 bg-emerald-100 dark:bg-emerald-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span
+                        class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-3xl">verified</span>
                     </div>
                     <h4 class="text-emerald-900 dark:text-emerald-300 font-bold text-xl mb-1">Sukces!</h4>
-                    <p class="text-emerald-700 dark:text-emerald-500 text-sm">Sprawdź swoją skrzynkę e-mail, aby potwierdzić zapis.</p>
+                    <p class="text-emerald-700 dark:text-emerald-500 text-sm">Sprawdź swoją skrzynkę e-mail, aby
+                      potwierdzić zapis.</p>
                   </div>
                 </div>
               </div>
@@ -811,28 +1066,39 @@
   </section>
 
   <!-- STOPKA (Refined 3-Column Layout) -->
-  <footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 py-20 px-6" style="font-family: 'Inter', sans-serif;">
+  <footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 py-20 px-6"
+    style="font-family: 'Inter', sans-serif;">
     <div class="max-w-7xl mx-auto">
       <!-- Logo Row -->
       <div class="mb-12 border-b border-slate-200/50 dark:border-slate-800/50 pb-8">
         <div class="flex items-center gap-2">
-          <div class="bg-primary p-1.5 rounded-lg text-white flex items-center justify-center" style="background-color: #0d7ff2;">
+          <div class="bg-primary p-1.5 rounded-lg text-white flex items-center justify-center"
+            style="background-color: #0d7ff2;">
             <span class="material-symbols-outlined text-base">account_balance_wallet</span>
           </div>
-          <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">ETF<span class="font-normal text-slate-500">kalkulator</span>.pl</span>
+          <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">ETF<span
+              class="font-normal text-slate-500">kalkulator</span>.pl</span>
         </div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20 items-start">
-        
+
         <!-- Column 1: Narzędzia -->
         <div>
           <h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Narzędzia</h5>
           <ul class="space-y-4">
-            <li><a href="kalkulator-etf.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Kalkulator ETF</a></li>
-            <li><a href="kalkulator-obligacji.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Obligacje Skarbowe</a></li>
-            <li><a href="kalkulator-wolnosci.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Wolność Finansowa</a></li>
-            <li><a href="porownywarka.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Porównywarka ETF</a></li>
+            <li><a href="kalkulator-etf.html"
+                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                style="text-decoration:none;">Kalkulator ETF</a></li>
+            <li><a href="kalkulator-obligacji.html"
+                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                style="text-decoration:none;">Obligacje Skarbowe</a></li>
+            <li><a href="kalkulator-wolnosci.html"
+                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                style="text-decoration:none;">Wolność Finansowa</a></li>
+            <li><a href="porownywarka.html"
+                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                style="text-decoration:none;">Porównywarka ETF</a></li>
           </ul>
         </div>
 
@@ -840,10 +1106,18 @@
         <div>
           <h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Projekt</h5>
           <ul class="space-y-4">
-            <li><a href="../blog/index.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Blog i Wiedza</a></li>
-            <li><a href="o-projekcie.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">O projekcie</a></li>
-            <li><a href="regulamin.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Regulamin</a></li>
-            <li><a href="polityka-prywatnosci.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Polityka prywatności</a></li>
+            <li><a href="../blog/index.html"
+                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                style="text-decoration:none;">Blog i Wiedza</a></li>
+            <li><a href="o-projekcie.html"
+                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                style="text-decoration:none;">O projekcie</a></li>
+            <li><a href="regulamin.html"
+                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                style="text-decoration:none;">Regulamin</a></li>
+            <li><a href="polityka-prywatnosci.html"
+                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                style="text-decoration:none;">Polityka prywatności</a></li>
           </ul>
         </div>
 
@@ -851,12 +1125,16 @@
         <div>
           <h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Kontakt</h5>
           <p class="text-sm text-slate-500 mb-6 leading-relaxed">Masz pytania? Pisz śmiało:</p>
-          <a href="mailto:kontakt@etfkalkulator.pl" class="text-sm font-bold text-slate-900 dark:text-white hover:text-primary transition-colors block mb-8" style="text-decoration:none;">kontakt@etfkalkulator.pl</a>
+          <a href="mailto:kontakt@etfkalkulator.pl"
+            class="text-sm font-bold text-slate-900 dark:text-white hover:text-primary transition-colors block mb-8"
+            style="text-decoration:none;">kontakt@etfkalkulator.pl</a>
           <div class="flex gap-4">
-            <a href="#" class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-sm">
+            <a href="#"
+              class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-sm">
               <span class="material-symbols-outlined text-lg">share</span>
             </a>
-            <a href="#" class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-sm">
+            <a href="#"
+              class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-sm">
               <span class="material-symbols-outlined text-lg">alternate_email</span>
             </a>
           </div>
@@ -866,7 +1144,10 @@
       <!-- Dolny pasek i Disclaimer -->
       <div class="mt-20 pt-10 border-t border-slate-200 dark:border-slate-900">
         <p class="text-[11px] text-slate-400 dark:text-slate-500 leading-relaxed mb-8 max-w-4xl">
-          Serwis ETFkalkulator.pl ma charakter wyłącznie edukacyjny i informacyjny. Prezentowane obliczenia nie stanowią rekomendacji inwestycyjnej, porady finansowej ani doradztwa podatkowego w rozumieniu obowiązujących przepisów prawa. Przed podjęciem decyzji inwestycyjnej skonsultuj się z licencjonowanym doradcą finansowym. Inwestowanie wiąże się z ryzykiem utraty części lub całości zainwestowanego kapitału.
+          Serwis ETFkalkulator.pl ma charakter wyłącznie edukacyjny i informacyjny. Prezentowane obliczenia nie stanowią
+          rekomendacji inwestycyjnej, porady finansowej ani doradztwa podatkowego w rozumieniu obowiązujących przepisów
+          prawa. Przed podjęciem decyzji inwestycyjnej skonsultuj się z licencjonowanym doradcą finansowym. Inwestowanie
+          wiąże się z ryzykiem utraty części lub całości zainwestowanego kapitału.
         </p>
         <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
           <p>© 2026 ETFkalkulator.pl — Made with ❤️ by Florian</p>
@@ -886,58 +1167,70 @@
       $('.ml-subscribe-form-37996059 .row-form').hide();
     }
   </script>
-  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
+    type="text/javascript"></script>
 
   <!-- COOKIE CONSENT BANNER -->
-  <div id="cookie-consent" class="fixed bottom-6 left-6 right-6 md:left-auto md:w-[400px] bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 z-[100] transition-all duration-500 translate-y-20 opacity-0 transform" style="display: none;">
+  <div id="cookie-consent"
+    class="fixed bottom-6 left-6 right-6 md:left-auto md:w-[400px] bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 z-[100] transition-all duration-500 translate-y-20 opacity-0 transform"
+    style="display: none;">
     <div class="flex items-start gap-4 mb-4">
       <div class="bg-amber-100 dark:bg-amber-900/30 p-2 rounded-xl text-amber-600 dark:text-amber-400">
         <span class="material-symbols-outlined">cookie</span>
       </div>
       <div>
         <h4 class="font-bold text-slate-900 dark:text-white">Ciasteczka i Analityka</h4>
-        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mt-1">Używamy Google Analytics, aby anonimowo analizować ruch na stronie i ulepszać nasze kalkulatory.</p>
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mt-1">Używamy Google Analytics, aby
+          anonimowo analizować ruch na stronie i ulepszać nasze kalkulatory.</p>
       </div>
     </div>
     <div class="flex gap-3">
-      <button id="cookie-accept" class="flex-1 bg-primary text-white text-xs font-bold py-3 rounded-xl hover:opacity-90 transition-opacity" style="background-color: #0d7ff2;">Akceptuję</button>
-      <button id="cookie-reject" class="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold py-3 rounded-xl hover:bg-slate-200 transition-colors">Odrzuć</button>
+      <button id="cookie-accept"
+        class="flex-1 bg-primary text-white text-xs font-bold py-3 rounded-xl hover:opacity-90 transition-opacity"
+        style="background-color: #0d7ff2;">Akceptuję</button>
+      <button id="cookie-reject"
+        class="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold py-3 rounded-xl hover:bg-slate-200 transition-colors">Odrzuć</button>
     </div>
   </div>
 
   <!-- EDUCATIONAL MODAL -->
   <div id="edu-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
     <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeEduModal()"></div>
-    <div class="relative glass-effect modal-anim rounded-[2.5rem] p-8 md:p-12 max-w-lg w-full border border-white/20 shadow-2xl shadow-black/50 overflow-hidden">
+    <div
+      class="relative glass-effect modal-anim rounded-[2.5rem] p-8 md:p-12 max-w-lg w-full border border-white/20 shadow-2xl shadow-black/50 overflow-hidden">
       <!-- Decorative background blur -->
       <div class="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 rounded-full blur-3xl"></div>
-      
+
       <div class="relative z-10">
         <div class="flex justify-between items-center mb-6">
           <h3 class="text-2xl font-black text-slate-900 dark:text-white" id="modal-title">Edukacja</h3>
-          <button onclick="closeEduModal()" class="group flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-rose-500 hover:text-white transition-all">
+          <button onclick="closeEduModal()"
+            class="group flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-rose-500 hover:text-white transition-all">
             <span class="text-[10px] font-bold uppercase tracking-widest">Zamknij</span>
             <span class="material-symbols-outlined text-xl">close</span>
           </button>
         </div>
-        
+
         <div class="space-y-8">
           <div class="flex gap-4 items-start">
             <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
               <span class="material-symbols-outlined text-primary" id="modal-icon">school</span>
             </div>
-            <p id="modal-explanation" class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm md:text-base"></p>
+            <p id="modal-explanation" class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm md:text-base">
+            </p>
           </div>
-          
-          <div class="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-200 dark:border-slate-800 group transition-all hover:border-primary/30">
+
+          <div
+            class="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-200 dark:border-slate-800 group transition-all hover:border-primary/30">
             <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
               <span class="material-symbols-outlined text-xs">functions</span>
               Jak to obliczamy?
             </p>
             <code id="modal-formula" class="text-slate-900 dark:text-white font-mono text-sm block">...</code>
           </div>
-          
-          <button onclick="closeEduModal()" class="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-2xl hover:bg-primary dark:hover:bg-primary dark:hover:text-white transition-all shadow-lg">
+
+          <button onclick="closeEduModal()"
+            class="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-2xl hover:bg-primary dark:hover:bg-primary dark:hover:text-white transition-all shadow-lg">
             Rozumiem, dziękuję!
           </button>
         </div>
@@ -1046,7 +1339,7 @@
       document.getElementById('modal-explanation').innerText = data.desc;
       document.getElementById('modal-formula').innerText = data.formula;
       document.getElementById('modal-icon').innerText = data.icon;
-      
+
       const modal = document.getElementById('edu-modal');
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
@@ -1064,7 +1357,7 @@
     function przelaczTryb() {
       const html = document.documentElement;
       const isDark = html.classList.contains('dark') || html.classList.contains('dark-mode');
-      
+
       if (isDark) {
         html.classList.remove('dark', 'dark-mode');
         html.classList.add('light-mode');
@@ -1091,7 +1384,8 @@
   </script>
 
   <script src="https://www.google.com/recaptcha/api.js" defer></script>
-  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript" defer></script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
+    type="text/javascript" defer></script>
 
   <!-- Cookie Consent Script -->
   <script defer>
@@ -1125,4 +1419,5 @@
     });
   </script>
 </body>
+
 </html>

@@ -213,6 +213,11 @@ function initChart() {
     const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
     const textColor = isDark ? '#94a3b8' : '#64748b';
 
+    // Premium Gradient for the main line
+    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+    gradient.addColorStop(0, 'rgba(13, 127, 242, 0.2)');
+    gradient.addColorStop(1, 'rgba(13, 127, 242, 0)');
+
     myChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -222,10 +227,10 @@ function initChart() {
                     label: 'Kapitał Końcowy',
                     data: [],
                     borderColor: '#0d7ff2', // Primary Blue
-                    backgroundColor: 'rgba(13, 127, 242, 0.1)',
-                    borderWidth: 4,
+                    backgroundColor: gradient,
+                    borderWidth: 3,
                     fill: true,
-                    tension: 0.4,
+                    tension: 0.3,
                     pointRadius: 0,
                     pointHoverRadius: 6,
                     pointHoverBackgroundColor: '#0d7ff2',
@@ -239,8 +244,9 @@ function initChart() {
                     borderWidth: 2,
                     borderDash: [5, 5],
                     fill: false,
-                    tension: 0.4,
-                    pointRadius: 0
+                    tension: 0.3,
+                    pointRadius: 0,
+                    pointHoverRadius: 4
                 },
                 {
                     label: 'Wartość Realna',
@@ -249,14 +255,16 @@ function initChart() {
                     borderWidth: 2,
                     borderDash: [2, 2],
                     fill: false,
-                    tension: 0.4,
-                    pointRadius: 0
+                    tension: 0.3,
+                    pointRadius: 0,
+                    pointHoverRadius: 4
                 }
             ]
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false,
+            maintainAspectRatio: true,
+            aspectRatio: window.innerWidth > 768 ? 2.5 : 1.5,
             interaction: {
                 mode: 'index',
                 intersect: false,
@@ -271,7 +279,7 @@ function initChart() {
                     bodyColor: isDark ? '#94a3b8' : '#64748b',
                     borderColor: isDark ? '#334155' : '#e2e8f0',
                     borderWidth: 1,
-                    padding: 12,
+                    padding: 16,
                     cornerRadius: 12,
                     callbacks: {
                         label: function (context) {
@@ -283,13 +291,18 @@ function initChart() {
             scales: {
                 x: {
                     grid: { display: false },
-                    ticks: { color: textColor, font: { family: 'Inter' } }
+                    ticks: { color: textColor, font: { family: "'Inter', system-ui, sans-serif", size: 11 } }
                 },
                 y: {
-                    grid: { color: gridColor },
+                    grace: '10%',
+                    grid: { 
+                        color: gridColor,
+                        drawBorder: false,
+                        borderDash: [5, 5]
+                    },
                     ticks: {
                         color: textColor,
-                        font: { family: 'Inter' },
+                        font: { family: "'Inter', system-ui, sans-serif", size: 11 },
                         callback: (val) => formatujZl(val).split(',')[0] + ' zł'
                     }
                 }
