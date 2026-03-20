@@ -12,17 +12,43 @@ let savedScenarios = [];
 
 document.addEventListener('DOMContentLoaded', () => {
     // Inicjalizacja pól i zdarzeń
-    const inputs = [
+    const numericInputs = [
         'input-kapital', 'input-doplata', 'input-horyzont',
-        'input-stopa', 'input-inflacja', 'input-ike'
+        'input-stopa', 'input-inflacja'
     ];
 
-    inputs.forEach(id => {
+    numericInputs.forEach(id => {
         const el = document.getElementById(id);
         if (el) {
-            el.addEventListener('input', obliczWszystko);
+            // Only trigger calculations on valid input
+            el.addEventListener('input', () => {
+                const val = el.value.trim();
+                if (val !== '' && !isNaN(parseFloat(val))) {
+                    obliczWszystko();
+                }
+            });
+
+            // Smart Auto-Clearing: clear on focus
+            el.addEventListener('focus', function() {
+                this.dataset.previousValue = this.value;
+                this.value = '';
+            });
+
+            // Safety Net: restore on blur if empty
+            el.addEventListener('blur', function() {
+                const val = this.value.trim();
+                if (val === '' || isNaN(parseFloat(val))) {
+                    this.value = this.dataset.previousValue || this.defaultValue || '0';
+                    obliczWszystko();
+                }
+            });
         }
     });
+
+    const elIke = document.getElementById('input-ike');
+    if (elIke) {
+        elIke.addEventListener('change', obliczWszystko);
+    }
 
     const btnSaveScenario = document.getElementById('btn-save-scenario');
     if (btnSaveScenario) {

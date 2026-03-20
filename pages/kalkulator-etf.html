@@ -141,6 +141,15 @@
       animation: pulse-subtle 2s infinite ease-in-out;
     }
     .cursor-help { cursor: help; }
+
+    /* Mobile UX Fix: Info Touch Target */
+    .touch-target-info {
+      min-width: 44px;
+      min-height: 44px;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+    }
   </style>
 
   <link rel="stylesheet" href="../css/reset.css">
@@ -386,43 +395,55 @@
             <div class="space-y-8">
               <!-- Kapitał startowy -->
               <div class="space-y-3 group">
-                <div class="flex justify-between items-center" onclick="openEduModal('kapital_start')">
-                  <label for="input-kapital" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center gap-2 cursor-help group-hover:text-primary transition-colors">
+                <div class="flex justify-between items-center">
+                  <label for="input-kapital" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                     Kapitał startowy
-                    <span class="px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400 rounded uppercase">INFO</span>
-                    <span class="material-symbols-outlined text-sm opacity-50 animate-pulse-subtle">help</span>
                   </label>
-                  <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">PLN</span>
+                  <div class="flex items-center gap-2">
+                    <button type="button" onclick="openEduModal('kapital_start', event)" class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
+                      <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
+                      <span class="material-symbols-outlined text-sm">help</span>
+                    </button>
+                    <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">PLN</span>
+                  </div>
                 </div>
-                <input type="text" inputmode="decimal" id="input-kapital" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" value="10000" min="100" step="1000" maxlength="10" onfocus="clearOnFocus(this, 10000)" onblur="restoreOnBlur(this, 10000)">
+                <input type="text" inputmode="decimal" id="input-kapital" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" value="10000" min="100" step="1000" maxlength="10">
                 <p class="text-[11px] text-slate-400 mt-1.5">Kwota, od której zaczynasz budowę portfela.</p>
               </div>
 
               <!-- Miesięczna dopłata -->
               <div class="space-y-3 group">
-                <div class="flex justify-between items-center" onclick="openEduModal('doplata_msc')">
-                  <label for="input-doplata" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center gap-2 cursor-help group-hover:text-primary transition-colors">
+                <div class="flex justify-between items-center">
+                  <label for="input-doplata" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                     Miesięczna dopłata
-                    <span class="px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400 rounded uppercase">INFO</span>
-                    <span class="material-symbols-outlined text-sm opacity-50 animate-pulse-subtle">help</span>
                   </label>
-                  <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">PLN</span>
+                  <div class="flex items-center gap-2">
+                    <button type="button" onclick="openEduModal('doplata_msc', event)" class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
+                      <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
+                      <span class="material-symbols-outlined text-sm">help</span>
+                    </button>
+                    <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">PLN</span>
+                  </div>
                 </div>
-                <input type="text" inputmode="decimal" id="input-doplata" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" value="500" min="0" step="100" maxlength="8" onfocus="clearOnFocus(this, 500)" onblur="restoreOnBlur(this, 500)">
+                <input type="text" inputmode="decimal" id="input-doplata" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" value="500" min="0" step="100" maxlength="8">
                 <p class="text-[11px] text-slate-400 mt-1.5">Regularność to klucz do potęgi procentu składanego.</p>
               </div>
 
               <!-- Horyzont -->
               <div class="space-y-3 group">
-                <div class="flex justify-between items-center" onclick="openEduModal('horyzont_lat')">
-                  <label for="input-horyzont" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center gap-2 cursor-help group-hover:text-primary transition-colors">
+                <div class="flex justify-between items-center">
+                  <label for="input-horyzont" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                     Horyzont inwestycji
-                    <span class="px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400 rounded uppercase">INFO</span>
-                    <span class="material-symbols-outlined text-sm opacity-50 animate-pulse-subtle">help</span>
                   </label>
-                  <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">LATA</span>
+                  <div class="flex items-center gap-2">
+                    <button type="button" onclick="openEduModal('horyzont_lat', event)" class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
+                      <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
+                      <span class="material-symbols-outlined text-sm">help</span>
+                    </button>
+                    <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">LATA</span>
+                  </div>
                 </div>
-                <input type="text" inputmode="decimal" id="input-horyzont" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" value="10" min="1" max="50" step="1" maxlength="2" onfocus="clearOnFocus(this, 10)" onblur="restoreOnBlur(this, 10)">
+                <input type="text" inputmode="decimal" id="input-horyzont" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" value="10" min="1" max="50" step="1" maxlength="2">
                 <p class="text-[11px] text-slate-400 mt-1.5">Dłuższy czas to mniejsze ryzyko i większy zysk.</p>
               </div>
 
@@ -430,15 +451,19 @@
 
               <!-- Stopa zwrotu -->
               <div class="space-y-4 group">
-                <div class="flex justify-between items-center" onclick="openEduModal('stopa_zwrotu')">
-                  <label for="input-stopa" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center gap-2 cursor-help group-hover:text-primary transition-colors">
+                <div class="flex justify-between items-center">
+                  <label for="input-stopa" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                     Stopa zwrotu ETF (rocznie)
-                    <span class="px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400 rounded uppercase">INFO</span>
-                    <span class="material-symbols-outlined text-sm opacity-50 animate-pulse-subtle">help</span>
                   </label>
-                  <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">%</span>
+                  <div class="flex items-center gap-2">
+                    <button type="button" onclick="openEduModal('stopa_zwrotu', event)" class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
+                      <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
+                      <span class="material-symbols-outlined text-sm">help</span>
+                    </button>
+                    <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">%</span>
+                  </div>
                 </div>
-                <input type="text" inputmode="decimal" id="input-stopa" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" value="7" step="0.5" maxlength="5" onfocus="clearOnFocus(this, 7)" onblur="restoreOnBlur(this, 7)">
+                <input type="text" inputmode="decimal" id="input-stopa" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" value="7" step="0.5" maxlength="5">
                 <p class="text-[11px] text-slate-400 mt-1.5">Historycznie rynek akcji (S&P 500) dostarcza ok. 7-10% rocznie.</p>
                 
                 <div class="grid grid-cols-3 gap-2">
@@ -450,15 +475,19 @@
 
               <!-- Inflacja -->
               <div class="space-y-3 group">
-                <div class="flex justify-between items-center" onclick="openEduModal('inflacja_nbp')">
-                  <label for="input-inflacja" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center gap-2 cursor-help group-hover:text-primary transition-colors">
+                <div class="flex justify-between items-center">
+                  <label for="input-inflacja" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                     Oczekiwana inflacja
-                    <span class="px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400 rounded uppercase">INFO</span>
-                    <span class="material-symbols-outlined text-sm opacity-50 animate-pulse-subtle">help</span>
                   </label>
-                  <span class="text-xs font-bold text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">%</span>
+                  <div class="flex items-center gap-2">
+                    <button type="button" onclick="openEduModal('inflacja_nbp', event)" class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
+                      <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
+                      <span class="material-symbols-outlined text-sm">help</span>
+                    </button>
+                    <span class="text-xs font-bold text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">%</span>
+                  </div>
                 </div>
-                <input type="text" inputmode="decimal" id="input-inflacja" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" value="2.5" step="0.1" maxlength="5" onfocus="clearOnFocus(this, 2.5)" onblur="restoreOnBlur(this, 2.5)">
+                <input type="text" inputmode="decimal" id="input-inflacja" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" value="2.5" step="0.1" maxlength="5">
                 <p class="text-[11px] text-slate-400 mt-1.5">Cel inflacyjny NBP to 2,5% (±1 p.p.).</p>
               </div>
 
@@ -481,7 +510,7 @@
         <!-- PRAWA KOLUMNA: WYNIKI -->
         <div class="lg:col-span-8 space-y-8">
           <!-- GŁÓWNY WYNIK (Visual Priority) -->
-          <div onclick="openEduModal('kapital')" class="relative overflow-hidden group bg-primary p-10 md:p-14 rounded-[2.5rem] text-white shadow-2xl shadow-primary/30 transition-all hover:scale-[1.01] hover:shadow-blue-500/40 hover:border-white/20 border-2 border-transparent cursor-help" style="background-color: #0d7ff2;">
+          <div onclick="openEduModal('kapital', event)" class="relative overflow-hidden group bg-primary p-10 md:p-14 rounded-[2.5rem] text-white shadow-2xl shadow-primary/30 transition-all hover:scale-[1.01] hover:shadow-blue-500/40 hover:border-white/20 border-2 border-transparent cursor-help" style="background-color: #0d7ff2;">
             <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
             <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20 group-hover:scale-110 transition-transform duration-700"></div>
             <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
@@ -506,7 +535,7 @@
 
           <!-- SIATKA DRUGORZĘDNYCH WYNIKÓW -->
           <div class="flex flex-col items-center justify-center w-full lg:grid lg:grid-cols-2 lg:gap-6 lg:items-start lg:justify-items-stretch gap-6">
-            <div onclick="openEduModal('wklad')" class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+            <div onclick="openEduModal('wklad', event)" class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"></div>
               <div class="flex items-center justify-center lg:justify-start mb-0.5">
                 <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Wkład własny</p>
@@ -518,7 +547,7 @@
               </div>
               <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div onclick="openEduModal('zysk')" class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+            <div onclick="openEduModal('zysk', event)" class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"></div>
               <div class="flex items-center justify-center lg:justify-start mb-0.5">
                 <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Zysk nominalny</p>
@@ -530,7 +559,7 @@
               </div>
               <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div onclick="openEduModal('podatek')" class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+            <div onclick="openEduModal('podatek', event)" class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-rose-500/40 to-transparent"></div>
               <div class="flex items-center justify-center lg:justify-start mb-0.5">
                 <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Podatek Belki</p>
@@ -542,7 +571,7 @@
               </div>
               <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div onclick="openEduModal('realny')" class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-emerald-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+            <div onclick="openEduModal('realny', event)" class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-emerald-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent"></div>
               <div class="flex items-center justify-center lg:justify-start mb-0.5">
                 <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Wartość realna zysku</p>
@@ -554,7 +583,7 @@
               </div>
               <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div onclick="openEduModal('cagr')" class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+            <div onclick="openEduModal('cagr', event)" class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"></div>
               <div class="flex items-center justify-center lg:justify-start mb-0.5">
                 <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Stopa CAGR</p>
@@ -566,7 +595,7 @@
               </div>
               <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div onclick="openEduModal('cagr_real')" class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-emerald-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+            <div onclick="openEduModal('cagr_real', event)" class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-emerald-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent"></div>
               <div class="flex items-center justify-center lg:justify-start mb-0.5">
                 <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Realny CAGR</p>
@@ -999,7 +1028,18 @@
       }
     };
 
-    function openEduModal(type) {
+    function openEduModal(type, event) {
+      // 1. Isolation: Prevent event from reaching underlying elements (like labels/inputs)
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
+      // 2. Keyboard Dismissal: Forcefully retract mobile keyboard
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
+
       const data = modalData[type];
       if (!data) return;
       document.getElementById('modal-title').innerText = data.title;
