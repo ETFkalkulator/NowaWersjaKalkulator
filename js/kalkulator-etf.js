@@ -264,7 +264,15 @@ function initChart() {
         options: {
             responsive: true,
             maintainAspectRatio: true,
-            aspectRatio: window.innerWidth > 768 ? 2.5 : 1.5,
+            aspectRatio: window.innerWidth > 768 ? 2.5 : 1.1,
+            layout: {
+                padding: {
+                    left: 10,
+                    right: 20,
+                    top: 10,
+                    bottom: 10
+                }
+            },
             interaction: {
                 mode: 'index',
                 intersect: false,

@@ -1015,13 +1015,13 @@
           </div>
 
           <!-- Chart Area -->
-          <div class="p-8 lg:p-12">
-            <div class="w-full relative mb-10">
+          <div class="px-4 sm:px-8 lg:px-12 w-full mx-auto">
+            <div class="w-full relative mt-8 md:mt-10 mb-10">
               <canvas id="glowny-wykres-porownawczy"
                 aria-label="Wykres porównawczy ETF vs Obligacje vs Lokata"></canvas>
             </div>
 
-            <div class="flex flex-wrap justify-center gap-8 border-t border-slate-100 dark:border-slate-800 pt-10">
+            <div class="flex flex-wrap justify-center gap-6 md:gap-8 border-t border-slate-100 dark:border-slate-800 pt-8 mt-6">
               <div class="flex items-center gap-3">
                 <div class="w-3 h-3 rounded-full" style="background-color: #0d7ff2;"></div>
                 <span class="text-sm font-medium text-slate-600 dark:text-slate-400">ETF globalny (7%)</span>
@@ -1584,7 +1584,15 @@
         options: {
           responsive: true,
           maintainAspectRatio: true,
-          aspectRatio: window.innerWidth > 768 ? 2.0 : 1.2,
+          aspectRatio: window.innerWidth > 768 ? 2.0 : 1.1,
+          layout: {
+            padding: {
+              left: 10,
+              right: 20,
+              top: 10,
+              bottom: 10
+            }
+          },
           interaction: {
             mode: 'index',
             intersect: false,
@@ -1652,7 +1660,7 @@
                   family: "'Inter', system-ui, sans-serif"
                 },
                 callback: function (value) {
-                  return formatZl(value).split(',')[0] + ' zł';
+                  return formatZl(value).split(',')[0];
                 }
               }
             }
