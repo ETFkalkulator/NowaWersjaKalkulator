@@ -580,11 +580,17 @@
             </div>
           </div>
 
-          <!-- SCENARIO HISTORY -->
-          <button id="btn-save-scenario" class="mt-4 flex items-center justify-center gap-2 px-6 py-3 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-all font-semibold text-sm mx-auto">
-            <span class="material-symbols-outlined text-[18px]">push_pin</span>
-            Zapisz scenariusz do porównania
-          </button>
+          <!-- SCENARIO HISTORY & SHARE -->
+          <div class="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:max-w-xl mx-auto">
+            <button id="btn-save-scenario" class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-all font-semibold text-sm">
+              <span class="material-symbols-outlined text-[18px]">push_pin</span>
+              Zapisz scenariusz
+            </button>
+            <button id="btn-share-result" class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition-all font-semibold text-sm text-emerald-700 dark:text-emerald-400 group">
+              <span class="material-symbols-outlined text-[18px] group-hover:scale-110 transition-transform">share</span>
+              <span id="txt-btn-share">Udostępnij wynik</span>
+            </button>
+          </div>
           
           <div id="scenario-history-section" class="hidden mt-8 w-full p-6 glass-effect rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-xl overflow-hidden">
             <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-3">

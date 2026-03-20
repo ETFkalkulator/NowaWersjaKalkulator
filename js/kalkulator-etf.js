@@ -29,8 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
         btnSaveScenario.addEventListener('click', saveCurrentScenario);
     }
 
+    const btnShareResult = document.getElementById('btn-share-result');
+    if (btnShareResult) {
+        btnShareResult.addEventListener('click', shareResult);
+    }
+
     // Inicjalizacja wykresu
     initChart();
+
+    // Wczytaj z URL ze wskaźnikami, jeśli istnieją
+    if (window.location.search) {
+        loadFromUrlParams();
+    }
 
     // Wczytaj zapisane scenariusze
     loadFromLocalStorage();
@@ -156,6 +166,9 @@ function obliczWszystko() {
     }
 
     updateChart(daneWykresu);
+    
+    // Zaktualizuj parametry w adresie URL
+    updateUrlParams();
 }
 
 /**
@@ -421,7 +434,74 @@ function loadFromLocalStorage() {
     }
 }
 
+function updateUrlParams() {
+    const start = document.getElementById('input-kapital').value;
+    const msc = document.getElementById('input-doplata').value;
+    const lata = document.getElementById('input-horyzont').value;
+    const stopa = document.getElementById('input-stopa').value;
+    const inf = document.getElementById('input-inflacja').value;
+    const ike = document.getElementById('input-ike').checked;
+
+    const params = new URLSearchParams();
+    params.set('start', start);
+    params.set('msc', msc);
+    params.set('lata', lata);
+    params.set('stopa', stopa);
+    params.set('inf', inf);
+    params.set('ike', ike);
+
+    const newUrl = window.location.pathname + '?' + params.toString();
+    window.history.replaceState({ path: newUrl }, '', newUrl);
+}
+
+function loadFromUrlParams() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('start')) document.getElementById('input-kapital').value = params.get('start');
+    if (params.has('msc')) document.getElementById('input-doplata').value = params.get('msc');
+    if (params.has('lata')) document.getElementById('input-horyzont').value = params.get('lata');
+    if (params.has('stopa')) {
+        document.getElementById('input-stopa').value = params.get('stopa');
+        const buttons = document.getElementById('input-stopa').parentElement.querySelectorAll('button');
+        buttons.forEach(btn => {
+            btn.classList.remove('border-primary/50', 'bg-primary/5', 'text-primary', 'border-2');
+            btn.classList.add('border-slate-200', 'dark:border-slate-800', 'bg-white', 'dark:bg-slate-900', 'text-slate-500');
+            btn.classList.remove('font-bold');
+        });
+        const activeBtn = Array.from(buttons).find(b => b.innerText.includes(params.get('stopa') + '%'));
+        if (activeBtn) {
+            activeBtn.classList.remove('border-slate-200', 'dark:border-slate-800', 'bg-white', 'dark:bg-slate-900', 'text-slate-500');
+            activeBtn.classList.add('border-2', 'border-primary/50', 'bg-primary/5', 'text-primary', 'font-bold');
+        }
+    }
+    if (params.has('inf')) document.getElementById('input-inflacja').value = params.get('inf');
+    if (params.has('ike')) document.getElementById('input-ike').checked = params.get('ike') === 'true';
+}
+
+function shareResult() {
+    const url = window.location.href;
+    const title = 'Mój plan inwestycyjny - ETFkalkulator.pl';
+    
+    if (navigator.share) {
+        navigator.share({
+            title: title,
+            url: url
+        }).catch(console.error);
+    } else {
+        navigator.clipboard.writeText(url).then(() => {
+            const btnTxt = document.getElementById('txt-btn-share');
+            if (btnTxt) {
+                const originalText = btnTxt.innerText;
+                btnTxt.innerText = 'Skopiowano link! ✔️';
+                setTimeout(() => {
+                    btnTxt.innerText = originalText;
+                }, 2000);
+            }
+        }).catch(err => console.error('Error copying link', err));
+    }
+}
+
 // Make functions globally accessible for inline handlers
 window.saveCurrentScenario = saveCurrentScenario;
 window.deleteScenario = deleteScenario;
 window.loadScenario = loadScenario;
+window.shareResult = shareResult;
