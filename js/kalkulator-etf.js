@@ -32,6 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicjalizacja wykresu
     initChart();
 
+    // Wczytaj zapisane scenariusze
+    loadFromLocalStorage();
+
     // Pierwsze obliczenie
     obliczWszystko();
 });
@@ -309,6 +312,7 @@ function saveCurrentScenario() {
     };
 
     savedScenarios.push(scenario);
+    saveToLocalStorage();
     renderScenarios();
 }
 
@@ -327,7 +331,8 @@ function renderScenarios() {
 
     savedScenarios.forEach((scen, index) => {
         const div = document.createElement('div');
-        div.className = "min-w-[85%] sm:min-w-[300px] snap-center bg-white/70 dark:bg-slate-900/60 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-2xl p-4 relative group shrink-0 transition-transform duration-300 hover:shadow-lg";
+        div.className = "min-w-[85%] sm:min-w-[300px] snap-center bg-white/70 dark:bg-slate-900/60 backdrop-blur-md border border-transparent dark:border-slate-700 rounded-2xl p-4 relative group cursor-pointer hover:border-primary/50 active:scale-[0.98] shrink-0 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 overflow-hidden";
+        div.onclick = () => loadScenario(index);
         
         // Format z polskim separatorem spacji (np. "10 000")
         const formatPl = new Intl.NumberFormat('pl-PL');
@@ -335,23 +340,34 @@ function renderScenarios() {
         const doplataStr = formatPl.format(scen.doplata);
 
         div.innerHTML = `
-            <button class="absolute top-2 right-2 text-slate-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity p-1 z-10" onclick="deleteScenario(${index})" aria-label="Usuń scenariusz">
-                <span class="material-symbols-outlined text-[16px]">close</span>
+            <button class="absolute top-2 right-2 text-slate-400 hover:text-rose-500 opacity-0 group-hover:opacity-100 transition-opacity p-1 z-20 bg-white/80 dark:bg-slate-800/80 rounded-full backdrop-blur-sm hover:scale-110 shadow-sm" onclick="deleteScenario(${index}, event)" aria-label="Usuń scenariusz">
+                <span class="material-symbols-outlined text-[16px] block">close</span>
             </button>
-            <div class="flex flex-wrap gap-1 mb-4 pr-6 relative z-0">
-                <span class="text-[9px] bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-slate-600 dark:text-slate-300 font-medium">${kapitalStr} zł st.</span>
-                <span class="text-[9px] bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-slate-600 dark:text-slate-300 font-medium">${doplataStr} zł/msc</span>
-                <span class="text-[9px] bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-slate-600 dark:text-slate-300 font-medium">${scen.lata} lat</span>
-                <span class="text-[9px] bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-slate-600 dark:text-slate-300 font-medium">${scen.stopa}% zysk</span>
+
+            <!-- Guide Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-white/40 to-transparent dark:from-slate-900/95 dark:via-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4 pointer-events-none z-10">
+                <span class="bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                    <span class="material-symbols-outlined text-[14px]">file_download</span>
+                    Kliknij, aby wczytać
+                </span>
             </div>
-            <div class="relative z-0">
-                <p class="text-[10px] text-slate-500 uppercase tracking-widest font-semibold mb-1">Przewidywany kapitał końcowy</p>
-                <p class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white leading-none">${scen.kapitalKoncowyStr}</p>
-                <div class="flex items-center gap-1 mt-2 mb-1">
-                    <span class="material-symbols-outlined text-[13px] text-emerald-500">trending_up</span>
-                    <p class="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold tracking-wide">
-                        w tym zysk realny: ${scen.zyskRealnyStr}
-                    </p>
+
+            <div class="transition-all duration-300 group-hover:blur-[1.5px] group-hover:opacity-60 relative z-0">
+                <div class="flex flex-wrap gap-1 mb-4 pr-6">
+                    <span class="text-[9px] bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-slate-600 dark:text-slate-300 font-medium">${kapitalStr} zł st.</span>
+                    <span class="text-[9px] bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-slate-600 dark:text-slate-300 font-medium">${doplataStr} zł/msc</span>
+                    <span class="text-[9px] bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-slate-600 dark:text-slate-300 font-medium">${scen.lata} lat</span>
+                    <span class="text-[9px] bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-slate-600 dark:text-slate-300 font-medium">${scen.stopa}% zysk</span>
+                </div>
+                <div>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-widest font-semibold mb-1">Przewidywany kapitał końcowy</p>
+                    <p class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white leading-none">${scen.kapitalKoncowyStr}</p>
+                    <div class="flex items-center gap-1 mt-2 mb-1">
+                        <span class="material-symbols-outlined text-[13px] text-emerald-500">trending_up</span>
+                        <p class="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold tracking-wide">
+                            w tym zysk realny: ${scen.zyskRealnyStr}
+                        </p>
+                    </div>
                 </div>
             </div>
         `;
@@ -359,11 +375,53 @@ function renderScenarios() {
     });
 }
 
-function deleteScenario(index) {
+function deleteScenario(index, event) {
+    if (event) {
+        event.stopPropagation();
+    }
     savedScenarios.splice(index, 1);
+    saveToLocalStorage();
     renderScenarios();
+}
+
+function loadScenario(index) {
+    const scen = savedScenarios[index];
+    if (!scen) return;
+    
+    document.getElementById('input-kapital').value = scen.kapital;
+    document.getElementById('input-doplata').value = scen.doplata;
+    document.getElementById('input-horyzont').value = scen.lata;
+    
+    // Updating 'stopa' also handles calculations via setStopa() helper
+    setStopa(scen.stopa, document.getElementById('input-stopa'));
+    
+    // Visual feedback 
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function saveToLocalStorage() {
+    try {
+        localStorage.setItem('etf-scenarios', JSON.stringify(savedScenarios));
+    } catch (e) {
+        console.error('Cannot save scenarios to localStorage', e);
+    }
+}
+
+function loadFromLocalStorage() {
+    try {
+        const data = localStorage.getItem('etf-scenarios');
+        if (data) {
+            savedScenarios = JSON.parse(data);
+            if (savedScenarios.length > 0) {
+                renderScenarios();
+            }
+        }
+    } catch (e) {
+        console.error('Cannot load scenarios from localStorage', e);
+    }
 }
 
 // Make functions globally accessible for inline handlers
 window.saveCurrentScenario = saveCurrentScenario;
 window.deleteScenario = deleteScenario;
+window.loadScenario = loadScenario;
