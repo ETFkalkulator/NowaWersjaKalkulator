@@ -417,11 +417,13 @@
   </nav>
 
   <style>
-    .no-scrollbar::-webkit-scrollbar {
+    .no-scrollbar::-webkit-scrollbar,
+    .hide-scrollbar::-webkit-scrollbar {
       display: none;
     }
 
-    .no-scrollbar {
+    .no-scrollbar,
+    .hide-scrollbar {
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
@@ -828,7 +830,7 @@
               Porównanie scenariuszy
             </h3>
             <div id="scenario-cards-container"
-              class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-8 pt-2 px-1 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+              class="grid grid-flow-col auto-cols-[85vw] sm:auto-cols-[320px] gap-4 overflow-x-auto overscroll-x-contain snap-x snap-mandatory pb-8 pt-4 px-4 -mx-4 hide-scrollbar"
               style="-webkit-overflow-scrolling: touch;">
               <!-- Dynamically populated -->
             </div>
