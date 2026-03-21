@@ -452,22 +452,26 @@ function renderScenarios() {
         const dopStr = formatPl.format(scen.doplata);
 
         div.innerHTML = `
+            <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-white/40 to-transparent dark:from-slate-900/95 dark:via-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8 pointer-events-none z-10">
+              <span class="bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1 translate-y-2 group-hover:translate-y-0 transition-transform duration-300" style="background-color: #0d7ff2;">
+                <span class="material-symbols-outlined text-[14px]">file_download</span>
+                Kliknij, aby wczytać
+              </span>
+            </div>
             <button class="absolute top-2 right-2 text-slate-400 hover:text-rose-500 p-1 z-20 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700" onclick="event.stopPropagation(); savedScenarios.splice(${index}, 1); localStorage.setItem('ob-scenarios', JSON.stringify(savedScenarios)); renderScenarios();">
                 <span class="material-symbols-outlined text-[16px] block">close</span>
             </button>
-            <div class="mb-4 pr-6">
-                <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-primary dark:text-blue-300 px-2 py-1 rounded font-bold">${scen.typ}</span>
-                <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 px-2 py-1 rounded ml-1">${kapStr} zł st.</span>
-                <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 px-2 py-1 rounded ml-1">${dopStr} zł/ms</span>
-            </div>
-            <div>
-                <p class="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-semibold mb-1">Kapitał końcowy</p>
-                <p class="text-2xl font-black text-slate-900 dark:text-white">${scen.kapitalKoncowyStr}</p>
-                <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 flex items-center gap-1"><span class="material-symbols-outlined text-[13px] text-emerald-500">trending_up</span> Zysk z odsetek: ${scen.zyskNominalnyStr}</p>
-            </div>
-            <div class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-700 flex items-center gap-1.5 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <span class="material-symbols-outlined text-[13px]">replay</span>
-              <span class="text-[10px] font-semibold">Kliknij, aby odtworzyć scenariusz</span>
+            <div class="transition-all duration-300 group-hover:blur-[1.5px] group-hover:opacity-60 relative z-0">
+              <div class="mb-4 pr-6">
+                  <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-primary dark:text-blue-300 px-2 py-1 rounded font-bold">${scen.typ}</span>
+                  <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 px-2 py-1 rounded ml-1">${kapStr} zł st.</span>
+                  <span class="text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 px-2 py-1 rounded ml-1">${dopStr} zł/ms</span>
+              </div>
+              <div>
+                  <p class="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-semibold mb-1">Kapitał końcowy</p>
+                  <p class="text-2xl font-black text-slate-900 dark:text-white">${scen.kapitalKoncowyStr}</p>
+                  <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 flex items-center gap-1"><span class="material-symbols-outlined text-[13px] text-emerald-500">trending_up</span> Zysk z odsetek: ${scen.zyskNominalnyStr}</p>
+              </div>
             </div>
         `;
         container.appendChild(div);
