@@ -459,20 +459,43 @@
           </div>
 
           <!-- TABELA -->
-          <div class="glass-effect p-8 rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-2xl overflow-x-auto">
-            <table class="w-full text-left border-collapse">
-              <thead>
-                <tr class="bg-slate-50/50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-800">
-                  <th class="sticky left-0 bg-slate-50 dark:bg-slate-800 px-4 py-3 text-xs font-black text-slate-400 uppercase tracking-widest whitespace-nowrap">Okres</th>
-                  <th class="px-3 py-4 text-xs font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">Marża/Oproc</th>
-                  <th class="px-3 py-4 text-xs font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">Zysk Roczny</th>
-                  <th class="px-3 py-4 text-xs font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">Kapitał Skum.</th>
-                  <th class="px-3 py-4 text-xs font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">Realny (Siła Nabywcza)</th>
-                </tr>
-              </thead>
-              <tbody id="tabela-body" class="divide-y divide-slate-50 dark:divide-slate-900">
-              </tbody>
-            </table>
+          <div class="glass-effect p-8 rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-2xl">
+            <h3 class="text-xl font-extrabold text-slate-900 dark:text-white mb-8 flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary" style="color:#0d7ff2;">table_chart</span>
+              Szczegółowe zestawienie rok po roku
+            </h3>
+
+            <div
+              class="relative overflow-x-auto scrollbar-hide shadow-inner rounded-xl border border-slate-200/50 dark:border-slate-700/50">
+              <!-- Fade indicator for horizontal scroll -->
+              <div
+                class="absolute top-0 right-0 bottom-0 w-8 bg-gradient-to-l from-white/20 to-transparent pointer-events-none z-30 lg:hidden">
+              </div>
+
+              <table class="w-full text-left border-collapse" aria-label="Wyniki rok po roku">
+                <thead>
+                  <tr class="bg-slate-50/50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-800">
+                    <th
+                      class="sticky left-0 z-20 bg-slate-50 dark:bg-slate-800 px-4 py-3 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)] whitespace-nowrap">
+                      Okres</th>
+                    <th
+                      class="px-3 py-4 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">
+                      Marża/Oproc</th>
+                    <th
+                      class="px-3 py-4 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">
+                      Zysk Roczny</th>
+                    <th
+                      class="px-3 py-4 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">
+                      Kapitał Skum.</th>
+                    <th
+                      class="px-3 py-4 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">
+                      Realny (Siła Nabywcza)</th>
+                  </tr>
+                </thead>
+                <tbody id="tabela-body" class="divide-y divide-slate-50 dark:divide-slate-900">
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
