@@ -169,6 +169,13 @@ function obliczPorownanie() {
   var obligacje = obliczEDO(Object.assign({}, wspolne, { marza: marza, stopaRok1: stopaRok1 }));
   var lokata = obliczStrategie(Object.assign({}, wspolne, { stopa: stopaLok }));
 
+  window._porWyniki = {
+    etf: etf,
+    obligacje: obligacje,
+    lokata: lokata,
+    isIKE: wIKE
+  };
+
   // Scenariusze ETF
   var scenPes = obliczStrategie(Object.assign({}, wspolne, { stopa: SCENARIUSZE_ETF.pesymistyczny.stopa }));
   var scenBaz = obliczStrategie(Object.assign({}, wspolne, { stopa: SCENARIUSZE_ETF.bazowy.stopa }));
@@ -276,27 +283,29 @@ function aktualizujScenariusze(pes, baz, opt) {
 function rysujTabele(lata, etf, obl, lok) {
   var tbody = document.getElementById('por-tabela-body');
   if (!tbody) return;
+  tbody.innerHTML = '';
 
-  var html = '';
   for (var r = 1; r <= lata; r++) {
-    var eH = etf.historia[r - 1] || { kapital: 0 };
-    var oH = obl.historia[r - 1] || { kapital: 0 };
-    var lH = lok.historia[r - 1] || { kapital: 0 };
+    var eK = (etf.historia[r-1] || {}).kapital || 0;
+    var oK = (obl.historia[r-1] || {}).kapital || 0;
+    var lK = (lok.historia[r-1] || {}).kapital || 0;
+    var max = Math.max(eK, oK, lK);
 
-    var max = Math.max(eH.kapital, oH.kapital, lH.kapital);
+    function cellClass(v) {
+      return v === max
+        ? 'px-3 py-4 text-xs lg:text-sm font-black text-emerald-500 text-right whitespace-nowrap'
+        : 'px-3 py-4 text-xs lg:text-sm font-bold text-slate-900 dark:text-white text-right whitespace-nowrap';
+    }
 
-    var klas = function (v) {
-      return v === max ? ' style="color:var(--color-green-600);font-weight:600"' : '';
-    };
-
-    html += '<tr>';
-    html += '<td>' + r + '</td>';
-    html += '<td' + klas(eH.kapital) + '>' + formatujZl(eH.kapital) + '</td>';
-    html += '<td' + klas(oH.kapital) + '>' + formatujZl(oH.kapital) + '</td>';
-    html += '<td' + klas(lH.kapital) + '>' + formatujZl(lH.kapital) + '</td>';
-    html += '</tr>';
+    var tr = document.createElement('tr');
+    tr.className = 'hover:bg-slate-50/50 dark:hover:bg-slate-900/50 transition-colors';
+    tr.innerHTML =
+      '<td class="sticky left-0 z-10 bg-white/95 dark:bg-slate-900/95 px-4 py-3 text-xs lg:text-sm font-semibold text-slate-900 dark:text-slate-100 border-r border-slate-100 dark:border-slate-800 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">Rok ' + r + '</td>' +
+      '<td class="' + cellClass(eK) + '">' + formatujZl(eK) + '</td>' +
+      '<td class="' + cellClass(oK) + '">' + formatujZl(oK) + '</td>' +
+      '<td class="' + cellClass(lK) + '">' + formatujZl(lK) + '</td>';
+    tbody.appendChild(tr);
   }
-  tbody.innerHTML = html;
 }
 
 /* ----------------------------------------------------------
@@ -304,7 +313,7 @@ function rysujTabele(lata, etf, obl, lok) {
    ---------------------------------------------------------- */
 function rysujWykresPorown(lata, etf, obl, lok) {
   var canvas = document.getElementById('por-wykres');
-  if (!canvas || !window.ETF || !window.ETF.charts) return;
+  if (!canvas) return;
   var ctx = canvas.getContext('2d');
 
   var etykiety = etf.historia.map(function (d) { return 'Rok ' + d.rok; });
@@ -317,89 +326,15 @@ function rysujWykresPorown(lata, etf, obl, lok) {
     wykresPorown = null; 
   }
 
-  // Helper function for PLN formatting
   function formatZl(val) {
     if (val >= 1000000) return (val/1000000).toFixed(1) + 'M zł';
     if (val >= 1000) return (val/1000).toFixed(0) + 'k zł';
     return val.toFixed(0) + ' zł';
   }
-  
-  const baseOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    interaction: {
-      mode: 'index',
-      intersect: false,
-    },
-    plugins: {
-      legend: {
-        position: 'top',
-        align: 'start',
-        labels: {
-          usePointStyle: true,
-          font: {
-            size: 12,
-            family: "'Inter', sans-serif"
-          },
-          color: '#1c1c1e'
-        }
-      },
-      tooltip: {
-        backgroundColor: '#1c1c1e',
-        titleColor: '#ffffff',
-        bodyColor: '#ffffff',
-        borderColor: '#1c1c1e',
-        borderWidth: 0,
-        cornerRadius: 8,
-        padding: 10,
-        displayColors: true,
-        callbacks: {
-          title: function(context) {
-            return context[0].label;
-          },
-          label: function(context) {
-            return 'Wartość: ' + formatZl(context.parsed.y);
-          }
-        }
-      }
-    },
-    scales: {
-      x: {
-        grid: {
-          display: false
-        },
-        ticks: {
-          color: '#6e6e73',
-          font: {
-            size: 11,
-            family: "'Inter', sans-serif"
-          }
-        }
-      },
-      y: {
-        position: 'left',
-        grid: {
-          color: '#e5e7eb',
-          drawBorder: false,
-          borderDash: []
-        },
-        ticks: {
-          color: '#6e6e73',
-          font: {
-            size: 11,
-            family: "'Inter', sans-serif"
-          },
-          callback: function(value) {
-            return formatZl(value);
-          }
-        }
-      }
-    },
-    animation: {
-      duration: 800,
-      easing: 'easeInOutQuart'
-    }
-  };
+
+  var isDark = document.documentElement.classList.contains('dark');
+  var labelColor = isDark ? '#94a3b8' : '#6e6e73';
+  var gridColor = isDark ? '#1e293b' : '#e5e7eb';
 
   wykresPorown = new Chart(ctx, {
     type: 'line',
@@ -431,8 +366,8 @@ function rysujWykresPorown(lata, etf, obl, lok) {
         {
           label: 'Lokata bankowa',
           data: lokDane,
-          borderColor: '#f4a261',
-          backgroundColor: 'rgba(244, 162, 97, 0.15)',
+          borderColor: '#f59e0b',
+          backgroundColor: 'rgba(245, 158, 11, 0.15)',
           borderWidth: 3,
           fill: true,
           tension: 0.4,
@@ -441,8 +376,50 @@ function rysujWykresPorown(lata, etf, obl, lok) {
         }
       ]
     },
-    options: baseOptions
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: {
+          position: 'top', align: 'start',
+          labels: { usePointStyle: true, font: { size: 12, family: "'Inter', sans-serif" }, color: labelColor }
+        },
+        tooltip: {
+          backgroundColor: '#1c1c1e', titleColor: '#fff', bodyColor: '#fff',
+          borderWidth: 0, cornerRadius: 8, padding: 10, displayColors: true,
+          callbacks: {
+            title: function(c) { return c[0].label; },
+            label: function(c) { return c.dataset.label + ': ' + formatZl(c.parsed.y); }
+          }
+        }
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: labelColor, font: { size: 11, family: "'Inter', sans-serif" } } },
+        y: { position: 'left', grid: { color: gridColor, drawBorder: false },
+          ticks: { color: labelColor, font: { size: 11, family: "'Inter', sans-serif" }, callback: function(v) { return formatZl(v); } }
+        }
+      },
+      animation: { duration: 800, easing: 'easeInOutQuart' }
+    }
   });
+
+  // Ensure tooltips map correctly to the theme using event listener if not present globally
+  if (!window.porownywarkaChartThemeBound) {
+    window.porownywarkaChartThemeBound = true;
+    window.addEventListener('theme-changed', function() {
+      if (wykresPorown) {
+        var isDk = document.documentElement.classList.contains('dark');
+        var lColor = isDk ? '#94a3b8' : '#6e6e73';
+        var gColor = isDk ? '#1e293b' : '#e5e7eb';
+        wykresPorown.options.scales.x.ticks.color = lColor;
+        wykresPorown.options.scales.y.ticks.color = lColor;
+        wykresPorown.options.scales.y.grid.color = gColor;
+        wykresPorown.options.plugins.legend.labels.color = lColor;
+        wykresPorown.update();
+      }
+    });
+  }
 }
 
 

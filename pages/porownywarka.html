@@ -1,1278 +1,718 @@
 <!DOCTYPE html>
-<html lang="pl">
-
+<html lang="pl" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
   <title>Porównywarka ETF vs Obligacje vs Lokata | ETFkalkulator.pl</title>
   <link rel="canonical" href="https://etfkalkulator.pl/pages/porownywarka.html">
-  <meta name="description"
-    content="Porównaj ETF, obligacje skarbowe EDO i lokaty bankowe. Zobacz który instrument daje najwyższy zysk po podatku i inflacji.">
-
+  <meta name="description" content="Porównaj ETF, obligacje EDO i lokaty po podatku Belki i inflacji. Który instrument zarobi więcej przy Twoich parametrach? Konkretne liczby.">
   <meta property="og:title" content="Porównywarka ETF vs Obligacje vs Lokata | ETFkalkulator.pl">
-  <meta property="og:description"
-    content="Porównaj ETF, obligacje skarbowe EDO i lokaty bankowe. Zobacz który instrument daje najwyższy zysk po podatku i inflacji.">
+  <meta property="og:description" content="Porównaj ETF, obligacje EDO i lokaty po podatku Belki i inflacji. Który instrument zarobi więcej przy Twoich parametrach?">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://etfkalkulator.pl/pages/porownywarka.html">
-  <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:site_name" content="ETFkalkulator.pl">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Porównywarka ETF vs Obligacje vs Lokata | ETFkalkulator.pl">
-  <meta name="twitter:description"
-    content="Porównaj ETF, obligacje skarbowe EDO i lokaty bankowe. Zobacz który instrument daje najwyższy zysk po podatku i inflacji.">
-  <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png">
-
-  <!-- Favicon -->
-  <link rel="icon" href="../images/favicon.png">
-
-  <!-- Google Analytics 4 — loads only after cookie consent -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
-    // Default: analytics denied until user accepts
-    gtag('consent', 'default', {
-      'analytics_storage': 'denied'
-    });
+    gtag('consent', 'default', { 'analytics_storage': 'denied' });
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
-  <script>
-    gtag('config', 'G-GZECMECQ15', { 'send_page_view': false });
+  <script> gtag('config', 'G-GZECMECQ15', { 'send_page_view': false }); </script>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap" rel="stylesheet" />
+
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { "primary": "#0d7ff2" }, fontFamily: { "display": ["Inter", "sans-serif"] } } }
+    }
   </script>
 
-  <!-- Optyamizowany ładunek czcionek z Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap"
-    rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript>
-    <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
-  </noscript>
+  <style>
+    .glass-effect { background: rgba(255,255,255,0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .dark .glass-effect { background: rgba(15,23,42,0.7); }
+    body { font-family: 'Inter', sans-serif; }
+    .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-size: 24px; line-height: 1; -webkit-font-smoothing: antialiased; }
+    input[type="checkbox"].custom-checkbox {
+      appearance: none; -webkit-appearance: none; width: 1.25rem; height: 1.25rem; border: 2px solid #cbd5e1; border-radius: 4px;
+      display: grid; place-content: center; cursor: pointer; transition: all 0.2s ease;
+    }
+    .dark input[type="checkbox"].custom-checkbox { border-color: #334155; background-color: #0f172a; }
+    input[type="checkbox"].custom-checkbox:checked { background-color: #0d7ff2; border-color: #0d7ff2; }
+    input[type="checkbox"].custom-checkbox::before {
+      content: ""; width: 0.65rem; height: 0.65rem; transform: scale(0); transition: 120ms transform ease-in-out;
+      background-color: white; clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    }
+    input[type="checkbox"].custom-checkbox:checked::before { transform: scale(1); }
+    .touch-target-info { min-width: 44px; min-height: 44px; display: flex !important; align-items: center; justify-content: center; }
+    @keyframes modalFadeIn { from { opacity: 0; transform: scale(0.9) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+    .modal-anim { animation: modalFadeIn 0.3s ease-out; }
+  </style>
+
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/main.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
-  <script src="../js/charts-config.js" defer></script>
-
-  <style>
-    html {
-      overflow-x: hidden;
-    }
-
-    body {
-      overflow-x: hidden;
-      max-width: 100vw;
-    }
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-
-    input,
-    select {
-      min-width: 0 !important;
-      max-width: 100% !important;
-      width: 100% !important;
-      font-size: 16px !important;
-      box-sizing: border-box !important;
-    }
-
-    /* Nuklearny fix overflow — żaden element nie może być szerszy niż ekran */
-    .container,
-    .por-uklad,
-    .formularz-karta,
-    .formularz-pola,
-    .form-group,
-    .form-input-wrapper,
-    .por-wyniki,
-    .por-panele {
-      max-width: 100%;
-      overflow: hidden;
-      min-width: 0;
-    }
-
-    .form-input-wrapper {
-      overflow: hidden !important;
-    }
-
-    .form-input {
-      max-width: 100% !important;
-      min-width: 0 !important;
-      width: 100% !important;
-      flex: 1 1 0% !important;
-    }
-
-    /* Layout */
-    .por-uklad {
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: var(--space-6);
-      margin-top: var(--space-8);
-      align-items: start;
-      overflow: hidden;
-      max-width: 100%;
-      min-width: 0;
-    }
-
-    @media (max-width: 900px) {
-      .por-uklad {
-        grid-template-columns: 1fr;
-        overflow: hidden;
-      }
-
-      .formularz-karta {
-        position: static !important;
-      }
-    }
-
-    .formularz-karta {
-      background: var(--color-bg-elevated);
-      border-radius: var(--radius-xl);
-      padding: var(--space-6);
-      border: 1px solid var(--color-border-subtle);
-      box-shadow: var(--shadow-sm);
-      position: sticky;
-      top: calc(var(--header-height) + var(--space-4));
-      max-height: calc(100vh - var(--header-height) - var(--space-8));
-      overflow-y: auto;
-      overflow-x: hidden;
-      max-width: 100%;
-      min-width: 0;
-      box-sizing: border-box;
-    }
-
-    @media (max-width: 900px) {
-      .formularz-karta {
-        position: static;
-        max-height: none;
-        overflow: hidden;
-      }
-    }
-
-    .formularz-sekcja {
-      font-size: var(--text-xs);
-      font-weight: var(--weight-semibold);
-      color: var(--color-text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-top: var(--space-5);
-      margin-bottom: var(--space-3);
-      padding-top: var(--space-4);
-      border-top: 1px solid var(--color-border-subtle);
-    }
-
-    .formularz-sekcja:first-child {
-      margin-top: 0;
-      padding-top: 0;
-      border-top: none;
-    }
-
-    .formularz-pola {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-3);
-    }
-
-    /* Prawa kolumna */
-    .por-wyniki {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-5);
-    }
-
-    /* Banner zwycięzcy — standard Apple */
-    .zwyciezca-banner {
-      background: var(--result-bg);
-      border: var(--result-border);
-      border-radius: var(--result-radius);
-      padding: var(--result-padding);
-      color: var(--result-text-color);
-      text-align: center;
-      box-shadow: var(--result-shadow);
-      transition: var(--result-transition);
-      position: relative;
-      overflow: hidden;
-      word-break: break-word;
-      overflow-wrap: break-word;
-      display: flex;
-      align-items: center;
-      gap: var(--space-4);
-    }
-
-    .zwyciezca-banner:hover {
-      box-shadow: var(--result-shadow-hover);
-      transform: translateY(-2px);
-    }
-
-    .zwyciezca-banner__ikona {
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: var(--radius-lg);
-      color: currentColor;
-      flex-shrink: 0;
-    }
-
-    .zwyciezca-banner__content {
-      flex: 1;
-      text-align: left;
-    }
-
-    .zwyciezca-banner .winner {
-      font-size: var(--result-label-size);
-      font-weight: var(--weight-semibold);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      opacity: 0.9;
-      margin-bottom: var(--space-2);
-    }
-
-    .zwyciezca-banner .amount {
-      font-family: var(--font-display);
-      font-size: var(--result-value-size);
-      font-weight: var(--weight-bold);
-      line-height: 1;
-      margin-bottom: var(--space-2);
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .zwyciezca-banner .description {
-      font-size: var(--result-description-size);
-      font-weight: var(--weight-medium);
-      opacity: 0.8;
-      max-width: 320px;
-      line-height: var(--leading-relaxed);
-    }
-
-    /* Trzy panele wyników */
-    .por-panele {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-4);
-    }
-
-    @media (max-width: 860px) {
-      .por-panele {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .por-panel {
-      background: var(--color-bg-elevated);
-      border-radius: var(--radius-xl);
-      padding: var(--space-5);
-      border: 2px solid var(--color-border-subtle);
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-3);
-      transition: border-color 0.2s ease;
-    }
-
-    .por-panel--etf {
-      border-color: rgba(26, 86, 160, 0.35);
-    }
-
-    .por-panel--obligacje {
-      border-color: rgba(245, 158, 11, 0.35);
-    }
-
-    .por-panel--lokata {
-      border-color: rgba(148, 163, 184, 0.35);
-    }
-
-    .por-panel__naglowek {
-      display: flex;
-      align-items: center;
-      gap: var(--space-2);
-      padding-bottom: var(--space-3);
-      border-bottom: 1px solid var(--color-border-subtle);
-    }
-
-    .por-panel__ikona {
-      width: 32px;
-      height: 32px;
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
-
-    .ikona-etf {
-      background: rgba(26, 86, 160, 0.12);
-    }
-
-    .ikona-obligacje {
-      background: rgba(245, 158, 11, 0.12);
-    }
-
-    .ikona-lokata {
-      background: rgba(148, 163, 184, 0.12);
-    }
-
-    .por-panel__tytul {
-      font-size: var(--text-sm);
-      font-weight: var(--weight-semibold);
-      color: var(--color-text-primary);
-    }
-
-    .por-panel__stopa {
-      font-size: var(--text-xs);
-      color: var(--color-text-muted);
-    }
-
-    .por-wiersz {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: var(--space-2);
-      min-width: 0;
-    }
-
-    .por-wiersz__label {
-      font-size: var(--text-xs);
-      color: var(--color-text-muted);
-      white-space: nowrap;
-      flex-shrink: 1;
-      min-width: 0;
-    }
-
-    .por-wiersz__wartosc {
-      font-size: var(--text-sm);
-      font-weight: var(--weight-semibold);
-      color: var(--color-text-primary);
-      text-align: right;
-      flex-shrink: 0;
-      white-space: nowrap;
-    }
-
-    .por-wiersz__wartosc--glowna {
-      font-size: var(--text-lg);
-      color: var(--color-text-primary);
-    }
-
-    .por-wiersz__wartosc--zielony {
-      color: var(--color-primary-600) !important;
-    }
-
-    .por-wiersz__wartosc--czerwony {
-      color: var(--color-error) !important;
-    }
-
-    .por-wiersz__wartosc--muted {
-      color: var(--color-text-muted) !important;
-      font-weight: var(--weight-normal) !important;
-    }
-
-    /* Scenariusze ETF */
-    .scenariusze-karta {
-      background: var(--color-bg-elevated);
-      border-radius: var(--radius-xl);
-      padding: var(--space-6);
-      border: 1px solid var(--color-border-subtle);
-    }
-
-    .scenariusze-naglowek {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: var(--space-4);
-      flex-wrap: wrap;
-      gap: var(--space-3);
-    }
-
-    .scenariusze-tytul {
-      font-size: var(--text-base);
-      font-weight: var(--weight-semibold);
-      color: var(--color-text-primary);
-    }
-
-    .scen-przyciski {
-      display: flex;
-      gap: var(--space-2);
-    }
-
-    .scen-siatka {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-3);
-    }
-
-    @media (max-width: 600px) {
-      .scen-siatka {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .scen-box {
-      padding: var(--space-4);
-      background: var(--color-bg-secondary);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--color-border-subtle);
-    }
-
-    .scen-box__nazwa {
-      font-size: var(--text-xs);
-      font-weight: var(--weight-semibold);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--color-text-muted);
-      margin-bottom: var(--space-1);
-    }
-
-    .scen-box__stopa {
-      font-size: var(--text-xs);
-      color: var(--color-text-muted);
-      margin-bottom: var(--space-3);
-    }
-
-    .scen-box__kapital {
-      font-size: var(--text-lg);
-      font-weight: var(--weight-semibold);
-      color: var(--color-text-primary);
-      margin-bottom: var(--space-1);
-    }
-
-    .scen-box__zysk {
-      font-size: var(--text-xs);
-      color: var(--color-primary-600);
-      font-weight: var(--weight-medium);
-    }
-
-    .scen-box__cagr {
-      font-size: var(--text-xs);
-      color: var(--color-text-muted);
-    }
-
-    /* Wykres */
-    .wykres-karta {
-      background: var(--color-bg-elevated);
-      border-radius: var(--radius-xl);
-      padding: var(--space-6);
-      border: 1px solid var(--color-border-subtle);
-      box-shadow: var(--shadow-sm);
-    }
-
-    .wykres-naglowek {
-      margin-bottom: var(--space-5);
-    }
-
-    .wykres-tytul {
-      font-size: var(--text-base);
-      font-weight: var(--weight-semibold);
-      color: var(--color-text-primary);
-      margin-bottom: var(--space-1);
-    }
-
-    .wykres-opis {
-      font-size: var(--text-xs);
-      color: var(--color-text-muted);
-    }
-
-    .wykres-container {
-      position: relative;
-      height: 320px;
-    }
-
-    .chart-wrapper {
-      position: relative;
-      width: 100%;
-      height: 320px;
-    }
-
-    @media (max-width: 768px) {
-      .chart-wrapper {
-        height: 220px;
-      }
-    }
-
-    /* Tabela */
-    .tabela-karta {
-      background: var(--color-bg-elevated);
-      border-radius: var(--radius-xl);
-      padding: var(--space-6);
-      border: 1px solid var(--color-border-subtle);
-      overflow-x: auto;
-    }
-
-    .tabela-tytul {
-      font-size: var(--text-base);
-      font-weight: var(--weight-semibold);
-      margin-bottom: var(--space-4);
-    }
-
-    .tabela {
-      width: 100%;
-      font-size: var(--text-sm);
-      border-collapse: collapse;
-    }
-
-    .tabela th {
-      padding: var(--space-2) var(--space-3);
-      font-size: var(--text-xs);
-      font-weight: var(--weight-medium);
-      color: var(--color-text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      border-bottom: 1px solid var(--color-border);
-      text-align: right;
-    }
-
-    .tabela th:first-child {
-      text-align: left;
-    }
-
-    .tabela td {
-      padding: var(--space-3);
-      color: var(--color-text-primary);
-      border-bottom: 1px solid var(--color-border-subtle);
-      text-align: right;
-    }
-
-    .tabela td:first-child {
-      text-align: left;
-      color: var(--color-text-muted);
-    }
-
-    .tabela tr:last-child td {
-      border-bottom: none;
-    }
-
-    .tabela tr:hover td {
-      background: var(--color-bg-secondary);
-    }
-
-    /* Legenda kolorów w headerze tabeli */
-    .tabela-eth {
-      color: var(--color-primary-600) !important;
-    }
-
-    .tabela-obl {
-      color: #b45309 !important;
-    }
-
-    .tabela-lok {
-      color: var(--color-text-muted) !important;
-    }
-
-    /* IKE row */
-    .ike-row {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-3);
-      padding: var(--space-3);
-      background: var(--color-primary-50);
-      border-radius: var(--radius-md);
-      border: 1px solid var(--color-primary-100);
-      cursor: pointer;
-      overflow: hidden;
-    }
-
-    .ike-row input[type="checkbox"] {
-      width: 16px !important;
-      min-width: 16px !important;
-      max-width: 16px !important;
-      height: 16px;
-      margin-top: 2px;
-      accent-color: var(--color-primary-500);
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-
-    .ike-row__tekst {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .ike-row__tekst strong {
-      color: var(--color-primary-700);
-      font-weight: var(--weight-medium);
-      font-size: var(--text-xs);
-      display: block;
-      margin-bottom: 1px;
-    }
-
-    .ike-row__tekst span {
-      font-size: var(--text-xs);
-      color: var(--color-text-secondary);
-      word-wrap: break-word;
-    }
-
-    /* Btn-okres */
-    .btn-okres-grupa {
-      display: flex;
-      gap: var(--space-2);
-    }
-
-    .btn-okres {
-      padding: var(--space-1) var(--space-3);
-      border-radius: var(--radius-full);
-      border: 1.5px solid var(--color-border);
-      background: transparent;
-      color: var(--color-text-secondary);
-      font-family: var(--font-sans);
-      font-size: var(--text-xs);
-      font-weight: var(--weight-medium);
-      cursor: pointer;
-      transition: all var(--transition-fast);
-    }
-
-    .btn-okres--aktywny {
-      background: var(--color-primary-500);
-      border-color: var(--color-primary-500);
-      color: white;
-    }
-
-    /* Słowniczek */
-    .edukacja {
-      margin-top: var(--space-16);
-      padding-top: var(--space-12);
-      border-top: 1px solid var(--color-border-subtle);
-    }
-
-    .edukacja__siatka {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: var(--space-4);
-      margin-top: var(--space-8);
-    }
-
-    .pojecie {
-      padding: var(--space-5);
-      background: var(--color-bg-secondary);
-      border-radius: var(--radius-md);
-    }
-
-    .pojecie__term {
-      font-size: var(--text-sm);
-      font-weight: var(--weight-semibold);
-      color: var(--color-primary-700);
-      margin-bottom: var(--space-2);
-    }
-
-    .pojecie__def {
-      font-size: var(--text-sm);
-      color: var(--color-text-secondary);
-      line-height: var(--leading-relaxed);
-    }
-
-    body,
-    .header,
-    .formularz-karta,
-    .por-panel,
-    .wykres-karta,
-    .tabela-karta,
-    .scenariusze-karta,
-    .pojecie {
-      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-    }
-  </style>
 </head>
 
 <body>
-  <!-- Cookie Consent Banner -->
-  <div id="cookie-consent" class="cookie-consent" style="display: none;">
-    <div class="cookie-consent__inner">
-      <div class="cookie-consent__content">
-        <h4 class="cookie-consent__title">Prywatno i pliki cookies</h4>
-        <p class="cookie-consent__text">
-          ETFkalkulator.pl uywa plik�w cookies do analizy ruchu i personalizacji treci.
-          Kontynuujc przegldanie zgadzasz si na nasz
-          <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__link">polityk cookies</a>.
-        </p>
-      </div>
-      <div class="cookie-consent__actions">
-        <button id="cookie-accept" class="cookie-consent__btn cookie-consent__btn--accept">Akceptuj</button>
-        <button id="cookie-reject" class="cookie-consent__btn cookie-consent__btn--reject">Odrzu</button>
-        <a href="../pages/polityka-prywatnosci.html#cookies"
-          class="cookie-consent__btn cookie-consent__btn--settings">Ustawienia</a>
-      </div>
-    </div>
-  </div>
 
-  <header class="header">
-    <div class="container">
-      <div class="header__inner">
-        <a href="../index.html" class="header__logo">ETF<span>kalkulator</span>.pl</a>
-        <nav class="header__nav" aria-label="Nawigacja główna">
-          <a href="../pages/kalkulator-etf.html">Kalkulator ETF</a>
-          <a href="../pages/kalkulator-obligacji.html">Obligacje</a>
-          <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
-          <a href="../pages/porownywarka.html" class="link-primary">Porównywarka</a>
-          <a href="../blog/index.html">Blog</a>
-          <a href="../pages/o-projekcie.html">O projekcie</a>
-          <button id="btn-darkmode" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="
-      width: 38px; height: 38px;
-      border-radius: var(--radius-full);
-      border: 1.5px solid var(--color-border);
-      background: var(--color-bg-elevated);
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: all var(--transition-fast);
-      flex-shrink: 0;
-    ">
-            <svg id="ikona-slonce" width="18" height="18" viewBox="0 0 24 24" fill="none"
-              stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="5" />
-              <line x1="12" y1="1" x2="12" y2="3" />
-              <line x1="12" y1="21" x2="12" y2="23" />
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-              <line x1="1" y1="12" x2="3" y2="12" />
-              <line x1="21" y1="12" x2="23" y2="12" />
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-            </svg>
-            <svg id="ikona-ksiezyc" width="18" height="18" viewBox="0 0 24 24" fill="none"
-              stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              style="display:none">
-              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-            </svg>
-          </button>
-          <a href="../index.html#newsletter" class="btn btn--sm btn-newsletter">Newsletter</a>
-        </nav>
+  <!-- NAV -->
+  <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-slate-200/50 dark:border-slate-800/50" style="font-family: 'Inter', sans-serif;">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center shrink-0">
+        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity" style="text-decoration:none;">
+          <div class="bg-primary p-1.5 rounded-xl text-white flex items-center justify-center" style="background-color:#0d7ff2;">
+            <span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">ETFkalkulator.pl</span>
+        </a>
+      </div>
+      <div class="hidden lg:flex items-center gap-6 xl:gap-8 mx-6">
+        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="kalkulator-etf.html" style="text-decoration:none;">Kalkulator ETF</a>
+        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="kalkulator-obligacji.html" style="text-decoration:none;">Kalkulator Obligacji</a>
+        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="kalkulator-wolnosci.html" style="text-decoration:none;">Kalkulator Wolności</a>
+        <a class="text-sm font-extrabold text-primary transition-colors hover:opacity-80" href="porownywarka.html" style="text-decoration:none; color:#0d7ff2;">Porównywarka</a>
+        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="../blog/index.html" style="text-decoration:none;">Blog</a>
+        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="o-projekcie.html" style="text-decoration:none;">O projekcie</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onclick="przelaczTryb()" aria-label="Przełącz tryb" class="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center hover:bg-slate-50 transition-colors">
+          <span class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
+          <span class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
+        </button>
+        <a href="#newsletter-section" class="bg-primary text-white px-4 h-9 rounded-full flex items-center justify-center text-[13px] font-bold hover:opacity-90 transition-opacity no-underline" style="background-color:#0d7ff2;">Zapisz się</a>
       </div>
     </div>
-  </header>
-
-  <div class="mobile-nav-bar" id="mobile-nav-bar">
-    <div class="mobile-nav-bar__inner">
-      <a href="../pages/kalkulator-etf.html" class="mobile-nav-bar__link">ETF</a>
-      <span class="mobile-nav-bar__separator"></span>
-      <a href="../pages/kalkulator-obligacji.html" class="mobile-nav-bar__link">Obligacje</a>
-      <span class="mobile-nav-bar__separator"></span>
-      <a href="../pages/kalkulator-wolnosci.html" class="mobile-nav-bar__link">Wolność finansowa</a>
-      <span class="mobile-nav-bar__separator"></span>
-      <a href="../pages/porownywarka.html" class="mobile-nav-bar__link aktywna">Porównywarka ETF</a>
-      <span class="mobile-nav-bar__separator"></span>
-      <a href="../blog/index.html" class="mobile-nav-bar__link">Blog</a>
+    <div class="lg:hidden h-11 border-t border-slate-200/30 dark:border-slate-800/30 flex items-center overflow-x-auto overflow-y-hidden no-scrollbar px-4 gap-6 bg-white/10 dark:bg-slate-900/10" style="-webkit-overflow-scrolling: touch;">
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap" href="kalkulator-etf.html" style="text-decoration:none;">Kalkulator ETF</a>
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap" href="kalkulator-obligacji.html" style="text-decoration:none;">Obligacje</a>
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap" href="kalkulator-wolnosci.html" style="text-decoration:none;">Wolność finansowa</a>
+      <a class="text-[12px] font-extrabold text-primary hover:opacity-80 whitespace-nowrap" href="porownywarka.html" style="text-decoration:none; color:#0d7ff2;">Porównywarka</a>
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap" href="../blog/index.html" style="text-decoration:none;">Blog</a>
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap" href="o-projekcie.html" style="text-decoration:none;">O projekcie</a>
     </div>
-  </div>
+  </nav>
+  <style>.no-scrollbar::-webkit-scrollbar{display:none;}.no-scrollbar{-ms-overflow-style:none;scrollbar-width:none;}</style>
 
-
-  <main>
-    <div class="container">
-
-      <div class="page-hero">
-        <p class="page-hero__bread">
-          <a href="../index.html">ETFkalkulator.pl</a> › Porównywarka
-        </p>
-        <h1 class="heading-1">Porównywarka ETF vs Obligacje vs Lokata</h1>
-        <p class="text-lead mt-2" style="max-width: var(--max-width-text)">
-          Wpisz swoje parametry i sprawdź <strong>który instrument zarobi dla Ciebie najwięcej</strong>
-          po podatku i inflacji.
+  <main class="pt-32 pb-20 px-6 min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-4 text-xs text-slate-400 dark:text-slate-500">
+        <a href="../index.html" class="hover:text-primary transition-colors" style="text-decoration:none;">ETFkalkulator.pl</a>
+        <span class="mx-1">›</span>
+        <span class="text-slate-600 dark:text-slate-300 font-semibold">Porównywarka</span>
+      </div>
+      <div class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-4">
+          Porównywarka <span class="text-primary">ETF vs Obligacje vs Lokata</span>
+        </h1>
+        <p class="text-lg text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed">
+          Wpisz swoje parametry i sprawdź który instrument zarobi dla Ciebie najwięcej po podatku Belki i inflacji.
         </p>
       </div>
 
-      <div class="por-uklad">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
         <!-- FORMULARZ -->
-        <div class="formularz-karta">
-          <div class="formularz-pola">
+        <aside class="lg:col-span-4 space-y-6">
+          <div class="glass-effect p-8 rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-2xl">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-8 flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary">compare_arrows</span>
+              Parametry porównania
+            </h3>
+            <div class="space-y-6">
 
-            <p class="formularz-sekcja">Wspólne parametry</p>
+              <!-- Group 1: Wspólne parametry -->
+              <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Wspólne parametry</p>
 
-            <div class="form-group">
-              <label class="form-label" for="por-kapital">Kapitał startowy</label>
-              <div class="form-input-wrapper">
-                <input type="text" inputmode="decimal" id="por-kapital" class="form-input" value="10000" maxlength="9"
-                  onfocus="clearOnFocus(this,10000)" onblur="restoreOnBlur(this,10000)">
-                <span class="form-input-suffix">zł</span>
+              <!-- Kapitał startowy -->
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <label class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Kapitał startowy</label>
+                  <div class="flex items-center gap-2">
+                    <button type="button" onclick="openEduModal('por_kapital', event)" class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
+                      <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
+                      <span class="material-symbols-outlined text-sm">help</span>
+                    </button>
+                    <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md">PLN</span>
+                  </div>
+                </div>
+                <input type="text" inputmode="decimal" id="por-kapital" value="10000" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none">
               </div>
-            </div>
 
-            <div class="form-group">
-              <label class="form-label" for="por-doplata">Miesięczna dopłata</label>
-              <div class="form-input-wrapper">
-                <input type="text" inputmode="decimal" id="por-doplata" class="form-input" value="500" maxlength="7"
-                  onfocus="clearOnFocus(this,500)" onblur="restoreOnBlur(this,500)">
-                <span class="form-input-suffix">zł</span>
+              <!-- Miesięczna dopłata -->
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <label class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Miesięczna dopłata</label>
+                  <div class="flex items-center gap-2">
+                    <button type="button" onclick="openEduModal('por_doplata', event)" class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
+                      <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
+                      <span class="material-symbols-outlined text-sm">help</span>
+                    </button>
+                    <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md">PLN</span>
+                  </div>
+                </div>
+                <input type="text" inputmode="decimal" id="por-doplata" value="500" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none">
               </div>
-            </div>
 
-            <div class="form-group">
-              <label class="form-label" for="por-lata">Horyzont inwestycji</label>
-              <div class="form-input-wrapper">
-                <input type="text" inputmode="decimal" id="por-lata" class="form-input" value="10" maxlength="3"
-                  onfocus="clearOnFocus(this,10)" onblur="restoreOnBlur(this,10)">
-                <span class="form-input-suffix">lat</span>
+              <!-- Horyzont -->
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <label class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Horyzont inwestycji</label>
+                  <div class="flex items-center gap-2">
+                    <button type="button" onclick="openEduModal('por_lata', event)" class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
+                      <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
+                      <span class="material-symbols-outlined text-sm">help</span>
+                    </button>
+                    <span class="text-xs font-bold text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">lat</span>
+                  </div>
+                </div>
+                <input type="text" inputmode="decimal" id="por-lata" value="10" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none">
               </div>
-            </div>
 
-            <div class="form-group">
-              <label class="form-label" for="por-inflacja">Oczekiwana inflacja</label>
-              <div class="form-input-wrapper">
-                <input type="text" inputmode="decimal" id="por-inflacja" class="form-input" value="3.5" maxlength="4"
-                  onfocus="clearOnFocus(this,3.5)" onblur="restoreOnBlur(this,3.5)">
-                <span class="form-input-suffix">%</span>
+              <!-- Inflacja -->
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <label class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Oczekiwana inflacja</label>
+                  <div class="flex items-center gap-2">
+                    <button type="button" onclick="openEduModal('por_inflacja', event)" class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
+                      <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
+                      <span class="material-symbols-outlined text-sm">help</span>
+                    </button>
+                    <span class="text-xs font-bold text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">%</span>
+                  </div>
+                </div>
+                <input type="text" inputmode="decimal" id="por-inflacja" value="3.5" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none">
               </div>
-            </div>
 
-            <label class="ike-row">
-              <input type="checkbox" id="por-ike">
-              <div class="ike-row__tekst">
-                <strong>IKE / IKZE — brak podatku Belki</strong>
-                <span>Dotyczy wszystkich trzech instrumentów</span>
+              <!-- IKE Toggle -->
+              <div class="space-y-4 pt-4">
+                <label class="group flex items-start gap-4 p-4 rounded-2xl border-2 border-transparent hover:border-primary/20 hover:bg-primary/5 transition-all cursor-pointer">
+                  <div class="relative flex items-center">
+                    <input type="checkbox" id="por-ike" class="peer sr-only">
+                    <div class="w-12 h-6 bg-slate-200 dark:bg-slate-800 rounded-full peer peer-checked:bg-primary transition-colors"></div>
+                    <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-6"></div>
+                  </div>
+                  <div class="flex-1">
+                    <span class="block text-sm font-bold text-slate-900 dark:text-white mb-1">IKE / IKZE — brak podatku Belki</span>
+                    <span class="block text-xs text-slate-500">Dotyczy wszystkich trzech instrumentów jednocześnie.</span>
+                  </div>
+                </label>
               </div>
-            </label>
 
-            <p class="formularz-sekcja">🌍 ETF</p>
+              <!-- Group 2: ETF globalny -->
+              <div class="pt-4 border-t border-slate-100 dark:border-slate-800"></div>
+              <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">🌍 ETF globalny</p>
 
-            <div class="form-group">
-              <label class="form-label" for="por-stopa-etf">Stopa zwrotu ETF</label>
-              <div class="form-input-wrapper">
-                <input type="text" inputmode="decimal" id="por-stopa-etf" class="form-input" value="7" maxlength="5"
-                  onfocus="clearOnFocus(this,7)" onblur="restoreOnBlur(this,7)">
-                <span class="form-input-suffix">%</span>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <label class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Stopa zwrotu ETF</label>
+                  <div class="flex items-center gap-2">
+                    <button type="button" onclick="openEduModal('por_stopa_etf', event)" class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
+                      <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
+                      <span class="material-symbols-outlined text-sm">help</span>
+                    </button>
+                    <span class="text-xs font-bold text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">%</span>
+                  </div>
+                </div>
+                <input type="text" inputmode="decimal" id="por-stopa-etf" value="7" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none">
+                <div class="flex gap-2 mt-1">
+                  <button type="button" id="scen-btn-pesymistyczny" onclick="ustawScenariusz('pesymistyczny')" class="px-3 py-1.5 text-[10px] font-bold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-primary hover:text-white transition-all">Pes. 4%</button>
+                  <button type="button" id="scen-btn-bazowy" onclick="ustawScenariusz('bazowy')" class="px-3 py-1.5 text-[10px] font-bold rounded-lg bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all">Bazowy 7%</button>
+                  <button type="button" id="scen-btn-optymistyczny" onclick="ustawScenariusz('optymistyczny')" class="px-3 py-1.5 text-[10px] font-bold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-primary hover:text-white transition-all">Opt. 10%</button>
+                </div>
               </div>
-            </div>
-            <div class="btn-okres-grupa">
-              <button type="button" id="scen-btn-pesymistyczny" class="btn-okres"
-                onclick="ustawScenariusz('pesymistyczny')">Pes. 4%</button>
-              <button type="button" id="scen-btn-bazowy" class="btn-okres" onclick="ustawScenariusz('bazowy')">Bazowy
-                7%</button>
-              <button type="button" id="scen-btn-optymistyczny" class="btn-okres"
-                onclick="ustawScenariusz('optymistyczny')">Opt. 10%</button>
-            </div>
 
-            <p class="formularz-sekcja">🏛️ Obligacje EDO</p>
+              <!-- Group 3: Obligacje EDO -->
+              <div class="pt-4 border-t border-slate-100 dark:border-slate-800"></div>
+              <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">🏛️ Obligacje EDO</p>
 
-            <div class="form-group">
-              <label class="form-label" for="por-stopa-rok1">Stopa rok 1</label>
-              <div class="form-input-wrapper">
-                <input type="text" inputmode="decimal" id="por-stopa-rok1" class="form-input" value="6.6" maxlength="5"
-                  onfocus="clearOnFocus(this,6.6)" onblur="restoreOnBlur(this,6.6)">
-                <span class="form-input-suffix">%</span>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <label class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Stopa rok 1</label>
+                  <div class="flex items-center gap-2">
+                    <button type="button" onclick="openEduModal('por_stopa_rok1', event)" class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
+                      <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
+                      <span class="material-symbols-outlined text-sm">help</span>
+                    </button>
+                    <span class="text-xs font-bold text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">%</span>
+                  </div>
+                </div>
+                <input type="text" inputmode="decimal" id="por-stopa-rok1" value="5.60" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none">
               </div>
-            </div>
 
-            <div class="form-group">
-              <label class="form-label" for="por-marza">Marża (od roku 2)</label>
-              <div class="form-input-wrapper">
-                <input type="text" inputmode="decimal" id="por-marza" class="form-input" value="2.0" maxlength="4"
-                  onfocus="clearOnFocus(this,2)" onblur="restoreOnBlur(this,2)">
-                <span class="form-input-suffix">%</span>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <label class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Marża</label>
+                  <div class="flex items-center gap-2">
+                    <button type="button" onclick="openEduModal('por_marza', event)" class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-100 transition-colors touch-target-info">
+                      <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
+                      <span class="material-symbols-outlined text-sm">help</span>
+                    </button>
+                    <span class="text-xs font-bold text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">%</span>
+                  </div>
+                </div>
+                <input type="text" inputmode="decimal" id="por-marza" value="2.0" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none">
+                <p class="text-[10px] text-slate-400 leading-relaxed">EDO: inflacja + marża co roku od roku 2</p>
               </div>
-              <p class="form-hint">EDO: inflacja + marża co roku</p>
-            </div>
 
-            <p class="formularz-sekcja">🏦 Lokata bankowa</p>
+              <!-- Group 4: Lokata bankowa -->
+              <div class="pt-4 border-t border-slate-100 dark:border-slate-800"></div>
+              <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest">🏦 Lokata bankowa</p>
 
-            <div class="form-group">
-              <label class="form-label" for="por-stopa-lok">Stopa lokaty</label>
-              <div class="form-input-wrapper">
-                <input type="text" inputmode="decimal" id="por-stopa-lok" class="form-input" value="4.5" maxlength="5"
-                  onfocus="clearOnFocus(this,4.5)" onblur="restoreOnBlur(this,4.5)">
-                <span class="form-input-suffix">%</span>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <label class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Stopa lokaty</label>
+                  <div class="flex items-center gap-2">
+                    <button type="button" onclick="openEduModal('por_stopa_lok', event)" class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
+                      <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
+                      <span class="material-symbols-outlined text-sm">help</span>
+                    </button>
+                    <span class="text-xs font-bold text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">%</span>
+                  </div>
+                </div>
+                <input type="text" inputmode="decimal" id="por-stopa-lok" value="4.5" class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none">
+                <p class="text-[10px] text-slate-400 leading-relaxed">Przyjmujemy stałą stopę przez cały okres</p>
               </div>
-              <p class="form-hint">Przyjmujemy stałą stopę przez cały okres</p>
-            </div>
 
+            </div>
           </div>
-        </div>
+        </aside>
 
         <!-- WYNIKI -->
-        <div class="por-wyniki">
+        <div class="lg:col-span-8 space-y-8">
 
-          <!-- BANNER ZWYCIĘZCY -->
-          <div class="zwyciezca-banner" id="por-zwyciezca">
-            <div class="zwyciezca-banner__ikona">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 9l6 6 6-6" />
-              </svg>
-            </div>
-            <div class="zwyciezca-banner__content">
-              <div class="zwyciezca-banner__winner">Obliczam...</div>
-              <div class="zwyciezca-banner__amount">—</div>
-              <div class="zwyciezca-banner__description">Sprawdź która strategia daje najlepszy wynik</div>
+          <!-- WINNER BANNER -->
+          <div onclick="openEduModal('por_zwyciezca', event)"
+            class="relative overflow-hidden group bg-primary p-10 md:p-14 rounded-[2.5rem] text-white shadow-2xl shadow-primary/30 transition-all hover:scale-[1.01] hover:shadow-blue-500/40 hover:border-white/20 border-2 border-transparent cursor-help"
+            style="background-color: #0d7ff2;">
+            <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+            <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20 group-hover:scale-110 transition-transform duration-700"></div>
+            <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
+              <div>
+                <p class="text-primary-100/80 font-bold uppercase tracking-widest text-[10px] mb-3 flex items-center">
+                  <span class="material-symbols-outlined text-xl mr-2">emoji_events</span>
+                  Najlepszy wynik
+                  <span class="px-1.5 py-0.5 text-[9px] bg-white/10 text-white rounded-md font-bold ml-2">INFO</span>
+                </p>
+                <p class="text-2xl font-bold mb-2" id="por-zwyciezca-nazwa">—</p>
+                <p class="text-5xl md:text-7xl font-black tracking-tighter mb-4" id="por-zwyciezca-kwota">0,00 zł</p>
+                <div class="flex items-center gap-2 text-primary-100/80 text-sm">
+                  <span class="material-symbols-outlined text-base">verified</span>
+                  <span id="por-zwyciezca-przewaga">—</span>
+                </div>
+                <p class="mt-4 text-[10px] text-white/60 opacity-0 group-hover:opacity-100 transition-opacity">Kliknij, aby zrozumieć ten wynik</p>
+              </div>
+              <div class="bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/20 h-auto self-start">
+                <p class="text-[10px] font-black uppercase tracking-widest text-white/60 mb-1">Status podatkowy</p>
+                <p class="font-bold whitespace-nowrap" id="txt-por-podatek-status">Opodatkowanie 19%</p>
+              </div>
             </div>
           </div>
 
-          <!-- TRZY PANELE -->
-          <div class="por-panele">
+          <!-- Hidden legacy element for engine compatibility -->
+          <div id="por-zwyciezca" class="hidden"></div>
 
-            <!-- ETF -->
-            <div class="por-panel por-panel--etf">
-              <div class="por-panel__naglowek">
-                <div class="por-panel__ikona ikona-etf">🌍</div>
+          <!-- THREE RESULT PANELS -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+            <!-- ETF Panel -->
+            <div onclick="openEduModal('panel_etf', event)"
+              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.01] hover:shadow-xl bg-white/70 backdrop-blur-md dark:bg-slate-900/60 p-6 rounded-[1.5rem] border border-slate-100 dark:border-slate-800 shadow-lg">
+              <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"></div>
+              <div class="flex items-center gap-2 mb-4">
+                <span class="text-2xl">🌍</span>
                 <div>
-                  <p class="por-panel__tytul">ETF globalny</p>
-                  <p class="por-panel__stopa">Np. MSCI World, S&amp;P 500</p>
+                  <p class="text-sm font-bold text-slate-900 dark:text-white">ETF globalny</p>
+                  <p class="text-[10px] text-slate-400">Indeks akcji światowych</p>
+                </div>
+                <span class="px-1.5 py-0.5 text-[9px] bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 rounded-md font-bold ml-auto">INFO</span>
+              </div>
+              <div class="space-y-3">
+                <div class="flex justify-between items-baseline"><span class="text-[11px] text-slate-500">Kapitał końcowy</span><span class="text-lg font-bold text-slate-900 dark:text-white" id="por-etf-kapital">—</span></div>
+                <div class="flex justify-between items-baseline"><span class="text-[11px] text-slate-500">Realny (po inflacji)</span><span class="text-sm font-semibold text-slate-700 dark:text-slate-300" id="por-etf-realny">—</span></div>
+                <div class="flex justify-between items-baseline"><span class="text-[11px] text-slate-500">Zysk po podatku</span><span class="text-sm font-semibold text-emerald-600" id="por-etf-zysk">—</span></div>
+                <div class="flex justify-between items-baseline"><span class="text-[11px] text-slate-500">Zysk realny</span><span class="text-sm font-semibold text-slate-700 dark:text-slate-300" id="por-etf-zysk-r">—</span></div>
+                <div class="flex justify-between items-baseline"><span class="text-[11px] text-slate-500">Podatek Belki</span><span class="text-sm font-semibold text-rose-500" id="por-etf-podatek">—</span></div>
+                <div class="flex justify-between items-baseline"><span class="text-[11px] text-slate-500">CAGR</span><span class="text-sm font-semibold text-slate-700 dark:text-slate-300" id="por-etf-cagr">—</span></div>
+                <div class="flex justify-between items-baseline"><span class="text-[11px] text-slate-500">CAGR realny</span><span class="text-sm font-semibold text-emerald-600" id="por-etf-cagr-r">—</span></div>
+              </div>
+              <p class="mt-3 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Kliknij, aby zrozumieć ten wynik</p>
+            </div>
+
+            <!-- Obligacje Panel -->
+            <div onclick="openEduModal('panel_obligacje', event)"
+              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.01] hover:shadow-xl bg-white/70 backdrop-blur-md dark:bg-slate-900/60 p-6 rounded-[1.5rem] border border-slate-100 dark:border-slate-800 shadow-lg">
+              <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent"></div>
+              <div class="flex items-center gap-2 mb-4">
+                <span class="text-2xl">🏛️</span>
+                <div>
+                  <p class="text-sm font-bold text-slate-900 dark:text-white">Obligacje EDO</p>
+                  <p class="text-[10px] text-slate-400">10-letnie indeksowane</p>
+                </div>
+                <span class="px-1.5 py-0.5 text-[9px] bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 rounded-md font-bold ml-auto">INFO</span>
+              </div>
+              <div class="space-y-3">
+                <div class="flex justify-between items-baseline"><span class="text-[11px] text-slate-500">Kapitał końcowy</span><span class="text-lg font-bold text-slate-900 dark:text-white" id="por-obligacje-kapital">—</span></div>
+                <div class="flex justify-between items-baseline"><span class="text-[11px] text-slate-500">Realny (po inflacji)</span><span class="text-sm font-semibold text-slate-700 dark:text-slate-300" id="por-obligacje-realny">—</span></div>
+                <div class="flex justify-between items-baseline"><span class="text-[11px] text-slate-500">Zysk po podatku</span><span class="text-sm font-semibold text-emerald-600" id="por-obligacje-zysk">—</span></div>
+                <div class="flex justify-between items-baseline"><span class="text-[11px] text-slate-500">Zysk realny</span><span class="text-sm font-semibold text-slate-700 dark:text-slate-300" id="por-obligacje-zysk-r">—</span></div>
+                <div class="flex justify-between items-baseline"><span class="text-[11px] text-slate-500">Podatek Belki</span><span class="text-sm font-semibold text-rose-500" id="por-obligacje-podatek">—</span></div>
+                <div class="flex justify-between items-baseline"><span class="text-[11px] text-slate-500">CAGR</span><span class="text-sm font-semibold text-slate-700 dark:text-slate-300" id="por-obligacje-cagr">—</span></div>
+                <div class="flex justify-between items-baseline"><span class="text-[11px] text-slate-500">CAGR realny</span><span class="text-sm font-semibold text-emerald-600" id="por-obligacje-cagr-r">—</span></div>
+              </div>
+              <p class="mt-3 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Kliknij, aby zrozumieć ten wynik</p>
+            </div>
+
+            <!-- Lokata Panel -->
+            <div onclick="openEduModal('panel_lokata', event)"
+              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.01] hover:shadow-xl bg-white/70 backdrop-blur-md dark:bg-slate-900/60 p-6 rounded-[1.5rem] border border-slate-100 dark:border-slate-800 shadow-lg">
+              <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-slate-400/40 to-transparent"></div>
+              <div class="flex items-center gap-2 mb-4">
+                <span class="text-2xl">🏦</span>
+                <div>
+                  <p class="text-sm font-bold text-slate-900 dark:text-white">Lokata bankowa</p>
+                  <p class="text-[10px] text-slate-400">Stałe oprocentowanie</p>
+                </div>
+                <span class="px-1.5 py-0.5 text-[9px] bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300 rounded-md font-bold ml-auto">INFO</span>
+              </div>
+              <div class="space-y-3">
+                <div class="flex justify-between items-baseline"><span class="text-[11px] text-slate-500">Kapitał końcowy</span><span class="text-lg font-bold text-slate-900 dark:text-white" id="por-lokata-kapital">—</span></div>
+                <div class="flex justify-between items-baseline"><span class="text-[11px] text-slate-500">Realny (po inflacji)</span><span class="text-sm font-semibold text-slate-700 dark:text-slate-300" id="por-lokata-realny">—</span></div>
+                <div class="flex justify-between items-baseline"><span class="text-[11px] text-slate-500">Zysk po podatku</span><span class="text-sm font-semibold text-emerald-600" id="por-lokata-zysk">—</span></div>
+                <div class="flex justify-between items-baseline"><span class="text-[11px] text-slate-500">Zysk realny</span><span class="text-sm font-semibold text-slate-700 dark:text-slate-300" id="por-lokata-zysk-r">—</span></div>
+                <div class="flex justify-between items-baseline"><span class="text-[11px] text-slate-500">Podatek Belki</span><span class="text-sm font-semibold text-rose-500" id="por-lokata-podatek">—</span></div>
+                <div class="flex justify-between items-baseline"><span class="text-[11px] text-slate-500">CAGR</span><span class="text-sm font-semibold text-slate-700 dark:text-slate-300" id="por-lokata-cagr">—</span></div>
+                <div class="flex justify-between items-baseline"><span class="text-[11px] text-slate-500">CAGR realny</span><span class="text-sm font-semibold text-emerald-600" id="por-lokata-cagr-r">—</span></div>
+              </div>
+              <p class="mt-3 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Kliknij, aby zrozumieć ten wynik</p>
+            </div>
+          </div>
+
+          <!-- SCENARIOS SECTION -->
+          <div class="glass-effect p-6 rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-xl">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1 flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary">show_chart</span> Scenariusze ETF
+            </h3>
+            <p class="text-sm text-slate-400 mb-6">Kliknij scenariusz żeby ustawić stopę w formularzu</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <!-- Pessimistic -->
+              <div onclick="ustawScenariusz('pesymistyczny')" class="p-5 rounded-2xl border-2 border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary/50 hover:scale-[1.01] transition-all">
+                <p class="text-sm font-bold text-slate-900 dark:text-white mb-1">🐻 Pesymistyczny</p>
+                <p class="text-[10px] text-slate-400 mb-3">4%/rok — słaba dekada</p>
+                <div class="space-y-2">
+                  <div class="flex justify-between"><span class="text-[11px] text-slate-500">Kapitał</span><span class="text-sm font-bold text-slate-900 dark:text-white" id="scen-pes-kapital">—</span></div>
+                  <div class="flex justify-between"><span class="text-[11px] text-slate-500">Zysk netto</span><span class="text-sm font-semibold text-emerald-600" id="scen-pes-zysk">—</span></div>
+                  <div class="flex justify-between"><span class="text-[11px] text-slate-500">CAGR</span><span class="text-sm font-semibold text-slate-700 dark:text-slate-300" id="scen-pes-cagr">—</span></div>
                 </div>
               </div>
-              <div class="por-wiersz">
-                <span class="por-wiersz__label">Kapitał końcowy</span>
-                <span class="por-wiersz__wartosc por-wiersz__wartosc--glowna" id="por-etf-kapital">—</span>
-              </div>
-              <div class="por-wiersz">
-                <span class="por-wiersz__label">Realny (po inflacji)</span>
-                <span class="por-wiersz__wartosc por-wiersz__wartosc--muted" id="por-etf-realny">—</span>
-              </div>
-              <div class="por-wiersz">
-                <span class="por-wiersz__label">Zysk po podatku</span>
-                <span class="por-wiersz__wartosc por-wiersz__wartosc--zielony" id="por-etf-zysk">—</span>
-              </div>
-              <div class="por-wiersz">
-                <span class="por-wiersz__label">Zysk realny</span>
-                <span class="por-wiersz__wartosc" id="por-etf-zysk-r">—</span>
-              </div>
-              <div class="por-wiersz">
-                <span class="por-wiersz__label">Podatek Belki</span>
-                <span class="por-wiersz__wartosc por-wiersz__wartosc--czerwony" id="por-etf-podatek">—</span>
-              </div>
-              <div class="por-wiersz">
-                <span class="por-wiersz__label">CAGR</span>
-                <span class="por-wiersz__wartosc" id="por-etf-cagr">—</span>
-              </div>
-              <div class="por-wiersz">
-                <span class="por-wiersz__label">CAGR realny</span>
-                <span class="por-wiersz__wartosc" id="por-etf-cagr-r">—</span>
-              </div>
-            </div>
-
-            <!-- OBLIGACJE -->
-            <div class="por-panel por-panel--obligacje">
-              <div class="por-panel__naglowek">
-                <div class="por-panel__ikona ikona-obligacje">🏛️</div>
-                <div>
-                  <p class="por-panel__tytul">Obligacje EDO</p>
-                  <p class="por-panel__stopa">10-letnie, inflacja + marża</p>
+              <!-- Base -->
+              <div onclick="ustawScenariusz('bazowy')" class="p-5 rounded-2xl border-2 border-primary/30 bg-primary/5 cursor-pointer hover:border-primary/50 hover:scale-[1.01] transition-all">
+                <p class="text-sm font-bold text-slate-900 dark:text-white mb-1">📈 Bazowy</p>
+                <p class="text-[10px] text-slate-400 mb-3">7%/rok — historyczna średnia</p>
+                <div class="space-y-2">
+                  <div class="flex justify-between"><span class="text-[11px] text-slate-500">Kapitał</span><span class="text-sm font-bold text-slate-900 dark:text-white" id="scen-baz-kapital">—</span></div>
+                  <div class="flex justify-between"><span class="text-[11px] text-slate-500">Zysk netto</span><span class="text-sm font-semibold text-emerald-600" id="scen-baz-zysk">—</span></div>
+                  <div class="flex justify-between"><span class="text-[11px] text-slate-500">CAGR</span><span class="text-sm font-semibold text-slate-700 dark:text-slate-300" id="scen-baz-cagr">—</span></div>
                 </div>
               </div>
-              <div class="por-wiersz">
-                <span class="por-wiersz__label">Kapitał końcowy</span>
-                <span class="por-wiersz__wartosc por-wiersz__wartosc--glowna" id="por-obligacje-kapital">—</span>
-              </div>
-              <div class="por-wiersz">
-                <span class="por-wiersz__label">Realny (po inflacji)</span>
-                <span class="por-wiersz__wartosc por-wiersz__wartosc--muted" id="por-obligacje-realny">—</span>
-              </div>
-              <div class="por-wiersz">
-                <span class="por-wiersz__label">Zysk po podatku</span>
-                <span class="por-wiersz__wartosc por-wiersz__wartosc--zielony" id="por-obligacje-zysk">—</span>
-              </div>
-              <div class="por-wiersz">
-                <span class="por-wiersz__label">Zysk realny</span>
-                <span class="por-wiersz__wartosc" id="por-obligacje-zysk-r">—</span>
-              </div>
-              <div class="por-wiersz">
-                <span class="por-wiersz__label">Podatek Belki</span>
-                <span class="por-wiersz__wartosc por-wiersz__wartosc--czerwony" id="por-obligacje-podatek">—</span>
-              </div>
-              <div class="por-wiersz">
-                <span class="por-wiersz__label">CAGR</span>
-                <span class="por-wiersz__wartosc" id="por-obligacje-cagr">—</span>
-              </div>
-              <div class="por-wiersz">
-                <span class="por-wiersz__label">CAGR realny</span>
-                <span class="por-wiersz__wartosc" id="por-obligacje-cagr-r">—</span>
-              </div>
-            </div>
-
-            <!-- LOKATA -->
-            <div class="por-panel por-panel--lokata">
-              <div class="por-panel__naglowek">
-                <div class="por-panel__ikona ikona-lokata">🏦</div>
-                <div>
-                  <p class="por-panel__tytul">Lokata bankowa</p>
-                  <p class="por-panel__stopa">Stała stopa, rocznie</p>
+              <!-- Optimistic -->
+              <div onclick="ustawScenariusz('optymistyczny')" class="p-5 rounded-2xl border-2 border-slate-200 dark:border-slate-700 cursor-pointer hover:border-primary/50 hover:scale-[1.01] transition-all">
+                <p class="text-sm font-bold text-slate-900 dark:text-white mb-1">🚀 Optymistyczny</p>
+                <p class="text-[10px] text-slate-400 mb-3">10%/rok — dobra koniunktura</p>
+                <div class="space-y-2">
+                  <div class="flex justify-between"><span class="text-[11px] text-slate-500">Kapitał</span><span class="text-sm font-bold text-slate-900 dark:text-white" id="scen-opt-kapital">—</span></div>
+                  <div class="flex justify-between"><span class="text-[11px] text-slate-500">Zysk netto</span><span class="text-sm font-semibold text-emerald-600" id="scen-opt-zysk">—</span></div>
+                  <div class="flex justify-between"><span class="text-[11px] text-slate-500">CAGR</span><span class="text-sm font-semibold text-slate-700 dark:text-slate-300" id="scen-opt-cagr">—</span></div>
                 </div>
               </div>
-              <div class="por-wiersz">
-                <span class="por-wiersz__label">Kapitał końcowy</span>
-                <span class="por-wiersz__wartosc por-wiersz__wartosc--glowna" id="por-lokata-kapital">—</span>
-              </div>
-              <div class="por-wiersz">
-                <span class="por-wiersz__label">Realny (po inflacji)</span>
-                <span class="por-wiersz__wartosc por-wiersz__wartosc--muted" id="por-lokata-realny">—</span>
-              </div>
-              <div class="por-wiersz">
-                <span class="por-wiersz__label">Zysk po podatku</span>
-                <span class="por-wiersz__wartosc por-wiersz__wartosc--zielony" id="por-lokata-zysk">—</span>
-              </div>
-              <div class="por-wiersz">
-                <span class="por-wiersz__label">Zysk realny</span>
-                <span class="por-wiersz__wartosc" id="por-lokata-zysk-r">—</span>
-              </div>
-              <div class="por-wiersz">
-                <span class="por-wiersz__label">Podatek Belki</span>
-                <span class="por-wiersz__wartosc por-wiersz__wartosc--czerwony" id="por-lokata-podatek">—</span>
-              </div>
-              <div class="por-wiersz">
-                <span class="por-wiersz__label">CAGR</span>
-                <span class="por-wiersz__wartosc" id="por-lokata-cagr">—</span>
-              </div>
-              <div class="por-wiersz">
-                <span class="por-wiersz__label">CAGR realny</span>
-                <span class="por-wiersz__wartosc" id="por-lokata-cagr-r">—</span>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- SCENARIUSZE ETF -->
-          <div class="scenariusze-karta">
-            <div class="scenariusze-naglowek">
-              <p class="scenariusze-tytul">Scenariusze ETF</p>
-              <p style="font-size:var(--text-xs);color:var(--color-text-muted)">Kliknij scenariusz żeby ustawić stopę w
-                formularzu</p>
-            </div>
-            <div class="scen-siatka">
-              <div class="scen-box">
-                <p class="scen-box__nazwa">🐻 Pesymistyczny</p>
-                <p class="scen-box__stopa">4% / rok — słaba dekada</p>
-                <p class="scen-box__kapital" id="scen-pes-kapital">—</p>
-                <p class="scen-box__zysk" id="scen-pes-zysk">—</p>
-                <p class="scen-box__cagr" id="scen-pes-cagr">—</p>
-              </div>
-              <div class="scen-box" style="border:1.5px solid var(--color-primary-100)">
-                <p class="scen-box__nazwa">📈 Bazowy</p>
-                <p class="scen-box__stopa">7% / rok — historyczna średnia</p>
-                <p class="scen-box__kapital" id="scen-baz-kapital">—</p>
-                <p class="scen-box__zysk" id="scen-baz-zysk">—</p>
-                <p class="scen-box__cagr" id="scen-baz-cagr">—</p>
-              </div>
-              <div class="scen-box">
-                <p class="scen-box__nazwa">🚀 Optymistyczny</p>
-                <p class="scen-box__stopa">10% / rok — dobra koniunktura</p>
-                <p class="scen-box__kapital" id="scen-opt-kapital">—</p>
-                <p class="scen-box__zysk" id="scen-opt-zysk">—</p>
-                <p class="scen-box__cagr" id="scen-opt-cagr">—</p>
-              </div>
             </div>
           </div>
 
-          <!-- WYKRES -->
-          <div class="wykres-karta">
-            <div class="wykres-naglowek">
-              <p class="wykres-tytul">Wzrost kapitału — porównanie</p>
-              <p class="wykres-opis">
-                <span style="color:var(--color-primary-600)">■</span> ETF &nbsp;
-                <span style="color:#f59e0b">■</span> Obligacje EDO &nbsp;
-                <span style="color:#94a3b8">■</span> Lokata
-              </p>
-            </div>
-            <div class="chart-wrapper">
-              <canvas id="por-wykres" aria-label="Wykres porównawczy"></canvas>
-            </div>
+          <!-- SAVE + SHARE BUTTONS -->
+          <div class="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:max-w-xl mx-auto">
+            <button id="btn-save-scenario-por" class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all font-semibold text-sm shadow-md">
+              <span class="material-symbols-outlined text-[18px]">push_pin</span> Zapisz scenariusz
+            </button>
+            <button id="btn-share-result-por" class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-emerald-600 dark:bg-emerald-500 text-white rounded-xl hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-all font-semibold text-sm shadow-md">
+              <span class="material-symbols-outlined text-[18px]">share</span> <span id="txt-btn-share-por">Udostępnij wynik</span>
+            </button>
           </div>
 
-          <!-- TABELA -->
-          <div class="tabela-karta">
-            <p class="tabela-tytul">Kapitał rok po roku</p>
-            <table class="tabela">
-              <thead>
-                <tr>
-                  <th>Rok</th>
-                  <th class="tabela-eth">ETF 🌍</th>
-                  <th class="tabela-obl">Obligacje 🏛️</th>
-                  <th class="tabela-lok">Lokata 🏦</th>
-                </tr>
-              </thead>
-              <tbody id="por-tabela-body"></tbody>
-            </table>
+          <!-- SCENARIO HISTORY -->
+          <div id="scenario-history-section-por" class="hidden mt-8 w-full p-6 glass-effect rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-xl">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary">history</span> Porównanie scenariuszy
+            </h3>
+            <div id="scenario-cards-container-por" class="flex flex-row overflow-x-auto snap-x snap-mandatory gap-5 pb-12 pt-4 px-4" style="-webkit-overflow-scrolling: touch;"></div>
+          </div>
+
+          <!-- CHART -->
+          <div class="glass-effect p-8 rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-2xl">
+            <h3 class="text-xl font-extrabold text-slate-900 dark:text-white mb-2 flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary">show_chart</span> Wzrost kapitału — porównanie
+            </h3>
+            <div class="flex flex-wrap gap-4 mb-6">
+              <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full" style="background:#1A56A0;"></div><span class="text-xs text-slate-500">ETF</span></div>
+              <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full" style="background:#40916C;"></div><span class="text-xs text-slate-500">Obligacje EDO</span></div>
+              <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full" style="background:#f4a261;"></div><span class="text-xs text-slate-500">Lokata</span></div>
+            </div>
+            <div style="position:relative; height:350px;"><canvas id="por-wykres"></canvas></div>
+          </div>
+
+          <!-- TABLE -->
+          <div class="glass-effect p-8 rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-2xl overflow-x-auto">
+            <h3 class="text-xl font-extrabold text-slate-900 dark:text-white mb-8 flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary" style="color:#0d7ff2;">table_chart</span>
+              Kapitał rok po roku
+            </h3>
+            <div class="relative overflow-x-auto scrollbar-hide shadow-inner rounded-xl border border-slate-200/50 dark:border-slate-700/50">
+              <div class="absolute top-0 right-0 bottom-0 w-8 bg-gradient-to-l from-white/20 to-transparent pointer-events-none z-30 lg:hidden"></div>
+              <table class="w-full text-left border-collapse" aria-label="Kapitał rok po roku">
+                <thead>
+                  <tr class="bg-slate-50/50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-800">
+                    <th class="sticky left-0 z-20 bg-slate-50 dark:bg-slate-800 px-4 py-3 text-xs font-black text-slate-400 uppercase tracking-widest shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)] whitespace-nowrap">Rok</th>
+                    <th class="px-3 py-4 text-xs font-black text-primary uppercase tracking-widest whitespace-nowrap text-right" style="color:#1A56A0;">ETF 🌍</th>
+                    <th class="px-3 py-4 text-xs font-black text-emerald-600 uppercase tracking-widest whitespace-nowrap text-right">Obligacje 🏛️</th>
+                    <th class="px-3 py-4 text-xs font-black text-amber-500 uppercase tracking-widest whitespace-nowrap text-right">Lokata 🏦</th>
+                  </tr>
+                </thead>
+                <tbody id="por-tabela-body" class="divide-y divide-slate-50 dark:divide-slate-900">
+                </tbody>
+              </table>
+            </div>
           </div>
 
         </div>
       </div>
-
-      <!-- Data ostatniej aktualizacji -->
-      <div
-        style="text-align: center; margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--color-border-subtle);">
-        <p class="text-muted" style="font-size: var(--text-xs); margin: 0;">
-          🔄 Ostatnia aktualizacja: <span id="data-aktualizacji">marzec 2026</span>
-        </p>
-        <p class="text-muted" style="font-size: var(--text-xs); margin: var(--space-1) 0 0 0; opacity: 0.8;">
-          Dane aktualizowane co miesiąc • Stopy ETF, obligacji i lokat
-        </p>
-      </div>
-
-      <!-- SŁOWNICZEK -->
-      <div class="edukacja">
-        <h2 class="heading-2">Co warto wiedzieć?</h2>
-        <div class="edukacja__siatka">
-          <div class="pojecie">
-            <p class="pojecie__term">ETF — niskie koszty, wysoki potencjał</p>
-            <p class="pojecie__def">Fundusze indeksowe śledzą cały rynek. Historycznie MSCI World dawał ~7-10%/rok.
-              Kluczowy ryzyko: zmienność — wartość może spaść o 30-50% w kryzysie, ale długoterminowo zawsze wracała
-              wyżej.</p>
-          </div>
-          <div class="pojecie">
-            <p class="pojecie__term">Obligacje EDO — bezpieczeństwo z gwarancją</p>
-            <p class="pojecie__def">Obligacje indeksowane inflacją dają gwarancję Skarbu Państwa. Nie ma ryzyka straty.
-              Idealne dla konserwatywnych inwestorów lub jako stabilna część portfela. Wada: niższy potencjał wzrostu
-              niż ETF.</p>
-          </div>
-          <div class="pojecie">
-            <p class="pojecie__term">Lokata — pewność, ale traci na inflacji</p>
-            <p class="pojecie__def">Lokata daje pewną stopę — ale zazwyczaj poniżej inflacji. W praktyce trzymanie
-              pieniędzy na lokacie przez 10+ lat zmniejsza ich realną siłę nabywczą. Dobra na krótki termin.</p>
-          </div>
-          <div class="pojecie">
-            <p class="pojecie__term">Kiedy ETF wygrywa?</p>
-            <p class="pojecie__def">Przy długim horyzoncie (10+ lat) i wyższej tolerancji na ryzyko. Procentu składanego
-              potrzeba czasu — przez pierwsze lata różnica jest mała, po 20+ latach staje się ogromna.</p>
-          </div>
-          <div class="pojecie">
-            <p class="pojecie__term">Kiedy obligacje wygrywają?</p>
-            <p class="pojecie__def">Przy wysokiej inflacji, gdy realna stopa obligacji (inflacja + marża) jest bliska
-              stopie ETF. Też gdy inwestor nie toleruje ryzyka straty — obligacje nigdy nie tracą nominalnie.</p>
-          </div>
-          <div class="pojecie">
-            <p class="pojecie__term">Złoty środek — portfel mieszany</p>
-            <p class="pojecie__def">Większość ekspertów zaleca portfel mieszany. Np. 80% ETF + 20% obligacje — czerpiesz
-              z wzrostu rynku ale masz poduszkę bezpieczeństwa. W razie kryzysu obligacje stabilizują portfel.</p>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top: var(--space-16)">
-        <p class="disclaimer" class="disclaimer"
-          style="font-size:var(--text-sm);color:var(--text-secondary);background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:var(--space-4);line-height:1.6;">
-          ⚠️ Kalkulator ma charakter wyłącznie edukacyjny. Stopy zwrotu ETF są hipotetyczne — przeszłe wyniki nie
-          gwarantują przyszłych. Obligacje zakładają utrzymanie do wykupu. Lokata zakłada stałą stopę przez cały okres.
-          Nie stanowi rekomendacji inwestycyjnej.
-        </p>
-      </div>
-
     </div>
+
+    <!-- EDUCATION SECTION -->
+    <section class="mt-24 py-20 border-t border-slate-200 dark:border-slate-900 max-w-7xl mx-auto">
+      <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-12 text-center italic">Co warto wiedzieć o porównywaniu inwestycji?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm transition-all hover:shadow-lg">
+          <span class="material-symbols-outlined text-4xl text-primary mb-6" style="color:#0d7ff2;">compare_arrows</span>
+          <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Dlaczego porównywać?</h4>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Każdy instrument ma inne cechy — ETF daje potencjalnie najwyższy zwrot, obligacje chronią przed inflacją, a lokata jest najbezpieczniejsza. Porównanie pokaże konkretne liczby.</p>
+        </div>
+        <div class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm transition-all hover:shadow-lg">
+          <span class="material-symbols-outlined text-4xl text-emerald-500 mb-6">shield</span>
+          <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Podatek Belki</h4>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">19% podatek od zysków kapitałowych. W ETF i EDO pobierany jednorazowo przy sprzedaży/wykupie. W lokacie — co roku od odsetek. IKE/IKZE pozwala go uniknąć.</p>
+        </div>
+        <div class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm transition-all hover:shadow-lg">
+          <span class="material-symbols-outlined text-4xl text-amber-500 mb-6">trending_up</span>
+          <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Inflacja ma znaczenie</h4>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Nominalny zysk to nie to samo co realny. Przy inflacji 3,5% i stopie 4,5% lokata realnie zarabia ~1%. Obligacje EDO automatycznie chronią przed tym efektem.</p>
+        </div>
+        <div class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm transition-all hover:shadow-lg">
+          <span class="material-symbols-outlined text-4xl text-rose-500 mb-6">timeline</span>
+          <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Horyzont jest kluczowy</h4>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Na krótkim horyzoncie (1-3 lata) lokata może wygrać. Na długim (10+ lat) ETF z procentem składanym zostawia resztę daleko w tyle. Testuj różne horyzonty!</p>
+        </div>
+      </div>
+      <div class="mt-8 p-8 rounded-3xl bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 flex gap-6 items-start">
+        <span class="material-symbols-outlined text-slate-400">info</span>
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
+          <strong>Ważna informacja:</strong> Porównanie ma charakter edukacyjny. Rzeczywiste stopy zwrotu ETF zmieniają się co roku. Oprocentowanie lokat zależy od stóp NBP. Obligacje EDO mają stałe warunki tylko w ramach jednej emisji.
+        </p>
+      </div>
+    </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__inner">
-        <div class="footer__links">
-          <a href="../pages/kalkulator-etf.html">Kalkulator ETF</a>
-          <a href="../pages/kalkulator-obligacji.html">Kalkulator obligacji</a>
-          <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
-          <a href="../pages/porownywarka.html">Porównywarka ETF</a>
-          <a href="../blog/index.html">Blog</a>
-          <a href="../pages/o-projekcie.html">O projekcie</a>
-          <a href="../pages/polityka-prywatnosci.html">Polityka prywatności</a>
-          <a href="../pages/regulamin.html">Regulamin</a>
+  <!-- NEWSLETTER SECTION -->
+  <section id="newsletter-section" class="pt-10 pb-20 px-6 bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 transition-colors">
+    <div class="max-w-7xl mx-auto">
+      <div class="bg-white/70 dark:bg-slate-900/80 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 lg:p-16 shadow-2xl border border-white/50 dark:border-slate-800/50 relative overflow-hidden group">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center lg:justify-items-stretch relative z-10">
+          <div class="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+              <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span>
+              Newsletter
+            </div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.1]">
+              Bądź na bieżąco z <span class="text-primary">rynkiem ETF</span> <span class="hidden md:inline">i finansami</span>
+            </h2>
+            <p class="text-slate-500 dark:text-slate-400 text-lg leading-relaxed max-w-xl">Dołącz do społeczności świadomych inwestorów. Otrzymuj analizy, nowe kalkulatory i rzetelną wiedzę prosto na swoją skrzynkę. Zero spamu.</p>
+          </div>
+          <div class="w-full lg:max-w-md mx-auto lg:ml-auto">
+            <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
+              <div class="ml-form-embedWrapper embedForm">
+                <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                  <form class="ml-block-form" action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe" method="post" target="_blank">
+                    <div class="flex flex-col space-y-4">
+                      <div class="ml-form-fieldRow"><div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                        <input aria-label="email" aria-required="true" type="email" class="w-full h-14 px-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-white text-base font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all placeholder:text-slate-400" name="fields[email]" placeholder="Twój adres e-mail">
+                      </div></div>
+                      <div class="ml-form-embedPermissions"><label class="flex items-start gap-4 cursor-pointer group">
+                        <input type="checkbox" name="gdpr[]" value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl" required class="custom-checkbox mt-1 transition-all">
+                        <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium leading-relaxed group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors">Zgadzam się na otrzymywanie newslettera. Możesz się wypisać w każdej chwili.</span>
+                      </label></div>
+                      <div class="ml-form-recaptcha ml-validate-required py-2 flex justify-center"><div class="g-recaptcha transform scale-[0.85] origin-center" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div></div>
+                      <input type="hidden" name="ml-submit" value="1"><input type="hidden" name="anticsrf" value="true">
+                      <div class="ml-form-embedSubmit"><button type="submit" class="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-sm md:text-base uppercase tracking-widest hover:scale-[1.01] active:scale-[0.98] transition-all shadow-xl shadow-primary/20" style="background-color:#0d7ff2;">Zapisz się teraz</button></div>
+                      <div class="pt-6 border-t border-slate-100 dark:border-slate-800 mt-2">
+                        <p class="text-[10px] text-slate-400 dark:text-slate-500 leading-relaxed mb-2">Zapisując się, akceptujesz <a href="regulamin.html" class="underline hover:text-primary">Regulamin</a> i <a href="polityka-prywatnosci.html" class="underline hover:text-primary">Politykę Prywatności</a>.</p>
+                        <p class="text-[10px] text-slate-400 font-medium italic">Prezentowane treści nie stanowią rekomendacji inwestycyjnej.</p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="ml-form-successBody row-success" style="display: none">
+                  <div class="p-10 rounded-3xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 text-center">
+                    <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-800/50 rounded-full flex items-center justify-center mx-auto mb-4"><span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-3xl">verified</span></div>
+                    <h4 class="text-emerald-900 dark:text-emerald-300 font-bold text-xl mb-1">Sukces!</h4>
+                    <p class="text-emerald-700 dark:text-emerald-500 text-sm">Sprawdź swoją skrzynkę e-mail, aby potwierdzić zapis.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <p class="text-muted">© 2026 ETFkalkulator.pl — narzędzie edukacyjne dla polskich inwestorów</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 py-20 px-6" style="font-family: 'Inter', sans-serif;">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12 border-b border-slate-200/50 dark:border-slate-800/50 pb-8">
+        <div class="flex items-center gap-2">
+          <div class="bg-primary p-1.5 rounded-lg text-white flex items-center justify-center" style="background-color:#0d7ff2;"><span class="material-symbols-outlined text-base">account_balance_wallet</span></div>
+          <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">ETF<span class="font-normal text-slate-500">kalkulator</span>.pl</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20 items-start">
+        <div><h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Narzędzia</h5>
+          <ul class="space-y-4">
+            <li><a href="kalkulator-etf.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Kalkulator ETF</a></li>
+            <li><a href="kalkulator-obligacji.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Obligacje Skarbowe</a></li>
+            <li><a href="kalkulator-wolnosci.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Wolność Finansowa</a></li>
+            <li><a href="porownywarka.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Porównywarka ETF</a></li>
+          </ul>
+        </div>
+        <div><h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Projekt</h5>
+          <ul class="space-y-4">
+            <li><a href="../blog/index.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Blog i Wiedza</a></li>
+            <li><a href="o-projekcie.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">O projekcie</a></li>
+            <li><a href="regulamin.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Regulamin</a></li>
+            <li><a href="polityka-prywatnosci.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Polityka prywatności</a></li>
+          </ul>
+        </div>
+        <div><h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Kontakt</h5>
+          <p class="text-sm text-slate-500 mb-6 leading-relaxed">Masz pytania? Pisz śmiało:</p>
+          <a href="mailto:kontakt@etfkalkulator.pl" class="text-sm font-bold text-slate-900 dark:text-white hover:text-primary transition-colors block mb-8" style="text-decoration:none;">kontakt@etfkalkulator.pl</a>
+          <div class="flex gap-4">
+            <a href="#" class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-sm"><span class="material-symbols-outlined text-lg">share</span></a>
+            <a href="#" class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-sm"><span class="material-symbols-outlined text-lg">alternate_email</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-20 pt-10 border-t border-slate-200 dark:border-slate-900">
+        <p class="text-[11px] text-slate-400 dark:text-slate-500 leading-relaxed mb-8 max-w-4xl">Serwis ETFkalkulator.pl ma charakter wyłącznie edukacyjny i informacyjny. Prezentowane obliczenia nie stanowią rekomendacji inwestycyjnej, porady finansowej ani doradztwa podatkowego. Przed podjęciem decyzji inwestycyjnej skonsultuj się z licencjonowanym doradcą finansowym.</p>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+          <p>&copy; 2026 ETFkalkulator.pl — Made with ❤️ by Florian</p>
+          <div class="flex gap-6"><span>Wszelkie prawa zastrzeżone</span></div>
+        </div>
       </div>
     </div>
   </footer>
 
-  <script src="../js/utils.js" defer></script>
-  <script src="../js/tooltips.js" defer></script>
-  <script src="../js/calculators/porownywarka.js" defer></script>
+  <!-- COOKIE CONSENT BANNER -->
+  <div id="cookie-consent" class="fixed bottom-6 left-6 right-6 md:left-auto md:w-[400px] bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 z-[100] transition-all duration-500 translate-y-20 opacity-0 transform" style="display: none;">
+    <div class="flex items-start gap-4 mb-4">
+      <div class="bg-amber-100 dark:bg-amber-900/30 p-2 rounded-xl text-amber-600 dark:text-amber-400"><span class="material-symbols-outlined">cookie</span></div>
+      <div><h4 class="font-bold text-slate-900 dark:text-white">Ciasteczka i Analityka</h4>
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mt-1">Używamy Google Analytics, aby anonimowo analizować ruch na stronie i ulepszać nasze kalkulatory.</p>
+      </div>
+    </div>
+    <div class="flex gap-3">
+      <button id="cookie-accept" class="flex-1 bg-primary text-white text-xs font-bold py-3 rounded-xl hover:opacity-90 transition-opacity" style="background-color:#0d7ff2;">Akceptuję</button>
+      <button id="cookie-reject" class="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold py-3 rounded-xl hover:bg-slate-200 transition-colors">Odrzuć</button>
+    </div>
+  </div>
 
+  <!-- EDUCATIONAL MODAL -->
+  <div id="edu-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeEduModal()"></div>
+    <div class="relative glass-effect modal-anim rounded-[2.5rem] p-8 md:p-12 max-w-lg w-full border border-white/20 shadow-2xl shadow-black/50 overflow-hidden">
+      <div class="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 rounded-full blur-3xl"></div>
+      <div class="relative z-10">
+        <div class="flex justify-between items-center mb-6">
+          <h3 class="text-2xl font-black text-slate-900 dark:text-white" id="modal-title">Edukacja</h3>
+          <button onclick="closeEduModal()" class="group flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-rose-500 hover:text-white transition-all">
+            <span class="text-[10px] font-bold uppercase tracking-widest">Zamknij</span>
+            <span class="material-symbols-outlined text-xl">close</span>
+          </button>
+        </div>
+        <div class="space-y-8">
+          <div class="flex gap-4 items-start">
+            <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-primary" id="modal-icon">school</span></div>
+            <p id="modal-explanation" class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm md:text-base"></p>
+          </div>
+          <div class="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-200 dark:border-slate-800 group transition-all hover:border-primary/30">
+            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-xs">functions</span> Jak to obliczamy?</p>
+            <code id="modal-formula" class="text-slate-900 dark:text-white font-mono text-sm block">...</code>
+          </div>
+          <button onclick="closeEduModal()" class="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-2xl hover:bg-primary dark:hover:bg-primary dark:hover:text-white transition-all shadow-lg">Rozumiem, dziękuję!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MailerLite Logic -->
   <script>
-    // Aktualizacja daty ostatniej aktualizacji
-    document.addEventListener('DOMContentLoaded', function () {
-      var dataElement = document.getElementById('data-aktualizacji');
-      if (dataElement) {
-        var teraz = new Date();
-        var miesiace = ['styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec',
-          'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień'];
-        var aktualnyMiesiac = miesiace[teraz.getMonth()];
-        var aktualnyRok = teraz.getFullYear();
-        dataElement.textContent = aktualnyMiesiac + ' ' + aktualnyRok;
-      }
-    });
+    function ml_webform_success_37996059() {
+      var $ = ml_jQuery || jQuery;
+      $('.ml-subscribe-form-37996059 .row-success').show();
+      $('.ml-subscribe-form-37996059 .row-form').hide();
+    }
   </script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
+  <script src="https://www.google.com/recaptcha/api.js" defer></script>
 
+  <script src="../js/utils.js"></script>
+  <script src="../js/calculators/porownywarka.js"></script>
+  <script src="../js/porownywarka.js"></script>
 
-
-
-  <script>
-    function clearOnFocus(el, domyslna) {
-      if (parseFloat(el.value) === domyslna) el.value = '';
-      el.select && el.select();
-    }
-    function restoreOnBlur(el, domyslna) {
-      if (el.value === '' || el.value === null) {
-        el.value = domyslna;
-      }
-    }
+  <script defer>
     function przelaczTryb() {
-      var html = document.documentElement;
-      var slonce = document.getElementById('ikona-slonce');
-      var ksiezyc = document.getElementById('ikona-ksiezyc');
-      var ciemny = html.classList.contains('dark-mode') ||
-        (!html.classList.contains('light-mode') &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches);
-      if (ciemny) {
-        html.classList.remove('dark-mode');
-        html.classList.add('light-mode');
-        if (slonce) slonce.style.display = 'block';
-        if (ksiezyc) ksiezyc.style.display = 'none';
-        localStorage.setItem('etf-tryb', 'jasny');
-      } else {
-        html.classList.remove('light-mode');
-        html.classList.add('dark-mode');
-        if (slonce) slonce.style.display = 'none';
-        if (ksiezyc) ksiezyc.style.display = 'block';
-        localStorage.setItem('etf-tryb', 'ciemny');
-        setTimeout(function () { obliczPorownanie && obliczPorownanie(); }, 350);
-      }
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) { html.classList.remove('dark'); localStorage.setItem('etf-tryb', 'jasny'); }
+      else { html.classList.add('dark'); localStorage.setItem('etf-tryb', 'ciemny'); }
     }
     (function () {
-      var html = document.documentElement;
-      var zapisany = localStorage.getItem('etf-tryb');
-      var slonce = document.getElementById('ikona-slonce');
-      var ksiezyc = document.getElementById('ikona-ksiezyc');
-      var systemCiemny = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (zapisany === 'ciemny' || (!zapisany && systemCiemny)) {
-        html.classList.add('dark-mode');
-        if (slonce) slonce.style.display = 'none';
-        if (ksiezyc) ksiezyc.style.display = 'block';
-      } else if (zapisany === 'jasny') {
-        html.classList.add('light-mode');
+      if (localStorage.getItem('etf-tryb') === 'ciemny' || (!localStorage.getItem('etf-tryb') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
       }
     })();
   </script>
-  <script>
-    // Cookie Consent Management
+
+  <script defer>
     document.addEventListener('DOMContentLoaded', function () {
-      var cookieConsent = document.getElementById('cookie-consent');
-      var acceptBtn = document.getElementById('cookie-accept');
-      var rejectBtn = document.getElementById('cookie-reject');
-      var cookieChoice = localStorage.getItem('etf-cookie-consent');
-      if (!cookieChoice && cookieConsent) {
+      const cookieConsent = document.getElementById('cookie-consent');
+      if (!cookieConsent) return;
+      const acceptBtn = document.getElementById('cookie-accept');
+      const rejectBtn = document.getElementById('cookie-reject');
+      const choice = localStorage.getItem('etf-cookie-consent');
+      if (!choice) {
         cookieConsent.style.display = 'block';
-      } else if (cookieChoice === 'accepted' && typeof gtag === 'function') {
-        gtag('consent', 'update', { 'analytics_storage': 'granted' });
-        gtag('event', 'page_view');
+        setTimeout(() => { cookieConsent.style.opacity = '1'; cookieConsent.style.transform = 'translateY(0)'; }, 100);
       }
-      if (acceptBtn) {
-        acceptBtn.addEventListener('click', function () {
-          localStorage.setItem('etf-cookie-consent', 'accepted');
-          cookieConsent.style.display = 'none';
-          if (typeof gtag === 'function') {
-            gtag('consent', 'update', { 'analytics_storage': 'granted' });
-            gtag('event', 'page_view');
-          }
-        });
-      }
-      if (rejectBtn) {
-        rejectBtn.addEventListener('click', function () {
-          localStorage.setItem('etf-cookie-consent', 'rejected');
-          cookieConsent.style.display = 'none';
-          if (typeof gtag === 'function') {
-            gtag('consent', 'update', { 'analytics_storage': 'denied' });
-          }
-        });
-      }
+      acceptBtn?.addEventListener('click', () => {
+        localStorage.setItem('etf-cookie-consent', 'accepted');
+        cookieConsent.style.display = 'none';
+        if (typeof gtag === 'function') { gtag('consent', 'update', { 'analytics_storage': 'granted' }); }
+      });
+      rejectBtn?.addEventListener('click', () => {
+        localStorage.setItem('etf-cookie-consent', 'rejected');
+        cookieConsent.style.display = 'none';
+      });
     });
   </script>
 </body>
-
 </html>
