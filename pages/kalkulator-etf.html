@@ -41,25 +41,7 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap"
     rel="stylesheet" />
 
-  <script id="tailwind-config">
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            "primary": "#0d7ff2",
-            "background-light": "#f8fafc",
-            "background-dark": "#0f172a",
-          },
-          fontFamily: {
-            "display": ["Inter", "sans-serif"]
-          },
-          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1rem", "2xl": "1.5rem", "full": "9999px" },
-        },
-      },
-      corePlugins: { preflight: false }
-    }
-  </script>
+  <script src="../js/tailwind-config.js"></script>
 
   <style>
     .glass-effect {
@@ -323,6 +305,7 @@
 </head>
 
 <body>
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-stitch-accent">Przejdź do głównej treści</a>
 
   <!-- Cookie Consent Banner -->
   <div id="cookie-consent" class="cookie-consent" style="display: none;">
@@ -350,18 +333,18 @@
   </div>
 
   <!-- NAGŁÓWEK TAILWIND -->
-  <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-slate-200/50 dark:border-slate-800/50"
+  <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-stitch-border/50 /50"
     style="font-family: 'Inter', sans-serif;">
     <!-- Top Row: Logo & Main Actions -->
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
       <div class="flex items-center shrink-0">
         <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity"
           style="text-decoration:none;">
-          <div class="bg-primary p-1.5 rounded-xl text-white flex items-center justify-center"
+          <div class="bg-primary p-1.5 rounded-stitch text-white flex items-center justify-center"
             style="background-color: #0d7ff2;">
             <span class="material-symbols-outlined text-xl">account_balance_wallet</span>
           </div>
-          <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">ETFkalkulator.pl</span>
+          <span class="text-xl font-bold tracking-tight text-stitch-text dark:text-slate-100">ETFkalkulator.pl</span>
         </a>
       </div>
 
@@ -383,8 +366,8 @@
 
       <div class="flex items-center gap-3">
         <!-- Theme Toggle -->
-        <button onclick="przelaczTryb()" aria-label="Przełącz tryb"
-          class="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center hover:bg-slate-50 transition-colors">
+        <button onkeydown="if(event.key==='Enter')this.click()" onclick="przelaczTryb()" aria-label="Przełącz tryb"
+          class="w-9 h-9 rounded-full border border-stitch-border bg-stitch-surface flex items-center justify-center hover:bg-stitch-bg transition-colors">
           <span class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
           <span class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
         </button>
@@ -399,19 +382,19 @@
 
     <!-- Bottom Row: Scrollable Menu (Mobile Only) -->
     <div
-      class="lg:hidden h-11 border-t border-slate-200/30 dark:border-slate-800/30 flex items-center overflow-x-auto overflow-y-hidden no-scrollbar px-4 gap-6 bg-white/10 dark:bg-slate-900/10"
+      class="lg:hidden h-11 border-t border-stitch-border/30 /30 flex items-center overflow-x-auto overflow-y-hidden no-scrollbar px-4 gap-6 bg-stitch-surface/10 /10"
       style="-webkit-overflow-scrolling: touch;">
-      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap"
+      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
         href="kalkulator-etf.html" style="text-decoration:none;">Kalkulator ETF</a>
-      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap"
+      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
         href="kalkulator-obligacji.html" style="text-decoration:none;">Obligacje</a>
-      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap"
+      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
         href="kalkulator-wolnosci.html" style="text-decoration:none;">Wolność finansowa</a>
-      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap"
+      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
         href="porownywarka.html" style="text-decoration:none;">Porównywarka</a>
-      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap"
+      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
         href="../blog/index.html" style="text-decoration:none;">Blog</a>
-      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap"
+      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
         href="o-projekcie.html" style="text-decoration:none;">O projekcie</a>
     </div>
   </nav>
@@ -463,7 +446,7 @@
 
 
 
-  <main class="pt-32 pb-20 px-6 min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+  <main id="main" class="pt-32 pb-20 px-6 min-h-screen bg-stitch-bg dark:bg-slate-950 transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
       <!-- HERO / BREADCRUMBS -->
       <div class="mb-12">
@@ -472,10 +455,10 @@
           <span class="material-symbols-outlined text-[14px]">chevron_right</span>
           <span class="text-slate-600 dark:text-slate-300">Kalkulator ETF</span>
         </nav>
-        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-4">
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-stitch-text mb-4">
           Kalkulator Inwestycyjny <span class="text-primary" style="color:#0d7ff2;">ETF</span>
         </h1>
-        <p class="text-lg text-slate-500 dark:text-slate-400 max-w-2xl leading-relaxed">
+        <p class="text-lg text-stitch-muted max-w-2xl leading-relaxed">
           Oblicz jak zbudować kapitał korzystając z procentu składanego, optymalizacji podatkowej IKE/IKZE i
           niskokosztowych funduszy ETF.
         </p>
@@ -485,8 +468,8 @@
         <!-- LEWA KOLUMNA: FORMULARZ -->
         <aside class="lg:col-span-4 space-y-6">
           <div
-            class="glass-effect p-8 rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-2xl shadow-slate-200/50 dark:shadow-none">
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-8 flex items-center gap-3">
+            class="glass-effect p-8 rounded-[2rem] border border-white/50 /50 shadow-stitch-soft shadow-slate-200/50 dark:shadow-none">
+            <h3 class="text-lg font-bold text-stitch-text mb-8 flex items-center gap-3">
               <span class="material-symbols-outlined text-primary" style="color:#0d7ff2;">tune</span>
               Parametry inwestycji
             </h3>
@@ -500,7 +483,7 @@
                     Kapitał startowy
                   </label>
                   <div class="flex items-center gap-2">
-                    <button type="button" onclick="openEduModal('kapital_start', event)"
+                    <button type="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('kapital_start', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
                       <span class="material-symbols-outlined text-sm">help</span>
@@ -510,8 +493,8 @@
                       style="color:#0d7ff2;">PLN</span>
                   </div>
                 </div>
-                <input type="text" inputmode="decimal" id="input-kapital"
-                  class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
+                <input aria-label="input kapital" type="text" inputmode="decimal" id="input-kapital"
+                  class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 text-stitch-text text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
                   value="10000" min="100" step="1000" maxlength="10" autocomplete="off">
                 <p class="text-[11px] text-slate-400 mt-1.5">Kwota, od której zaczynasz budowę portfela.</p>
               </div>
@@ -524,7 +507,7 @@
                     Miesięczna dopłata
                   </label>
                   <div class="flex items-center gap-2">
-                    <button type="button" onclick="openEduModal('doplata_msc', event)"
+                    <button type="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('doplata_msc', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
                       <span class="material-symbols-outlined text-sm">help</span>
@@ -534,8 +517,8 @@
                       style="color:#0d7ff2;">PLN</span>
                   </div>
                 </div>
-                <input type="text" inputmode="decimal" id="input-doplata"
-                  class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
+                <input aria-label="input doplata" type="text" inputmode="decimal" id="input-doplata"
+                  class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 text-stitch-text text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
                   value="500" min="0" step="100" maxlength="8" autocomplete="off">
                 <p class="text-[11px] text-slate-400 mt-1.5">Regularność to klucz do potęgi procentu składanego.</p>
               </div>
@@ -548,7 +531,7 @@
                     Horyzont inwestycji
                   </label>
                   <div class="flex items-center gap-2">
-                    <button type="button" onclick="openEduModal('horyzont_lat', event)"
+                    <button type="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('horyzont_lat', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
                       <span class="material-symbols-outlined text-sm">help</span>
@@ -558,13 +541,13 @@
                       style="color:#0d7ff2;">LATA</span>
                   </div>
                 </div>
-                <input type="text" inputmode="decimal" id="input-horyzont"
-                  class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
+                <input aria-label="input horyzont" type="text" inputmode="decimal" id="input-horyzont"
+                  class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 text-stitch-text text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
                   value="10" min="1" max="50" step="1" maxlength="2" autocomplete="off">
                 <p class="text-[11px] text-slate-400 mt-1.5">Dłuższy czas to mniejsze ryzyko i większy zysk.</p>
               </div>
 
-              <hr class="border-slate-100 dark:border-slate-800 my-8">
+              <hr class="border-slate-100 my-8">
 
               <!-- Stopa zwrotu -->
               <div class="space-y-4 group">
@@ -574,7 +557,7 @@
                     Stopa zwrotu ETF (rocznie)
                   </label>
                   <div class="flex items-center gap-2">
-                    <button type="button" onclick="openEduModal('stopa_zwrotu', event)"
+                    <button type="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('stopa_zwrotu', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
                       <span class="material-symbols-outlined text-sm">help</span>
@@ -584,24 +567,24 @@
                       style="color:#0d7ff2;">%</span>
                   </div>
                 </div>
-                <input type="text" inputmode="decimal" id="input-stopa"
-                  class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
+                <input aria-label="input stopa" type="text" inputmode="decimal" id="input-stopa"
+                  class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 text-stitch-text text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
                   value="7" step="0.5" maxlength="5" autocomplete="off">
                 <p class="text-[11px] text-slate-400 mt-1.5">Historycznie rynek akcji (S&P 500) dostarcza ok. 7-10%
                   rocznie.</p>
 
                 <div class="grid grid-cols-3 gap-2">
                   <button type="button"
-                    class="py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-[10px] font-bold uppercase tracking-tight text-slate-500 hover:border-primary/50 transition-all"
-                    onclick="setStopa(4, this.parentElement.parentElement.querySelector('input'))">4%<br><span
+                    class="py-2.5 rounded-stitch border border-stitch-border bg-stitch-surface text-[10px] font-bold uppercase tracking-tight text-stitch-muted hover:border-primary/50 transition-all"
+                    onkeydown="if(event.key==='Enter')this.click()" onclick="setStopa(4, this.parentElement.parentElement.querySelector('input'))">4%<br><span
                       class="font-normal lowercase opacity-70">Pesymistyczny</span></button>
                   <button type="button"
-                    class="py-2.5 rounded-xl border-2 border-primary/50 bg-primary/5 text-[10px] font-bold uppercase tracking-tight text-primary hover:border-primary transition-all"
-                    onclick="setStopa(7, this.parentElement.parentElement.querySelector('input'))">7%<br><span
+                    class="py-2.5 rounded-stitch border-2 border-primary/50 bg-primary/5 text-[10px] font-bold uppercase tracking-tight text-primary hover:border-primary transition-all"
+                    onkeydown="if(event.key==='Enter')this.click()" onclick="setStopa(7, this.parentElement.parentElement.querySelector('input'))">7%<br><span
                       class="font-normal lowercase opacity-70">Bazowy</span></button>
                   <button type="button"
-                    class="py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-[10px] font-bold uppercase tracking-tight text-slate-500 hover:border-primary/50 transition-all"
-                    onclick="setStopa(10, this.parentElement.parentElement.querySelector('input'))">10%<br><span
+                    class="py-2.5 rounded-stitch border border-stitch-border bg-stitch-surface text-[10px] font-bold uppercase tracking-tight text-stitch-muted hover:border-primary/50 transition-all"
+                    onkeydown="if(event.key==='Enter')this.click()" onclick="setStopa(10, this.parentElement.parentElement.querySelector('input'))">10%<br><span
                       class="font-normal lowercase opacity-70">Optymistyczny</span></button>
                 </div>
               </div>
@@ -614,37 +597,37 @@
                     Oczekiwana inflacja
                   </label>
                   <div class="flex items-center gap-2">
-                    <button type="button" onclick="openEduModal('inflacja_nbp', event)"
+                    <button type="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('inflacja_nbp', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
                       <span class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span
-                      class="text-xs font-bold text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md">%</span>
+                      class="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-md">%</span>
                   </div>
                 </div>
-                <input type="text" inputmode="decimal" id="input-inflacja"
-                  class="w-full h-14 px-5 rounded-2xl bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-900 dark:text-white text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
+                <input aria-label="input inflacja" type="text" inputmode="decimal" id="input-inflacja"
+                  class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 text-stitch-text text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
                   value="2.5" step="0.1" maxlength="5" autocomplete="off">
                 <p class="text-[11px] text-slate-400 mt-1.5">Cel inflacyjny NBP to 2,5% (±1 p.p.).</p>
               </div>
 
               <!-- IKE/IKZE Toggle -->
               <label
-                class="group flex items-start gap-4 p-4 rounded-2xl border-2 border-transparent hover:border-primary/20 hover:bg-primary/5 transition-all cursor-pointer">
+                class="group flex items-start gap-4 p-4 rounded-stitch border-2 border-transparent hover:border-primary/20 hover:bg-primary/5 transition-all cursor-pointer">
                 <div class="relative flex items-center">
-                  <input type="checkbox" id="input-ike" class="peer sr-only">
+                  <input aria-label="input ike" type="checkbox" id="input-ike" class="peer sr-only">
                   <div
-                    class="w-12 h-6 bg-slate-200 dark:bg-slate-800 rounded-full peer peer-checked:bg-primary transition-colors">
+                    class="w-12 h-6 bg-slate-200 rounded-full peer peer-checked:bg-primary transition-colors">
                   </div>
                   <div
-                    class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-6">
+                    class="absolute left-1 top-1 w-4 h-4 bg-stitch-surface rounded-full transition-transform peer-checked:translate-x-6">
                   </div>
                 </div>
                 <div class="flex-1">
-                  <span class="block text-sm font-bold text-slate-900 dark:text-white mb-1">Konto IKE / IKZE (0%
+                  <span class="block text-sm font-bold text-stitch-text mb-1">Konto IKE / IKZE (0%
                     podatku)</span>
-                  <span class="block text-xs text-slate-500 dark:text-slate-400 leading-normal">Zaznacz, jeśli
+                  <span class="block text-xs text-stitch-muted leading-normal">Zaznacz, jeśli
                     inwestujesz w ramach limitów bez podatku Belki.</span>
                 </div>
               </label>
@@ -655,20 +638,20 @@
         <!-- PRAWA KOLUMNA: WYNIKI -->
         <div class="lg:col-span-8 space-y-8">
           <!-- GŁÓWNY WYNIK (Visual Priority) -->
-          <div onclick="openEduModal('kapital', event)"
-            class="relative overflow-hidden group bg-primary p-10 md:p-14 rounded-[2.5rem] text-white shadow-2xl shadow-primary/30 transition-all hover:scale-[1.01] hover:shadow-blue-500/40 hover:border-white/20 border-2 border-transparent cursor-help"
+          <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('kapital', event)"
+            class="relative overflow-hidden group bg-primary p-10 md:p-14 rounded-[2.5rem] text-white shadow-stitch-soft shadow-primary/30 transition-all hover:scale-[1.01] hover:shadow-blue-500/40 hover:border-white/20 border-2 border-transparent cursor-help"
             style="background-color: #0d7ff2;">
             <div
               class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent">
             </div>
             <div
-              class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20 group-hover:scale-110 transition-transform duration-700">
+              class="absolute top-0 right-0 w-64 h-64 bg-stitch-surface/10 rounded-full blur-3xl -mr-20 -mt-20 group-hover:scale-110 transition-transform duration-700">
             </div>
             <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
               <div>
                 <p class="text-primary-100/80 font-bold uppercase tracking-widest text-[10px] mb-3 flex items-center">
                   Przewidywany kapitał końcowy
-                  <span class="px-1.5 py-0.5 text-[9px] bg-white/10 text-white rounded-md font-bold ml-2">INFO</span>
+                  <span class="px-1.5 py-0.5 text-[9px] bg-stitch-surface/10 text-white rounded-md font-bold ml-2">INFO</span>
                 </p>
                 <p class="text-5xl md:text-7xl font-black tracking-tighter mb-4" id="etf-wynik-kapital-koncowy">0,00 zł
                 </p>
@@ -679,7 +662,7 @@
                 <p class="mt-4 text-[10px] text-white/60 opacity-0 group-hover:opacity-100 transition-opacity">Kliknij,
                   aby zrozumieć ten wynik</p>
               </div>
-              <div class="bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/20">
+              <div class="bg-stitch-surface/10 backdrop-blur-md px-6 py-4 rounded-stitch border border-white/20">
                 <p class="text-[10px] font-black uppercase tracking-widest text-white/60 mb-1">Status podatkowy</p>
                 <p class="font-bold whitespace-nowrap" id="txt-podatek-status">Opodatkowanie 19%</p>
               </div>
@@ -689,17 +672,17 @@
           <!-- SIATKA DRUGORZĘDNYCH WYNIKÓW -->
           <div
             class="flex flex-col items-center justify-center w-full lg:grid lg:grid-cols-2 lg:gap-6 lg:items-start lg:justify-items-stretch gap-6">
-            <div onclick="openEduModal('wklad', event)"
-              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('wklad', event)"
+              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft hover:border-blue-300/50 bg-stitch-surface/70 backdrop-blur-md /60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch lg:rounded-stitch border border-slate-100 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div
                 class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent">
               </div>
               <div class="flex items-center justify-center lg:justify-start mb-0.5">
-                <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Wkład własny</p>
+                <p class="text-[10px] uppercase tracking-widest font-semibold text-stitch-muted">Wkład własny</p>
                 <span
                   class="px-1.5 py-0.5 text-[9px] bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 rounded-md font-bold ml-2">INFO</span>
               </div>
-              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-slate-900 dark:text-white"
+              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-stitch-text"
                 id="etf-wynik-wklad-wlasny">0,00 zł</p>
               <div class="mt-auto pt-2">
                 <p class="text-[11px] text-slate-400/80">Suma wpłat i kapitału startowego</p>
@@ -708,17 +691,17 @@
                 class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div onclick="openEduModal('zysk', event)"
-              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('zysk', event)"
+              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft hover:border-blue-300/50 bg-stitch-surface/70 backdrop-blur-md /60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch lg:rounded-stitch border border-slate-100 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div
                 class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent">
               </div>
               <div class="flex items-center justify-center lg:justify-start mb-0.5">
-                <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Zysk nominalny</p>
+                <p class="text-[10px] uppercase tracking-widest font-semibold text-stitch-muted">Zysk nominalny</p>
                 <span
                   class="px-1.5 py-0.5 text-[9px] bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 rounded-md font-bold ml-2">INFO</span>
               </div>
-              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-slate-900 dark:text-white"
+              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-stitch-text"
                 id="etf-wynik-zysk-nominalny">0,00 zł</p>
               <div class="mt-auto pt-2">
                 <p class="text-[11px] text-slate-400/80">Czysty zysk przed podatkiem</p>
@@ -727,13 +710,13 @@
                 class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div onclick="openEduModal('podatek', event)"
-              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('podatek', event)"
+              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft hover:border-blue-300/50 bg-stitch-surface/70 backdrop-blur-md /60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch lg:rounded-stitch border border-slate-100 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div
                 class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-rose-500/40 to-transparent">
               </div>
               <div class="flex items-center justify-center lg:justify-start mb-0.5">
-                <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Podatek Belki</p>
+                <p class="text-[10px] uppercase tracking-widest font-semibold text-stitch-muted">Podatek Belki</p>
                 <span
                   class="px-1.5 py-0.5 text-[9px] bg-rose-50 text-rose-600 dark:bg-rose-900/30 dark:text-rose-400 rounded-md font-bold ml-2">INFO</span>
               </div>
@@ -746,13 +729,13 @@
                 class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div onclick="openEduModal('realny', event)"
-              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-emerald-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('realny', event)"
+              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft hover:border-emerald-300/50 bg-stitch-surface/70 backdrop-blur-md /60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch lg:rounded-stitch border border-slate-100 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div
                 class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent">
               </div>
               <div class="flex items-center justify-center lg:justify-start mb-0.5">
-                <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Wartość realna zysku</p>
+                <p class="text-[10px] uppercase tracking-widest font-semibold text-stitch-muted">Wartość realna zysku</p>
                 <span
                   class="px-1.5 py-0.5 text-[9px] bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 rounded-md font-bold ml-2">INFO</span>
               </div>
@@ -765,17 +748,17 @@
                 class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div onclick="openEduModal('cagr', event)"
-              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('cagr', event)"
+              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft hover:border-blue-300/50 bg-stitch-surface/70 backdrop-blur-md /60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch lg:rounded-stitch border border-slate-100 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div
                 class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent">
               </div>
               <div class="flex items-center justify-center lg:justify-start mb-0.5">
-                <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Stopa CAGR</p>
+                <p class="text-[10px] uppercase tracking-widest font-semibold text-stitch-muted">Stopa CAGR</p>
                 <span
                   class="px-1.5 py-0.5 text-[9px] bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 rounded-md font-bold ml-2">INFO</span>
               </div>
-              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-slate-900 dark:text-white"
+              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-stitch-text"
                 id="etf-wynik-cagr">0,00%</p>
               <div class="mt-auto pt-2">
                 <p class="text-[11px] text-slate-400/80">Średnioroczny zwrot netto</p>
@@ -784,13 +767,13 @@
                 class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div onclick="openEduModal('cagr_real', event)"
-              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-emerald-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('cagr_real', event)"
+              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft hover:border-emerald-300/50 bg-stitch-surface/70 backdrop-blur-md /60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch lg:rounded-stitch border border-slate-100 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div
                 class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent">
               </div>
               <div class="flex items-center justify-center lg:justify-start mb-0.5">
-                <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Realny CAGR</p>
+                <p class="text-[10px] uppercase tracking-widest font-semibold text-stitch-muted">Realny CAGR</p>
                 <span
                   class="px-1.5 py-0.5 text-[9px] bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 rounded-md font-bold ml-2">INFO</span>
               </div>
@@ -808,12 +791,12 @@
           <!-- SCENARIO HISTORY & SHARE -->
           <div class="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:max-w-xl mx-auto">
             <button id="btn-save-scenario"
-              class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 dark:bg-blue-600 text-white dark:text-white antialiased border border-transparent rounded-xl hover:bg-blue-700 dark:hover:bg-blue-500 transition-all font-semibold text-sm shadow-md">
+              class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 dark:bg-blue-600 text-white antialiased border border-transparent rounded-stitch hover:bg-blue-700 dark:hover:bg-blue-500 transition-all font-semibold text-sm shadow-stitch-soft">
               <span class="material-symbols-outlined text-[18px]">push_pin</span>
               Zapisz scenariusz
             </button>
             <button id="btn-share-result"
-              class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition-all font-semibold text-sm text-emerald-700 dark:text-emerald-400 group">
+              class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-stitch-surface/50 /50 border border-stitch-border rounded-stitch hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition-all font-semibold text-sm text-emerald-700 dark:text-emerald-400 group">
               <span
                 class="material-symbols-outlined text-[18px] group-hover:scale-110 transition-transform">share</span>
               <span id="txt-btn-share">Udostępnij wynik</span>
@@ -821,8 +804,8 @@
           </div>
 
           <div id="scenario-history-section"
-            class="hidden mt-8 w-full p-6 glass-effect rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-xl">
-            <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+            class="hidden mt-8 w-full p-6 glass-effect rounded-[2rem] border border-white/50 /50 shadow-stitch-soft">
+            <h3 class="text-lg font-bold text-stitch-text mb-4 flex items-center gap-3">
               <span class="material-symbols-outlined text-primary" style="color:#0d7ff2;">history</span>
               Porównanie scenariuszy
             </h3>
@@ -834,9 +817,9 @@
           </div>
 
           <!-- WYKRES -->
-          <div class="glass-effect p-8 rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-2xl">
+          <div class="glass-effect p-8 rounded-[2rem] border border-white/50 /50 shadow-stitch-soft">
             <div class="flex items-center justify-between mb-8">
-              <h3 class="text-xl font-extrabold text-slate-900 dark:text-white flex items-center gap-3">
+              <h3 class="text-xl font-extrabold text-stitch-text flex items-center gap-3">
                 <span class="material-symbols-outlined text-primary" style="color:#0d7ff2;">show_chart</span>
                 Wzrost kapitału w czasie
               </h3>
@@ -852,14 +835,14 @@
             </div>
           </div>
 
-          <div class="glass-effect p-8 rounded-[2rem] border border-white/50 dark:border-slate-800/50 shadow-2xl">
-            <h3 class="text-xl font-extrabold text-slate-900 dark:text-white mb-8 flex items-center gap-3">
+          <div class="glass-effect p-8 rounded-[2rem] border border-white/50 /50 shadow-stitch-soft">
+            <h3 class="text-xl font-extrabold text-stitch-text mb-8 flex items-center gap-3">
               <span class="material-symbols-outlined text-primary" style="color:#0d7ff2;">table_chart</span>
               Szczegółowe zestawienie rok po roku
             </h3>
 
             <div
-              class="relative overflow-x-auto scrollbar-hide shadow-inner rounded-xl border border-slate-200/50 dark:border-slate-700/50">
+              class="relative overflow-x-auto scrollbar-hide shadow-inner rounded-stitch border border-stitch-border/50 /50">
               <!-- Fade indicator for horizontal scroll -->
               <div
                 class="absolute top-0 right-0 bottom-0 w-8 bg-gradient-to-l from-white/20 to-transparent pointer-events-none z-30 lg:hidden">
@@ -867,9 +850,9 @@
 
               <table class="w-full text-left border-collapse" aria-label="Wyniki rok po roku">
                 <thead>
-                  <tr class="bg-slate-50/50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-800">
+                  <tr class="bg-stitch-bg/50 /50 border-b border-slate-100">
                     <th
-                      class="sticky left-0 z-20 bg-slate-50 dark:bg-slate-800 px-4 py-3 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)] whitespace-nowrap">
+                      class="sticky left-0 z-20 bg-stitch-bg px-4 py-3 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)] whitespace-nowrap">
                       Rok</th>
                     <th
                       class="px-3 py-4 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">
@@ -895,46 +878,46 @@
       </div>
 
       <!-- SŁOWNICZEK / EDUKACJA -->
-      <section class="mt-24 py-20 border-t border-slate-200 dark:border-slate-900">
-        <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mb-12 text-center italic">Co warto wiedzieć o
+      <section class="mt-24 py-20 border-t border-stitch-border dark:border-slate-900">
+        <h2 class="text-3xl font-extrabold text-stitch-text mb-12 text-center italic">Co warto wiedzieć o
           inwestowaniu w ETF?</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div
-            class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm transition-all hover:shadow-lg">
+            class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
             <span class="material-symbols-outlined text-4xl text-primary mb-6"
               style="color:#0d7ff2;">account_balance</span>
-            <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Czym są fundusze ETF?</h4>
-            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Fundusze notowane na giełdzie, które z
+            <h4 class="text-lg font-bold text-stitch-text mb-4">Czym są fundusze ETF?</h4>
+            <p class="text-sm text-stitch-muted leading-relaxed">Fundusze notowane na giełdzie, które z
               niskim kosztem naśladują całe rynki akcji lub obligacji.</p>
           </div>
           <div
-            class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm transition-all hover:shadow-lg">
+            class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
             <span class="material-symbols-outlined text-4xl text-emerald-500 mb-6">insights</span>
-            <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Procent składany</h4>
-            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Twoje zyski generują własne zyski. W
+            <h4 class="text-lg font-bold text-stitch-text mb-4">Procent składany</h4>
+            <p class="text-sm text-stitch-muted leading-relaxed">Twoje zyski generują własne zyski. W
               długim terminie to najpotężniejsza siła w finansach.</p>
           </div>
           <div
-            class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm transition-all hover:shadow-lg">
+            class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
             <span class="material-symbols-outlined text-4xl text-amber-500 mb-6">workspace_premium</span>
-            <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">IKE oraz IKZE</h4>
-            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Konta, które chronią Twoje zyski przed
+            <h4 class="text-lg font-bold text-stitch-text mb-4">IKE oraz IKZE</h4>
+            <p class="text-sm text-stitch-muted leading-relaxed">Konta, które chronią Twoje zyski przed
               19% podatkiem Belki. Klucz do wyższej emerytury.</p>
           </div>
           <div
-            class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm transition-all hover:shadow-lg">
+            class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
             <span class="material-symbols-outlined text-4xl text-rose-500 mb-6">payments</span>
-            <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Wartość realna</h4>
-            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Wynik przeliczony na dzisiejszą siłę
+            <h4 class="text-lg font-bold text-stitch-text mb-4">Wartość realna</h4>
+            <p class="text-sm text-stitch-muted leading-relaxed">Wynik przeliczony na dzisiejszą siłę
               nabywczą pieniądza, uwzględniający wpływ inflacji.</p>
           </div>
         </div>
 
         <!-- DISCLAIMER -->
         <div
-          class="mt-8 p-8 rounded-3xl bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 flex gap-6 items-start">
+          class="mt-8 p-8 rounded-stitch bg-slate-100 /50 border border-stitch-border flex gap-6 items-start">
           <span class="material-symbols-outlined text-slate-400">info</span>
-          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
+          <p class="text-xs text-stitch-muted leading-relaxed italic">
             <strong>Ważna informacja:</strong> Prezentowane obliczenia mają charakter wyłącznie edukacyjny i poglądowy.
             Inwestowanie na giełdzie wiąże się z ryzykiem utraty kapitału. Wyniki historyczne nie gwarantują podobnych
             stóp zwrotu w przyszłości. Zawsze weryfikuj dane z oficjalnymi dokumentami funduszy.
@@ -947,10 +930,10 @@
 
   <!-- NEWSLETTER SECTION (Wide Banner) -->
   <section id="newsletter-section"
-    class="pt-10 pb-20 px-6 bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 transition-colors">
+    class="pt-10 pb-20 px-6 bg-slate-100 dark:bg-slate-950 border-t border-stitch-border dark:border-slate-900 transition-colors">
     <div class="max-w-7xl mx-auto">
       <div
-        class="bg-white/70 dark:bg-slate-900/80 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 lg:p-16 shadow-2xl border border-white/50 dark:border-slate-800/50 relative overflow-hidden group">
+        class="bg-stitch-surface/70 /80 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 lg:p-16 shadow-stitch-soft border border-white/50 /50 relative overflow-hidden group">
         <!-- Decorative element -->
         <div
           class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700">
@@ -969,11 +952,11 @@
               Newsletter
             </div>
             <h2
-              class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.1]">
+              class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-stitch-text tracking-tight leading-[1.1]">
               Bądź na bieżąco z <span class="text-primary">rynkiem ETF</span> <span class="hidden md:inline">i
                 finansami</span>
             </h2>
-            <p class="text-slate-500 dark:text-slate-400 text-lg leading-relaxed max-w-xl">
+            <p class="text-stitch-muted text-lg leading-relaxed max-w-xl">
               Dołącz do społeczności świadomych inwestorów. Otrzymuj analizy, nowe kalkulatory i rzetelną wiedzę prosto
               na swoją skrzynkę. Zero spamu.
             </p>
@@ -992,7 +975,7 @@
                       <div class="ml-form-fieldRow">
                         <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
                           <input aria-label="email" aria-required="true" type="email"
-                            class="w-full h-14 px-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-white text-base font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all placeholder:text-slate-400"
+                            class="w-full h-14 px-6 rounded-stitch border border-stitch-border bg-stitch-surface dark:bg-slate-950 text-stitch-text text-base font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all placeholder:text-slate-400"
                             name="fields[email]" placeholder="Twój adres e-mail">
                         </div>
                       </div>
@@ -1000,11 +983,11 @@
                       <!-- Consents -->
                       <div class="ml-form-embedPermissions">
                         <label class="flex items-start gap-4 cursor-pointer group">
-                          <input type="checkbox" name="gdpr[]"
+                          <input aria-label="Wprowadź wartość" type="checkbox" name="gdpr[]"
                             value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl" required
                             class="custom-checkbox mt-1 transition-all">
                           <span
-                            class="text-[11px] text-slate-500 dark:text-slate-400 font-medium leading-relaxed group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors">Zgadzam
+                            class="text-[11px] text-stitch-muted font-medium leading-relaxed group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors">Zgadzam
                             się na otrzymywanie newslettera. Możesz się wypisać w każdej chwili.</span>
                         </label>
                       </div>
@@ -1021,15 +1004,15 @@
                       <!-- Button -->
                       <div class="ml-form-embedSubmit">
                         <button type="submit"
-                          class="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-sm md:text-base uppercase tracking-widest hover:scale-[1.01] active:scale-[0.98] transition-all shadow-xl shadow-primary/20"
+                          class="w-full h-14 md:h-16 rounded-stitch bg-primary text-white font-bold text-sm md:text-base uppercase tracking-widest hover:scale-[1.01] active:scale-[0.98] transition-all shadow-stitch-soft shadow-primary/20"
                           style="background-color: #0d7ff2;">
                           Zapisz się teraz
                         </button>
                       </div>
 
                       <!-- Legal & Financial Disclaimers -->
-                      <div class="pt-6 border-t border-slate-100 dark:border-slate-800 mt-2">
-                        <p class="text-[10px] text-slate-400 dark:text-slate-500 leading-relaxed mb-2">
+                      <div class="pt-6 border-t border-slate-100 mt-2">
+                        <p class="text-[10px] text-slate-400 dark:text-stitch-muted leading-relaxed mb-2">
                           Zapisując się, akceptujesz <a href="regulamin.html"
                             class="underline hover:text-primary">Regulamin</a> i <a href="polityka-prywatnosci.html"
                             class="underline hover:text-primary">Politykę Prywatności</a>. Twoje dane są bezpieczne i
@@ -1046,7 +1029,7 @@
                 <!-- Success -->
                 <div class="ml-form-successBody row-success" style="display: none">
                   <div
-                    class="p-10 rounded-3xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 text-center">
+                    class="p-10 rounded-stitch bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 text-center">
                     <div
                       class="w-16 h-16 bg-emerald-100 dark:bg-emerald-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
                       <span
@@ -1066,18 +1049,18 @@
   </section>
 
   <!-- STOPKA (Refined 3-Column Layout) -->
-  <footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 py-20 px-6"
+  <footer class="bg-stitch-bg dark:bg-slate-950 border-t border-stitch-border dark:border-slate-900 py-20 px-6"
     style="font-family: 'Inter', sans-serif;">
     <div class="max-w-7xl mx-auto">
       <!-- Logo Row -->
-      <div class="mb-12 border-b border-slate-200/50 dark:border-slate-800/50 pb-8">
+      <div class="mb-12 border-b border-stitch-border/50 /50 pb-8">
         <div class="flex items-center gap-2">
-          <div class="bg-primary p-1.5 rounded-lg text-white flex items-center justify-center"
+          <div class="bg-primary p-1.5 rounded-stitch text-white flex items-center justify-center"
             style="background-color: #0d7ff2;">
             <span class="material-symbols-outlined text-base">account_balance_wallet</span>
           </div>
-          <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">ETF<span
-              class="font-normal text-slate-500">kalkulator</span>.pl</span>
+          <span class="text-xl font-bold tracking-tight text-stitch-text">ETF<span
+              class="font-normal text-stitch-muted">kalkulator</span>.pl</span>
         </div>
       </div>
 
@@ -1085,56 +1068,56 @@
 
         <!-- Column 1: Narzędzia -->
         <div>
-          <h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Narzędzia</h5>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">Narzędzia</h5>
           <ul class="space-y-4">
             <li><a href="kalkulator-etf.html"
-                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
                 style="text-decoration:none;">Kalkulator ETF</a></li>
             <li><a href="kalkulator-obligacji.html"
-                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
                 style="text-decoration:none;">Obligacje Skarbowe</a></li>
             <li><a href="kalkulator-wolnosci.html"
-                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
                 style="text-decoration:none;">Wolność Finansowa</a></li>
             <li><a href="porownywarka.html"
-                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
                 style="text-decoration:none;">Porównywarka ETF</a></li>
           </ul>
         </div>
 
         <!-- Column 2: Projekt -->
         <div>
-          <h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Projekt</h5>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">Projekt</h5>
           <ul class="space-y-4">
             <li><a href="../blog/index.html"
-                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
                 style="text-decoration:none;">Blog i Wiedza</a></li>
             <li><a href="o-projekcie.html"
-                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
                 style="text-decoration:none;">O projekcie</a></li>
             <li><a href="regulamin.html"
-                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
                 style="text-decoration:none;">Regulamin</a></li>
             <li><a href="polityka-prywatnosci.html"
-                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
                 style="text-decoration:none;">Polityka prywatności</a></li>
           </ul>
         </div>
 
         <!-- Column 3: Kontakt -->
         <div>
-          <h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Kontakt</h5>
-          <p class="text-sm text-slate-500 mb-6 leading-relaxed">Masz pytania? Pisz śmiało:</p>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">Kontakt</h5>
+          <p class="text-sm text-stitch-muted mb-6 leading-relaxed">Masz pytania? Pisz śmiało:</p>
           <a href="mailto:kontakt@etfkalkulator.pl"
-            class="text-sm font-bold text-slate-900 dark:text-white hover:text-primary transition-colors block mb-8"
+            class="text-sm font-bold text-stitch-text hover:text-primary transition-colors block mb-8"
             style="text-decoration:none;">kontakt@etfkalkulator.pl</a>
           <div class="flex gap-4">
             <a href="#"
-              class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-sm">
+              class="w-10 h-10 rounded-stitch bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-stitch-soft">
               <span class="material-symbols-outlined text-lg">share</span>
             </a>
             <a href="#"
-              class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-sm">
+              class="w-10 h-10 rounded-stitch bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-stitch-soft">
               <span class="material-symbols-outlined text-lg">alternate_email</span>
             </a>
           </div>
@@ -1142,8 +1125,8 @@
       </div>
 
       <!-- Dolny pasek i Disclaimer -->
-      <div class="mt-20 pt-10 border-t border-slate-200 dark:border-slate-900">
-        <p class="text-[11px] text-slate-400 dark:text-slate-500 leading-relaxed mb-8 max-w-4xl">
+      <div class="mt-20 pt-10 border-t border-stitch-border dark:border-slate-900">
+        <p class="text-[11px] text-slate-400 dark:text-stitch-muted leading-relaxed mb-8 max-w-4xl">
           Serwis ETFkalkulator.pl ma charakter wyłącznie edukacyjny i informacyjny. Prezentowane obliczenia nie stanowią
           rekomendacji inwestycyjnej, porady finansowej ani doradztwa podatkowego w rozumieniu obowiązujących przepisów
           prawa. Przed podjęciem decyzji inwestycyjnej skonsultuj się z licencjonowanym doradcą finansowym. Inwestowanie
@@ -1172,40 +1155,40 @@
 
   <!-- COOKIE CONSENT BANNER -->
   <div id="cookie-consent"
-    class="fixed bottom-6 left-6 right-6 md:left-auto md:w-[400px] bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 z-[100] transition-all duration-500 translate-y-20 opacity-0 transform"
+    class="fixed bottom-6 left-6 right-6 md:left-auto md:w-[400px] bg-stitch-surface p-6 rounded-stitch shadow-stitch-soft border border-stitch-border z-[100] transition-all duration-500 translate-y-20 opacity-0 transform"
     style="display: none;">
     <div class="flex items-start gap-4 mb-4">
-      <div class="bg-amber-100 dark:bg-amber-900/30 p-2 rounded-xl text-amber-600 dark:text-amber-400">
+      <div class="bg-amber-100 dark:bg-amber-900/30 p-2 rounded-stitch text-amber-600 dark:text-amber-400">
         <span class="material-symbols-outlined">cookie</span>
       </div>
       <div>
-        <h4 class="font-bold text-slate-900 dark:text-white">Ciasteczka i Analityka</h4>
-        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mt-1">Używamy Google Analytics, aby
+        <h4 class="font-bold text-stitch-text">Ciasteczka i Analityka</h4>
+        <p class="text-xs text-stitch-muted leading-relaxed mt-1">Używamy Google Analytics, aby
           anonimowo analizować ruch na stronie i ulepszać nasze kalkulatory.</p>
       </div>
     </div>
     <div class="flex gap-3">
       <button id="cookie-accept"
-        class="flex-1 bg-primary text-white text-xs font-bold py-3 rounded-xl hover:opacity-90 transition-opacity"
+        class="flex-1 bg-primary text-white text-xs font-bold py-3 rounded-stitch hover:opacity-90 transition-opacity"
         style="background-color: #0d7ff2;">Akceptuję</button>
       <button id="cookie-reject"
-        class="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold py-3 rounded-xl hover:bg-slate-200 transition-colors">Odrzuć</button>
+        class="flex-1 bg-slate-100 text-slate-600 text-xs font-bold py-3 rounded-stitch hover:bg-slate-200 transition-colors">Odrzuć</button>
     </div>
   </div>
 
   <!-- EDUCATIONAL MODAL -->
   <div id="edu-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
-    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeEduModal()"></div>
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"></div>
     <div
-      class="relative glass-effect modal-anim rounded-[2.5rem] p-8 md:p-12 max-w-lg w-full border border-white/20 shadow-2xl shadow-black/50 overflow-hidden">
+      class="relative glass-effect modal-anim rounded-[2.5rem] p-8 md:p-12 max-w-lg w-full border border-white/20 shadow-stitch-soft shadow-black/50 overflow-hidden">
       <!-- Decorative background blur -->
       <div class="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 rounded-full blur-3xl"></div>
 
       <div class="relative z-10">
         <div class="flex justify-between items-center mb-6">
-          <h3 class="text-2xl font-black text-slate-900 dark:text-white" id="modal-title">Edukacja</h3>
-          <button onclick="closeEduModal()"
-            class="group flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-rose-500 hover:text-white transition-all">
+          <h3 class="text-2xl font-black text-stitch-text" id="modal-title">Edukacja</h3>
+          <button onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"
+            class="group flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-stitch-muted hover:bg-rose-500 hover:text-white transition-all">
             <span class="text-[10px] font-bold uppercase tracking-widest">Zamknij</span>
             <span class="material-symbols-outlined text-xl">close</span>
           </button>
@@ -1213,24 +1196,24 @@
 
         <div class="space-y-8">
           <div class="flex gap-4 items-start">
-            <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
+            <div class="w-12 h-12 rounded-stitch bg-primary/10 flex items-center justify-center shrink-0">
               <span class="material-symbols-outlined text-primary" id="modal-icon">school</span>
             </div>
-            <p id="modal-explanation" class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm md:text-base">
+            <p id="modal-explanation" class="text-slate-600 leading-relaxed text-sm md:text-base">
             </p>
           </div>
 
           <div
-            class="p-6 bg-slate-50 dark:bg-slate-900/50 rounded-3xl border border-slate-200 dark:border-slate-800 group transition-all hover:border-primary/30">
+            class="p-6 bg-stitch-bg /50 rounded-stitch border border-stitch-border group transition-all hover:border-primary/30">
             <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
               <span class="material-symbols-outlined text-xs">functions</span>
               Jak to obliczamy?
             </p>
-            <code id="modal-formula" class="text-slate-900 dark:text-white font-mono text-sm block">...</code>
+            <code id="modal-formula" class="text-stitch-text font-mono text-sm block">...</code>
           </div>
 
-          <button onclick="closeEduModal()"
-            class="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-2xl hover:bg-primary dark:hover:bg-primary dark:hover:text-white transition-all shadow-lg">
+          <button onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"
+            class="w-full py-4 bg-slate-900 dark:bg-stitch-surface text-white dark:text-stitch-text font-bold rounded-stitch hover:bg-primary dark:hover:bg-primary dark:hover:text-white transition-all shadow-stitch-soft">
             Rozumiem, dziękuję!
           </button>
         </div>

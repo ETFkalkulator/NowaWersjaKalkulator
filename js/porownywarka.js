@@ -61,6 +61,7 @@ function rysujTabele(lata, etf, obl, lok) {
   tbody.innerHTML = '';
 
   var fzl = window.formatujZl || function(x) { return x.toFixed(2) + ' zł'; };
+  var frag = document.createDocumentFragment();
 
   for (var r = 1; r <= lata; r++) {
     var eK = (etf.historia[r-1] || {}).kapital || 0;
@@ -68,18 +69,22 @@ function rysujTabele(lata, etf, obl, lok) {
     var lK = (lok.historia[r-1] || {}).kapital || 0;
     var max = Math.max(eK, oK, lK);
 
-    var winClass = 'px-3 py-4 text-xs lg:text-sm font-black text-emerald-500 text-right whitespace-nowrap';
-    var normClass = 'px-3 py-4 text-xs lg:text-sm font-bold text-slate-900 dark:text-white text-right whitespace-nowrap';
+    var winClass = 'px-3 py-4 text-xs lg:text-sm font-black text-stitch-accent text-right whitespace-nowrap';
+    var normClass = 'px-3 py-4 text-xs lg:text-sm font-bold text-stitch-text text-right whitespace-nowrap';
 
     var tr = document.createElement('tr');
-    tr.className = 'hover:bg-slate-50/50 dark:hover:bg-slate-900/50 transition-colors';
+    tr.className = 'hover:bg-stitch-bg/50 transition-colors cursor-pointer hover:scale-105 group edu-row-trigger';
+    tr.dataset.modalId = 'por_zwyciezca';
+    tr.setAttribute("tabindex", "0");
+    tr.setAttribute("role", "button");
     tr.innerHTML =
-      '<td class="sticky left-0 z-10 bg-white/95 dark:bg-slate-900/95 px-4 py-3 text-xs lg:text-sm font-semibold text-slate-900 dark:text-slate-100 border-r border-slate-100 dark:border-slate-800 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">Rok ' + r + '</td>' +
+      '<td class="sticky left-0 z-10 bg-stitch-surface/95 px-4 py-3 text-xs lg:text-sm font-semibold text-stitch-text border-r border-stitch-border shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">Rok ' + r + '</td>' +
       '<td class="' + (eK === max ? winClass : normClass) + '">' + fzl(eK) + '</td>' +
       '<td class="' + (oK === max ? winClass : normClass) + '">' + fzl(oK) + '</td>' +
       '<td class="' + (lK === max ? winClass : normClass) + '">' + fzl(lK) + '</td>';
-    tbody.appendChild(tr);
+    frag.appendChild(tr);
   }
+  tbody.appendChild(frag);
 }
 
 /* ============================================================
@@ -214,7 +219,8 @@ Object.assign(window.modalData, {
   por_stopa_rok1: { title: "Stopa obligacji rok 1", desc: "Oprocentowanie obligacji EDO w pierwszym roku — stałe, z góry znane. W marcu 2026 wynosi 5,60%. Od roku 2 oprocentowanie to inflacja + marża.", formula: "Rok 1: Kapitał × stopa_rok1. Lata 2+: Kapitał × (CPI + marża)", icon: "looks_one" },
   por_marza: { title: "Marża obligacji EDO", desc: "Stały dodatek ponad inflację który zarabiasz od roku 2. Aktualna marża EDO: 2,00%. To oznacza że przy inflacji 3% zarabiasz 5% rocznie. Im wyższa inflacja, tym lepsza obligacja.", formula: "Oprocentowanie od roku 2 = CPI + marża", icon: "add_circle" },
   por_stopa_lok: { title: "Stopa lokaty bankowej", desc: "Stałe oprocentowanie lokaty przez cały okres porównania. W rzeczywistości lokaty są zazwyczaj krótkoterminowe i wymagają odnowienia. Zakładamy że udaje się utrzymać tę samą stopę.", formula: "FV = PV × (1 + r/12)^(n×12) + PMT × ((1+r/12)^(n×12)-1) / (r/12)", icon: "account_balance" },
-  por_zwyciezca: { title: "Zwycięzca porównania", desc: "Instrument który dał najwyższy kapitał końcowy netto (po podatku Belki) przy Twoich parametrach. Zwycięzca może się zmienić przy różnych horyzontach i stopach — dlatego warto testować różne scenariusze.", formula: "Zwycięzca = max(ETF_netto, EDO_netto, Lokata_netto)", icon: "emoji_events" },
+  por_zwyciezca: { title: "Różnica w Zysku", desc: "Pamiętaj, że na przestrzeni 20+ lat procent składany miażdży tradycyjne oszczędzanie. Nawet zaledwie 0.5% różnicy w kosztach czy podatkach tworzy z biegiem czasu potężną 'lukę procentu składanego' (compounding gap).", formula: "Odsetki = Kapitał × (1 + r/12)^(n×12)", icon: "emoji_events" },
+  efektywnosc_podatkowa: { title: "Efektywność Podatkowa", desc: "Dlaczego to takie ważne? Porównanie scenariusza nieopodatkowanego IKE/IKZE (0% podatku Belki) z kontem maklerskim (lub lokatami) obciążonym 19% podatkiem jest absolutnie kluczowe dla optymalizacji budowania długoterminowego bogactwa.", formula: "Zysk na IKE = Brutto | Zysk Standard = Brutto - Dyskonto Podatkowe", icon: "account_balance" },
   panel_etf: { title: "Wyniki ETF globalny", desc: "ETF naśladuje globalny indeks akcji (np. MSCI World). Podatek Belki 19% naliczany jest jednorazowo przy sprzedaży od całego zysku — co jest korzystniejsze niż roczne opodatkowanie lokaty.", formula: "Netto = Brutto - Zysk × 19% | Realny = Netto ÷ (1+inflacja)^lata", icon: "public" },
   panel_obligacje: { title: "Wyniki Obligacje EDO", desc: "Obligacje 10-letnie indeksowane inflacją — rok 1 stała stopa, lata 2-10: CPI + marża z roczną kapitalizacją. Podatek Belki naliczany jednorazowo przy wykupie od całego zysku.", formula: "Rok 1: K × stopa_r1 | Rok 2+: K × (CPI + marża) | Belka 19% na końcu", icon: "account_balance" },
   panel_lokata: { title: "Wyniki Lokata bankowa", desc: "Lokata z założeniem stałej stopy przez cały okres. W rzeczywistości oprocentowanie lokat zmienia się wraz ze stopami NBP. Podatek Belki pobierany co roku od odsetek.", formula: "FV = K × (1 + r/12)^(n×12) | Belka 19% co roku od odsetek", icon: "savings" }
@@ -224,11 +230,49 @@ Object.assign(window.modalData, {
    DOM CONTENT LOADED — UI wiring
    ============================================================ */
 document.addEventListener('DOMContentLoaded', function () {
+  // --- ROBUST EDUCATIONAL MODAL WIRING ---
+  document.querySelectorAll('[onclick^="openEduModal"]').forEach(function(el) {
+    var match = el.getAttribute('onclick').match(/openEduModal\(['"]([^'"]+)['"]/);
+    if (match) {
+      var modalId = match[1];
+      el.removeAttribute('onclick');
+      el.addEventListener('click', function(e) {
+        if (window.openEduModal) window.openEduModal(modalId, e);
+      });
+      el.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && window.openEduModal) {
+          window.openEduModal(modalId, e);
+        }
+      });
+      el.removeAttribute('onkeydown');
+    }
+  });
+
+  // Table row event delegation
+  var tbody = document.getElementById('por-tabela-body');
+  if (tbody) {
+    tbody.addEventListener('click', function(e) {
+      var row = e.target.closest('tr.edu-row-trigger');
+      if (row && window.openEduModal) {
+        window.openEduModal(row.dataset.modalId, e);
+      }
+    });
+    tbody.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        var row = e.target.closest('tr.edu-row-trigger');
+        if (row && window.openEduModal) {
+          window.openEduModal(row.dataset.modalId, e);
+        }
+      }
+    });
+  }
   // Satisfy the window.ETF.charts guard in porownywarka.js
   window.ETF = window.ETF || {};
   window.ETF.charts = window.ETF.charts || {};
 
   // Wire text inputs with focus/blur/select pattern
+  var debouncedOblicz = window.debounce ? window.debounce(obliczIAktualizujZwyciezce, 150) : obliczIAktualizujZwyciezce;
+  
   ['por-kapital', 'por-doplata', 'por-lata', 'por-inflacja',
    'por-stopa-etf', 'por-stopa-lok', 'por-marza', 'por-stopa-rok1'].forEach(function (id) {
     var el = document.getElementById(id);
@@ -246,7 +290,7 @@ document.addEventListener('DOMContentLoaded', function () {
       updateUrlParams();
     });
     el.addEventListener('input', function() {
-      obliczIAktualizujZwyciezce();
+      debouncedOblicz();
     });
   });
 
@@ -262,7 +306,10 @@ document.addEventListener('DOMContentLoaded', function () {
   if (btnSave) btnSave.addEventListener('click', saveCurrentScenario);
 
   var btnShare = document.getElementById('btn-share-result-por');
-  if (btnShare) btnShare.addEventListener('click', shareResult);
+  if (btnShare) btnShare.addEventListener('click', function() { 
+      updateUrlParams();
+      if(window.shareResult) window.shareResult('Porównanie ETF vs Obligacje vs Lokata - ETFkalkulator.pl');
+  });
 
   // URL params
   if (window.location.search) loadFromUrlParams();
@@ -421,39 +468,7 @@ function renderScenarios() {
   });
 }
 
-function shareResult() {
-  updateUrlParams();
-  var url = window.location.href;
-  var title = 'Porównanie ETF vs Obligacje vs Lokata - ETFkalkulator.pl';
-  if (navigator.share) {
-    navigator.share({ title: title, url: url }).catch(function () {});
-  } else {
-    navigator.clipboard.writeText(url).then(function () {
-      var el = document.getElementById('txt-btn-share-por');
-      if (el) { el.textContent = 'Skopiowano link!'; setTimeout(function () { el.textContent = 'Udostępnij wynik'; }, 2000); }
-    });
-  }
-}
 
-/* Modal functions */
-function openEduModal(type, event) {
-  if (event) { event.preventDefault(); event.stopPropagation(); }
-  if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
-  var data = window.modalData[type];
-  if (!data) return;
-  document.getElementById('modal-title').innerText = data.title;
-  document.getElementById('modal-explanation').innerText = data.desc;
-  document.getElementById('modal-formula').innerText = data.formula;
-  document.getElementById('modal-icon').innerText = data.icon;
-  var modal = document.getElementById('edu-modal');
-  modal.classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeEduModal() {
-  var modal = document.getElementById('edu-modal');
-  modal.classList.add('hidden');
-}
 
 function ustawScenariusz(scen) {
   var s = SCENARIUSZE_ETF[scen];

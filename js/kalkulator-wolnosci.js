@@ -11,14 +11,15 @@ var savedScenariosFire = [];
 window.modalData = window.modalData || {};
 Object.assign(window.modalData, {
   wydatki_mies: { title: "Miesięczne wydatki", desc: "Twoje obecne miesięczne wydatki na życie. To podstawa do obliczenia celu FIRE — im niższe wydatki, tym mniej kapitału potrzebujesz i tym szybciej osiągniesz wolność finansową.", formula: "Wydatki roczne = Wydatki miesięczne × 12", icon: "shopping_cart" },
-  stopa_wyplat: { title: "Stopa wypłat", desc: "Procent kapitału który wypłacasz rocznie w fazie emerytury. Reguła 4% pochodzi z badania 'Trinity Study' — wypłacanie 4% rocznie jest bezpieczne przez 30+ lat przy zdywersyfikowanym portfelu. Niższa stopa = bezpieczniej, ale wymaga więcej kapitału.", formula: "Cel FIRE = Wydatki roczne ÷ Stopa wypłat (np. 3 000 × 12 ÷ 0.04 = 900 000 zł)", icon: "percent" },
+  stopa_wyplat: { title: "Stopa Wypłaty (SWR)", desc: "Safe Withdrawal Rate (SWR) — bezpieczna stopa wypłaty. 4% to globalny benchmark z Trinity Study dla 30-letniej emerytury. Oznacza to, że wypłacając 4% w pierwszym roku (i waloryzując o inflację), Twoje portfolio ma ogromną szansę przetrwać 30 lat.", formula: "Wypłata roczna = Cel FIRE × Stopa wypłaty (np. 4%)", icon: "percent" },
+  efektywnosc_podatkowa: { title: "Efektywność Podatkowa", desc: "Dlaczego to takie ważne? Porównanie scenariusza nieopodatkowanego IKE/IKZE (0% podatku Belki) z kontem maklerskim obciążonym 19% podatkiem jest absolutnie kluczowe dla optymalizacji budowania długoterminowego bogactwa.", formula: "Zysk na IKE = Brutto | Zysk Standard = Brutto - Dyskonto Podatkowe", icon: "account_balance" },
   oszczednosci_mies: { title: "Miesięczne oszczędności", desc: "Kwota którą odkładasz co miesiąc na inwestycje. To najważniejszy parametr — regularność i kwota oszczędzania ma większy wpływ na wynik niż stopa zwrotu w pierwszych latach budowania kapitału.", formula: "Kapitał(n) = Kapitał(n-1) × (1+r) + Oszczędności", icon: "savings" },
   kapital_start_fire: { title: "Kapitał startowy", desc: "Masz już jakieś oszczędności lub inwestycje? Wpisz ich aktualną wartość. Każda złotówka startowego kapitału pracuje przez cały horyzont inwestycji — im więcej masz teraz, tym szybciej osiągniesz cel.", formula: "FV = PV × (1+r)^n + PMT × ((1+r)^n - 1) / r", icon: "account_balance_wallet" },
-  stopa_zwrotu_fire: { title: "Stopa zwrotu", desc: "Oczekiwany średnioroczny zwrot z Twoich inwestycji. ETF na MSCI World historycznie dawał ok. 7-10% rocznie nominalnie. Kalkulator odejmuje inflację i podatek Belki żeby pokazać realny wynik.", formula: "Stopa realna = (1 + stopa nominalna) / (1 + inflacja) - 1", icon: "show_chart" },
+  stopa_zwrotu_fire: { title: "Oczekiwana Stopa Zwrotu", desc: "To powinna być realna stopa zwrotu (nominalny zysk z inwestycji minus prognozowana inflacja). Historycznie szerokie dywersyfikowane globalnie ETF-y akcyjne dawały około 7% realnie po odjęciu inflacji.", formula: "Stopa realna = (1 + stopa nominalna) / (1 + inflacja) - 1", icon: "show_chart" },
   inflacja_fire: { title: "Oczekiwana inflacja", desc: "Inflacja zmniejsza siłę nabywczą pieniądza w czasie. W kalkulatorze FIRE inflacja ma podwójne znaczenie — zmniejsza realną wartość Twojego kapitału podczas akumulacji, ale też zwiększa Twoje przyszłe wydatki podczas wypłat.", formula: "Realna stopa = (1 + nominalna) / (1 + inflacja) - 1", icon: "trending_up" },
   lata_cel: { title: "Cel czasowy", desc: "Za ile lat chcesz osiągnąć wolność finansową? Kalkulator wyliczy ile musisz odkładać miesięcznie żeby to osiągnąć przy podanej stopie zwrotu. To odwrotna kalkulacja — wynik zobaczysz w kafelku 'Wymagane oszczędności'.", formula: "PMT = (Cel FIRE - PV×(1+r)^n) / ((1+r)^n - 1) × r", icon: "event" },
-  cel_fire: { title: "Cel FIRE", desc: "Kwota kapitału przy której możesz przestać pracować. Obliczona jako Twoje wydatki roczne podzielone przez stopę wypłat. Przy regule 4% to 25-krotność rocznych wydatków. Twój portfel powinien generować tyle odsetek/dywidend ile potrzebujesz na życie.", formula: "Cel FIRE = Wydatki roczne ÷ Stopa wypłat = Wydatki × 25", icon: "flag" },
-  lata_do_fire: { title: "Ile lat do FIRE", desc: "Szacowany czas do osiągnięcia wolności finansowej przy obecnym tempie oszczędzania i podanej stopie zwrotu. Symulacja odbywa się miesiąc po miesiącu aż kapitał osiągnie cel FIRE.", formula: "Symulacja: Kapitał(m+1) = (Kapitał(m) + Oszczędności) × (1 + r/12)", icon: "timer" },
+  cel_fire: { title: "Kapitał Docelowy (Cel FIRE)", desc: "Reguła 25 (Rule of 25) - bezpieczny cel kapitałowy obliczany jako 25 × Roczne Wydatki. Przy założeniu stopy wypłaty 4%, kwota ta wystarczy na sfinansowanie całego Twojego życia bez pracy.", formula: "Cel FIRE = Wydatki roczne × 25", icon: "flag" },
+  lata_do_fire: { title: "Data Wolności Finansowej", desc: "To moment, w którym Twój dochód pasywny z inwestycji pokrywa 100% Twoich wydatków życiowych. Od tego dnia Twój portfel 'samodzielnie się finansuje', uwalniając Cię od przymusu pracy.", formula: "Zależna od stopy oszczędności procentowo do dochodu.", icon: "timer" },
   wydatki_roczne: { title: "Wydatki roczne", desc: "Twoje roczne wydatki obliczone jako miesięczne × 12. To podstawa do wyliczenia celu FIRE metodą reguły 4%. Pamiętaj że w fazie emerytury wydatki będą rosły razem z inflacją.", formula: "Wydatki roczne = Wydatki miesięczne × 12", icon: "receipt_long" },
   wymagane_oszczednosci: { title: "Wymagane oszczędności", desc: "Ile musisz odkładać miesięcznie żeby osiągnąć cel FIRE w zadanym czasie. Obliczone na podstawie wzoru annuity — uwzględnia procent składany i Twój kapitał startowy.", formula: "PMT = (Cel - PV×(1+r)^n) ÷ ((1+r)^n - 1) × r", icon: "calculate" },
   wklad_laczny: { title: "Łączny wkład", desc: "Suma wszystkich Twoich wpłat — kapitał startowy plus wszystkie miesięczne oszczędności przez cały okres akumulacji. Różnica między kapitałem końcowym a wkładem to efekt procentu składanego.", formula: "Wkład = Kapitał startowy + Oszczędności miesięczne × Liczba miesięcy", icon: "payments" },
@@ -27,7 +28,25 @@ Object.assign(window.modalData, {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
+  // --- ROBUST EDUCATIONAL MODAL WIRING ---
+  document.querySelectorAll('[onclick^="openEduModal"]').forEach(function(el) {
+    var match = el.getAttribute('onclick').match(/openEduModal\(['"]([^'"]+)['"]/);
+    if (match) {
+      var modalId = match[1];
+      el.removeAttribute('onclick');
+      el.addEventListener('click', function(e) {
+        if (window.openEduModal) window.openEduModal(modalId, e);
+      });
+      el.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && window.openEduModal) {
+          window.openEduModal(modalId, e);
+        }
+      });
+      el.removeAttribute('onkeydown');
+    }
+  });
   // Wire all text inputs
+  var debouncedRecalc = window.debounce ? window.debounce(recalc, 150) : recalc;
   ['wf-wydatki', 'wf-oszczednosci', 'wf-kapital', 'wf-stopa', 'wf-inflacja', 'wf-stopa-wyplat', 'wf-lata-cel', 'wf-wiek'].forEach(function (id) {
     var el = document.getElementById(id);
     if (!el) return;
@@ -42,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       recalc();
     });
-    el.addEventListener('input', recalc);
+    el.addEventListener('input', debouncedRecalc);
   });
 
   // Wire IKE toggle
@@ -54,7 +73,10 @@ document.addEventListener('DOMContentLoaded', function () {
   if (btnSave) btnSave.addEventListener('click', saveCurrentScenario);
 
   var btnShare = document.getElementById('btn-share-result-fire');
-  if (btnShare) btnShare.addEventListener('click', shareResult);
+  if (btnShare) btnShare.addEventListener('click', function() {
+      updateUrlParams();
+      if(window.shareResult) window.shareResult('Moja symulacja FIRE - ETFkalkulator.pl');
+  });
 
   // Load saved state
   if (window.location.search) loadFromUrlParams();
@@ -191,37 +213,4 @@ function renderScenarios() {
   });
 }
 
-function shareResult() {
-  updateUrlParams();
-  var url = window.location.href;
-  var title = 'Moja symulacja FIRE - ETFkalkulator.pl';
-  if (navigator.share) {
-    navigator.share({ title: title, url: url }).catch(function () {});
-  } else {
-    navigator.clipboard.writeText(url).then(function () {
-      var el = document.getElementById('txt-btn-share-fire');
-      if (el) { el.textContent = 'Skopiowano link!'; setTimeout(function () { el.textContent = 'Udostępnij wynik'; }, 2000); }
-    });
-  }
-}
 
-/* Modal functions (shared with other calculators) */
-function openEduModal(type, event) {
-  if (event) { event.preventDefault(); event.stopPropagation(); }
-  if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
-  var data = window.modalData[type];
-  if (!data) return;
-  document.getElementById('modal-title').innerText = data.title;
-  document.getElementById('modal-explanation').innerText = data.desc;
-  document.getElementById('modal-formula').innerText = data.formula;
-  document.getElementById('modal-icon').innerText = data.icon;
-  var modal = document.getElementById('edu-modal');
-  modal.classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeEduModal() {
-  var modal = document.getElementById('edu-modal');
-  modal.classList.add('hidden');
-  document.body.style.overflow = '';
-}

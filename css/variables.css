@@ -164,6 +164,17 @@
   --table-row-alt: #fcfcfc;
   --callout-bg: var(--color-bg-elevated);
   --shadow: var(--shadow-sm);
+
+  /* --- STITCH TOKENS (LIGHT MODE: Nowoczesna Strona Główna) --- */
+  --stitch-bg: #f8fafc;
+  --stitch-surface: #ffffff;
+  --stitch-border: #e2e8f0;
+  --stitch-text: #0f172a;
+  --stitch-muted: #64748b;
+  --stitch-accent: #0d7ff2;
+  --stitch-input: #ffffff;
+  --stitch-shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --stitch-shadow-glow: 0 0 15px rgba(13, 127, 242, 0.15);
 }
 
 
@@ -191,6 +202,17 @@
     --table-row-alt: #1e2235;
     --callout-bg: #1e2235;
     --shadow: rgba(0, 0, 0, 0.4);
+
+    /* --- STITCH TOKENS (DARK MODE: Newsletter Restoration) --- */
+    --stitch-bg: #0f172a;       /* Deep Slate background */
+    --stitch-surface: #1e293b;  /* Elevated Slate matching ROUND_TWELVE styling */
+    --stitch-border: #334155;
+    --stitch-text: #f8fafc;
+    --stitch-muted: #94a3b8;
+    --stitch-accent: #38abf8;   /* Brightened for dark mode contrast */
+    --stitch-input: #0f172a;
+    --stitch-shadow-soft: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+    --stitch-shadow-glow: 0 0 20px rgba(56, 171, 248, 0.25);
   }
 }
 
@@ -213,6 +235,17 @@ html.dark-mode body {
   --table-row-alt: #1e2235;
   --callout-bg: #1e2235;
   --shadow: rgba(0, 0, 0, 0.4);
+
+  /* --- STITCH TOKENS (DARK MODE: Newsletter Restoration) --- */
+  --stitch-bg: #0f172a;
+  --stitch-surface: #1e293b;
+  --stitch-border: #334155;
+  --stitch-text: #f8fafc;
+  --stitch-muted: #94a3b8;
+  --stitch-accent: #38abf8;
+  --stitch-input: #0f172a;
+  --stitch-shadow-soft: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --stitch-shadow-glow: 0 0 20px rgba(56, 171, 248, 0.25);
 }
 
 html.light-mode :root {
@@ -233,4 +266,15 @@ html.light-mode :root {
   --table-row-alt: #fcfcfc;
   --callout-bg: var(--color-bg-elevated);
   --shadow: var(--shadow-sm);
+
+  /* --- STITCH TOKENS (LIGHT MODE: Nowoczesna Strona Główna) --- */
+  --stitch-bg: #f8fafc;
+  --stitch-surface: #ffffff;
+  --stitch-border: #e2e8f0;
+  --stitch-text: #0f172a;
+  --stitch-muted: #64748b;
+  --stitch-accent: #0d7ff2;
+  --stitch-input: #ffffff;
+  --stitch-shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --stitch-shadow-glow: 0 0 15px rgba(13, 127, 242, 0.15);
 }
