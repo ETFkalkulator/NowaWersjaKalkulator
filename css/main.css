@@ -2524,3 +2524,31 @@ html.dark-mode [style*="color: var(--color-primary-500)"] {
 html.dark-mode [style*="color: var(--color-text-muted)"] {
   color: var(--text-muted) !important;
 }
+
+/* Ukrycie paska przewijania (cross-browser) */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#scenario-cards-container {
+    overflow-x: scroll !important; /* Force the scrollbar */
+    scrollbar-color: #3b82f6 #f3f4f6; /* Firefox: Blue thumb, light track */
+    scrollbar-width: auto;
+}
+#scenario-cards-container::-webkit-scrollbar {
+    height: 10px; /* Visible height */
+    display: block;
+}
+#scenario-cards-container::-webkit-scrollbar-track {
+    background: #f1f5f9; /* Light gray track */
+    border-radius: 10px;
+}
+#scenario-cards-container::-webkit-scrollbar-thumb {
+    background: #3b82f6; /* High-contrast Blue */
+    border-radius: 10px;
+    border: 2px solid #f1f5f9; /* Adds a little 'air' around the thumb */
+}
