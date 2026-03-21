@@ -1,606 +1,635 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
   <title>O projekcie — Misja i Wizja | ETFkalkulator.pl</title>
   <link rel="canonical" href="https://etfkalkulator.pl/pages/o-projekcie.html">
-  <meta name="description"
-    content="Poznaj misję ETFkalkulator.pl. Budujemy narzędzia, które pomagają Polakom odzyskać wolność finansową i stać się architektami nowego świata.">
-
+  <meta name="description" content="Poznaj misję ETFkalkulator.pl. Budujemy narzędzia które pomagają Polakom odzyskać wolność finansową i stać się architektami nowego świata.">
   <meta property="og:title" content="O projekcie — Misja i Wizja | ETFkalkulator.pl">
-  <meta property="og:description"
-    content="Poznaj misję ETFkalkulator.pl. Budujemy narzędzia, które pomagają Polakom odzyskać wolność finansową.">
+  <meta property="og:description" content="Poznaj misję ETFkalkulator.pl. Budujemy narzędzia które pomagają Polakom odzyskać wolność finansową i stać się architektami nowego świata.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://etfkalkulator.pl/pages/o-projekcie.html">
-  <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <link rel="icon" href="../images/favicon.png">
 
-  <!-- Google Analytics 4 — loads only after cookie consent -->
+  <!-- Core Scripts -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
-    // Default: analytics denied until user accepts
-    gtag('consent', 'default', {
-      'analytics_storage': 'denied'
-    });
+    gtag('consent', 'default', { 'analytics_storage': 'denied' });
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
-  <script>
-    gtag('config', 'G-GZECMECQ15', { 'send_page_view': false });
+  <script> gtag('config', 'G-GZECMECQ15', { 'send_page_view': false }); </script>
+
+  <!-- Tailwind CSS and Fonts -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap" rel="stylesheet" />
+
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: { "primary": "#0d7ff2" },
+          fontFamily: { "display": ["Inter", "sans-serif"] }
+        }
+      }
+    }
   </script>
 
-  <!-- Optyamizowany ładunek czcionek z Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap"
-    rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript>
-    <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
-  </noscript>
+  <style>
+    .glass-effect { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .dark .glass-effect { background: rgba(15, 23, 42, 0.7); }
+    body { font-family: 'Inter', sans-serif; }
+    .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-size: 24px; line-height: 1; -webkit-font-smoothing: antialiased; }
+    input[type="checkbox"].custom-checkbox {
+      appearance: none; -webkit-appearance: none; width: 1.25rem; height: 1.25rem; border: 2px solid #cbd5e1; border-radius: 4px;
+      display: grid; place-content: center; cursor: pointer; transition: all 0.2s ease;
+    }
+    .dark input[type="checkbox"].custom-checkbox { border-color: #334155; background-color: #0f172a; }
+    input[type="checkbox"].custom-checkbox:checked { background-color: #0d7ff2; border-color: #0d7ff2; }
+    input[type="checkbox"].custom-checkbox::before {
+      content: ""; width: 0.65rem; height: 0.65rem; transform: scale(0); transition: 120ms transform ease-in-out; background-color: white; clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    }
+    input[type="checkbox"].custom-checkbox:checked::before { transform: scale(1); }
+    .touch-target-info { min-width: 44px; min-height: 44px; display: flex !important; align-items: center; justify-content: center; }
+    
+    /* Range Slider Styling */
+    input[type=range] { appearance: none; -webkit-appearance: none; width: 100%; background: transparent; }
+    input[type=range]::-webkit-slider-thumb { appearance: none; -webkit-appearance: none; height: 1.2rem; width: 1.2rem; border-radius: 50%; background: #0d7ff2; cursor: pointer; margin-top: -6px; box-shadow: 0 0 10px rgba(13,127,242,0.5); }
+    input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 0.4rem; cursor: pointer; background: #e2e8f0; border-radius: 1rem; }
+    .dark input[type=range]::-webkit-slider-runnable-track { background: #334155; }
+  </style>
+
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/main.css">
-
-  <style>
-    /* Stylowanie manifestu Apple-style */
-    .manifest-container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding-block: var(--space-20) var(--space-32);
-    }
-
-    .hero-manifest {
-      text-align: center;
-      margin-bottom: var(--space-24);
-    }
-
-    .hero-manifest__title {
-      font-family: var(--font-display);
-      font-size: clamp(2.5rem, 8vw, 4.5rem);
-      font-weight: 800;
-      line-height: var(--leading-tight);
-      letter-spacing: -0.04em;
-      color: var(--color-text-primary);
-      margin-bottom: var(--space-8);
-      background: linear-gradient(180deg, var(--color-text-primary) 0%, var(--color-primary-700) 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-manifest__subtitle {
-      font-size: var(--text-xl);
-      line-height: var(--leading-relaxed);
-      color: var(--color-text-secondary);
-      max-width: 600px;
-      margin: 0 auto;
-      font-weight: 400;
-    }
-
-    .section-vision {
-      margin-bottom: var(--space-32);
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: var(--text-3xl);
-      font-weight: var(--weight-bold);
-      letter-spacing: -0.02em;
-      margin-bottom: var(--space-6);
-      color: var(--color-text-primary);
-    }
-
-    .section-description {
-      font-size: var(--text-lg);
-      line-height: 1.6;
-      color: var(--color-text-secondary);
-      margin-bottom: var(--space-12);
-    }
-
-    /* Sekcja Edukacyjna - Grid */
-    .edu-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-12);
-      margin-top: var(--space-16);
-    }
-
-    @media (max-width: 768px) {
-      .edu-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-8);
-      }
-
-      .manifest-container {
-        padding-block: var(--space-12) var(--space-16);
-      }
-    }
-
-    .edu-card {
-      padding: var(--space-8);
-      background: var(--color-bg-elevated);
-      border-radius: var(--radius-2xl);
-      border: 1px solid var(--color-border-subtle);
-      transition: transform var(--transition-normal), box-shadow var(--transition-normal);
-    }
-
-    .edu-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .edu-card__icon {
-      margin-bottom: var(--space-6);
-      color: var(--color-primary-500);
-    }
-
-    .edu-card__title {
-      font-size: var(--text-xl);
-      font-weight: var(--weight-semibold);
-      margin-bottom: var(--space-4);
-      color: var(--color-text-primary);
-    }
-
-    .edu-card__text {
-      font-size: var(--text-base);
-      color: var(--color-text-secondary);
-      line-height: var(--leading-relaxed);
-    }
-
-    /* Sekcja Bezpieczeństwa */
-    .security-banner {
-      background: var(--color-primary-50);
-      border: 1px solid var(--color-primary-100);
-      border-radius: var(--radius-2xl);
-      padding: var(--space-12);
-      text-align: center;
-      margin-block: var(--space-20);
-    }
-
-    .security-banner__badge {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      padding: var(--space-2) var(--space-4);
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: var(--radius-full);
-      font-size: var(--text-xs);
-      font-weight: var(--weight-semibold);
-      color: var(--color-primary-700);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: var(--space-6);
-    }
-
-    /* List od Autora */
-    .author-letter {
-      position: relative;
-      background: var(--color-bg-elevated);
-      padding: var(--space-16);
-      border-radius: var(--radius-2xl);
-      border: 1px solid var(--color-border-subtle);
-      margin-block: var(--space-24);
-    }
-
-    .author-letter::before {
-      content: '"';
-      position: absolute;
-      top: 20px;
-      left: 40px;
-      font-size: 120px;
-      font-family: serif;
-      color: var(--color-primary-100);
-      line-height: 1;
-      opacity: 0.5;
-    }
-
-    .author-letter__content {
-      position: relative;
-      font-style: italic;
-      font-size: var(--text-lg);
-      line-height: 1.8;
-      color: var(--color-text-primary);
-      white-space: pre-line;
-    }
-
-    .author-letter__sign {
-      margin-top: var(--space-8);
-      font-weight: var(--weight-semibold);
-      color: var(--color-primary-600);
-      font-style: normal;
-    }
-
-    /* CTA */
-    .final-cta {
-      text-align: center;
-      padding-block: var(--space-20);
-    }
-
-    .final-cta__text {
-      font-size: var(--text-2xl);
-      font-weight: var(--weight-bold);
-      margin-bottom: var(--space-8);
-      color: var(--color-text-primary);
-    }
-
-    /* Dark mode overrides */
-    html.dark-mode body,
-    html.dark-mode {
-      background: #1C1C1E !important;
-      color: #F5F5F7 !important;
-    }
-
-    html.dark-mode .manifest-container *,
-    html.dark-mode .hero-manifest *,
-    html.dark-mode .mission-block *,
-    html.dark-mode .principles-grid *,
-    html.dark-mode .privacy-section *,
-    html.dark-mode .author-letter * {
-      color: #F5F5F7 !important;
-    }
-
-    html.dark-mode .hero-manifest__title {
-      background: linear-gradient(180deg, #F5F5F7 0%, #7cc8fb 100%) !important;
-      background-clip: text !important;
-      -webkit-background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-    }
-
-    html.dark-mode .principles-card {
-      background: #2C2C2E !important;
-      border-color: #48484A !important;
-    }
-
-    html.dark-mode .author-letter {
-      background: #2C2C2E !important;
-      border-color: #48484A !important;
-    }
-
-    html.dark-mode .author-letter__sign {
-      color: #7cc8fb !important;
-    }
-
-    html.dark-mode .author-letter__content {
-      white-space: normal !important;
-      color: #F5F5F7 !important;
-    }
-
-    html.dark-mode .author-letter * {
-      color: #F5F5F7 !important;
-    }
-
-    html.dark-mode .edu-card {
-      background: #2C2C2E !important;
-      border-color: #48484A !important;
-    }
-
-    html.dark-mode .edu-card * {
-      color: #F5F5F7 !important;
-    }
-
-    html.dark-mode .final-cta__text {
-      color: #F5F5F7 !important;
-    }
-
-    html.dark-mode .security-banner {
-      background: #1a2634 !important;
-      border-color: #2d4a6b !important;
-    }
-
-    html.dark-mode .security-banner * {
-      color: #F5F5F7 !important;
-    }
-
-    html.dark-mode .security-banner__badge {
-      background: rgba(255, 255, 255, 0.1) !important;
-      color: #7cc8fb !important;
-    }
-
-    html.dark-mode .author-letter__content {
-      white-space: normal !important;
-    }
-
-    html.dark-mode .security-title-fix {
-      color: #F5F5F7 !important;
-    }
-
-    html.dark-mode .security-desc-fix {
-      color: #AEAEB2 !important;
-    }
-  </style>
 </head>
 
 <body>
+
   <!-- Cookie Consent Banner -->
   <div id="cookie-consent" class="cookie-consent" style="display: none;">
     <div class="cookie-consent__inner">
       <div class="cookie-consent__content">
-        <h4 class="cookie-consent__title">Prywatno i pliki cookies</h4>
+        <h4 class="cookie-consent__title">Prywatność i pliki cookies</h4>
         <p class="cookie-consent__text">
-          ETFkalkulator.pl uywa plik�w cookies do analizy ruchu i personalizacji treci.
-          Kontynuujc przegldanie zgadzasz si na nasz
-          <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__link">polityk cookies</a>.
+          ETFkalkulator.pl używa plików cookies do analizy ruchu i personalizacji treści.
+          Kontynuując przeglądanie zgadzasz się na naszą
+          <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__link">politykę cookies</a>.
         </p>
       </div>
       <div class="cookie-consent__actions">
-        <button id="cookie-accept" class="cookie-consent__btn cookie-consent__btn--accept">Akceptuj</button>
-        <button id="cookie-reject" class="cookie-consent__btn cookie-consent__btn--reject">Odrzu</button>
-        <a href="../pages/polityka-prywatnosci.html#cookies"
-          class="cookie-consent__btn cookie-consent__btn--settings">Ustawienia</a>
+        <button id="cookie-accept" class="cookie-consent__btn cookie-consent__btn--accept">
+          Akceptuję
+        </button>
+        <button id="cookie-reject" class="cookie-consent__btn cookie-consent__btn--reject">
+          Odrzuć
+        </button>
+        <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__btn cookie-consent__btn--settings">
+          Ustawienia
+        </a>
       </div>
     </div>
   </div>
 
-  <header class="header">
-    <div class="container">
-      <div class="header__inner">
-        <a href="../index.html" class="header__logo">ETF<span>kalkulator</span>.pl</a>
-        <nav class="header__nav" aria-label="Nawigacja główna">
-          <a href="../pages/kalkulator-etf.html">Kalkulator ETF</a>
-          <a href="../pages/kalkulator-obligacji.html">Obligacje</a>
-          <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
-          <a href="../pages/porownywarka.html">Porównywarka</a>
-          <a href="../blog/index.html">Blog</a>
-          <a href="../pages/o-projekcie.html" class="link-primary">O projekcie</a>
-          <button id="btn-darkmode" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="
-            width: 38px; height: 38px; border-radius: var(--radius-full); 
-            border: 1.5px solid var(--color-border); background: var(--color-bg-elevated); 
-            cursor: pointer; display: flex; align-items: center; justify-content: center; 
-            transition: all var(--transition-fast); flex-shrink: 0;
-          ">
-            <svg id="ikona-slonce" width="18" height="18" viewBox="0 0 24 24" fill="none"
-              stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="5" />
-              <line x1="12" y1="1" x2="12" y2="3" />
-              <line x1="12" y1="21" x2="12" y2="23" />
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-              <line x1="1" y1="12" x2="3" y2="12" />
-              <line x1="21" y1="12" x2="23" y2="12" />
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-            </svg>
-            <svg id="ikona-ksiezyc" width="18" height="18" viewBox="0 0 24 24" fill="none"
-              stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              style="display:none">
-              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-            </svg>
-          </button>
-          <a href="../index.html#newsletter" class="btn btn--sm btn-newsletter">Newsletter</a>
-        </nav>
+  <!-- NAGŁÓWEK TAILWIND -->
+  <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-slate-200/50 dark:border-slate-800/50"
+    style="font-family: 'Inter', sans-serif;">
+    <!-- Top Row: Logo & Main Actions -->
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center shrink-0">
+        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity"
+          style="text-decoration:none;">
+          <div class="bg-primary p-1.5 rounded-xl text-white flex items-center justify-center"
+            style="background-color: #0d7ff2;">
+            <span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">ETFkalkulator.pl</span>
+        </a>
+      </div>
+
+      <!-- Desktop Links: Visible on lg and up -->
+      <div class="hidden lg:flex items-center gap-6 xl:gap-8 mx-6">
+        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
+          href="kalkulator-etf.html" style="text-decoration:none;">Kalkulator ETF</a>
+        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
+          href="kalkulator-obligacji.html" style="text-decoration:none;">Kalkulator Obligacji</a>
+        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
+          href="kalkulator-wolnosci.html" style="text-decoration:none;">Kalkulator Wolności</a>
+        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
+          href="porownywarka.html" style="text-decoration:none;">Porównywarka</a>
+        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
+          href="../blog/index.html" style="text-decoration:none;">Blog</a>
+        <a class="text-sm font-extrabold text-primary transition-colors hover:opacity-80"
+          href="o-projekcie.html" style="text-decoration:none; color: #0d7ff2;">O projekcie</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <!-- Theme Toggle -->
+        <button onclick="przelaczTryb()" aria-label="Przełącz tryb"
+          class="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center hover:bg-slate-50 transition-colors">
+          <span class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
+          <span class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
+        </button>
+        <!-- CTA Button -->
+        <a href="#newsletter-section"
+          class="bg-primary text-white px-4 h-9 rounded-full flex items-center justify-center text-[13px] font-bold hover:opacity-90 transition-opacity no-underline"
+          style="background-color: #0d7ff2;">
+          Zapisz się
+        </a>
       </div>
     </div>
-  </header>
 
-  <!-- MOBILE NAV -->
-  <div class="mobile-nav-bar" id="mobile-nav-bar">
-    <div class="mobile-nav-bar__inner">
-      <a href="../pages/kalkulator-etf.html" class="mobile-nav-bar__link">ETF</a>
-      <span class="mobile-nav-bar__separator"></span>
-      <a href="../pages/kalkulator-obligacji.html" class="mobile-nav-bar__link">Obligacje</a>
-      <span class="mobile-nav-bar__separator"></span>
-      <a href="../pages/kalkulator-wolnosci.html" class="mobile-nav-bar__link">Wolność finansowa</a>
-      <span class="mobile-nav-bar__separator"></span>
-      <a href="../pages/porownywarka.html" class="mobile-nav-bar__link">Porównywarka ETF</a>
-      <span class="mobile-nav-bar__separator"></span>
-      <a href="../blog/index.html" class="mobile-nav-bar__link">Blog</a>
-      <span class="mobile-nav-bar__separator field-oprojekcie"></span>
-      <a href="../pages/o-projekcie.html" class="mobile-nav-bar__link aktywna">O projekcie</a>
+    <!-- Bottom Row: Scrollable Menu (Mobile Only) -->
+    <div
+      class="lg:hidden h-11 border-t border-slate-200/30 dark:border-slate-800/30 flex items-center overflow-x-auto overflow-y-hidden no-scrollbar px-4 gap-6 bg-white/10 dark:bg-slate-900/10"
+      style="-webkit-overflow-scrolling: touch;">
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap"
+        href="kalkulator-etf.html" style="text-decoration:none;">Kalkulator ETF</a>
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap"
+        href="kalkulator-obligacji.html" style="text-decoration:none;">Obligacje</a>
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap"
+        href="kalkulator-wolnosci.html" style="text-decoration:none;">Wolność finansowa</a>
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap"
+        href="porownywarka.html" style="text-decoration:none;">Porównywarka</a>
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap"
+        href="../blog/index.html" style="text-decoration:none;">Blog</a>
+      <a class="text-[12px] font-extrabold text-primary hover:opacity-80 whitespace-nowrap"
+        href="o-projekcie.html" style="text-decoration:none; color:#0d7ff2;">O projekcie</a>
     </div>
-  </div>
+  </nav>
 
-  <main>
-    <div class="container">
-      <div class="manifest-container">
+  <style>
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
 
-        <!-- HERO MANIFEST -->
-        <section class="hero-manifest">
-          <p class="page-hero__bread" style="margin-bottom:var(--space-8)">
-            <a href="../index.html">ETFkalkulator.pl</a> › O projekcie
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+
+  <main class="pt-32 pb-20 px-4 sm:px-6 min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+    <div class="max-w-3xl mx-auto">
+      
+      <!-- HERO -->
+      <nav class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-8 w-fit mx-auto md:mx-0">
+        <a href="../index.html" class="hover:text-primary transition-colors" style="text-decoration:none;">ETFkalkulator.pl</a>
+        <span class="material-symbols-outlined text-[10px]">chevron_right</span>
+        <span class="text-primary dark:text-blue-400">O projekcie</span>
+      </nav>
+
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight text-center leading-tight mb-6 bg-gradient-to-b from-slate-900 to-primary dark:from-white dark:to-blue-400 bg-clip-text text-transparent">
+        Zbuduj swoją wolność.<br>Bądź architektem swojego życia.
+      </h1>
+      
+      <p class="text-lg md:text-xl text-slate-500 dark:text-slate-400 max-w-xl mx-auto text-center mb-16">
+        Projekt stworzony, by pomóc Ci zrozumieć finanse, pokonać inflację i odzyskać najcenniejszy zasób: Twój czas.
+      </p>
+
+      <!-- SECTION 1 -->
+      <h2 class="text-2xl font-black text-slate-900 dark:text-white mb-4">Odzyskaj kontrolę</h2>
+      <p class="text-lg text-slate-500 dark:text-slate-400 leading-relaxed mb-10">
+        Większość z nas przeszła przez system edukacji, który uczył dat bitew i budowy pantofelka, ale nigdy nie wspomniał o tym, jak zarządzać pieniędzmi. Zostaliśmy przygotowani do bycia pracownikami, a nie architektami swojego kapitału.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+        <div class="glass-effect rounded-[1.5rem] p-8 border border-white/50 dark:border-slate-800/50 shadow-xl hover:scale-[1.02] transition-all duration-300">
+          <span class="material-symbols-outlined text-4xl text-primary mb-4" style="color: #0d7ff2;">trending_up</span>
+          <h3 class="text-xl font-black text-slate-900 dark:text-white mb-3">Magia procentu składanego</h3>
+          <p class="text-slate-500 dark:text-slate-400">
+            Najpotężniejsza siła we wszechświecie według Einsteina. To mechanizm, który sprawia, że Twój kapitał rośnie wykładniczo. Czas staje się Twoim największym sprzymierzeńcem.
           </p>
-          <h1 class="hero-manifest__title">Zbuduj swoją wolność. Bądź architektem swojego życia.</h1>
-          <p class="hero-manifest__subtitle">
-            Projekt stworzony, by pomóc Ci zrozumieć finanse, pokonać inflację i odzyskać najcenniejszy zasób: Twój
-            czas.
+        </div>
+        <div class="glass-effect rounded-[1.5rem] p-8 border border-white/50 dark:border-slate-800/50 shadow-xl hover:scale-[1.02] transition-all duration-300">
+          <span class="material-symbols-outlined text-4xl text-primary mb-4" style="color: #0d7ff2;">account_balance</span>
+          <h3 class="text-xl font-black text-slate-900 dark:text-white mb-3">Narzędzia wolności</h3>
+          <p class="text-slate-500 dark:text-slate-400">
+            ETF-y (niskokosztowe fundusze indeksowe) oraz Obligacje Skarbowe Indeksowane Inflacją. Dwa fundamenty, na których buduje się trwały majątek, odporny na rynkowe zawirowania.
           </p>
-        </section>
+        </div>
+      </div>
 
-        <!-- SEKCJA EDUKACYJNA -->
-        <section class="section-vision">
-          <h2 class="section-title">Odzyskaj kontrolę</h2>
-          <p class="section-description">
-            Większość z nas przeszła przez system edukacji, który uczył dat bitew i budowy pantofelka, ale nigdy nie
-            wspomniał o tym, jak zarządzać pieniędzmi. Zostaliśmy przygotowani do bycia pracownikami, a nie architektami
-            swojego kapitału.
-          </p>
+      <!-- SECTION 2 — Privacy/Security banner -->
+      <div class="w-full rounded-[2rem] p-8 md:p-12 mb-16 bg-primary/5 dark:bg-primary/10 border border-primary/20 dark:border-primary/30 text-center">
+        <div class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-slate-900 text-primary text-xs font-bold uppercase tracking-wider shadow-sm mb-6">
+          <span class="material-symbols-outlined text-base">lock</span>
+          <span>Technologia budująca zaufanie</span>
+        </div>
+        
+        <h2 class="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mb-4">
+          Twoje finanse to Twoja prywatność.
+        </h2>
+        
+        <p class="text-slate-500 dark:text-slate-400 max-w-xl mx-auto leading-relaxed mb-4">
+          ETFkalkulator.pl to nie korporacyjna baza danych. Wszystkie obliczenia (podatek Belki, inflacja, prognozy) są wykonywane lokalnie, w Twojej przeglądarce. Żadne dane o Twoich oszczędnościach nie trafiają na serwery.
+        </p>
+        
+        <p class="text-sm text-slate-400 dark:text-slate-500">
+          Pełna transparentność — każda liczba na ekranie ma swoje wyjaśnienie, które możesz sprawdzić jednym kliknięciem.
+        </p>
 
-          <div class="edu-grid">
-            <div class="edu-card">
-              <div class="edu-card__icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                  <polyline points="17 6 23 6 23 12"></polyline>
-                </svg>
-              </div>
-              <h3 class="edu-card__title">Magia procentu składanego</h3>
-              <p class="edu-card__text">
-                Najpotężniejsza siła we wszechświecie według Einsteina. To mechanizm, który sprawia, że Twój kapitał
-                rośnie wykładniczo. Pokażemy Ci, jak czas staje się Twoim największym sprzymierzeńcem.
-              </p>
+        <div class="flex flex-wrap justify-center gap-3 mt-6 w-full">
+          <div class="inline-flex flex-1 md:flex-none whitespace-nowrap items-center justify-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-700 dark:text-slate-300 shadow-sm">
+            <span class="material-symbols-outlined text-base text-emerald-500">verified_user</span>
+            Brak rejestracji
+          </div>
+          <div class="inline-flex flex-1 md:flex-none whitespace-nowrap items-center justify-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-700 dark:text-slate-300 shadow-sm">
+            <span class="material-symbols-outlined text-base text-blue-500">code</span>
+            Obliczenia w przeglądarce
+          </div>
+          <div class="inline-flex flex-1 md:flex-none whitespace-nowrap items-center justify-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-700 dark:text-slate-300 shadow-sm">
+            <span class="material-symbols-outlined text-base text-slate-500">visibility_off</span>
+            Dane nie opuszczają urządzenia
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 3 — Author letter -->
+      <div class="glass-effect rounded-[2rem] p-6 md:p-12 mb-16 border border-white/50 dark:border-slate-800/50 shadow-xl relative overflow-hidden">
+        <div class="absolute top-4 left-6 text-[120px] font-serif leading-none text-primary/10 dark:text-primary/5 pointer-events-none select-none">"</div>
+        
+        <div class="relative z-10">
+          <div class="text-xs font-bold uppercase tracking-widest text-primary mb-6 flex items-center gap-2">
+            <span class="material-symbols-outlined text-base">edit_note</span>
+            List od twórcy
+          </div>
+          
+          <div class="text-slate-600 dark:text-slate-300 leading-relaxed text-base md:text-lg space-y-4">
+            <p>
+              Cześć. Nie znajdziesz tu mojego nazwiska ani zdjęcia. Jestem po prostu zajawkowiczem, który pisze kod po godzinach. Dlaczego stworzyłem ETFkalkulator.pl? Ponieważ uważam, że system edukacji zawiódł nas w najważniejszej kwestii: nie nauczył nas, jak sprawić, by pieniądze pracowały dla nas.
+            </p>
+            <p>
+              Mój cel jest prosty: chcę dojść w życiu do momentu, w którym pieniądze przestaną być problemem. Chcę robić to, na co mam ochotę, a nie to, co muszę. I chcę, żebyś Ty też to osiągnął. Kiedy przestaniemy z niepokojem gonić za przetrwaniem, zyskamy przestrzeń na rzeczy ważne.
+            </p>
+            <p>
+              Marzy mi się Polska, w której nie jesteśmy tylko wyrobnikami wykonującymi polecenia innych bez prawa głosu. Chcę, żebyśmy mieli kapitał, czas i wolność, by stać się architektami nowego świata i wyznaczać kierunki jego rozwoju. Ten kalkulator to mój mały wkład w tę wizję. Narzędzie jest i zawsze będzie bezpieczne, a Twoje dane nie opuszczają Twojego komputera. Policz swoją drogę do wolności.
+            </p>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-primary">person</span>
             </div>
-            <div class="edu-card">
-              <div class="edu-card__icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                  <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"></path>
-                </svg>
-              </div>
-              <h3 class="edu-card__title">Narzędzia wolności</h3>
-              <p class="edu-card__text">
-                ETF-y (niskokosztowe fundusze indeksowe) oraz Obligacje Skarbowe Indeksowane Inflacją. To dwa
-                fundamenty, na których buduje się trwały majątek, odporny na rynkowe zawirowania.
-              </p>
+            <div>
+              <p class="font-bold text-slate-900 dark:text-white">— Twórca Projektu</p>
+              <p class="text-sm text-slate-400">ETFkalkulator.pl · marzec 2026</p>
             </div>
           </div>
-        </section>
+        </div>
+      </div>
 
-        <!-- SEKCJA BEZPIECZEŃSTWA -->
-        <section class="security-banner">
-          <div class="security-banner__badge">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-              stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-              <path d="M7 11V7a5 5 0 0110 0v4"></path>
-            </svg>
-            Technologia budująca zaufanie
+      <!-- SECTION 4 — Tools overview -->
+      <h2 class="text-2xl font-black text-slate-900 dark:text-white mb-2 text-center">Cztery narzędzia. Jedna misja.</h2>
+      <p class="text-slate-500 dark:text-slate-400 text-center mb-10">Każdy kalkulator odpowiada na inne pytanie.</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-16">
+        <a href="kalkulator-etf.html" class="rounded-2xl p-6 border-2 cursor-pointer hover:scale-[1.02] hover:shadow-lg transition-all duration-200 group border-blue-200 dark:border-blue-900 bg-blue-50/50 dark:bg-blue-950/30" style="text-decoration:none;">
+          <span class="material-symbols-outlined text-3xl text-primary mb-3">analytics</span>
+          <h3 class="font-black text-slate-900 dark:text-white">Kalkulator ETF</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Procent składany, IKE/IKZE, podatek Belki i inflacja.</p>
+          <div class="mt-3 flex justify-end">
+            <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
           </div>
-          <h2 class="section-title security-title-fix">Twoje finanse to Twoja prywatność.</h2>
-          <p class="section-description security-desc-fix" style="margin: 0 auto var(--space-8); max-width: 650px;">
-            ETF Kalkulator to nie korporacyjna baza danych. Wszystkie obliczenia (podatek Belki, inflacja, prognozy) są
-            wykonywane lokalnie, w Twojej przeglądarce. Żadne dane o Twoich oszczędnościach nie trafiają na serwery.
-          </p>
-          <p class="text-sm text-muted">
-            Pełna transparentność — każda liczba na ekranie ma swoje wyjaśnienie, które możesz sprawdzić jednym
-            kliknięciem.
-          </p>
-        </section>
+        </a>
 
-        <!-- LIST OD AUTORA -->
-        <section class="author-letter">
-          <div class="author-letter__content">
-            Cześć. Nie znajdziesz tu mojego nazwiska ani zdjęcia. Jestem po prostu zajawkowiczem, który pisze kod po
-            godzinach. Dlaczego stworzyłem ETF Kalkulator? Ponieważ uważam, że system edukacji zawiódł nas w
-            najważniejszej kwestii: nie nauczył nas, jak sprawić, by pieniądze pracowały dla nas.
-
-            Mój cel jest prosty: chcę dojść w życiu do momentu, w którym pieniądze przestaną być problemem. Chcę robić
-            to, na co mam ochotę, a nie to, co muszę. I chcę, żebyś Ty też to osiągnął. Kiedy przestaniemy z niepokojem
-            gonić za przetrwaniem, zyskamy przestrzeń na rzeczy ważne.
-
-            Marzy mi się Polska, w której nie jesteśmy tylko wyrobnikami wykonującymi polecenia innych bez prawa głosu.
-            Chcę, żebyśmy mieli kapitał, czas i wolność, by stać się architektami nowego świata i wyznaczać kierunki
-            jego rozwoju. Ten kalkulator to mój mały wkład w tę wizję. Narzędzie jest i zawsze będzie bezpieczne, a
-            Twoje dane nie opuszczają Twojego komputera. Policz swoją drogę do wolności.
+        <a href="kalkulator-obligacji.html" class="rounded-2xl p-6 border-2 cursor-pointer hover:scale-[1.02] hover:shadow-lg transition-all duration-200 group border-amber-200 dark:border-amber-900 bg-amber-50/50 dark:bg-amber-950/30" style="text-decoration:none;">
+          <span class="material-symbols-outlined text-3xl text-amber-600 mb-3">account_balance</span>
+          <h3 class="font-black text-slate-900 dark:text-white">Obligacje Skarbowe</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">EDO, COI, TOS — zysk po podatku z uwzględnieniem inflacji.</p>
+          <div class="mt-3 flex justify-end">
+             <span class="material-symbols-outlined text-amber-600 group-hover:translate-x-1 transition-transform">arrow_forward</span>
           </div>
-          <p class="author-letter__sign">— Twórca Projektu</p>
-        </section>
+        </a>
 
-        <!-- CALL TO ACTION -->
-        <section class="final-cta">
-          <p class="final-cta__text">Gotowy, by zacząć?</p>
-          <a href="../pages/kalkulator-etf.html" class="btn btn--primary btn--lg"
-            style="padding: var(--space-6) var(--space-12); font-size: var(--text-lg);">
+        <a href="kalkulator-wolnosci.html" class="rounded-2xl p-6 border-2 cursor-pointer hover:scale-[1.02] hover:shadow-lg transition-all duration-200 group border-emerald-200 dark:border-emerald-900 bg-emerald-50/50 dark:bg-emerald-950/30" style="text-decoration:none;">
+          <span class="material-symbols-outlined text-3xl text-emerald-600 mb-3">self_improvement</span>
+          <h3 class="font-black text-slate-900 dark:text-white">Wolność Finansowa</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Cel FIRE, reguła 4%, ile lat i ile miesięcznie odkładać.</p>
+          <div class="mt-3 flex justify-end">
+             <span class="material-symbols-outlined text-emerald-600 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+          </div>
+        </a>
+
+        <a href="porownywarka.html" class="rounded-2xl p-6 border-2 cursor-pointer hover:scale-[1.02] hover:shadow-lg transition-all duration-200 group border-violet-200 dark:border-violet-900 bg-violet-50/50 dark:bg-violet-950/30" style="text-decoration:none;">
+          <span class="material-symbols-outlined text-3xl text-violet-600 mb-3">compare_arrows</span>
+          <h3 class="font-black text-slate-900 dark:text-white">Porównywarka ETF</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">ETF vs Obligacje vs Lokata — który instrument wygrywa?</p>
+          <div class="mt-3 flex justify-end">
+             <span class="material-symbols-outlined text-violet-600 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- FINAL CTA -->
+      <div class="text-center py-16">
+        <div class="text-xs font-bold uppercase tracking-widest text-primary mb-4 flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-base">rocket_launch</span>
+          Zacznij teraz
+        </div>
+        <h2 class="text-3xl md:text-4xl font-black text-slate-900 dark:text-white mb-4">Gotowy, by zacząć?</h2>
+        <p class="text-slate-500 dark:text-slate-400 mb-8">Pierwsze obliczenie zajmie mniej niż 30 sekund.</p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="kalkulator-etf.html" class="bg-primary text-white border-primary px-8 py-4 rounded-2xl font-bold text-base hover:scale-[1.02] hover:shadow-lg shadow-primary/25 transition-all duration-200 inline-flex items-center justify-center gap-2 no-underline" style="background-color: #0d7ff2;">
             Zaprojektuj swoją wolność finansową
+            <span class="material-symbols-outlined">arrow_forward</span>
           </a>
-        </section>
-
+          <a href="kalkulator-obligacji.html" class="bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 px-8 py-4 rounded-2xl font-bold text-base border-2 border-slate-200 dark:border-slate-700 hover:border-primary/50 transition-all duration-200 inline-flex items-center justify-center gap-2 no-underline">
+            Sprawdź obligacje EDO
+            <span class="material-symbols-outlined">account_balance</span>
+          </a>
+        </div>
       </div>
+
+      <!-- DISCLAIMER -->
+      <div class="glass-effect rounded-2xl p-6 border border-slate-200 dark:border-slate-800 flex gap-4 items-start shadow-sm mt-8">
+        <span class="material-symbols-outlined text-slate-400">info</span>
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
+          Serwis ETFkalkulator.pl ma charakter wyłącznie edukacyjny i informacyjny. Prezentowane obliczenia nie stanowią rekomendacji inwestycyjnej, porady finansowej ani doradztwa podatkowego. Przed podjęciem decyzji inwestycyjnej skonsultuj się z licencjonowanym doradcą finansowym.
+        </p>
+      </div>
+
     </div>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__inner">
-        <div class="footer__links">
-          <a href="../pages/kalkulator-etf.html">Kalkulator ETF</a>
-          <a href="../pages/kalkulator-obligacji.html">Kalkulator obligacji</a>
-          <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
-          <a href="../pages/porownywarka.html">Porównywarka ETF</a>
-          <a href="../blog/index.html">Blog</a>
-          <a href="../pages/o-projekcie.html">O projekcie</a>
-          <a href="../pages/polityka-prywatnosci.html">Polityka prywatności</a>
-          <a href="../pages/regulamin.html">Regulamin</a>
+  <!-- NEWSLETTER SECTION (Wide Banner) -->
+  <section id="newsletter-section"
+    class="pt-10 pb-20 px-6 bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 transition-colors">
+    <div class="max-w-7xl mx-auto">
+      <div
+        class="bg-white/70 dark:bg-slate-900/80 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 lg:p-16 shadow-2xl border border-white/50 dark:border-slate-800/50 relative overflow-hidden group">
+        <!-- Decorative element -->
+        <div
+          class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700">
         </div>
-        <p class="text-muted">© 2026 ETFkalkulator.pl — narzędzie edukacyjne dla polskich inwestorów</p>
+
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center lg:justify-items-stretch relative z-10">
+          <!-- Left Side: Content -->
+          <div class="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              Newsletter
+            </div>
+            <h2
+              class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.1]">
+              Bądź na bieżąco z <span class="text-primary">rynkiem ETF</span> <span class="hidden md:inline">i
+                finansami</span>
+            </h2>
+            <p class="text-slate-500 dark:text-slate-400 text-lg leading-relaxed max-w-xl">
+              Dołącz do społeczności świadomych inwestorów. Otrzymuj analizy, nowe kalkulatory i rzetelną wiedzę prosto
+              na swoją skrzynkę. Zero spamu.
+            </p>
+          </div>
+
+          <!-- Right Side: Form -->
+          <div class="w-full lg:max-w-md mx-auto lg:ml-auto">
+            <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
+              <div class="ml-form-embedWrapper embedForm">
+                <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                  <form class="ml-block-form"
+                    action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe"
+                    method="post" target="_blank">
+                    <div class="flex flex-col space-y-4">
+                      <!-- Email Input -->
+                      <div class="ml-form-fieldRow">
+                        <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                          <input aria-label="email" aria-required="true" type="email"
+                            class="w-full h-14 px-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-white text-base font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all placeholder:text-slate-400"
+                            name="fields[email]" placeholder="Twój adres e-mail">
+                        </div>
+                      </div>
+
+                      <!-- Consents -->
+                      <div class="ml-form-embedPermissions">
+                        <label class="flex items-start gap-4 cursor-pointer group">
+                          <input type="checkbox" name="gdpr[]"
+                            value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl" required
+                            class="custom-checkbox mt-1 transition-all">
+                          <span
+                            class="text-[11px] text-slate-500 dark:text-slate-400 font-medium leading-relaxed group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors">Zgadzam
+                            się na otrzymywanie newslettera. Możesz się wypisać w każdej chwili.</span>
+                        </label>
+                      </div>
+
+                      <!-- reCAPTCHA -->
+                      <div class="ml-form-recaptcha ml-validate-required py-2 flex justify-center">
+                        <div class="g-recaptcha transform scale-[0.85] origin-center"
+                          data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                      </div>
+
+                      <input type="hidden" name="ml-submit" value="1">
+                      <input type="hidden" name="anticsrf" value="true">
+
+                      <!-- Button -->
+                      <div class="ml-form-embedSubmit">
+                        <button type="submit"
+                          class="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-sm md:text-base uppercase tracking-widest hover:scale-[1.01] active:scale-[0.98] transition-all shadow-xl shadow-primary/20"
+                          style="background-color: #0d7ff2;">
+                          Zapisz się teraz
+                        </button>
+                      </div>
+
+                      <!-- Legal & Financial Disclaimers -->
+                      <div class="pt-6 border-t border-slate-100 dark:border-slate-800 mt-2">
+                        <p class="text-[10px] text-slate-400 dark:text-slate-500 leading-relaxed mb-2">
+                          Zapisując się, akceptujesz <a href="regulamin.html"
+                            class="underline hover:text-primary">Regulamin</a> i <a href="polityka-prywatnosci.html"
+                            class="underline hover:text-primary">Politykę Prywatności</a>. Twoje dane są bezpieczne i
+                          służą wyłącznie do wysyłki newslettera.
+                        </p>
+                        <p class="text-[10px] text-slate-400 font-medium italic">
+                          Prezentowane treści nie stanowią rekomendacji inwestycyjnej.
+                        </p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <!-- Success -->
+                <div class="ml-form-successBody row-success" style="display: none">
+                  <div
+                    class="p-10 rounded-3xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 text-center">
+                    <div
+                      class="w-16 h-16 bg-emerald-100 dark:bg-emerald-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span
+                        class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-3xl">verified</span>
+                    </div>
+                    <h4 class="text-emerald-900 dark:text-emerald-300 font-bold text-xl mb-1">Sukces!</h4>
+                    <p class="text-emerald-700 dark:text-emerald-500 text-sm">Sprawdź swoją skrzynkę e-mail, aby
+                      potwierdzić zapis.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STOPKA (Refined 3-Column Layout) -->
+  <footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 py-20 px-6"
+    style="font-family: 'Inter', sans-serif;">
+    <div class="max-w-7xl mx-auto">
+      <!-- Logo Row -->
+      <div class="mb-12 border-b border-slate-200/50 dark:border-slate-800/50 pb-8">
+        <div class="flex items-center gap-2">
+          <div class="bg-primary p-1.5 rounded-lg text-white flex items-center justify-center"
+            style="background-color: #0d7ff2;">
+            <span class="material-symbols-outlined text-base">account_balance_wallet</span>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">ETF<span
+              class="font-normal text-slate-500">kalkulator</span>.pl</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20 items-start">
+
+        <!-- Column 1: Narzędzia -->
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Narzędzia</h5>
+          <ul class="space-y-4">
+            <li><a href="kalkulator-etf.html"
+                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                style="text-decoration:none;">Kalkulator ETF</a></li>
+            <li><a href="kalkulator-obligacji.html"
+                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                style="text-decoration:none;">Obligacje Skarbowe</a></li>
+            <li><a href="kalkulator-wolnosci.html"
+                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                style="text-decoration:none;">Wolność Finansowa</a></li>
+            <li><a href="porownywarka.html"
+                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                style="text-decoration:none;">Porównywarka ETF</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 2: Projekt -->
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Projekt</h5>
+          <ul class="space-y-4">
+            <li><a href="../blog/index.html"
+                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                style="text-decoration:none;">Blog i Wiedza</a></li>
+            <li><a href="o-projekcie.html"
+                class="text-sm font-bold text-primary transition-colors leading-loose"
+                style="text-decoration:none;">O projekcie</a></li>
+            <li><a href="regulamin.html"
+                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                style="text-decoration:none;">Regulamin</a></li>
+            <li><a href="polityka-prywatnosci.html"
+                class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose"
+                style="text-decoration:none;">Polityka prywatności</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Kontakt -->
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Kontakt</h5>
+          <p class="text-sm text-slate-500 mb-6 leading-relaxed">Masz pytania? Pisz śmiało:</p>
+          <a href="mailto:kontakt@etfkalkulator.pl"
+            class="text-sm font-bold text-slate-900 dark:text-white hover:text-primary transition-colors block mb-8"
+            style="text-decoration:none;">kontakt@etfkalkulator.pl</a>
+          <div class="flex gap-4">
+            <a href="#"
+              class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-sm">
+              <span class="material-symbols-outlined text-lg">share</span>
+            </a>
+            <a href="#"
+              class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-sm">
+              <span class="material-symbols-outlined text-lg">alternate_email</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dolny pasek i Disclaimer -->
+      <div class="mt-20 pt-10 border-t border-slate-200 dark:border-slate-900">
+        <p class="text-[11px] text-slate-400 dark:text-slate-500 leading-relaxed mb-8 max-w-4xl">
+          Serwis ETFkalkulator.pl ma charakter wyłącznie edukacyjny i informacyjny. Prezentowane obliczenia nie stanowią
+          rekomendacji inwestycyjnej, porady finansowej ani doradztwa podatkowego w rozumieniu obowiązujących przepisów
+          prawa. Przed podjęciem decyzji inwestycyjnej skonsultuj się z licencjonowanym doradcą finansowym. Inwestowanie
+          wiąże się z ryzykiem utraty części lub całości zainwestowanego kapitału.
+        </p>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+          <p>© 2026 ETFkalkulator.pl — Made with ❤️ by Florian</p>
+          <div class="flex gap-6">
+            <span>Wszelkie prawa zastrzeżone</span>
+          </div>
+        </div>
       </div>
     </div>
   </footer>
 
+  <!-- MailerLite Logic -->
   <script>
-    // Inicjalizacja przy ładowaniu strony
-    (function () {
-      var html = document.documentElement;
-      var zapisany = localStorage.getItem('etf-tryb');
-      var slonce = document.getElementById('ikona-slonce');
-      var ksiezyc = document.getElementById('ikona-ksiezyc');
-      var systemCiemny = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-      if (zapisany === 'ciemny' || (!zapisany && systemCiemny)) {
-        html.classList.add('dark-mode');
-        if (slonce) slonce.style.display = 'none';
-        if (ksiezyc) ksiezyc.style.display = 'block';
-      } else if (zapisany === 'jasny') {
-        html.classList.add('light-mode');
-      }
-    })();
-
-    function przelaczTryb() {
-      var html = document.documentElement;
-      var slonce = document.getElementById('ikona-slonce');
-      var ksiezyc = document.getElementById('ikona-ksiezyc');
-      var ciemny = html.classList.contains('dark-mode') ||
-        (!html.classList.contains('light-mode') &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches);
-
-      if (ciemny) {
-        html.classList.remove('dark-mode');
-        html.classList.add('light-mode');
-        if (slonce) slonce.style.display = 'block';
-        if (ksiezyc) ksiezyc.style.display = 'none';
-        localStorage.setItem('etf-tryb', 'jasny');
-      } else {
-        html.classList.remove('light-mode');
-        html.classList.add('dark-mode');
-        if (slonce) slonce.style.display = 'none';
-        if (ksiezyc) ksiezyc.style.display = 'block';
-        localStorage.setItem('f-tciemny');
-      }
+    function ml_webform_success_37996059() {
+      var $ = ml_jQuery || jQuery;
+      $('.ml-subscribe-form-37996059 .row-success').show();
+      $('.ml-subscribe-form-37996059 .row-form').hide();
     }
   </script>
-  <script>
-    // Cookie Consent Management
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
+    type="text/javascript"></script>
+  <script src="https://www.google.com/recaptcha/api.js" defer></script>
+
+  <script defer>
+    function przelaczTryb() {
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        localStorage.setItem('etf-tryb', 'jasny');
+      } else {
+        html.classList.add('dark');
+        localStorage.setItem('etf-tryb', 'ciemny');
+      }
+    }
+    (function () {
+      if (localStorage.getItem('etf-tryb') === 'ciemny' || (!localStorage.getItem('etf-tryb') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+
+  <!-- Cookie Consent Script -->
+  <script defer>
     document.addEventListener('DOMContentLoaded', function () {
-      var cookieConsent = document.getElementById('cookie-consent');
-      var acceptBtn = document.getElementById('cookie-accept');
-      var rejectBtn = document.getElementById('cookie-reject');
-      var cookieChoice = localStorage.getItem('etf-cookie-consent');
-      if (!cookieChoice && cookieConsent) {
+      const cookieConsent = document.getElementById('cookie-consent');
+      if (!cookieConsent) return;
+      const acceptBtn = document.getElementById('cookie-accept');
+      const rejectBtn = document.getElementById('cookie-reject');
+      const choice = localStorage.getItem('etf-cookie-consent');
+
+      if (!choice) {
         cookieConsent.style.display = 'block';
-      } else if (cookieChoice === 'accepted' && typeof gtag === 'function') {
-        gtag('consent', 'update', { 'analytics_storage': 'granted' });
-        gtag('event', 'page_view');
+        setTimeout(() => {
+          cookieConsent.style.opacity = '1';
+          cookieConsent.style.transform = 'translateY(0)';
+        }, 100);
       }
-      if (acceptBtn) {
-        acceptBtn.addEventListener('click', function () {
-          localStorage.setItem('etf-cookie-consent', 'accepted');
-          cookieConsent.style.display = 'none';
-          if (typeof gtag === 'function') {
-            gtag('consent', 'update', { 'analytics_storage': 'granted' });
-            gtag('event', 'page_view');
-          }
-        });
-      }
-      if (rejectBtn) {
-        rejectBtn.addEventListener('click', function () {
-          localStorage.setItem('etf-cookie-consent', 'rejected');
-          cookieConsent.style.display = 'none';
-          if (typeof gtag === 'function') {
-            gtag('consent', 'update', { 'analytics_storage': 'denied' });
-          }
-        });
-      }
+
+      acceptBtn?.addEventListener('click', () => {
+        localStorage.setItem('etf-cookie-consent', 'accepted');
+        cookieConsent.style.display = 'none';
+        if (typeof gtag === 'function') {
+          gtag('consent', 'update', { 'analytics_storage': 'granted' });
+        }
+      });
+
+      rejectBtn?.addEventListener('click', () => {
+        localStorage.setItem('etf-cookie-consent', 'rejected');
+        cookieConsent.style.display = 'none';
+      });
     });
   </script>
 </body>
-
 </html>
