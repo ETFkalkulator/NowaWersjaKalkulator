@@ -395,7 +395,7 @@ function renderScenarios() {
 
     savedScenarios.forEach((scen, index) => {
         const div = document.createElement('div');
-        div.className = "min-w-[85vw] sm:min-w-[300px] snap-center sm:snap-start bg-white/70 dark:bg-slate-900/60 backdrop-blur-md border border-transparent dark:border-slate-700 rounded-2xl p-4 relative group cursor-pointer hover:border-primary/50 active:scale-[0.98] shrink-0 transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-primary/10 overflow-hidden";
+        div.className = "shrink-0 w-[80vw] sm:w-[320px] snap-start relative h-auto flex flex-col bg-white/70 dark:bg-slate-900/60 backdrop-blur-md border border-transparent dark:border-slate-700 rounded-2xl p-4 group cursor-pointer hover:border-primary/50 active:scale-[0.98] transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-primary/10 overflow-hidden";
         div.onclick = () => loadScenario(index);
         
         // Format z polskim separatorem spacji (np. "10 000")
@@ -409,7 +409,7 @@ function renderScenarios() {
             </button>
 
             <!-- Guide Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-white/40 to-transparent dark:from-slate-900/95 dark:via-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4 pointer-events-none z-10">
+            <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-white/40 to-transparent dark:from-slate-900/95 dark:via-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8 pointer-events-none z-10">
                 <span class="bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                     <span class="material-symbols-outlined text-[14px]">file_download</span>
                     Kliknij, aby wczytać
