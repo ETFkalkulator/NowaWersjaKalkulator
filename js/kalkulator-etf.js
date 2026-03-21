@@ -395,7 +395,7 @@ function renderScenarios() {
 
     savedScenarios.forEach((scen, index) => {
         const div = document.createElement('div');
-        div.className = "shrink-0 w-[82vw] sm:w-[350px] snap-start bg-white dark:bg-slate-800 rounded-2xl shadow-lg border-2 border-blue-500/20 hover:border-blue-500 transition-colors p-6 flex flex-col relative group cursor-pointer active:scale-[0.98] duration-300 hover:shadow-xl hover:shadow-primary/10 overflow-hidden";
+        div.className = "shrink-0 w-[78vw] max-w-[310px] sm:max-w-none sm:w-[350px] snap-start relative flex flex-col p-6 bg-white dark:bg-slate-800 rounded-2xl border-2 border-slate-200 dark:border-slate-700 shadow-sm hover:border-blue-500 dark:hover:border-blue-500 transition-all duration-300 group cursor-pointer active:scale-[0.98] overflow-hidden";
         div.onclick = () => loadScenario(index);
 
         // Format z polskim separatorem spacji (np. "10 000")
