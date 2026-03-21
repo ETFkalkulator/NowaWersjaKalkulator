@@ -61,6 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
         customMarzaInput.addEventListener('input', () => obliczWszystko());
     }
 
+    const customYr1Input = document.getElementById('input-custom-yr1');
+    if (customYr1Input) {
+        customYr1Input.addEventListener('input', () => obliczWszystko());
+    }
+
     const btnSaveScenario = document.getElementById('btn-save-scenario');
     if (btnSaveScenario) btnSaveScenario.addEventListener('click', saveCurrentScenario);
 
@@ -106,9 +111,8 @@ function updateEarlyRedemptionSlider() {
 
     if (slider) {
         slider.max = years;
-        if (parseInt(slider.value) > years) {
-            slider.value = years;
-        }
+        slider.value = years;
+        
         if (display) display.innerText = slider.value;
     }
     updateBondInfoBar();
@@ -129,7 +133,7 @@ function updateBondInfoBar() {
         yr1El.textContent = (yr1Rate * 100).toFixed(2) + '%';
     }
     if (marginEl && marginWrap) {
-        if (bond.margin !== undefined && bond.cap !== 'payout') {
+        if (bond.margin !== undefined && bond.margin > 0 && bond.fixed === undefined) {
             marginEl.textContent = 'CPI + ' + (bond.margin * 100).toFixed(2) + '%';
             marginWrap.classList.remove('hidden');
         } else if (bond.fixed !== undefined) {
@@ -145,10 +149,20 @@ function updateBondInfoBar() {
 
     const customMarzaWrap = document.getElementById('custom-marza-wrap');
     if (customMarzaWrap) {
-        const hasCpiMargin = bond.margin !== undefined && bond.cap !== 'payout' && bond.fixed === undefined;
+        const hasCpiMargin = bond.margin !== undefined && bond.margin > 0 && bond.fixed === undefined;
         customMarzaWrap.classList.toggle('hidden', !hasCpiMargin);
         if (!hasCpiMargin) {
             const inp = document.getElementById('input-custom-marza');
+            if (inp) inp.value = '';
+        }
+    }
+    
+    const customYr1Wrap = document.getElementById('custom-yr1-wrap');
+    if (customYr1Wrap) {
+        const hasYr1 = bond.yr1 !== undefined || bond.fixedYr1 !== undefined || bond.fixed !== undefined;
+        customYr1Wrap.classList.toggle('hidden', !hasYr1);
+        if (!hasYr1) {
+            const inp = document.getElementById('input-custom-yr1');
             if (inp) inp.value = '';
         }
     }
@@ -172,6 +186,13 @@ function obliczWszystko() {
     const effectiveMargin = (!isNaN(customMarzaVal) && customMarzaVal >= 0)
         ? customMarzaVal / 100
         : bond.margin;
+    
+    const customYr1Val = parseFloat(document.getElementById('input-custom-yr1')?.value);
+    const baseFirstYearRate = bond.yr1 ?? bond.fixed ?? bond.fixedYr1 ?? 0;
+    const effectiveYr1 = (!isNaN(customYr1Val) && customYr1Val > 0)
+        ? customYr1Val / 100
+        : baseFirstYearRate;
+
     const cpi = Math.max(0, inflacjaInput / 100);
     const bondPrice = isRolowanie ? 99.90 : 100.00;
 
@@ -227,7 +248,7 @@ function obliczWszystko() {
             let taxPaid = 0;
 
             for (let i = 1; i <= fullYears; i++) {
-                let rate = (type === 'TOS') ? bond.fixed : (type === 'ROR') ? bond.fixedYr1 + bond.margin : (i === 1 ? bond.yr1 : cpi + effectiveMargin);
+                let rate = (type === 'TOS') ? effectiveYr1 : (type === 'ROR') ? effectiveYr1 + bond.margin : (i === 1 ? effectiveYr1 : cpi + effectiveMargin);
                 let interest = currentNominal * rate;
                 accumInterest += interest;
 
@@ -243,7 +264,7 @@ function obliczWszystko() {
 
             let fractionalInterest = 0;
             if (remMonths > 0) {
-                let rate = (type === 'TOS') ? bond.fixed : (type === 'ROR') ? bond.fixedYr1 + bond.margin : (fullYears === 0 ? bond.yr1 : cpi + effectiveMargin);
+                let rate = (type === 'TOS') ? effectiveYr1 : (type === 'ROR') ? effectiveYr1 + bond.margin : (fullYears === 0 ? effectiveYr1 : cpi + effectiveMargin);
                 fractionalInterest = currentNominal * rate * (remMonths / 12);
                 accumInterest += fractionalInterest;
 
@@ -308,7 +329,7 @@ function obliczWszystko() {
 
         if (tabelaBody) {
             const currentCpiRate = cpi;
-            const avgRate = (type === 'TOS') ? bond.fixed : (y === 1) ? bond.yr1 : currentCpiRate + effectiveMargin;
+            const avgRate = (type === 'TOS') ? effectiveYr1 : (y === 1) ? effectiveYr1 : currentCpiRate + effectiveMargin;
 
             const tr = document.createElement('tr');
             tr.className = "hover:bg-slate-50/50 dark:hover:bg-slate-900/50 transition-colors";
@@ -404,6 +425,8 @@ function saveCurrentScenario() {
         doplata: document.getElementById('input-doplata') ? document.getElementById('input-doplata').value : 0,
         typ: document.getElementById('input-typ').value,
         inflacja: document.getElementById('input-inflacja') ? document.getElementById('input-inflacja').value : 0,
+        customMarza: document.getElementById('input-custom-marza') ? document.getElementById('input-custom-marza').value : '',
+        customYr1: document.getElementById('input-custom-yr1') ? document.getElementById('input-custom-yr1').value : '',
         kapitalKoncowyStr: document.getElementById('ob-wynik-kapital').innerText,
         zyskNominalnyStr: document.getElementById('ob-wynik-zysk').innerText
     };
@@ -444,6 +467,9 @@ function renderScenarios() {
             if (document.getElementById('input-doplata')) document.getElementById('input-doplata').value = scen.doplata;
             document.getElementById('input-typ').value = scen.typ;
             if (document.getElementById('input-inflacja')) document.getElementById('input-inflacja').value = scen.inflacja;
+            if (document.getElementById('input-custom-marza')) document.getElementById('input-custom-marza').value = scen.customMarza || '';
+            if (document.getElementById('input-custom-yr1')) document.getElementById('input-custom-yr1').value = scen.customYr1 || '';
+            
             updateEarlyRedemptionSlider();
             obliczWszystko();
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -489,6 +515,11 @@ function updateUrlParams() {
     if (document.getElementById('input-ike').checked) params.set('ike', '1');
     if (document.getElementById('input-800plus').checked) params.set('800', '1');
     if (document.getElementById('input-rolowanie').checked) params.set('r', '1');
+    
+    const cMarza = document.getElementById('input-custom-marza')?.value;
+    if (cMarza) params.set('cm', cMarza);
+    const cYr1 = document.getElementById('input-custom-yr1')?.value;
+    if (cYr1) params.set('cy1', cYr1);
 
     // Update URL without reloading
     const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + params.toString();
@@ -504,6 +535,9 @@ function loadFromUrlParams() {
     if (params.has('ike')) document.getElementById('input-ike').checked = params.get('ike') === '1';
     if (params.has('800')) document.getElementById('input-800plus').checked = params.get('800') === '1';
     if (params.has('r')) document.getElementById('input-rolowanie').checked = params.get('r') === '1';
+    
+    if (params.has('cm') && document.getElementById('input-custom-marza')) document.getElementById('input-custom-marza').value = params.get('cm');
+    if (params.has('cy1') && document.getElementById('input-custom-yr1')) document.getElementById('input-custom-yr1').value = params.get('cy1');
 
     updateTypeOptions();
     updateEarlyRedemptionSlider();
@@ -561,9 +595,15 @@ window.modalData = {
     },
     custom_marza: {
         title: "Własna Marża",
-        desc: "Marża to stały dodatek ponad inflację który zarabiasz na obligacjach indeksowanych (EDO, COI, ROS, ROD). Ministerstwo Finansów może zmieniać ją przy nowych emisjach. Jeśli kupujesz obligacje z inną marżą niż domyślna w kalkulatorze — wpisz tutaj własną wartość. Zostaw puste żeby używać domyślnej marży z aktualnej oferty MF.",
-        formula: "Oprocentowanie od roku 2 = CPI + Twoja marża (lub domyślna jeśli pole puste)",
+        desc: "Marża to stały dodatek ponad inflację, który zarabiasz na obligacjach indeksowanych (EDO, COI, ROS, ROD). Jeśli Ministerstwo Finansów zmieni marże w nowych emisjach, możesz tutaj wpisać własną wartość. Zostaw pole puste, aby używać domyślnej marży z aktualnej oferty MF.",
+        formula: "Zysk w kolejnych latach = Inflacja + Twoja marża (lub domyślna jeśli pole jest puste)",
         icon: "edit"
+    },
+    custom_yr1: {
+        title: "Oprocentowanie w 1. roku",
+        desc: "W pierwszym roku (lub całym okresie dla TOS/ROR) odsetki są gwarantowane i podane z góry przez Ministerstwo Finansów. Jeśli warunki emisji się zmienią, możesz tutaj wprowadzić nową wartość oprocentowania. Zostaw pole puste, aby korzystać z wartości domyślnych dla wybranej obligacji.",
+        formula: "Odsetki = Twój % (lub domyślny jeśli pole puste) × nominał",
+        icon: "percent"
     },
     wynik_karta: {
         title: "Jak liczymy wynik?",
