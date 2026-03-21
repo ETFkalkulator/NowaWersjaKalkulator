@@ -1,601 +1,538 @@
 <!DOCTYPE html>
-<html lang="pl">
-
+<html lang="pl" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
-  <title>Regulamin ETFkalkulator.pl | Warunki korzystania z serwisu</title>
-  <meta name="description"
-    content="Regulamin ETFkalkulator.pl. Warunki korzystania z kalkulatorów, odpowiedzialność i ograniczenia.">
-
-  <meta property="og:title" content="Regulamin ETFkalkulator.pl | Warunki korzystania z serwisu">
-  <meta property="og:description"
-    content="Regulamin ETFkalkulator.pl. Warunki korzystania z kalkulatorów, odpowiedzialność i ograniczenia.">
+  <title>Regulamin | ETFkalkulator.pl</title>
+  <link rel="canonical" href="https://etfkalkulator.pl/pages/regulamin.html">
+  <meta name="description" content="Regulamin ETFkalkulator.pl. Warunki korzystania z serwisu.">
+  <meta property="og:title" content="Regulamin | ETFkalkulator.pl">
+  <meta property="og:description" content="Regulamin ETFkalkulator.pl. Warunki korzystania z serwisu.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://etfkalkulator.pl/pages/regulamin.html">
-  <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:site_name" content="ETFkalkulator.pl">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Regulamin ETFkalkulator.pl | Warunki korzystania z serwisu">
-  <meta name="twitter:description"
-    content="Regulamin ETFkalkulator.pl. Warunki korzystania z kalkulatorów, odpowiedzialność i ograniczenia.">
-  <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png">
-
-  <!-- Favicon -->
-  <link rel="icon" href="../images/favicon.png">
-
-  <!-- Google Analytics 4 — loads only after cookie consent -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
-    // Default: analytics denied until user accepts
-    gtag('consent', 'default', {
-      'analytics_storage': 'denied'
-    });
+    gtag('consent', 'default', { 'analytics_storage': 'denied' });
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
-  <script>
-    gtag('config', 'G-GZECMECQ15', { 'send_page_view': false });
+  <script> gtag('config', 'G-GZECMECQ15', { 'send_page_view': false }); </script>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap" rel="stylesheet" />
+
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { "primary": "#0d7ff2" }, fontFamily: { "display": ["Inter", "sans-serif"] } } }
+    }
   </script>
 
-  <!-- Optyamizowany ładunek czcionek z Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap"
-    rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript>
-    <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
-  </noscript>
+  <style>
+    .glass-effect { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .dark .glass-effect { background: rgba(15, 23, 42, 0.7); }
+    body { font-family: 'Inter', sans-serif; }
+    .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-size: 24px; line-height: 1; -webkit-font-smoothing: antialiased; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/main.css">
-
-  <!-- SEO: Kanoniczny URL -->
-  <link rel="canonical" href="https://etfkalkulator.pl/pages/regulamin.html" />
-
-  <style>
-    .page-hero {
-      padding-block: var(--space-16) var(--space-12);
-      text-align: center;
-      border-bottom: 1px solid var(--color-border-subtle);
-    }
-
-    .page-hero__bread {
-      font-size: var(--text-xs);
-      color: var(--color-text-muted);
-      margin-bottom: var(--space-4);
-    }
-
-    .page-hero__bread a {
-      color: var(--color-primary-500);
-    }
-
-    .page-hero__bread a:hover {
-      text-decoration: underline;
-    }
-
-    .page-hero__title {
-      font-family: var(--font-display);
-      font-size: var(--text-3xl);
-      font-weight: var(--weight-bold);
-      color: var(--color-text-primary);
-      margin-bottom: var(--space-4);
-    }
-
-    .page-hero__subtitle {
-      font-size: var(--text-lg);
-      color: var(--color-text-secondary);
-      max-width: var(--max-width-text);
-      margin: 0 auto;
-    }
-
-    .regulamin-content {
-      max-width: var(--max-width-text);
-      margin: 0 auto;
-      padding: var(--space-16) 0;
-    }
-
-    .regulamin-section {
-      margin-bottom: var(--space-12);
-    }
-
-    .regulamin-section__title {
-      font-family: var(--font-display);
-      font-size: var(--text-xl);
-      font-weight: var(--weight-semibold);
-      color: var(--color-text-primary);
-      margin-bottom: var(--space-4);
-    }
-
-    .regulamin-section__text {
-      font-size: var(--text-base);
-      line-height: var(--leading-relaxed);
-      color: var(--color-text-secondary);
-      margin-bottom: var(--space-4);
-    }
-
-    .regulamin-section__list {
-      list-style: none;
-      padding: 0;
-      margin: var(--space-4) 0;
-    }
-
-    .regulamin-section__list li {
-      position: relative;
-      padding-left: var(--space-6);
-      margin-bottom: var(--space-3);
-      font-size: var(--text-base);
-      line-height: var(--leading-relaxed);
-      color: var(--color-text-secondary);
-    }
-
-    .regulamin-section__list li::before {
-      content: "•";
-      position: absolute;
-      left: var(--space-2);
-      color: var(--color-primary-500);
-      font-weight: bold;
-    }
-
-    .regulamin-section__subtitle {
-      font-size: var(--text-lg);
-      font-weight: var(--weight-semibold);
-      color: var(--color-text-primary);
-      margin: var(--space-6) 0 var(--space-3) 0;
-      line-height: var(--leading-tight);
-    }
-
-    .regulamin-section__warning {
-      background: var(--color-orange-50);
-      border-left: 3px solid var(--color-orange-500);
-      padding: var(--space-4);
-      margin: var(--space-6) 0;
-      border-radius: var(--radius-md);
-    }
-
-    .regulamin-section__warning p {
-      margin: 0;
-      font-size: var(--text-sm);
-      color: var(--color-orange-700);
-    }
-
-    .regulamin-section__important {
-      background: var(--color-primary-50);
-      border-left: 3px solid var(--color-primary-500);
-      padding: var(--space-4);
-      margin: var(--space-6) 0;
-      border-radius: var(--radius-md);
-    }
-
-    .regulamin-section__important p {
-      margin: 0;
-      font-size: var(--text-sm);
-      color: var(--color-primary-700);
-    }
-
-    @media (max-width: 768px) {
-      .page-hero {
-        padding-block: var(--space-12) var(--space-8);
-      }
-
-      .regulamin-content {
-        padding: var(--space-12) 0;
-      }
-    }
-  </style>
 </head>
 
 <body>
-  <!-- Cookie Consent Banner -->
-  <div id="cookie-consent" class="cookie-consent" style="display: none;">
-    <div class="cookie-consent__inner">
-      <div class="cookie-consent__content">
-        <h4 class="cookie-consent__title">Prywatno i pliki cookies</h4>
-        <p class="cookie-consent__text">
-          ETFkalkulator.pl uywa plik�w cookies do analizy ruchu i personalizacji treci.
-          Kontynuujc przegldanie zgadzasz si na nasz
-          <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__link">polityk cookies</a>.
-        </p>
+
+  <div id="cookie-consent" class="fixed bottom-6 left-6 right-6 md:left-auto md:w-[400px] bg-white dark:bg-slate-900 p-6 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 z-[100] transition-all duration-500 translate-y-20 opacity-0 transform" style="display: none;">
+    <div class="flex items-start gap-4 mb-4">
+      <div class="bg-amber-100 dark:bg-amber-900/30 p-2 rounded-xl text-amber-600 dark:text-amber-400">
+        <span class="material-symbols-outlined">cookie</span>
       </div>
-      <div class="cookie-consent__actions">
-        <button id="cookie-accept" class="cookie-consent__btn cookie-consent__btn--accept">Akceptuj</button>
-        <button id="cookie-reject" class="cookie-consent__btn cookie-consent__btn--reject">Odrzu</button>
-        <a href="../pages/polityka-prywatnosci.html#cookies"
-          class="cookie-consent__btn cookie-consent__btn--settings">Ustawienia</a>
+      <div>
+        <h4 class="font-bold text-slate-900 dark:text-white">Ciasteczka i Analityka</h4>
+        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mt-1">Używamy Google Analytics, aby anonimowo analizować ruch na stronie i ulepszać nasze kalkulatory.</p>
       </div>
+    </div>
+    <div class="flex gap-3">
+      <button id="cookie-accept" class="flex-1 bg-primary text-white text-xs font-bold py-3 rounded-xl hover:opacity-90 transition-opacity" style="background-color: #0d7ff2;">Akceptuję</button>
+      <button id="cookie-reject" class="flex-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold py-3 rounded-xl hover:bg-slate-200 transition-colors">Odrzuć</button>
     </div>
   </div>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="header__inner">
-      <a href="../index.html" class="header__logo">ETF<span>kalkulator</span>.pl</a>
-      <nav class="header__nav" aria-label="Nawigacja główna">
-        <a href="../pages/kalkulator-etf.html">Kalkulator ETF</a>
-        <a href="../pages/kalkulator-obligacji.html">Obligacje</a>
-        <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
-        <a href="../pages/porownywarka.html">Porównywarka</a>
-        <a href="../blog/index.html">Blog</a>
-        <a href="../pages/o-projekcie.html">O projekcie</a>
-        <button id="btn-darkmode" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="
-          width: 38px; height: 38px; border-radius: var(--radius-full); 
-          border: 1.5px solid var(--color-border); background: var(--color-bg-elevated); 
-          cursor: pointer; display: flex; align-items: center; justify-content: center; 
-          transition: all var(--transition-fast); flex-shrink: 0;
-        ">
-          <svg id="ikona-slonce" width="18" height="18" viewBox="0 0 24 24" fill="none"
-            stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5" />
-            <line x1="12" y1="1" x2="12" y2="3" />
-            <line x1="12" y1="21" x2="12" y2="23" />
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-            <line x1="1" y1="12" x2="3" y2="12" />
-            <line x1="21" y1="12" x2="23" y2="12" />
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-          </svg>
-          <svg id="ikona-ksiezyc" width="18" height="18" viewBox="0 0 24 24" fill="none"
-            stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            style="display:none">
-            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-          </svg>
+  <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-slate-200/50 dark:border-slate-800/50" style="font-family: 'Inter', sans-serif;">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center shrink-0">
+        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity" style="text-decoration:none;">
+          <div class="bg-primary p-1.5 rounded-xl text-white flex items-center justify-center" style="background-color: #0d7ff2;">
+            <span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">ETFkalkulator.pl</span>
+        </a>
+      </div>
+
+      <div class="hidden lg:flex items-center gap-6 xl:gap-8 mx-6">
+        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="kalkulator-etf.html" style="text-decoration:none;">Kalkulator ETF</a>
+        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="kalkulator-obligacji.html" style="text-decoration:none;">Kalkulator Obligacji</a>
+        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="kalkulator-wolnosci.html" style="text-decoration:none;">Kalkulator Wolności</a>
+        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="porownywarka.html" style="text-decoration:none;">Porównywarka</a>
+        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="../blog/index.html" style="text-decoration:none;">Blog</a>
+        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors" href="o-projekcie.html" style="text-decoration:none;">O projekcie</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button onclick="przelaczTryb()" aria-label="Przełącz tryb" class="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center hover:bg-slate-50 transition-colors">
+          <span class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
+          <span class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
         </button>
-        <a href="../index.html#newsletter" class="btn btn--sm btn-newsletter">Newsletter</a>
+      </div>
+    </div>
+
+    <div class="lg:hidden h-11 border-t border-slate-200/30 dark:border-slate-800/30 flex items-center overflow-x-auto overflow-y-hidden no-scrollbar px-4 gap-6 bg-white/10 dark:bg-slate-900/10" style="-webkit-overflow-scrolling: touch;">
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap" href="kalkulator-etf.html" style="text-decoration:none;">Kalkulator ETF</a>
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap" href="kalkulator-obligacji.html" style="text-decoration:none;">Obligacje</a>
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap" href="kalkulator-wolnosci.html" style="text-decoration:none;">Wolność finansowa</a>
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap" href="porownywarka.html" style="text-decoration:none;">Porównywarka</a>
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap" href="../blog/index.html" style="text-decoration:none;">Blog</a>
+      <a class="text-[12px] font-bold text-slate-600 dark:text-slate-400 hover:text-primary whitespace-nowrap" href="o-projekcie.html" style="text-decoration:none;">O projekcie</a>
+    </div>
+  </nav>
+
+  <main class="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-32 pb-20">
+      
+      <!-- HERO -->
+      <nav class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-8 w-fit mx-auto md:mx-0">
+        <a href="../index.html" class="hover:text-primary transition-colors" style="text-decoration:none;">ETFkalkulator.pl</a>
+        <span class="material-symbols-outlined text-[10px]">chevron_right</span>
+        <span class="text-primary dark:text-blue-400">Regulamin</span>
       </nav>
-    </div>
-  </header>
 
-  <!-- MOBILE NAV -->
-  <div class="mobile-nav-bar">
-    <div class="mobile-nav-bar__inner">
-      <a href="../pages/kalkulator-obligacji.html" class="mobile-nav-bar__link">Obligacje</a>
-      <span class="mobile-nav-bar__separator"></span>
-      <a href="../pages/kalkulator-wolnosci.html" class="mobile-nav-bar__link">Wolność finansowa</a>
-      <span class="mobile-nav-bar__separator"></span>
-      <a href="../pages/porownywarka.html" class="mobile-nav-bar__link">Porównywarka ETF</a>
-      <span class="mobile-nav-bar__separator"></span>
-      <a href="../blog/index.html" class="mobile-nav-bar__link">Blog</a>
-    </div>
-  </div>
-
-  <!-- GŁÓWNA TREŚĆ -->
-  <main class="container">
-
-    <!-- PAGE HERO -->
-    <section class="page-hero">
-      <p class="page-hero__bread">
-        <a href="../index.html">ETFkalkulator.pl</a> › Regulamin
+      <div class="flex justify-center mb-4">
+        <span class="material-symbols-outlined text-4xl text-primary" style="color: #0d7ff2;">gavel</span>
+      </div>
+      <h1 class="text-2xl md:text-4xl font-black text-slate-900 dark:text-white text-center mb-3">
+        Regulamin
+      </h1>
+      <p class="text-slate-500 dark:text-slate-400 text-center mb-3">
+        Warunki korzystania z serwisu ETFkalkulator.pl
       </p>
-      <h1 class="page-hero__title">Regulamin</h1>
-      <p class="page-hero__subtitle">Warunki korzystania z serwisu ETFkalkulator.pl</p>
-    </section>
+      
+      <div class="flex justify-center mb-12">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-xs font-semibold text-slate-500 dark:text-slate-400">
+          <span class="material-symbols-outlined text-sm">calendar_today</span>
+          Wchodzi w życie: 2 marca 2026
+        </div>
+      </div>
 
-    <!-- REGULAMIN CONTENT -->
-    <div class="regulamin-content">
-
-      <!-- WPROWADZENIE -->
-      <section class="regulamin-section">
-        <h2 class="regulamin-section__title">1. Wprowadzenie</h2>
-        <p class="regulamin-section__text">
-          Niniejszy regulamin określa warunki korzystania z serwisu ETFkalkulator.pl.
-          Korzystając z serwisu, potwierdzasz, że zapoznałeś się z regulaminem i akceptujesz jego postanowienia.
+      <!-- Section 1 -->
+      <div class="glass-effect rounded-[1.5rem] p-6 md:p-8 border border-white/50 dark:border-slate-800/50 shadow-sm mb-6">
+        <h2 class="text-lg font-black text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">1</div>
+          Wprowadzenie
+        </h2>
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+          Niniejszy regulamin określa warunki korzystania z serwisu ETFkalkulator.pl. Korzystając z serwisu, potwierdzasz, że zapoznałeś się z regulaminem i akceptujesz jego postanowienia.
         </p>
-        <p class="regulamin-section__text">
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
           ETFkalkulator.pl jest bezpłatnym narzędziem edukacyjnym przeznaczonym do celów informacyjnych.
         </p>
-      </section>
+      </div>
 
-      <!-- DEFINICJE -->
-      <section class="regulamin-section">
-        <h2 class="regulamin-section__title">2. Definicje</h2>
-        <p class="regulamin-section__text">W rozumieniu niniejszego regulaminu:</p>
-        <ul class="regulamin-section__list">
-          <li><strong>Administrator</strong> - osoba fizyczna będąca właścicielem serwisu ETFkalkulator.pl, świadcząca
-            usługi niekomercyjnie</li>
-          <li><strong>Serwis</strong> - strona internetowa ETFkalkulator.pl wraz z wszystkimi podstronami i narzędziami
+      <!-- Section 2 -->
+      <div class="glass-effect rounded-[1.5rem] p-6 md:p-8 border border-white/50 dark:border-slate-800/50 shadow-sm mb-6">
+        <h2 class="text-lg font-black text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">2</div>
+          Definicje
+        </h2>
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+          W rozumieniu niniejszego regulaminu:
+        </p>
+        <ul class="space-y-2 my-4 ml-0">
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Administrator — osoba fizyczna będąca właścicielem serwisu ETFkalkulator.pl, świadcząca usługi niekomercyjnie</span>
           </li>
-          <li><strong>Użytkownik</strong> - osoba korzystająca z Serwisu</li>
-          <li><strong>Kalkulatory</strong> - narzędzia do obliczania parametrów inwestycyjnych dostępne w Serwisie</li>
-          <li><strong>Newsletter</strong> - usługa informacyjna świadczona przez Serwis</li>
-          <li><strong>RODO</strong> - Rozporządzenie Parlamentu Europejskiego i Rady (UE) 2016/679</li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Serwis — strona internetowa ETFkalkulator.pl wraz z wszystkimi podstronami i narzędziami</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Użytkownik — osoba korzystająca z Serwisu</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Kalkulatory — narzędzia do obliczania parametrów inwestycyjnych dostępne w Serwisie</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Newsletter — usługa informacyjna świadczona przez Serwis</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">RODO — Rozporządzenie Parlamentu Europejskiego i Rady (UE) 2016/679</span>
+          </li>
         </ul>
-      </section>
+      </div>
 
-      <!-- ZAKRES USŁUGI -->
-      <section class="regulamin-section">
-        <h2 class="regulamin-section__title">3. Zakres usługi</h2>
-        <p class="regulamin-section__text">
+      <!-- Section 3 -->
+      <div class="glass-effect rounded-[1.5rem] p-6 md:p-8 border border-white/50 dark:border-slate-800/50 shadow-sm mb-6">
+        <h2 class="text-lg font-black text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">3</div>
+          Zakres usługi
+        </h2>
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
           ETFkalkulator.pl udostępnia następujące narzędzia edukacyjne:
         </p>
-        <ul class="regulamin-section__list">
-          <li>Kalkulator Obligacji Skarbowych (EDO, ROS, ROD)</li>
-          <li>Kalkulator Wolności Finansowej (FIRE)</li>
-          <li>Porównywarka ETF vs Obligacje</li>
-          <li>Newsletter z analizami rynku</li>
+        <ul class="space-y-2 my-4 ml-0">
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Kalkulator Obligacji Skarbowych (EDO, ROS, ROD)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Kalkulator Wolności Finansowej (FIRE)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Porównywarka ETF vs Obligacje</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Newsletter z analizami rynku</span>
+          </li>
         </ul>
-        <p class="regulamin-section__text">
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
           Wszystkie narzędzia są dostępne bezpłatnie i nie wymagają rejestracji.
         </p>
-
-        <h3 class="regulamin-section__subtitle">Wymagania techniczne</h3>
-        <p class="regulamin-section__text">
-          Do korzystania z Serwisu niezbędne jest urządzenie z dostępem do sieci Internet,
-          przeglądarka internetowa obsługująca JavaScript (np. Chrome, Firefox, Safari)
-          oraz aktywne połączenie internetowe.
+        <h3 class="text-base font-bold text-slate-800 dark:text-slate-200 mt-6 mb-3">Wymagania techniczne</h3>
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+          Do korzystania z Serwisu niezbędne jest urządzenie z dostępem do sieci Internet, przeglądarka internetowa obsługująca JavaScript (np. Chrome, Firefox, Safari) oraz aktywne połączenie internetowe.
         </p>
-      </section>
+      </div>
 
-      <!-- PRAWA I OBOWIĄZKI UŻYTKOWNIKA -->
-      <section class="regulamin-section">
-        <h2 class="regulamin-section__title">4. Prawa i obowiązki użytkownika</h2>
-
-        <div class="regulamin-section__important">
-          <p><strong>Ważne:</strong> Pamiętaj, że ETFkalkulator.pl to narzędzie edukacyjne, nie porada inwestycyjna.</p>
+      <!-- Section 4 -->
+      <div class="glass-effect rounded-[1.5rem] p-6 md:p-8 border border-white/50 dark:border-slate-800/50 shadow-sm mb-6">
+        <h2 class="text-lg font-black text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">4</div>
+          Prawa i obowiązki użytkownika
+        </h2>
+        <div class="rounded-xl p-4 bg-primary/5 dark:bg-primary/10 border-l-4 border-primary mb-4 text-sm text-primary dark:text-blue-300 font-medium" style="border-color:#0d7ff2">
+          Ważne: Pamiętaj, że ETFkalkulator.pl to narzędzie edukacyjne, nie porada inwestycyjna.
         </div>
-
-        <p class="regulamin-section__text">Użytkownik ma prawo do:</p>
-        <ul class="regulamin-section__list">
-          <li>Korzystania z wszystkich dostępnych narzędzi edukacyjnych</li>
-          <li>Zapisu i rezygnacji z newslettera w dowolnym momencie</li>
-          <li>Dostępu do informacji o polityce prywatności</li>
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+          Użytkownik ma prawo do:
+        </p>
+        <ul class="space-y-2 my-4 ml-0">
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Korzystania z wszystkich dostępnych narzędzi edukacyjnych</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Zapisu i rezygnacji z newslettera w dowolnym momencie</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Dostępu do informacji o polityce prywatności</span>
+          </li>
         </ul>
-
-        <p class="regulamin-section__text">Użytkownik zobowiązuje się do:</p>
-        <ul class="regulamin-section__list">
-          <li>Niekorzystania z Serwisu w celach niezgodnych z prawem</li>
-          <li>Niepodejmowania działań naruszających funkcjonowanie Serwisu</li>
-          <li>Podawania prawdziwych danych w formularzu newsletter (jeśli zdecyduje się na zapis)</li>
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+          Użytkownik zobowiązuje się do:
+        </p>
+        <ul class="space-y-2 my-4 ml-0">
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Niekorzystania z Serwisu w celach niezgodnych z prawem</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Niepodejmowania działań naruszających funkcjonowanie Serwisu</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Podawania prawdziwych danych w formularzu newsletter (jeśli zdecyduje się na zapis)</span>
+          </li>
         </ul>
-      </section>
+      </div>
 
-      <!-- OGRANICZENIA ODPOWIEDZIALNOŚCI -->
-      <section class="regulamin-section">
-        <h2 class="regulamin-section__title">5. Ograniczenia odpowiedzialności</h2>
-
-        <div class="regulamin-section__warning">
-          <p><strong>BARDZO WAŻNE:</strong> ETFkalkulator.pl nie świadczy usług doradztwa inwestycyjnego.</p>
-        </div>
-
-        <p class="regulamin-section__text">
+      <!-- Section 5 -->
+      <div class="glass-effect rounded-[1.5rem] p-6 md:p-8 border border-white/50 dark:border-slate-800/50 shadow-sm mb-6">
+        <h2 class="text-lg font-black text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">5</div>
+          Ograniczenia odpowiedzialności
+        </h2>
+        <div class="rounded-xl p-4 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 mb-4 text-sm text-amber-700 dark:text-amber-400 font-medium">BARDZO WAŻNE: ETFkalkulator.pl nie świadczy usług doradztwa inwestycyjnego.</div>
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
           Administrator Serwisu nie ponosi odpowiedzialności za:
         </p>
-        <ul class="regulamin-section__list">
-          <li>Decyzje inwestycyjne podjęte przez Użytkownika na podstawie obliczeń z kalkulatorów</li>
-          <li>Dokładność danych wejściowych wprowadzonych przez Użytkownika</li>
-          <li>Straty finansowe Użytkownika wynikające z inwestycji</li>
-          <li>Zmiany w przepisach prawnych lub podatkowych po dacie publikacji kalkulatorów</li>
+        <ul class="space-y-2 my-4 ml-0">
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Decyzje inwestycyjne podjęte przez Użytkownika na podstawie obliczeń z kalkulatorów</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Dokładność danych wejściowych wprowadzonych przez Użytkownika</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Straty finansowe Użytkownika wynikające z inwestycji</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Zmiany w przepisach prawnych lub podatkowych po dacie publikacji kalkulatorów</span>
+          </li>
         </ul>
-
-        <p class="regulamin-section__text">
-          Wszystkie obliczenia mają charakter wyłącznie edukacyjny i informacyjny.
-          Przed podjęciem decyzji inwestycyjnej skonsultuj się z licencjonowanym doradcą inwestycyjnym.
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+          Wszystkie obliczenia mają charakter wyłącznie edukacyjny i informacyjny. Przed podjęciem decyzji inwestycyjnej skonsultuj się z licencjonowanym doradcą inwestycyjnym.
         </p>
-      </section>
+      </div>
 
-      <!-- DOKŁADNOŚĆ OBLICZEŃ -->
-      <section class="regulamin-section">
-        <h2 class="regulamin-section__title">6. Dokładność obliczeń</h2>
-        <p class="regulamin-section__text">
+      <!-- Section 6 -->
+      <div class="glass-effect rounded-[1.5rem] p-6 md:p-8 border border-white/50 dark:border-slate-800/50 shadow-sm mb-6">
+        <h2 class="text-lg font-black text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">6</div>
+          Dokładność obliczeń
+        </h2>
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
           Kalkulatory ETFkalkulator.pl zostały opracowane z największą starannością, jednak:
         </p>
-        <ul class="regulamin-section__list">
-          <li>Obliczenia opierają się na danych dostępnych w momencie tworzenia narzędzi</li>
-          <li>Wyniki mogą różnić się od rzeczywistych z powodu zmian rynkowych</li>
-          <li>Podatki i opłaty mogą ulec zmianie wraz ze zmianą przepisów</li>
-          <li>Inflacja jest zmienną trudną do przewidzenia</li>
+        <ul class="space-y-2 my-4 ml-0">
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Obliczenia opierają się na danych dostępnych w momencie tworzenia narzędzi</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Wyniki mogą różnić się od rzeczywistych z powodu zmian rynkowych</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Podatki i opłaty mogą ulec zmianie wraz ze zmianą przepisów</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2"></div>
+            <span class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Inflacja jest zmienną trudną do przewidzenia</span>
+          </li>
         </ul>
-        <p class="regulamin-section__text">
-          Administrator dokłada wszelkich starań, aby kalkulatory były aktualne,
-          jednak nie gwarantuje ich pełnej dokładności w przyszłości.
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+          Administrator dokłada wszelkich starań, aby kalkulatory były aktualne, jednak nie gwarantuje ich pełnej dokładności w przyszłości.
         </p>
-      </section>
+      </div>
 
-      <!-- PRAWA AUTORSKIE -->
-      <section class="regulamin-section">
-        <h2 class="regulamin-section__title">7. Prawa autorskie</h2>
-        <p class="regulamin-section__text">
-          Wszystkie treści dostępne w Serwisie, w tym teksty, grafiki, kalkulatory i kody źródłowe,
-          są chronione prawem autorskim i należą do ETFkalkulator.pl.
+      <!-- Section 7 -->
+      <div class="glass-effect rounded-[1.5rem] p-6 md:p-8 border border-white/50 dark:border-slate-800/50 shadow-sm mb-6">
+        <h2 class="text-lg font-black text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">7</div>
+          Prawa autorskie
+        </h2>
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+          Wszystkie treści dostępne w Serwisie, w tym teksty, grafiki, kalkulatory i kody źródłowe, są chronione prawem autorskim i należą do ETFkalkulator.pl.
         </p>
-        <p class="regulamin-section__text">
-          Zabrania się kopiowania, rozpowszechniania i modyfikowania treści Serwisu bez
-          wyraźnej zgody Administratora.
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+          Zabrania się kopiowania, rozpowszechniania i modyfikowania treści Serwisu bez wyraźnej zgody Administratora.
         </p>
-      </section>
+      </div>
 
-      <!-- NEWSLETTER -->
-      <section class="regulamin-section">
-        <h2 class="regulamin-section__title">8. Newsletter</h2>
-        <p class="regulamin-section__text">
-          Zapis na newsletter jest dobrowolny. Użytkownik może wypisać się z newslettera
-          w każdej chwili klikając link "unsubscribe" w wiadomości e-mail.
+      <!-- Section 8 -->
+      <div class="glass-effect rounded-[1.5rem] p-6 md:p-8 border border-white/50 dark:border-slate-800/50 shadow-sm mb-6">
+        <h2 class="text-lg font-black text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">8</div>
+          Newsletter
+        </h2>
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+          Zapis na newsletter jest dobrowolny. Użytkownik może wypisać się z newslettera w każdej chwili klikając link 'unsubscribe' w wiadomości e-mail.
         </p>
-        <p class="regulamin-section__text">
-          Newsletter zawiera informacje o nowych narzędziach, analizach rynku i aktualnościach
-          związanych z ETFkalkulator.pl.
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+          Newsletter zawiera informacje o nowych narzędziach, analizach rynku i aktualnościach związanych z ETFkalkulator.pl.
         </p>
-      </section>
+      </div>
 
-      <!-- PRZETWARZANIE DANYCH OSOBOWYCH -->
-      <section class="regulamin-section">
-        <h2 class="regulamin-section__title">9. Przetwarzanie danych osobowych</h2>
-        <p class="regulamin-section__text">
-          Szczegółowe zasady przetwarzania danych osobowych określa Polityka Prywatności
-          dostępna pod adresem: <a href="polityka-prywatnosci.html">polityka-prywatnosci.html</a>
+      <!-- Section 9 -->
+      <div class="glass-effect rounded-[1.5rem] p-6 md:p-8 border border-white/50 dark:border-slate-800/50 shadow-sm mb-6">
+        <h2 class="text-lg font-black text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">9</div>
+          Przetwarzanie danych osobowych
+        </h2>
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+          Szczegółowe zasady przetwarzania danych osobowych określa Polityka Prywatności dostępna pod adresem:
         </p>
-        <p class="regulamin-section__text">
-          Korzystanie z kalkulatorów nie wymaga podawania żadnych danych osobowych.
-          Jedynym wyjątkiem jest zapis na newsletter, który wymaga podania adresu e-mail.
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+          <a href="polityka-prywatnosci.html" class="text-primary font-bold" style="color:#0d7ff2">Polityka Prywatności</a>
         </p>
-      </section>
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+          Korzystanie z kalkulatorów nie wymaga podawania żadnych danych osobowych. Jedynym wyjątkiem jest zapis na newsletter, który wymaga podania adresu e-mail.
+        </p>
+      </div>
 
-      <!-- ZMIANY W REGULAMINIE -->
-      <section class="regulamin-section">
-        <h2 class="regulamin-section__title">10. Zmiany w regulaminie</h2>
-        <p class="regulamin-section__text">
-          Administrator zastrzega sobie prawo do wprowadzania zmian w niniejszym regulaminie.
-          Wszelkie zmiany będą publikowane na tej stronie.
+      <!-- Section 10 -->
+      <div class="glass-effect rounded-[1.5rem] p-6 md:p-8 border border-white/50 dark:border-slate-800/50 shadow-sm mb-6">
+        <h2 class="text-lg font-black text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">10</div>
+          Zmiany w regulaminie
+        </h2>
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+          Administrator zastrzega sobie prawo do wprowadzania zmian w niniejszym regulaminie. Wszelkie zmiany będą publikowane na tej stronie.
         </p>
-        <p class="regulamin-section__text">
-          Zmiany w regulaminie wchodzą w życie z dniem publikacji.
-          Kontynuowanie korzystania z Serwisu po zmianach oznacza akceptację nowego regulaminu.
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+          Zmiany w regulaminie wchodzą w życie z dniem publikacji. Kontynuowanie korzystania z Serwisu po zmianach oznacza akceptację nowego regulaminu.
         </p>
-      </section>
+      </div>
 
-      <!-- REKLAMACJE -->
-      <section class="regulamin-section">
-        <h2 class="regulamin-section__title">10. Reklamacje</h2>
-        <p class="regulamin-section__text">
+      <!-- Section 11 -->
+      <div class="glass-effect rounded-[1.5rem] p-6 md:p-8 border border-white/50 dark:border-slate-800/50 shadow-sm mb-6">
+        <h2 class="text-lg font-black text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">11</div>
+          Reklamacje
+        </h2>
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
           Reklamacje dotyczące działania Serwisu można zgłaszać na adres:
-          <a href="mailto:kontakt@etfkalkulator.pl" class="link-primary"
-            style="text-decoration: none; font-weight: var(--weight-medium);">kontakt@etfkalkulator.pl</a>
+          <a href="mailto:kontakt@etfkalkulator.pl" class="font-bold text-primary hover:underline" style="color:#0d7ff2">kontakt@etfkalkulator.pl</a>
         </p>
-        <p class="regulamin-section__text">
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
           Administrator rozpatrzy reklamację w terminie 14 dni.
         </p>
-      </section>
+      </div>
 
-      <!-- POSTANOWIENIA KOŃCOWE -->
-      <section class="regulamin-section">
-        <h2 class="regulamin-section__title">11. Postanowienia końcowe</h2>
-        <p class="regulamin-section__text">
-          W sprawach nieuregulowanych niniejszym regulaminem zastosowanie mają przepisy
-          powszechnie obowiązującego prawa polskiego, w szczególności Kodeksu Cywilnego
-          i ustawy o prawie autorskim i prawach pokrewnych.
+      <!-- Section 12 -->
+      <div class="glass-effect rounded-[1.5rem] p-6 md:p-8 border border-white/50 dark:border-slate-800/50 shadow-sm mb-6">
+        <h2 class="text-lg font-black text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">12</div>
+          Postanowienia końcowe
+        </h2>
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+          W sprawach nieuregulowanych niniejszym regulaminem zastosowanie mają przepisy powszechnie obowiązującego prawa polskiego, w szczególności Kodeksu Cywilnego i ustawy o prawie autorskim i prawach pokrewnych.
         </p>
-        <p class="regulamin-section__text">
-          Wszelkie spory wynikające z korzystania z Serwisu będą rozstrzygane przez sąd
-          właściwy dla siedziby Administratora.
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+          Wszelkie spory wynikające z korzystania z Serwisu będą rozstrzygane przez sąd właściwy dla siedziby Administratora.
         </p>
-        <p class="regulamin-section__text">
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
           Regulamin wchodzi w życie z dniem 2 marca 2026 roku.
         </p>
-      </section>
-
-      <!-- KONTAKT -->
-      <section class="regulamin-section">
-        <h2 class="regulamin-section__title">12. Kontakt</h2>
-        <p class="regulamin-section__text">
-          W przypadku pytań dotyczących regulaminu lub spraw związanych z funkcjonowaniem serwisu,
-          prosimy o kontakt przez email: <a href="mailto:kontakt@etfkalkulator.pl" class="link-primary"
-            style="text-decoration: none; font-weight: var(--weight-medium);">kontakt@etfkalkulator.pl</a>
+        <h3 class="text-base font-bold text-slate-800 dark:text-slate-200 mt-6 mb-3">Kontakt</h3>
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+          W przypadku pytań dotyczących regulaminu lub spraw związanych z funkcjonowaniem serwisu, prosimy o kontakt przez email: <a href="mailto:kontakt@etfkalkulator.pl" class="font-bold text-primary hover:underline" style="color:#0d7ff2">kontakt@etfkalkulator.pl</a>
         </p>
-        <p class="regulamin-section__text">
+        <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
           Odpowiemy na Twoje zapytanie w ciągu 7 dni roboczych.
         </p>
-      </section>
+      </div>
 
     </div>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer__inner">
-      <div class="footer__links">
-        <a href="../pages/kalkulator-etf.html">Kalkulator ETF</a>
-        <a href="../pages/kalkulator-obligacji.html">Kalkulator obligacji</a>
-        <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
-        <a href="../pages/porownywarka.html">Porównywarka ETF</a>
-        <a href="../blog/index.html">Blog</a>
-        <a href="../pages/o-projekcie.html">O projekcie</a>
-        <a href="../pages/polityka-prywatnosci.html">Polityka prywatności</a>
-        <a href="../pages/regulamin.html">Regulamin</a>
+  <footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 py-20 px-6" style="font-family: 'Inter', sans-serif;">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12 border-b border-slate-200/50 dark:border-slate-800/50 pb-8">
+        <div class="flex items-center gap-2">
+          <div class="bg-primary p-1.5 rounded-lg text-white flex items-center justify-center" style="background-color: #0d7ff2;">
+            <span class="material-symbols-outlined text-base">account_balance_wallet</span>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">ETF<span class="font-normal text-slate-500">kalkulator</span>.pl</span>
+        </div>
       </div>
-      <p class="disclaimer">
-        ETFkalkulator.pl to narzędzie edukacyjne. Nie stanowi porady inwestycyjnej w rozumieniu Ustawy o obrocie
-        instrumentami finansowymi.
-      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20 items-start">
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Narzędzia</h5>
+          <ul class="space-y-4">
+            <li><a href="kalkulator-etf.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Kalkulator ETF</a></li>
+            <li><a href="kalkulator-obligacji.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Obligacje Skarbowe</a></li>
+            <li><a href="kalkulator-wolnosci.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Wolność Finansowa</a></li>
+            <li><a href="porownywarka.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Porównywarka ETF</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Projekt</h5>
+          <ul class="space-y-4">
+            <li><a href="../blog/index.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Blog i Wiedza</a></li>
+            <li><a href="o-projekcie.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">O projekcie</a></li>
+            <li><a href="regulamin.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Regulamin</a></li>
+            <li><a href="polityka-prywatnosci.html" class="text-sm text-slate-500 hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Polityka prywatności</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Kontakt</h5>
+          <p class="text-sm text-slate-500 mb-6 leading-relaxed">Masz pytania? Pisz śmiało:</p>
+          <a href="mailto:kontakt@etfkalkulator.pl" class="text-sm font-bold text-slate-900 dark:text-white hover:text-primary transition-colors block mb-8" style="text-decoration:none;">kontakt@etfkalkulator.pl</a>
+          <div class="flex gap-4">
+            <a href="#" class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-sm">
+              <span class="material-symbols-outlined text-lg">share</span>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-sm">
+              <span class="material-symbols-outlined text-lg">alternate_email</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-20 pt-10 border-t border-slate-200 dark:border-slate-900">
+        <p class="text-[11px] text-slate-400 dark:text-slate-500 leading-relaxed mb-8 max-w-4xl">
+          Serwis ETFkalkulator.pl ma charakter wyłącznie edukacyjny i informacyjny. Prezentowane obliczenia nie stanowią rekomendacji inwestycyjnej, porady finansowej ani doradztwa podatkowego w rozumieniu obowiązujących przepisów prawa. Przed podjęciem decyzji inwestycyjnej skonsultuj się z licencjonowanym doradcą finansowym. Inwestowanie wiąże się z ryzykiem utraty części lub całości zainwestowanego kapitału.
+        </p>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+          <p>© 2026 ETFkalkulator.pl — Made with ❤️ by Florian</p>
+          <div class="flex gap-6">
+            <span>Wszelkie prawa zastrzeżone</span>
+          </div>
+        </div>
+      </div>
     </div>
   </footer>
 
-  <script>
+  <script defer>
     function przelaczTryb() {
-      var html = document.documentElement;
-      var slonce = document.getElementById('ikona-slonce');
-      var ksiezyc = document.getElementById('ikona-ksiezyc');
-      var ciemny = html.classList.contains('dark-mode') ||
-        (!html.classList.contains('light-mode') &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches);
-
-      if (ciemny) {
-        html.classList.remove('dark-mode');
-        html.classList.add('light-mode');
-        if (slonce) slonce.style.display = 'block';
-        if (ksiezyc) ksiezyc.style.display = 'none';
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
         localStorage.setItem('etf-tryb', 'jasny');
       } else {
-        html.classList.remove('light-mode');
-        html.classList.add('dark-mode');
-        if (slonce) slonce.style.display = 'none';
-        if (ksiezyc) ksiezyc.style.display = 'block';
+        html.classList.add('dark');
         localStorage.setItem('etf-tryb', 'ciemny');
       }
     }
-
-    // Inicjalizacja przy ładowaniu strony
     (function () {
-      var html = document.documentElement;
-      var zapisany = localStorage.getItem('etf-tryb');
-      var slonce = document.getElementById('ikona-slonce');
-      var ksiezyc = document.getElementById('ikona-ksiezyc');
-      var systemCiemny = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-      if (zapisany === 'ciemny' || (!zapisany && systemCiemny)) {
-        html.classList.add('dark-mode');
-        html.classList.remove('light-mode');
-        if (slonce) slonce.style.display = 'none';
-        if (ksiezyc) ksiezyc.style.display = 'block';
-      } else {
-        html.classList.add('light-mode');
-        html.classList.remove('dark-mode');
-        if (slonce) slonce.style.display = 'block';
-        if (ksiezyc) ksiezyc.style.display = 'none';
+      if (localStorage.getItem('etf-tryb') === 'ciemny' || (!localStorage.getItem('etf-tryb') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
       }
-    })();</script>
+    })();
+  </script>
 
-  <script>
-    // Cookie Consent Management
+  <script defer>
     document.addEventListener('DOMContentLoaded', function () {
-      var cookieConsent = document.getElementById('cookie-consent');
-      var acceptBtn = document.getElementById('cookie-accept');
-      var rejectBtn = document.getElementById('cookie-reject');
-      var cookieChoice = localStorage.getItem('etf-cookie-consent');
-      if (!cookieChoice && cookieConsent) {
+      const cookieConsent = document.getElementById('cookie-consent');
+      if (!cookieConsent) return;
+      const acceptBtn = document.getElementById('cookie-accept');
+      const rejectBtn = document.getElementById('cookie-reject');
+      const choice = localStorage.getItem('etf-cookie-consent');
+
+      if (!choice) {
         cookieConsent.style.display = 'block';
-      } else if (cookieChoice === 'accepted' && typeof gtag === 'function') {
-        gtag('consent', 'update', { 'analytics_storage': 'granted' });
-        gtag('event', 'page_view');
+        setTimeout(() => {
+          cookieConsent.style.opacity = '1';
+          cookieConsent.style.transform = 'translateY(0)';
+        }, 100);
       }
-      if (acceptBtn) {
-        acceptBtn.addEventListener('click', function () {
-          localStorage.setItem('etf-cookie-consent', 'accepted');
-          cookieConsent.style.display = 'none';
-          if (typeof gtag === 'function') {
-            gtag('consent', 'update', { 'analytics_storage': 'granted' });
-            gtag('event', 'page_view');
-          }
-        });
-      }
-      if (rejectBtn) {
-        rejectBtn.addEventListener('click', function () {
-          localStorage.setItem('etf-cookie-consent', 'rejected');
-          cookieConsent.style.display = 'none';
-          if (typeof gtag === 'function') {
-            gtag('consent', 'update', { 'analytics_storage': 'denied' });
-          }
-        });
-      }
+
+      acceptBtn?.addEventListener('click', () => {
+        localStorage.setItem('etf-cookie-consent', 'accepted');
+        cookieConsent.style.display = 'none';
+        if (typeof gtag === 'function') {
+          gtag('consent', 'update', { 'analytics_storage': 'granted' });
+        }
+      });
+
+      rejectBtn?.addEventListener('click', () => {
+        localStorage.setItem('etf-cookie-consent', 'rejected');
+        cookieConsent.style.display = 'none';
+      });
     });
   </script>
 </body>
-
 </html>
