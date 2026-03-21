@@ -10,6 +10,83 @@
 
 let savedScenarios = [];
 
+window.modalData = window.modalData || {};
+Object.assign(window.modalData, {
+    // PARAMETRY WEJŚCIOWE
+    kapital_start: {
+        title: "Kapitał Startowy",
+        desc: "To kwota, którą dysponujesz na samym początku inwestycji. Może pochodzić z oszczędności, sprzedaży innego aktywa lub spadku. Im większy kapitał na start, tym silniej działa procent składany od pierwszego dnia.",
+        formula: "Wartość Początkowa (PV)",
+        icon: "account_balance_wallet"
+    },
+    doplata_msc: {
+        title: "Miesięczna Dopłata",
+        desc: "Regularne dopłacanie nawet małych kwot to najskuteczniejszy sposób na budowę wielkiego majątku. Pozwala to na uśrednianie ceny zakupu (Dollar Cost Averaging) i systematyczne zwiększanie bazy, która na Ciebie zarabia.",
+        formula: "Annuity Payment (PMT)",
+        icon: "add_task"
+    },
+    horyzont_lat: {
+        title: "Horyzont Inwestycyjny",
+        desc: "Czas to najpotężniejszy sprzymierzeniec inwestora. Im dłużej Twoje pieniądze pracują na rynku, tym bardziej krzywa wzrostu staje się pionowa. Długi termin pozwala też przetrwać okresowe spadki na giełdzie.",
+        formula: "Liczba Okresów (n)",
+        icon: "event_repeat"
+    },
+    stopa_zwrotu: {
+        title: "Stopa Zwrotu",
+        desc: "Przewidywany roczny zysk z Twojego portfela ETF. Rynek akcji (np. S&P 500) historycznie dostarcza średnio 7-10% rocznie, ale pamiętaj, że wyniki historyczne nie gwarantują przyszłych zysków.",
+        formula: "Annual Return (r)",
+        icon: "show_chart"
+    },
+    inflacja_nbp: {
+        title: "Oczekiwana Inflacja",
+        desc: "Proces spadku wartości pieniądza w czasie. Cel inflacyjny NBP to 2,5%. Uwzględnienie inflacji w kalkulatorze pozwala zobaczyć, ile realnie będą warte Twoje pieniądze za X lat w dzisiejszych cenach sklepowych.",
+        formula: "Purchasing Power Factor",
+        icon: "shopping_cart"
+    },
+    kapital: {
+        title: "Kapitał Końcowy",
+        desc: "To kwota netto, którą otrzymasz na koniec inwestycji. Uwzględnia ona wypracowany zysk, potrącony podatek Belki (19%) oraz spadek siły nabywczej pieniądza spowodowany inflacją.",
+        formula: "Saldo = (Kapitał Nominalny - Podatek) / Inflacja_Skumulowana",
+        icon: "account_balance"
+    },
+    wklad: {
+        title: "Wkład Własny",
+        desc: "Całkowita suma pieniędzy, którą fizycznie wpłaciłeś do portfela. Składa się na nią kapitał początkowy oraz wszystkie Twoje miesięczne dopłaty w całym horyzoncie czasowym.",
+        formula: "Suma = Start + (Miesięczna_Dopłata * Liczba_Miesięcy)",
+        icon: "payments"
+    },
+    zysk: {
+        title: "Zysk Nominalny",
+        desc: "Fizyczna różnica między końcową wartością Twojego portfela a sumą Twoich wpłat. To kwota, o którą wzrósł Twój kapitał dzięki rynkowi i procentowi składanemu (zanim zabierze coś fiskus lub inflacja).",
+        formula: "Zysk = Kapitał_Nominalny - Wkład_Własny",
+        icon: "trending_up"
+    },
+    podatek: {
+        title: "Podatek Belki",
+        desc: "W Polsce zyski kapitałowe są opodatkowane stawką 19%. Podatek naliczany jest tylko od wypracowanego zysku. Pamiętaj, że konta IKE oraz IKZE pozwalają na legalne uniknięcie tego podatku.",
+        formula: "Podatek (19%) = Zysk_Nominalny * 0.19",
+        icon: "gavel"
+    },
+    realny: {
+        title: "Wartość Realna Zysku",
+        desc: "Kluczowy wskaźnik pokazujący realną siłę nabywczą Twojego zysku. Inflacja sprawia, że za tę samą kwotę w przyszłości kupisz mniej niż dzisiaj. Wartość realna oczyszcza wynik z wpływu wzrostu cen.",
+        formula: "Realny = Kapitał_Netto / (1 + Inflacja)^Lata",
+        icon: "insights"
+    },
+    cagr: {
+        title: "Stopa CAGR",
+        desc: "Średnioroczna stopa zwrotu (Compound Annual Growth Rate). Pokazuje ile statystycznie co roku zarabiały Twoje pieniądze po uwzględnieniu podatku Belki, w całym okresie inwestycji.",
+        formula: "CAGR = ((Netto / Start)^(1/Lata)) - 1",
+        icon: "percent"
+    },
+    cagr_real: {
+        title: "Realny CAGR",
+        desc: "Najważniejszy parametr dla długoterminowego inwestora. Pokazuje realny, średnioroczny wzrost Twojej siły nabywczej (po podatku i po inflacji).",
+        formula: "Real_CAGR = ((Real_Netto / Start)^(1/Lata)) - 1",
+        icon: "potted_plant"
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     // Inicjalizacja pól i zdarzeń
     const numericInputs = [
@@ -21,10 +98,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const el = document.getElementById(id);
         if (el) {
             // Only trigger calculations on valid input
+            const debouncedOblicz = window.debounce(() => obliczWszystko(), 150);
             el.addEventListener('input', () => {
                 const val = el.value.trim();
                 if (val !== '' && !isNaN(parseFloat(val))) {
-                    obliczWszystko();
+                    debouncedOblicz();
                 }
             });
 
@@ -61,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const btnShareResult = document.getElementById('btn-share-result');
     if (btnShareResult) {
-        btnShareResult.addEventListener('click', shareResult);
+        btnShareResult.addEventListener('click', () => window.shareResult('Mój plan inwestycyjny - ETFkalkulator.pl'));
     }
 
     // Inicjalizacja wykresu
@@ -208,6 +286,10 @@ function initChart() {
     const canvas = document.getElementById('chartInwestycja');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
+
+    if (myChart) {
+        myChart.destroy();
+    }
 
     const isDark = document.documentElement.classList.contains('dark');
     const gridColor = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
@@ -518,52 +600,42 @@ function updateUrlParams() {
 
 function loadFromUrlParams() {
     const params = new URLSearchParams(window.location.search);
-    if (params.has('start')) document.getElementById('input-kapital').value = params.get('start');
-    if (params.has('msc')) document.getElementById('input-doplata').value = params.get('msc');
-    if (params.has('lata')) document.getElementById('input-horyzont').value = params.get('lata');
+    
+    // Helper to safely get and parse float
+    const safeGetParam = (key, elId) => {
+        if (params.has(key)) {
+            const val = parseFloat(params.get(key));
+            if (!isNaN(val)) document.getElementById(elId).value = val;
+        }
+    };
+
+    safeGetParam('start', 'input-kapital');
+    safeGetParam('msc', 'input-doplata');
+    safeGetParam('lata', 'input-horyzont');
+    safeGetParam('inf', 'input-inflacja');
+
     if (params.has('stopa')) {
-        document.getElementById('input-stopa').value = params.get('stopa');
-        const buttons = document.getElementById('input-stopa').parentElement.querySelectorAll('button');
-        buttons.forEach(btn => {
-            btn.classList.remove('border-primary/50', 'bg-primary/5', 'text-primary', 'border-2');
-            btn.classList.add('border-slate-200', 'dark:border-slate-800', 'bg-white', 'dark:bg-slate-900', 'text-slate-500');
-            btn.classList.remove('font-bold');
-        });
-        const activeBtn = Array.from(buttons).find(b => b.innerText.includes(params.get('stopa') + '%'));
-        if (activeBtn) {
-            activeBtn.classList.remove('border-slate-200', 'dark:border-slate-800', 'bg-white', 'dark:bg-slate-900', 'text-slate-500');
-            activeBtn.classList.add('border-2', 'border-primary/50', 'bg-primary/5', 'text-primary', 'font-bold');
+        const val = parseFloat(params.get('stopa'));
+        if (!isNaN(val)) {
+            document.getElementById('input-stopa').value = val;
+            const buttons = document.getElementById('input-stopa').parentElement.querySelectorAll('button');
+            buttons.forEach(btn => {
+                btn.classList.remove('border-primary/50', 'bg-primary/5', 'text-primary', 'border-2', 'font-bold');
+                btn.classList.add('border-slate-200', 'dark:border-slate-800', 'bg-white', 'dark:bg-slate-900', 'text-slate-500');
+            });
+            const activeBtn = Array.from(buttons).find(b => b.innerText.includes(val + '%'));
+            if (activeBtn) {
+                activeBtn.classList.remove('border-slate-200', 'dark:border-slate-800', 'bg-white', 'dark:bg-slate-900', 'text-slate-500');
+                activeBtn.classList.add('border-2', 'border-primary/50', 'bg-primary/5', 'text-primary', 'font-bold');
+            }
         }
     }
-    if (params.has('inf')) document.getElementById('input-inflacja').value = params.get('inf');
     if (params.has('ike')) document.getElementById('input-ike').checked = params.get('ike') === 'true';
 }
 
-function shareResult() {
-    const url = window.location.href;
-    const title = 'Mój plan inwestycyjny - ETFkalkulator.pl';
 
-    if (navigator.share) {
-        navigator.share({
-            title: title,
-            url: url
-        }).catch(console.error);
-    } else {
-        navigator.clipboard.writeText(url).then(() => {
-            const btnTxt = document.getElementById('txt-btn-share');
-            if (btnTxt) {
-                const originalText = btnTxt.innerText;
-                btnTxt.innerText = 'Skopiowano link! ✔️';
-                setTimeout(() => {
-                    btnTxt.innerText = originalText;
-                }, 2000);
-            }
-        }).catch(err => console.error('Error copying link', err));
-    }
-}
 
 // Make functions globally accessible for inline handlers
 window.saveCurrentScenario = saveCurrentScenario;
 window.deleteScenario = deleteScenario;
 window.loadScenario = loadScenario;
-window.shareResult = shareResult;

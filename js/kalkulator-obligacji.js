@@ -21,9 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
     numericInputs.forEach(id => {
         const el = document.getElementById(id);
         if (el) {
+            const debouncedOblicz = window.debounce(() => obliczWszystko(), 150);
             el.addEventListener('input', () => {
                 const val = el.value.trim();
-                if (val !== '' && !isNaN(parseFloat(val))) obliczWszystko();
+                if (val !== '' && !isNaN(parseFloat(val))) debouncedOblicz();
             });
             el.addEventListener('focus', function () {
                 this.dataset.previousValue = this.value;
@@ -57,20 +58,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const customMarzaInput = document.getElementById('input-custom-marza');
+    const debouncedCustomOblicz = window.debounce(() => obliczWszystko(), 150);
+
     if (customMarzaInput) {
-        customMarzaInput.addEventListener('input', () => obliczWszystko());
+        customMarzaInput.addEventListener('input', debouncedCustomOblicz);
     }
 
     const customYr1Input = document.getElementById('input-custom-yr1');
     if (customYr1Input) {
-        customYr1Input.addEventListener('input', () => obliczWszystko());
+        customYr1Input.addEventListener('input', debouncedCustomOblicz);
     }
 
     const btnSaveScenario = document.getElementById('btn-save-scenario');
     if (btnSaveScenario) btnSaveScenario.addEventListener('click', saveCurrentScenario);
 
     const btnShare = document.getElementById('btn-share-result');
-    if (btnShare) btnShare.addEventListener('click', shareResult);
+    if (btnShare) btnShare.addEventListener('click', () => window.shareResult('Moja symulacja obligacji - ETFkalkulator.pl'));
 
     initChart();
     updateTypeOptions();
@@ -385,6 +388,10 @@ function initChart() {
     const canvas = document.getElementById('chartObligacje');
     if (!canvas || !window.Chart) return;
     const ctx = canvas.getContext('2d');
+    
+    if (myChart) {
+        myChart.destroy();
+    }
     const isDark = document.documentElement.classList.contains('dark');
     const textColor = isDark ? '#94a3b8' : '#64748b';
 
@@ -528,47 +535,41 @@ function updateUrlParams() {
 
 function loadFromUrlParams() {
     const params = new URLSearchParams(window.location.search);
-    if (params.has('k') && document.getElementById('input-kapital')) document.getElementById('input-kapital').value = params.get('k');
-    if (params.has('d') && document.getElementById('input-doplata')) document.getElementById('input-doplata').value = params.get('d');
-    if (params.has('t')) document.getElementById('input-typ').value = params.get('t');
-    if (params.has('i') && document.getElementById('input-inflacja')) document.getElementById('input-inflacja').value = params.get('i');
-    if (params.has('ike')) document.getElementById('input-ike').checked = params.get('ike') === '1';
-    if (params.has('800')) document.getElementById('input-800plus').checked = params.get('800') === '1';
-    if (params.has('r')) document.getElementById('input-rolowanie').checked = params.get('r') === '1';
     
-    if (params.has('cm') && document.getElementById('input-custom-marza')) document.getElementById('input-custom-marza').value = params.get('cm');
-    if (params.has('cy1') && document.getElementById('input-custom-yr1')) document.getElementById('input-custom-yr1').value = params.get('cy1');
+    const safeGetParam = (key, elId, isCheckbox = false) => {
+        if (params.has(key)) {
+            const el = document.getElementById(elId);
+            if (!el) return;
+            if (isCheckbox) {
+                el.checked = params.get(key) === '1';
+            } else {
+                if (key === 't') {
+                    el.value = params.get(key);
+                } else {
+                    const val = parseFloat(params.get(key));
+                    if (!isNaN(val)) el.value = val;
+                }
+            }
+        }
+    };
+
+    safeGetParam('k', 'input-kapital');
+    safeGetParam('d', 'input-doplata');
+    safeGetParam('t', 'input-typ');
+    safeGetParam('i', 'input-inflacja');
+    safeGetParam('ike', 'input-ike', true);
+    safeGetParam('800', 'input-800plus', true);
+    safeGetParam('r', 'input-rolowanie', true);
+    safeGetParam('cm', 'input-custom-marza');
+    safeGetParam('cy1', 'input-custom-yr1');
 
     updateTypeOptions();
     updateEarlyRedemptionSlider();
 }
 
-function shareResult() {
-    updateUrlParams();
-    const url = window.location.href;
-    const title = 'Moja symulacja obligacji - ETFkalkulator.pl';
-
-    if (navigator.share) {
-        navigator.share({
-            title: title,
-            url: url
-        }).catch(console.error);
-    } else {
-        navigator.clipboard.writeText(url).then(() => {
-            const btnTxt = document.getElementById('txt-btn-share');
-            if (btnTxt) {
-                const originalText = btnTxt.innerText;
-                btnTxt.innerText = 'Skopiowano link! ✔️';
-                setTimeout(() => {
-                    btnTxt.innerText = originalText;
-                }, 2000);
-            }
-        }).catch(err => console.error('Error copying link', err));
-    }
-}
-
 // Educational Modals Data
-window.modalData = {
+window.modalData = window.modalData || {};
+Object.assign(window.modalData, {
     kapital_start: {
         title: "Kapitał Startowy",
         desc: "Kwota którą inwestujesz jednorazowo na początku. Im wyższa baza startowa, tym szybciej działa roczna kapitalizacja (EDO/TOS). Minimalna jednostka to 100 zł (1 obligacja).",
@@ -611,36 +612,4 @@ window.modalData = {
         formula: "Kapitał × (CPI + Marża) − Kara − Podatek Belki 19%",
         icon: "calculate"
     }
-};
-
-window.openEduModal = function (type, event) {
-    if (event) { event.preventDefault(); event.stopPropagation(); }
-    if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
-
-    const data = window.modalData[type];
-    if (!data) return;
-
-    const titleEl = document.getElementById('modal-title');
-    const descEl = document.getElementById('modal-explanation');
-    const formEl = document.getElementById('modal-formula');
-    const iconEl = document.getElementById('modal-icon');
-
-    if (titleEl) titleEl.innerText = data.title;
-    if (descEl) descEl.innerText = data.desc;
-    if (formEl) formEl.innerText = data.formula;
-    if (iconEl) iconEl.innerText = data.icon;
-
-    const modal = document.getElementById('edu-modal');
-    if (modal) {
-        modal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-    }
-};
-
-window.closeEduModal = function () {
-    const modal = document.getElementById('edu-modal');
-    if (modal) {
-        modal.classList.add('hidden');
-        document.body.style.overflow = '';
-    }
-};
+});
