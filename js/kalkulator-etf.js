@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             // Smart Auto-Selection: select on focus (delay for mobile OS stability)
-            el.addEventListener('focus', function() {
+            el.addEventListener('focus', function () {
                 this.dataset.previousValue = this.value;
                 setTimeout(() => {
                     this.select();
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             // Safety Net: restore on blur if empty
-            el.addEventListener('blur', function() {
+            el.addEventListener('blur', function () {
                 const val = this.value.trim();
                 if (val === '' || isNaN(parseFloat(val))) {
                     this.value = this.dataset.previousValue || this.defaultValue || '0';
@@ -95,7 +95,7 @@ function setStopa(val, inputEl) {
         btn.classList.add('border-slate-200', 'dark:border-slate-800', 'bg-white', 'dark:bg-slate-900', 'text-slate-500');
         btn.classList.remove('font-bold');
     });
-    
+
     // Znajdź przycisk zawierający wartość (np. "4%")
     const activeBtn = Array.from(buttons).find(b => b.innerText.includes(val + '%'));
     if (activeBtn) {
@@ -196,7 +196,7 @@ function obliczWszystko() {
     }
 
     updateChart(daneWykresu);
-    
+
     // Zaktualizuj parametry w adresie URL
     updateUrlParams();
 }
@@ -303,7 +303,7 @@ function initChart() {
                 },
                 y: {
                     grace: '10%',
-                    grid: { 
+                    grid: {
                         color: gridColor,
                         drawBorder: false,
                         borderDash: [5, 5]
@@ -358,7 +358,7 @@ function saveCurrentScenario() {
     const doplata = pobierzWartosc('input-doplata', 500);
     const lata = pobierzWartosc('input-horyzont', 10);
     const stopa = pobierzWartosc('input-stopa', 7);
-    
+
     // Read formatted result directly from UI
     const kapitalKoncowyEl = document.getElementById('etf-wynik-kapital-koncowy');
     const kapitalKoncowyStr = kapitalKoncowyEl ? kapitalKoncowyEl.innerText : '0,00 zł';
@@ -395,9 +395,9 @@ function renderScenarios() {
 
     savedScenarios.forEach((scen, index) => {
         const div = document.createElement('div');
-        div.className = "snap-start relative h-full rounded-2xl shadow-md bg-white dark:bg-slate-800 border border-transparent dark:border-slate-700 p-4 group cursor-pointer hover:border-primary/50 active:scale-[0.98] transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 overflow-hidden";
+        div.className = "shrink-0 w-[82vw] sm:w-[350px] last:mr-[10vw] snap-start relative h-auto flex flex-col bg-white/70 dark:bg-slate-900/60 backdrop-blur-md border border-transparent dark:border-slate-700 rounded-2xl p-4 group cursor-pointer hover:border-primary/50 active:scale-[0.98] transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-primary/10 overflow-hidden";
         div.onclick = () => loadScenario(index);
-        
+
         // Format z polskim separatorem spacji (np. "10 000")
         const formatPl = new Intl.NumberFormat('pl-PL');
         const kapitalStr = formatPl.format(scen.kapital);
@@ -462,14 +462,14 @@ function deleteScenario(index, event) {
 function loadScenario(index) {
     const scen = savedScenarios[index];
     if (!scen) return;
-    
+
     document.getElementById('input-kapital').value = scen.kapital;
     document.getElementById('input-doplata').value = scen.doplata;
     document.getElementById('input-horyzont').value = scen.lata;
-    
+
     // Updating 'stopa' also handles calculations via setStopa() helper
     setStopa(scen.stopa, document.getElementById('input-stopa'));
-    
+
     // Visual feedback 
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -542,7 +542,7 @@ function loadFromUrlParams() {
 function shareResult() {
     const url = window.location.href;
     const title = 'Mój plan inwestycyjny - ETFkalkulator.pl';
-    
+
     if (navigator.share) {
         navigator.share({
             title: title,
