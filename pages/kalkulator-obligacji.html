@@ -357,13 +357,29 @@
         <!-- WYNIKI -->
         <div class="lg:col-span-8 space-y-8">
           <!-- WYNIK GLOWNY -->
-          <div class="relative overflow-hidden group bg-primary p-10 md:p-14 rounded-[2.5rem] text-white shadow-2xl cursor-help hover:scale-[1.01] hover:shadow-blue-500/40 hover:border-white/20 border-2 border-transparent transition-all duration-300" onclick="openEduModal('wynik_karta', event)">
-            <div class="relative z-10 flex flex-col md:flex-row justify-between gap-8">
+          <div onclick="openEduModal('wynik_karta', event)"
+            class="relative overflow-hidden group bg-primary p-10 md:p-14 rounded-[2.5rem] text-white shadow-2xl shadow-primary/30 transition-all hover:scale-[1.01] hover:shadow-blue-500/40 hover:border-white/20 border-2 border-transparent cursor-help"
+            style="background-color: #0d7ff2;">
+            <div
+              class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent">
+            </div>
+            <div
+              class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20 group-hover:scale-110 transition-transform duration-700">
+            </div>
+            <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
               <div>
-                <p class="text-primary-100/80 font-bold uppercase tracking-widest text-[10px] mb-3">Zysk po opodatkowaniu i wykupie<span class="px-1.5 py-0.5 text-[9px] bg-white/10 text-white rounded-md font-bold ml-2">INFO</span></p>
+                <p class="text-primary-100/80 font-bold uppercase tracking-widest text-[10px] mb-3 flex items-center">
+                  Zysk po opodatkowaniu i wykupie
+                  <span class="px-1.5 py-0.5 text-[9px] bg-white/10 text-white rounded-md font-bold ml-2">INFO</span>
+                </p>
                 <p class="text-5xl md:text-7xl font-black tracking-tighter mb-4" id="ob-wynik-kapital">0,00 zł</p>
+                <div class="flex items-center gap-2 text-primary-100/80 text-sm mb-2">
+                  <span class="material-symbols-outlined text-base">verified</span>
+                  <span>Kwota netto po potrąceniu podatków i opłat</span>
+                </div>
                 <p class="mt-2 text-sm text-primary-100">Stopa roczna CAGR: <strong id="ob-wynik-cagr">0.00%</strong></p>
-                <p class="mt-4 text-[10px] text-white/60 opacity-0 group-hover:opacity-100 transition-opacity">Kliknij, aby zrozumięć ten wynik</p>
+                <p class="mt-4 text-[10px] text-white/60 opacity-0 group-hover:opacity-100 transition-opacity">Kliknij,
+                  aby zrozumieć ten wynik</p>
               </div>
               <div class="bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/20 h-auto self-start">
                 <p class="text-[10px] font-black uppercase tracking-widest text-white/60 mb-1">Status podatkowy</p>
@@ -373,66 +389,130 @@
           </div>
 
           <!-- KAFELKI -->
-          <div class="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6">
-            <div class="relative bg-white/70 dark:bg-slate-900/60 backdrop-blur-md p-5 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-xl cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50" onclick="openEduModal('wynik_karta', event)">
-              <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"></div>
-              <div class="flex items-center mb-0.5">
-                <p class="text-[10px] uppercase font-semibold text-slate-500">Koszt zakupu</p>
-                <span class="px-1.5 py-0.5 text-[9px] bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 rounded-md font-bold ml-2">INFO</span>
+          <div
+            class="flex flex-col items-center justify-center w-full lg:grid lg:grid-cols-2 lg:gap-6 lg:items-start lg:justify-items-stretch gap-6">
+            <div onclick="openEduModal('wynik_karta', event)"
+              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+              <div
+                class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent">
               </div>
-              <p class="text-2xl font-bold text-slate-900 dark:text-white" id="ob-wynik-wklad">0,00 zł</p>
-              <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Kliknij, aby zrozumieć ten wynik</p>
+              <div class="flex items-center justify-center lg:justify-start mb-0.5">
+                <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Koszt zakupu</p>
+                <span
+                  class="px-1.5 py-0.5 text-[9px] bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 rounded-md font-bold ml-2">INFO</span>
+              </div>
+              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-slate-900 dark:text-white"
+                id="ob-wynik-wklad">0,00 zł</p>
+              <div class="mt-auto pt-2">
+                <p class="text-[11px] text-slate-400/80">Suma nominalna wpłat na obligacje</p>
+              </div>
+              <p
+                class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div class="relative bg-white/70 dark:bg-slate-900/60 backdrop-blur-md p-5 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-xl cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50" onclick="openEduModal('wynik_karta', event)">
-              <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"></div>
-              <div class="flex items-center mb-0.5">
-                <p class="text-[10px] uppercase font-semibold text-slate-500">Zysk z odsetek</p>
-                <span class="px-1.5 py-0.5 text-[9px] bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 rounded-md font-bold ml-2">INFO</span>
+            
+            <div onclick="openEduModal('wynik_karta', event)"
+              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+              <div
+                class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent">
               </div>
-              <p class="text-2xl font-bold text-slate-900 dark:text-white" id="ob-wynik-zysk">0,00 zł</p>
-              <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Kliknij, aby zrozumieć ten wynik</p>
+              <div class="flex items-center justify-center lg:justify-start mb-0.5">
+                <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Zysk z odsetek</p>
+                <span
+                  class="px-1.5 py-0.5 text-[9px] bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 rounded-md font-bold ml-2">INFO</span>
+              </div>
+              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-slate-900 dark:text-white"
+                id="ob-wynik-zysk">0,00 zł</p>
+              <div class="mt-auto pt-2">
+                <p class="text-[11px] text-slate-400/80">Skumulowane odsetki przed opodatkowaniem</p>
+              </div>
+              <p
+                class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div class="relative bg-white/70 dark:bg-slate-900/60 backdrop-blur-md p-5 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-xl cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-rose-300/50" onclick="openEduModal('wynik_karta', event)">
-              <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-rose-500/40 to-transparent"></div>
-              <div class="flex items-center mb-0.5">
-                <p class="text-[10px] uppercase font-semibold text-slate-500">Potrącony podatek</p>
-                <span class="px-1.5 py-0.5 text-[9px] bg-rose-50 text-rose-600 dark:bg-rose-900/30 dark:text-rose-400 rounded-md font-bold ml-2">INFO</span>
+
+            <div onclick="openEduModal('wynik_karta', event)"
+              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-rose-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+              <div
+                class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-rose-500/40 to-transparent">
               </div>
-              <p class="text-2xl font-bold text-rose-500" id="ob-wynik-podatek">0,00 zł</p>
-              <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Kliknij, aby zrozumieć ten wynik</p>
+              <div class="flex items-center justify-center lg:justify-start mb-0.5">
+                <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Potrącony podatek</p>
+                <span
+                  class="px-1.5 py-0.5 text-[9px] bg-rose-50 text-rose-600 dark:bg-rose-900/30 dark:text-rose-400 rounded-md font-bold ml-2">INFO</span>
+              </div>
+              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-rose-500"
+                id="ob-wynik-podatek">0,00 zł</p>
+              <div class="mt-auto pt-2">
+                <p class="text-[11px] text-slate-400/80">Środki oddane do Urzędu Skarbowego</p>
+              </div>
+              <p
+                class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div class="relative bg-white/70 dark:bg-slate-900/60 backdrop-blur-md p-5 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-xl cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-orange-300/50" onclick="openEduModal('wynik_karta', event)">
-              <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-orange-500/40 to-transparent"></div>
-              <div class="flex items-center mb-0.5">
-                <p class="text-[10px] uppercase font-semibold text-slate-500">Kara za wykup</p>
-                <span class="px-1.5 py-0.5 text-[9px] bg-orange-50 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400 rounded-md font-bold ml-2">INFO</span>
+
+            <div onclick="openEduModal('wynik_karta', event)"
+              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-orange-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+              <div
+                class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-orange-500/40 to-transparent">
               </div>
-              <p class="text-2xl font-bold text-orange-500" id="ob-wynik-kara">0,00 zł</p>
-              <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Kliknij, aby zrozumieć ten wynik</p>
+              <div class="flex items-center justify-center lg:justify-start mb-0.5">
+                <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Kara za wykup</p>
+                <span
+                  class="px-1.5 py-0.5 text-[9px] bg-orange-50 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400 rounded-md font-bold ml-2">INFO</span>
+              </div>
+              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-orange-500"
+                id="ob-wynik-kara">0,00 zł</p>
+              <div class="mt-auto pt-2">
+                <p class="text-[11px] text-slate-400/80">Opłata za wcześniejsze zakończenie lokaty</p>
+              </div>
+              <p
+                class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div class="relative bg-white/70 dark:bg-slate-900/60 backdrop-blur-md p-5 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-xl cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-emerald-300/50" onclick="openEduModal('wynik_karta', event)">
-              <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent"></div>
-              <div class="flex items-center mb-0.5">
-                <p class="text-[10px] uppercase font-semibold text-slate-500">Wartość Realna</p>
-                <span class="px-1.5 py-0.5 text-[9px] bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 rounded-md font-bold ml-2">INFO</span>
+
+            <div onclick="openEduModal('wynik_karta', event)"
+              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-emerald-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+              <div
+                class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent">
               </div>
-              <p class="text-2xl font-bold text-emerald-500" id="ob-wynik-realny">0,00 zł</p>
-              <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Kliknij, aby zrozumieć ten wynik</p>
+              <div class="flex items-center justify-center lg:justify-start mb-0.5">
+                <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Wartość Realna</p>
+                <span
+                  class="px-1.5 py-0.5 text-[9px] bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 rounded-md font-bold ml-2">INFO</span>
+              </div>
+              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-emerald-500"
+                id="ob-wynik-realny">0,00 zł</p>
+              <div class="mt-auto pt-2">
+                <p class="text-[11px] text-slate-400/80">Siła nabywcza w dzisiejszych pieniądzach</p>
+              </div>
+              <p
+                class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div class="relative bg-white/70 dark:bg-slate-900/60 backdrop-blur-md p-5 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-xl cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-emerald-300/50" onclick="openEduModal('wynik_karta', event)">
-              <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent"></div>
-              <div class="flex items-center mb-0.5">
-                <p class="text-[10px] uppercase font-semibold text-slate-500">Realny CAGR</p>
-                <span class="px-1.5 py-0.5 text-[9px] bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 rounded-md font-bold ml-2">INFO</span>
+
+            <div onclick="openEduModal('wynik_karta', event)"
+              class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-emerald-300/50 bg-white/70 backdrop-blur-md dark:bg-slate-900/60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-2xl lg:rounded-3xl border border-slate-100 dark:border-slate-800 shadow-2xl mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+              <div
+                class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent">
               </div>
-              <p class="text-2xl font-bold text-emerald-500" id="ob-wynik-cagr-real">0.00%</p>
-              <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Kliknij, aby zrozumieć ten wynik</p>
+              <div class="flex items-center justify-center lg:justify-start mb-0.5">
+                <p class="text-[10px] uppercase tracking-widest font-semibold text-slate-500">Realny CAGR</p>
+                <span
+                  class="px-1.5 py-0.5 text-[9px] bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 rounded-md font-bold ml-2">INFO</span>
+              </div>
+              <p class="text-2xl lg:text-3xl lg:tracking-tight font-bold tracking-tight text-emerald-500"
+                id="ob-wynik-cagr-real">0.00%</p>
+              <div class="mt-auto pt-2">
+                <p class="text-[11px] text-slate-400/80">Wzrost zyskowności ponad inflację r/r</p>
+              </div>
+              <p
+                class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Kliknij, aby zrozumieć ten wynik</p>
             </div>
           </div>
-
           
-          
-<!-- SCENARIO HISTORY -->
+          <!-- SCENARIO HISTORY -->
           <div class="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:max-w-xl mx-auto">
             <button id="btn-save-scenario" class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all font-semibold text-sm shadow-md">
               <span class="material-symbols-outlined text-[18px]">push_pin</span> Zapisz scenariusz
@@ -480,13 +560,16 @@
                       Okres</th>
                     <th
                       class="px-3 py-4 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">
-                      Marża/Oproc</th>
+                      Suma wpłat</th>
                     <th
                       class="px-3 py-4 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">
-                      Zysk Roczny</th>
+                      Zysk Nominalny</th>
                     <th
                       class="px-3 py-4 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">
                       Kapitał Skum.</th>
+                    <th
+                      class="px-3 py-4 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">
+                      Marża/Oproc</th>
                     <th
                       class="px-3 py-4 text-xs lg:text-sm font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">
                       Realny (Siła Nabywcza)</th>

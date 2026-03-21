@@ -1,3 +1,4 @@
+
 /**
  * Logika Kalkulatora Obligacji Skarbowych — ETFkalkulator.pl
  */
@@ -16,7 +17,7 @@ const BOND_CONSTANTS = {
 
 document.addEventListener('DOMContentLoaded', () => {
     const numericInputs = ['input-kapital', 'input-doplata', 'input-inflacja'];
-    
+
     numericInputs.forEach(id => {
         const el = document.getElementById(id);
         if (el) {
@@ -46,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             obliczWszystko();
         });
     });
-    
+
     const wykupSlider = document.getElementById('input-wykup');
     if (wykupSlider) {
         wykupSlider.addEventListener('input', (e) => {
@@ -62,16 +63,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const btnSaveScenario = document.getElementById('btn-save-scenario');
     if (btnSaveScenario) btnSaveScenario.addEventListener('click', saveCurrentScenario);
-    
+
     const btnShare = document.getElementById('btn-share-result');
     if (btnShare) btnShare.addEventListener('click', shareResult);
 
     initChart();
     updateTypeOptions();
     updateEarlyRedemptionSlider();
-    
+
     if (window.location.search) loadFromUrlParams();
-    
+
     loadFromLocalStorage();
     obliczWszystko();
 });
@@ -82,7 +83,7 @@ function updateTypeOptions() {
     const is800 = is800El.checked;
     const typeSelect = document.getElementById('input-typ');
     const currentVal = typeSelect.value;
-    
+
     Array.from(typeSelect.options).forEach(opt => {
         if (opt.value === 'ROS' || opt.value === 'ROD') {
             opt.disabled = !is800;
@@ -102,7 +103,7 @@ function updateEarlyRedemptionSlider() {
     const years = BOND_CONSTANTS[typeSelect].years;
     const slider = document.getElementById('input-wykup');
     const display = document.getElementById('wykup-val-display');
-    
+
     if (slider) {
         slider.max = years;
         if (parseInt(slider.value) > years) {
@@ -162,10 +163,10 @@ function obliczWszystko() {
     const inflacjaInput = parseFloat(document.getElementById('input-inflacja')?.value) || 0;
     const isIKE = document.getElementById('input-ike')?.checked || false;
     const isRolowanie = document.getElementById('input-rolowanie')?.checked || false;
-    
+
     const wykupSlider = document.getElementById('input-wykup');
     const wykupRok = wykupSlider ? parseInt(wykupSlider.value) || BOND_CONSTANTS[type].years : BOND_CONSTANTS[type].years;
-    
+
     const bond = BOND_CONSTANTS[type];
     const customMarzaVal = parseFloat(document.getElementById('input-custom-marza')?.value);
     const effectiveMargin = (!isNaN(customMarzaVal) && customMarzaVal >= 0)
@@ -173,16 +174,16 @@ function obliczWszystko() {
         : bond.margin;
     const cpi = Math.max(0, inflacjaInput / 100);
     const bondPrice = isRolowanie ? 99.90 : 100.00;
-    
+
     const actualYears = Math.min(wykupRok, bond.years);
     const totalMonths = Math.max(actualYears * 12, 1);
-    
+
     let cohorts = [];
-    
+
     for (let m = 0; m < totalMonths; m++) {
         let amount = (m === 0) ? kapitalStart : doplata;
         if (amount <= 0) continue;
-        
+
         let quantity = amount / bondPrice;
         cohorts.push({
             startMonth: m,
@@ -198,38 +199,38 @@ function obliczWszystko() {
         wklad: [kapitalStart],
         realny: [kapitalStart]
     };
-    
+
     const tabelaBody = document.getElementById('tabela-body');
     if (tabelaBody) tabelaBody.innerHTML = '';
-    
+
     let globalFinalTaxPaid = 0;
     let globalFinalPenaltyPaid = 0;
     let globalFinalGrossProfit = 0;
     let globalFinalNetCapital = 0;
     let globalTotalWkladAtEnd = 0;
-    
+
     for (let y = 1; y <= actualYears; y++) {
         let currentYearMonths = y * 12;
         let totalNominalAtY = 0;
         let totalWkladAtY = 0;
-        
+
         for (let c of cohorts) {
-            if (c.startMonth >= currentYearMonths) continue; 
+            if (c.startMonth >= currentYearMonths) continue;
             totalWkladAtY += c.cost;
-            
+
             let heldMonths = currentYearMonths - c.startMonth;
             let fullYears = Math.floor(heldMonths / 12);
             let remMonths = heldMonths % 12;
-            
+
             let currentNominal = c.nominal;
             let accumInterest = 0;
             let taxPaid = 0;
-            
+
             for (let i = 1; i <= fullYears; i++) {
                 let rate = (type === 'TOS') ? bond.fixed : (type === 'ROR') ? bond.fixedYr1 + bond.margin : (i === 1 ? bond.yr1 : cpi + effectiveMargin);
                 let interest = currentNominal * rate;
                 accumInterest += interest;
-                
+
                 if (bond.tax === 'payout' && !isIKE) {
                     let tax = interest * 0.19;
                     taxPaid += tax;
@@ -239,29 +240,29 @@ function obliczWszystko() {
                     currentNominal += interest;
                 }
             }
-            
+
             let fractionalInterest = 0;
             if (remMonths > 0) {
-                 let rate = (type === 'TOS') ? bond.fixed : (type === 'ROR') ? bond.fixedYr1 + bond.margin : (fullYears === 0 ? bond.yr1 : cpi + effectiveMargin);
-                 fractionalInterest = currentNominal * rate * (remMonths / 12);
-                 accumInterest += fractionalInterest;
-                 
-                 if (bond.tax === 'payout' && !isIKE) {
-                     let tax = fractionalInterest * 0.19;
-                     taxPaid += tax;
-                     fractionalInterest -= tax;
-                 }
-                 if (bond.cap === 'annual') {
-                     currentNominal += fractionalInterest;
-                 }
+                let rate = (type === 'TOS') ? bond.fixed : (type === 'ROR') ? bond.fixedYr1 + bond.margin : (fullYears === 0 ? bond.yr1 : cpi + effectiveMargin);
+                fractionalInterest = currentNominal * rate * (remMonths / 12);
+                accumInterest += fractionalInterest;
+
+                if (bond.tax === 'payout' && !isIKE) {
+                    let tax = fractionalInterest * 0.19;
+                    taxPaid += tax;
+                    fractionalInterest -= tax;
+                }
+                if (bond.cap === 'annual') {
+                    currentNominal += fractionalInterest;
+                }
             }
-            
+
             let isFinalYear = (y === actualYears);
             let isEarly = (heldMonths < bond.years * 12);
             let penalty = 0;
-            
+
             let currentCapitalNet = bond.cap === 'annual' ? currentNominal : (c.nominal + accumInterest - taxPaid);
-            
+
             if (isFinalYear && isEarly) {
                 penalty = Math.min(c.quantity * bond.penalty, accumInterest);
                 currentCapitalNet -= penalty;
@@ -282,50 +283,51 @@ function obliczWszystko() {
                 let endTax = accumInterest * 0.19;
                 currentCapitalNet -= endTax;
             }
-            
+
             totalNominalAtY += currentCapitalNet;
-            
+
             if (isFinalYear) {
                 globalFinalTaxPaid += taxPaid;
                 globalFinalPenaltyPaid += penalty;
                 globalFinalGrossProfit += accumInterest;
             }
         }
-        
+
         const infSkumulowana = Math.pow(1 + cpi, y);
         const realCapital = totalNominalAtY / infSkumulowana;
-        
+
         daneWykresu.labels.push('Rok ' + y);
         daneWykresu.nominalny.push(window.zaokraglij(totalNominalAtY));
         daneWykresu.wklad.push(window.zaokraglij(totalWkladAtY));
         daneWykresu.realny.push(window.zaokraglij(realCapital));
-        
+
         if (y === actualYears) {
             globalFinalNetCapital = totalNominalAtY;
             globalTotalWkladAtEnd = totalWkladAtY;
         }
-        
+
         if (tabelaBody) {
             const currentCpiRate = cpi;
             const avgRate = (type === 'TOS') ? bond.fixed : (y === 1) ? bond.yr1 : currentCpiRate + effectiveMargin;
-            
+
             const tr = document.createElement('tr');
             tr.className = "hover:bg-slate-50/50 dark:hover:bg-slate-900/50 transition-colors";
             tr.innerHTML = `
                 <td class="sticky left-0 z-10 bg-white/95 dark:bg-slate-900/95 px-4 py-3 text-xs lg:text-sm font-semibold border-r border-slate-100 dark:border-slate-800">Rok ${y}</td>
-                <td class="px-3 py-4 text-xs lg:text-sm text-right">${(avgRate*100).toFixed(2)}%</td>
+                <td class="px-3 py-4 text-xs lg:text-sm text-right">${window.formatujZl(window.zaokraglij(totalWkladAtY))}</td>
                 <td class="px-3 py-4 text-xs lg:text-sm text-right">${window.formatujZl(window.zaokraglij(totalNominalAtY - totalWkladAtY))}</td>
                 <td class="px-3 py-4 text-xs lg:text-sm text-right font-bold text-slate-900 dark:text-white">${window.formatujZl(window.zaokraglij(totalNominalAtY))}</td>
+                <td class="px-3 py-4 text-xs lg:text-sm text-right">${(avgRate * 100).toFixed(2)}%</td>
                 <td class="px-3 py-4 text-xs lg:text-sm text-right font-bold text-emerald-500">${window.formatujZl(window.zaokraglij(realCapital))}</td>
             `;
             tabelaBody.appendChild(tr);
         }
     }
-    
+
     const finalCapital = globalFinalNetCapital;
     const finalReal = daneWykresu.realny[daneWykresu.realny.length - 1];
     let rawProfit = finalCapital - globalTotalWkladAtEnd;
-    
+
     // Safety check just in case totalWklad is < 1
     const safeBase = Math.max(globalTotalWkladAtEnd, 1);
     const cagrNom = (Math.pow(finalCapital / safeBase, 1 / actualYears) - 1) || 0;
@@ -487,7 +489,7 @@ function updateUrlParams() {
     if (document.getElementById('input-ike').checked) params.set('ike', '1');
     if (document.getElementById('input-800plus').checked) params.set('800', '1');
     if (document.getElementById('input-rolowanie').checked) params.set('r', '1');
-    
+
     // Update URL without reloading
     const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + params.toString();
     window.history.replaceState({ path: newUrl }, '', newUrl);
@@ -502,7 +504,7 @@ function loadFromUrlParams() {
     if (params.has('ike')) document.getElementById('input-ike').checked = params.get('ike') === '1';
     if (params.has('800')) document.getElementById('input-800plus').checked = params.get('800') === '1';
     if (params.has('r')) document.getElementById('input-rolowanie').checked = params.get('r') === '1';
-    
+
     updateTypeOptions();
     updateEarlyRedemptionSlider();
 }
@@ -571,18 +573,18 @@ window.modalData = {
     }
 };
 
-window.openEduModal = function(type, event) {
+window.openEduModal = function (type, event) {
     if (event) { event.preventDefault(); event.stopPropagation(); }
     if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
-    
+
     const data = window.modalData[type];
     if (!data) return;
-    
+
     const titleEl = document.getElementById('modal-title');
     const descEl = document.getElementById('modal-explanation');
     const formEl = document.getElementById('modal-formula');
     const iconEl = document.getElementById('modal-icon');
-    
+
     if (titleEl) titleEl.innerText = data.title;
     if (descEl) descEl.innerText = data.desc;
     if (formEl) formEl.innerText = data.formula;
@@ -595,7 +597,7 @@ window.openEduModal = function(type, event) {
     }
 };
 
-window.closeEduModal = function() {
+window.closeEduModal = function () {
     const modal = document.getElementById('edu-modal');
     if (modal) {
         modal.classList.add('hidden');
