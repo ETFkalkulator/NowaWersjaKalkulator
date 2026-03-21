@@ -425,6 +425,19 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
+
+    /* Custom horizontal scrollbar for scenarios container */
+    #scenario-cards-container::-webkit-scrollbar {
+      display: block;
+      height: 4px;
+    }
+    #scenario-cards-container::-webkit-scrollbar-thumb {
+      background: rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+    .dark #scenario-cards-container::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.1);
+    }
   </style>
 
   <style>

@@ -395,7 +395,7 @@ function renderScenarios() {
 
     savedScenarios.forEach((scen, index) => {
         const div = document.createElement('div');
-        div.className = "min-w-[85%] sm:min-w-[300px] snap-center bg-white/70 dark:bg-slate-900/60 backdrop-blur-md border border-transparent dark:border-slate-700 rounded-2xl p-4 relative group cursor-pointer hover:border-primary/50 active:scale-[0.98] shrink-0 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 overflow-hidden";
+        div.className = "min-w-[85vw] sm:min-w-[300px] snap-center sm:snap-start bg-white/70 dark:bg-slate-900/60 backdrop-blur-md border border-transparent dark:border-slate-700 rounded-2xl p-4 relative group cursor-pointer hover:border-primary/50 active:scale-[0.98] shrink-0 transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-primary/10 overflow-hidden";
         div.onclick = () => loadScenario(index);
         
         // Format z polskim separatorem spacji (np. "10 000")
@@ -437,6 +437,17 @@ function renderScenarios() {
         `;
         container.appendChild(div);
     });
+
+    const existingHint = document.getElementById('scenario-single-hint');
+    if (existingHint) existingHint.remove();
+
+    if (savedScenarios.length === 1) {
+        const hintP = document.createElement('p');
+        hintP.id = 'scenario-single-hint';
+        hintP.className = 'text-sm text-slate-500 dark:text-slate-400 italic text-center mt-3 mb-1 w-full animate-pulse';
+        hintP.innerText = 'Zapisz kolejny scenariusz, aby je porównać';
+        section.appendChild(hintP);
+    }
 }
 
 function deleteScenario(index, event) {
