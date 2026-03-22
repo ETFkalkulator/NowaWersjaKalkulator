@@ -198,14 +198,41 @@
       scrollbar-width: none;
     }
 
+    article p {
+      line-height: 1.8;
+    }
+
+    article h2 {
+      scroll-margin-top: 5rem;
+    }
+
+    article h3 {
+      scroll-margin-top: 5rem;
+    }
+
     .article-prose h2 {
       font-size: 1.45rem;
       font-weight: 800;
       color: rgb(var(--stitch-text));
-      margin-top: 3rem;
-      margin-bottom: 1rem;
-      padding-top: 2rem;
+      margin-top: 4rem;
+      margin-bottom: 1.5rem;
+      padding-top: 2.5rem;
       border-top: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .article-prose h2 {
+      animation: fadeInUp 0.4s ease both;
     }
 
     .article-prose h3 {
@@ -332,6 +359,36 @@
       cursor: pointer;
       color: rgb(var(--stitch-text));
       margin: 0.4rem 0;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      list-style: none;
+    }
+
+    .article-prose details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .article-prose .faq-item summary::after {
+      content: "expand_more";
+      font-family: "Material Symbols Outlined";
+      font-size: 20px;
+      line-height: 1;
+      color: #0d7ff2;
+      transition: transform 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .article-prose .faq-item[open] summary::after {
+      transform: rotate(180deg);
+    }
+
+    .sidebar-toc a.toc-active {
+      color: #0d7ff2 !important;
+      font-weight: 600;
+      background: rgba(13, 127, 242, 0.1);
     }
 
     .article-prose .faq-answer {
@@ -519,6 +576,10 @@
   <a href="#main"
     class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-primary">Przejdź
     do głównej treści</a>
+  <div id="reading-progress"
+    class="fixed top-0 left-0 h-[3px] bg-primary z-[200] transition-none rounded-r-full"
+    style="width:0%;background-color:#0d7ff2;">
+  </div>
 
   <!-- Cookie Consent Banner -->
   <div id="cookie-consent" class="cookie-consent" style="display: none">
@@ -650,9 +711,10 @@
     </div>
   </section>
 
-  <main class="bg-stitch-bg dark:bg-slate-950 transition-colors duration-300">
+  <main class="bg-white dark:bg-slate-950 transition-colors">
   <!-- ARTICLE CONTENT -->
-    <article id="main" class="max-w-3xl mx-auto px-4 sm:px-6 pt-8 pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 grid grid-cols-1 lg:grid-cols-[1fr_300px] xl:grid-cols-[1fr_320px] gap-10 xl:gap-16 items-start">
+    <article id="main" class="min-w-0 pt-8 pb-16 lg:pb-20">
     <div class="glass-effect rounded-[1.5rem] p-6 mb-10 border-l-4 border-primary bg-primary/5 dark:bg-primary/10">
       <p class="text-xs font-black uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
         <span class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
@@ -1082,6 +1144,76 @@
   </p>
     </div>
   </article>
+      <aside class="hidden lg:block">
+        <div class="sticky top-24 space-y-6">
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+              <span class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+              W tym artykule
+            </p>
+            <nav class="sidebar-toc space-y-1">
+              <a href="#czym-sa" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">Czym są obligacje EDO</a>
+              <a href="#oprocentowanie" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">Oprocentowanie w 2026</a>
+              <a href="#jak-to-dziala" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">Indeksacja inflacją</a>
+              <a href="#przyklad" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">Przykład liczbowy</a>
+              <a href="#podatek" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">Podatek i IKE</a>
+              <a href="#wczesniejszy-wykup" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">Wcześniejszy wykup</a>
+              <a href="#jak-kupic" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">Jak kupić EDO</a>
+              <a href="#kiedy-sie-oplaca" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">Kiedy się opłaca</a>
+              <a href="#faq" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">FAQ</a>
+            </nav>
+          </div>
+          <div class="bg-gradient-to-br from-blue-700 to-primary rounded-2xl p-5 text-white text-center">
+            <span class="material-symbols-outlined text-3xl mb-2 opacity-80">analytics</span>
+            <h3 class="font-black text-white text-base mb-1">Policz to sam</h3>
+            <p class="text-white/75 text-xs leading-relaxed mb-4">Bezpłatny kalkulator obligacji — sprawdź swoje liczby.</p>
+            <a href="../pages/kalkulator-obligacji.html"
+              class="bg-white rounded-xl px-4 py-2.5 text-xs font-black hover:scale-[1.02] transition-all inline-flex items-center gap-1.5 shadow-lg"
+              style="color:#0d7ff2;text-decoration:none;">
+              Otwórz kalkulator
+              <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+            </a>
+          </div>
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+              <span class="material-symbols-outlined text-[18px]">auto_stories</span>
+              Czytaj też
+            </p>
+            <div class="space-y-3">
+              <a href="edo-vs-etf-2026.html" class="flex items-start gap-3 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors group cursor-pointer" style="text-decoration:none;">
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 mt-0.5 bg-amber-100 text-amber-700">Obligacje</span>
+                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 leading-tight group-hover:text-primary transition-colors">EDO vs ETF — co wybrać w 2026?</span>
+              </a>
+              <a href="podatek-belki-etf-jak-rozliczyc.html" class="flex items-start gap-3 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors group cursor-pointer" style="text-decoration:none;">
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 mt-0.5 bg-blue-100 text-blue-700">ETF</span>
+                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 leading-tight group-hover:text-primary transition-colors">Podatek Belki od ETF — jak rozliczyć</span>
+              </a>
+              <a href="kalkulator-etf-jak-obliczyc-realny-zysk.html" class="flex items-start gap-3 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors group cursor-pointer" style="text-decoration:none;">
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 mt-0.5 bg-blue-100 text-blue-700">ETF</span>
+                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 leading-tight group-hover:text-primary transition-colors">Kalkulator ETF — realny zysk</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+  <div class="lg:hidden fixed bottom-0 left-0 right-0 z-50 glass-effect border-t border-slate-200 dark:border-slate-800 px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-24 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+        <div id="reading-progress-mobile"
+          class="h-full bg-primary rounded-full transition-none"
+          style="width:0%;background-color:#0d7ff2;"></div>
+      </div>
+      <span id="reading-pct" class="text-xs font-bold text-slate-400">0%</span>
+    </div>
+    <a href="../pages/kalkulator-obligacji.html"
+      class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-full flex items-center gap-1.5 hover:opacity-90"
+      style="background-color:#0d7ff2;text-decoration:none;">
+      <span class="material-symbols-outlined text-[14px]">calculate</span>
+      Kalkulator
+    </a>
+  </div>
 
   <!-- NEWSLETTER SECTION (Wide Banner) -->
   <section id="newsletter-section"
@@ -1350,6 +1482,40 @@
 
   <script src="../js/utils.js"></script>
   <script src="../js/shared.js"></script>
+  <script>
+    const bar = document.getElementById('reading-progress');
+    const article = document.getElementById('main');
+    const mobileBar = document.getElementById('reading-progress-mobile');
+    const pctLabel = document.getElementById('reading-pct');
+
+    function updateProgress() {
+      if (!bar || !article) return;
+      const rect = article.getBoundingClientRect();
+      const total = article.offsetHeight - window.innerHeight;
+      const scrolled = Math.max(0, -rect.top);
+      const pct = total > 0 ? Math.min(100, (scrolled / total) * 100) : 0;
+      bar.style.width = pct + '%';
+      if (mobileBar) mobileBar.style.width = pct + '%';
+      if (pctLabel) pctLabel.textContent = Math.round(pct) + '%';
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    const headings = document.querySelectorAll('article h2[id]');
+    const tocLinks = document.querySelectorAll('.sidebar-toc a');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(a => a.classList.remove('toc-active'));
+          const active = document.querySelector('.sidebar-toc a[href="#' + entry.target.id + '"]');
+          if (active) active.classList.add('toc-active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    headings.forEach(h => observer.observe(h));
+  </script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       document.querySelectorAll(".article-prose table").forEach(function (table) {

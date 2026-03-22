@@ -1,54 +1,128 @@
-# Standard artykulu blogowego
+# STANDARD WDRAZANIA NOWEGO ARTYKULU
 
-## Cel
+Ten plik jest instrukcja operacyjna do wdrazania nowych wpisow blogowych w tym projekcie.
+Cel: spojnosc layoutu, poprawne podpiecie SEO i brak regresji.
 
-Kazdy artykul ma:
-- rozwiazywac jeden konkretny problem czytelnika,
-- prowadzic do decyzji lub kolejnego kroku,
-- zachowywac spojnosc z reszta serwisu,
-- wspierac SEO bez lania wody.
+## 1. Zasada glowna
 
-## Struktura
+- Nie zmieniaj tresci merytorycznej artykulu bez wyraznej prosby.
+- Nie ruszaj: meta/Schema/GA4/nav/cookie/newsletter/footer, chyba ze trzeba dopasowac do standardu i jest to jawnie wskazane.
+- Dzialaj ostroznie: najpierw analiza, potem male i kontrolowane zmiany.
 
-- Jeden `h1` z jasna obietnica wartosci.
-- Lead 2-3 zdania: problem, stawka, czego czytelnik sie dowie.
-- Spis tresci z kotwicami do sekcji.
-- 3-7 sekcji `h2` z logiczna kolejnoscia.
-- Przynajmniej jeden konkretny przyklad liczbowy lub porownanie.
-- Jedno glowne CTA w tresci.
-- Lokalna sekcja newslettera z `#newsletter-section`.
-- Disclaimer na koncu.
+## 2. Pliki referencyjne (zawsze sprawdz)
 
-## SEO i semantyka
+- `blog/_article-template.html` - wzorzec layoutu i JS.
+- `blog/jak-zaczac-inwestowac-w-etf.html` - aktualny wzorzec wdrozenia.
+- `blog/podatek-belki-etf-jak-rozliczyc.html` - aktualny wzorzec wdrozenia.
+- `blog/index.html` - listing bloga.
+- `index.html` - sekcja "Najnowsze artykuly" na stronie glownej.
+- `sitemap.xml` - indeksacja URL.
 
-- Uzupeij `title`, `meta description`, `canonical`.
-- Ustaw `og:title`, `og:description`, `og:url`, `twitter:*`.
-- Uzupeij `Article` JSON-LD.
-- Uzupeij `BreadcrumbList` JSON-LD.
-- Adres URL i slug musza odpowiadac tematowi artykulu.
-- Nie zmieniaj sensu merytorycznego tylko po to, by dodac frazy SEO.
+## 3. Standard layoutu artykulu
 
-## UX i styl
+Nowy artykul musi miec:
 
-- Pisz prostym jezykiem, bez zbednego zargonu.
-- Akapity trzymaj raczej krotkie.
-- Dla trudniejszych fragmentow dodawaj ramki z wnioskiem, ostrzezeniem albo przykladem.
-- Uzywaj komponentow z `_article-template.html`.
-- Nie mieszaj starego i nowego stylu wizualnego.
+- Top progress bar:
+  - `#reading-progress` fixed `top-0`, `z-[200]`.
+- Main 2-kolumnowy:
+  - lewa: `<article id="main" ...>`
+  - prawa: sticky `<aside>` z 3 kartami.
+- Sidebar:
+  - karta 1: TOC (`.sidebar-toc`) z linkami do `h2[id]`.
+  - karta 2: CTA do odpowiedniego kalkulatora.
+  - karta 3: 3 powiazane artykuly.
+- Mobile bottom bar:
+  - `#reading-progress-mobile` + `#reading-pct`
+  - mobilny przycisk CTA do odpowiedniego kalkulatora.
+- Top nav CTA:
+  - przycisk `Zapisz sie` z linkiem `#newsletter-section` (nie `../index.html#newsletter`).
 
-## Integracje techniczne
+## 4. Standard typografii i interakcji
 
-- CTA w top nav ma prowadzic do `#newsletter-section`.
-- Zachowaj pelny formularz MailerLite z checkboxem GDPR i reCAPTCHA.
-- Zachowaj dark mode oparty o klasy `dark`, `dark-mode`, `light`, `light-mode`.
-- Nie dodawaj drugiego bannera cookies ani duplikatow skryptow.
+W `<style>` musza byc:
 
-## Checklista przed publikacja
+- `article p { line-height: 1.8; }`
+- `article h2 { scroll-margin-top: 5rem; }`
+- `article h3 { scroll-margin-top: 5rem; }`
+- `@keyframes fadeInUp` + animacja dla `article h2`
+- FAQ:
+  - `details summary { user-select: none; }`
+  - rotacja ikony expand przy `details[open]`
+- aktywny TOC:
+  - `.sidebar-toc a.toc-active { ... }`
 
-- Artykul ma poprawny slug i metadane.
-- Wszystkie linki i kotwice dzialaja.
-- Formularz newslettera ma checkbox i reCAPTCHA.
-- Widok light/dark jest spojny.
-- Nie ma placeholderow typu `ARTICLE_TITLE`, `SECTION 1`, `MONTH YEAR`.
-- Nie ma literowek, zlych zawijan tekstu ani starych CTA.
-- Tresc pozostaje merytorycznie zgodna z zamierzeniem autora.
+## 5. Standard JS (pod koniec pliku)
+
+Wymagane:
+
+- progress desktop + mobile:
+  - `const bar = document.getElementById('reading-progress')`
+  - `const mobileBar = document.getElementById('reading-progress-mobile')`
+  - `const pctLabel = document.getElementById('reading-pct')`
+  - `updateProgress()` podpięte pod scroll.
+- TOC highlight:
+  - `IntersectionObserver` dla `article h2[id]`
+  - aktywacja klasy `toc-active`.
+
+## 6. Integracja nowego artykulu w serwisie
+
+Po dodaniu/aktualizacji pliku artykulu zrob:
+
+1. `blog/index.html`
+- licznik artykulow (np. `6 artykulow` -> `7 artykulow`).
+- ustaw najnowszy wpis jako featured.
+- poprzedni featured przenies do siatki "Opublikowane".
+
+2. `index.html`
+- zaktualizuj sekcje "Najnowsze artykuly" (3 karty).
+- minimum: podmien 1 karte na nowy wpis (tytul, opis, czas, link).
+
+3. `sitemap.xml`
+- dodaj URL:
+  - `https://etfkalkulator.pl/blog/<slug>.html`
+- ustaw `lastmod` na dzien wdrozenia.
+
+## 7. Kodowanie polskich znakow
+
+- Trzymaj pliki w UTF-8.
+- Nie "naprawiaj" znakow na slepo po samym podgladzie terminala.
+- Jesli terminal pokazuje krzaki, sprawdz bajty/odczyt UTF-8 zanim cokolwiek konwertujesz.
+- Gdy trzeba, stosuj encje HTML tylko lokalnie i celowo.
+
+## 8. Kontrola po wdrozeniu (obowiazkowa)
+
+Uruchom szybki check:
+
+- czy sa:
+  - `#reading-progress`
+  - `#reading-progress-mobile`
+  - `.sidebar-toc`
+  - `const bar = document.getElementById('reading-progress')`
+- czy nav ma:
+  - `href="#newsletter-section"` i tekst `Zapisz sie`
+- czy struktura HTML jest domknieta:
+  - 1x `<main>...</main>`
+  - 1x `<article>...</article>`
+  - 1x `<aside>...</aside>` (dla desktop sidebar)
+- czy linki do nowych artykulow sa w:
+  - `blog/index.html`
+  - `index.html`
+  - `sitemap.xml`
+
+## 9. Gotowy prompt do nowej sesji (wklej 1:1)
+
+```text
+Wdrazamy nowy artykul do projektu. Pracuj zgodnie z plikiem:
+blog/STANDARD-ARTYKULU.md
+
+Zakres:
+1) Dostosuj layout artykulu do standardu projektu (jak w blog/_article-template.html i najnowszych wdrozeniach).
+2) Nie zmieniaj tresci merytorycznej.
+3) Upewnij sie, ze top nav ma przycisk "Zapisz sie" do #newsletter-section.
+4) Zaktualizuj powiazane miejsca: blog/index.html, index.html, sitemap.xml.
+5) Na koniec podaj liste zmienionych plikow i krotki check techniczny.
+
+Plik artykulu:
+<TUTAJ_WKLEJ_SCIEZKE_DO_ARTYKULU>
+```
+
