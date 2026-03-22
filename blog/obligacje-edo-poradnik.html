@@ -411,15 +411,26 @@
 
     .article-prose .table-scroll .data-table,
     .article-prose .table-scroll table {
-      width: 100%;
+      width: max-content;
+      min-width: 100%;
       min-width: 720px;
       margin: 0;
+      table-layout: auto;
     }
 
     .article-prose .table-scroll th,
     .article-prose .table-scroll td {
       white-space: normal;
       vertical-align: top;
+      padding: 0.72rem 0.95rem;
+      line-height: 1.45;
+    }
+
+    .article-prose .table-scroll thead th {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      box-shadow: 0 1px 0 rgba(148, 163, 184, 0.25);
     }
 
     .article-prose .table-scroll::before,
@@ -437,12 +448,20 @@
 
     .article-prose .table-scroll::before {
       left: 0;
-      background: linear-gradient(to right, rgba(15, 23, 42, 0.16), rgba(15, 23, 42, 0));
+      background: linear-gradient(to right, rgba(248, 250, 252, 0.96), rgba(248, 250, 252, 0));
     }
 
     .article-prose .table-scroll::after {
       right: 0;
-      background: linear-gradient(to left, rgba(15, 23, 42, 0.16), rgba(15, 23, 42, 0));
+      background: linear-gradient(to left, rgba(248, 250, 252, 0.96), rgba(248, 250, 252, 0));
+    }
+
+    .dark .article-prose .table-scroll::before {
+      background: linear-gradient(to right, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0));
+    }
+
+    .dark .article-prose .table-scroll::after {
+      background: linear-gradient(to left, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0));
     }
 
     .article-prose .table-scroll.can-scroll-left::before,
@@ -486,6 +505,11 @@
       }
     }
   </style>
+  <link rel="preload" as="style" href="../css/mailerlite.css" />
+  <link href="../css/mailerlite.css" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="../css/mailerlite.css" />
+  </noscript>
   <link rel="stylesheet" href="../css/reset.css" />
   <link rel="stylesheet" href="../css/variables.css" />
   <link rel="stylesheet" href="../css/main.css" />
@@ -1423,8 +1447,39 @@
       if (m) m.content = html.classList.contains("dark") ? "#0f172a" : "#f8fafc";
     })();
   </script>
+  <script src="https://www.google.com/recaptcha/api.js" defer></script>
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
-    type="text/javascript"></script>
+    type="text/javascript" defer></script>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", function () {
+      const cookieConsent = document.getElementById("cookie-consent");
+      if (!cookieConsent) return;
+      const acceptBtn = document.getElementById("cookie-accept");
+      const rejectBtn = document.getElementById("cookie-reject");
+      const choice = localStorage.getItem("etf-cookie-consent");
+
+      if (!choice) {
+        cookieConsent.style.display = "block";
+        setTimeout(function () {
+          cookieConsent.style.opacity = "1";
+          cookieConsent.style.transform = "translateY(0)";
+        }, 100);
+      }
+
+      acceptBtn?.addEventListener("click", function () {
+        localStorage.setItem("etf-cookie-consent", "accepted");
+        cookieConsent.style.display = "none";
+        if (typeof gtag === "function") {
+          gtag("consent", "update", { analytics_storage: "granted" });
+        }
+      });
+
+      rejectBtn?.addEventListener("click", function () {
+        localStorage.setItem("etf-cookie-consent", "rejected");
+        cookieConsent.style.display = "none";
+      });
+    });
+  </script>
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="pl" class="scroll-smooth">
 
 <head>
@@ -131,7 +131,39 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
+
+    article p { line-height: 1.8; }
+    article h2 { scroll-margin-top: 5rem; }
+    article h3 { scroll-margin-top: 5rem; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    article h2 {
+      animation: fadeInUp 0.4s ease both;
+    }
+
+    details summary { user-select: none; }
+    details[open] summary .expand-icon {
+      transform: rotate(180deg);
+    }
+    .expand-icon {
+      transition: transform 0.25s ease;
+    }
+
+    .sidebar-toc a.toc-active {
+      color: #0d7ff2 !important;
+      font-weight: 600;
+      background: rgba(13, 127, 242, 0.1);
+    }
   </style>
+  <link rel="preload" as="style" href="../css/mailerlite.css" />
+  <link href="../css/mailerlite.css" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="../css/mailerlite.css" />
+  </noscript>
   <link rel="stylesheet" href="../css/reset.css" />
   <link rel="stylesheet" href="../css/variables.css" />
   <link rel="stylesheet" href="../css/main.css" />
@@ -141,6 +173,10 @@
   <a href="#main"
     class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-primary">PrzejdĹş
     do gĹ‚Ăłwnej treĹ›ci</a>
+  <div id="reading-progress"
+    class="fixed top-0 left-0 h-[3px] bg-primary z-[200] transition-none rounded-r-full"
+    style="width:0%;background-color:#0d7ff2;">
+  </div>
 
   <!-- Cookie Consent Banner -->
   <div id="cookie-consent" class="cookie-consent" style="display: none">
@@ -278,21 +314,22 @@
     </div>
   </section>
 
-  <!--
-  BLOG ARTICLE TEMPLATE â€” ETFkalkulator.pl
-  ==========================================
-  To create a new article:
-  1. Copy this file to blog/your-article-slug.html
-  2. Update <title>, <meta description>, <link rel="canonical">
-  3. Update Schema.org Article: headline, datePublished, url
-  4. Update Schema.org BreadcrumbList: last item name + url
-  5. Replace hero H1, lead, date, read time
-  6. Update TOC anchors
-  7. Write your sections
-  8. Newsletter section is already included â€” do NOT remove
-  9. Update blog/index.html: move article from"WkrĂłtce" to published
- -->
-  <article id="main" class="max-w-3xl mx-auto px-4 sm:px-6 pt-8 pb-20">
+  <main class="bg-white dark:bg-slate-950 transition-colors">
+    <!--
+      CHECKLIST FOR NEW ARTICLE:
+      □ Update title, description, canonical in <head>
+      □ Update Schema.org headline, datePublished, url
+      □ Update BreadcrumbList last item
+      □ Update hero H1, lead paragraph, date, read time
+      □ Update TOC <ol> items + href anchors
+      □ Write article sections with h2[id] anchors
+      □ Update sidebar CARD 2 CTA link to relevant calculator
+      □ Update sidebar CARD 3 related article links (3 articles)
+      □ Newsletter already included — do not remove
+      □ Update blog/index.html — move from Wkrótce to published
+    -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 grid grid-cols-1 lg:grid-cols-[1fr_300px] xl:grid-cols-[1fr_320px] gap-10 xl:gap-16 items-start">
+      <article id="main" class="min-w-0 pt-8 pb-16 lg:pb-20">
     <!-- TOC: replace with article-specific anchors -->
     <div class="glass-effect rounded-[1.5rem] p-6 mb-10 border-l-4 border-primary bg-primary/5 dark:bg-primary/10">
       <p class="text-xs font-black uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
@@ -314,7 +351,7 @@
 
     <!-- SECTION 1: id="section-1" -->
     <h2 id="section-1"
-      class="text-2xl font-black text-stitch-text mt-14 mb-5 pt-8 border-t border-stitch-border flex items-center gap-3">
+      class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
       <span
         class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0"
         style="color: #0d7ff2">1</span>
@@ -331,24 +368,25 @@
 
    CALLOUT-KEY (blue):
    <div class="rounded-2xl p-5 bg-primary/5 dark:bg-primary/10 border-l-4 border-primary mb-6">
-    <p class="text-xs font-black uppercase tracking-wider text-primary mb-2">đź”‘ Title</p>
+    <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-primary mb-2"><span class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2">key</span> Title</p>
     <p class="text-sm text-stitch-muted leading-relaxed">Content</p>
    </div>
 
    CALLOUT-WARNING (amber):
    <div class="rounded-2xl p-5 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 mb-6">
-    <p class="text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2">âš ď¸Ź Title</p>
+    <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2"><span class="material-symbols-outlined text-amber-600 text-[18px] shrink-0">warning</span> Title</p>
     <p class="text-sm text-stitch-muted leading-relaxed">Content</p>
    </div>
 
    CALLOUT-EXAMPLE (emerald):
    <div class="rounded-2xl p-5 bg-emerald-50 dark:bg-emerald-950/30 border-l-4 border-emerald-500 mb-6">
-    <p class="text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2">âś… Title</p>
+    <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2"><span class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span> Title</p>
     <p class="text-sm text-stitch-muted leading-relaxed">Content</p>
    </div>
 
    CALCULATION BOX:
-   <div class="glass-effect rounded-2xl p-6 mb-6 shadow-stitch-soft border border-white/50 dark:border-stitch-border/50">
+   <div class="glass-effect relative overflow-hidden rounded-2xl p-6 mb-6 shadow-stitch-soft border border-white/50 dark:border-stitch-border/50">
+    <div class="absolute top-0 left-0 right-0 h-1 bg-primary rounded-t-2xl"></div>
     <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">calculate</span> Title</p>
     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border"><span class="text-sm text-stitch-muted">Label</span><span class="text-sm font-bold text-stitch-text">Value</span></div>
     <div class="bg-primary/5 dark:bg-primary/10 rounded-xl px-4 py-3 mt-2 border border-primary/20 flex flex-col sm:flex-row sm:justify-between sm:items-center"><span class="text-sm font-semibold">Summary</span><span class="text-base font-black text-primary" style="color:#0d7ff2;">Result</span></div>
@@ -357,8 +395,9 @@
    KEY NUMBERS (3 cards):
    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
     <div class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft">
-     <div class="text-2xl md:text-3xl font-black text-primary mb-1" style="color:#0d7ff2;">Value</div>
+     <div class="text-3xl md:text-4xl font-black text-primary mb-1" style="color:#0d7ff2;">Value</div>
      <div class="text-xs text-stitch-muted leading-tight">Label</div>
+     <div class="w-8 h-0.5 bg-primary/30 mx-auto mt-3 rounded-full" style="background-color:rgba(13,127,242,0.3)"></div>
     </div>
    </div>
 
@@ -390,6 +429,58 @@
       </div>
     </div>
   </article>
+      <aside class="hidden lg:block">
+        <div class="sticky top-24 space-y-6">
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+              <span class="material-symbols-outlined text-[16px]">format_list_bulleted</span>
+              W tym artykule
+            </p>
+            <div class="sidebar-toc space-y-1">
+              <!-- SIDEBAR TOC: links auto-generated from H2 ids in article -->
+            </div>
+          </div>
+          <div class="bg-gradient-to-br from-blue-700 to-primary rounded-2xl p-5 text-white text-center"
+            style="background:linear-gradient(135deg,#1d4ed8,#0d7ff2);">
+            <span class="material-symbols-outlined text-3xl mb-2 opacity-80">analytics</span>
+            <h3 class="font-black text-white text-base mb-1">Policz to sam</h3>
+            <p class="text-white/75 text-xs leading-relaxed mb-4">Podłącz link do właściwego kalkulatora dla tego artykułu.</p>
+            <a href="../pages/kalkulator-etf.html"
+              class="bg-white rounded-xl px-4 py-2.5 text-xs font-black hover:scale-[1.02] transition-all inline-flex items-center gap-1.5 shadow-lg"
+              style="color:#0d7ff2;text-decoration:none;">
+              Otwórz kalkulator
+              <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </a>
+          </div>
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+              <span class="material-symbols-outlined text-[16px]">auto_stories</span>
+              Czytaj też
+            </p>
+            <div class="space-y-3">
+              <!-- RELATED: update 3 article links manually per article -->
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <div class="lg:hidden fixed bottom-0 left-0 right-0 z-50 glass-effect border-t border-slate-200 dark:border-slate-800 px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-24 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+        <div id="reading-progress-mobile"
+          class="h-full bg-primary rounded-full transition-none"
+          style="width:0%;background-color:#0d7ff2;"></div>
+      </div>
+      <span id="reading-pct" class="text-xs font-bold text-slate-400">0%</span>
+    </div>
+    <a href="../pages/kalkulator-etf.html"
+      class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-full flex items-center gap-1.5 hover:opacity-90"
+      style="background-color:#0d7ff2;text-decoration:none;">
+      <span class="material-symbols-outlined text-[14px]">calculate</span>
+      Kalkulator
+    </a>
+  </div>
 
   <!-- NEWSLETTER SECTION (Wide Banner) -->
   <section id="newsletter-section"
@@ -642,6 +733,36 @@
 
   <script src="../js/utils.js"></script>
   <script src="../js/shared.js"></script>
+  <script>
+    const bar = document.getElementById('reading-progress');
+    const article = document.getElementById('main');
+    const mobileBar = document.getElementById('reading-progress-mobile');
+    const pctLabel = document.getElementById('reading-pct');
+    function updateProgress() {
+      if (!bar || !article) return;
+      const rect = article.getBoundingClientRect();
+      const total = article.offsetHeight - window.innerHeight;
+      const scrolled = Math.max(0, -rect.top);
+      const pct = total > 0 ? Math.min(100, (scrolled / total) * 100) : 0;
+      bar.style.width = pct + '%';
+      if (mobileBar) mobileBar.style.width = pct + '%';
+      if (pctLabel) pctLabel.textContent = Math.round(pct) + '%';
+    }
+    const headings = document.querySelectorAll('article h2[id]');
+    const tocLinks = document.querySelectorAll('.sidebar-toc a');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(a => a.classList.remove('toc-active'));
+          const active = document.querySelector('.sidebar-toc a[href="#' + entry.target.id + '"]');
+          if (active) active.classList.add('toc-active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    headings.forEach(h => observer.observe(h));
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  </script>
   <script defer>
     function przelaczTryb() {
       const html = document.documentElement;
@@ -662,8 +783,39 @@
       if (m) m.content = d ? "#0f172a" : "#f8fafc";
     }
   </script>
+  <script src="https://www.google.com/recaptcha/api.js" defer></script>
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
-    type="text/javascript"></script>
+    type="text/javascript" defer></script>
+  <script defer>
+    document.addEventListener("DOMContentLoaded", function () {
+      const cookieConsent = document.getElementById("cookie-consent");
+      if (!cookieConsent) return;
+      const acceptBtn = document.getElementById("cookie-accept");
+      const rejectBtn = document.getElementById("cookie-reject");
+      const choice = localStorage.getItem("etf-cookie-consent");
+
+      if (!choice) {
+        cookieConsent.style.display = "block";
+        setTimeout(function () {
+          cookieConsent.style.opacity = "1";
+          cookieConsent.style.transform = "translateY(0)";
+        }, 100);
+      }
+
+      acceptBtn?.addEventListener("click", function () {
+        localStorage.setItem("etf-cookie-consent", "accepted");
+        cookieConsent.style.display = "none";
+        if (typeof gtag === "function") {
+          gtag("consent", "update", { analytics_storage: "granted" });
+        }
+      });
+
+      rejectBtn?.addEventListener("click", function () {
+        localStorage.setItem("etf-cookie-consent", "rejected");
+        cookieConsent.style.display = "none";
+      });
+    });
+  </script>
 </body>
 
 </html>
