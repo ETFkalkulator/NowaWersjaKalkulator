@@ -140,6 +140,11 @@
   <link rel="stylesheet" href="../css/reset.css" />
   <link rel="stylesheet" href="../css/variables.css" />
   <link rel="stylesheet" href="../css/main.css" />
+  <link rel="preload" as="style" href="../css/mailerlite.css" />
+  <link href="../css/mailerlite.css" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="../css/mailerlite.css" />
+  </noscript>
 </head>
 
 <body>
@@ -210,7 +215,7 @@
           <span class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
           <span class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
         </button>
-        <a href="../index.html#newsletter"
+        <a href="#newsletter-section"
           class="bg-primary text-white px-4 h-9 rounded-full flex items-center justify-center text-[13px] font-bold hover:opacity-90 transition-opacity no-underline"
           style="background-color: #0d7ff2">
           Zapisz się
@@ -237,9 +242,9 @@
     </div>
   </nav>
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <!-- HERO -->
   <!-- HERO                    -->
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <!-- HERO END -->
   <section id="main"
     class="relative bg-gradient-to-br from-blue-800 via-blue-700 to-primary pt-32 pb-16 md:pb-20 px-4 sm:px-6 overflow-hidden"
     style="
@@ -289,14 +294,14 @@
     </div>
   </section>
 
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <!-- MAIN LAYOUT -->
   <!-- MAIN LAYOUT                -->
-  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <!-- MAIN LAYOUT END -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
     <div class="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10 items-start">
-      <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+      <!-- LEFT COLUMN -->
       <!-- LEFT COLUMN — ARTICLES         -->
-      <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+      <!-- LEFT COLUMN CONTENT -->
       <div>
         <!-- Section Label: Najnowszy artykuł -->
         <div class="flex items-center gap-3 mb-6">
@@ -384,7 +389,7 @@
                 <span class="material-symbols-outlined text-[14px]">schedule</span>
                 ~8 minut czytania
               </span>
-              <a href="../index.html#newsletter"
+              <a href="#newsletter-section"
                 class="text-xs font-bold text-primary hover:underline flex items-center gap-1"
                 style="text-decoration: none">
                 <span class="material-symbols-outlined text-[14px]">notifications</span>
@@ -418,7 +423,7 @@
                 <span class="material-symbols-outlined text-[14px]">schedule</span>
                 ~8 minut czytania
               </span>
-              <a href="../index.html#newsletter"
+              <a href="#newsletter-section"
                 class="text-xs font-bold text-primary hover:underline flex items-center gap-1"
                 style="text-decoration: none">
                 <span class="material-symbols-outlined text-[14px]">notifications</span>
@@ -431,9 +436,9 @@
       </div>
       <!-- /LEFT COLUMN -->
 
-      <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+      <!-- RIGHT COLUMN -->
       <!-- RIGHT COLUMN — SIDEBAR         -->
-      <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+      <!-- RIGHT COLUMN CONTENT -->
       <aside class="order-last lg:order-none lg:sticky lg:top-24 space-y-6">
         <!-- Card 1: Kalkulatory -->
         <div class="glass-effect rounded-[1.5rem] p-6 border border-white/50 dark:border-stitch-border/50 shadow-xl">
@@ -556,7 +561,7 @@
             Nowe artykuły i aktualizacje kalkulatorów prosto na email. Bez
             spamu.
           </p>
-          <a href="../index.html#newsletter"
+          <a href="#newsletter-section"
             class="bg-stitch-surface text-primary font-bold text-sm px-5 py-3 rounded-xl hover:scale-[1.02] transition-all inline-flex items-center gap-2 shadow-lg"
             style="color: #0d7ff2; text-decoration: none">
             Zapisz się bezpłatnie
@@ -584,6 +589,120 @@
   </main>
 
   <!-- STOPKA (3-Column Layout — copied from kalkulator-obligacji.html) -->
+  <!-- NEWSLETTER SECTION -->
+  <section id="newsletter-section"
+    class="pt-10 pb-20 px-6 bg-slate-100 dark:bg-slate-950 border-t border-stitch-border dark:border-slate-900 transition-colors">
+    <div class="max-w-7xl mx-auto">
+      <div
+        class="bg-stitch-surface/70 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 lg:p-16 shadow-stitch-soft border border-white/50 dark:border-stitch-border/50 relative overflow-hidden group">
+        <div
+          class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700">
+        </div>
+
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center lg:justify-items-stretch relative z-10">
+          <div class="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              Newsletter
+            </div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-stitch-text tracking-tight leading-[1.1]">
+              B&#261;d&#378; na bie&#380;&#261;co z <span class="text-primary">rynkiem ETF</span>
+              <span class="hidden md:inline">i finansami</span>
+            </h2>
+            <p class="text-stitch-muted text-lg leading-relaxed max-w-xl">
+              Do&#322;&#261;cz do spo&#322;eczno&#347;ci &#347;wiadomych inwestor&#243;w. Otrzymuj analizy,
+              nowe kalkulatory i rzeteln&#261; wiedz&#281; prosto na swoj&#261; skrzynk&#281;.
+              Zero spamu.
+            </p>
+          </div>
+
+          <div class="w-full lg:max-w-md mx-auto lg:ml-auto">
+            <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
+              <div class="ml-form-embedWrapper embedForm">
+                <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                  <form class="ml-block-form"
+                    action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe"
+                    method="post" target="_blank">
+                    <div class="flex flex-col space-y-4">
+                      <div class="ml-form-fieldRow">
+                        <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                          <input aria-label="email" aria-required="true" type="email"
+                            class="w-full h-14 px-6 rounded-2xl border border-stitch-border bg-stitch-surface dark:bg-slate-950 text-stitch-text text-base font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all placeholder:text-slate-400"
+                            name="fields[email]" placeholder="Tw&#243;j adres e-mail" />
+                        </div>
+                      </div>
+
+                      <div class="ml-form-embedPermissions">
+                        <label class="flex items-start gap-4 cursor-pointer group">
+                          <input aria-label="Zgoda na newsletter" type="checkbox" name="gdpr[]"
+                            value="Zgadzam si&#281; na otrzymywanie newslettera ETFkalkulator.pl" required
+                            class="custom-checkbox mt-1 transition-all" />
+                          <span
+                            class="text-[11px] text-stitch-muted font-medium leading-relaxed group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors">
+                            Zgadzam si&#281; na otrzymywanie newslettera. Mo&#380;esz si&#281; wypisa&#263; w ka&#380;dej chwili.
+                          </span>
+                        </label>
+                      </div>
+
+                      <div class="ml-form-recaptcha ml-validate-required py-2 flex justify-center">
+                        <div class="g-recaptcha transform scale-[0.85] origin-center"
+                          data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                      </div>
+
+                      <input type="hidden" name="ml-submit" value="1" />
+                      <input type="hidden" name="anticsrf" value="true" />
+
+                      <div class="ml-form-embedSubmit">
+                        <button type="submit"
+                          class="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-sm md:text-base uppercase tracking-widest hover:scale-[1.01] active:scale-[0.98] transition-all shadow-xl shadow-primary/20"
+                          style="background-color: #0d7ff2">
+                          Zapisz si&#281; teraz
+                        </button>
+                      </div>
+
+                      <div class="pt-6 border-t border-stitch-border mt-2">
+                        <p class="text-[10px] text-slate-400 dark:text-stitch-muted leading-relaxed mb-2">
+                          Zapisuj&#261;c si&#281;, akceptujesz
+                          <a href="../pages/regulamin.html" class="underline hover:text-primary">Regulamin</a>
+                          i
+                          <a href="../pages/polityka-prywatnosci.html" class="underline hover:text-primary">Polityk&#281; Prywatno&#347;ci</a>.
+                          Twoje dane s&#261; bezpieczne i s&#322;u&#380;&#261; wy&#322;&#261;cznie do wysy&#322;ki newslettera.
+                        </p>
+                        <p class="text-[10px] text-slate-400 font-medium italic">
+                          Prezentowane tre&#347;ci nie stanowi&#261; rekomendacji inwestycyjnej.
+                        </p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="ml-form-successBody row-success" style="display: none">
+                  <div
+                    class="p-10 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 text-center">
+                    <div
+                      class="w-16 h-16 bg-emerald-100 dark:bg-emerald-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span
+                        class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-3xl">verified</span>
+                    </div>
+                    <h4 class="text-emerald-900 dark:text-emerald-300 font-bold text-xl mb-1">Sukces!</h4>
+                    <p class="text-emerald-700 dark:text-emerald-500 text-sm">
+                      Sprawd&#378; swoj&#261; skrzynk&#281; e-mail, aby potwierdzi&#263; zapis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer class="bg-stitch-bg border-t border-stitch-border dark:border-slate-900 py-20 px-6"
     style="font-family: &quot;Inter&quot;, sans-serif">
     <div class="max-w-7xl mx-auto">
@@ -693,7 +812,7 @@
           zainwestowanego kapitału.
         </p>
         <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
-          <p>Â© 2026 ETFkalkulator.pl — Made with ❤️ by Florian</p>
+          <p>&copy; 2026 ETFkalkulator.pl - Made with &hearts; by Florian</p>
           <div class="flex gap-6">
             <span>Wszelkie prawa zastrzeżone</span>
           </div>
@@ -802,6 +921,16 @@
       });
     });
   </script>
+  <script>
+    function ml_webform_success_37996059() {
+      var $ = ml_jQuery || jQuery;
+      $(".ml-subscribe-form-37996059 .row-success").show();
+      $(".ml-subscribe-form-37996059 .row-form").hide();
+    }
+  </script>
+  <script src="https://www.google.com/recaptcha/api.js" defer></script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
+    type="text/javascript" defer></script>
 </body>
 
 </html>
