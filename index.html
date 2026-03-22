@@ -3,21 +3,33 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f8f7f2" id="meta-theme-color">
+  <script>
+    (function () {
+      const s = localStorage.getItem('etf-tryb');
+      const d = s === 'ciemny' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.classList.toggle('dark', d);
+      document.documentElement.classList.toggle('dark-mode', d);
+      document.documentElement.classList.toggle('light', !d);
+      document.documentElement.classList.toggle('light-mode', !d);
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO: tytuł i opis widoczne w wynikach Google -->
-  <title>ETFkalkulator.pl — Kalkulator inwestycyjny dla Polaków</title>
+  <title>ETFkalkulator.pl — Kalkulator Obligacji EDO 2026, ETF i FIRE</title>
   <meta name="description"
-    content="Bezpłatny kalkulator obligacji skarbowych, wolności finansowej i porównywarki ETF. Sprawdź ile realnie zarobisz po podatkach i inflacji.">
+    content="Bezpłatny kalkulator obligacji skarbowych (EDO 2026), procentu składanego ETF i wolności finansowej (FIRE). Policz realny zysk po podatku i inflacji. Najdokładniejsze narzędzie dla polskich inwestorów.">
   <meta name="keywords"
-    content="kalkulator obligacji, ETF, wolność finansowa, FIRE, podatek Belki, inflacja, inwestycje, obligacje skarbowe">
+    content="kalkulator obligacji EDO 2026, ranking obligacji skarbowych, procent składany ETF, wolność finansowa kalkulator, podatek Belki, inflacja, IKE, IKZE">
   <meta name="author" content="ETFkalkulator.pl">
   <meta name="robots" content="index, follow">
 
   <!-- SEO: Open Graph — jak strona wygląda gdy ktoś udostępni link na Facebooku / Twitterze -->
-  <meta property="og:title" content="ETFkalkulator.pl — Kalkulator inwestycyjny dla Polaków">
+  <meta property="og:title" content="ETFkalkulator.pl — Kalkulator Obligacji, ETF i Wolności Finansowej">
   <meta property="og:description"
-    content="Sprawdź ile realnie zarobisz na obligacjach i ETFach po podatku Belki i inflacji.">
+    content="Sprawdź ile realnie zarobisz na obligacjach (EDO 2026) i ETF-ach po podatku Belki i inflacji. Bezpłatne narzędzie FIRE.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://etfkalkulator.pl/">
   <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png">
@@ -28,13 +40,33 @@
 
   <!-- SEO: Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ETFkalkulator.pl — Kalkulator inwestycyjny dla Polaków">
+  <meta name="twitter:title" content="ETFkalkulator.pl — Kalkulator Obligacji, ETF i Wolności Finansowej">
   <meta name="twitter:description"
-    content="Sprawdź ile realnie zarobisz na obligacjach i ETFach po podatku Belki i inflacji.">
+    content="Sprawdź ile realnie zarobisz na obligacjach i ETF-ach po podatku Belki i inflacji.">
   <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png">
+  <meta name="twitter:site" content="@ETFkalkulator">
+  <meta name="twitter:creator" content="@ETFkalkulator">
 
   <!-- SEO: Kanoniczny URL -->
   <link rel="canonical" href="https://etfkalkulator.pl/" />
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ETFkalkulator.pl",
+    "url": "https://etfkalkulator.pl/",
+    "description": "Zestaw bezpłatnych kalkulatorów finansowych dla polskich inwestorów: obligacje skarbowe, ETF, wolność finansowa (FIRE).",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "PLN"
+    }
+  }
+  </script>
 
   <!-- Favicon — ikona w zakładce przeglądarki -->
   <link rel="icon" href="images/favicon.png">
@@ -74,6 +106,7 @@
       -webkit-backdrop-filter: blur(12px);
     }
 
+    .dark .glass-effect,
     .dark-mode .glass-effect {
       background: rgba(15, 23, 42, 0.7);
     }
@@ -649,7 +682,9 @@
 </head>
 
 <body>
-  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-stitch-accent">Przejdź do głównej treści</a>
+  <a href="#main"
+    class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-stitch-accent">Przejdź
+    do głównej treści</a>
 
   <!-- Cookie Consent Banner -->
   <div id="cookie-consent" class="cookie-consent" style="display: none;">
@@ -737,10 +772,10 @@
         href="pages/kalkulator-wolnosci.html" style="text-decoration:none;">Wolność finansowa</a>
       <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
         href="pages/porownywarka.html" style="text-decoration:none;">Porównywarka</a>
-      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
-        href="blog/index.html" style="text-decoration:none;">Blog</a>
-      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
-        href="pages/o-projekcie.html" style="text-decoration:none;">O projekcie</a>
+      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap" href="blog/index.html"
+        style="text-decoration:none;">Blog</a>
+      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap" href="pages/o-projekcie.html"
+        style="text-decoration:none;">O projekcie</a>
     </div>
   </nav>
 
@@ -790,7 +825,7 @@
   </style>
 
   <!-- GŁÓWNA TREŚĆ -->
-  <main id="main">
+  <main id="main" class="bg-stitch-bg dark:bg-slate-950 transition-colors duration-300">
 
     <!-- HERO TAILWIND -->
     <section
@@ -950,16 +985,15 @@
             Twój ostateczny kapitał.</p>
         </div>
 
-        <div
-          class="bg-stitch-surface rounded-stitch shadow-stitch-soft border border-stitch-border overflow-hidden">
+        <div class="bg-stitch-surface rounded-stitch shadow-stitch-soft border border-stitch-border overflow-hidden">
           <!-- Controls Panel -->
           <div class="p-8 lg:p-12 border-b border-slate-100 bg-stitch-bg/50 /50">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div class="flex flex-col gap-3">
-                <label for="start-capital"
-                  class="text-xs font-bold uppercase tracking-wider text-stitch-muted">Kapitał
+                <label for="start-capital" class="text-xs font-bold uppercase tracking-wider text-stitch-muted">Kapitał
                   początkowy</label>
-                <input aria-label="start capital" type="range" id="start-capital" min="1000" max="100000" value="10000" step="1000"
+                <input aria-label="start capital" type="range" id="start-capital" min="1000" max="100000" value="10000"
+                  step="1000"
                   class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-stitch appearance-none cursor-pointer accent-primary">
                 <span class="text-xl font-bold text-primary" id="start-capital-display" style="color:#0d7ff2;">10 000
                   zł</span>
@@ -969,15 +1003,15 @@
                 <label for="monthly-contribution"
                   class="text-xs font-bold uppercase tracking-wider text-stitch-muted">Miesięczna
                   wpłata</label>
-                <input aria-label="monthly contribution" type="range" id="monthly-contribution" min="0" max="5000" value="500" step="100"
+                <input aria-label="monthly contribution" type="range" id="monthly-contribution" min="0" max="5000"
+                  value="500" step="100"
                   class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-stitch appearance-none cursor-pointer accent-primary">
                 <span class="text-xl font-bold text-primary" id="monthly-contribution-display"
                   style="color:#0d7ff2;">500 zł</span>
               </div>
 
               <div class="flex flex-col gap-3">
-                <label for="time-horizon"
-                  class="text-xs font-bold uppercase tracking-wider text-stitch-muted">Horyzont
+                <label for="time-horizon" class="text-xs font-bold uppercase tracking-wider text-stitch-muted">Horyzont
                   (lata)</label>
                 <input aria-label="time horizon" type="range" id="time-horizon" min="1" max="30" value="10" step="1"
                   class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-stitch appearance-none cursor-pointer accent-primary">
@@ -989,7 +1023,8 @@
                 <label for="inflation-rate"
                   class="text-xs font-bold uppercase tracking-wider text-stitch-muted">Inflacja
                   (%)</label>
-                <input aria-label="inflation rate" type="range" id="inflation-rate" min="0" max="10" value="3.5" step="0.1"
+                <input aria-label="inflation rate" type="range" id="inflation-rate" min="0" max="10" value="3.5"
+                  step="0.1"
                   class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-stitch appearance-none cursor-pointer accent-primary">
                 <span class="text-xl font-bold text-primary" id="inflation-rate-display"
                   style="color:#0d7ff2;">3.5%</span>
@@ -1129,13 +1164,11 @@
                   style="background-color:rgba(13, 127, 242, 0.1); color:#0d7ff2;">ETF</span>
                 <span class="text-[12px] text-slate-400 font-medium">8 marca 2024</span>
               </div>
-              <h3
-                class="text-xl font-bold leading-snug text-stitch-text group-hover:text-primary transition-colors"
+              <h3 class="text-xl font-bold leading-snug text-stitch-text group-hover:text-primary transition-colors"
                 style="margin:0 0 12px 0;">Kalkulator ETF — jak obliczyć realny zysk</h3>
               <p class="text-sm leading-relaxed text-stitch-muted">Podatek Belki, inflacja, IKE i IKZE
                 — konkretne liczby i przykłady obliczeń dla polskich inwestorów.</p>
-              <div
-                class="mt-auto pt-8 flex items-center justify-between border-t border-slate-100">
+              <div class="mt-auto pt-8 flex items-center justify-between border-t border-slate-100">
                 <span class="text-xs font-semibold text-slate-400 uppercase tracking-widest">6 min czytania</span>
                 <a href="blog/kalkulator-etf-jak-obliczyc-realny-zysk.html"
                   class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform"
@@ -1159,13 +1192,11 @@
                   style="background-color:rgba(13, 127, 242, 0.1); color:#0d7ff2;">Strategia</span>
                 <span class="text-[12px] text-slate-400 font-medium">1 marca 2024</span>
               </div>
-              <h3
-                class="text-xl font-bold leading-snug text-stitch-text group-hover:text-primary transition-colors"
+              <h3 class="text-xl font-bold leading-snug text-stitch-text group-hover:text-primary transition-colors"
                 style="margin:0 0 12px 0;">DCA vs Lump Sum — co wybrać?</h3>
               <p class="text-sm leading-relaxed text-stitch-muted">Analiza porównawcza dwóch
                 najpopularniejszych metod budowania kapitału w ujęciu wieloletnim.</p>
-              <div
-                class="mt-auto pt-8 flex items-center justify-between border-t border-slate-100">
+              <div class="mt-auto pt-8 flex items-center justify-between border-t border-slate-100">
                 <span class="text-xs font-semibold text-slate-400 uppercase tracking-widest">8 min czytania</span>
                 <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform"
                   style="color:#0d7ff2;">arrow_forward</span>
@@ -1188,13 +1219,11 @@
                   style="background-color:rgba(13, 127, 242, 0.1); color:#0d7ff2;">Obligacje</span>
                 <span class="text-[12px] text-slate-400 font-medium">20 lutego 2024</span>
               </div>
-              <h3
-                class="text-xl font-bold leading-snug text-stitch-text group-hover:text-primary transition-colors"
+              <h3 class="text-xl font-bold leading-snug text-stitch-text group-hover:text-primary transition-colors"
                 style="margin:0 0 12px 0;">Ranking obligacji skarbowych EDO</h3>
               <p class="text-sm leading-relaxed text-stitch-muted">Dlaczego obligacje indeksowane
                 inflacją to fundament bezpiecznego portfela emerytalnego?</p>
-              <div
-                class="mt-auto pt-8 flex items-center justify-between border-t border-slate-100">
+              <div class="mt-auto pt-8 flex items-center justify-between border-t border-slate-100">
                 <span class="text-xs font-semibold text-slate-400 uppercase tracking-widest">10 min czytania</span>
                 <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform"
                   style="color:#0d7ff2;">arrow_forward</span>
@@ -1230,8 +1259,7 @@
                 </span>
                 Newsletter
               </div>
-              <h2
-                class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-stitch-text tracking-tight leading-[1.1]">
+              <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-stitch-text tracking-tight leading-[1.1]">
                 Bądź na bieżąco z <span class="text-primary">rynkiem ETF</span> <span class="hidden md:inline">i
                   finansami</span>
               </h2>
@@ -1518,7 +1546,7 @@
 
       // Create new chart
       const ctx = document.getElementById('glowny-wykres-porownawczy').getContext('2d');
-      
+
       // Premium Gradient for the main line (ETF)
       const gradient = ctx.createLinearGradient(0, 0, 0, 400);
       gradient.addColorStop(0, 'rgba(13, 127, 242, 0.2)');
@@ -1737,20 +1765,24 @@
     // Dark Mode Toggle Logic (Tailwind + Custom)
     function przelaczTryb() {
       const html = document.documentElement;
-      const isDark = html.classList.contains('dark') || html.classList.contains('dark-mode');
+      const isDark = html.classList.contains('dark');
 
       if (isDark) {
         html.classList.remove('dark', 'dark-mode');
-        html.classList.add('light-mode');
+        html.classList.add('light', 'light-mode');
         localStorage.setItem('etf-tryb', 'jasny');
       } else {
         html.classList.add('dark', 'dark-mode');
-        html.classList.remove('light-mode');
+        html.classList.remove('light', 'light-mode');
         localStorage.setItem('etf-tryb', 'ciemny');
       }
+
+      const d = html.classList.contains('dark');
+      const m = document.getElementById('meta-theme-color');
+      if (m) m.content = d ? '#0f172a' : '#f8fafc';
     }
 
-    // Initialize Theme
+    // Initialize Theme - Moved to head for early execution
     (function () {
       const html = document.documentElement;
       const saved = localStorage.getItem('etf-tryb');
@@ -1758,10 +1790,14 @@
 
       if (saved === 'ciemny' || (!saved && systemDark)) {
         html.classList.add('dark', 'dark-mode');
-      } else if (saved === 'jasny') {
-        html.classList.add('light-mode');
-        html.classList.remove('dark');
+        html.classList.remove('light', 'light-mode');
+      } else {
+        html.classList.add('light', 'light-mode');
+        html.classList.remove('dark', 'dark-mode');
       }
+
+      const m = document.getElementById('meta-theme-color');
+      if (m) m.content = html.classList.contains('dark') ? '#0f172a' : '#f8fafc';
     })();
   </script>
 

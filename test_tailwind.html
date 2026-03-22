@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    // Simulate what tailwind-config.js does
+    window.tailwind = window.tailwind || {};
+    window.tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { primary: '#000' } } }
+    };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="dark bg-white dark:bg-black">
+  <div class="text-primary dark:text-white">Hello</div>
+</body>
+</html>

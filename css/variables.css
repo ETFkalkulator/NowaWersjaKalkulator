@@ -184,7 +184,7 @@
    ========================================================== */
 
 @media (prefers-color-scheme: dark) {
-  :root:not(.light-mode) {
+  :root:not(.light) {
     --bg-primary: #0f1117;
     --bg-secondary: #1a1d27;
     --bg-tertiary: #22263a;
@@ -216,8 +216,8 @@
   }
 }
 
-html.dark-mode :root,
-html.dark-mode body {
+html.dark :root,
+html.dark body {
   --bg-primary: #0f1117;
   --bg-secondary: #1a1d27;
   --bg-tertiary: #22263a;
@@ -248,7 +248,7 @@ html.dark-mode body {
   --stitch-shadow-glow: 0 0 20px rgba(56, 171, 248, 0.25);
 }
 
-html.light-mode :root {
+html.light :root {
   --bg-primary: var(--color-bg);
   --bg-secondary: var(--color-bg-elevated);
   --bg-tertiary: var(--color-bg-secondary);

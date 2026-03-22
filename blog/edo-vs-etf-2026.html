@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ═══════════════════════════════════════════
+       SEO META TAGS
+  ═══════════════════════════════════════════ -->
+  <title>EDO vs ETF — co wybrać w 2026 roku? Porównanie dla Polaków | ETFkalkulator.pl</title>
+  <meta name="description" content="Obligacje EDO (5,60% + inflacja) vs ETF MSCI World (historycznie 7–10%/rok) — uczciwe porównanie dla polskiego inwestora. Podatek Belki, IKE, ryzyko i konkretne liczby. Marzec 2026." />
+  <meta name="keywords" content="EDO vs ETF, obligacje EDO czy ETF, porównanie ETF obligacje Polska, MSCI World vs obligacje skarbowe, IKE ETF czy obligacje 2026" />
+  <link rel="canonical" href="https://etfkalkulator.pl/blog/edo-vs-etf-2026" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="EDO vs ETF — co wybrać w 2026? Uczciwe porównanie | ETFkalkulator.pl" />
+  <meta property="og:description" content="Obligacje EDO 5,60% vs ETF MSCI World 7–10%/rok. Które wychodzi lepiej po podatku i inflacji? Konkretne liczby dla polskiego inwestora." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://etfkalkulator.pl/blog/edo-vs-etf-2026" />
+  <meta property="og:site_name" content="ETFkalkulator.pl" />
+
+  <meta property="article:published_time" content="2026-03-16" />
+  <meta property="article:modified_time" content="2026-03-16" />
+  <meta property="article:section" content="Porównania inwestycyjne" />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "EDO vs ETF — co wybrać w 2026 roku? Porównanie dla Polaków",
+    "description": "Uczciwe porównanie obligacji EDO i funduszy ETF MSCI World dla polskiego inwestora — oprocentowanie, ryzyko, podatek Belki, IKE i konkretne liczby.",
+    "datePublished": "2026-03-16",
+    "dateModified": "2026-03-16",
+    "author": { "@type": "Organization", "name": "ETFkalkulator.pl" },
+    "publisher": { "@type": "Organization", "name": "ETFkalkulator.pl", "url": "https://etfkalkulator.pl" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Co daje wyższy zysk — EDO czy ETF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Historycznie ETF na MSCI World dawał ok. 7–10% rocznie nominalnie, podczas gdy EDO w najlepszym razie oferuje inflacja + 2%. Przy inflacji 3% EDO daje ~5%, ETF historycznie ~7–10%. Jednak ETF wiąże się z ryzykiem strat w kryzysie — wartość może spaść o 30–50%. EDO nie traci nominalnie nigdy."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy lepiej inwestować w ETF na IKE czy kupić obligacje EDO?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IKE-ETF i IKE-Obligacje to dwie różne strategie. IKE-ETF (np. w XTB) pozwala inwestować w ETF bez podatku Belki, co przy długim horyzoncie daje bardzo duże korzyści. IKE-Obligacje (PKO BP) to zero podatku na EDO. Jeśli masz długi horyzont i tolerujesz zmienność — IKE-ETF zwykle wygrywa. Jeśli priorytetem jest spokój i bezpieczeństwo — IKE-Obligacje."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy EDO i ETF można łączyć?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tak — i to jest podejście zalecane przez większość ekspertów. Popularny model to np. 70–80% ETF (wzrost) + 20–30% EDO (stabilizacja). Obligacje tłumią zmienność portfela w kryzysie, ETF zapewnia długoterminowy wzrost."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="../../main.css" />
+
+  <style>
+    .article-wrapper {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      font-family: var(--font-main, 'Inter', sans-serif);
+      color: var(--color-text, #1a1a2e);
+      line-height: 1.75;
+    }
+    .article-meta {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .tag {
+      background: #e8f0fb;
+      color: #1A56A0;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .update-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+      border-radius: 20px;
+      padding: 0.2rem 0.7rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .article-wrapper h1 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.3;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+    }
+    .article-wrapper h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid #1A56A0;
+    }
+    .article-wrapper h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .article-wrapper p { margin-bottom: 1rem; }
+    .article-wrapper ul, .article-wrapper ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+    .article-wrapper li { margin-bottom: 0.4rem; }
+
+    .lead {
+      font-size: 1.1rem;
+      color: #374151;
+      border-left: 4px solid #1A56A0;
+      padding-left: 1rem;
+      margin-bottom: 2rem;
+    }
+    .info-box {
+      background: #e8f0fb;
+      border-left: 4px solid #1A56A0;
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .info-box strong { color: #1A56A0; }
+    .warn-box {
+      background: #fff8e1;
+      border-left: 4px solid #f59e0b;
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .success-box {
+      background: #f0fdf4;
+      border-left: 4px solid #22c55e;
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    /* Duże karty porównania */
+    .compare-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .card-edo { border: 2px solid #40916c; border-radius: 12px; padding: 1.25rem; }
+    .card-etf { border: 2px solid #1A56A0; border-radius: 12px; padding: 1.25rem; }
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .card-edo .card-title { color: #40916c; }
+    .card-etf .card-title { color: #1A56A0; }
+    .card-stat { font-size: 0.88rem; margin-bottom: 0.3rem; }
+
+    /* Wielka tabela porównawcza */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+    }
+    .data-table th {
+      background: #1A56A0;
+      color: #fff;
+      padding: 0.6rem 0.8rem;
+      text-align: left;
+      font-weight: 600;
+    }
+    .data-table th:first-child { background: #0f172a; }
+    .data-table td { padding: 0.55rem 0.8rem; border-bottom: 1px solid #e5e7eb; }
+    .data-table tr:nth-child(even) td { background: #f9fafb; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .positive { color: #15803d; font-weight: 600; }
+    .negative { color: #b91c1c; font-weight: 600; }
+    .neutral { color: #78716c; }
+
+    /* Przykład liczbowy */
+    .example-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .example-title {
+      font-weight: 700;
+      color: #1A56A0;
+      margin-bottom: 0.75rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Wynik końcowy — duże liczby */
+    .result-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .result-card {
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      text-align: center;
+    }
+    .result-card.edo { background: #f0fdf4; border: 1px solid #86efac; }
+    .result-card.etf-pes { background: #fef9c3; border: 1px solid #fde047; }
+    .result-card.etf-base { background: #e8f0fb; border: 1px solid #93c5fd; }
+    .result-card.etf-opt { background: #fdf4ff; border: 1px solid #d8b4fe; }
+    .result-card .label { font-size: 0.8rem; color: #6b7280; margin-bottom: 0.3rem; }
+    .result-card .big-number { font-size: 1.6rem; font-weight: 800; color: #0f172a; }
+    .result-card .sub { font-size: 0.78rem; color: #6b7280; margin-top: 0.2rem; }
+
+    /* Scorecard */
+    .score-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.9rem;
+    }
+    .score-row:last-child { border-bottom: none; }
+    .score-label { flex: 1; color: #374151; }
+    .score-winner {
+      flex: 0 0 120px;
+      text-align: center;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+    }
+    .win-edo { background: #dcfce7; color: #15803d; }
+    .win-etf { background: #dbeafe; color: #1d4ed8; }
+    .win-tie { background: #f3f4f6; color: #6b7280; }
+
+    /* CTA */
+    .cta-box {
+      background: linear-gradient(135deg, #1A56A0 0%, #40916c 100%);
+      color: #fff;
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin: 2.5rem 0;
+      text-align: center;
+    }
+    .cta-box p { color: rgba(255,255,255,0.9); margin-bottom: 1rem; }
+    .cta-box .cta-buttons { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+    .cta-box a {
+      display: inline-block;
+      background: #fff;
+      color: #1A56A0;
+      font-weight: 700;
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .cta-box a:hover { opacity: 0.9; }
+    .cta-box a.secondary {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.4);
+    }
+
+    /* TOC */
+    .toc {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .toc h4 { margin: 0 0 0.75rem; font-size: 0.9rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; }
+    .toc ol { margin: 0; padding-left: 1.2rem; }
+    .toc li { margin-bottom: 0.3rem; }
+    .toc a { color: #1A56A0; text-decoration: none; font-size: 0.95rem; }
+    .toc a:hover { text-decoration: underline; }
+
+    /* FAQ */
+    .faq-item { margin-bottom: 1.25rem; }
+    .faq-item summary {
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0.75rem 1rem;
+      background: #f8fafc;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      list-style: none;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::before { content: "＋ "; color: #1A56A0; }
+    .faq-item[open] summary::before { content: "－ "; }
+    .faq-item[open] summary { border-radius: 8px 8px 0 0; border-bottom: none; }
+    .faq-answer {
+      padding: 0.75rem 1rem 0.5rem;
+      border: 1px solid #e2e8f0;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      background: #fff;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb { font-size: 0.82rem; color: #6b7280; margin-bottom: 1.5rem; }
+    .breadcrumb a { color: #1A56A0; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 0.4rem; }
+
+    /* Verdict box */
+    .verdict-box {
+      background: linear-gradient(135deg, #f0fdf4, #e8f0fb);
+      border: 2px solid #1A56A0;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    .verdict-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1A56A0;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .article-wrapper { padding: 1rem 1rem 3rem; }
+      .compare-cards { grid-template-columns: 1fr; }
+      .result-grid { grid-template-columns: 1fr 1fr; }
+      .data-table { font-size: 0.78rem; }
+      .data-table th, .data-table td { padding: 0.4rem 0.5rem; }
+      .cta-box .cta-buttons { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- [NAV PLACEHOLDER] -->
+
+<main>
+<article class="article-wrapper">
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="breadcrumb">
+    <a href="../../index.html">ETFkalkulator.pl</a>
+    <span>›</span>
+    <a href="../blog/">Blog</a>
+    <span>›</span>
+    <span>EDO vs ETF — porównanie 2026</span>
+  </nav>
+
+  <h1>EDO vs ETF — co wybrać w 2026 roku? Uczciwe porównanie dla Polaków</h1>
+
+  <div class="article-meta">
+    <span>📅 16 marca 2026</span>
+    <span class="update-badge">🔄 Aktualne dane: marzec 2026</span>
+    <span>⏱ ~10 min czytania</span>
+    <span class="tag">Porównania</span>
+    <span class="tag">ETF</span>
+    <span class="tag">Obligacje</span>
+  </div>
+
+  <p class="lead">
+    Masz wolne środki i zastanawiasz się: obligacje EDO czy ETF na MSCI World? To jedno z najczęstszych pytań polskich inwestorów. Ten artykuł nie da Ci gotowej odpowiedzi — bo jej nie ma. Da Ci za to wszystkie liczby i argumenty, żebyś podjął własną, świadomą decyzję.
+  </p>
+
+  <nav class="toc" aria-label="Spis treści">
+    <h4>📋 Spis treści</h4>
+    <ol>
+      <li><a href="#czym-sa">Czym są EDO i ETF w pigułce</a></li>
+      <li><a href="#tabela">Porównanie cech — tabela</a></li>
+      <li><a href="#liczby">Konkretne liczby — 10 i 20 lat</a></li>
+      <li><a href="#ryzyko">Ryzyko: co może pójść nie tak</a></li>
+      <li><a href="#podatek">Podatek Belki i IKE — to zmienia wszystko</a></li>
+      <li><a href="#scenariusze">Kto powinien wybrać co</a></li>
+      <li><a href="#portfel">Złoty środek — portfel mieszany</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ol>
+  </nav>
+
+
+  <!-- ═══════════════════════════════
+       1. CZYM SĄ
+  ═══════════════════════════════ -->
+  <h2 id="czym-sa">1. EDO i ETF — czym są w pigułce</h2>
+
+  <p>Zanim przejdziemy do liczb, upewnijmy się że mówimy o tym samym.</p>
+
+  <div class="compare-cards">
+    <div class="card-edo">
+      <div class="card-title">🏛️ Obligacje EDO</div>
+      <div class="card-stat">📅 Okres: <strong>10 lat</strong></div>
+      <div class="card-stat">💰 Oprocentowanie: <strong>5,60%</strong> (rok 1), inflacja + 2% (lata 2–10)</div>
+      <div class="card-stat">🔒 Gwarancja: <strong>Skarb Państwa</strong></div>
+      <div class="card-stat">📉 Ryzyko straty: <strong>brak</strong> (nominalnie)</div>
+      <div class="card-stat">💵 Min. zakup: <strong>100 zł</strong></div>
+      <div class="card-stat">🏦 Gdzie: <strong>obligacjeskarbowe.pl</strong></div>
+    </div>
+    <div class="card-etf">
+      <div class="card-title">🌍 ETF MSCI World</div>
+      <div class="card-stat">📅 Okres: <strong>dowolny</strong></div>
+      <div class="card-stat">💰 Historyczny zwrot: <strong>~7–10%/rok</strong> (nominalnie)</div>
+      <div class="card-stat">🔒 Gwarancja: <strong>brak</strong></div>
+      <div class="card-stat">📉 Ryzyko straty: <strong>tak</strong> (w kryzysie -30 do -50%)</div>
+      <div class="card-stat">💵 Min. zakup: <strong>ułamek jednostki</strong> (np. w XTB)</div>
+      <div class="card-stat">🏦 Gdzie: <strong>XTB, DM BOŚ, mBank</strong></div>
+    </div>
+  </div>
+
+  <p><strong>ETF MSCI World</strong> — to fundusz inwestycyjny notowany na giełdzie, który automatycznie naśladuje indeks MSCI World skupiający ok. 1 319 największych spółek z 23 krajów rozwiniętych (USA, Europa, Japonia itp.). Najpopularniejszy wśród Polaków to <strong>iShares Core MSCI World (IWDA)</strong> — TER 0,20%/rok, dostępny m.in. w XTB bez prowizji do 100 000 EUR miesięcznie.</p>
+
+  <p>Kluczowa różnica w jednym zdaniu: <strong>EDO gwarantuje ochronę kapitału, ETF gwarantuje ekspozycję na wzrost globalnej gospodarki — ale bez gwarancji wyniku.</strong></p>
+
+
+  <!-- ═══════════════════════════════
+       2. TABELA
+  ═══════════════════════════════ -->
+  <h2 id="tabela">2. Porównanie cech — pełna tabela</h2>
+
+  <table class="data-table" aria-label="Porównanie EDO vs ETF MSCI World">
+    <thead>
+      <tr>
+        <th>Kryterium</th>
+        <th>🏛️ Obligacje EDO</th>
+        <th>🌍 ETF MSCI World</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Potencjalny zysk</strong></td>
+        <td class="neutral">Inflacja + 2% (przewidywalny)</td>
+        <td class="positive">~7–10%/rok hist. (nieprzewidywalny)</td>
+      </tr>
+      <tr>
+        <td><strong>Ryzyko straty kapitału</strong></td>
+        <td class="positive">Brak (nominalnie)</td>
+        <td class="negative">Tak — w kryzysie -30 do -50%</td>
+      </tr>
+      <tr>
+        <td><strong>Ochrona przed inflacją</strong></td>
+        <td class="positive">Tak (marża +2% ponad inflację)</td>
+        <td class="positive">Tak (akcje historycznie biją inflację)</td>
+      </tr>
+      <tr>
+        <td><strong>Zmienność wartości</strong></td>
+        <td class="positive">Zerowa (cena stała przez cały okres)</td>
+        <td class="negative">Wysoka — cena zmienia się codziennie</td>
+      </tr>
+      <tr>
+        <td><strong>Podatek Belki</strong></td>
+        <td class="neutral">19% od zysku (przy wykupie)</td>
+        <td class="neutral">19% od zysku (przy sprzedaży)</td>
+      </tr>
+      <tr>
+        <td><strong>Możliwość uniknięcia podatku</strong></td>
+        <td class="positive">Tak — IKE-Obligacje (PKO BP)</td>
+        <td class="positive">Tak — IKE/IKZE (XTB, DM BOŚ)</td>
+      </tr>
+      <tr>
+        <td><strong>Płynność (dostęp do pieniędzy)</strong></td>
+        <td class="neutral">Tak, ale z opłatą 3 zł/szt.</td>
+        <td class="positive">Tak, w każdej chwili bez opłat</td>
+      </tr>
+      <tr>
+        <td><strong>Wymagana wiedza</strong></td>
+        <td class="positive">Minimalna</td>
+        <td class="neutral">Podstawowa (trzeba otworzyć konto maklerskie)</td>
+      </tr>
+      <tr>
+        <td><strong>Koszty bieżące</strong></td>
+        <td class="positive">Brak (0%)</td>
+        <td class="neutral">TER ~0,12–0,20%/rok (IWDA)</td>
+      </tr>
+      <tr>
+        <td><strong>Ryzyko walutowe</strong></td>
+        <td class="positive">Brak (PLN)</td>
+        <td class="negative">Tak (ETF w USD/EUR, ale długoterminowo neutralne)</td>
+      </tr>
+      <tr>
+        <td><strong>Minimalny horyzont</strong></td>
+        <td class="neutral">5–10 lat (opłata za wcz. wykup)</td>
+        <td class="neutral">Min. 10 lat (by ograniczyć ryzyko)</td>
+      </tr>
+      <tr>
+        <td><strong>Stres psychologiczny</strong></td>
+        <td class="positive">Minimalny — cena nie spada</td>
+        <td class="negative">Wysoki w kryzysie — patrzysz jak -40%</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <!-- ═══════════════════════════════
+       3. LICZBY
+  ═══════════════════════════════ -->
+  <h2 id="liczby">3. Konkretne liczby — ile zarobisz po 10 i 20 latach</h2>
+
+  <p>Sprawdźmy na konkretnym przykładzie. Przyjmijmy: <strong>10 000 zł jednorazowo</strong>, brak dopłat, konto standardowe (z podatkiem Belki), inflacja średnia 3%/rok przez cały okres.</p>
+
+  <div class="example-box">
+    <div class="example-title">📊 Scenariusz: 10 000 zł przez 10 lat</div>
+
+    <p><strong>Obligacje EDO</strong> (rok 1: 5,60%, lata 2–10: 3% inflacja + 2% marża = 5%/rok, kapitalizacja roczna):</p>
+    <ul>
+      <li>Kapitał brutto po 10 latach: ~16 382 zł</li>
+      <li>Zysk brutto: 6 382 zł</li>
+      <li>Podatek Belki (19%): 1 213 zł</li>
+      <li><strong>Kapitał netto: ~15 169 zł (+51,7%)</strong></li>
+    </ul>
+
+    <p><strong>ETF MSCI World — 3 scenariusze</strong> (stopa roczna, podatek Belki na końcu):</p>
+    <ul>
+      <li>📉 Pesymistyczny (4%/rok): ~13 685 zł <em>(+36,9%)</em></li>
+      <li>📈 Bazowy (7%/rok): ~18 294 zł <em>(+82,9%)</em></li>
+      <li>🚀 Optymistyczny (10%/rok): ~23 579 zł <em>(+135,8%)</em></li>
+    </ul>
+  </div>
+
+  <div class="result-grid">
+    <div class="result-card edo">
+      <div class="label">🏛️ EDO (5% śr./rok)</div>
+      <div class="big-number">15 169 zł</div>
+      <div class="sub">+51,7% po 10 latach</div>
+    </div>
+    <div class="result-card etf-pes">
+      <div class="label">🌍 ETF pesymistyczny (4%)</div>
+      <div class="big-number">13 685 zł</div>
+      <div class="sub">+36,9% po 10 latach</div>
+    </div>
+    <div class="result-card etf-base">
+      <div class="label">🌍 ETF bazowy (7%)</div>
+      <div class="big-number">18 294 zł</div>
+      <div class="sub">+82,9% po 10 latach</div>
+    </div>
+    <div class="result-card etf-opt">
+      <div class="label">🌍 ETF optymistyczny (10%)</div>
+      <div class="big-number">23 579 zł</div>
+      <div class="sub">+135,8% po 10 latach</div>
+    </div>
+  </div>
+
+  <p><strong>Wniosek z 10 lat:</strong> EDO wygrywa z pesymistycznym scenariuszem ETF, przegrywa z bazowym i optymistycznym. Jeśli ETF da historyczne 7–10%, znacznie wyprzedza EDO. Jeśli da tylko 4% — EDO okazuje się lepsze i pewniejsze.</p>
+
+  <div class="example-box">
+    <div class="example-title">📊 Scenariusz: 10 000 zł przez 20 lat</div>
+    <p>Przy dłuższym horyzoncie procent składany robi coraz większą różnicę na korzyść ETF:</p>
+    <ul>
+      <li><strong>EDO</strong> (5%/rok śr., rolowane co 10 lat): ~26 533 zł netto (+165%)</li>
+      <li>📉 ETF 4%/rok: ~20 403 zł (+104%) — EDO <strong>wygrywa</strong></li>
+      <li>📈 ETF 7%/rok: ~36 165 zł (+262%) — ETF <strong>wygrywa o 36%</strong></li>
+      <li>🚀 ETF 10%/rok: ~60 727 zł (+507%) — ETF <strong>wygrywa ponad 2-krotnie</strong></li>
+    </ul>
+    <p><em>(Przy EDO założono reinwestycję po 10 latach po podobnych warunkach. Wszystkie wyniki po podatku Belki.)</em></p>
+  </div>
+
+  <div class="info-box">
+    <strong>Kluczowa obserwacja:</strong> Im dłuższy horyzont, tym bardziej procentuje wyższa historyczna stopa zwrotu ETF. Na 20+ lat różnica między 5% (EDO) a 7% (ETF bazowy) jest ogromna — mówi o 36% więcej kapitału. Ale tylko jeśli ETF faktycznie da te 7% — co jest historycznym średnim wynikiem, nie gwarancją.
+  </div>
+
+  <p>Użyj naszej porównywarki żeby przetestować własne parametry:</p>
+  <div class="cta-box">
+    <p><strong>Sprawdź EDO vs ETF dla swoich liczb</strong></p>
+    <p>Wpisz własny kapitał, horyzont i oczekiwaną stopę zwrotu — kalkulator pokaże wynik po podatku i inflacji.</p>
+    <div class="cta-buttons">
+      <a href="../../pages/porownywarka.html">→ Otwórz porównywarkę</a>
+      <a href="../../pages/kalkulator-obligacji.html" class="secondary">Kalkulator EDO</a>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════
+       4. RYZYKO
+  ═══════════════════════════════ -->
+  <h2 id="ryzyko">4. Ryzyko — co może pójść nie tak</h2>
+
+  <p>To jest najważniejsza część artykułu. Tabele z zyskami wyglądają pięknie, ale każda inwestycja ma swoją ciemną stronę.</p>
+
+  <h3>Ryzyko obligacji EDO</h3>
+  <ul>
+    <li><strong>Ryzyko niskiej inflacji</strong> — jeśli inflacja spadnie do 1%, Twoje oprocentowanie od roku 2 wyniesie tylko 3%. Lokata bankowa może dać więcej.</li>
+    <li><strong>Ryzyko kosztu alternatywnego</strong> — zamrażasz pieniądze na 10 lat, podczas gdy ETF w tym czasie może znacznie urosnąć.</li>
+    <li><strong>Ryzyko opłaty za wcześniejszy wykup</strong> — 3 zł od każdej obligacji. Przy dużej kwocie i krótkim czasie posiadania może być odczuwalne.</li>
+    <li><strong>Ryzyko państwa</strong> — teoretycznie możliwe, ale w praktyce jest to najwyższy dostępny poziom bezpieczeństwa w Polsce. Skarb Państwa nie zbankrutował w nowoczesnej historii.</li>
+  </ul>
+
+  <h3>Ryzyko ETF MSCI World</h3>
+  <ul>
+    <li><strong>Ryzyko rynkowe — to jest poważne.</strong> W kryzysie 2008 MSCI World stracił ok. 50% wartości. W marcu 2020 (COVID) — ok. 35% w 5 tygodni. W 2022 roku (inflacja, Ukraina) — ok. 18%. Jeśli potrzebujesz pieniędzy w dołku — sprzedajesz ze stratą.</li>
+    <li><strong>Ryzyko walutowe</strong> — ETF notowany w USD/EUR. Jeśli złoty się umocni o 20%, Twój zysk kurczy się o te 20% po przeliczeniu na PLN. W 2025 roku kurs dolara spadł o ok. 15%, co zredukowało zyski polskich inwestorów w ETF notowanych w USD. Długoterminowo efekt jest neutralny, ale krótkoterminowo potrafi boleć.</li>
+    <li><strong>Ryzyko behawioralne</strong> — największe ryzyko ETF to Ty sam. Statystycznie większość inwestorów kupuje przy szczytach i sprzedaje w panice przy dołkach, realizując stratę. Kto utrzymał ETF przez 2008–2018 zarobił. Kto sprzedał w 2009 — stracił.</li>
+    <li><strong>Ryzyko "straconej dekady"</strong> — historia zna okresy 10-letnie gdy akcje dawały niskie stopy zwrotu. Japoński rynek od 1990 przez 20 lat był pod kreską. S&P 500 w dekadzie 2000–2010 był na zero. To rzadkie, ale możliwe.</li>
+  </ul>
+
+  <div class="warn-box">
+    <strong>Uczciwe ostrzeżenie:</strong> Liczby "7–10% historycznie" dla MSCI World brzmią świetnie — i są prawdziwe. Ale ukrywają fakt, że co kilka lat portfel spada o 30–50%. Jeśli psychicznie nie jesteś w stanie patrzeć jak Twoje 100 000 zł zamienia się w 60 000 zł — ETF nie jest dla Ciebie, nawet jeśli długoterminowo wygra z EDO.
+  </div>
+
+
+  <!-- ═══════════════════════════════
+       5. PODATEK BELKI I IKE
+  ═══════════════════════════════ -->
+  <h2 id="podatek">5. Podatek Belki i IKE — to zmienia wszystko</h2>
+
+  <p>Zarówno EDO jak i ETF podlegają 19% podatkowi od zysków kapitałowych. Ale oba można kupować na kontach emerytalnych IKE, które całkowicie eliminują ten podatek.</p>
+
+  <table class="data-table" aria-label="IKE dla EDO i ETF">
+    <thead>
+      <tr>
+        <th>Konto</th>
+        <th>Dostępne instrumenty</th>
+        <th>Podatek</th>
+        <th>Gdzie otworzyć</th>
+        <th>Limit 2026</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>IKE-Obligacje</strong></td>
+        <td>Obligacje skarbowe (EDO, COI, TOS...)</td>
+        <td class="positive">0% przy wypłacie po 60. r.ż.</td>
+        <td>PKO BP, Pekao (oddział)</td>
+        <td>~24 000 zł/rok</td>
+      </tr>
+      <tr>
+        <td><strong>IKE-Maklerskie</strong></td>
+        <td>ETF, akcje, obligacje korporacyjne</td>
+        <td class="positive">0% przy wypłacie po 60. r.ż.</td>
+        <td>XTB, DM BOŚ, mBank, IBKR</td>
+        <td>~24 000 zł/rok</td>
+      </tr>
+      <tr>
+        <td><strong>IKZE-Maklerskie</strong></td>
+        <td>ETF, akcje</td>
+        <td class="positive">10% ryczałt + odliczenie od PIT</td>
+        <td>XTB, DM BOŚ, mBank</td>
+        <td>~9 400 zł/rok</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Możesz mieć <strong>jedno IKE i jedno IKZE jednocześnie</strong>. Możesz mieć IKE-Obligacje w PKO BP i IKE-Maklerskie w XTB — ale tylko jedno IKE łącznie. Wybierz to, które lepiej pasuje do Twojej strategii.</p>
+
+  <div class="example-box">
+    <div class="example-title">💡 Ile daje IKE przy 10 000 zł przez 20 lat?</div>
+    <table class="data-table">
+      <thead>
+        <tr><th>Wariant</th><th>EDO 5%/rok</th><th>ETF 7%/rok</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bez IKE (z Belką)</td>
+          <td>~26 533 zł</td>
+          <td>~36 165 zł</td>
+        </tr>
+        <tr>
+          <td><strong>Z IKE (bez Belki)</strong></td>
+          <td><strong>~26 533 zł</strong> (mała różnica — podatek naliczany jednorazowo)</td>
+          <td><strong>~38 697 zł</strong></td>
+        </tr>
+        <tr>
+          <td>Różnica dzięki IKE</td>
+          <td>~0 zł (EDO: podatek na koniec, IKE mały wpływ)</td>
+          <td><strong>+2 532 zł</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <p><em>Przy EDO IKE daje mniejszą korzyść, bo podatek Belki i tak pobierany jednorazowo na koniec. Przy ETF efekt IKE jest większy, szczególnie gdy regularnie rebalansujesz portfel.</em></p>
+  </div>
+
+  <div class="info-box">
+    <strong>Tip eksperta:</strong> Jeśli możesz mieć tylko jedno IKE i wahasz się między EDO a ETF — wybierz IKE-Maklerskie z ETF. Powód: ETF z wyższym oczekiwanym zyskiem bardziej korzysta z tarczy podatkowej IKE niż EDO z niższym zyskiem.
+  </div>
+
+
+  <!-- ═══════════════════════════════
+       6. KTO CO POWINIEN WYBRAĆ
+  ═══════════════════════════════ -->
+  <h2 id="scenariusze">6. Kto powinien wybrać co — scorecard</h2>
+
+  <p>Zamiast ogólnych porad — konkretne kryteria. Sprawdź które zdania opisują Ciebie:</p>
+
+  <div style="border:1px solid #e2e8f0; border-radius:10px; padding:1rem 1.25rem; margin:1.5rem 0;">
+    <div class="score-row">
+      <div class="score-label">📅 Horyzont inwestycji 10+ lat</div>
+      <div class="score-winner win-etf">ETF ↑</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">📅 Horyzont inwestycji 5–10 lat</div>
+      <div class="score-winner win-tie">Remis / EDO</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">😰 Nie mogę patrzeć jak tracę 30–40%</div>
+      <div class="score-winner win-edo">EDO ↑</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">😎 Akceptuję zmienność, myślę długoterminowo</div>
+      <div class="score-winner win-etf">ETF ↑</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">💸 Mogę stracić dostęp do pieniędzy na 10 lat</div>
+      <div class="score-winner win-etf">ETF ↑</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">🚨 Mogę potrzebować pieniędzy w nagłej sytuacji</div>
+      <div class="score-winner win-edo">EDO ↑</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">📈 Główny cel: maksymalizacja zysku</div>
+      <div class="score-winner win-etf">ETF ↑</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">🛡️ Główny cel: ochrona przed inflacją ze spokojem ducha</div>
+      <div class="score-winner win-edo">EDO ↑</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">👴 Jestem blisko emerytury (5–10 lat)</div>
+      <div class="score-winner win-edo">EDO ↑</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">🧑 Mam poniżej 40 lat</div>
+      <div class="score-winner win-etf">ETF ↑</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">💰 To moje jedyne oszczędności</div>
+      <div class="score-winner win-edo">EDO ↑</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">💎 To mój kapitał inwestycyjny (mam też poduszkę)</div>
+      <div class="score-winner win-etf">ETF ↑</div>
+    </div>
+    <div class="score-row">
+      <div class="score-label">🤷 Dopiero zaczynam i nic jeszcze nie wiem</div>
+      <div class="score-winner win-edo">EDO najpierw</div>
+    </div>
+  </div>
+
+  <p>Jeśli większość Twoich odpowiedzi to ETF — ETF. Jeśli EDO — EDO. Jeśli mniej więcej po połowie — czytaj dalej o portfelu mieszanym.</p>
+
+
+  <!-- ═══════════════════════════════
+       7. PORTFEL MIESZANY
+  ═══════════════════════════════ -->
+  <h2 id="portfel">7. Złoty środek — portfel mieszany EDO + ETF</h2>
+
+  <p>Większość ekspertów finansowych — zarówno w Polsce jak i na świecie — zaleca podejście mieszane. Powód jest prosty: <strong>nie musisz wybierać między bezpieczeństwem a wzrostem. Możesz mieć oba.</strong></p>
+
+  <h3>Popularne modele portfela</h3>
+
+  <table class="data-table" aria-label="Modele portfela mieszanego">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>ETF</th>
+        <th>EDO / obligacje</th>
+        <th>Dla kogo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Agresywny</strong></td>
+        <td>90%</td>
+        <td>10%</td>
+        <td>Poniżej 35 lat, długi horyzont, duża tolerancja ryzyka</td>
+      </tr>
+      <tr>
+        <td><strong>Wzrostowy</strong></td>
+        <td>80%</td>
+        <td>20%</td>
+        <td>35–45 lat, stabilna sytuacja finansowa</td>
+      </tr>
+      <tr>
+        <td><strong>Zbalansowany</strong></td>
+        <td>60%</td>
+        <td>40%</td>
+        <td>45–55 lat lub niższe ryzyko</td>
+      </tr>
+      <tr>
+        <td><strong>Konserwatywny</strong></td>
+        <td>30%</td>
+        <td>70%</td>
+        <td>Blisko emerytury lub priorytet bezpieczeństwa</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Co daje portfel mieszany w praktyce? W 2022 roku, gdy ETF na MSCI World stracił ok. 18%, obligacje indeksowane inflacją zarabiały, bo inflacja była wysoka. Portfel 70/30 (ETF/EDO) stracił tylko ok. 11% zamiast 18%. Spokojniej się śpi. Rzadziej się sprzedaje w panice.</p>
+
+  <div class="success-box">
+    <strong>Praktyczny krok:</strong> Jeśli dopiero zaczynasz — warto zacząć od EDO (np. 5 000–10 000 zł) żeby poczuć jak działa inwestowanie. Równolegle otwórz IKE w XTB i zacznij kupować ETF małymi kwotami (np. 200–500 zł/miesiąc). Za rok będziesz mieć własne doświadczenie i łatwiej zdecydujesz co pasuje Ci bardziej.
+  </div>
+
+  <h3>Wiek a portfel — prosta reguła</h3>
+  <p>Stara zasada mówi: <em>procent obligacji w portfelu = Twój wiek</em>. Masz 30 lat? 30% obligacji, 70% ETF. Masz 55 lat? 55% obligacji, 45% ETF. To uproszczenie, ale jako punkt wyjścia działa dobrze.</p>
+
+
+  <!-- Scorecard końcowy -->
+  <div class="verdict-box">
+    <div class="verdict-title">🎯 Podsumowanie — kiedy co wybrać</div>
+    <p><strong>Wybierz EDO jeśli:</strong> priorytetem jest bezpieczeństwo, masz krótszy horyzont (5–10 lat), nie tolerujesz widoku strat na koncie, to Twoje jedyne oszczędności, lub dopiero zaczynasz przygodę z inwestowaniem.</p>
+    <p><strong>Wybierz ETF jeśli:</strong> masz 10–30 lat horyzontu, akceptujesz zmienność, chcesz maksymalizować długoterminowy zysk, masz już poduszkę finansową i inwestujesz nadwyżki.</p>
+    <p><strong>Wybierz oba jeśli:</strong> chcesz łączyć wzrost z bezpieczeństwem — co jest najczęstszym i najbardziej sensownym podejściem. EDO stabilizuje portfel, ETF napędza jego wzrost.</p>
+  </div>
+
+
+  <!-- ═══════════════════════════════
+       8. FAQ
+  ═══════════════════════════════ -->
+  <h2 id="faq">8. Najczęstsze pytania (FAQ)</h2>
+
+  <details class="faq-item">
+    <summary>Co daje wyższy zysk — EDO czy ETF?</summary>
+    <div class="faq-answer">
+      <p>Historycznie ETF na MSCI World dawał ok. 7–10% rocznie nominalnie, podczas gdy EDO oferuje inflacja + 2% (przy inflacji 3% to ~5%). Przy długim horyzoncie ETF ma statystycznie wyższy zysk, ale bez gwarancji. W pesymistycznym scenariuszu (ETF 4%/rok) EDO wypada lepiej. Nie ma jednoznacznej odpowiedzi — zależy od rzeczywistej stopy zwrotu ETF w Twoim horyzoncie.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>Czy lepiej kupić ETF na IKE czy obligacje EDO?</summary>
+    <div class="faq-answer">
+      <p>Jeśli masz długi horyzont (15+ lat) i tolerujesz zmienność — IKE-Maklerskie z ETF daje większe szanse na wyższy zysk bez podatku. Jeśli chcesz bezpieczeństwa bez emocji — IKE-Obligacje w PKO BP z EDO. Możesz mieć tylko jedno IKE, więc zdecyduj który instrument bardziej pasuje do Twojego charakteru inwestycyjnego.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>Czy można łączyć EDO i ETF w jednym portfelu?</summary>
+    <div class="faq-answer">
+      <p>Tak i to jest podejście zalecane przez większość ekspertów. Typowy model to 70–80% ETF (wzrost) + 20–30% EDO (stabilizacja). Obligacje tłumią zmienność portfela w kryzysie, ETF zapewnia długoterminowy wzrost. Możesz mieć IKE-Obligacje na EDO i IKE-Maklerskie na ETF jednocześnie tylko jeśli masz np. IKZE na ETF i IKE na obligacje.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>Co się stało z ETF w 2022 i 2025 roku?</summary>
+    <div class="faq-answer">
+      <p>W 2022 roku MSCI World stracił ok. 18% w PLN (wzrost stóp procentowych, inflacja, kryzys energetyczny). W 2025 roku indeks zyskał ok. 21% nominalnie, ale kurs dolara spadł o ok. 15%, co zmniejszyło zyski polskich inwestorów trzymających ETF notowane w USD. Pokazuje to, że ryzyko walutowe jest realne i może krótkoterminowo niwelować zyski nawet w dobrych latach na giełdzie.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>Czy obligacje EDO są lepsze od lokaty?</summary>
+    <div class="faq-answer">
+      <p>Przy długim horyzoncie (5+ lat) — zazwyczaj tak. EDO daje inflacja + 2%, co przy wyższej inflacji znacznie bije lokatę z stałym oprocentowaniem. Przy krótkim horyzoncie (do 1–2 lat) lokata może być lepsza ze względu na brak opłaty za wcześniejszy wykup. Porównaj w naszym <a href="../../pages/kalkulator-obligacji.html">kalkulatorze obligacji</a>.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>Jaki ETF na MSCI World wybrać w Polsce w 2026?</summary>
+    <div class="faq-answer">
+      <p>Najpopularniejszy wśród polskich inwestorów to <strong>iShares Core MSCI World (IWDA)</strong> — aktywa 85 mld EUR, TER 0,20%/rok, akumulujący (reinwestuje dywidendy). Dostępny bez prowizji w XTB do 100 000 EUR/miesiąc. Alternatywa z niższym TER: Xtrackers MSCI World (XDWD) — TER 0,12%/rok. Oba dostępne na IKE w XTB.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>Jak zacząć inwestować w ETF w Polsce?</summary>
+    <div class="faq-answer">
+      <p>Kroki: (1) Otwórz konto w XTB lub DM BOŚ (najlepiej od razu IKE). (2) Zrób przelew weryfikacyjny. (3) Kup pierwszą jednostkę ETF MSCI World (np. IWDA) za dowolną kwotę. (4) Ustaw zlecenie cykliczne — np. 500 zł/miesiąc. (5) Nie sprawdzaj co tydzień — sprawdzaj co roku. Cały proces zajmuje ok. 30 minut.</p>
+    </div>
+  </details>
+
+
+  <!-- Końcowe CTA -->
+  <div class="cta-box">
+    <p><strong>Sprawdź konkretne liczby dla swojej sytuacji</strong></p>
+    <p>Porównywarka ETF vs Obligacje vs Lokata — wpisz swój kapitał, horyzont i oczekiwania. Wyniki po podatku i inflacji w sekundę.</p>
+    <div class="cta-buttons">
+      <a href="../../pages/porownywarka.html">→ Otwórz porównywarkę</a>
+      <a href="../../pages/kalkulator-etf.html" class="secondary">Kalkulator ETF</a>
+    </div>
+  </div>
+
+  <!-- Disclaimer -->
+  <p style="font-size:0.8rem; color:#6b7280; margin-top:2rem; padding-top:1rem; border-top:1px solid #e5e7eb;">
+    <strong>Disclaimer:</strong> Artykuł ma charakter wyłącznie edukacyjny i informacyjny. Nie stanowi rekomendacji inwestycyjnej w rozumieniu Ustawy o obrocie instrumentami finansowymi. Historyczne stopy zwrotu ETF nie gwarantują przyszłych wyników. Dane o obligacjach EDO oparte na ofercie Ministerstwa Finansów z marca 2026 — mogą ulec zmianie. Przed podjęciem decyzji inwestycyjnej skonsultuj się z licencjonowanym doradcą finansowym. Inwestowanie wiąże się z ryzykiem utraty części lub całości zainwestowanego kapitału.
+  </p>
+
+</article>
+</main>
+
+<!-- [FOOTER PLACEHOLDER] -->
+
+</body>
+</html>

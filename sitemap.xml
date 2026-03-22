@@ -4,78 +4,77 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   
-  <!-- Strona główna - najwyższy priorytet -->
+  <!-- Strona główna -->
   <url>
     <loc>https://etfkalkulator.pl/</loc>
-    <lastmod>2026-03-09</lastmod>
+    <lastmod>2026-03-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
-  <!-- Kalkulatory - wysoki priorytet, częste aktualizacje -->
+  <!-- Kalkulatory -->
   <url>
     <loc>https://etfkalkulator.pl/pages/kalkulator-obligacji.html</loc>
-    <lastmod>2026-03-09</lastmod>
+    <lastmod>2026-03-21</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>1.0</priority>
   </url>
   
   <url>
     <loc>https://etfkalkulator.pl/pages/kalkulator-wolnosci.html</loc>
-    <lastmod>2026-03-09</lastmod>
+    <lastmod>2026-03-21</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>1.0</priority>
   </url>
   
   <url>
     <loc>https://etfkalkulator.pl/pages/porownywarka.html</loc>
-    <lastmod>2026-03-09</lastmod>
+    <lastmod>2026-03-21</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>1.0</priority>
   </url>
   
-  <!-- Nowy kalkulator ETF - wysoki priorytet -->
   <url>
     <loc>https://etfkalkulator.pl/pages/kalkulator-etf.html</loc>
-    <lastmod>2026-03-09</lastmod>
+    <lastmod>2026-03-21</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>1.0</priority>
   </url>
   
-  <!-- Strona o projekcie - średni priorytet, rzadkie zmiany -->
+  <!-- O projekcie -->
   <url>
     <loc>https://etfkalkulator.pl/pages/o-projekcie.html</loc>
-    <lastmod>2026-03-09</lastmod>
+    <lastmod>2026-03-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   
-  <!-- Strony prawne - niższy priorytet, bardzo rzadkie zmiany -->
+  <!-- Strony prawne -->
   <url>
     <loc>https://etfkalkulator.pl/pages/polityka-prywatnosci.html</loc>
-    <lastmod>2026-03-09</lastmod>
+    <lastmod>2026-03-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://etfkalkulator.pl/pages/regulamin.html</loc>
-    <lastmod>2026-03-09</lastmod>
+    <lastmod>2026-03-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   
-  <!-- Blog - średni priorytet, częste aktualizacje -->
+  <!-- Blog -->
   <url>
     <loc>https://etfkalkulator.pl/blog/</loc>
-    <lastmod>2026-03-13</lastmod>
+    <lastmod>2026-03-21</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://etfkalkulator.pl/blog/kalkulator-etf-jak-obliczyc-realny-zysk.html</loc>
-    <lastmod>2026-03-13</lastmod>
+    <lastmod>2026-03-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

@@ -1,960 +1,159 @@
-<!DOCTYPE html>
-<html lang="pl">
+<!doctype html>
+<html lang="pl" class="scroll-smooth">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
-  <title>Kalkulator ETF — jak obliczyć realny zysk po podatku Belki i inflacji | ETFkalkulator.pl</title>
-  <meta name="description"
-    content="Dowiedz się ile naprawdę zarobisz inwestując w ETF. Podatek Belki, inflacja, IKE i IKZE — konkretne liczby i przykłady. Użyj bezpłatnego kalkulatora ETF.">
-  <meta name="author" content="ETFkalkulator.pl">
-  <link rel="canonical" href="https://etfkalkulator.pl/blog/kalkulator-etf-jak-obliczyc-realny-zysk">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Kalkulator ETF — jak obliczyć realny zysk po podatku Belki i inflacji">
-  <meta property="og:description"
-    content="Ile naprawdę zarobisz na ETF po podatkach i inflacji? Konkretne przykłady i bezpłatny kalkulator.">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://etfkalkulator.pl/blog/kalkulator-etf-jak-obliczyc-realny-zysk">
-  <meta property="og:site_name" content="ETFkalkulator.pl">
-
-  <!-- Schema.org Article -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Kalkulator ETF — jak obliczyć realny zysk po podatku Belki i inflacji",
-    "description": "Dowiedz się ile naprawdę zarobisz inwestując w ETF. Podatek Belki, inflacja, IKE i IKZE — konkretne liczby i przykłady.",
-    "author": { "@type": "Organization", "name": "ETFkalkulator.pl" },
-    "publisher": { "@type": "Organization", "name": "ETFkalkulator.pl", "url": "https://etfkalkulator.pl" },
-    "datePublished": "2026-03-13",
-    "dateModified": "2026-03-13",
-    "url": "https://etfkalkulator.pl/blog/kalkulator-etf-jak-obliczyc-realny-zysk",
-    "inLanguage": "pl"
-  }
+  <meta charset="UTF-8" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#f8f7f2" id="meta-theme-color" />
+  <script>
+    (function () {
+      const s = localStorage.getItem("etf-tryb");
+      const d =
+        s === "ciemny" ||
+        (!s && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.classList.toggle("dark", d);
+      document.documentElement.classList.toggle("dark-mode", d);
+      document.documentElement.classList.toggle("light", !d);
+      document.documentElement.classList.toggle("light-mode", !d);
+    })();
   </script>
 
-  <!-- Google Analytics 4 — loads only after cookie consent -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
+  <title>
+    Kalkulator ETF — jak obliczyć realny zysk po podatku Belki i inflacji |
+    ETFkalkulator.pl
+  </title>
+  <link rel="canonical" href="https://etfkalkulator.pl/blog/kalkulator-etf-jak-obliczyc-realny-zysk" />
+  <meta name="description"
+    content="Dowiedz się ile naprawdę zarobisz inwestując w ETF. Podatek Belki, inflacja, IKE i IKZE — konkretne liczby i przykłady. Użyj bezpłatnego kalkulatora ETF." />
+  <meta name="author" content="ETFkalkulator.pl" />
+  <meta property="og:title" content="Kalkulator ETF — jak obliczyć realny zysk po podatku Belki i inflacji" />
+  <meta property="og:description"
+    content="Ile naprawdę zarobisz na ETF po podatkach i inflacji? Konkretne przykłady i bezpłatny kalkulator." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://etfkalkulator.pl/blog/kalkulator-etf-jak-obliczyc-realny-zysk" />
+  <meta property="og:site_name" content="ETFkalkulator.pl" />
+  <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kalkulator ETF — jak obliczyć realny zysk po podatku Belki i inflacji" />
+  <meta name="twitter:description" content="Ile naprawdę zarobisz na ETF? Konkretne przykłady i kalkulator." />
+  <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png" />
+
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Kalkulator ETF — jak obliczyć realny zysk po podatku Belki i inflacji",
+        "description": "Dowiedz się ile naprawdę zarobisz inwestując w ETF. Podatek Belki, inflacja, IKE i IKZE — konkretne liczby i przykłady.",
+        "author": { "@type": "Organization", "name": "ETFkalkulator.pl" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "ETFkalkulator.pl",
+          "url": "https://etfkalkulator.pl"
+        },
+        "datePublished": "2026-03-13",
+        "dateModified": "2026-03-13",
+        "url": "https://etfkalkulator.pl/blog/kalkulator-etf-jak-obliczyc-realny-zysk",
+        "inLanguage": "pl"
+      }
+    </script>
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Strona główna",
+            "item": "https://etfkalkulator.pl/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://etfkalkulator.pl/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Kalkulator ETF",
+            "item": "https://etfkalkulator.pl/blog/kalkulator-etf-jak-obliczyc-realny-zysk"
+          }
+        ]
+      }
+    </script>
+
+  <link rel="icon" href="../images/favicon.png" />
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    // Default: analytics denied until user accepts
-    gtag('consent', 'default', {
-      'analytics_storage': 'denied'
-    });
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("consent", "default", { analytics_storage: "denied" });
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
   <script>
-    gtag('config', 'G-GZECMECQ15', { 'send_page_view': false });
+    gtag("config", "G-GZECMECQ15", { send_page_view: false });
   </script>
 
-  <!-- Optyamizowany ładunek czcionek z Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap"
-    rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript>
-    <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lato:wght@400;700&display=swap">
-  </noscript>
-
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/variables.css">
-  <link rel="stylesheet" href="../css/main.css">
-
-  <!-- Favicon -->
-  <link rel="icon" href="../images/favicon.png">
-
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="../js/tailwind-config.js"></script>
   <style>
-    /* Article-specific styles */
-    :root {
-      --white: var(--color-bg-elevated);
-      --bg: var(--color-bg);
-      --text: var(--color-text-primary);
-      --text-muted: var(--color-text-secondary);
-      --border: var(--color-border-subtle);
-      --blue: var(--color-primary-500);
-      --blue-light: var(--color-primary-50);
-      --blue-dark: var(--color-primary-700);
-      --green: var(--color-primary-500);
-      --orange: var(--color-warning);
-      --red: #E74C3C;
-      --font-body: var(--font-sans);
-      --font-ui: var(--font-sans);
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
 
-    html.dark-mode,
-    html:not(.light-mode) {
-      --white: #3A3A3C;
-      --bg: #1C1C1E;
-      --text: #F5F5F7;
-      --text-muted: #AEAEB2;
-      --border: #48484A;
-      --blue-light: #0d2137;
-      --font-body: 'Inter', system-ui, sans-serif;
-    }
-
-    html.dark-mode .comparison-table tr:nth-child(even) td,
-    html:not(.light-mode):not([style]) .comparison-table tr:nth-child(even) td,
-    html.dark-mode .age-table tr:nth-child(even) td,
-    html:not(.light-mode):not([style]) .age-table tr:nth-child(even) td {
-      background: #2C2C2E;
-    }
-
-    html.dark-mode .comparison-table td,
-    html.dark-mode .age-table td,
-    html.dark-mode .comparison-table th,
-    html.dark-mode .age-table th {
-      color: #F5F5F7;
-      border-color: #48484A;
-    }
-
-    html.dark-mode .tag-green {
-      background: #1a2e23;
-      color: #68d391;
-    }
-
-    html.dark-mode .tag-orange {
-      background: #2d1f0e;
-      color: #f6ad55;
-    }
-
-    html.dark-mode .bar-wrap {
-      background: #48484A;
-    }
-
-    html.dark-mode .disclaimer {
-      background: #2C2C2E;
-      color: #AEAEB2;
-      border-color: #48484A;
-    }
-
-    html.dark-mode .calc-row-label {
-      color: #AEAEB2;
-    }
-
-    html.dark-mode .calc-row-value {
-      color: #F5F5F7;
-    }
-
-    html.dark-mode h2 {
-      color: #7cc8fb;
-      border-color: #48484A;
-    }
-
-    html.dark-mode h3 {
-      color: #F5F5F7;
-    }
-
-    html.dark-mode strong {
-      color: #F5F5F7;
-    }
-
-    html.dark-mode p {
-      color: #F5F5F7;
-    }
-
-    html.dark-mode li {
-      color: #F5F5F7;
-    }
-
-    html.dark-mode .toc a,
-    html.dark-mode .toc-title {
-      color: #7cc8fb;
-    }
-
-    html.dark-mode .hero-lead,
-    html.dark-mode .hero-meta,
-    html.dark-mode .breadcrumb {
-      color: rgba(255, 255, 255, 0.85);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    .dark .glass-effect {
+      background: rgba(15, 23, 42, 0.7);
     }
 
     body {
-      font-family: var(--font-sans);
-      font-size: var(--text-base);
-      line-height: var(--leading-relaxed);
-      color: var(--color-text-primary);
-      background: var(--color-bg);
+      font-family: "Inter", sans-serif;
     }
 
-    /* NAV */
-    nav {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 0 24px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+    .material-symbols-outlined {
+      font-family: "Material Symbols Outlined";
+      font-size: 24px;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .nav-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
     }
 
-    .nav-logo {
-      font-family: var(--font-ui);
-      font-weight: 700;
-      font-size: 18px;
-      color: var(--blue);
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: var(--font-ui);
-      font-size: 14px;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color .2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--blue);
-    }
-
-    /* HERO */
-    .hero {
-      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
-      color: white;
-      padding: 64px 24px 56px;
-    }
-
-    .hero-inner {
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .breadcrumb {
-      font-family: var(--font-ui);
-      font-size: 13px;
-      opacity: .7;
-      margin-bottom: 20px;
-    }
-
-    .breadcrumb a {
-      color: white;
-      text-decoration: none;
-    }
-
-    .breadcrumb a:hover {
-      text-decoration: underline;
-    }
-
-    .hero h1 {
-      font-family: var(--font-ui);
-      font-size: clamp(26px, 4vw, 40px);
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 20px;
-    }
-
-    .hero-lead {
-      font-size: 18px;
-      opacity: .9;
-      margin-bottom: 28px;
-      line-height: 1.6;
-    }
-
-    .hero-meta {
-      font-family: var(--font-ui);
-      font-size: 13px;
-      opacity: .65;
-    }
-
-    /* CONTENT */
-    .content-wrapper {
-      max-width: var(--max-width-text);
-      margin: 0 auto;
-      padding: 48px 24px 80px;
-    }
-
-    /* TOC */
-    .toc {
-      background: var(--blue-light);
-      border-left: 4px solid var(--blue);
-      border-radius: 0 8px 8px 0;
-      padding: 24px 28px;
-      margin-bottom: 48px;
-    }
-
-    .toc-title {
-      font-family: var(--font-ui);
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      color: var(--blue);
-      margin-bottom: 12px;
-    }
-
-    .toc ol {
-      padding-left: 20px;
-    }
-
-    .toc li {
-      margin-bottom: 6px;
-    }
-
-    .toc a {
-      font-family: var(--font-ui);
-      font-size: 15px;
-      color: var(--blue);
-      text-decoration: none;
-    }
-
-    .toc a:hover {
-      text-decoration: underline;
-    }
-
-    /* TYPOGRAPHY */
-    h2 {
-      font-family: var(--font-sans);
-      font-size: var(--text-2xl);
-      font-weight: var(--weight-bold);
-      color: var(--color-primary-700);
-      margin-top: var(--space-16);
-      margin-bottom: var(--space-6);
-      padding-top: var(--space-4);
-      border-top: 2px solid var(--color-border-subtle);
-    }
-
-    h3 {
-      font-family: var(--font-sans);
-      font-size: var(--text-lg);
-      font-weight: var(--weight-semibold);
-      color: var(--color-text-primary);
-      margin-top: var(--space-8);
-      margin-bottom: var(--space-4);
-    }
-
-    p {
-      margin-bottom: 20px;
-    }
-
-    strong {
-      color: var(--text);
-    }
-
-    /* CALLOUT BOXES */
-    .callout {
-      border-radius: 8px;
-      padding: 20px 24px;
-      margin: 32px 0;
-      font-family: var(--font-ui);
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    .callout-key {
-      background: var(--blue-light);
-      border-left: 4px solid var(--blue);
-    }
-
-    .callout-example {
-      background: var(--color-primary-50);
-      border-left: 4px solid var(--green);
-    }
-
-    .callout-warning {
-      background: var(--color-bg-secondary);
-      border-left: 4px solid var(--orange);
-    }
-
-    .callout-title {
-      font-weight: 700;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      margin-bottom: 8px;
-    }
-
-    .callout-key .callout-title {
-      color: var(--blue);
-    }
-
-    .callout-example .callout-title {
-      color: var(--green);
-    }
-
-    .callout-warning .callout-title {
-      color: var(--orange);
-    }
-
-    /* COMPARISON TABLE */
-    .comparison-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 28px 0;
-      font-family: var(--font-ui);
-      font-size: 15px;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, .08);
-    }
-
-    .comparison-table th {
-      background: var(--blue);
-      color: white;
-      padding: 12px 16px;
-      text-align: left;
-      font-weight: 600;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-    }
-
-    .comparison-table td {
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-    }
-
-    .comparison-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .comparison-table tr:nth-child(even) td {
-      background: var(--color-bg-secondary);
-    }
-
-    .tag-green {
-      display: inline-block;
-      background: #e8f8ef;
-      color: var(--green);
-      font-weight: 700;
-      font-size: 12px;
-      padding: 2px 8px;
-      border-radius: 4px;
-    }
-
-    .tag-orange {
-      display: inline-block;
-      background: #fff2e6;
-      color: var(--orange);
-      font-weight: 700;
-      font-size: 12px;
-      padding: 2px 8px;
-      border-radius: 4px;
-    }
-
-    /* EXAMPLE CALC */
-    .calc-example {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px;
-      margin: 32px 0;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
-    }
-
-    .calc-example-title {
-      font-family: var(--font-ui);
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-    }
-
-    .calc-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border);
-      font-family: var(--font-ui);
-      font-size: 15px;
-    }
-
-    .calc-row:last-child {
-      border-bottom: none;
-    }
-
-    .calc-row-label {
-      color: var(--text-muted);
-    }
-
-    .calc-row-value {
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .calc-row-value.green {
-      color: var(--green);
-    }
-
-    .calc-row-value.red {
-      color: var(--red);
-    }
-
-    .calc-row-value.blue {
-      color: var(--blue);
-      font-size: 18px;
-    }
-
-    .calc-row.highlight {
-      background: var(--blue-light);
-      margin: 0 -28px;
-      padding: 12px 28px;
-      border-radius: 0;
-    }
-
-    /* AGE TABLE */
-    .age-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 28px 0;
-      font-family: var(--font-ui);
-      font-size: 15px;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .age-table th {
-      background: var(--blue-dark);
-      color: white;
-      padding: 12px 16px;
-      font-size: 13px;
-    }
-
-    .age-table td {
-      padding: 11px 16px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .age-table tr:nth-child(even) td {
-      background: var(--color-bg-secondary);
-    }
-
-    .bar-wrap {
-      background: #e8e8e0;
-      border-radius: 4px;
-      height: 8px;
-      width: 100%;
-      margin-top: 4px;
-    }
-
-    .bar-fill {
-      height: 8px;
-      border-radius: 4px;
-      background: var(--blue);
-    }
-
-    .bar-fill.green {
-      background: var(--green);
-    }
-
-    /* CTA */
-    .cta-box {
-      background: linear-gradient(135deg, var(--blue-dark), var(--blue));
-      color: white;
-      border-radius: 12px;
-      padding: 36px 32px;
-      text-align: center;
-      margin: 48px 0;
-    }
-
-    .cta-box h3 {
-      font-family: var(--font-ui);
-      font-size: 22px;
-      font-weight: 800;
-      color: white;
-      margin-bottom: 12px;
-      margin-top: 0;
-    }
-
-    .cta-box p {
-      opacity: .85;
-      font-size: 16px;
-      margin-bottom: 24px;
-      font-family: var(--font-ui);
-    }
-
-    .btn-cta {
-      display: inline-block;
-      background: var(--color-bg-elevated);
-      color: var(--blue-dark);
-      font-family: var(--font-ui);
-      font-weight: 700;
-      font-size: 16px;
-      padding: 14px 32px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: transform .15s, box-shadow .15s;
-    }
-
-    .btn-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, .2);
-    }
-
-    /* KEY NUMBER BLOCKS */
-    .key-numbers {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-      margin: 28px 0;
-    }
-
-    .key-number {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .key-number-value {
-      font-family: var(--font-ui);
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--blue);
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .key-number-label {
-      font-family: var(--font-ui);
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    /* DISCLAIMER */
-    .disclaimer {
-      background: var(--color-bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 16px 20px;
-      font-family: var(--font-ui);
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-top: 48px;
-    }
-
-    /* FOOTER */
-    footer {
-      background: var(--white);
-      border-top: 1px solid var(--border);
-      padding: 32px 24px;
-      text-align: center;
-      font-family: var(--font-ui);
-      font-size: 14px;
-      color: var(--text-muted);
-    }
-
-    footer a {
-      color: var(--blue);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
-
-    @media (max-width: 640px) {
-      body {
-        font-size: 16px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .calc-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 2px;
-      }
-
-      .content-wrapper {
-        padding: 32px 16px 60px;
-      }
-
-      .calc-example {
-        padding: 20px 16px;
-      }
-
-      .calc-row.highlight {
-        margin: 0 -16px;
-        padding: 12px 16px;
-      }
-
-      .key-numbers {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .cta-box {
-        padding: 28px 20px;
-      }
-    }
-
-    /* Dark mode overrides */
-    html.dark-mode .calc-example {
-      background: var(--color-bg-elevated);
-      border-color: var(--color-border-subtle);
-    }
-
-    html.dark-mode .calc-example-title {
-      color: var(--color-text-muted);
-    }
-
-    html.dark-mode .calc-row-label {
-      color: var(--color-text-secondary);
-    }
-
-    html.dark-mode .calc-row-value {
-      color: var(--color-text-primary);
-    }
-
-    html.dark-mode .calc-row.highlight {
-      background: var(--color-primary-50);
-    }
-
-    html.dark-mode .key-number {
-      background: var(--color-bg-elevated);
-      border-color: var(--color-border-subtle);
-    }
-
-    html.dark-mode .key-number-label {
-      color: var(--color-text-muted);
-    }
-
-    html.dark-mode .toc {
-      background: var(--color-primary-50);
-    }
-
-    html.dark-mode .callout-key,
-    html.dark-mode .callout-example {
-      background: var(--color-primary-50);
-    }
-
-    html.dark-mode .callout-warning {
-      background: var(--color-bg-secondary);
-    }
-
-    html.dark-mode .comparison-table tr:nth-child(even) td,
-    html.dark-mode .age-table tr:nth-child(even) td {
-      background: var(--color-bg-secondary);
-    }
-
-    html.dark-mode .comparison-table td,
-    html.dark-mode .age-table td {
-      color: var(--color-text-primary);
-    }
-
-    html.dark-mode .disclaimer {
-      background: var(--color-bg-secondary);
-      color: var(--color-text-secondary);
-    }
-
-    html.dark-mode .tag-green {
-      background: var(--color-primary-50);
-    }
-
-    html.dark-mode .tag-orange {
-      background: var(--color-bg-secondary);
-    }
-
-    html.dark-mode .comparison-table tr:nth-child(even) td,
-    html:not(.light-mode) .comparison-table tr:nth-child(even) td,
-    html.dark-mode .age-table tr:nth-child(even) td,
-    html:not(.light-mode) .age-table tr:nth-child(even) td {
-      background: var(--color-bg-secondary);
-    }
-
-    html.dark-mode .tag-green,
-    html:not(.light-mode) .tag-green {
-      background: #1a2e23;
-      color: #68d391;
-    }
-
-    html.dark-mode .tag-orange,
-    html:not(.light-mode) .tag-orange {
-      background: #2d1f0e;
-      color: #f6ad55;
-    }
-
-    /* Callout fixes for Dark Mode contrast */
-    html.dark-mode .callout-key {
-      background: #1a2634;
-      border-color: #3498db;
-    }
-
-    html.dark-mode .callout-example {
-      background: #162a1c;
-      border-color: #2ecc71;
-    }
-
-    html.dark-mode .callout-warning {
-      background: #2d2312;
-      border-color: #f39c12;
-    }
-
-    html.dark-mode .callout-title {
-      color: #f5f5f7;
-    }
-
-    html.dark-mode .callout-key {
-      background: #1a2634;
-      border-color: #3498db;
-    }
-
-    html.dark-mode .callout-example {
-      background: #162a1c;
-      border-color: #2ecc71;
-    }
-
-    html.dark-mode .callout-warning {
-      background: #2d2312;
-      border-color: #f39c12;
-    }
-
-    html.dark-mode .callout-title {
-      color: #f5f5f7;
-    }
-
-    html.dark-mode .bar-wrap,
-    html:not(.light-mode) .bar-wrap {
-      background: var(--color-border);
-    }
-
-    html.dark-mode .comparison-table th,
-    html:not(.light-mode) .comparison-table th,
-    html.dark-mode .age-table th,
-    html:not(.light-mode) .age-table th {
-      background: var(--color-primary-700);
-    }
-
-    html.dark-mode .disclaimer,
-    html:not(.light-mode) .disclaimer {
-      border-color: var(--color-border);
-    }
-
-    @media (max-width: 640px) {
-      .content-wrapper {
-        padding: 32px 16px 60px;
-      }
-
-      .calc-example {
-        padding: 20px 16px;
-      }
-
-      .calc-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 2px;
-      }
-
-      .calc-row.highlight {
-        margin: 0 -16px;
-        padding: 12px 16px;
-      }
-
-      .key-numbers {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .cta-box {
-        padding: 28px 20px;
-      }
-
-      .key-number-value {
-        font-size: 22px;
-      }
-
-      .hero {
-        padding: 40px 20px 36px;
-      }
-
-      .hero h1 {
-        font-size: 24px;
-      }
-    }
-
-    /* User Requested Dark Mode Overrides */
-    html.dark-mode .calc-example,
-    html.dark-mode .key-number {
-      background: #2C2C2E !important;
-      border-color: #48484A !important;
-      color: #F5F5F7 !important;
-    }
-
-    html.dark-mode .calc-example *,
-    html.dark-mode .key-number * {
-      color: #F5F5F7 !important;
-    }
-
-    html.dark-mode .calc-row-value.red {
-      color: #fc8181 !important;
-    }
-
-    html.dark-mode .calc-row-value.blue {
-      color: #7cc8fb !important;
-    }
-
-    html.dark-mode .calc-row-value.green {
-      color: #68d391 !important;
-    }
-
-    html.dark-mode .calc-example-title {
-      color: #AEAEB2 !important;
-    }
-
-    html.dark-mode .calc-row.highlight {
-      background: #0d2137 !important;
-    }
-
-    html.dark-mode .key-number-value {
-      color: #7cc8fb !important;
-    }
-
-    html.dark-mode .key-number-label {
-      color: #AEAEB2 !important;
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
   </style>
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/main.css" />
 </head>
 
 <body>
-  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-stitch-accent">Przejdź do głównej treści</a>
+  <a href="#main"
+    class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-primary">Przejdź
+    do głównej treści</a>
 
   <!-- Cookie Consent Banner -->
-  <div id="cookie-consent" class="cookie-consent" style="display: none;">
+  <div id="cookie-consent" class="cookie-consent" style="display: none">
     <div class="cookie-consent__inner">
       <div class="cookie-consent__content">
         <h4 class="cookie-consent__title">Prywatność i pliki cookies</h4>
         <p class="cookie-consent__text">
-          ETFkalkulator.pl używa plików cookies do analizy ruchu i personalizacji treści.
-          Kontynuując przeglądanie zgadzasz się na naszą
+          ETFkalkulator.pl używa plików cookies do analizy ruchu i
+          personalizacji treści. Kontynuując przeglądanie zgadzasz się na
+          naszą
           <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__link">politykę cookies</a>.
         </p>
       </div>
@@ -965,679 +164,1080 @@
         <button id="cookie-reject" class="cookie-consent__btn cookie-consent__btn--reject">
           Odrzuć
         </button>
-        <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__btn cookie-consent__btn--settings">
-          Ustawienia
+        <a href="../pages/polityka-prywatnosci.html#cookies"
+          class="cookie-consent__btn cookie-consent__btn--settings">Ustawienia</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-stitch-border/50"
+    style="font-family: &quot;Inter&quot;, sans-serif">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center shrink-0">
+        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity"
+          style="text-decoration: none">
+          <div class="bg-primary p-1.5 rounded-2xl text-white flex items-center justify-center"
+            style="background-color: #0d7ff2">
+            <span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-stitch-text">ETFkalkulator.pl</span>
         </a>
       </div>
-    </div>
-  </div>
-
-  <!-- HEADER -->
-  <header class="header">
-    <div class="container">
-      <div class="header__inner">
-        <a href="../index.html" class="header__logo">ETF<span>kalkulator</span>.pl</a>
-        <nav class="header__nav" aria-label="Nawigacja główna">
-          <a href="../pages/kalkulator-etf.html">Kalkulator ETF</a>
-          <a href="../pages/kalkulator-obligacji.html">Obligacje</a>
-          <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
-          <a href="../pages/porownywarka.html">Porównywarka</a>
-          <a href="../blog/index.html" style="color: var(--color-primary-500)">Blog</a>
-          <a href="../pages/o-projekcie.html">O projekcie</a>
-          <button id="btn-darkmode" onkeydown="if(event.key==='Enter')this.click()" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny" style="
-            width: 38px; height: 38px; border-radius: var(--radius-full); 
-            border: 1.5px solid var(--color-border); background: var(--color-bg-elevated); 
-            cursor: pointer; display: flex; align-items: center; justify-content: center; 
-            transition: all var(--transition-fast); flex-shrink: 0;
-          ">
-            <svg id="ikona-slonce" width="18" height="18" viewBox="0 0 24 24" fill="none"
-              stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="5" />
-              <line x1="12" y1="1" x2="12" y2="3" />
-              <line x1="12" y1="21" x2="12" y2="23" />
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-              <line x1="1" y1="12" x2="3" y2="12" />
-              <line x1="21" y1="12" x2="23" y2="12" />
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-            </svg>
-            <svg id="ikona-ksiezyc" width="18" height="18" viewBox="0 0 24 24" fill="none"
-              stroke="var(--color-text-secondary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-              style="display:none">
-              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-            </svg>
-          </button>
-          <a href="../index.html#newsletter" class="btn btn--sm"
-            style="border: 1.5px solid var(--color-primary-300); color: var(--color-primary-700); background: var(--color-bg-elevated); border-radius: var(--radius-full);">Newsletter</a>
-        </nav>
+      <div class="hidden lg:flex items-center gap-6 xl:gap-8 mx-6">
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors"
+          href="../pages/kalkulator-etf.html" style="text-decoration: none">Kalkulator ETF</a>
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors"
+          href="../pages/kalkulator-obligacji.html" style="text-decoration: none">Kalkulator Obligacji</a>
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors"
+          href="../pages/kalkulator-wolnosci.html" style="text-decoration: none">Kalkulator Wolności</a>
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors"
+          href="../pages/porownywarka.html" style="text-decoration: none">Porównywarka</a>
+        <a class="text-sm font-extrabold text-primary transition-colors hover:opacity-80" href="index.html"
+          style="text-decoration: none; color: #0d7ff2">Blog</a>
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors"
+          href="../pages/o-projekcie.html" style="text-decoration: none">O projekcie</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onkeydown="if (event.key === 'Enter') this.click();" onclick="przelaczTryb()" aria-label="Przełącz tryb"
+          class="w-9 h-9 rounded-full border border-stitch-border bg-stitch-surface flex items-center justify-center hover:bg-stitch-bg transition-colors">
+          <span class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
+          <span class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
+        </button>
+        <a href="../index.html#newsletter"
+          class="bg-primary text-white px-4 h-9 rounded-full flex items-center justify-center text-[13px] font-bold hover:opacity-90 transition-opacity no-underline"
+          style="background-color: #0d7ff2">Zapisz się</a>
       </div>
     </div>
-  </header>
-
-  <!-- MOBILE NAV -->
-  <div class="mobile-nav-bar" id="mobile-nav-bar">
-    <div class="mobile-nav-bar__inner">
-      <a href="../pages/kalkulator-etf.html" class="mobile-nav-bar__link">ETF</a>
-      <span class="mobile-nav-bar__separator"></span>
-      <a href="../pages/kalkulator-obligacji.html" class="mobile-nav-bar__link">Obligacje</a>
-      <span class="mobile-nav-bar__separator"></span>
-      <a href="../pages/kalkulator-wolnosci.html" class="mobile-nav-bar__link">Wolność finansowa</a>
-      <span class="mobile-nav-bar__separator"></span>
-      <a href="../pages/porownywarka.html" class="mobile-nav-bar__link">Porównywarka ETF</a>
-      <span class="mobile-nav-bar__separator"></span>
-      <a href="../blog/index.html" class="mobile-nav-bar__link aktywna">Blog</a>
-      <span class="mobile-nav-bar__separator"></span>
-      <a href="../pages/o-projekcie.html" class="mobile-nav-bar__link">O projekcie</a>
+    <div
+      class="lg:hidden h-11 border-t border-stitch-border/30 flex items-center overflow-x-auto overflow-y-hidden no-scrollbar px-4 gap-6 bg-stitch-surface/10"
+      style="-webkit-overflow-scrolling: touch">
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap"
+        href="../pages/kalkulator-etf.html" style="text-decoration: none">Kalkulator ETF</a>
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap"
+        href="../pages/kalkulator-obligacji.html" style="text-decoration: none">Obligacje</a>
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap"
+        href="../pages/kalkulator-wolnosci.html" style="text-decoration: none">Wolność finansowa</a>
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap"
+        href="../pages/porownywarka.html" style="text-decoration: none">Porównywarka</a>
+      <a class="text-[12px] font-extrabold text-primary hover:opacity-80 whitespace-nowrap" href="index.html"
+        style="text-decoration: none; color: #0d7ff2">Blog</a>
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap"
+        href="../pages/o-projekcie.html" style="text-decoration: none">O projekcie</a>
     </div>
-  </div>
+  </nav>
 
   <!-- HERO -->
-  <header class="hero">
-    <div class="hero-inner">
-      <div class="breadcrumb">
-        <a href="../index.html">ETFkalkulator.pl</a> ›
-        <a href="../blog/index.html">Blog</a> ›
-        Kalkulator ETF
-      </div>
-      <h1>Kalkulator ETF — jak obliczyć realny zysk po podatku Belki i inflacji</h1>
-      <p class="hero-lead">
-        Większość kalkulatorów pokazuje zysk brutto. Ty chcesz wiedzieć ile zostanie
-        w kieszeni — po 19% podatku i po tym, co zrobi z pieniędzmi inflacja.
-        Oto jak to liczyć i dlaczego ta różnica jest ogromna.
-      </p>
-      <div class="hero-meta">ETFkalkulator.pl &nbsp;·&nbsp; marzec 2026 &nbsp;·&nbsp; 8 minut czytania</div>
+  <section
+    class="relative bg-gradient-to-br from-blue-800 via-blue-700 to-primary pt-32 pb-16 md:pb-20 px-4 sm:px-6 overflow-hidden"
+    style="
+        background: linear-gradient(
+          135deg,
+          #1e40af 0%,
+          #1d4ed8 40%,
+          #0d7ff2 100%
+        );
+      ">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute -top-40 -right-40 w-96 h-96 bg-stitch-surface/5 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-20 -left-20 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl"></div>
     </div>
-  </header>
+    <div class="relative z-10 max-w-3xl mx-auto">
+      <nav class="mb-6" aria-label="breadcrumb">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li>
+            <a href="../index.html" class="hover:text-white transition-colors"
+              style="text-decoration: none">ETFkalkulator.pl</a>
+          </li>
+          <li>
+            <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+          </li>
+          <li>
+            <a href="index.html" class="hover:text-white transition-colors" style="text-decoration: none">Blog</a>
+          </li>
+          <li>
+            <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+          </li>
+          <li class="text-white font-semibold">Kalkulator ETF</li>
+        </ol>
+      </nav>
+      <h1 class="text-2xl md:text-4xl font-black text-white leading-tight mb-4">
+        Kalkulator ETF — jak obliczyć realny zysk po podatku Belki i inflacji
+      </h1>
+      <p class="text-white/85 text-base md:text-lg leading-relaxed mb-4">
+        Większość kalkulatorów pokazuje zysk brutto. Ty chcesz wiedzieć ile
+        zostanie w kieszeni — po 19% podatku i po tym, co zrobi z pieniędzmi
+        inflacja. Oto jak to liczyć i dlaczego ta różnica jest ogromna.
+      </p>
+      <div class="flex flex-wrap gap-4 mt-4 text-white/60 text-sm">
+        <span class="flex items-center gap-1.5"><span
+            class="material-symbols-outlined text-[16px]">calendar_today</span>
+          marzec 2026</span>
+        <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">schedule</span>
+          8 minut czytania</span>
+        <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">person</span>
+          ETFkalkulator.pl</span>
+      </div>
+    </div>
+  </section>
 
-  <!-- CONTENT -->
-  <main id="main" class="content-wrapper">
-
+  <main class="bg-stitch-bg dark:bg-slate-950 transition-colors duration-300">
+  <!-- ARTICLE CONTENT -->
+  <article id="main" class="max-w-3xl mx-auto px-4 sm:px-6 pt-8 pb-20">
     <!-- TOC -->
-    <nav class="toc" aria-label="Spis treści">
-      <div class="toc-title">Spis treści</div>
-      <ol>
-        <li><a href="#co-to-etf">Czym jest ETF i dlaczego Polacy coraz częściej w niego inwestują</a></li>
-        <li><a href="#podatek-belki">Podatek Belki — co to jest i jak go obliczyć</a></li>
-        <li><a href="#inflacja">Inflacja — cichy złodziej zysku</a></li>
-        <li><a href="#przyklad">Konkretny przykład: 10 000 zł przez 10 lat</a></li>
-        <li><a href="#ike-ikze">IKE i IKZE — jak legalnie uniknąć podatku</a></li>
-        <li><a href="#wiek">Ile ETF, ile bezpiecznych inwestycji — podział według wieku</a></li>
-        <li><a href="#kalkulator">Policz to sam — bezpłatny kalkulator</a></li>
+    <div class="glass-effect rounded-[1.5rem] p-6 mb-10 border-l-4 border-primary bg-primary/5 dark:bg-primary/10">
+      <p class="text-xs font-black uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
+        <span class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+        Spis treści
+      </p>
+      <ol class="space-y-2 text-sm list-decimal list-inside">
+        <li>
+          <a href="#co-to-etf" class="text-primary hover:underline font-medium" style="text-decoration: none">Czym jest
+            ETF i dlaczego Polacy coraz częściej w niego
+            inwestują</a>
+        </li>
+        <li>
+          <a href="#podatek-belki" class="text-primary hover:underline font-medium"
+            style="text-decoration: none">Podatek Belki — co to jest i jak go obliczyć</a>
+        </li>
+        <li>
+          <a href="#inflacja" class="text-primary hover:underline font-medium" style="text-decoration: none">Inflacja —
+            cichy złodziej zysku</a>
+        </li>
+        <li>
+          <a href="#przyklad" class="text-primary hover:underline font-medium" style="text-decoration: none">Konkretny
+            przykład: 10 000 zł przez 10 lat</a>
+        </li>
+        <li>
+          <a href="#ike-ikze" class="text-primary hover:underline font-medium" style="text-decoration: none">IKE i IKZE
+            — jak legalnie uniknąć podatku</a>
+        </li>
+        <li>
+          <a href="#wiek" class="text-primary hover:underline font-medium" style="text-decoration: none">Ile ETF, ile
+            bezpiecznych inwestycji — podział według wieku</a>
+        </li>
+        <li>
+          <a href="#kalkulator" class="text-primary hover:underline font-medium" style="text-decoration: none">Jak
+            korzystać z kalkulatora ETF — krok po kroku</a>
+        </li>
       </ol>
-    </nav>
+    </div>
 
     <!-- SECTION 1 -->
-    <h2 id="co-to-etf">1. Czym jest ETF i dlaczego Polacy coraz częściej w niego inwestują</h2>
-
-    <p>
-      ETF (Exchange Traded Fund) to fundusz inwestycyjny notowany na giełdzie, którego zadaniem
-      jest naśladowanie zachowania całego indeksu — na przykład 500 największych spółek
-      w USA (S&P 500) albo kilku tysięcy firm z całego świata (MSCI World).
+    <h2 id="co-to-etf"
+      class="text-2xl font-black text-stitch-text mt-14 mb-5 pt-8 border-t border-stitch-border flex items-center gap-3">
+      <span
+        class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0"
+        style="color: #0d7ff2">1</span>
+      Czym jest ETF i dlaczego Polacy coraz częściej w niego inwestują
+    </h2>
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+      ETF (Exchange Traded Fund) to fundusz inwestycyjny notowany na giełdzie,
+      którego zadaniem jest naśladowanie zachowania całego indeksu — na
+      przykład 500 największych spółek w USA (S&amp;P 500) albo kilku tysięcy
+      firm z całego świata (MSCI World).
     </p>
-
-    <p>
-      Zamiast analizować pojedyncze akcje i zgadywać, która spółka urośnie — kupujesz
-      kawałek całego rynku. Jeśli gospodarka rośnie, rośnie też wartość Twojego ETF-u.
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+      Zamiast analizować pojedyncze akcje i zgadywać, która spółka urośnie —
+      kupujesz kawałek całego rynku. Jeśli gospodarka rośnie, rośnie też
+      wartość Twojego ETF-u.
     </p>
-
-    <div class="callout callout-key">
-      <div class="callout-title">🔑 Dlaczego ETF, a nie fundusze tradycyjne?</div>
-      Fundusze zarządzane aktywnie pobierają często 2–3% rocznie za zarządzanie.
-      ETF-y indeksowe kosztują zazwyczaj 0,07–0,20% rocznie. Na 20 latach inwestowania
-      ta różnica przekłada się na dziesiątki tysięcy złotych.
+    <div class="rounded-2xl p-5 bg-primary/5 dark:bg-primary/10 border-l-4 border-primary mb-6">
+      <p class="text-xs font-black uppercase tracking-wider text-primary mb-2">
+        🔑 Dlaczego ETF, a nie fundusze tradycyjne?
+      </p>
+      <p class="text-sm text-stitch-muted leading-relaxed">
+        Fundusze zarządzane aktywnie pobierają często 2–3% rocznie za
+        zarządzanie. ETF-y indeksowe kosztują zazwyczaj 0,07–0,20% rocznie. Na
+        20 latach inwestowania ta różnica przekłada się na dziesiątki tysięcy
+        złotych.
+      </p>
     </div>
-
-    <p>
-      W Polsce ETF-y można kupować m.in. przez XTB i Dom Maklerski PKO. Najpopularniejsze
-      wśród polskich inwestorów to fundusze śledzące MSCI World oraz S&P 500 —
-      czyli szeroko zdywersyfikowane portfele globalnych spółek.
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+      W Polsce ETF-y można kupować m.in. przez XTB i Dom Maklerski PKO.
+      Najpopularniejsze wśród polskich inwestorów to fundusze śledzące MSCI
+      World oraz S&amp;P 500 — czyli szeroko zdywersyfikowane portfele
+      globalnych spółek.
     </p>
-
-    <div class="key-numbers">
-      <div class="key-number">
-        <span class="key-number-value">~7–10%</span>
-        <span class="key-number-label">średni roczny zwrot MSCI World historycznie (nominalnie)</span>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+      <div
+        class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft">
+        <div class="text-2xl md:text-3xl font-black text-primary mb-1" style="color: #0d7ff2">
+          ~7–10%
+        </div>
+        <div class="text-xs text-stitch-muted leading-tight">
+          średni roczny zwrot MSCI World historycznie (nominalnie)
+        </div>
       </div>
-      <div class="key-number">
-        <span class="key-number-value">0,07%</span>
-        <span class="key-number-label">roczny koszt najtańszych ETF-ów indeksowych</span>
+      <div
+        class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft">
+        <div class="text-2xl md:text-3xl font-black text-primary mb-1" style="color: #0d7ff2">
+          0,07%
+        </div>
+        <div class="text-xs text-stitch-muted leading-tight">
+          roczny koszt najtańszych ETF-ów indeksowych
+        </div>
       </div>
-      <div class="key-number">
-        <span class="key-number-value">19%</span>
-        <span class="key-number-label">podatek Belki od zysku kapitałowego w Polsce</span>
+      <div
+        class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft">
+        <div class="text-2xl md:text-3xl font-black text-primary mb-1" style="color: #0d7ff2">
+          19%
+        </div>
+        <div class="text-xs text-stitch-muted leading-tight">
+          podatek Belki od zysku kapitałowego w Polsce
+        </div>
       </div>
     </div>
 
     <!-- SECTION 2 -->
-    <h2 id="podatek-belki">2. Podatek Belki — co to jest i jak go obliczyć</h2>
-
-    <p>
-      Podatek Belki to 19% podatku od zysków kapitałowych. Płacisz go tylko od zysku
-      — nie od całej kwoty którą wypłacasz.
+    <h2 id="podatek-belki"
+      class="text-2xl font-black text-stitch-text mt-14 mb-5 pt-8 border-t border-stitch-border flex items-center gap-3">
+      <span
+        class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0"
+        style="color: #0d7ff2">2</span>
+      Podatek Belki — co to jest i jak go obliczyć
+    </h2>
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+      Podatek Belki to 19% podatku od zysków kapitałowych. Płacisz go tylko od
+      zysku — nie od całej kwoty którą wypłacasz.
     </p>
-
-    <p>
-      Jeśli wpłaciłeś 50 000 zł, a po 10 latach masz 90 000 zł — Twój zysk wynosi
-      40 000 zł. Podatek Belki: 40 000 × 19% = <strong>7 600 zł</strong>.
-      Do kieszeni trafia 82 400 zł, nie 90 000 zł.
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+      Jeśli wpłaciłeś 50 000 zł, a po 10 latach masz 90 000 zł — Twój zysk
+      wynosi 40 000 zł. Podatek Belki: 40 000 × 19% = 7 600 zł. Do kieszeni
+      trafia 82 400 zł, nie 90 000 zł.
     </p>
-
-    <div class="callout callout-warning">
-      <div class="callout-title">⚠️ Ważna zasada dla ETF-ów akumulujących</div>
-      ETF-y akumulujące (Acc) nie wypłacają dywidend — dodają je do wartości funduszu.
-      Dzięki temu podatek Belki płacisz dopiero przy sprzedaży, a nie co roku.
-      To ogromna przewaga nad funduszami wypłacającymi dywidendy — przez lata
-      reinwestujesz 100% zysku bez oddawania 19% co roku.
+    <div class="rounded-2xl p-5 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 mb-6">
+      <p class="text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2">
+        ⚠️ Ważna zasada dla ETF-ów akumulujących
+      </p>
+      <p class="text-sm text-stitch-muted leading-relaxed">
+        ETF-y akumulujące (Acc) nie wypłacają dywidend — dodają je do wartości
+        funduszu. Dzięki temu podatek Belki płacisz dopiero przy sprzedaży, a
+        nie co roku. To ogromna przewaga nad funduszami wypłacającymi
+        dywidendy — przez lata reinwestujesz 100% zysku bez oddawania 19% co
+        roku.
+      </p>
     </div>
-
-    <h3>Jak liczyć podatek Belki przy ETF?</h3>
-
-    <p>
+    <h3 class="text-lg font-bold text-stitch-text mt-8 mb-3">
+      Jak liczyć podatek Belki przy ETF?
+    </h3>
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
       Wzór jest prosty:
     </p>
-
-    <div class="calc-example">
-      <div class="calc-example-title">Wzór na podatek Belki</div>
-      <div class="calc-row">
-        <span class="calc-row-label">Kapitał końcowy brutto</span>
-        <span class="calc-row-value">= wynik kalkulatora przed podatkiem</span>
+    <div
+      class="glass-effect rounded-2xl p-6 mb-6 shadow-stitch-soft border border-white/50 dark:border-stitch-border/50">
+      <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+        <span class="material-symbols-outlined text-[18px]">calculate</span>
+        Wzór na podatek Belki
+      </p>
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+        <span class="text-sm text-stitch-muted">Kapitał końcowy brutto</span><span
+          class="text-sm font-bold text-stitch-text">= wynik kalkulatora przed podatkiem</span>
       </div>
-      <div class="calc-row">
-        <span class="calc-row-label">Łączne wpłaty (koszt)</span>
-        <span class="calc-row-value">= kapitał startowy + wszystkie dopłaty</span>
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+        <span class="text-sm text-stitch-muted">Łączne wpłaty (koszt)</span><span
+          class="text-sm font-bold text-stitch-text">= kapitał startowy + wszystkie dopłaty</span>
       </div>
-      <div class="calc-row">
-        <span class="calc-row-label">Zysk brutto</span>
-        <span class="calc-row-value">= Kapitał końcowy − Łączne wpłaty</span>
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+        <span class="text-sm text-stitch-muted">Zysk brutto</span><span class="text-sm font-bold text-stitch-text">=
+          Kapitał końcowy â’ Łączne wpłaty</span>
       </div>
-      <div class="calc-row">
-        <span class="calc-row-label">Podatek Belki</span>
-        <span class="calc-row-value red">= Zysk brutto × 19%</span>
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+        <span class="text-sm text-stitch-muted">Podatek Belki</span><span
+          class="text-sm font-bold text-rose-600 dark:text-rose-400">= Zysk brutto × 19%</span>
       </div>
-      <div class="calc-row highlight">
-        <span class="calc-row-label"><strong>Kapitał końcowy NETTO</strong></span>
-        <span class="calc-row-value blue">= Kapitał końcowy − Podatek Belki</span>
+      <div
+        class="bg-primary/5 dark:bg-primary/10 rounded-xl px-4 py-3 mt-2 border border-primary/20 flex flex-col sm:flex-row sm:justify-between sm:items-center">
+        <span class="text-sm text-stitch-muted font-semibold">Kapitał końcowy NETTO</span><span
+          class="text-base font-black text-primary" style="color: #0d7ff2">= Kapitał końcowy â’ Podatek Belki</span>
       </div>
     </div>
 
     <!-- SECTION 3 -->
-    <h2 id="inflacja">3. Inflacja — cichy złodziej zysku</h2>
-
-    <p>
-      Nawet po zapłaceniu podatku Twój zysk może być złudzeniem. Jeśli przez 10 lat
-      zarobiłeś 30 000 zł nominalnie, ale ceny w tym czasie wzrosły o 40% — Twoja
-      realna siła nabywcza spadła, mimo że na koncie jest więcej cyfr.
+    <h2 id="inflacja"
+      class="text-2xl font-black text-stitch-text mt-14 mb-5 pt-8 border-t border-stitch-border flex items-center gap-3">
+      <span
+        class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0"
+        style="color: #0d7ff2">3</span>
+      Inflacja — cichy złodziej zysku
+    </h2>
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+      Nawet po zapłaceniu podatku Twój zysk może być złudzeniem. Jeśli przez
+      10 lat zarobiłeś 30 000 zł nominalnie, ale ceny w tym czasie wzrosły o
+      40% — Twoja realna siła nabywcza spadła, mimo że na koncie jest więcej
+      cyfr.
     </p>
-
-    <p>
-      Dlatego warto liczyć <strong>zysk realny</strong> — czyli zysk po podatku,
-      pomniejszony o wpływ inflacji.
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+      Dlatego warto liczyć zysk realny — czyli zysk po podatku, pomniejszony o
+      wpływ inflacji.
     </p>
-
-    <div class="callout callout-key">
-      <div class="callout-title">🔑 Zysk realny vs nominalny</div>
-      <strong>Nominalny</strong> — ile złotówek masz więcej na koncie.<br />
-      <strong>Realny</strong> — ile więcej możesz kupić za te pieniądze w dzisiejszych cenach.<br /><br />
-      Tylko zysk realny powie Ci czy naprawdę się wzbogaciłeś.
+    <div class="rounded-2xl p-5 bg-primary/5 dark:bg-primary/10 border-l-4 border-primary mb-6">
+      <p class="text-xs font-black uppercase tracking-wider text-primary mb-2">
+        🔑 Zysk realny vs nominalny
+      </p>
+      <p class="text-sm text-stitch-muted leading-relaxed">
+        Nominalny — ile złotówek masz więcej na koncie. Realny — ile więcej
+        możesz kupić za te pieniądze w dzisiejszych cenach. Tylko zysk realny
+        powie Ci czy naprawdę się wzbogaciłeś.
+      </p>
     </div>
-
-    <p>
-      Inflacja w Polsce w 2026 roku wynosi około 2,2% rocznie — jeden z najniższych
-      poziomów od lat. Ale przy planowaniu inwestycji na 10–30 lat rozsądnie jest
-      przyjąć wyższe założenie (3–4%), bo inflacja jest nieprzewidywalna.
-      Lepiej mile się zaskoczyć niż zawieść.
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+      Inflacja w Polsce w 2026 roku wynosi około 2,2% rocznie — jeden z
+      najniższych poziomów od lat. Ale przy planowaniu inwestycji na 10–30 lat
+      rozsądnie jest przyjąć wyższe założenie (3–4%), bo inflacja jest
+      nieprzewidywalna. Lepiej mile się zaskoczyć niż zawieść.
     </p>
 
     <!-- SECTION 4 -->
-    <h2 id="przyklad">4. Konkretny przykład: 10 000 zł przez 10 lat</h2>
-
-    <p>
-      Przestańmy mówić abstrakcyjnie. Oto co dzieje się z <strong>10 000 zł kapitału
-        startowego i dopłatą 500 zł miesięcznie przez 10 lat</strong>, przy założeniu
-      7% rocznego zwrotu i 3,5% inflacji.
+    <h2 id="przyklad"
+      class="text-2xl font-black text-stitch-text mt-14 mb-5 pt-8 border-t border-stitch-border flex items-center gap-3">
+      <span
+        class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0"
+        style="color: #0d7ff2">4</span>
+      Konkretny przykład: 10 000 zł przez 10 lat
+    </h2>
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+      Przestańmy mówić abstrakcyjnie. Oto co dzieje się z 10 000 zł kapitału
+      startowego i dopłatą 500 zł miesięcznie przez 10 lat, przy założeniu 7%
+      rocznego zwrotu i 3,5% inflacji.
     </p>
-
-    <div class="calc-example">
-      <div class="calc-example-title">📊 Przykład: 10 000 zł + 500 zł/mies. × 10 lat @ 7%</div>
-      <div class="calc-row">
-        <span class="calc-row-label">Łączne wpłaty</span>
-        <span class="calc-row-value">70 000 zł</span>
+    <div
+      class="glass-effect rounded-2xl p-6 mb-6 shadow-stitch-soft border border-white/50 dark:border-stitch-border/50">
+      <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+        <span class="material-symbols-outlined text-[18px]">calculate</span>
+        📊 Przykład: 10 000 zł + 500 zł/mies. × 10 lat @ 7%
+      </p>
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+        <span class="text-sm text-stitch-muted">Łączne wpłaty</span><span class="text-sm font-bold text-stitch-text">70
+          000 zł</span>
       </div>
-      <div class="calc-row">
-        <span class="calc-row-label">Kapitał brutto po 10 latach</span>
-        <span class="calc-row-value">~106 100 zł</span>
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+        <span class="text-sm text-stitch-muted">Kapitał brutto po 10 latach</span><span
+          class="text-sm font-bold text-stitch-text">~106 100 zł</span>
       </div>
-      <div class="calc-row">
-        <span class="calc-row-label">Zysk brutto</span>
-        <span class="calc-row-value">~36 100 zł</span>
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+        <span class="text-sm text-stitch-muted">Zysk brutto</span><span class="text-sm font-bold text-stitch-text">~36
+          100 zł</span>
       </div>
-      <div class="calc-row">
-        <span class="calc-row-label">Podatek Belki (19%)</span>
-        <span class="calc-row-value red">−6 859 zł</span>
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+        <span class="text-sm text-stitch-muted">Podatek Belki (19%)</span><span
+          class="text-sm font-bold text-rose-600 dark:text-rose-400">â’6 859 zł</span>
       </div>
-      <div class="calc-row">
-        <span class="calc-row-label">Kapitał netto po podatku</span>
-        <span class="calc-row-value">~99 240 zł</span>
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+        <span class="text-sm text-stitch-muted">Kapitał netto po podatku</span><span
+          class="text-sm font-bold text-stitch-text">~99 240 zł</span>
       </div>
-      <div class="calc-row highlight">
-        <span class="calc-row-label"><strong>Zysk realny (po podatku i inflacji)</strong></span>
-        <span class="calc-row-value blue">~+29 240 zł</span>
+      <div
+        class="bg-primary/5 dark:bg-primary/10 rounded-xl px-4 py-3 mt-2 border border-primary/20 flex flex-col sm:flex-row sm:justify-between sm:items-center">
+        <span class="text-sm text-stitch-muted font-semibold">Zysk realny (po podatku i inflacji)</span><span
+          class="text-base font-black text-primary" style="color: #0d7ff2">~+29 240 zł</span>
       </div>
     </div>
-
-    <p>
-      Wpłaciłeś 70 000 zł, a masz realnie (w dzisiejszych cenach) o <strong>~29 000 zł więcej</strong>.
-      Twój majątek naprawdę wzrósł — to właściwy sposób myślenia o inwestowaniu.
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+      Wpłaciłeś 70 000 zł, a masz realnie (w dzisiejszych cenach) o ~29 000 zł
+      więcej. Twój majątek naprawdę wzrósł — to właściwy sposób myślenia o
+      inwestowaniu.
     </p>
-
-    <h3>Co gdybyś nic nie robił z pieniędzmi?</h3>
-
-    <p>
+    <h3 class="text-lg font-bold text-stitch-text mt-8 mb-3">
+      Co gdybyś nic nie robił z pieniędzmi?
+    </h3>
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
       Gdybyś trzymał te 70 000 zł na koncie bez oprocentowania przez 10 lat,
-      przy inflacji 3,5% ich realna wartość spadłaby do około <strong>49 500 zł</strong>.
-      Czyli straciłbyś ponad 20 000 zł siły nabywczej — nic nie robiąc.
+      przy inflacji 3,5% ich realna wartość spadłaby do około 49 500 zł. Czyli
+      straciłbyś ponad 20 000 zł siły nabywczej — nic nie robiąc.
     </p>
-
-    <div class="callout callout-example">
-      <div class="callout-title">✅ Wniosek</div>
-      Nie inwestowanie to nie "brak decyzji" — to decyzja o powolnym traceniu wartości
-      pieniędzy. ETF przy 7% przez 10 lat daje realny zysk ~29 000 zł.
-      Konto bez oprocentowania daje realną stratę ~20 000 zł.
-      Różnica: <strong>prawie 50 000 zł</strong>.
+    <div class="rounded-2xl p-5 bg-emerald-50 dark:bg-emerald-950/30 border-l-4 border-emerald-500 mb-6">
+      <p class="text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2">
+        ✅ Wniosek
+      </p>
+      <p class="text-sm text-stitch-muted leading-relaxed">
+        Nie inwestowanie to nie 'brak decyzji' — to decyzja o powolnym
+        traceniu wartości pieniędzy. ETF przy 7% przez 10 lat daje realny zysk
+        ~29 000 zł. Konto bez oprocentowania daje realną stratę ~20 000 zł.
+        Różnica: prawie 50 000 zł.
+      </p>
     </div>
 
     <!-- SECTION 5 -->
-    <h2 id="ike-ikze">5. IKE i IKZE — jak legalnie uniknąć podatku</h2>
-
-    <p>
-      Podatku Belki możesz w Polsce legalnie uniknąć, inwestując w ramach
-      <strong>IKE</strong> (Indywidualnego Konta Emerytalnego) lub
-      <strong>IKZE</strong> (Indywidualnego Konta Zabezpieczenia Emerytalnego).
-      Oba konta pozwalają inwestować w ETF-y — przez biuro maklerskie takie jak
-      XTB czy Dom Maklerski PKO.
+    <h2 id="ike-ikze"
+      class="text-2xl font-black text-stitch-text mt-14 mb-5 pt-8 border-t border-stitch-border flex items-center gap-3">
+      <span
+        class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0"
+        style="color: #0d7ff2">5</span>
+      IKE i IKZE — jak legalnie uniknąć podatku
+    </h2>
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+      Podatku Belki możesz w Polsce legalnie uniknąć, inwestując w ramach IKE
+      (Indywidualnego Konta Emerytalnego) lub IKZE (Indywidualnego Konta
+      Zabezpieczenia Emerytalnego). Oba konta pozwalają inwestować w ETF-y —
+      przez biuro maklerskie takie jak XTB czy Dom Maklerski PKO.
     </p>
-
-    <div style="overflow-x:auto">
-      <table class="comparison-table">
+    <div
+      class="overflow-x-auto rounded-2xl shadow-stitch-soft mb-6 border border-white/50 dark:border-stitch-border/50">
+      <table class="w-full text-sm border-collapse" style="min-width: 520px">
         <thead>
           <tr>
-            <th>Cecha</th>
-            <th>IKE</th>
-            <th>IKZE</th>
+            <th class="bg-primary text-white px-4 py-3 text-left font-bold text-xs uppercase tracking-wider"
+              style="background-color: #0d7ff2"></th>
+            <th class="bg-primary text-white px-4 py-3 text-left font-bold text-xs uppercase tracking-wider"
+              style="background-color: #0d7ff2">
+              IKE
+            </th>
+            <th class="bg-primary text-white px-4 py-3 text-left font-bold text-xs uppercase tracking-wider"
+              style="background-color: #0d7ff2">
+              IKZE
+            </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="bg-stitch-surface">
           <tr>
-            <td><strong>Limit wpłat 2026</strong></td>
-            <td>28 260 zł/rok</td>
-            <td>11 304 zł/rok<br /><small>(samozatrudnieni: 16 956 zł)</small></td>
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted font-semibold">
+              Limit wpłat 2026
+            </td>
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted">
+              28 260 zł/rok
+            </td>
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted">
+              11 304 zł/rok (samozatrudnieni: 16 956 zł)
+            </td>
+          </tr>
+          <tr class="bg-stitch-bg/50 dark:bg-stitch-surface/30">
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted font-semibold">
+              Ulga podatkowa teraz
+            </td>
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted">
+              <span
+                class="bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 px-2 py-0.5 rounded-md text-xs font-bold">Brak</span>
+            </td>
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted">
+              <span
+                class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 px-2 py-0.5 rounded-md text-xs font-bold">Tak
+                — odliczasz od PIT</span>
+            </td>
           </tr>
           <tr>
-            <td><strong>Ulga podatkowa teraz</strong></td>
-            <td><span class="tag-orange">Brak</span></td>
-            <td><span class="tag-green">Tak — odliczasz od PIT</span></td>
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted font-semibold">
+              Podatek przy wypłacie
+            </td>
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted">
+              <span
+                class="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 px-2 py-0.5 rounded-md text-xs font-bold">0%
+                po 60. r.ż.</span>
+            </td>
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted">
+              10% ryczałt po 65. r.ż.
+            </td>
+          </tr>
+          <tr class="bg-stitch-bg/50 dark:bg-stitch-surface/30">
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted font-semibold">
+              Wcześniejsza wypłata
+            </td>
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted">
+              Płacisz podatek Belki (19%)
+            </td>
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted">
+              Doliczasz do PIT — może być drogie
+            </td>
           </tr>
           <tr>
-            <td><strong>Podatek przy wypłacie</strong></td>
-            <td><span class="tag-green">0% (po 60. roku życia)</span></td>
-            <td>10% ryczałt (po 65. roku życia)</td>
-          </tr>
-          <tr>
-            <td><strong>Wcześniejsza wypłata</strong></td>
-            <td>Płacisz podatek Belki (19%)</td>
-            <td>Doliczasz do PIT — może być drogie</td>
-          </tr>
-          <tr>
-            <td><strong>Dla kogo?</strong></td>
-            <td>Każdy inwestor długoterminowy</td>
-            <td>Szczególnie opłacalne przy 32% PIT</td>
+            <td class="px-4 py-3 text-stitch-muted font-semibold">
+              Dla kogo?
+            </td>
+            <td class="px-4 py-3 text-stitch-muted">
+              Każdy inwestor długoterminowy
+            </td>
+            <td class="px-4 py-3 text-stitch-muted">
+              Szczególnie opłacalne przy 32% PIT
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
-
-    <h3>Ile realnie oszczędzasz na IKE?</h3>
-
-    <p>
+    <h3 class="text-lg font-bold text-stitch-text mt-8 mb-3">
+      Ile realnie oszczędzasz na IKE?
+    </h3>
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
       Wróćmy do naszego przykładu: 10 000 zł + 500 zł/mies. przez 10 lat @ 7%.
       Różnica między kontem standardowym a IKE:
     </p>
-
-    <div class="calc-example">
-      <div class="calc-example-title">💡 Porównanie: konto standardowe vs IKE</div>
-      <div class="calc-row">
-        <span class="calc-row-label">Kapitał końcowy — konto standardowe</span>
-        <span class="calc-row-value">~99 240 zł</span>
+    <div
+      class="glass-effect rounded-2xl p-6 mb-6 shadow-stitch-soft border border-white/50 dark:border-stitch-border/50">
+      <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+        <span class="material-symbols-outlined text-[18px]">calculate</span>
+        💡 Porównanie: konto standardowe vs IKE
+      </p>
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+        <span class="text-sm text-stitch-muted">Kapitał końcowy — konto standardowe</span><span
+          class="text-sm font-bold text-stitch-text">~99 240 zł</span>
       </div>
-      <div class="calc-row">
-        <span class="calc-row-label">Kapitał końcowy — IKE (0% podatku)</span>
-        <span class="calc-row-value green">~106 100 zł</span>
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+        <span class="text-sm text-stitch-muted">Kapitał końcowy — IKE (0% podatku)</span><span
+          class="text-sm font-bold text-emerald-600 dark:text-emerald-400">~106 100 zł</span>
       </div>
-      <div class="calc-row highlight">
-        <span class="calc-row-label"><strong>Różnica po 10 latach</strong></span>
-        <span class="calc-row-value blue">+6 860 zł</span>
+      <div
+        class="bg-primary/5 dark:bg-primary/10 rounded-xl px-4 py-3 mt-2 border border-primary/20 flex flex-col sm:flex-row sm:justify-between sm:items-center">
+        <span class="text-sm text-stitch-muted font-semibold">Różnica po 10 latach</span><span
+          class="text-base font-black text-primary" style="color: #0d7ff2">+6 860 zł</span>
       </div>
     </div>
-
-    <p>
-      Po 20 latach ta różnica urośnie do kilkudziesięciu tysięcy złotych — bo zysk
-      który normalnie oddałbyś w podatkach, na IKE dalej pracuje i generuje kolejne zyski.
-      To jest właśnie efekt procentu składanego połączony z zerowym podatkiem.
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+      Po 20 latach ta różnica urośnie do kilkudziesięciu tysięcy złotych — bo
+      zysk który normalnie oddałbyś w podatkach, na IKE dalej pracuje i
+      generuje kolejne zyski. To jest właśnie efekt procentu składanego
+      połączony z zerowym podatkiem.
     </p>
 
     <!-- SECTION 6 -->
-    <h2 id="wiek">6. Ile ETF, ile bezpiecznych inwestycji — podział według wieku</h2>
-
-    <p>
-      Nie ma jednej właściwej odpowiedzi na pytanie "ile procent w ETF?".
-      Zależy to przede wszystkim od jednej rzeczy: <strong>ile czasu masz przed sobą</strong>.
+    <h2 id="wiek"
+      class="text-2xl font-black text-stitch-text mt-14 mb-5 pt-8 border-t border-stitch-border flex items-center gap-3">
+      <span
+        class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0"
+        style="color: #0d7ff2">6</span>
+      Ile ETF, ile bezpiecznych inwestycji — podział według wieku
+    </h2>
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+      Nie ma jednej właściwej odpowiedzi na pytanie 'ile procent w ETF?'.
+      Zależy to przede wszystkim od jednej rzeczy: ile czasu masz przed sobą.
     </p>
-
-    <p>
-      ETF-y potrafią w kryzysie stracić 30–50% wartości. Ale historycznie zawsze
-      wracały do poprzednich poziomów i rosły wyżej. Czas to Twoja największa
-      przewaga — im więcej go masz, tym więcej ryzyka możesz sobie pozwolić.
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+      ETF-y potrafią w kryzysie stracić 30–50% wartości. Ale historycznie
+      zawsze wracały do poprzednich poziomów i rosły wyżej. Czas to Twoja
+      największa przewaga — im więcej go masz, tym więcej ryzyka możesz sobie
+      pozwolić.
     </p>
-
-    <div style="overflow-x:auto">
-      <table class="age-table">
+    <div
+      class="overflow-x-auto rounded-2xl shadow-stitch-soft mb-6 border border-white/50 dark:border-stitch-border/50">
+      <table class="w-full text-sm border-collapse" style="min-width: 600px">
         <thead>
           <tr>
-            <th>Wiek</th>
-            <th>ETF (akcje)</th>
-            <th>Bezpieczne (obligacje/lokaty)</th>
-            <th>Logika</th>
+            <th class="bg-slate-800 text-white px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">
+              Wiek
+            </th>
+            <th class="bg-slate-800 text-white px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">
+              ETF (akcje)
+            </th>
+            <th class="bg-slate-800 text-white px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">
+              Bezpieczne
+            </th>
+            <th class="bg-slate-800 text-white px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">
+              Komentarz
+            </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="bg-stitch-surface">
           <tr>
-            <td><strong>25–35 lat</strong></td>
-            <td>
-              <strong>80–100%</strong>
-              <div class="bar-wrap">
-                <div class="bar-fill" style="width:90%"></div>
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted font-semibold">
+              25–35 lat
+            </td>
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted">
+              80–100%
+              <div class="mt-1 h-2 rounded-full bg-slate-200 dark:bg-slate-700">
+                <div class="h-2 rounded-full bg-primary" style="width: 90%; background-color: #0d7ff2"></div>
               </div>
             </td>
-            <td>
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted">
               0–20%
-              <div class="bar-wrap">
-                <div class="bar-fill green" style="width:10%"></div>
+              <div class="mt-1 h-2 rounded-full bg-slate-200 dark:bg-slate-700">
+                <div class="h-2 rounded-full bg-emerald-500" style="width: 10%"></div>
               </div>
             </td>
-            <td>Masz 30+ lat do emerytury — kryzysy to okazje, nie problem</td>
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted text-xs">
+              Masz 30+ lat do emerytury — kryzysy to okazje, nie problem
+            </td>
           </tr>
-          <tr>
-            <td><strong>35–45 lat</strong></td>
-            <td>
-              <strong>70–80%</strong>
-              <div class="bar-wrap">
-                <div class="bar-fill" style="width:75%"></div>
+          <tr class="bg-stitch-bg/50 dark:bg-stitch-surface/30">
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted font-semibold">
+              35–45 lat
+            </td>
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted">
+              70–80%
+              <div class="mt-1 h-2 rounded-full bg-slate-200 dark:bg-slate-700">
+                <div class="h-2 rounded-full bg-primary" style="width: 75%; background-color: #0d7ff2"></div>
               </div>
             </td>
-            <td>
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted">
               20–30%
-              <div class="bar-wrap">
-                <div class="bar-fill green" style="width:25%"></div>
+              <div class="mt-1 h-2 rounded-full bg-slate-200 dark:bg-slate-700">
+                <div class="h-2 rounded-full bg-emerald-500" style="width: 25%"></div>
               </div>
             </td>
-            <td>Wciąż długi horyzont, zacznij budować poduszkę bezpieczeństwa</td>
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted text-xs">
+              Wciąż długi horyzont, zacznij budować poduszkę bezpieczeństwa
+            </td>
           </tr>
           <tr>
-            <td><strong>45–55 lat</strong></td>
-            <td>
-              <strong>50–70%</strong>
-              <div class="bar-wrap">
-                <div class="bar-fill" style="width:60%"></div>
-              </div>
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted font-semibold">
+              45–55 lat
             </td>
-            <td>
-              30–50%
-              <div class="bar-wrap">
-                <div class="bar-fill green" style="width:40%"></div>
-              </div>
-            </td>
-            <td>Zbliżasz się do momentu wypłat — stabilizuj portfel stopniowo</td>
-          </tr>
-          <tr>
-            <td><strong>55–65 lat</strong></td>
-            <td>
-              <strong>30–50%</strong>
-              <div class="bar-wrap">
-                <div class="bar-fill" style="width:40%"></div>
-              </div>
-            </td>
-            <td>
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted">
               50–70%
-              <div class="bar-wrap">
-                <div class="bar-fill green" style="width:60%"></div>
+              <div class="mt-1 h-2 rounded-full bg-slate-200 dark:bg-slate-700">
+                <div class="h-2 rounded-full bg-primary" style="width: 60%; background-color: #0d7ff2"></div>
               </div>
             </td>
-            <td>Bezpieczeństwo ważniejsze — nie chcesz sprzedawać ETF po krachu</td>
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted">
+              30–50%
+              <div class="mt-1 h-2 rounded-full bg-slate-200 dark:bg-slate-700">
+                <div class="h-2 rounded-full bg-emerald-500" style="width: 40%"></div>
+              </div>
+            </td>
+            <td class="px-4 py-3 border-b border-stitch-border text-stitch-muted text-xs">
+              Zbliżasz się do momentu wypłat — stabilizuj portfel stopniowo
+            </td>
+          </tr>
+          <tr class="bg-stitch-bg/50 dark:bg-stitch-surface/30">
+            <td class="px-4 py-3 text-stitch-muted font-semibold">
+              55–65 lat
+            </td>
+            <td class="px-4 py-3 text-stitch-muted">
+              30–50%
+              <div class="mt-1 h-2 rounded-full bg-slate-200 dark:bg-slate-700">
+                <div class="h-2 rounded-full bg-primary" style="width: 40%; background-color: #0d7ff2"></div>
+              </div>
+            </td>
+            <td class="px-4 py-3 text-stitch-muted">
+              50–70%
+              <div class="mt-1 h-2 rounded-full bg-slate-200 dark:bg-slate-700">
+                <div class="h-2 rounded-full bg-emerald-500" style="width: 60%"></div>
+              </div>
+            </td>
+            <td class="px-4 py-3 text-stitch-muted text-xs">
+              Bezpieczeństwo ważniejsze — nie chcesz sprzedawać ETF po krachu
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
-
-    <div class="callout callout-warning">
-      <div class="callout-title">⚠️ To są wskazówki ogólne, nie porady inwestycyjne</div>
-      Podział portfela zależy od Twojej indywidualnej sytuacji — regularności dochodów,
-      poduszki bezpieczeństwa, tolerancji na ryzyko i celów. Powyższa tabela to punkt
-      wyjścia do myślenia, nie gotowa recepta. Przed podjęciem decyzji warto skonsultować
-      się z licencjonowanym doradcą finansowym.
+    <div class="rounded-2xl p-5 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 mb-6">
+      <p class="text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2">
+        ⚠️ To są wskazówki ogólne, nie porady inwestycyjne
+      </p>
+      <p class="text-sm text-stitch-muted leading-relaxed">
+        Podział portfela zależy od Twojej indywidualnej sytuacji —
+        regularności dochodów, poduszki bezpieczeństwa, tolerancji na ryzyko i
+        celów. Powyższa tabela to punkt wyjścia do myślenia, nie gotowa
+        recepta. Przed podjęciem decyzji warto skonsultować się z
+        licencjonowanym doradcą finansowym.
+      </p>
     </div>
-
-    <h3>Dlaczego starsze osoby potrzebują więcej bezpiecznych aktywów?</h3>
-
-    <p>
-      Wyobraź sobie dwie osoby które mają po 1 000 000 zł w ETF-ach i planują zacząć
-      z nich korzystać. Nagle przychodzi kryzys i portfel spada o 40% — zostaje 600 000 zł.
+    <h3 class="text-lg font-bold text-stitch-text mt-8 mb-3">
+      Dlaczego starsze osoby potrzebują więcej bezpiecznych aktywów?
+    </h3>
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+      Wyobraź sobie dwie osoby które mają po 1 000 000 zł w ETF-ach i planują
+      zacząć z nich korzystać. Nagle przychodzi kryzys i portfel spada o 40% —
+      zostaje 600 000 zł.
     </p>
-
-    <p>
-      <strong>Osoba 35-letnia</strong> może poczekać 5–7 lat i nie ruszać portfela.
-      Rynek wróci i urośnie wyżej.<br />
-      <strong>Osoba 62-letnia</strong> potrzebuje pieniędzy teraz na życie.
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+      Osoba 35-letnia może poczekać 5–7 lat i nie ruszać portfela. Rynek wróci
+      i urośnie wyżej. Osoba 62-letnia potrzebuje pieniędzy teraz na życie.
       Musi sprzedawać po niskich cenach — i to jest problem.
     </p>
-
-    <p>
-      Dlatego z wiekiem zwiększasz udział obligacji i bezpiecznych instrumentów —
-      nie dlatego że są lepsze, ale dlatego że dają <strong>spokój i przewidywalność</strong>
-      w momencie kiedy zaczynasz z kapitału korzystać.
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+      Dlatego z wiekiem zwiększasz udział obligacji i bezpiecznych
+      instrumentów — nie dlatego że są lepsze, ale dlatego że dają spokój i
+      przewidywalność w momencie kiedy zaczynasz z kapitału korzystać.
     </p>
 
     <!-- CTA -->
-    <div class="cta-box">
-      <h3>Policz swój konkretny scenariusz</h3>
-      <p>
-        Wiesz już jak działają ETF-y, podatek Belki i IKE. Teraz wpisz swoje liczby
-        i sprawdź ile będziesz mieć po tylu latach ile planujesz.
+    <div
+      class="bg-gradient-to-br from-blue-700 to-primary rounded-[1.5rem] p-6 md:p-8 text-white text-center my-10 shadow-xl"
+      style="background: linear-gradient(135deg, #1d4ed8, #0d7ff2)">
+      <h3 class="text-xl font-black text-white mb-3">
+        Policz swój konkretny scenariusz
+      </h3>
+      <p class="text-white/80 mb-5 text-sm leading-relaxed">
+        Wiesz już jak działają ETF-y, podatek Belki i IKE. Teraz wpisz swoje
+        liczby i sprawdź ile będziesz mieć po tylu latach ile planujesz.
       </p>
-      <a href="../pages/kalkulator-etf.html" class="btn-cta">
-        Otwórz kalkulator ETF →
-      </a>
+      <a href="../pages/kalkulator-etf.html"
+        class="bg-stitch-surface text-primary font-black px-6 py-3 rounded-xl hover:scale-[1.02] transition-all inline-flex items-center gap-2 shadow-lg"
+        style="color: #0d7ff2; text-decoration: none">Otwórz kalkulator ETF
+        <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
     </div>
 
     <!-- SECTION 7 -->
-    <h2 id="kalkulator">7. Jak korzystać z kalkulatora ETF — krok po kroku</h2>
-
-    <p>
+    <h2 id="kalkulator"
+      class="text-2xl font-black text-stitch-text mt-14 mb-5 pt-8 border-t border-stitch-border flex items-center gap-3">
+      <span
+        class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0"
+        style="color: #0d7ff2">7</span>
+      Jak korzystać z kalkulatora ETF — krok po kroku
+    </h2>
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
       Kalkulator ETF na ETFkalkulator.pl wymaga tylko czterech wartości:
     </p>
-
-    <p>
-      <strong>1. Kapitał startowy</strong> — ile masz już odłożone (możesz wpisać 0).<br />
-      <strong>2. Miesięczna dopłata</strong> — ile co miesiąc będziesz dokładać.<br />
-      <strong>3. Horyzont inwestycji</strong> — ile lat planujesz inwestować.<br />
-      <strong>4. Stopa zwrotu</strong> — masz gotowe przyciski: pesymistyczny 4%,
-      bazowy 7%, optymistyczny 10%. Bazowy (7%) to dobre założenie dla MSCI World
-      w długim terminie.
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+      1. Kapitał startowy — ile masz już odłożone (możesz wpisać 0). 2.
+      Miesięczna dopłata — ile co miesiąc będziesz dokładać. 3. Horyzont
+      inwestycji — ile lat planujesz inwestować. 4. Stopa zwrotu — masz gotowe
+      przyciski: pesymistyczny 4%, bazowy 7%, optymistyczny 10%. Bazowy (7%)
+      to dobre założenie dla MSCI World w długim terminie.
     </p>
-
-    <p>
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
       Kalkulator pokaże Ci od razu: kapitał końcowy netto po podatku Belki,
-      zysk realny po inflacji, CAGR (roczna stopa zwrotu) oraz tabelę rok po roku.
-      Możesz też zaznaczyć IKE/IKZE i od razu zobaczyć różnicę.
+      zysk realny po inflacji, CAGR (roczna stopa zwrotu) oraz tabelę rok po
+      roku. Możesz też zaznaczyć IKE/IKZE i od razu zobaczyć różnicę.
     </p>
-
-    <div class="callout callout-example">
-      <div class="callout-title">✅ Wskazówka praktyczna</div>
-      Sprawdź oba scenariusze — z IKE i bez. Różnica po 20–30 latach jest zazwyczaj
-      tak duża, że decyzja o założeniu IKE staje się oczywista. Limit IKE w 2026 roku
-      wynosi 28 260 zł rocznie — to 2 355 zł miesięcznie. Przy typowych dopłatach
-      500–1 000 zł miesięcznie w zupełności wystarczy.
+    <div class="rounded-2xl p-5 bg-emerald-50 dark:bg-emerald-950/30 border-l-4 border-emerald-500 mb-6">
+      <p class="text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2">
+        ✅ Wskazówka praktyczna
+      </p>
+      <p class="text-sm text-stitch-muted leading-relaxed">
+        Sprawdź oba scenariusze — z IKE i bez. Różnica po 20–30 latach jest
+        zazwyczaj tak duża, że decyzja o założeniu IKE staje się oczywista.
+        Limit IKE w 2026 roku wynosi 28 260 zł rocznie — to 2 355 zł
+        miesięcznie. Przy typowych dopłatach 500–1 000 zł miesięcznie w
+        zupełności wystarczy.
+      </p>
     </div>
-
-    <h3>Podsumowanie — co zapamiętać</h3>
-
-    <p>
+    <h3 class="text-lg font-bold text-stitch-text mt-8 mb-3">
+      Podsumowanie — co zapamiętać
+    </h3>
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
       ETF to jeden z najefektywniejszych sposobów budowania kapitału dla osoby
       indywidualnej. Niskie koszty, szeroka dywersyfikacja, dostępność przez
       standardowe konto maklerskie. Ale żeby podejmować dobre decyzje, musisz
       liczyć realnie — po podatku i po inflacji.
     </p>
-
-    <p>
-      Im wcześniej zaczniesz, tym lepiej. Nie dlatego że "czas to pieniądz" brzmi
-      mądrze — ale dlatego że matematyka procentu składanego naprawdę faworyzuje
-      tych którzy zaczynają wcześnie. 500 zł miesięcznie przez 30 lat robi
-      zdecydowanie więcej niż 1 500 zł miesięcznie przez 10 lat.
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+      Im wcześniej zaczniesz, tym lepiej. Nie dlatego że 'czas to pieniądz'
+      brzmi mądrze — ale dlatego że matematyka procentu składanego naprawdę
+      faworyzuje tych którzy zaczynają wcześnie. 500 zł miesięcznie przez 30
+      lat robi zdecydowanie więcej niż 1 500 zł miesięcznie przez 10 lat.
+    </p>
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+      A jeśli zastanawiasz się jak ETF-y wypadają w porównaniu do obligacji
+      skarbowych — to temat na osobny artykuł. Zajrzyj wkrótce.
     </p>
 
-    <p>
-      A jeśli zastanawiasz się jak ETF-y wypadają w porównaniu do obligacji skarbowych —
-      to temat na osobny artykuł. Zajrzyj wkrótce.
-    </p>
-
-    <div class="disclaimer-box">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="10"></circle>
-        <line x1="12" y1="8" x2="12" y2="12"></line>
-        <line x1="12" y1="16" x2="12.01" y2="16"></line>
-      </svg>
-      <div>
-        <strong>Ważna informacja (Disclaimer)</strong>
-        Materiały na stronie mają charakter wyłącznie edukacyjny i poglądowy. Nie stanowią rekomendacji inwestycyjnej
-        ani porady podatkowej w rozumieniu przepisów prawa. Inwestowanie na giełdzie zawsze wiąże się z ryzykiem utraty
-        części lub całości kapitału. Narzędzie może zawierać uproszczenia — zawsze weryfikuj wyniki z prospektem
-        emisyjnym funduszu.
+    <!-- DISCLAIMER -->
+    <div class="glass-effect rounded-2xl p-5 mt-10 border border-stitch-border dark:border-slate-700">
+      <div class="flex items-start gap-4">
+        <span class="material-symbols-outlined text-slate-400 shrink-0 mt-0.5 text-[20px]">info</span>
+        <div>
+          <p class="text-xs font-bold text-stitch-muted mb-1">
+            Ważna informacja (Disclaimer)
+          </p>
+          <p class="text-xs text-stitch-muted leading-relaxed italic">
+            Materiały na stronie mają charakter wyłącznie edukacyjny i
+            poglądowy. Nie stanowią rekomendacji inwestycyjnej ani porady
+            podatkowej w rozumieniu przepisów prawa. Inwestowanie na giełdzie
+            zawsze wiąże się z ryzykiem utraty części lub całości kapitału.
+            Narzędzie może zawierać uproszczenia — zawsze weryfikuj wyniki z
+            prospektem emisyjnym funduszu.
+          </p>
+        </div>
       </div>
     </div>
+  </article>
 
-  </main>
+  <!-- NEWSLETTER SECTION (Wide Banner) -->
+  <section id="newsletter-section"
+    class="pt-10 pb-20 px-6 bg-slate-100 dark:bg-slate-950 border-t border-stitch-border dark:border-slate-900 transition-colors">
+    <div class="max-w-7xl mx-auto">
+      <div
+        class="bg-stitch-surface/70 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 lg:p-16 shadow-xl border border-white/50 dark:border-stitch-border/50 relative overflow-hidden group">
+        <!-- Decorative element -->
+        <div
+          class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700">
+        </div>
 
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center lg:justify-items-stretch relative z-10">
+          <!-- Left Side: Content -->
+          <div class="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              Newsletter
+            </div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-stitch-text tracking-tight leading-[1.1]">
+              Bądź na bieżąco z <span class="text-primary">rynkiem ETF</span>
+              <span class="hidden md:inline">i finansami</span>
+            </h2>
+            <p class="text-stitch-muted text-lg leading-relaxed max-w-xl">
+              Dołącz do społeczności świadomych inwestorów. Otrzymuj analizy,
+              nowe kalkulatory i rzetelną wiedzę prosto na swoją skrzynkę.
+              Zero spamu.
+            </p>
+          </div>
+
+          <!-- Right Side: Form -->
+          <div class="w-full lg:max-w-md mx-auto lg:ml-auto">
+            <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
+              <div class="ml-form-embedWrapper embedForm">
+                <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                  <form class="ml-block-form"
+                    action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe"
+                    method="post" target="_blank">
+                    <div class="flex flex-col space-y-4">
+                      <!-- Email Input -->
+                      <div class="ml-form-fieldRow">
+                        <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                          <input aria-label="email" aria-required="true" type="email"
+                            class="w-full h-14 px-6 rounded-2xl border border-stitch-border bg-stitch-surface dark:bg-slate-950 text-stitch-text text-base font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all placeholder:text-slate-400"
+                            name="fields[email]" placeholder="Twój adres e-mail" />
+                        </div>
+                      </div>
+
+                      <!-- Consents -->
+                      <div class="ml-form-embedPermissions">
+                        <label class="flex items-start gap-4 cursor-pointer group">
+                          <input aria-label="Wprowadź wartość" type="checkbox" name="gdpr[]"
+                            value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl" required
+                            class="custom-checkbox mt-1 transition-all" />
+                          <span
+                            class="text-[11px] text-stitch-muted font-medium leading-relaxed group-hover:text-stitch-muted dark:group-hover:text-slate-300 transition-colors">Zgadzam
+                            się na otrzymywanie newslettera. Możesz
+                            się wypisać w każdej chwili.</span>
+                        </label>
+                      </div>
+
+                      <!-- reCAPTCHA -->
+                      <div class="ml-form-recaptcha ml-validate-required py-2 flex justify-center">
+                        <div class="g-recaptcha transform scale-[0.85] origin-center"
+                          data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                      </div>
+
+                      <input type="hidden" name="ml-submit" value="1" />
+                      <input type="hidden" name="anticsrf" value="true" />
+
+                      <!-- Button -->
+                      <div class="ml-form-embedSubmit">
+                        <button type="submit"
+                          class="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-sm md:text-base uppercase tracking-widest hover:scale-[1.01] active:scale-[0.98] transition-all shadow-xl shadow-primary/20"
+                          style="background-color: #0d7ff2">
+                          Zapisz się teraz
+                        </button>
+                      </div>
+
+                      <!-- Legal & Financial Disclaimers -->
+                      <div class="pt-6 border-t border-stitch-border mt-2">
+                        <p class="text-[10px] text-slate-400 dark:text-stitch-muted leading-relaxed mb-2">
+                          Zapisując się, akceptujesz
+                          <a href="../pages/regulamin.html" class="underline hover:text-primary">Regulamin</a>
+                          i
+                          <a href="../pages/polityka-prywatnosci.html" class="underline hover:text-primary">Politykę
+                            Prywatności</a>. Twoje dane są bezpieczne i służą wyłącznie do
+                          wysyłki newslettera.
+                        </p>
+                        <p class="text-[10px] text-slate-400 font-medium italic">
+                          Prezentowane treści nie stanowią rekomendacji
+                          inwestycyjnej.
+                        </p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <!-- Success -->
+                <div class="ml-form-successBody row-success" style="display: none">
+                  <div
+                    class="p-10 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 text-center">
+                    <div
+                      class="w-16 h-16 bg-emerald-100 dark:bg-emerald-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span
+                        class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-3xl">verified</span>
+                    </div>
+                    <h4 class="text-emerald-900 dark:text-emerald-300 font-bold text-xl mb-1">
+                      Sukces!
+                    </h4>
+                    <p class="text-emerald-700 dark:text-emerald-500 text-sm">
+                      Sprawdź swoją skrzynkę e-mail, aby potwierdzić zapis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__inner">
-        <div class="footer__links">
-          <a href="../pages/kalkulator-etf.html">Kalkulator ETF</a>
-          <a href="../pages/kalkulator-obligacji.html">Kalkulator obligacji</a>
-          <a href="../pages/kalkulator-wolnosci.html">Wolność finansowa</a>
-          <a href="../pages/porownywarka.html">Porównywarka ETF</a>
-          <a href="../blog/index.html">Blog</a>
-          <a href="../index.html">Strona główna</a>
-          <a href="../pages/polityka-prywatnosci.html">Polityka prywatności</a>
-          <a href="../pages/regulamin.html">Regulamin</a>
+  <footer class="bg-stitch-bg border-t border-stitch-border dark:border-slate-900 py-20 px-6"
+    style="font-family: &quot;Inter&quot;, sans-serif">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12 border-b border-stitch-border/50 pb-8">
+        <div class="flex items-center gap-2">
+          <div class="bg-primary p-1.5 rounded-2xl text-white flex items-center justify-center"
+            style="background-color: #0d7ff2">
+            <span class="material-symbols-outlined text-base">account_balance_wallet</span>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-stitch-text">ETF<span
+              class="font-normal text-stitch-muted">kalkulator</span>.pl</span>
         </div>
-        <p class="text-muted">© 2026 ETFkalkulator.pl — narzędzie edukacyjne dla polskich inwestorów</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20 items-start">
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">
+            Narzędzia
+          </h5>
+          <ul class="space-y-4">
+            <li>
+              <a href="../pages/kalkulator-etf.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Kalkulator ETF</a>
+            </li>
+            <li>
+              <a href="../pages/kalkulator-obligacji.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Obligacje Skarbowe</a>
+            </li>
+            <li>
+              <a href="../pages/kalkulator-wolnosci.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Wolność Finansowa</a>
+            </li>
+            <li>
+              <a href="../pages/porownywarka.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Porównywarka ETF</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">
+            Projekt
+          </h5>
+          <ul class="space-y-4">
+            <li>
+              <a href="index.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Blog i Wiedza</a>
+            </li>
+            <li>
+              <a href="../pages/o-projekcie.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">O projekcie</a>
+            </li>
+            <li>
+              <a href="../pages/regulamin.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Regulamin</a>
+            </li>
+            <li>
+              <a href="../pages/polityka-prywatnosci.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Polityka prywatności</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">
+            Kontakt
+          </h5>
+          <p class="text-sm text-stitch-muted mb-6 leading-relaxed">
+            Masz pytania? Pisz śmiało:
+          </p>
+          <a href="mailto:kontakt@etfkalkulator.pl"
+            class="text-sm font-bold text-stitch-text hover:text-primary transition-colors block mb-8"
+            style="text-decoration: none">kontakt@etfkalkulator.pl</a>
+          <div class="flex gap-4">
+            <a href="#"
+              class="w-10 h-10 rounded-2xl bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-xl"><span
+                class="material-symbols-outlined text-lg">share</span></a>
+            <a href="#"
+              class="w-10 h-10 rounded-2xl bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-xl"><span
+                class="material-symbols-outlined text-lg">alternate_email</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-20 pt-10 border-t border-stitch-border dark:border-slate-900">
+        <p class="text-[11px] text-slate-400 dark:text-stitch-muted leading-relaxed mb-8 max-w-4xl">
+          Serwis ETFkalkulator.pl ma charakter wyłącznie edukacyjny i
+          informacyjny. Prezentowane obliczenia nie stanowią rekomendacji
+          inwestycyjnej, porady finansowej ani doradztwa podatkowego w
+          rozumieniu obowiązujących przepisów prawa. Przed podjęciem decyzji
+          inwestycyjnej skonsultuj się z licencjonowanym doradcą finansowym.
+          Inwestowanie wiąże się z ryzykiem utraty części lub całości
+          zainwestowanego kapitału.
+        </p>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+          <p>Â© 2026 ETFkalkulator.pl — Made with ❤️ by Florian</p>
+          <div class="flex gap-6">
+            <span>Wszelkie prawa zastrzeżone</span>
+          </div>
+        </div>
       </div>
     </div>
   </footer>
+  </main>
 
-  <!-- Dark mode script -->
-  <script>
-    // Inicjalizacja przy ładowaniu strony
-    (function () {
-      var html = document.documentElement;
-      var zapisany = localStorage.getItem('etf-tryb');
-      var slonce = document.getElementById('ikona-slonce');
-      var ksiezyc = document.getElementById('ikona-ksiezyc');
-      var systemCiemny = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  <!-- Cookie Consent (Tailwind) -->
+  <div id="cookie-consent-tw"
+    class="fixed bottom-6 left-6 right-6 md:left-auto md:w-[400px] bg-stitch-surface p-6 rounded-2xl shadow-xl border border-stitch-border z-[100] transition-all duration-500 translate-y-20 opacity-0 transform"
+    style="display: none">
+    <div class="flex items-start gap-4 mb-4">
+      <div class="bg-amber-100 dark:bg-amber-900/30 p-2 rounded-2xl text-amber-600 dark:text-amber-400">
+        <span class="material-symbols-outlined">cookie</span>
+      </div>
+      <div>
+        <h4 class="font-bold text-stitch-text">Ciasteczka i Analityka</h4>
+        <p class="text-xs text-stitch-muted leading-relaxed mt-1">
+          Używamy Google Analytics, aby anonimowo analizować ruch na stronie i
+          ulepszać nasze kalkulatory.
+        </p>
+      </div>
+    </div>
+    <div class="flex gap-3">
+      <button id="cookie-accept-tw"
+        class="flex-1 bg-primary text-white text-xs font-bold py-3 rounded-2xl hover:opacity-90 transition-opacity"
+        style="background-color: #0d7ff2">
+        Akceptuję
+      </button>
+      <button id="cookie-reject-tw"
+        class="flex-1 bg-slate-100 text-stitch-muted text-xs font-bold py-3 rounded-2xl hover:bg-slate-200 transition-colors">
+        Odrzuć
+      </button>
+    </div>
+  </div>
 
-      if (zapisany === 'ciemny' || (!zapisany && systemCiemny)) {
-        html.classList.add('dark-mode');
-        if (slonce) slonce.style.display = 'none';
-        if (ksiezyc) ksiezyc.style.display = 'block';
-      } else if (zapisany === 'jasny') {
-        html.classList.add('light-mode');
-      }
-    })();
-
+  <script src="../js/utils.js"></script>
+  <script src="../js/shared.js"></script>
+  <script defer>
     function przelaczTryb() {
-      var html = document.documentElement;
-      var slonce = document.getElementById('ikona-slonce');
-      var ksiezyc = document.getElementById('ikona-ksiezyc');
-      var ciemny = html.classList.contains('dark-mode') ||
-        (!html.classList.contains('light-mode') &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches);
+      const html = document.documentElement;
+      const isDark = html.classList.contains("dark");
 
-      if (ciemny) {
-        html.classList.remove('dark-mode');
-        html.classList.add('light-mode');
-        if (slonce) slonce.style.display = 'block';
-        if (ksiezyc) ksiezyc.style.display = 'none';
-        localStorage.setItem('etf-tryb', 'jasny');
+      if (isDark) {
+        html.classList.remove("dark", "dark-mode");
+        html.classList.add("light", "light-mode");
+        localStorage.setItem("etf-tryb", "jasny");
       } else {
-        html.classList.remove('light-mode');
-        html.classList.add('dark-mode');
-        if (slonce) slonce.style.display = 'none';
-        if (ksiezyc) ksiezyc.style.display = 'block';
-        localStorage.setItem('etf-tryb', 'ciemny');
+        html.classList.add("dark", "dark-mode");
+        html.classList.remove("light", "light-mode");
+        localStorage.setItem("etf-tryb", "ciemny");
       }
+
+      const d = html.classList.contains("dark");
+      const m = document.getElementById("meta-theme-color");
+      if (m) m.content = d ? "#0f172a" : "#f8fafc";
     }
-  </script>
 
-  <!-- Cookie Consent Script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var cookieConsent = document.getElementById('cookie-consent');
-      var acceptBtn = document.getElementById('cookie-accept');
-      var rejectBtn = document.getElementById('cookie-reject');
+    (function () {
+      const html = document.documentElement;
+      const saved = localStorage.getItem("etf-tryb");
+      const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-      var cookieChoice = localStorage.getItem('etf-cookie-consent');
-
-      if (!cookieChoice) {
-        cookieConsent.style.display = 'block';
-      } else if (cookieChoice === 'accepted') {
-        // Update GA4 consent if previously accepted
-        if (typeof gtag === 'function') {
-          gtag('consent', 'update', { 'analytics_storage': 'granted' });
-          gtag('event', 'page_view');
-        }
+      if (saved === "ciemny" || (!saved && systemDark)) {
+        html.classList.add("dark", "dark-mode");
+        html.classList.remove("light", "light-mode");
+      } else {
+        html.classList.add("light", "light-mode");
+        html.classList.remove("dark", "dark-mode");
       }
 
-      acceptBtn.addEventListener('click', function () {
-        localStorage.setItem('etf-cookie-consent', 'accepted');
-        cookieConsent.style.display = 'none';
-
-        // Update GA4 consent
-        if (typeof gtag === 'function') {
-          gtag('consent', 'update', { 'analytics_storage': 'granted' });
-          gtag('event', 'page_view');
-        }
-      });
-
-      rejectBtn.addEventListener('click', function () {
-        localStorage.setItem('etf-cookie-consent', 'rejected');
-        cookieConsent.style.display = 'none';
-
-        // Update GA4 consent
-        if (typeof gtag === 'function') {
-          gtag('consent', 'update', { 'analytics_storage': 'denied' });
-        }
-      });
-
-      setTimeout(function () {
-        if (cookieConsent.style.display !== 'none') {
-          cookieConsent.style.opacity = '0.7';
-        }
-      }, 30000);
-    });
+      const m = document.getElementById("meta-theme-color");
+      if (m) m.content = html.classList.contains("dark") ? "#0f172a" : "#f8fafc";
+    })();
   </script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
+    type="text/javascript"></script>
 </body>
 
 </html>

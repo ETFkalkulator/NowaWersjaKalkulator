@@ -3,20 +3,70 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f8f7f2" id="meta-theme-color">
+  <script>
+    (function () {
+      const s = localStorage.getItem('etf-tryb');
+      const d = s === 'ciemny' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.classList.toggle('dark', d);
+      document.documentElement.classList.toggle('light', !d);
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
-  <title>Kalkulator ETF — Procent Składany, IKE/IKZE | ETFkalkulator.pl</title>
+  <title>Kalkulator ETF — Procent Składany, IKE/IKZE i Inflacja | ETFkalkulator.pl</title>
   <link rel="canonical" href="https://etfkalkulator.pl/pages/kalkulator-etf.html">
   <meta name="description"
-    content="Oblicz zysk z inwestycji w ETF. Uwzględnij procent składany, podatek Belki (Konto Zwykłe vs IKE/IKZE) oraz realną wartość po inflacji.">
+    content="Oblicz realny zysk z inwestycji w ETF korzystając z procentu składanego. Uwzględnij IKE/IKZE (0% podatku Belki) oraz inflację. Najdokładniejszy kalkulator ETF dla Polaków.">
+  <meta name="keywords"
+    content="procent składany ETF, kalkulator ETF, IKE, IKZE, podatek Belki, inflacja, inwestowanie pasywne">
 
-  <meta property="og:title" content="Kalkulator ETF — Procent Składany, IKE/IKZE | ETFkalkulator.pl">
+  <meta property="og:title" content="Kalkulator ETF — Procent Składany, IKE/IKZE i Inflacja | ETFkalkulator.pl">
   <meta property="og:description"
-    content="Oblicz realny zysk z inwestycji w ETF po podatku Belki i inflacji. Bezpłatny kalkulator dla polskich inwestorów.">
+    content="Oblicz realny zysk z inwestycji w ETF po podatku Belki i inflacji. Darmowe narzędzie dla polskich inwestorów.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://etfkalkulator.pl/pages/kalkulator-etf.html">
   <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:site_name" content="ETFkalkulator.pl">
+
+  <!-- SEO: Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kalkulator ETF — Procent Składany, IKE/IKZE | ETFkalkulator.pl">
+  <meta name="twitter:description"
+    content="Oblicz realny zysk z ETF po podatku i inflacji. Sprawdź opłacalność IKE/IKZE.">
+  <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png">
+
+  <!-- Structured Data: FinancialProduct & Breadcrumb -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialProduct",
+    "name": "Kalkulator ETF",
+    "description": "Narzędzie do obliczania przyszłej wartości inwestycji w fundusze ETF z uwzględnieniem podatku Belki i inflacji.",
+    "url": "https://etfkalkulator.pl/pages/kalkulator-etf.html"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Strona główna",
+      "item": "https://etfkalkulator.pl/"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Kalkulator ETF",
+      "item": "https://etfkalkulator.pl/pages/kalkulator-etf.html"
+    }]
+  }
+  </script>
+
   <link rel="icon" href="../images/favicon.png">
 
   <!-- Google Analytics 4 — loads only after cookie consent -->
@@ -305,7 +355,9 @@
 </head>
 
 <body>
-  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-stitch-accent">Przejdź do głównej treści</a>
+  <a href="#main"
+    class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-stitch-accent">Przejdź
+    do głównej treści</a>
 
   <!-- Cookie Consent Banner -->
   <div id="cookie-consent" class="cookie-consent" style="display: none;">
@@ -384,18 +436,18 @@
     <div
       class="lg:hidden h-11 border-t border-stitch-border/30 /30 flex items-center overflow-x-auto overflow-y-hidden no-scrollbar px-4 gap-6 bg-stitch-surface/10 /10"
       style="-webkit-overflow-scrolling: touch;">
-      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
-        href="kalkulator-etf.html" style="text-decoration:none;">Kalkulator ETF</a>
+      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap" href="kalkulator-etf.html"
+        style="text-decoration:none;">Kalkulator ETF</a>
       <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
         href="kalkulator-obligacji.html" style="text-decoration:none;">Obligacje</a>
       <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
         href="kalkulator-wolnosci.html" style="text-decoration:none;">Wolność finansowa</a>
-      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
-        href="porownywarka.html" style="text-decoration:none;">Porównywarka</a>
-      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
-        href="../blog/index.html" style="text-decoration:none;">Blog</a>
-      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
-        href="o-projekcie.html" style="text-decoration:none;">O projekcie</a>
+      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap" href="porownywarka.html"
+        style="text-decoration:none;">Porównywarka</a>
+      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap" href="../blog/index.html"
+        style="text-decoration:none;">Blog</a>
+      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap" href="o-projekcie.html"
+        style="text-decoration:none;">O projekcie</a>
     </div>
   </nav>
 
@@ -483,7 +535,8 @@
                     Kapitał startowy
                   </label>
                   <div class="flex items-center gap-2">
-                    <button type="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('kapital_start', event)"
+                    <button type="button" onkeydown="if(event.key==='Enter')this.click()"
+                      onclick="openEduModal('kapital_start', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
                       <span class="material-symbols-outlined text-sm">help</span>
@@ -507,7 +560,8 @@
                     Miesięczna dopłata
                   </label>
                   <div class="flex items-center gap-2">
-                    <button type="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('doplata_msc', event)"
+                    <button type="button" onkeydown="if(event.key==='Enter')this.click()"
+                      onclick="openEduModal('doplata_msc', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
                       <span class="material-symbols-outlined text-sm">help</span>
@@ -531,7 +585,8 @@
                     Horyzont inwestycji
                   </label>
                   <div class="flex items-center gap-2">
-                    <button type="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('horyzont_lat', event)"
+                    <button type="button" onkeydown="if(event.key==='Enter')this.click()"
+                      onclick="openEduModal('horyzont_lat', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
                       <span class="material-symbols-outlined text-sm">help</span>
@@ -557,7 +612,8 @@
                     Stopa zwrotu ETF (rocznie)
                   </label>
                   <div class="flex items-center gap-2">
-                    <button type="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('stopa_zwrotu', event)"
+                    <button type="button" onkeydown="if(event.key==='Enter')this.click()"
+                      onclick="openEduModal('stopa_zwrotu', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
                       <span class="material-symbols-outlined text-sm">help</span>
@@ -576,15 +632,18 @@
                 <div class="grid grid-cols-3 gap-2">
                   <button type="button"
                     class="py-2.5 rounded-stitch border border-stitch-border bg-stitch-surface text-[10px] font-bold uppercase tracking-tight text-stitch-muted hover:border-primary/50 transition-all"
-                    onkeydown="if(event.key==='Enter')this.click()" onclick="setStopa(4, this.parentElement.parentElement.querySelector('input'))">4%<br><span
+                    onkeydown="if(event.key==='Enter')this.click()"
+                    onclick="setStopa(4, this.parentElement.parentElement.querySelector('input'))">4%<br><span
                       class="font-normal lowercase opacity-70">Pesymistyczny</span></button>
                   <button type="button"
                     class="py-2.5 rounded-stitch border-2 border-primary/50 bg-primary/5 text-[10px] font-bold uppercase tracking-tight text-primary hover:border-primary transition-all"
-                    onkeydown="if(event.key==='Enter')this.click()" onclick="setStopa(7, this.parentElement.parentElement.querySelector('input'))">7%<br><span
+                    onkeydown="if(event.key==='Enter')this.click()"
+                    onclick="setStopa(7, this.parentElement.parentElement.querySelector('input'))">7%<br><span
                       class="font-normal lowercase opacity-70">Bazowy</span></button>
                   <button type="button"
                     class="py-2.5 rounded-stitch border border-stitch-border bg-stitch-surface text-[10px] font-bold uppercase tracking-tight text-stitch-muted hover:border-primary/50 transition-all"
-                    onkeydown="if(event.key==='Enter')this.click()" onclick="setStopa(10, this.parentElement.parentElement.querySelector('input'))">10%<br><span
+                    onkeydown="if(event.key==='Enter')this.click()"
+                    onclick="setStopa(10, this.parentElement.parentElement.querySelector('input'))">10%<br><span
                       class="font-normal lowercase opacity-70">Optymistyczny</span></button>
                 </div>
               </div>
@@ -597,13 +656,13 @@
                     Oczekiwana inflacja
                   </label>
                   <div class="flex items-center gap-2">
-                    <button type="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('inflacja_nbp', event)"
+                    <button type="button" onkeydown="if(event.key==='Enter')this.click()"
+                      onclick="openEduModal('inflacja_nbp', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
                       <span class="material-symbols-outlined text-sm">help</span>
                     </button>
-                    <span
-                      class="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-md">%</span>
+                    <span class="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-md">%</span>
                   </div>
                 </div>
                 <input aria-label="input inflacja" type="text" inputmode="decimal" id="input-inflacja"
@@ -617,8 +676,7 @@
                 class="group flex items-start gap-4 p-4 rounded-stitch border-2 border-transparent hover:border-primary/20 hover:bg-primary/5 transition-all cursor-pointer">
                 <div class="relative flex items-center">
                   <input aria-label="input ike" type="checkbox" id="input-ike" class="peer sr-only">
-                  <div
-                    class="w-12 h-6 bg-slate-200 rounded-full peer peer-checked:bg-primary transition-colors">
+                  <div class="w-12 h-6 bg-slate-200 rounded-full peer peer-checked:bg-primary transition-colors">
                   </div>
                   <div
                     class="absolute left-1 top-1 w-4 h-4 bg-stitch-surface rounded-full transition-transform peer-checked:translate-x-6">
@@ -638,7 +696,8 @@
         <!-- PRAWA KOLUMNA: WYNIKI -->
         <div class="lg:col-span-8 space-y-8">
           <!-- GŁÓWNY WYNIK (Visual Priority) -->
-          <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('kapital', event)"
+          <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+            onclick="openEduModal('kapital', event)"
             class="relative overflow-hidden group bg-primary p-10 md:p-14 rounded-[2.5rem] text-white shadow-stitch-soft shadow-primary/30 transition-all hover:scale-[1.01] hover:shadow-blue-500/40 hover:border-white/20 border-2 border-transparent cursor-help"
             style="background-color: #0d7ff2;">
             <div
@@ -651,7 +710,8 @@
               <div>
                 <p class="text-primary-100/80 font-bold uppercase tracking-widest text-[10px] mb-3 flex items-center">
                   Przewidywany kapitał końcowy
-                  <span class="px-1.5 py-0.5 text-[9px] bg-stitch-surface/10 text-white rounded-md font-bold ml-2">INFO</span>
+                  <span
+                    class="px-1.5 py-0.5 text-[9px] bg-stitch-surface/10 text-white rounded-md font-bold ml-2">INFO</span>
                 </p>
                 <p class="text-5xl md:text-7xl font-black tracking-tighter mb-4" id="etf-wynik-kapital-koncowy">0,00 zł
                 </p>
@@ -672,7 +732,8 @@
           <!-- SIATKA DRUGORZĘDNYCH WYNIKÓW -->
           <div
             class="flex flex-col items-center justify-center w-full lg:grid lg:grid-cols-2 lg:gap-6 lg:items-start lg:justify-items-stretch gap-6">
-            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('wklad', event)"
+            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+              onclick="openEduModal('wklad', event)"
               class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft hover:border-blue-300/50 bg-stitch-surface/70 backdrop-blur-md /60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch lg:rounded-stitch border border-slate-100 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div
                 class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent">
@@ -691,7 +752,8 @@
                 class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('zysk', event)"
+            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+              onclick="openEduModal('zysk', event)"
               class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft hover:border-blue-300/50 bg-stitch-surface/70 backdrop-blur-md /60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch lg:rounded-stitch border border-slate-100 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div
                 class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent">
@@ -710,7 +772,8 @@
                 class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('podatek', event)"
+            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+              onclick="openEduModal('podatek', event)"
               class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft hover:border-blue-300/50 bg-stitch-surface/70 backdrop-blur-md /60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch lg:rounded-stitch border border-slate-100 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div
                 class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-rose-500/40 to-transparent">
@@ -729,13 +792,15 @@
                 class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('realny', event)"
+            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+              onclick="openEduModal('realny', event)"
               class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft hover:border-emerald-300/50 bg-stitch-surface/70 backdrop-blur-md /60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch lg:rounded-stitch border border-slate-100 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div
                 class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent">
               </div>
               <div class="flex items-center justify-center lg:justify-start mb-0.5">
-                <p class="text-[10px] uppercase tracking-widest font-semibold text-stitch-muted">Wartość realna zysku</p>
+                <p class="text-[10px] uppercase tracking-widest font-semibold text-stitch-muted">Wartość realna zysku
+                </p>
                 <span
                   class="px-1.5 py-0.5 text-[9px] bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 rounded-md font-bold ml-2">INFO</span>
               </div>
@@ -748,7 +813,8 @@
                 class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('cagr', event)"
+            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+              onclick="openEduModal('cagr', event)"
               class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft hover:border-blue-300/50 bg-stitch-surface/70 backdrop-blur-md /60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch lg:rounded-stitch border border-slate-100 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div
                 class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent">
@@ -767,7 +833,8 @@
                 class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('cagr_real', event)"
+            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+              onclick="openEduModal('cagr_real', event)"
               class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft hover:border-emerald-300/50 bg-stitch-surface/70 backdrop-blur-md /60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch lg:rounded-stitch border border-slate-100 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div
                 class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent">
@@ -914,8 +981,7 @@
         </div>
 
         <!-- DISCLAIMER -->
-        <div
-          class="mt-8 p-8 rounded-stitch bg-slate-100 /50 border border-stitch-border flex gap-6 items-start">
+        <div class="mt-8 p-8 rounded-stitch bg-slate-100 /50 border border-stitch-border flex gap-6 items-start">
           <span class="material-symbols-outlined text-slate-400">info</span>
           <p class="text-xs text-stitch-muted leading-relaxed italic">
             <strong>Ważna informacja:</strong> Prezentowane obliczenia mają charakter wyłącznie edukacyjny i poglądowy.
@@ -951,8 +1017,7 @@
               </span>
               Newsletter
             </div>
-            <h2
-              class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-stitch-text tracking-tight leading-[1.1]">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-stitch-text tracking-tight leading-[1.1]">
               Bądź na bieżąco z <span class="text-primary">rynkiem ETF</span> <span class="hidden md:inline">i
                 finansami</span>
             </h2>
@@ -1178,7 +1243,8 @@
 
   <!-- EDUCATIONAL MODAL -->
   <div id="edu-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
-    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"></div>
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" tabindex="0" role="button"
+      onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"></div>
     <div
       class="relative glass-effect modal-anim rounded-[2.5rem] p-8 md:p-12 max-w-lg w-full border border-white/20 shadow-stitch-soft shadow-black/50 overflow-hidden">
       <!-- Decorative background blur -->
@@ -1232,29 +1298,32 @@
     // Dark Mode Toggle Logic (Tailwind + Custom)
     function przelaczTryb() {
       const html = document.documentElement;
-      const isDark = html.classList.contains('dark') || html.classList.contains('dark-mode');
+      const isDark = html.classList.contains('dark');
 
       if (isDark) {
-        html.classList.remove('dark', 'dark-mode');
-        html.classList.add('light-mode');
+        html.classList.remove('dark');
+        html.classList.add('light');
         localStorage.setItem('etf-tryb', 'jasny');
       } else {
-        html.classList.add('dark', 'dark-mode');
-        html.classList.remove('light-mode');
+        html.classList.add('dark');
+        html.classList.remove('light');
         localStorage.setItem('etf-tryb', 'ciemny');
       }
+
+      const d = html.classList.contains('dark');
+      const m = document.getElementById('meta-theme-color');
+      if (m) m.content = d ? '#0f172a' : '#f8fafc';
     }
 
-    // Initialize Theme
+    // Initialize Theme - Moved to head for early execution
     (function () {
       const html = document.documentElement;
       const saved = localStorage.getItem('etf-tryb');
       const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
       if (saved === 'ciemny' || (!saved && systemDark)) {
-        html.classList.add('dark', 'dark-mode');
+        html.classList.add('dark');
       } else if (saved === 'jasny') {
-        html.classList.add('light-mode');
       }
     })();
   </script>

@@ -3,14 +3,67 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f8f7f2" id="meta-theme-color">
+  <script>
+    (function () {
+      const s = localStorage.getItem('etf-tryb');
+      const d = s === 'ciemny' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.classList.toggle('dark', d);
+      document.documentElement.classList.toggle('light', !d);
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
-  <title>Kalkulator Obligacji Skarbowych — Edukacyjna Analiza | ETFkalkulator.pl</title>
+  <title>Kalkulator Obligacji Skarbowych EDO 2026, COI, TOS | ETFkalkulator.pl</title>
   <link rel="canonical" href="https://etfkalkulator.pl/pages/kalkulator-obligacji.html">
-  <meta name="description" content="Oblicz zysk z inwestycji w obligacje skarbowe EDO, COI, TOS, ROR. Uwzględnij procent składany, podatek Belki (Konto Zwykłe vs IKE) oraz inflację i ewentualne kary za wcześniejszy wykup.">
-  <meta property="og:title" content="Kalkulator Obligacji Skarbowych — Edukacyjna Analiza | ETFkalkulator.pl">
-  <meta property="og:description" content="Oblicz zysk z inwestycji w obligacje skarbowe EDO, COI, TOS, ROR. Uwzględnij procent składany, podatek Belki (Konto Zwykłe vs IKE) oraz inflację i ewentualne kary za wcześniejszy wykup.">
+  <meta name="description"
+    content="Oblicz zysk z obligacji skarbowych EDO 2026, COI, TOS, ROR. Uwzględnij procent składany, podatek Belki (Konto Zwykłe vs IKE), inflację i ranking obligacji skarbowych.">
+  <meta name="keywords"
+    content="kalkulator obligacji EDO 2026, ranking obligacji skarbowych, obligacje COI, obligacje TOS, podatek Belki IKE">
+  <meta property="og:title" content="Kalkulator Obligacji Skarbowych EDO 2026, COI, TOS | ETFkalkulator.pl">
+  <meta property="og:description"
+    content="Oblicz zysk z obligacji skarbowych EDO, COI, TOS po podatku Belki i inflacji. Porównaj różne emisje w jednym kalkulatorze.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://etfkalkulator.pl/pages/kalkulator-obligacji.html">
+  <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:site_name" content="ETFkalkulator.pl">
+
+  <!-- SEO: Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kalkulator Obligacji Skarbowych EDO 2026, COI, TOS | ETFkalkulator.pl">
+  <meta name="twitter:description" content="Ile zarobisz na obligacjach? Sprawdź teraz zysk po podatku i inflacji!">
+  <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png">
+
+  <!-- Structured Data: FinancialProduct & Breadcrumb -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialProduct",
+    "name": "Kalkulator Obligacji Skarbowych",
+    "description": "Narzędzie do symulacji zysków z polskich obligacji skarbowych oszczędnościowych (EDO, COI, TOS, ROR, DOR).",
+    "url": "https://etfkalkulator.pl/pages/kalkulator-obligacji.html"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Strona główna",
+      "item": "https://etfkalkulator.pl/"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Kalkulator Obligacji",
+      "item": "https://etfkalkulator.pl/pages/kalkulator-obligacji.html"
+    }]
+  }
+  </script>
+
+  <link rel="icon" href="../images/favicon.png">
 
   <!-- Core Scripts -->
   <script>
@@ -24,32 +77,110 @@
 
   <!-- Tailwind CSS and Fonts -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap"
+    rel="stylesheet" />
 
   <script src="../js/tailwind-config.js"></script>
 
   <style>
-    .glass-effect { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-    .dark .glass-effect { background: rgba(15, 23, 42, 0.7); }
-    body { font-family: 'Inter', sans-serif; }
-    .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-size: 24px; line-height: 1; -webkit-font-smoothing: antialiased; }
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .dark .glass-effect {
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-size: 24px;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+    }
+
     input[type="checkbox"].custom-checkbox {
-      appearance: none; -webkit-appearance: none; width: 1.25rem; height: 1.25rem; border: 2px solid #cbd5e1; border-radius: 4px;
-      display: grid; place-content: center; cursor: pointer; transition: all 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      width: 1.25rem;
+      height: 1.25rem;
+      border: 2px solid #cbd5e1;
+      border-radius: 4px;
+      display: grid;
+      place-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
-    .dark input[type="checkbox"].custom-checkbox { border-color: #334155; background-color: #0f172a; }
-    input[type="checkbox"].custom-checkbox:checked { background-color: #0d7ff2; border-color: #0d7ff2; }
+
+    .dark input[type="checkbox"].custom-checkbox {
+      border-color: #334155;
+      background-color: #0f172a;
+    }
+
+    input[type="checkbox"].custom-checkbox:checked {
+      background-color: #0d7ff2;
+      border-color: #0d7ff2;
+    }
+
     input[type="checkbox"].custom-checkbox::before {
-      content: ""; width: 0.65rem; height: 0.65rem; transform: scale(0); transition: 120ms transform ease-in-out; background-color: white; clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+      content: "";
+      width: 0.65rem;
+      height: 0.65rem;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+      background-color: white;
+      clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
     }
-    input[type="checkbox"].custom-checkbox:checked::before { transform: scale(1); }
-    .touch-target-info { min-width: 44px; min-height: 44px; display: flex !important; align-items: center; justify-content: center; }
-    
+
+    input[type="checkbox"].custom-checkbox:checked::before {
+      transform: scale(1);
+    }
+
+    .touch-target-info {
+      min-width: 44px;
+      min-height: 44px;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+    }
+
     /* Range Slider Styling */
-    input[type=range] { appearance: none; -webkit-appearance: none; width: 100%; background: transparent; }
-    input[type=range]::-webkit-slider-thumb { appearance: none; -webkit-appearance: none; height: 1.2rem; width: 1.2rem; border-radius: 50%; background: #0d7ff2; cursor: pointer; margin-top: -6px; box-shadow: 0 0 10px rgba(13,127,242,0.5); }
-    input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 0.4rem; cursor: pointer; background: #e2e8f0; border-radius: 1rem; }
-    .dark input[type=range]::-webkit-slider-runnable-track { background: #334155; }
+    input[type=range] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+      background: transparent;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      appearance: none;
+      -webkit-appearance: none;
+      height: 1.2rem;
+      width: 1.2rem;
+      border-radius: 50%;
+      background: #0d7ff2;
+      cursor: pointer;
+      margin-top: -6px;
+      box-shadow: 0 0 10px rgba(13, 127, 242, 0.5);
+    }
+
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 0.4rem;
+      cursor: pointer;
+      background: #e2e8f0;
+      border-radius: 1rem;
+    }
+
+    .dark input[type=range]::-webkit-slider-runnable-track {
+      background: #334155;
+    }
   </style>
 
   <link rel="stylesheet" href="../css/reset.css">
@@ -59,7 +190,9 @@
 </head>
 
 <body>
-  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-stitch-accent">Przejdź do głównej treści</a>
+  <a href="#main"
+    class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-stitch-accent">Przejdź
+    do głównej treści</a>
 
   <!-- Cookie Consent Banner -->
   <div id="cookie-consent" class="cookie-consent" style="display: none;">
@@ -138,18 +271,18 @@
     <div
       class="lg:hidden h-11 border-t border-stitch-border/30 /30 flex items-center overflow-x-auto overflow-y-hidden no-scrollbar px-4 gap-6 bg-stitch-surface/10 /10"
       style="-webkit-overflow-scrolling: touch;">
-      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
-        href="kalkulator-etf.html" style="text-decoration:none;">Kalkulator ETF</a>
+      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap" href="kalkulator-etf.html"
+        style="text-decoration:none;">Kalkulator ETF</a>
       <a class="text-[12px] font-extrabold text-primary hover:opacity-80 whitespace-nowrap"
         href="kalkulator-obligacji.html" style="text-decoration:none; color:#0d7ff2;">Obligacje</a>
       <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
         href="kalkulator-wolnosci.html" style="text-decoration:none;">Wolność finansowa</a>
-      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
-        href="porownywarka.html" style="text-decoration:none;">Porównywarka</a>
-      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
-        href="../blog/index.html" style="text-decoration:none;">Blog</a>
-      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
-        href="o-projekcie.html" style="text-decoration:none;">O projekcie</a>
+      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap" href="porownywarka.html"
+        style="text-decoration:none;">Porównywarka</a>
+      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap" href="../blog/index.html"
+        style="text-decoration:none;">Blog</a>
+      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap" href="o-projekcie.html"
+        style="text-decoration:none;">O projekcie</a>
     </div>
   </nav>
 
@@ -171,12 +304,13 @@
           Kalkulator <span class="text-primary">Obligacji Skarbowych</span>
         </h1>
         <p class="text-lg text-stitch-muted max-w-2xl leading-relaxed">
-          Symulacja zysku z obligacji EDO, COI, TOS z uwzględnieniem "Tarczy Antydeflacyjnej", optymalizacji IKE i kary za wcześniejszy wykup.
+          Symulacja zysku z obligacji EDO, COI, TOS z uwzględnieniem "Tarczy Antydeflacyjnej", optymalizacji IKE i kary
+          za wcześniejszy wykup.
         </p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        
+
         <!-- FORMULARZ -->
         <aside class="lg:col-span-4 space-y-6">
           <div class="glass-effect p-8 rounded-[2rem] border border-white/50 /50 shadow-stitch-soft">
@@ -184,13 +318,15 @@
               <span class="material-symbols-outlined text-primary">tune</span>
               Parametry bazowe
             </h3>
-            
+
             <div class="space-y-6">
-              
+
               <!-- Typ Obligacji -->
               <div class="space-y-3">
-                <label class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Rodzaj Obligacji</label>
-                <select id="input-typ" class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 text-stitch-text text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none">
+                <label class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Rodzaj
+                  Obligacji</label>
+                <select id="input-typ"
+                  class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 text-stitch-text text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none">
                   <option value="EDO">EDO (10-letnie)</option>
                   <option value="COI">COI (4-letnie)</option>
                   <option value="TOS">TOS (3-letnie stałe)</option>
@@ -198,16 +334,17 @@
                   <option value="ROS" class="hidden" disabled>ROS (6-letnie)</option>
                   <option value="ROD" class="hidden" disabled>ROD (12-letnie)</option>
                 </select>
-                <div id="bond-info-bar"
-                  class="mt-2 flex flex-wrap gap-2 text-[11px] font-semibold">
-                  <span class="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-stitch">
+                <div id="bond-info-bar" class="mt-2 flex flex-wrap gap-2 text-[11px] font-semibold">
+                  <span
+                    class="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-stitch">
                     Rok 1: <span id="bond-info-yr1">5,60%</span>
                   </span>
                   <span id="bond-info-margin-wrap"
                     class="px-2 py-1 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-stitch">
                     Marża: <span id="bond-info-margin">CPI + 2,00%</span>
                   </span>
-                  <span class="px-2 py-1 bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 rounded-stitch">
+                  <span
+                    class="px-2 py-1 bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 rounded-stitch">
                     Wykup: <span id="bond-info-penalty">3,00 zł/szt.</span>
                   </span>
                 </div>
@@ -216,86 +353,103 @@
               <!-- Kapitał -->
               <div class="space-y-3">
                 <div class="flex justify-between items-center">
-                  <label class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Kapitał inwestycji</label>
+                  <label class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Kapitał
+                    inwestycji</label>
                   <div class="flex items-center gap-2">
-                    <button type="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('kapital_start', event)"
+                    <button type="button" onkeydown="if(event.key==='Enter')this.click()"
+                      onclick="openEduModal('kapital_start', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
                       <span class="material-symbols-outlined text-sm">help</span>
                     </button>
-                    <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md">PLN</span>
+                    <span
+                      class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md">PLN</span>
                   </div>
                 </div>
-                <input aria-label="input kapital" type="text" inputmode="decimal" id="input-kapital" value="10000" class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 text-stitch-text text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none">
+                <input aria-label="input kapital" type="text" inputmode="decimal" id="input-kapital" value="10000"
+                  class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 text-stitch-text text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none">
               </div>
-                <div id="custom-marza-wrap" class="mt-3 space-y-2">
-                  <div class="flex justify-between items-center">
-                    <label class="text-xs font-bold text-stitch-muted uppercase tracking-wider">
-                      Własna marża (nadpisz)
-                    </label>
-                    <button type="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('custom_marza', event)"
-                      class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 hover:bg-amber-100 transition-colors touch-target-info">
-                      <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
-                    </button>
-                  </div>
-                  <div class="flex items-center gap-3">
-                    <input aria-label="input custom marza" type="number" id="input-custom-marza" min="0" max="20" step="0.05"
-                      placeholder="np. 2.00"
-                      class="w-full h-11 px-4 rounded-stitch bg-stitch-surface border-2 border-amber-200 dark:border-amber-800 text-stitch-text text-base font-bold focus:border-amber-400 focus:ring-4 focus:ring-amber-400/10 outline-none transition-all placeholder:text-slate-400 placeholder:font-normal">
-                    <span class="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-2 rounded-stitch shrink-0">%</span>
-                  </div>
-                  <p class="text-[10px] text-slate-400 leading-relaxed">
-                    Zostaw puste = użyj domyślnej marży obligacji. Wpisz wartość żeby nadpisać (np. gdy MF ogłosi nowe warunki emisji).
-                  </p>
+              <div id="custom-marza-wrap" class="mt-3 space-y-2">
+                <div class="flex justify-between items-center">
+                  <label class="text-xs font-bold text-stitch-muted uppercase tracking-wider">
+                    Własna marża (nadpisz)
+                  </label>
+                  <button type="button" onkeydown="if(event.key==='Enter')this.click()"
+                    onclick="openEduModal('custom_marza', event)"
+                    class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 hover:bg-amber-100 transition-colors touch-target-info">
+                    <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
+                    <span class="material-symbols-outlined text-sm">help</span>
+                  </button>
                 </div>
-                
-                <div id="custom-yr1-wrap" class="mt-3 space-y-2">
-                  <div class="flex justify-between items-center">
-                    <label class="text-xs font-bold text-stitch-muted uppercase tracking-wider">
-                      Oprocentowanie w 1. roku (nadpisz)
-                    </label>
-                    <button type="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('custom_yr1', event)"
-                      class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 hover:bg-amber-100 transition-colors touch-target-info">
-                      <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
-                    </button>
-                  </div>
-                  <div class="flex items-center gap-3">
-                    <input aria-label="input custom yr1" type="number" id="input-custom-yr1" min="0" max="25" step="0.05"
-                      placeholder="np. 5.60"
-                      class="w-full h-11 px-4 rounded-stitch bg-stitch-surface border-2 border-amber-200 dark:border-amber-800 text-stitch-text text-base font-bold focus:border-amber-400 focus:ring-4 focus:ring-amber-400/10 outline-none transition-all placeholder:text-slate-400 placeholder:font-normal">
-                    <span class="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-2 rounded-stitch shrink-0">%</span>
-                  </div>
-                  <p class="text-[10px] text-slate-400 leading-relaxed">
-                    Zostaw puste = użyj domyślnego procentu z 1. roku dla wybranej obligacji.
-                  </p>
+                <div class="flex items-center gap-3">
+                  <input aria-label="input custom marza" type="number" id="input-custom-marza" min="0" max="20"
+                    step="0.05" placeholder="np. 2.00"
+                    class="w-full h-11 px-4 rounded-stitch bg-stitch-surface border-2 border-amber-200 dark:border-amber-800 text-stitch-text text-base font-bold focus:border-amber-400 focus:ring-4 focus:ring-amber-400/10 outline-none transition-all placeholder:text-slate-400 placeholder:font-normal">
+                  <span class="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-2 rounded-stitch shrink-0">%</span>
                 </div>
+                <p class="text-[10px] text-slate-400 leading-relaxed">
+                  Zostaw puste = użyj domyślnej marży obligacji. Wpisz wartość żeby nadpisać (np. gdy MF ogłosi nowe
+                  warunki emisji).
+                </p>
+              </div>
+
+              <div id="custom-yr1-wrap" class="mt-3 space-y-2">
+                <div class="flex justify-between items-center">
+                  <label class="text-xs font-bold text-stitch-muted uppercase tracking-wider">
+                    Oprocentowanie w 1. roku (nadpisz)
+                  </label>
+                  <button type="button" onkeydown="if(event.key==='Enter')this.click()"
+                    onclick="openEduModal('custom_yr1', event)"
+                    class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 hover:bg-amber-100 transition-colors touch-target-info">
+                    <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
+                    <span class="material-symbols-outlined text-sm">help</span>
+                  </button>
+                </div>
+                <div class="flex items-center gap-3">
+                  <input aria-label="input custom yr1" type="number" id="input-custom-yr1" min="0" max="25" step="0.05"
+                    placeholder="np. 5.60"
+                    class="w-full h-11 px-4 rounded-stitch bg-stitch-surface border-2 border-amber-200 dark:border-amber-800 text-stitch-text text-base font-bold focus:border-amber-400 focus:ring-4 focus:ring-amber-400/10 outline-none transition-all placeholder:text-slate-400 placeholder:font-normal">
+                  <span class="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-2 rounded-stitch shrink-0">%</span>
+                </div>
+                <p class="text-[10px] text-slate-400 leading-relaxed">
+                  Zostaw puste = użyj domyślnego procentu z 1. roku dla wybranej obligacji.
+                </p>
+              </div>
 
               <!-- Miesięczna dopłata -->
               <div class="space-y-3 group">
                 <div class="flex justify-between items-center">
-                  <label for="input-doplata" class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                  <label for="input-doplata"
+                    class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                     Miesięczna dopłata
                   </label>
                   <div class="flex items-center gap-2">
-                    <button type="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('doplata_msc', event)" class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
+                    <button type="button" onkeydown="if(event.key==='Enter')this.click()"
+                      onclick="openEduModal('doplata_msc', event)"
+                      class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
                       <span class="material-symbols-outlined text-sm">help</span>
                     </button>
-                    <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">PLN</span>
+                    <span
+                      class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md"
+                      style="color:#0d7ff2;">PLN</span>
                   </div>
                 </div>
-                <input aria-label="input doplata" type="text" inputmode="decimal" id="input-doplata" class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 text-stitch-text text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" value="500" min="0" step="100" autocomplete="off">
+                <input aria-label="input doplata" type="text" inputmode="decimal" id="input-doplata"
+                  class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 text-stitch-text text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
+                  value="500" min="0" step="100" autocomplete="off">
               </div>
 
 
               <!-- Inflacja -->
               <div class="space-y-3">
                 <div class="flex justify-between items-center">
-                  <label class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Oczekiwana inflacja (CPI)</label>
+                  <label
+                    class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Oczekiwana
+                    inflacja (CPI)</label>
                   <div class="flex items-center gap-2">
-                    <button type="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('inflacja_cpi', event)"
+                    <button type="button" onkeydown="if(event.key==='Enter')this.click()"
+                      onclick="openEduModal('inflacja_cpi', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
                       <span class="material-symbols-outlined text-sm">help</span>
@@ -303,34 +457,45 @@
                     <span class="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-md">%</span>
                   </div>
                 </div>
-                <input aria-label="input inflacja" type="text" inputmode="decimal" id="input-inflacja" value="2.2" class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 text-stitch-text text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none">
+                <input aria-label="input inflacja" type="text" inputmode="decimal" id="input-inflacja" value="2.2"
+                  class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 text-stitch-text text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none">
               </div>
 
               <!-- Wcześniejszy Wykup Slider -->
               <div class="space-y-3 pt-4 border-t border-slate-100">
                 <div class="flex justify-between items-center">
                   <div class="flex items-center gap-2">
-                    <label class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Wcześniejszy Wykup</label>
-                    <button type="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('wczesny_wykup', event)"
+                    <label
+                      class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">Wcześniejszy
+                      Wykup</label>
+                    <button type="button" onkeydown="if(event.key==='Enter')this.click()"
+                      onclick="openEduModal('wczesny_wykup', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 hover:bg-rose-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
                       <span class="material-symbols-outlined text-sm">help</span>
                     </button>
                   </div>
-                  <span class="text-[11px] px-2 py-1 bg-rose-100 text-rose-600 rounded-md font-bold">W ROKU: <span id="wykup-val-display">10</span></span>
+                  <span class="text-[11px] px-2 py-1 bg-rose-100 text-rose-600 rounded-md font-bold">W ROKU: <span
+                      id="wykup-val-display">10</span></span>
                 </div>
-                <input aria-label="input wykup" type="range" id="input-wykup" min="1" max="10" value="10" step="1" class="w-full mt-2">
-                <p class="text-[11px] text-slate-400">Przesuń, aby sprawdzić karę za przedwczesne zerwanie ulokowania.</p>
+                <input aria-label="input wykup" type="range" id="input-wykup" min="1" max="10" value="10" step="1"
+                  class="w-full mt-2">
+                <p class="text-[11px] text-slate-400">Przesuń, aby sprawdzić karę za przedwczesne zerwanie ulokowania.
+                </p>
               </div>
 
               <!-- Toggles: IKE, 800+, Rolowanie -->
               <div class="space-y-4 pt-6">
                 <!-- IKE -->
-                <label class="group flex items-start gap-4 p-4 rounded-stitch border-2 border-transparent hover:border-primary/20 hover:bg-primary/5 transition-all cursor-pointer">
+                <label
+                  class="group flex items-start gap-4 p-4 rounded-stitch border-2 border-transparent hover:border-primary/20 hover:bg-primary/5 transition-all cursor-pointer">
                   <div class="relative flex items-center">
                     <input aria-label="input ike" type="checkbox" id="input-ike" class="peer sr-only">
-                    <div class="w-12 h-6 bg-slate-200 rounded-full peer peer-checked:bg-primary transition-colors"></div>
-                    <div class="absolute left-1 top-1 w-4 h-4 bg-stitch-surface rounded-full transition-transform peer-checked:translate-x-6"></div>
+                    <div class="w-12 h-6 bg-slate-200 rounded-full peer peer-checked:bg-primary transition-colors">
+                    </div>
+                    <div
+                      class="absolute left-1 top-1 w-4 h-4 bg-stitch-surface rounded-full transition-transform peer-checked:translate-x-6">
+                    </div>
                   </div>
                   <div class="flex-1">
                     <span class="block text-sm font-bold text-stitch-text mb-1">Konto IKE / IKZE (0% podatku)</span>
@@ -338,11 +503,15 @@
                   </div>
                 </label>
                 <!-- 800+ -->
-                <label class="group flex items-start gap-4 p-4 rounded-stitch border-2 border-transparent hover:border-emerald-500/20 hover:bg-emerald-500/5 transition-all cursor-pointer">
+                <label
+                  class="group flex items-start gap-4 p-4 rounded-stitch border-2 border-transparent hover:border-emerald-500/20 hover:bg-emerald-500/5 transition-all cursor-pointer">
                   <div class="relative flex items-center">
                     <input aria-label="input 800plus" type="checkbox" id="input-800plus" class="peer sr-only">
-                    <div class="w-12 h-6 bg-slate-200 rounded-full peer peer-checked:bg-emerald-500 transition-colors"></div>
-                    <div class="absolute left-1 top-1 w-4 h-4 bg-stitch-surface rounded-full transition-transform peer-checked:translate-x-6"></div>
+                    <div class="w-12 h-6 bg-slate-200 rounded-full peer peer-checked:bg-emerald-500 transition-colors">
+                    </div>
+                    <div
+                      class="absolute left-1 top-1 w-4 h-4 bg-stitch-surface rounded-full transition-transform peer-checked:translate-x-6">
+                    </div>
                   </div>
                   <div class="flex-1">
                     <span class="block text-sm font-bold text-stitch-text mb-1">Rodzinne (Program 800+)</span>
@@ -350,11 +519,15 @@
                   </div>
                 </label>
                 <!-- Rolowanie -->
-                <label class="group flex items-start gap-4 p-4 rounded-stitch border-2 border-transparent hover:border-amber-500/20 hover:bg-amber-500/5 transition-all cursor-pointer">
+                <label
+                  class="group flex items-start gap-4 p-4 rounded-stitch border-2 border-transparent hover:border-amber-500/20 hover:bg-amber-500/5 transition-all cursor-pointer">
                   <div class="relative flex items-center">
                     <input aria-label="input rolowanie" type="checkbox" id="input-rolowanie" class="peer sr-only">
-                    <div class="w-12 h-6 bg-slate-200 rounded-full peer peer-checked:bg-amber-500 transition-colors"></div>
-                    <div class="absolute left-1 top-1 w-4 h-4 bg-stitch-surface rounded-full transition-transform peer-checked:translate-x-6"></div>
+                    <div class="w-12 h-6 bg-slate-200 rounded-full peer peer-checked:bg-amber-500 transition-colors">
+                    </div>
+                    <div
+                      class="absolute left-1 top-1 w-4 h-4 bg-stitch-surface rounded-full transition-transform peer-checked:translate-x-6">
+                    </div>
                   </div>
                   <div class="flex-1">
                     <span class="block text-sm font-bold text-stitch-text mb-1">Rolowanie (99.90 PLN ze sztukę)</span>
@@ -370,7 +543,8 @@
         <!-- WYNIKI -->
         <div class="lg:col-span-8 space-y-8">
           <!-- WYNIK GLOWNY -->
-          <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('wynik_karta', event)"
+          <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+            onclick="openEduModal('wynik_karta', event)"
             class="relative overflow-hidden group bg-primary p-10 md:p-14 rounded-[2.5rem] text-white shadow-stitch-soft shadow-primary/30 transition-all hover:scale-[1.01] hover:shadow-blue-500/40 hover:border-white/20 border-2 border-transparent cursor-help"
             style="background-color: #0d7ff2;">
             <div
@@ -383,18 +557,21 @@
               <div>
                 <p class="text-primary-100/80 font-bold uppercase tracking-widest text-[10px] mb-3 flex items-center">
                   Zysk po opodatkowaniu i wykupie
-                  <span class="px-1.5 py-0.5 text-[9px] bg-stitch-surface/10 text-white rounded-md font-bold ml-2">INFO</span>
+                  <span
+                    class="px-1.5 py-0.5 text-[9px] bg-stitch-surface/10 text-white rounded-md font-bold ml-2">INFO</span>
                 </p>
                 <p class="text-5xl md:text-7xl font-black tracking-tighter mb-4" id="ob-wynik-kapital">0,00 zł</p>
                 <div class="flex items-center gap-2 text-primary-100/80 text-sm mb-2">
                   <span class="material-symbols-outlined text-base">verified</span>
                   <span>Kwota netto po potrąceniu podatków i opłat</span>
                 </div>
-                <p class="mt-2 text-sm text-primary-100">Stopa roczna CAGR: <strong id="ob-wynik-cagr">0.00%</strong></p>
+                <p class="mt-2 text-sm text-primary-100">Stopa roczna CAGR: <strong id="ob-wynik-cagr">0.00%</strong>
+                </p>
                 <p class="mt-4 text-[10px] text-white/60 opacity-0 group-hover:opacity-100 transition-opacity">Kliknij,
                   aby zrozumieć ten wynik</p>
               </div>
-              <div class="bg-stitch-surface/10 backdrop-blur-md px-6 py-4 rounded-stitch border border-white/20 h-auto self-start">
+              <div
+                class="bg-stitch-surface/10 backdrop-blur-md px-6 py-4 rounded-stitch border border-white/20 h-auto self-start">
                 <p class="text-[10px] font-black uppercase tracking-widest text-white/60 mb-1">Status podatkowy</p>
                 <p class="font-bold whitespace-nowrap" id="txt-podatek-status">Opodatkowanie 19%</p>
               </div>
@@ -404,7 +581,8 @@
           <!-- KAFELKI -->
           <div
             class="flex flex-col items-center justify-center w-full lg:grid lg:grid-cols-2 lg:gap-6 lg:items-start lg:justify-items-stretch gap-6">
-            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('wynik_karta', event)"
+            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+              onclick="openEduModal('wynik_karta', event)"
               class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft hover:border-blue-300/50 bg-stitch-surface/70 backdrop-blur-md /60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch lg:rounded-stitch border border-slate-100 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div
                 class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent">
@@ -423,8 +601,9 @@
                 class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 Kliknij, aby zrozumieć ten wynik</p>
             </div>
-            
-            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('wynik_karta', event)"
+
+            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+              onclick="openEduModal('wynik_karta', event)"
               class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft hover:border-blue-300/50 bg-stitch-surface/70 backdrop-blur-md /60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch lg:rounded-stitch border border-slate-100 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div
                 class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent">
@@ -444,7 +623,8 @@
                 Kliknij, aby zrozumieć ten wynik</p>
             </div>
 
-            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('wynik_karta', event)"
+            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+              onclick="openEduModal('wynik_karta', event)"
               class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft hover:border-rose-300/50 bg-stitch-surface/70 backdrop-blur-md /60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch lg:rounded-stitch border border-slate-100 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div
                 class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-rose-500/40 to-transparent">
@@ -464,7 +644,8 @@
                 Kliknij, aby zrozumieć ten wynik</p>
             </div>
 
-            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('wynik_karta', event)"
+            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+              onclick="openEduModal('wynik_karta', event)"
               class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft hover:border-orange-300/50 bg-stitch-surface/70 backdrop-blur-md /60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch lg:rounded-stitch border border-slate-100 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div
                 class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-orange-500/40 to-transparent">
@@ -484,7 +665,8 @@
                 Kliknij, aby zrozumieć ten wynik</p>
             </div>
 
-            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('wynik_karta', event)"
+            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+              onclick="openEduModal('wynik_karta', event)"
               class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft hover:border-emerald-300/50 bg-stitch-surface/70 backdrop-blur-md /60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch lg:rounded-stitch border border-slate-100 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div
                 class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent">
@@ -504,7 +686,8 @@
                 Kliknij, aby zrozumieć ten wynik</p>
             </div>
 
-            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="openEduModal('wynik_karta', event)"
+            <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+              onclick="openEduModal('wynik_karta', event)"
               class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft hover:border-emerald-300/50 bg-stitch-surface/70 backdrop-blur-md /60 dark:backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch lg:rounded-stitch border border-slate-100 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
               <div
                 class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent">
@@ -524,22 +707,28 @@
                 Kliknij, aby zrozumieć ten wynik</p>
             </div>
           </div>
-          
+
           <!-- SCENARIO HISTORY -->
           <div class="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:max-w-xl mx-auto">
-            <button id="btn-save-scenario" class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-stitch hover:bg-blue-700 transition-all font-semibold text-sm shadow-stitch-soft">
+            <button id="btn-save-scenario"
+              class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-stitch hover:bg-blue-700 transition-all font-semibold text-sm shadow-stitch-soft">
               <span class="material-symbols-outlined text-[18px]">push_pin</span> Zapisz scenariusz
             </button>
-            <button id="btn-share-result" class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-emerald-600 dark:bg-emerald-500 text-white rounded-stitch hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-all font-semibold text-sm shadow-stitch-soft">
-              <span class="material-symbols-outlined text-[18px]">share</span> <span id="txt-btn-share">Udostępnij wynik</span>
+            <button id="btn-share-result"
+              class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-emerald-600 dark:bg-emerald-500 text-white rounded-stitch hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-all font-semibold text-sm shadow-stitch-soft">
+              <span class="material-symbols-outlined text-[18px]">share</span> <span id="txt-btn-share">Udostępnij
+                wynik</span>
             </button>
           </div>
 
-          <div id="scenario-history-section" class="hidden mt-8 w-full p-6 glass-effect rounded-[2rem] border border-white/50 /50 shadow-stitch-soft">
+          <div id="scenario-history-section"
+            class="hidden mt-8 w-full p-6 glass-effect rounded-[2rem] border border-white/50 /50 shadow-stitch-soft">
             <h3 class="text-lg font-bold text-stitch-text mb-4 flex items-center gap-3">
               <span class="material-symbols-outlined text-primary">history</span> Porównanie scenariuszy
             </h3>
-            <div id="scenario-cards-container" class="flex flex-row overflow-x-auto snap-x snap-mandatory gap-5 pb-12 pt-4 px-4" style="-webkit-overflow-scrolling: touch;">
+            <div id="scenario-cards-container"
+              class="flex flex-row overflow-x-auto snap-x snap-mandatory gap-5 pb-12 pt-4 px-4"
+              style="-webkit-overflow-scrolling: touch;">
             </div>
           </div>
 
@@ -596,60 +785,59 @@
         </div>
       </div>
     </div>
-  
-      <!-- SŁOWNICZEK / EDUKACJA -->
-      <section class="mt-24 py-20 border-t border-stitch-border dark:border-slate-900">
-        <h2 class="text-3xl font-extrabold text-stitch-text mb-12 text-center italic">Co warto wiedzieć o
-          obligacjach skarbowych?</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div
-            class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
-            <span class="material-symbols-outlined text-4xl text-primary mb-6"
-              style="color:#0d7ff2;">assured_workload</span>
-            <h4 class="text-lg font-bold text-stitch-text mb-4">Czym są obligacje skarbowe?</h4>
-            <p class="text-sm text-stitch-muted leading-relaxed">Papiery dłużne emitowane przez Skarb
-              Państwa. Kupujesz je za 100 zł/szt. i otrzymujesz gwarantowane odsetki — to jedna z najbezpieczniejszych
-              form oszczędzania w Polsce.</p>
-          </div>
-          <div
-            class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
-            <span class="material-symbols-outlined text-4xl text-emerald-500 mb-6">shield</span>
-            <h4 class="text-lg font-bold text-stitch-text mb-4">Indeksacja inflacją</h4>
-            <p class="text-sm text-stitch-muted leading-relaxed">Obligacje EDO i COI automatycznie
-              zwiększają oprocentowanie gdy rośnie inflacja (CPI + marża). Twoje oszczędności są chronione przed utratą
-              siły nabywczej.</p>
-          </div>
-          <div
-            class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
-            <span class="material-symbols-outlined text-4xl text-amber-500 mb-6">workspace_premium</span>
-            <h4 class="text-lg font-bold text-stitch-text mb-4">IKE oraz IKZE</h4>
-            <p class="text-sm text-stitch-muted leading-relaxed">Obligacje skarbowe można kupować
-              przez konto IKE/IKZE, eliminując 19% podatek Belki od odsetek. To legalny sposób na wyższy zysk
-              netto.</p>
-          </div>
-          <div
-            class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
-            <span class="material-symbols-outlined text-4xl text-rose-500 mb-6">money_off</span>
-            <h4 class="text-lg font-bold text-stitch-text mb-4">Wcześniejszy wykup</h4>
-            <p class="text-sm text-stitch-muted leading-relaxed">Możesz wycofać pieniądze przed
-              terminem, ale zapłacisz opłatę manipulacyjną (np. 3 zł/szt. dla EDO). Kara nigdy nie przekroczy
-              narosłych odsetek — Twój kapitał jest bezpieczny.</p>
-          </div>
-        </div>
 
-        <!-- DISCLAIMER -->
+    <!-- SŁOWNICZEK / EDUKACJA -->
+    <section class="mt-24 py-20 border-t border-stitch-border dark:border-slate-900">
+      <h2 class="text-3xl font-extrabold text-stitch-text mb-12 text-center italic">Co warto wiedzieć o
+        obligacjach skarbowych?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div
-          class="mt-8 p-8 rounded-stitch bg-slate-100 /50 border border-stitch-border flex gap-6 items-start">
-          <span class="material-symbols-outlined text-slate-400">info</span>
-          <p class="text-xs text-stitch-muted leading-relaxed italic">
-            <strong>Ważna informacja:</strong> Prezentowane obliczenia mają charakter wyłącznie edukacyjny i poglądowy.
-            Warunki emisji obligacji skarbowych mogą ulec zmianie. Aktualne oprocentowanie i zasady dostępne są na
-            stronie <a href="https://www.obligacjeskarbowe.pl" target="_blank" rel="noopener"
-              class="underline hover:text-primary">obligacjeskarbowe.pl</a>.
-            Zawsze weryfikuj dane z oficjalnymi dokumentami Ministerstwa Finansów.
-          </p>
+          class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
+          <span class="material-symbols-outlined text-4xl text-primary mb-6"
+            style="color:#0d7ff2;">assured_workload</span>
+          <h4 class="text-lg font-bold text-stitch-text mb-4">Czym są obligacje skarbowe?</h4>
+          <p class="text-sm text-stitch-muted leading-relaxed">Papiery dłużne emitowane przez Skarb
+            Państwa. Kupujesz je za 100 zł/szt. i otrzymujesz gwarantowane odsetki — to jedna z najbezpieczniejszych
+            form oszczędzania w Polsce.</p>
         </div>
-      </section>
+        <div
+          class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
+          <span class="material-symbols-outlined text-4xl text-emerald-500 mb-6">shield</span>
+          <h4 class="text-lg font-bold text-stitch-text mb-4">Indeksacja inflacją</h4>
+          <p class="text-sm text-stitch-muted leading-relaxed">Obligacje EDO i COI automatycznie
+            zwiększają oprocentowanie gdy rośnie inflacja (CPI + marża). Twoje oszczędności są chronione przed utratą
+            siły nabywczej.</p>
+        </div>
+        <div
+          class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
+          <span class="material-symbols-outlined text-4xl text-amber-500 mb-6">workspace_premium</span>
+          <h4 class="text-lg font-bold text-stitch-text mb-4">IKE oraz IKZE</h4>
+          <p class="text-sm text-stitch-muted leading-relaxed">Obligacje skarbowe można kupować
+            przez konto IKE/IKZE, eliminując 19% podatek Belki od odsetek. To legalny sposób na wyższy zysk
+            netto.</p>
+        </div>
+        <div
+          class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
+          <span class="material-symbols-outlined text-4xl text-rose-500 mb-6">money_off</span>
+          <h4 class="text-lg font-bold text-stitch-text mb-4">Wcześniejszy wykup</h4>
+          <p class="text-sm text-stitch-muted leading-relaxed">Możesz wycofać pieniądze przed
+            terminem, ale zapłacisz opłatę manipulacyjną (np. 3 zł/szt. dla EDO). Kara nigdy nie przekroczy
+            narosłych odsetek — Twój kapitał jest bezpieczny.</p>
+        </div>
+      </div>
+
+      <!-- DISCLAIMER -->
+      <div class="mt-8 p-8 rounded-stitch bg-slate-100 /50 border border-stitch-border flex gap-6 items-start">
+        <span class="material-symbols-outlined text-slate-400">info</span>
+        <p class="text-xs text-stitch-muted leading-relaxed italic">
+          <strong>Ważna informacja:</strong> Prezentowane obliczenia mają charakter wyłącznie edukacyjny i poglądowy.
+          Warunki emisji obligacji skarbowych mogą ulec zmianie. Aktualne oprocentowanie i zasady dostępne są na
+          stronie <a href="https://www.obligacjeskarbowe.pl" target="_blank" rel="noopener"
+            class="underline hover:text-primary">obligacjeskarbowe.pl</a>.
+          Zawsze weryfikuj dane z oficjalnymi dokumentami Ministerstwa Finansów.
+        </p>
+      </div>
+    </section>
 
   </main>
 
@@ -676,8 +864,7 @@
               </span>
               Newsletter
             </div>
-            <h2
-              class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-stitch-text tracking-tight leading-[1.1]">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-stitch-text tracking-tight leading-[1.1]">
               Bądź na bieżąco z <span class="text-primary">rynkiem ETF</span> <span class="hidden md:inline">i
                 finansami</span>
             </h2>
@@ -926,7 +1113,8 @@
 
   <!-- EDUCATIONAL MODAL -->
   <div id="edu-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
-    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"></div>
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" tabindex="0" role="button"
+      onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"></div>
     <div
       class="relative glass-effect modal-anim rounded-[2.5rem] p-8 md:p-12 max-w-lg w-full border border-white/20 shadow-stitch-soft shadow-black/50 overflow-hidden">
       <!-- Decorative background blur -->
@@ -973,7 +1161,8 @@
 
   <!-- EDUCATIONAL MODAL -->
   <div id="edu-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
-    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"></div>
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" tabindex="0" role="button"
+      onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"></div>
     <div
       class="relative glass-effect modal-anim rounded-[2.5rem] p-8 md:p-12 max-w-lg w-full border border-white/20 shadow-stitch-soft shadow-black/50 overflow-hidden">
       <!-- Decorative background blur -->
@@ -1033,18 +1222,29 @@
   <script defer>
     function przelaczTryb() {
       const html = document.documentElement;
-      if (html.classList.contains('dark')) {
+      const isDark = html.classList.contains('dark');
+
+      if (isDark) {
         html.classList.remove('dark');
+        html.classList.add('light');
         localStorage.setItem('etf-tryb', 'jasny');
       } else {
         html.classList.add('dark');
+        html.classList.remove('light');
         localStorage.setItem('etf-tryb', 'ciemny');
       }
+
+      const d = html.classList.contains('dark');
+      const m = document.getElementById('meta-theme-color');
+      if (m) m.content = d ? '#0f172a' : '#f8fafc';
     }
+
+    // Initialize Theme - Moved to head for early execution
     (function () {
-      if (localStorage.getItem('etf-tryb') === 'ciemny' || (!localStorage.getItem('etf-tryb') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-      }
+      const html = document.documentElement;
+      const d = html.classList.contains('dark');
+      const m = document.getElementById('meta-theme-color');
+      if (m) m.content = d ? '#0f172a' : '#f8fafc';
     })();
   </script>
 
@@ -1080,4 +1280,5 @@
     });
   </script>
 </body>
+
 </html>

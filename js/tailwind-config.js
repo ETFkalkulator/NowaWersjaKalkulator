@@ -3,6 +3,7 @@
 // Integrates Semantic Stitch tokens combining Light Mode from 'Nowoczesna Strona Główna' 
 // and Dark Mode from 'Newsletter Restoration'.
 
+window.tailwind = window.tailwind || {};
 window.tailwind.config = {
     darkMode: 'class',
     theme: {

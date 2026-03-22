@@ -3,7 +3,7 @@
 
 window.modalData = window.modalData || {};
 
-window.debounce = function(func, wait) {
+window.debounce = function (func, wait) {
     let timeout;
     return function executedFunction(...args) {
         const later = () => {
@@ -15,14 +15,14 @@ window.debounce = function(func, wait) {
     };
 };
 
-window.shareResult = function(title) {
+window.shareResult = function (title) {
     // If the calculator has an updateUrlParams function, call it first
     if (typeof updateUrlParams === 'function') {
         updateUrlParams();
     }
-    
+
     const url = window.location.href;
-    
+
     if (navigator.share) {
         navigator.share({
             title: title || 'Moja symulacja - ETFkalkulator.pl',
@@ -46,7 +46,7 @@ window.shareResult = function(title) {
     }
 };
 
-window.openEduModal = function(type, event) {
+window.openEduModal = function (type, event) {
     if (event) {
         event.preventDefault();
         event.stopPropagation();
@@ -58,12 +58,12 @@ window.openEduModal = function(type, event) {
 
     const data = window.modalData[type];
     if (!data) return;
-    
+
     const titleEl = document.getElementById('modal-title');
     const descEl = document.getElementById('modal-explanation');
     const formulaEl = document.getElementById('modal-formula');
     const iconEl = document.getElementById('modal-icon');
-    
+
     if (titleEl) titleEl.innerText = data.title;
     if (descEl) descEl.innerText = data.desc;
     if (formulaEl) formulaEl.innerText = data.formula;
@@ -76,7 +76,7 @@ window.openEduModal = function(type, event) {
     }
 };
 
-window.closeEduModal = function() {
+window.closeEduModal = function () {
     const modal = document.getElementById('edu-modal');
     if (modal) {
         modal.classList.add('hidden');
