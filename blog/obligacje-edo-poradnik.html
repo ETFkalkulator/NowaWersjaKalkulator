@@ -21,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
   <title>Obligacje EDO — co to jest i jak działają? Kompletny poradnik 2026 | ETFkalkulator.pl</title>
   <link rel="canonical" href="https://etfkalkulator.pl/blog/obligacje-edo-poradnik" />
-  <meta name="description" content="Obligacje EDO (10-letnie) — wszystko co musisz wiedzieć: oprocentowanie 5,60% + inflacja, jak kupić, podatek Belki, IKE-Obligacje bez podatku. Aktualny poradnik dla początkujących marzec 2026." />
+  <meta name="description" content="Obligacje EDO 2026: oprocentowanie, zakup, podatek Belki i IKE-Obligacje. Praktyczny poradnik krok po kroku dla poczatkujacych." />
   <meta name="author" content="ETFkalkulator.pl" />
   <meta property="og:title" content="Obligacje EDO — kompletny poradnik 2026 | ETFkalkulator.pl" />
   <meta property="og:description" content="Oprocentowanie 5,60% + inflacja. Jak kupić, ile zarobisz i kiedy się opłacają — wyjaśnione po ludzku." />
@@ -371,6 +371,39 @@
 
     .glass-effect ol a:hover {
       text-decoration: underline;
+    }
+
+    .article-prose .table-scroll {
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      margin: 1.25rem 0;
+      padding-bottom: 0.25rem;
+      border-radius: 0.9rem;
+    }
+
+    .article-prose .table-scroll:focus-visible {
+      outline: 2px solid #0d7ff2;
+      outline-offset: 2px;
+    }
+
+    .article-prose .table-scroll .data-table,
+    .article-prose .table-scroll table {
+      width: max-content;
+      min-width: 640px;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .article-prose .table-scroll .data-table,
+      .article-prose .table-scroll table {
+        min-width: 560px;
+      }
+
+      .article-prose .table-scroll th,
+      .article-prose .table-scroll td {
+        white-space: nowrap;
+      }
     }
   </style>
   <link rel="stylesheet" href="../css/reset.css" />
@@ -1213,6 +1246,27 @@
 
   <script src="../js/utils.js"></script>
   <script src="../js/shared.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll(".article-prose table").forEach(function (table) {
+        var parent = table.parentElement;
+        if (!parent) return;
+
+        if (parent.classList.contains("table-scroll") || parent.classList.contains("overflow-x-auto")) {
+          return;
+        }
+
+        var wrap = document.createElement("div");
+        wrap.className = "table-scroll";
+        wrap.setAttribute("role", "region");
+        wrap.setAttribute("tabindex", "0");
+        wrap.setAttribute("aria-label", "Tabela - przewin poziomo, aby zobaczyc wszystkie kolumny");
+
+        parent.insertBefore(wrap, table);
+        wrap.appendChild(table);
+      });
+    });
+  </script>
   <script defer>
     function przelaczTryb() {
       const html = document.documentElement;
