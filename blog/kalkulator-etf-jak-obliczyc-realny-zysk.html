@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="pl" class="scroll-smooth">
 
 <head>
@@ -153,6 +153,25 @@
       width: max-content;
       min-width: 640px;
       margin: 0;
+    }
+
+    
+
+    .article-prose .table-scroll-hint {
+      display: none;
+      margin: -0.35rem 0 1rem;
+      font-size: 0.78rem;
+      line-height: 1.3;
+      color: rgb(var(--stitch-muted));
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .article-prose .table-scroll-hint::before {
+      content: "\2194";
+      font-size: 0.9rem;
+      color: #0d7ff2;
+      font-weight: 700;
     }
 
     @media (max-width: 768px) {
@@ -439,7 +458,7 @@
     </p>
     <div class="rounded-2xl p-5 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 mb-6">
       <p class="text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2">
-        ⚠️ Ważna zasada dla ETF-ów akumulujących
+        Uwaga: Ważna zasada dla ETF-ów akumulujących
       </p>
       <p class="text-sm text-stitch-muted leading-relaxed">
         ETF-y akumulujące (Acc) nie wypłacają dywidend — dodają je do wartości
@@ -471,7 +490,7 @@
       </div>
       <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
         <span class="text-sm text-stitch-muted">Zysk brutto</span><span class="text-sm font-bold text-stitch-text">=
-          Kapitał końcowy â’ Łączne wpłaty</span>
+          Kapitał końcowy − Łączne wpłaty</span>
       </div>
       <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
         <span class="text-sm text-stitch-muted">Podatek Belki</span><span
@@ -480,7 +499,7 @@
       <div
         class="bg-primary/5 dark:bg-primary/10 rounded-xl px-4 py-3 mt-2 border border-primary/20 flex flex-col sm:flex-row sm:justify-between sm:items-center">
         <span class="text-sm text-stitch-muted font-semibold">Kapitał końcowy NETTO</span><span
-          class="text-base font-black text-primary" style="color: #0d7ff2">= Kapitał końcowy â’ Podatek Belki</span>
+          class="text-base font-black text-primary" style="color: #0d7ff2">= Kapitał końcowy − Podatek Belki</span>
       </div>
     </div>
 
@@ -552,7 +571,7 @@
       </div>
       <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
         <span class="text-sm text-stitch-muted">Podatek Belki (19%)</span><span
-          class="text-sm font-bold text-rose-600 dark:text-rose-400">â’6 859 zł</span>
+          class="text-sm font-bold text-rose-600 dark:text-rose-400">−6 859 zł</span>
       </div>
       <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
         <span class="text-sm text-stitch-muted">Kapitał netto po podatku</span><span
@@ -841,7 +860,7 @@
     </div>
     <div class="rounded-2xl p-5 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 mb-6">
       <p class="text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2">
-        ⚠️ To są wskazówki ogólne, nie porady inwestycyjne
+        Uwaga: To są wskazówki ogólne, nie porady inwestycyjne
       </p>
       <p class="text-sm text-stitch-muted leading-relaxed">
         Podział portfela zależy od Twojej indywidualnej sytuacji —
@@ -1189,7 +1208,7 @@
           zainwestowanego kapitału.
         </p>
         <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
-          <p>Â© 2026 ETFkalkulator.pl — Made with ❤️ by Florian</p>
+          <p>© 2026 ETFkalkulator.pl — Made with ❤️ by Florian</p>
           <div class="flex gap-6">
             <span>Wszelkie prawa zastrzeżone</span>
           </div>
@@ -1236,18 +1255,39 @@
         var parent = table.parentElement;
         if (!parent) return;
 
+        var wrap = null;
         if (parent.classList.contains("table-scroll") || parent.classList.contains("overflow-x-auto")) {
-          return;
+          wrap = parent;
+        } else {
+          wrap = document.createElement("div");
+          wrap.className = "table-scroll";
+          wrap.setAttribute("role", "region");
+          wrap.setAttribute("tabindex", "0");
+          wrap.setAttribute("aria-label", "Tabela - przewin poziomo, aby zobaczyc wszystkie kolumny");
+          parent.insertBefore(wrap, table);
+          wrap.appendChild(table);
         }
 
-        var wrap = document.createElement("div");
-        wrap.className = "table-scroll";
-        wrap.setAttribute("role", "region");
-        wrap.setAttribute("tabindex", "0");
-        wrap.setAttribute("aria-label", "Tabela - przewin poziomo, aby zobaczyc wszystkie kolumny");
+        if (wrap.dataset.tableHintReady === "1") return;
+        wrap.dataset.tableHintReady = "1";
 
-        parent.insertBefore(wrap, table);
-        wrap.appendChild(table);
+        var hint = document.createElement("p");
+        hint.className = "table-scroll-hint";
+        hint.setAttribute("aria-hidden", "true");
+        hint.textContent = "Przesuń tabelę w bok";
+        wrap.insertAdjacentElement("afterend", hint);
+
+        var toggleHint = function () {
+          var hasOverflow = wrap.scrollWidth > wrap.clientWidth + 4;
+          var canScrollMore = wrap.scrollLeft < (wrap.scrollWidth - wrap.clientWidth - 4);
+          var show = hasOverflow && canScrollMore;
+          hint.hidden = !show;
+          hint.style.display = show && window.innerWidth <= 768 ? "flex" : "none";
+        };
+
+        wrap.addEventListener("scroll", toggleHint, { passive: true });
+        window.addEventListener("resize", toggleHint);
+        requestAnimationFrame(toggleHint);
       });
     });
   </script>
@@ -1293,3 +1333,4 @@
 </body>
 
 </html>
+

@@ -591,6 +591,25 @@
       margin: 0;
     }
 
+    
+
+    .article-prose .table-scroll-hint {
+      display: none;
+      margin: -0.35rem 0 1rem;
+      font-size: 0.78rem;
+      line-height: 1.3;
+      color: rgb(var(--stitch-muted));
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .article-prose .table-scroll-hint::before {
+      content: "\2194";
+      font-size: 0.9rem;
+      color: #0d7ff2;
+      font-weight: 700;
+    }
+
     @media (max-width: 768px) {
       .article-prose .table-scroll .data-table,
       .article-prose .table-scroll table {
@@ -1533,18 +1552,39 @@
         var parent = table.parentElement;
         if (!parent) return;
 
+        var wrap = null;
         if (parent.classList.contains("table-scroll") || parent.classList.contains("overflow-x-auto")) {
-          return;
+          wrap = parent;
+        } else {
+          wrap = document.createElement("div");
+          wrap.className = "table-scroll";
+          wrap.setAttribute("role", "region");
+          wrap.setAttribute("tabindex", "0");
+          wrap.setAttribute("aria-label", "Tabela - przewin poziomo, aby zobaczyc wszystkie kolumny");
+          parent.insertBefore(wrap, table);
+          wrap.appendChild(table);
         }
 
-        var wrap = document.createElement("div");
-        wrap.className = "table-scroll";
-        wrap.setAttribute("role", "region");
-        wrap.setAttribute("tabindex", "0");
-        wrap.setAttribute("aria-label", "Tabela - przewin poziomo, aby zobaczyc wszystkie kolumny");
+        if (wrap.dataset.tableHintReady === "1") return;
+        wrap.dataset.tableHintReady = "1";
 
-        parent.insertBefore(wrap, table);
-        wrap.appendChild(table);
+        var hint = document.createElement("p");
+        hint.className = "table-scroll-hint";
+        hint.setAttribute("aria-hidden", "true");
+        hint.textContent = "Przesuń tabelę w bok";
+        wrap.insertAdjacentElement("afterend", hint);
+
+        var toggleHint = function () {
+          var hasOverflow = wrap.scrollWidth > wrap.clientWidth + 4;
+          var canScrollMore = wrap.scrollLeft < (wrap.scrollWidth - wrap.clientWidth - 4);
+          var show = hasOverflow && canScrollMore;
+          hint.hidden = !show;
+          hint.style.display = show && window.innerWidth <= 768 ? "flex" : "none";
+        };
+
+        wrap.addEventListener("scroll", toggleHint, { passive: true });
+        window.addEventListener("resize", toggleHint);
+        requestAnimationFrame(toggleHint);
       });
     });
   </script>
@@ -1590,4 +1630,5 @@
 </body>
 
 </html>
+
 
