@@ -1,29 +1,66 @@
-<!DOCTYPE html>
-<html lang="pl">
+﻿<!doctype html>
+<html lang="pl" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#f8f7f2" id="meta-theme-color" />
+  <script>
+    (function () {
+      const s = localStorage.getItem("etf-tryb");
+      const d =
+        s === "ciemny" ||
+        (!s && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.classList.toggle("dark", d);
+      document.documentElement.classList.toggle("dark-mode", d);
+      document.documentElement.classList.toggle("light", !d);
+      document.documentElement.classList.toggle("light-mode", !d);
+    })();
+  </script>
 
-  <!-- ═══════════════════════════════════════════
-       SEO META TAGS
-  ═══════════════════════════════════════════ -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
   <title>EDO vs ETF — co wybrać w 2026 roku? Porównanie dla Polaków | ETFkalkulator.pl</title>
-  <meta name="description" content="Obligacje EDO (5,60% + inflacja) vs ETF MSCI World (historycznie 7–10%/rok) — uczciwe porównanie dla polskiego inwestora. Podatek Belki, IKE, ryzyko i konkretne liczby. Marzec 2026." />
-  <meta name="keywords" content="EDO vs ETF, obligacje EDO czy ETF, porównanie ETF obligacje Polska, MSCI World vs obligacje skarbowe, IKE ETF czy obligacje 2026" />
   <link rel="canonical" href="https://etfkalkulator.pl/blog/edo-vs-etf-2026" />
-
-  <!-- Open Graph -->
+  <meta name="description" content="Obligacje EDO (5,60% + inflacja) vs ETF MSCI World (historycznie 7–10%/rok) — uczciwe porównanie dla polskiego inwestora. Podatek Belki, IKE, ryzyko i konkretne liczby. Marzec 2026." />
+  <meta name="author" content="ETFkalkulator.pl" />
   <meta property="og:title" content="EDO vs ETF — co wybrać w 2026? Uczciwe porównanie | ETFkalkulator.pl" />
   <meta property="og:description" content="Obligacje EDO 5,60% vs ETF MSCI World 7–10%/rok. Które wychodzi lepiej po podatku i inflacji? Konkretne liczby dla polskiego inwestora." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://etfkalkulator.pl/blog/edo-vs-etf-2026" />
   <meta property="og:site_name" content="ETFkalkulator.pl" />
+  <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="EDO vs ETF — co wybrać w 2026? Uczciwe porównanie | ETFkalkulator.pl" />
+  <meta name="twitter:description" content="Obligacje EDO 5,60% vs ETF MSCI World 7–10%/rok. Które wychodzi lepiej po podatku i inflacji? Konkretne liczby dla polskiego inwestora." />
+  <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png" />
 
-  <meta property="article:published_time" content="2026-03-16" />
-  <meta property="article:modified_time" content="2026-03-16" />
-  <meta property="article:section" content="Porównania inwestycyjne" />
-
-  <!-- Schema.org -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Strona główna",
+            "item": "https://etfkalkulator.pl/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://etfkalkulator.pl/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "EDO vs ETF",
+            "item": "https://etfkalkulator.pl/blog/edo-vs-etf-2026"
+          }
+        ]
+      }
+    </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -69,336 +106,618 @@
   }
   </script>
 
-  <link rel="stylesheet" href="../../main.css" />
+  <link rel="icon" href="../images/favicon.png" />
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("consent", "default", { analytics_storage: "denied" });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
+  <script>
+    gtag("config", "G-GZECMECQ15", { send_page_view: false });
+  </script>
 
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="../js/tailwind-config.js"></script>
   <style>
-    .article-wrapper {
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 4rem;
-      font-family: var(--font-main, 'Inter', sans-serif);
-      color: var(--color-text, #1a1a2e);
-      line-height: 1.75;
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
-    .article-meta {
-      font-size: 0.85rem;
-      color: #6b7280;
-      margin-bottom: 2rem;
+
+    .dark .glass-effect {
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+    }
+
+    .material-symbols-outlined {
+      font-family: "Material Symbols Outlined";
+      font-size: 24px;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .article-prose h2 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: rgb(var(--stitch-text));
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .article-prose h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: rgb(var(--stitch-text));
+      margin-top: 1.5rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .article-prose p,
+    .article-prose ul,
+    .article-prose ol,
+    .article-prose table,
+    .article-prose details {
+      margin-bottom: 1rem;
+      line-height: 1.8;
+      color: rgb(var(--stitch-muted));
+    }
+
+    .article-prose ul,
+    .article-prose ol {
+      padding-left: 1.2rem;
+    }
+
+    .article-prose .info-box,
+    .article-prose .warn-box,
+    .article-prose .success-box,
+    .article-prose .example-box,
+    .article-prose .verdict-box {
+      border-radius: 1rem;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      border-left: 4px solid #0d7ff2;
+      background: rgba(13, 127, 242, 0.05);
+    }
+
+    .article-prose .warn-box {
+      border-left-color: #f59e0b;
+      background: rgba(245, 158, 11, 0.09);
+    }
+
+    .article-prose .success-box {
+      border-left-color: #10b981;
+      background: rgba(16, 185, 129, 0.09);
+    }
+
+    .article-prose .example-box {
+      border-left-color: #64748b;
+      background: rgba(100, 116, 139, 0.08);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .article-prose .verdict-box {
+      border: 1px solid rgba(13, 127, 242, 0.35);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(13, 127, 242, 0.08));
+    }
+
+    .article-prose .example-title,
+    .article-prose .verdict-title {
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #0d7ff2;
+      margin-bottom: 0.5rem;
+    }
+
+    .article-prose .cta-box {
+      background: linear-gradient(135deg, #1a56a0 0%, #40916c 100%);
+      color: #fff;
+      border-radius: 1rem;
+      padding: 1.75rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .article-prose .cta-box p {
+      color: rgba(255, 255, 255, 0.92);
+      margin-bottom: 0.9rem;
+    }
+
+    .article-prose .cta-buttons {
       display: flex;
-      gap: 1.5rem;
+      gap: 0.75rem;
+      justify-content: center;
       flex-wrap: wrap;
-      align-items: center;
     }
-    .tag {
-      background: #e8f0fb;
-      color: #1A56A0;
-      padding: 0.2rem 0.7rem;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: 600;
-    }
-    .update-badge {
+
+    .article-prose .cta-box a {
       display: inline-flex;
       align-items: center;
-      gap: 0.3rem;
-      background: #f0fdf4;
-      color: #166534;
-      border: 1px solid #bbf7d0;
-      border-radius: 20px;
-      padding: 0.2rem 0.7rem;
-      font-size: 0.78rem;
-      font-weight: 600;
-    }
-    .article-wrapper h1 {
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
-      font-weight: 700;
-      line-height: 1.3;
-      color: #0f172a;
-      margin-bottom: 0.5rem;
-    }
-    .article-wrapper h2 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #0f172a;
-      margin-top: 2.5rem;
-      margin-bottom: 0.75rem;
-      padding-bottom: 0.4rem;
-      border-bottom: 2px solid #1A56A0;
-    }
-    .article-wrapper h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #0f172a;
-      margin-top: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-    .article-wrapper p { margin-bottom: 1rem; }
-    .article-wrapper ul, .article-wrapper ol { padding-left: 1.5rem; margin-bottom: 1rem; }
-    .article-wrapper li { margin-bottom: 0.4rem; }
-
-    .lead {
-      font-size: 1.1rem;
-      color: #374151;
-      border-left: 4px solid #1A56A0;
-      padding-left: 1rem;
-      margin-bottom: 2rem;
-    }
-    .info-box {
-      background: #e8f0fb;
-      border-left: 4px solid #1A56A0;
-      border-radius: 0 8px 8px 0;
-      padding: 1rem 1.25rem;
-      margin: 1.5rem 0;
-    }
-    .info-box strong { color: #1A56A0; }
-    .warn-box {
-      background: #fff8e1;
-      border-left: 4px solid #f59e0b;
-      border-radius: 0 8px 8px 0;
-      padding: 1rem 1.25rem;
-      margin: 1.5rem 0;
-    }
-    .success-box {
-      background: #f0fdf4;
-      border-left: 4px solid #22c55e;
-      border-radius: 0 8px 8px 0;
-      padding: 1rem 1.25rem;
-      margin: 1.5rem 0;
+      justify-content: center;
+      background: #fff;
+      color: #1a56a0;
+      font-weight: 800;
+      padding: 0.65rem 1.2rem;
+      border-radius: 0.75rem;
+      text-decoration: none;
     }
 
-    /* Duże karty porównania */
-    .compare-cards {
+    .article-prose .cta-box a.secondary {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+    }
+
+    .article-prose .cta-box a:hover {
+      opacity: 0.92;
+    }
+
+    .article-prose .compare-cards {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
       margin: 1.5rem 0;
     }
-    .card-edo { border: 2px solid #40916c; border-radius: 12px; padding: 1.25rem; }
-    .card-etf { border: 2px solid #1A56A0; border-radius: 12px; padding: 1.25rem; }
-    .card-title {
-      font-size: 1.1rem;
-      font-weight: 700;
+
+    .article-prose .card-edo,
+    .article-prose .card-etf {
+      border-radius: 0.95rem;
+      padding: 1.2rem;
+      border: 2px solid rgba(148, 163, 184, 0.4);
+      background: rgba(248, 250, 252, 0.75);
+    }
+
+    .article-prose .card-edo {
+      border-color: rgba(16, 185, 129, 0.5);
+      background: rgba(16, 185, 129, 0.06);
+    }
+
+    .article-prose .card-etf {
+      border-color: rgba(13, 127, 242, 0.45);
+      background: rgba(13, 127, 242, 0.06);
+    }
+
+    .article-prose .card-title {
+      font-size: 1.08rem;
+      font-weight: 800;
       margin-bottom: 0.75rem;
       display: flex;
       align-items: center;
       gap: 0.4rem;
+      color: rgb(var(--stitch-text));
     }
-    .card-edo .card-title { color: #40916c; }
-    .card-etf .card-title { color: #1A56A0; }
-    .card-stat { font-size: 0.88rem; margin-bottom: 0.3rem; }
 
-    /* Wielka tabela porównawcza */
-    .data-table {
+    .article-prose .card-stat {
+      font-size: 0.88rem;
+      margin-bottom: 0.35rem;
+      color: rgb(var(--stitch-muted));
+      line-height: 1.55;
+    }
+
+    .article-prose .data-table {
       width: 100%;
       border-collapse: collapse;
-      margin: 1.5rem 0;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
+      overflow: hidden;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      display: table;
     }
-    .data-table th {
-      background: #1A56A0;
+
+    .article-prose .data-table th {
+      background: #0d7ff2;
       color: #fff;
-      padding: 0.6rem 0.8rem;
       text-align: left;
+      padding: 0.65rem 0.8rem;
+      font-weight: 700;
+    }
+
+    .article-prose .data-table th:first-child {
+      background: #0f172a;
+    }
+
+    .article-prose .data-table td {
+      padding: 0.58rem 0.8rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .article-prose .data-table tr:nth-child(even) td {
+      background: rgba(248, 250, 252, 0.7);
+    }
+
+    .article-prose .data-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .article-prose .positive {
+      color: #15803d;
+      font-weight: 700;
+    }
+
+    .article-prose .negative {
+      color: #b91c1c;
+      font-weight: 700;
+    }
+
+    .article-prose .neutral {
+      color: #78716c;
       font-weight: 600;
     }
-    .data-table th:first-child { background: #0f172a; }
-    .data-table td { padding: 0.55rem 0.8rem; border-bottom: 1px solid #e5e7eb; }
-    .data-table tr:nth-child(even) td { background: #f9fafb; }
-    .data-table tr:last-child td { border-bottom: none; }
-    .positive { color: #15803d; font-weight: 600; }
-    .negative { color: #b91c1c; font-weight: 600; }
-    .neutral { color: #78716c; }
 
-    /* Przykład liczbowy */
-    .example-box {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 1.25rem;
-      margin: 1.5rem 0;
-    }
-    .example-title {
-      font-weight: 700;
-      color: #1A56A0;
-      margin-bottom: 0.75rem;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    /* Wynik końcowy — duże liczby */
-    .result-grid {
+    .article-prose .result-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      gap: 0.9rem;
       margin: 1rem 0;
     }
-    .result-card {
-      border-radius: 10px;
-      padding: 1rem 1.25rem;
-      text-align: center;
-    }
-    .result-card.edo { background: #f0fdf4; border: 1px solid #86efac; }
-    .result-card.etf-pes { background: #fef9c3; border: 1px solid #fde047; }
-    .result-card.etf-base { background: #e8f0fb; border: 1px solid #93c5fd; }
-    .result-card.etf-opt { background: #fdf4ff; border: 1px solid #d8b4fe; }
-    .result-card .label { font-size: 0.8rem; color: #6b7280; margin-bottom: 0.3rem; }
-    .result-card .big-number { font-size: 1.6rem; font-weight: 800; color: #0f172a; }
-    .result-card .sub { font-size: 0.78rem; color: #6b7280; margin-top: 0.2rem; }
 
-    /* Scorecard */
-    .score-row {
+    .article-prose .result-card {
+      border-radius: 0.8rem;
+      padding: 1rem 1.1rem;
+      text-align: center;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: rgba(248, 250, 252, 0.7);
+    }
+
+    .article-prose .result-card.edo {
+      background: rgba(16, 185, 129, 0.12);
+      border-color: rgba(16, 185, 129, 0.45);
+    }
+
+    .article-prose .result-card.etf-pes {
+      background: rgba(234, 179, 8, 0.14);
+      border-color: rgba(234, 179, 8, 0.5);
+    }
+
+    .article-prose .result-card.etf-base {
+      background: rgba(13, 127, 242, 0.1);
+      border-color: rgba(13, 127, 242, 0.45);
+    }
+
+    .article-prose .result-card.etf-opt {
+      background: rgba(192, 132, 252, 0.12);
+      border-color: rgba(192, 132, 252, 0.45);
+    }
+
+    .article-prose .result-card .label {
+      font-size: 0.79rem;
+      color: #6b7280;
+      margin-bottom: 0.3rem;
+    }
+
+    .article-prose .result-card .big-number {
+      font-size: 1.55rem;
+      font-weight: 900;
+      color: rgb(var(--stitch-text));
+      line-height: 1.15;
+    }
+
+    .article-prose .result-card .sub {
+      font-size: 0.78rem;
+      color: #6b7280;
+      margin-top: 0.25rem;
+    }
+
+    .article-prose .score-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.6rem 0;
-      border-bottom: 1px solid #f0f0f0;
-      font-size: 0.9rem;
+      gap: 0.7rem;
+      padding: 0.62rem 0;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+      font-size: 0.92rem;
     }
-    .score-row:last-child { border-bottom: none; }
-    .score-label { flex: 1; color: #374151; }
-    .score-winner {
-      flex: 0 0 120px;
+
+    .article-prose .score-row:last-child {
+      border-bottom: none;
+    }
+
+    .article-prose .score-label {
+      flex: 1;
+      color: #374151;
+      line-height: 1.5;
+    }
+
+    .article-prose .score-winner {
+      flex: 0 0 122px;
       text-align: center;
+      font-weight: 800;
+      padding: 0.3rem 0.65rem;
+      border-radius: 0.5rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.01em;
+    }
+
+    .article-prose .win-edo {
+      background: rgba(16, 185, 129, 0.14);
+      color: #15803d;
+    }
+
+    .article-prose .win-etf {
+      background: rgba(13, 127, 242, 0.14);
+      color: #1d4ed8;
+    }
+
+    .article-prose .win-tie {
+      background: rgba(148, 163, 184, 0.18);
+      color: #475569;
+    }
+
+    .article-prose .faq-item {
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      border-radius: 0.8rem;
+      padding: 0;
+      background: rgba(248, 250, 252, 0.5);
+      margin-bottom: 0.9rem;
+    }
+
+    .article-prose .faq-item summary {
       font-weight: 700;
-      padding: 0.25rem 0.6rem;
-      border-radius: 6px;
-      font-size: 0.82rem;
-    }
-    .win-edo { background: #dcfce7; color: #15803d; }
-    .win-etf { background: #dbeafe; color: #1d4ed8; }
-    .win-tie { background: #f3f4f6; color: #6b7280; }
-
-    /* CTA */
-    .cta-box {
-      background: linear-gradient(135deg, #1A56A0 0%, #40916c 100%);
-      color: #fff;
-      border-radius: 12px;
-      padding: 1.75rem;
-      margin: 2.5rem 0;
-      text-align: center;
-    }
-    .cta-box p { color: rgba(255,255,255,0.9); margin-bottom: 1rem; }
-    .cta-box .cta-buttons { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
-    .cta-box a {
-      display: inline-block;
-      background: #fff;
-      color: #1A56A0;
-      font-weight: 700;
-      padding: 0.65rem 1.25rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 0.9rem;
-    }
-    .cta-box a:hover { opacity: 0.9; }
-    .cta-box a.secondary {
-      background: rgba(255,255,255,0.15);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.4);
-    }
-
-    /* TOC */
-    .toc {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 1.25rem 1.5rem;
-      margin: 1.5rem 0 2rem;
-    }
-    .toc h4 { margin: 0 0 0.75rem; font-size: 0.9rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; }
-    .toc ol { margin: 0; padding-left: 1.2rem; }
-    .toc li { margin-bottom: 0.3rem; }
-    .toc a { color: #1A56A0; text-decoration: none; font-size: 0.95rem; }
-    .toc a:hover { text-decoration: underline; }
-
-    /* FAQ */
-    .faq-item { margin-bottom: 1.25rem; }
-    .faq-item summary {
-      font-weight: 600;
       cursor: pointer;
-      padding: 0.75rem 1rem;
-      background: #f8fafc;
-      border-radius: 8px;
-      border: 1px solid #e2e8f0;
+      color: rgb(var(--stitch-text));
+      margin: 0;
+      padding: 0.82rem 1rem;
       list-style: none;
-    }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::before { content: "＋ "; color: #1A56A0; }
-    .faq-item[open] summary::before { content: "－ "; }
-    .faq-item[open] summary { border-radius: 8px 8px 0 0; border-bottom: none; }
-    .faq-answer {
-      padding: 0.75rem 1rem 0.5rem;
-      border: 1px solid #e2e8f0;
-      border-top: none;
-      border-radius: 0 0 8px 8px;
-      background: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    /* Breadcrumb */
-    .breadcrumb { font-size: 0.82rem; color: #6b7280; margin-bottom: 1.5rem; }
-    .breadcrumb a { color: #1A56A0; text-decoration: none; }
-    .breadcrumb a:hover { text-decoration: underline; }
-    .breadcrumb span { margin: 0 0.4rem; }
-
-    /* Verdict box */
-    .verdict-box {
-      background: linear-gradient(135deg, #f0fdf4, #e8f0fb);
-      border: 2px solid #1A56A0;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin: 2rem 0;
-    }
-    .verdict-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #1A56A0;
-      margin-bottom: 1rem;
+    .article-prose .faq-item summary::-webkit-details-marker {
+      display: none;
     }
 
-    @media (max-width: 600px) {
-      .article-wrapper { padding: 1rem 1rem 3rem; }
-      .compare-cards { grid-template-columns: 1fr; }
-      .result-grid { grid-template-columns: 1fr 1fr; }
-      .data-table { font-size: 0.78rem; }
-      .data-table th, .data-table td { padding: 0.4rem 0.5rem; }
-      .cta-box .cta-buttons { flex-direction: column; }
+    .article-prose .faq-item summary::before {
+      content: "+";
+      color: #0d7ff2;
+      font-size: 1rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .article-prose .faq-item[open] summary::before {
+      content: "−";
+    }
+
+    .article-prose .faq-item[open] summary {
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .article-prose .faq-answer {
+      margin: 0;
+      padding: 0.78rem 1rem 0.55rem;
+    }
+
+    .article-prose a {
+      color: #0d7ff2;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    @media (max-width: 700px) {
+      .article-prose .compare-cards,
+      .article-prose .result-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .article-prose .score-row {
+        align-items: flex-start;
+      }
+
+      .article-prose .score-winner {
+        flex: 0 0 auto;
+      }
+
+      .article-prose .data-table {
+        font-size: 0.82rem;
+      }
+
+      .article-prose .data-table th,
+      .article-prose .data-table td {
+        padding: 0.46rem 0.52rem;
+      }
+    }
+
+    .article-disclaimer {
+      font-size: 0.78rem;
+      color: rgb(var(--stitch-muted));
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .article-disclaimer strong {
+      color: rgb(var(--stitch-text));
+    }
+
+    .glass-effect ol {
+      list-style: decimal;
+      margin: 0;
+      padding-left: 1rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .glass-effect ol a {
+      color: #0d7ff2;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .glass-effect ol a:hover {
+      text-decoration: underline;
     }
   </style>
+  <link rel="stylesheet" href="../css/reset.css" />
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/main.css" />
 </head>
+
 <body>
+  <a href="#main"
+    class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-primary">Przejdź
+    do głównej treści</a>
 
-<!-- [NAV PLACEHOLDER] -->
-
-<main>
-<article class="article-wrapper">
-
-  <!-- Breadcrumb -->
-  <nav class="breadcrumb" aria-label="breadcrumb">
-    <a href="../../index.html">ETFkalkulator.pl</a>
-    <span>›</span>
-    <a href="../blog/">Blog</a>
-    <span>›</span>
-    <span>EDO vs ETF — porównanie 2026</span>
-  </nav>
-
-  <h1>EDO vs ETF — co wybrać w 2026 roku? Uczciwe porównanie dla Polaków</h1>
-
-  <div class="article-meta">
-    <span>📅 16 marca 2026</span>
-    <span class="update-badge">🔄 Aktualne dane: marzec 2026</span>
-    <span>⏱ ~10 min czytania</span>
-    <span class="tag">Porównania</span>
-    <span class="tag">ETF</span>
-    <span class="tag">Obligacje</span>
+  <!-- Cookie Consent Banner -->
+  <div id="cookie-consent" class="cookie-consent" style="display: none">
+    <div class="cookie-consent__inner">
+      <div class="cookie-consent__content">
+        <h4 class="cookie-consent__title">Prywatność i pliki cookies</h4>
+        <p class="cookie-consent__text">
+          ETFkalkulator.pl używa plików cookies do analizy ruchu i
+          personalizacji treści. Kontynuując przeglądanie zgadzasz się na
+          naszą
+          <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__link">politykę cookies</a>.
+        </p>
+      </div>
+      <div class="cookie-consent__actions">
+        <button id="cookie-accept" class="cookie-consent__btn cookie-consent__btn--accept">
+          Akceptuję
+        </button>
+        <button id="cookie-reject" class="cookie-consent__btn cookie-consent__btn--reject">
+          Odrzuć
+        </button>
+        <a href="../pages/polityka-prywatnosci.html#cookies"
+          class="cookie-consent__btn cookie-consent__btn--settings">Ustawienia</a>
+      </div>
+    </div>
   </div>
 
-  <p class="lead">
-    Masz wolne środki i zastanawiasz się: obligacje EDO czy ETF na MSCI World? To jedno z najczęstszych pytań polskich inwestorów. Ten artykuł nie da Ci gotowej odpowiedzi — bo jej nie ma. Da Ci za to wszystkie liczby i argumenty, żebyś podjął własną, świadomą decyzję.
-  </p>
+  <!-- NAV -->
+  <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-stitch-border/50"
+    style="font-family: &quot;Inter&quot;, sans-serif">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center shrink-0">
+        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity"
+          style="text-decoration: none">
+          <div class="bg-primary p-1.5 rounded-2xl text-white flex items-center justify-center"
+            style="background-color: #0d7ff2">
+            <span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-stitch-text">ETFkalkulator.pl</span>
+        </a>
+      </div>
+      <div class="hidden lg:flex items-center gap-6 xl:gap-8 mx-6">
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors"
+          href="../pages/kalkulator-etf.html" style="text-decoration: none">Kalkulator ETF</a>
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors"
+          href="../pages/kalkulator-obligacji.html" style="text-decoration: none">Kalkulator Obligacji</a>
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors"
+          href="../pages/kalkulator-wolnosci.html" style="text-decoration: none">Kalkulator Wolności</a>
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors"
+          href="../pages/porownywarka.html" style="text-decoration: none">Porównywarka</a>
+        <a class="text-sm font-extrabold text-primary transition-colors hover:opacity-80" href="index.html"
+          style="text-decoration: none; color: #0d7ff2">Blog</a>
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors"
+          href="../pages/o-projekcie.html" style="text-decoration: none">O projekcie</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onkeydown="if (event.key === 'Enter') this.click();" onclick="przelaczTryb()" aria-label="Przełącz tryb"
+          class="w-9 h-9 rounded-full border border-stitch-border bg-stitch-surface flex items-center justify-center hover:bg-stitch-bg transition-colors">
+          <span class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
+          <span class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
+        </button>
+        <a href="#newsletter-section"
+          class="bg-primary text-white px-4 h-9 rounded-full flex items-center justify-center text-[13px] font-bold hover:opacity-90 transition-opacity no-underline"
+          style="background-color: #0d7ff2">Zapisz się</a>
+      </div>
+    </div>
+    <div
+      class="lg:hidden h-11 border-t border-stitch-border/30 flex items-center overflow-x-auto overflow-y-hidden no-scrollbar px-4 gap-6 bg-stitch-surface/10"
+      style="-webkit-overflow-scrolling: touch">
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap"
+        href="../pages/kalkulator-etf.html" style="text-decoration: none">Kalkulator ETF</a>
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap"
+        href="../pages/kalkulator-obligacji.html" style="text-decoration: none">Obligacje</a>
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap"
+        href="../pages/kalkulator-wolnosci.html" style="text-decoration: none">Wolność finansowa</a>
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap"
+        href="../pages/porownywarka.html" style="text-decoration: none">Porównywarka</a>
+      <a class="text-[12px] font-extrabold text-primary hover:opacity-80 whitespace-nowrap" href="index.html"
+        style="text-decoration: none; color: #0d7ff2">Blog</a>
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap"
+        href="../pages/o-projekcie.html" style="text-decoration: none">O projekcie</a>
+    </div>
+  </nav>
 
-  <nav class="toc" aria-label="Spis treści">
-    <h4>📋 Spis treści</h4>
-    <ol>
+  <!-- HERO -->
+  <section
+    class="relative bg-gradient-to-br from-blue-800 via-blue-700 to-primary pt-32 pb-16 md:pb-20 px-4 sm:px-6 overflow-hidden"
+    style="
+        background: linear-gradient(
+          135deg,
+          #1e40af 0%,
+          #1d4ed8 40%,
+          #0d7ff2 100%
+        );
+      ">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute -top-40 -right-40 w-96 h-96 bg-stitch-surface/5 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-20 -left-20 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative z-10 max-w-3xl mx-auto">
+      <nav class="mb-6" aria-label="breadcrumb">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li>
+            <a href="../index.html" class="hover:text-white transition-colors"
+              style="text-decoration: none">ETFkalkulator.pl</a>
+          </li>
+          <li>
+            <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+          </li>
+          <li>
+            <a href="index.html" class="hover:text-white transition-colors" style="text-decoration: none">Blog</a>
+          </li>
+          <li>
+            <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+          </li>
+          <li class="text-white font-semibold">EDO vs ETF</li>
+        </ol>
+      </nav>
+      <h1 class="text-2xl md:text-4xl font-black text-white leading-tight mb-4">EDO vs ETF — co wybrać w 2026 roku? Uczciwe porównanie dla Polaków</h1>
+      <p class="text-white/85 text-base md:text-lg leading-relaxed mb-4">Masz wolne środki i zastanawiasz się: obligacje EDO czy ETF na MSCI World? To jedno z najczęstszych pytań polskich inwestorów. Ten artykuł nie da Ci gotowej odpowiedzi — bo jej nie ma. Da Ci za to wszystkie liczby i argumenty, żebyś podjął własną, świadomą decyzję.</p>
+      <div class="flex flex-wrap gap-4 mt-4 text-white/60 text-sm">
+        <span class="flex items-center gap-1.5"><span
+            class="material-symbols-outlined text-[16px]">calendar_today</span>
+          marzec 2026</span>
+        <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">schedule</span> 10 minut czytania</span>
+        <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">person</span>
+          ETFkalkulator.pl</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="bg-stitch-bg dark:bg-slate-950 transition-colors duration-300">
+  <!-- ARTICLE CONTENT -->
+    <article id="main" class="max-w-3xl mx-auto px-4 sm:px-6 pt-8 pb-20">
+    <div class="glass-effect rounded-[1.5rem] p-6 mb-10 border-l-4 border-primary bg-primary/5 dark:bg-primary/10">
+      <p class="text-xs font-black uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
+        <span class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+        Spis treści
+      </p>
+      <ol>
       <li><a href="#czym-sa">Czym są EDO i ETF w pigułce</a></li>
       <li><a href="#tabela">Porównanie cech — tabela</a></li>
       <li><a href="#liczby">Konkretne liczby — 10 i 20 lat</a></li>
@@ -408,13 +727,12 @@
       <li><a href="#portfel">Złoty środek — portfel mieszany</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ol>
-  </nav>
+    </div>
 
+    <p class="text-stitch-muted leading-relaxed mb-6 text-base md:text-lg">Masz wolne środki i zastanawiasz się: obligacje EDO czy ETF na MSCI World? To jedno z najczęstszych pytań polskich inwestorów. Ten artykuł nie da Ci gotowej odpowiedzi — bo jej nie ma. Da Ci za to wszystkie liczby i argumenty, żebyś podjął własną, świadomą decyzję.</p>
 
-  <!-- ═══════════════════════════════
-       1. CZYM SĄ
-  ═══════════════════════════════ -->
-  <h2 id="czym-sa">1. EDO i ETF — czym są w pigułce</h2>
+    <div class="article-prose text-stitch-muted">
+<h2 id="czym-sa">1. EDO i ETF — czym są w pigułce</h2>
 
   <p>Zanim przejdziemy do liczb, upewnijmy się że mówimy o tym samym.</p>
 
@@ -594,8 +912,8 @@
     <p><strong>Sprawdź EDO vs ETF dla swoich liczb</strong></p>
     <p>Wpisz własny kapitał, horyzont i oczekiwaną stopę zwrotu — kalkulator pokaże wynik po podatku i inflacji.</p>
     <div class="cta-buttons">
-      <a href="../../pages/porownywarka.html">→ Otwórz porównywarkę</a>
-      <a href="../../pages/kalkulator-obligacji.html" class="secondary">Kalkulator EDO</a>
+      <a href="../pages/porownywarka.html">→ Otwórz porównywarkę</a>
+      <a href="../pages/kalkulator-obligacji.html" class="secondary">Kalkulator EDO</a>
     </div>
   </div>
 
@@ -870,7 +1188,7 @@
   <details class="faq-item">
     <summary>Czy obligacje EDO są lepsze od lokaty?</summary>
     <div class="faq-answer">
-      <p>Przy długim horyzoncie (5+ lat) — zazwyczaj tak. EDO daje inflacja + 2%, co przy wyższej inflacji znacznie bije lokatę z stałym oprocentowaniem. Przy krótkim horyzoncie (do 1–2 lat) lokata może być lepsza ze względu na brak opłaty za wcześniejszy wykup. Porównaj w naszym <a href="../../pages/kalkulator-obligacji.html">kalkulatorze obligacji</a>.</p>
+      <p>Przy długim horyzoncie (5+ lat) — zazwyczaj tak. EDO daje inflacja + 2%, co przy wyższej inflacji znacznie bije lokatę z stałym oprocentowaniem. Przy krótkim horyzoncie (do 1–2 lat) lokata może być lepsza ze względu na brak opłaty za wcześniejszy wykup. Porównaj w naszym <a href="../pages/kalkulator-obligacji.html">kalkulatorze obligacji</a>.</p>
     </div>
   </details>
 
@@ -894,20 +1212,328 @@
     <p><strong>Sprawdź konkretne liczby dla swojej sytuacji</strong></p>
     <p>Porównywarka ETF vs Obligacje vs Lokata — wpisz swój kapitał, horyzont i oczekiwania. Wyniki po podatku i inflacji w sekundę.</p>
     <div class="cta-buttons">
-      <a href="../../pages/porownywarka.html">→ Otwórz porównywarkę</a>
-      <a href="../../pages/kalkulator-etf.html" class="secondary">Kalkulator ETF</a>
+      <a href="../pages/porownywarka.html">→ Otwórz porównywarkę</a>
+      <a href="../pages/kalkulator-etf.html" class="secondary">Kalkulator ETF</a>
     </div>
   </div>
 
   <!-- Disclaimer -->
-  <p style="font-size:0.8rem; color:#6b7280; margin-top:2rem; padding-top:1rem; border-top:1px solid #e5e7eb;">
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-stitch-border">
+      <p class="article-disclaimer">
     <strong>Disclaimer:</strong> Artykuł ma charakter wyłącznie edukacyjny i informacyjny. Nie stanowi rekomendacji inwestycyjnej w rozumieniu Ustawy o obrocie instrumentami finansowymi. Historyczne stopy zwrotu ETF nie gwarantują przyszłych wyników. Dane o obligacjach EDO oparte na ofercie Ministerstwa Finansów z marca 2026 — mogą ulec zmianie. Przed podjęciem decyzji inwestycyjnej skonsultuj się z licencjonowanym doradcą finansowym. Inwestowanie wiąże się z ryzykiem utraty części lub całości zainwestowanego kapitału.
   </p>
+    </div>
+  </article>
 
-</article>
-</main>
+  <!-- NEWSLETTER SECTION (Wide Banner) -->
+  <section id="newsletter-section"
+    class="pt-10 pb-20 px-6 bg-slate-100 dark:bg-slate-950 border-t border-stitch-border dark:border-slate-900 transition-colors">
+    <div class="max-w-7xl mx-auto">
+      <div
+        class="bg-stitch-surface/70 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 lg:p-16 shadow-xl border border-white/50 dark:border-stitch-border/50 relative overflow-hidden group">
+        <!-- Decorative element -->
+        <div
+          class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700">
+        </div>
 
-<!-- [FOOTER PLACEHOLDER] -->
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center lg:justify-items-stretch relative z-10">
+          <!-- Left Side: Content -->
+          <div class="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              Newsletter
+            </div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-stitch-text tracking-tight leading-[1.1]">
+              Bądź na bieżąco z <span class="text-primary">rynkiem ETF</span>
+              <span class="hidden md:inline">i finansami</span>
+            </h2>
+            <p class="text-stitch-muted text-lg leading-relaxed max-w-xl">
+              Dołącz do społeczności świadomych inwestorów. Otrzymuj analizy,
+              nowe kalkulatory i rzetelną wiedzę prosto na swoją skrzynkę.
+              Zero spamu.
+            </p>
+          </div>
 
+          <!-- Right Side: Form -->
+          <div class="w-full lg:max-w-md mx-auto lg:ml-auto">
+            <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
+              <div class="ml-form-embedWrapper embedForm">
+                <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                  <form class="ml-block-form"
+                    action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe"
+                    method="post" target="_blank">
+                    <div class="flex flex-col space-y-4">
+                      <!-- Email Input -->
+                      <div class="ml-form-fieldRow">
+                        <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                          <input aria-label="email" aria-required="true" type="email"
+                            class="w-full h-14 px-6 rounded-2xl border border-stitch-border bg-stitch-surface dark:bg-slate-950 text-stitch-text text-base font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all placeholder:text-slate-400"
+                            name="fields[email]" placeholder="Twój adres e-mail" />
+                        </div>
+                      </div>
+
+                      <!-- Consents -->
+                      <div class="ml-form-embedPermissions">
+                        <label class="flex items-start gap-4 cursor-pointer group">
+                          <input aria-label="Wprowadź wartość" type="checkbox" name="gdpr[]"
+                            value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl" required
+                            class="custom-checkbox mt-1 transition-all" />
+                          <span
+                            class="text-[11px] text-stitch-muted font-medium leading-relaxed group-hover:text-stitch-muted dark:group-hover:text-slate-300 transition-colors">Zgadzam
+                            się na otrzymywanie newslettera. Możesz
+                            się wypisać w każdej chwili.</span>
+                        </label>
+                      </div>
+
+                      <!-- reCAPTCHA -->
+                      <div class="ml-form-recaptcha ml-validate-required py-2 flex justify-center">
+                        <div class="g-recaptcha transform scale-[0.85] origin-center"
+                          data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                      </div>
+
+                      <input type="hidden" name="ml-submit" value="1" />
+                      <input type="hidden" name="anticsrf" value="true" />
+
+                      <!-- Button -->
+                      <div class="ml-form-embedSubmit">
+                        <button type="submit"
+                          class="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-sm md:text-base uppercase tracking-widest hover:scale-[1.01] active:scale-[0.98] transition-all shadow-xl shadow-primary/20"
+                          style="background-color: #0d7ff2">
+                          Zapisz się teraz
+                        </button>
+                      </div>
+
+                      <!-- Legal & Financial Disclaimers -->
+                      <div class="pt-6 border-t border-stitch-border mt-2">
+                        <p class="text-[10px] text-slate-400 dark:text-stitch-muted leading-relaxed mb-2">
+                          Zapisując się, akceptujesz
+                          <a href="../pages/regulamin.html" class="underline hover:text-primary">Regulamin</a>
+                          i
+                          <a href="../pages/polityka-prywatnosci.html" class="underline hover:text-primary">Politykę
+                            Prywatności</a>. Twoje dane są bezpieczne i służą wyłącznie do
+                          wysyłki newslettera.
+                        </p>
+                        <p class="text-[10px] text-slate-400 font-medium italic">
+                          Prezentowane treści nie stanowią rekomendacji
+                          inwestycyjnej.
+                        </p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <!-- Success -->
+                <div class="ml-form-successBody row-success" style="display: none">
+                  <div
+                    class="p-10 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 text-center">
+                    <div
+                      class="w-16 h-16 bg-emerald-100 dark:bg-emerald-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span
+                        class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-3xl">verified</span>
+                    </div>
+                    <h4 class="text-emerald-900 dark:text-emerald-300 font-bold text-xl mb-1">
+                      Sukces!
+                    </h4>
+                    <p class="text-emerald-700 dark:text-emerald-500 text-sm">
+                      Sprawdź swoją skrzynkę e-mail, aby potwierdzić zapis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-stitch-bg border-t border-stitch-border dark:border-slate-900 py-20 px-6"
+    style="font-family: &quot;Inter&quot;, sans-serif">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12 border-b border-stitch-border/50 pb-8">
+        <div class="flex items-center gap-2">
+          <div class="bg-primary p-1.5 rounded-2xl text-white flex items-center justify-center"
+            style="background-color: #0d7ff2">
+            <span class="material-symbols-outlined text-base">account_balance_wallet</span>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-stitch-text">ETF<span
+              class="font-normal text-stitch-muted">kalkulator</span>.pl</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20 items-start">
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">
+            Narzędzia
+          </h5>
+          <ul class="space-y-4">
+            <li>
+              <a href="../pages/kalkulator-etf.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Kalkulator ETF</a>
+            </li>
+            <li>
+              <a href="../pages/kalkulator-obligacji.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Obligacje Skarbowe</a>
+            </li>
+            <li>
+              <a href="../pages/kalkulator-wolnosci.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Wolność Finansowa</a>
+            </li>
+            <li>
+              <a href="../pages/porownywarka.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Porównywarka ETF</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">
+            Projekt
+          </h5>
+          <ul class="space-y-4">
+            <li>
+              <a href="index.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Blog i Wiedza</a>
+            </li>
+            <li>
+              <a href="../pages/o-projekcie.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">O projekcie</a>
+            </li>
+            <li>
+              <a href="../pages/regulamin.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Regulamin</a>
+            </li>
+            <li>
+              <a href="../pages/polityka-prywatnosci.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Polityka prywatności</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">
+            Kontakt
+          </h5>
+          <p class="text-sm text-stitch-muted mb-6 leading-relaxed">
+            Masz pytania? Pisz śmiało:
+          </p>
+          <a href="mailto:kontakt@etfkalkulator.pl"
+            class="text-sm font-bold text-stitch-text hover:text-primary transition-colors block mb-8"
+            style="text-decoration: none">kontakt@etfkalkulator.pl</a>
+          <div class="flex gap-4">
+            <a href="#"
+              class="w-10 h-10 rounded-2xl bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-xl"><span
+                class="material-symbols-outlined text-lg">share</span></a>
+            <a href="#"
+              class="w-10 h-10 rounded-2xl bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-xl"><span
+                class="material-symbols-outlined text-lg">alternate_email</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-20 pt-10 border-t border-stitch-border dark:border-slate-900">
+        <p class="text-[11px] text-slate-400 dark:text-stitch-muted leading-relaxed mb-8 max-w-4xl">
+          Serwis ETFkalkulator.pl ma charakter wyłącznie edukacyjny i
+          informacyjny. Prezentowane obliczenia nie stanowią rekomendacji
+          inwestycyjnej, porady finansowej ani doradztwa podatkowego w
+          rozumieniu obowiązujących przepisów prawa. Przed podjęciem decyzji
+          inwestycyjnej skonsultuj się z licencjonowanym doradcą finansowym.
+          Inwestowanie wiąże się z ryzykiem utraty części lub całości
+          zainwestowanego kapitału.
+        </p>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+          <p>© 2026 ETFkalkulator.pl — Made with ❤️ by Florian</p>
+          <div class="flex gap-6">
+            <span>Wszelkie prawa zastrzeżone</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </main>
+
+  <!-- Cookie Consent (Tailwind) -->
+  <div id="cookie-consent-tw"
+    class="fixed bottom-6 left-6 right-6 md:left-auto md:w-[400px] bg-stitch-surface p-6 rounded-2xl shadow-xl border border-stitch-border z-[100] transition-all duration-500 translate-y-20 opacity-0 transform"
+    style="display: none">
+    <div class="flex items-start gap-4 mb-4">
+      <div class="bg-amber-100 dark:bg-amber-900/30 p-2 rounded-2xl text-amber-600 dark:text-amber-400">
+        <span class="material-symbols-outlined">cookie</span>
+      </div>
+      <div>
+        <h4 class="font-bold text-stitch-text">Ciasteczka i Analityka</h4>
+        <p class="text-xs text-stitch-muted leading-relaxed mt-1">
+          Używamy Google Analytics, aby anonimowo analizować ruch na stronie i
+          ulepszać nasze kalkulatory.
+        </p>
+      </div>
+    </div>
+    <div class="flex gap-3">
+      <button id="cookie-accept-tw"
+        class="flex-1 bg-primary text-white text-xs font-bold py-3 rounded-2xl hover:opacity-90 transition-opacity"
+        style="background-color: #0d7ff2">
+        Akceptuję
+      </button>
+      <button id="cookie-reject-tw"
+        class="flex-1 bg-slate-100 text-stitch-muted text-xs font-bold py-3 rounded-2xl hover:bg-slate-200 transition-colors">
+        Odrzuć
+      </button>
+    </div>
+  </div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/shared.js"></script>
+  <script defer>
+    function przelaczTryb() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains("dark");
+
+      if (isDark) {
+        html.classList.remove("dark", "dark-mode");
+        html.classList.add("light", "light-mode");
+        localStorage.setItem("etf-tryb", "jasny");
+      } else {
+        html.classList.add("dark", "dark-mode");
+        html.classList.remove("light", "light-mode");
+        localStorage.setItem("etf-tryb", "ciemny");
+      }
+
+      const d = html.classList.contains("dark");
+      const m = document.getElementById("meta-theme-color");
+      if (m) m.content = d ? "#0f172a" : "#f8fafc";
+    }
+
+    (function () {
+      const html = document.documentElement;
+      const saved = localStorage.getItem("etf-tryb");
+      const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      if (saved === "ciemny" || (!saved && systemDark)) {
+        html.classList.add("dark", "dark-mode");
+        html.classList.remove("light", "light-mode");
+      } else {
+        html.classList.add("light", "light-mode");
+        html.classList.remove("dark", "dark-mode");
+      }
+
+      const m = document.getElementById("meta-theme-color");
+      if (m) m.content = html.classList.contains("dark") ? "#0f172a" : "#f8fafc";
+    })();
+  </script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
+    type="text/javascript"></script>
 </body>
+
 </html>
+
