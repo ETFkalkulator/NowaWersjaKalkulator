@@ -667,7 +667,7 @@
             <p class="text-sm text-slate-400 mb-6">Kliknij scenariusz żeby ustawić stopę w formularzu</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
               <!-- Pessimistic -->
-              <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+              <div id="scen-card-pesymistyczny" tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
                 onclick="ustawScenariusz('pesymistyczny')"
                 class="p-5 rounded-stitch border-2 border-stitch-border cursor-pointer hover:border-primary/50 hover:scale-105 transition-all">
                 <p class="text-sm font-bold text-stitch-text mb-1">🐻 Pesymistyczny</p>
@@ -682,9 +682,9 @@
                 </div>
               </div>
               <!-- Base -->
-              <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+              <div id="scen-card-bazowy" tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
                 onclick="ustawScenariusz('bazowy')"
-                class="p-5 rounded-stitch border-2 border-primary/30 bg-primary/5 cursor-pointer hover:border-primary/50 hover:scale-105 transition-all">
+                class="p-5 rounded-stitch border-2 border-blue-500 bg-blue-50/50 ring-2 ring-blue-500/20 cursor-pointer hover:border-primary/50 hover:scale-105 transition-all">
                 <p class="text-sm font-bold text-stitch-text mb-1">📈 Bazowy</p>
                 <p class="text-[10px] text-slate-400 mb-3">7%/rok — historyczna średnia</p>
                 <div class="space-y-2">
@@ -697,7 +697,7 @@
                 </div>
               </div>
               <!-- Optimistic -->
-              <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+              <div id="scen-card-optymistyczny" tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
                 onclick="ustawScenariusz('optymistyczny')"
                 class="p-5 rounded-stitch border-2 border-stitch-border cursor-pointer hover:border-primary/50 hover:scale-105 transition-all">
                 <p class="text-sm font-bold text-stitch-text mb-1">🚀 Optymistyczny</p>
@@ -1083,7 +1083,6 @@
 
   <script src="../js/shared.js"></script>
   <script src="../js/utils.js"></script>
-  <script src="../js/calculators/porownywarka.js"></script>
   <script src="../js/porownywarka.js"></script>
 
   <script defer>
