@@ -9,15 +9,9 @@ var PODATEK_BELKI = 0.19;
 var wykresPorown = null;
 
 /**
- * POMOCNICZE FUNKCJE FORMATUJĄCE
+ * POMOCNICZE FUNKCJE
+ * Korzystamy z globalnych funkcji w utils.js: formatujZl, formatujProcent, animuj.
  */
-function formatujZl(val) {
-    return new Intl.NumberFormat('pl-PL', { style: 'currency', currency: 'PLN', maximumFractionDigits: 0 }).format(val);
-}
-
-function formatujProcent(val) {
-    return (val * 100).toFixed(2) + '%';
-}
 
 function pobierzWartosc(id, def) {
     const el = document.getElementById(id);
@@ -163,47 +157,52 @@ function obliczPorownanie() {
  * AKTUALIZACJA WIDOKU (UI)
  */
 function aktualizujWynikiUI(etf, obl, lok, lata, bezPodatku) {
-    const set = (id, val) => {
+    const set = (id, val, formatFn = null) => {
         const el = document.getElementById(id);
-        if (el) el.textContent = val;
+        if (!el) return;
+        if (typeof val === 'number' && formatFn) {
+            animuj(id, val, formatFn);
+        } else {
+            el.textContent = val;
+        }
     };
 
     // ETF Panel
-    set('por-etf-kapital', formatujZl(etf.kapitalNetto));
-    set('por-etf-realny', formatujZl(etf.kapitalRealny));
-    set('por-etf-zysk', formatujZl(etf.zyskPoPodatku));
-    set('por-etf-zysk-r', formatujZl(etf.zyskRealny));
-    set('por-etf-podatek', formatujZl(etf.podatekKwota));
-    set('por-etf-cagr', formatujProcent(etf.cagr));
-    set('por-etf-cagr-r', formatujProcent(etf.cagrReal));
+    set('por-etf-kapital', etf.kapitalNetto, formatujZl);
+    set('por-etf-realny', etf.kapitalRealny, formatujZl);
+    set('por-etf-zysk', etf.zyskPoPodatku, formatujZl);
+    set('por-etf-zysk-r', etf.zyskRealny, formatujZl);
+    set('por-etf-podatek', etf.podatekKwota, formatujZl);
+    set('por-etf-cagr', etf.cagr, formatujProcent);
+    set('por-etf-cagr-r', etf.cagrReal, formatujProcent);
 
     // Obligacje Panel
-    set('por-obligacje-kapital', formatujZl(obl.kapitalNetto));
-    set('por-obligacje-realny', formatujZl(obl.kapitalRealny));
-    set('por-obligacje-zysk', formatujZl(obl.zyskPoPodatku));
-    set('por-obligacje-zysk-r', formatujZl(obl.zyskRealny));
-    set('por-obligacje-podatek', formatujZl(obl.podatekKwota));
-    set('por-obligacje-cagr', formatujProcent(obl.cagr));
-    set('por-obligacje-cagr-r', formatujProcent(obl.cagrReal));
+    set('por-obligacje-kapital', obl.kapitalNetto, formatujZl);
+    set('por-obligacje-realny', obl.kapitalRealny, formatujZl);
+    set('por-obligacje-zysk', obl.zyskPoPodatku, formatujZl);
+    set('por-obligacje-zysk-r', obl.zyskRealny, formatujZl);
+    set('por-obligacje-podatek', obl.podatekKwota, formatujZl);
+    set('por-obligacje-cagr', obl.cagr, formatujProcent);
+    set('por-obligacje-cagr-r', obl.cagrReal, formatujProcent);
 
     // Lokata Panel
-    set('por-lokata-kapital', formatujZl(lok.kapitalNetto));
-    set('por-lokata-realny', formatujZl(lok.kapitalRealny));
-    set('por-lokata-zysk', formatujZl(lok.zyskPoPodatku));
-    set('por-lokata-zysk-r', formatujZl(lok.zyskRealny));
-    set('por-lokata-podatek', formatujZl(lok.podatekKwota));
-    set('por-lokata-cagr', formatujProcent(lok.cagr));
-    set('por-lokata-cagr-r', formatujProcent(lok.cagrReal));
+    set('por-lokata-kapital', lok.kapitalNetto, formatujZl);
+    set('por-lokata-realny', lok.kapitalRealny, formatujZl);
+    set('por-lokata-zysk', lok.zyskPoPodatku, formatujZl);
+    set('por-lokata-zysk-r', lok.zyskRealny, formatujZl);
+    set('por-lokata-podatek', lok.podatekKwota, formatujZl);
+    set('por-lokata-cagr', lok.cagr, formatujProcent);
+    set('por-lokata-cagr-r', lok.cagrReal, formatujProcent);
 
     // Winner Banner
     var maxVal = Math.max(etf.kapitalNetto, obl.kapitalNetto, lok.kapitalNetto);
     var winnerName = (etf.kapitalNetto === maxVal) ? "ETF Globalny" : (obl.kapitalNetto === maxVal) ? "Obligacje EDO" : "Lokata Bankowa";
     set('por-zwyciezca-nazwa', winnerName);
-    set('por-zwyciezca-kwota', formatujZl(maxVal));
+    set('por-zwyciezca-kwota', maxVal, formatujZl);
     
     var wklad = etf.wkladLaczny;
-    var przewagaPercent = ((maxVal - wklad) / wklad * 100).toFixed(1);
-    set('por-zwyciezca-przewaga', "Całkowity zwrot z inwestycji: " + przewagaPercent + "%");
+    var przewagaPercent = (maxVal - wklad) / wklad;
+    set('por-zwyciezca-przewaga', "Całkowity zwrot z inwestycji: " + formatujProcent(przewagaPercent));
 
     // Scenarios Summary (Quick View)
     var pInput = {
@@ -214,17 +213,17 @@ function aktualizujWynikiUI(etf, obl, lok, lata, bezPodatku) {
         bezPodatku: bezPodatku
     };
     
-    set('scen-pes-kapital', formatujZl(obliczStrategie(Object.assign({}, pInput, {stopa:4})).kapitalNetto));
-    set('scen-pes-zysk', formatujZl(obliczStrategie(Object.assign({}, pInput, {stopa:4})).zyskPoPodatku));
-    set('scen-pes-cagr', formatujProcent(obliczStrategie(Object.assign({}, pInput, {stopa:4})).cagr));
+    set('scen-pes-kapital', obliczStrategie(Object.assign({}, pInput, {stopa:4})).kapitalNetto, formatujZl);
+    set('scen-pes-zysk', obliczStrategie(Object.assign({}, pInput, {stopa:4})).zyskPoPodatku, formatujZl);
+    set('scen-pes-cagr', obliczStrategie(Object.assign({}, pInput, {stopa:4})).cagr, formatujProcent);
     
-    set('scen-baz-kapital', formatujZl(etf.kapitalNetto));
-    set('scen-baz-zysk', formatujZl(etf.zyskPoPodatku));
-    set('scen-baz-cagr', formatujProcent(etf.cagr));
+    set('scen-baz-kapital', etf.kapitalNetto, formatujZl);
+    set('scen-baz-zysk', etf.zyskPoPodatku, formatujZl);
+    set('scen-baz-cagr', etf.cagr, formatujProcent);
     
-    set('scen-opt-kapital', formatujZl(obliczStrategie(Object.assign({}, pInput, {stopa:10})).kapitalNetto));
-    set('scen-opt-zysk', formatujZl(obliczStrategie(Object.assign({}, pInput, {stopa:10})).zyskPoPodatku));
-    set('scen-opt-cagr', formatujProcent(obliczStrategie(Object.assign({}, pInput, {stopa:10})).cagr));
+    set('scen-opt-kapital', obliczStrategie(Object.assign({}, pInput, {stopa:10})).kapitalNetto, formatujZl);
+    set('scen-opt-zysk', obliczStrategie(Object.assign({}, pInput, {stopa:10})).zyskPoPodatku, formatujZl);
+    set('scen-opt-cagr', obliczStrategie(Object.assign({}, pInput, {stopa:10})).cagr, formatujProcent);
 
     // Status Podatkowy
     set('txt-por-podatek-status', bezPodatku ? "Konto IKE/IKZE (0% podatku)" : "Opodatkowanie standardowe (19%)");
@@ -247,11 +246,19 @@ function rysujTabele(lata, etf, obl, lok) {
 
         var tr = document.createElement('tr');
         tr.className = 'hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors';
-        tr.innerHTML = 
-            '<td class="sticky left-0 z-10 bg-white dark:bg-slate-950 px-4 py-3 text-xs font-bold border-r border-slate-100 dark:border-slate-800">Rok ' + r + '</td>' +
-            '<td class="px-3 py-4 text-right ' + (eK===max?'font-bold text-blue-600':'') + '">' + formatujZl(eK) + '</td>' +
-            '<td class="px-3 py-4 text-right ' + (oK===max?'font-bold text-emerald-600':'') + '">' + formatujZl(oK) + '</td>' +
-            '<td class="px-3 py-4 text-right ' + (lK===max?'font-bold text-amber-600':'') + '">' + formatujZl(lK) + '</td>';
+        const createTd = (text, className = "") => {
+            const td = document.createElement('td');
+            td.textContent = text;
+            if (className) td.className = className;
+            return td;
+        };
+
+        tr.append(
+            createTd('Rok ' + r, "sticky left-0 z-10 bg-white dark:bg-slate-950 px-4 py-3 text-xs font-bold border-r border-slate-100 dark:border-slate-800"),
+            createTd(formatujZl(eK), "px-3 py-4 text-right " + (eK===max?'font-bold text-blue-600':'')),
+            createTd(formatujZl(oK), "px-3 py-4 text-right " + (oK===max?'font-bold text-emerald-600':'')),
+            createTd(formatujZl(lK), "px-3 py-4 text-right " + (lK===max?'font-bold text-amber-600':''))
+        );
         tbody.appendChild(tr);
     }
 }

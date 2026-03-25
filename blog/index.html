@@ -1,22 +1,11 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pl" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="color-scheme" content="light dark" />
   <meta name="theme-color" content="#f8f7f2" id="meta-theme-color" />
-  <script>
-    (function () {
-      const s = localStorage.getItem("etf-tryb");
-      const d =
-        s === "ciemny" ||
-        (!s && window.matchMedia("(prefers-color-scheme: dark)").matches);
-      document.documentElement.classList.toggle("dark", d);
-      document.documentElement.classList.toggle("dark-mode", d);
-      document.documentElement.classList.toggle("light", !d);
-      document.documentElement.classList.toggle("light-mode", !d);
-    })();
-  </script>
+
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
   <title>
@@ -140,6 +129,8 @@
   <link rel="stylesheet" href="../css/reset.css" />
   <link rel="stylesheet" href="../css/variables.css" />
   <link rel="stylesheet" href="../css/main.css" />
+  <script src="../js/utils.js" defer></script>
+  <script src="../js/shared.js" defer></script>
   <link rel="preload" as="style" href="../css/mailerlite.css" />
   <link href="../css/mailerlite.css" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript>
@@ -152,31 +143,6 @@
     class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-primary">Przejdź
     do głównej treści</a>
 
-  <!-- Cookie Consent Banner -->
-  <div id="cookie-consent" class="cookie-consent" style="display: none">
-    <div class="cookie-consent__inner">
-      <div class="cookie-consent__content">
-        <h4 class="cookie-consent__title">Prywatność i pliki cookies</h4>
-        <p class="cookie-consent__text">
-          ETFkalkulator.pl używa plików cookies do analizy ruchu i
-          personalizacji treści. Kontynuując przeglądanie zgadzasz się na
-          naszą
-          <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__link">politykę cookies</a>.
-        </p>
-      </div>
-      <div class="cookie-consent__actions">
-        <button id="cookie-accept" class="cookie-consent__btn cookie-consent__btn--accept">
-          Akceptuję
-        </button>
-        <button id="cookie-reject" class="cookie-consent__btn cookie-consent__btn--reject">
-          Odrzuć
-        </button>
-        <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__btn cookie-consent__btn--settings">
-          Ustawienia
-        </a>
-      </div>
-    </div>
-  </div>
 
   <!-- NAV -->
   <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-stitch-border/50"
@@ -917,106 +883,10 @@
     </div>
   </footer>
 
-  <!-- Cookie Consent Banner (Tailwind version) -->
-  <div id="cookie-consent-tw"
-    class="fixed bottom-6 left-6 right-6 md:left-auto md:w-[400px] bg-stitch-surface p-6 rounded-2xl shadow-xl border border-stitch-border z-[100] transition-all duration-500 translate-y-20 opacity-0 transform"
-    style="display: none">
-    <div class="flex items-start gap-4 mb-4">
-      <div class="bg-amber-100 dark:bg-amber-900/30 p-2 rounded-2xl text-amber-600 dark:text-amber-400">
-        <span class="material-symbols-outlined">cookie</span>
-      </div>
-      <div>
-        <h4 class="font-bold text-stitch-text">Ciasteczka i Analityka</h4>
-        <p class="text-xs text-stitch-muted leading-relaxed mt-1">
-          Używamy Google Analytics, aby anonimowo analizować ruch na stronie i
-          ulepszać nasze kalkulatory.
-        </p>
-      </div>
-    </div>
-    <div class="flex gap-3">
-      <button id="cookie-accept-tw"
-        class="flex-1 bg-primary text-white text-xs font-bold py-3 rounded-2xl hover:opacity-90 transition-opacity"
-        style="background-color: #0d7ff2">
-        Akceptuję
-      </button>
-      <button id="cookie-reject-tw"
-        class="flex-1 bg-slate-100 text-stitch-muted text-xs font-bold py-3 rounded-2xl hover:bg-slate-200 transition-colors">
-        Odrzuć
-      </button>
-    </div>
-  </div>
+
 
   <!-- Scripts -->
-  <script src="../js/utils.js"></script>
-  <script src="../js/shared.js"></script>
-  <script defer>
-    function przelaczTryb() {
-      const html = document.documentElement;
-      const isDark = html.classList.contains("dark");
 
-      if (isDark) {
-        html.classList.remove("dark", "dark-mode");
-        html.classList.add("light", "light-mode");
-        localStorage.setItem("etf-tryb", "jasny");
-      } else {
-        html.classList.add("dark", "dark-mode");
-        html.classList.remove("light", "light-mode");
-        localStorage.setItem("etf-tryb", "ciemny");
-      }
-
-      const d = html.classList.contains("dark");
-      const m = document.getElementById("meta-theme-color");
-      if (m) m.content = d ? "#0f172a" : "#f8fafc";
-    }
-
-    (function () {
-      const html = document.documentElement;
-      const saved = localStorage.getItem("etf-tryb");
-      const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-      if (saved === "ciemny" || (!saved && systemDark)) {
-        html.classList.add("dark", "dark-mode");
-        html.classList.remove("light", "light-mode");
-      } else {
-        html.classList.add("light", "light-mode");
-        html.classList.remove("dark", "dark-mode");
-      }
-
-      const m = document.getElementById("meta-theme-color");
-      if (m) m.content = html.classList.contains("dark") ? "#0f172a" : "#f8fafc";
-    })();
-  </script>
-  <script defer>
-    document.addEventListener("DOMContentLoaded", function () {
-      const cookieConsent = document.getElementById("cookie-consent");
-      if (!cookieConsent) return;
-
-      const acceptBtn = document.getElementById("cookie-accept");
-      const rejectBtn = document.getElementById("cookie-reject");
-      const choice = localStorage.getItem("etf-cookie-consent");
-
-      if (!choice) {
-        cookieConsent.style.display = "block";
-        setTimeout(() => {
-          cookieConsent.style.opacity = "1";
-          cookieConsent.style.transform = "translateY(0)";
-        }, 100);
-      }
-
-      acceptBtn?.addEventListener("click", () => {
-        localStorage.setItem("etf-cookie-consent", "accepted");
-        cookieConsent.style.display = "none";
-        if (typeof gtag === "function") {
-          gtag("consent", "update", { analytics_storage: "granted" });
-        }
-      });
-
-      rejectBtn?.addEventListener("click", () => {
-        localStorage.setItem("etf-cookie-consent", "rejected");
-        cookieConsent.style.display = "none";
-      });
-    });
-  </script>
   <script>
     function ml_webform_success_37996059() {
       var $ = ml_jQuery || jQuery;

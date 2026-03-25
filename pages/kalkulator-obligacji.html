@@ -5,14 +5,7 @@
   <meta charset="UTF-8">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#f8f7f2" id="meta-theme-color">
-  <script>
-    (function () {
-      const s = localStorage.getItem('etf-tryb');
-      const d = s === 'ciemny' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches);
-      document.documentElement.classList.toggle('dark', d);
-      document.documentElement.classList.toggle('light', !d);
-    })();
-  </script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
   <title>Kalkulator Obligacji Skarbowych EDO 2026, COI, TOS | ETFkalkulator.pl</title>
   <link rel="canonical" href="https://etfkalkulator.pl/pages/kalkulator-obligacji.html">
@@ -81,6 +74,8 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap"
     rel="stylesheet" />
 
+  <script src="../js/utils.js" defer></script>
+  <script src="../js/shared.js" defer></script>
   <script src="../js/tailwind-config.js"></script>
 
   <style>
@@ -194,30 +189,7 @@
     class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-stitch-accent">Przejdź
     do głównej treści</a>
 
-  <!-- Cookie Consent Banner -->
-  <div id="cookie-consent" class="cookie-consent" style="display: none;">
-    <div class="cookie-consent__inner">
-      <div class="cookie-consent__content">
-        <h4 class="cookie-consent__title">Prywatność i pliki cookies</h4>
-        <p class="cookie-consent__text">
-          ETFkalkulator.pl używa plików cookies do analizy ruchu i personalizacji treści.
-          Kontynuując przeglądanie zgadzasz się na naszą
-          <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__link">politykę cookies</a>.
-        </p>
-      </div>
-      <div class="cookie-consent__actions">
-        <button id="cookie-accept" class="cookie-consent__btn cookie-consent__btn--accept">
-          Akceptuję
-        </button>
-        <button id="cookie-reject" class="cookie-consent__btn cookie-consent__btn--reject">
-          Odrzuć
-        </button>
-        <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__btn cookie-consent__btn--settings">
-          Ustawienia
-        </a>
-      </div>
-    </div>
-  </div>
+
 
   <!-- NAGŁÓWEK TAILWIND -->
   <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-stitch-border/50 /50"
@@ -742,7 +714,9 @@
             <h3 class="text-xl font-extrabold text-stitch-text mb-8 flex items-center gap-3">
               <span class="material-symbols-outlined text-primary">show_chart</span> Wzrost kapitału
             </h3>
-            <canvas id="chartObligacje"></canvas>
+            <div style="height: 350px; position: relative;" class="mt-4">
+              <canvas id="chartObligacje"></canvas>
+            </div>
           </div>
 
           <!-- TABELA -->
@@ -1067,99 +1041,6 @@
       $('.ml-subscribe-form-37996059 .row-form').hide();
     }
   </script>
-  <!-- COOKIE CONSENT BANNER -->
-  <div id="cookie-consent"
-    class="fixed bottom-6 left-6 right-6 md:left-auto md:w-[400px] bg-stitch-surface p-6 rounded-stitch shadow-stitch-soft border border-stitch-border z-[100] transition-all duration-500 translate-y-20 opacity-0 transform"
-    style="display: none;">
-    <div class="flex items-start gap-4 mb-4">
-      <div class="bg-amber-100 dark:bg-amber-900/30 p-2 rounded-stitch text-amber-600 dark:text-amber-400">
-        <span class="material-symbols-outlined">cookie</span>
-      </div>
-      <div>
-        <h4 class="font-bold text-stitch-text">Ciasteczka i Analityka</h4>
-        <p class="text-xs text-stitch-muted leading-relaxed mt-1">Używamy Google Analytics, aby
-          anonimowo analizować ruch na stronie i ulepszać nasze kalkulatory.</p>
-      </div>
-    </div>
-    <div class="flex gap-3">
-      <button id="cookie-accept"
-        class="flex-1 bg-primary text-white text-xs font-bold py-3 rounded-stitch hover:opacity-90 transition-opacity"
-        style="background-color: #0d7ff2;">Akceptuję</button>
-      <button id="cookie-reject"
-        class="flex-1 bg-slate-100 text-slate-600 text-xs font-bold py-3 rounded-stitch hover:bg-slate-200 transition-colors">Odrzuć</button>
-    </div>
-  </div>
-
-  <!-- COOKIE CONSENT BANNER -->
-  <div id="cookie-consent"
-    class="fixed bottom-6 left-6 right-6 md:left-auto md:w-[400px] bg-stitch-surface p-6 rounded-stitch shadow-stitch-soft border border-stitch-border z-[100] transition-all duration-500 translate-y-20 opacity-0 transform"
-    style="display: none;">
-    <div class="flex items-start gap-4 mb-4">
-      <div class="bg-amber-100 dark:bg-amber-900/30 p-2 rounded-stitch text-amber-600 dark:text-amber-400">
-        <span class="material-symbols-outlined">cookie</span>
-      </div>
-      <div>
-        <h4 class="font-bold text-stitch-text">Ciasteczka i Analityka</h4>
-        <p class="text-xs text-stitch-muted leading-relaxed mt-1">Używamy Google Analytics, aby
-          anonimowo analizować ruch na stronie i ulepszać nasze kalkulatory.</p>
-      </div>
-    </div>
-    <div class="flex gap-3">
-      <button id="cookie-accept"
-        class="flex-1 bg-primary text-white text-xs font-bold py-3 rounded-stitch hover:opacity-90 transition-opacity"
-        style="background-color: #0d7ff2;">Akceptuję</button>
-      <button id="cookie-reject"
-        class="flex-1 bg-slate-100 text-slate-600 text-xs font-bold py-3 rounded-stitch hover:bg-slate-200 transition-colors">Odrzuć</button>
-    </div>
-  </div>
-
-  <!-- EDUCATIONAL MODAL -->
-  <div id="edu-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
-    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" tabindex="0" role="button"
-      onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"></div>
-    <div
-      class="relative glass-effect modal-anim rounded-[2.5rem] p-8 md:p-12 max-w-lg w-full border border-white/20 shadow-stitch-soft shadow-black/50 overflow-hidden">
-      <!-- Decorative background blur -->
-      <div class="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 rounded-full blur-3xl"></div>
-
-      <div class="relative z-10">
-        <div class="flex justify-between items-center mb-6">
-          <h3 class="text-2xl font-black text-stitch-text" id="modal-title">Edukacja</h3>
-          <button onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"
-            class="group flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-stitch-muted hover:bg-rose-500 hover:text-white transition-all">
-            <span class="text-[10px] font-bold uppercase tracking-widest">Zamknij</span>
-            <span class="material-symbols-outlined text-xl">close</span>
-          </button>
-        </div>
-
-        <div class="space-y-8">
-          <div class="flex gap-4 items-start">
-            <div class="w-12 h-12 rounded-stitch bg-primary/10 flex items-center justify-center shrink-0">
-              <span class="material-symbols-outlined text-primary" id="modal-icon">school</span>
-            </div>
-            <p id="modal-explanation" class="text-slate-600 leading-relaxed text-sm md:text-base">
-            </p>
-          </div>
-
-          <div
-            class="p-6 bg-stitch-bg /50 rounded-stitch border border-stitch-border group transition-all hover:border-primary/30">
-            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
-              <span class="material-symbols-outlined text-xs">functions</span>
-              Jak to obliczamy?
-            </p>
-            <code id="modal-formula" class="text-stitch-text font-mono text-sm block">...</code>
-          </div>
-
-          <button onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"
-            class="w-full py-4 bg-slate-900 dark:bg-stitch-surface text-white dark:text-stitch-text font-bold rounded-stitch hover:bg-primary dark:hover:bg-primary dark:hover:text-white transition-all shadow-stitch-soft">
-            Rozumiem, dziękuję!
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
 
   <!-- EDUCATIONAL MODAL -->
   <div id="edu-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
@@ -1218,69 +1099,9 @@
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
     type="text/javascript"></script>
   <script src="https://www.google.com/recaptcha/api.js" defer></script>
-  <script src="../js/utils.js"></script>
-  <script src="../js/shared.js"></script>
   <script src="../js/kalkulator-obligacji.js"></script>
-  <script defer>
-    function przelaczTryb() {
-      const html = document.documentElement;
-      const isDark = html.classList.contains('dark');
 
-      if (isDark) {
-        html.classList.remove('dark');
-        html.classList.add('light');
-        localStorage.setItem('etf-tryb', 'jasny');
-      } else {
-        html.classList.add('dark');
-        html.classList.remove('light');
-        localStorage.setItem('etf-tryb', 'ciemny');
-      }
 
-      const d = html.classList.contains('dark');
-      const m = document.getElementById('meta-theme-color');
-      if (m) m.content = d ? '#0f172a' : '#f8fafc';
-    }
-
-    // Initialize Theme - Moved to head for early execution
-    (function () {
-      const html = document.documentElement;
-      const d = html.classList.contains('dark');
-      const m = document.getElementById('meta-theme-color');
-      if (m) m.content = d ? '#0f172a' : '#f8fafc';
-    })();
-  </script>
-
-  <!-- Cookie Consent Script -->
-  <script defer>
-    document.addEventListener('DOMContentLoaded', function () {
-      const cookieConsent = document.getElementById('cookie-consent');
-      if (!cookieConsent) return;
-      const acceptBtn = document.getElementById('cookie-accept');
-      const rejectBtn = document.getElementById('cookie-reject');
-      const choice = localStorage.getItem('etf-cookie-consent');
-
-      if (!choice) {
-        cookieConsent.style.display = 'block';
-        setTimeout(() => {
-          cookieConsent.style.opacity = '1';
-          cookieConsent.style.transform = 'translateY(0)';
-        }, 100);
-      }
-
-      acceptBtn?.addEventListener('click', () => {
-        localStorage.setItem('etf-cookie-consent', 'accepted');
-        cookieConsent.style.display = 'none';
-        if (typeof gtag === 'function') {
-          gtag('consent', 'update', { 'analytics_storage': 'granted' });
-        }
-      });
-
-      rejectBtn?.addEventListener('click', () => {
-        localStorage.setItem('etf-cookie-consent', 'rejected');
-        cookieConsent.style.display = 'none';
-      });
-    });
-  </script>
 </body>
 
 </html>

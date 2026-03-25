@@ -378,19 +378,35 @@ function pokazModal(id) {
     'position: relative',
   ].join(';');
 
-  modal.innerHTML =
-    // Uchwyt do przeciągania (dekoracyjny)
-    '<div style="width:40px;height:4px;background:var(--color-border,#e5e7eb);border-radius:2px;margin:0 auto 20px;"></div>' +
-    // Tytuł
-    '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-green-500,#40916C);margin-bottom:10px">' + dane.tytul + '</div>' +
-    // Tekst
-    '<div style="font-size:15px;line-height:1.65;color:var(--color-text-primary,#1C1C1E);margin-bottom:16px">' + dane.tekst + '</div>' +
-    // Przykład
-    '<div style="font-size:13px;line-height:1.6;color:var(--color-text-secondary,#6E6E73);background:var(--color-bg-secondary,#F5F5F0);border-radius:12px;padding:14px">' +
-    '<span style="font-weight:700;color:var(--color-green-700,#2D6A4F)">Przykład: </span>' + dane.przyklad +
-    '</div>' +
-    // Przycisk zamknij
-    '<button onclick="zamknijModal()" style="width:100%;margin-top:20px;padding:14px;background:var(--color-green-500,#40916C);color:white;border:none;border-radius:12px;font-family:var(--font-sans,sans-serif);font-size:15px;font-weight:600;cursor:pointer">Rozumiem</button>';
+  // Uchwyt do przeciągania (dekoracyjny)
+  const handle = document.createElement('div');
+  handle.style.cssText = 'width:40px;height:4px;background:var(--color-border,#e5e7eb);border-radius:2px;margin:0 auto 20px;';
+  
+  // Tytuł
+  const titleDiv = document.createElement('div');
+  titleDiv.style.cssText = 'font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-green-500,#40916C);margin-bottom:10px';
+  titleDiv.textContent = dane.tytul;
+  
+  // Tekst
+  const textDiv = document.createElement('div');
+  textDiv.style.cssText = 'font-size:15px;line-height:1.65;color:var(--color-text-primary,#1C1C1E);margin-bottom:16px';
+  textDiv.textContent = dane.tekst;
+  
+  // Przykład
+  const exampleDiv = document.createElement('div');
+  exampleDiv.style.cssText = 'font-size:13px;line-height:1.6;color:var(--color-text-secondary,#6E6E73);background:var(--color-bg-secondary,#F5F5F0);border-radius:12px;padding:14px';
+  const exampleLabel = document.createElement('span');
+  exampleLabel.style.cssText = 'font-weight:700;color:var(--color-green-700,#2D6A4F)';
+  exampleLabel.textContent = 'Przykład: ';
+  exampleDiv.append(exampleLabel, document.createTextNode(dane.przyklad));
+  
+  // Przycisk zamknij
+  const btnClose = document.createElement('button');
+  btnClose.onclick = zamknijModal;
+  btnClose.style.cssText = 'width:100%;margin-top:20px;padding:14px;background:var(--color-green-500,#40916C);color:white;border:none;border-radius:12px;font-family:var(--font-sans,sans-serif);font-size:15px;font-weight:600;cursor:pointer';
+  btnClose.textContent = 'Rozumiem';
+
+  modal.append(handle, titleDiv, textDiv, exampleDiv, btnClose);
 
   overlay.appendChild(modal);
   document.body.appendChild(overlay);
@@ -446,12 +462,24 @@ function pokazDymek(id, targetEl) {
     document.body.appendChild(dymek);
   }
 
-  dymek.innerHTML =
-    '<div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-green-500,#40916C);margin-bottom:6px">' + dane.tytul + '</div>' +
-    '<div style="font-size:12px;line-height:1.6;color:var(--color-text-primary,#1C1C1E);margin-bottom:8px">' + dane.tekst + '</div>' +
-    '<div style="font-size:11px;line-height:1.5;color:var(--color-text-secondary,#6E6E73);background:var(--color-bg-secondary,#F5F5F0);border-radius:8px;padding:8px">' +
-    '<span style="font-weight:700;color:var(--color-green-700,#2D6A4F)">Przykład: </span>' + dane.przyklad +
-    '</div>';
+  dymek.textContent = '';
+  
+  const titleDiv = document.createElement('div');
+  titleDiv.style.cssText = 'font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-green-500,#40916C);margin-bottom:6px';
+  titleDiv.textContent = dane.tytul;
+  
+  const textDiv = document.createElement('div');
+  textDiv.style.cssText = 'font-size:12px;line-height:1.6;color:var(--color-text-primary,#1C1C1E);margin-bottom:8px';
+  textDiv.textContent = dane.tekst;
+  
+  const exampleDiv = document.createElement('div');
+  exampleDiv.style.cssText = 'font-size:11px;line-height:1.5;color:var(--color-text-secondary,#6E6E73);background:var(--color-bg-secondary,#F5F5F0);border-radius:8px;padding:8px';
+  const exampleLabel = document.createElement('span');
+  exampleLabel.style.cssText = 'font-weight:700;color:var(--color-green-700,#2D6A4F)';
+  exampleLabel.textContent = 'Przykład: ';
+  exampleDiv.append(exampleLabel, document.createTextNode(dane.przyklad));
+
+  dymek.append(titleDiv, textDiv, exampleDiv);
 
   var rect  = targetEl.getBoundingClientRect();
   var left  = Math.max(8, Math.min(rect.left, window.innerWidth - 316));
@@ -545,7 +573,7 @@ function stworzIkoneInfo(tooltipId) {
     'opacity: 0.6',
   ].join(';');
   /* Nowoczesna ikona — wypełnione kółko z "i", Phosphor/SF Symbols style */
-  ikona.innerHTML = '<svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v4a1 1 0 102 0V7zm-1-2a1 1 0 100 2 1 1 0 000-2z"/></svg>';
+  ikona.insertAdjacentHTML('afterbegin', '<svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v4a1 1 0 102 0V7zm-1-2a1 1 0 100 2 1 1 0 000-2z"/></svg>');
 
   // Desktop — hover
   ikona.addEventListener('mouseenter', function() {

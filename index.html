@@ -1,20 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pl" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#f8f7f2" id="meta-theme-color">
-  <script>
-    (function () {
-      const s = localStorage.getItem('etf-tryb');
-      const d = s === 'ciemny' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches);
-      document.documentElement.classList.toggle('dark', d);
-      document.documentElement.classList.toggle('dark-mode', d);
-      document.documentElement.classList.toggle('light', !d);
-      document.documentElement.classList.toggle('light-mode', !d);
-    })();
-  </script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/shared.js" defer></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO: tytuł i opis widoczne w wynikach Google -->
@@ -683,33 +675,9 @@
 
 <body>
   <a href="#main"
-    class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-stitch-accent">Przejdź
+    class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-primary">Przejdź
     do głównej treści</a>
 
-  <!-- Cookie Consent Banner -->
-  <div id="cookie-consent" class="cookie-consent" style="display: none;">
-    <div class="cookie-consent__inner">
-      <div class="cookie-consent__content">
-        <h4 class="cookie-consent__title">Prywatność i pliki cookies</h4>
-        <p class="cookie-consent__text">
-          ETFkalkulator.pl używa plików cookies do analizy ruchu i personalizacji treści.
-          Kontynuując przeglądanie zgadzasz się na naszą
-          <a href="pages/polityka-prywatnosci.html#cookies" class="cookie-consent__link">politykę cookies</a>.
-        </p>
-      </div>
-      <div class="cookie-consent__actions">
-        <button id="cookie-accept" class="cookie-consent__btn cookie-consent__btn--accept">
-          Akceptuję
-        </button>
-        <button id="cookie-reject" class="cookie-consent__btn cookie-consent__btn--reject">
-          Odrzuć
-        </button>
-        <a href="pages/polityka-prywatnosci.html#cookies" class="cookie-consent__btn cookie-consent__btn--settings">
-          Ustawienia
-        </a>
-      </div>
-    </div>
-  </div>
 
   <!-- NAGŁÓWEK -->
   <!-- NAGŁÓWEK TAILWIND -->
@@ -1182,7 +1150,7 @@
             class="group flex flex-col overflow-hidden rounded-stitch bg-stitch-surface border border-stitch-border transition-all duration-300 hover:-translate-y-1 hover:shadow-stitch-soft">
             <div class="relative aspect-[16/10] overflow-hidden">
               <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDvYckHCEtfYRLDwVcRPunzYSrL10KO-uaEJrcnow57vhQ4ZdN2yZ15jRFEKeZlFQ8AF1UBIFMYzMrY4uJpO_aiKIQG-cXHwIQe_IYdA71g48wa8wM2MCb2LBQRPeJCuEy-GWK_8orY3k3-tNTZbRrHMJp0oEJf-lxxD6-EUh-MadPJCjPKtC9ZX_Uwle4OkV3G5ze5FFsEvT3j9IvUsy2Qw-ngvaLrdps0IgjWKRc3Rdg5SGvsUBvoez6_sr5KN_nFqfaV5IAHA3Q");'>
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDvYckHCEtfYRLDwVcRPunzYSrL10KO-uaEJrcnow57vhQ4ZdN2yZ15jRFEKeZlFQ8AF1UBIFMYzMrY4uJpO_aiKIQG-cXHwIQe_IYdA71g48wa8wM2MCb2LBQRPeJCuEy-GWK_8orY3k3-tNTZbRrHMJp0oEJf-lxxD6-EUh-MadPJCjPKtC9ZX_Uwle4OkV3G5ze5FFsEvT3j9IvUsy2Qw-ngvaLrdps0IgWKRc3Rdg5SGvsUBvoez6_sr5KN_nFqfaV5IAHA3Q");'>
               </div>
             </div>
             <div class="flex flex-1 flex-col p-8">
@@ -1210,7 +1178,7 @@
             class="group flex flex-col overflow-hidden rounded-stitch bg-stitch-surface border border-stitch-border transition-all duration-300 hover:-translate-y-1 hover:shadow-stitch-soft">
             <div class="relative aspect-[16/10] overflow-hidden">
               <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAFw4K0fruWVlah8vOlo7TdCT3J3heLnUDrBKuWrgSpB4pUWfmnmOp1Cb2xT-7PbygcMCObqaJh1MpKjNN4FGAcrH7MKd0Zmin_SJ3xw4gkHY9pQlDPg7PCi9MkGd82W5PZYyedc8gMsiKKQAqkxD5c-Tt51eqdXO7XF8Map46AUSTmhuIntG1YvugzBQ9mVkMaafw0Ia3s5YgDTQMAUwM3PCUMu7Bl259U582Lo9Yqb4yyugXqx03lCE_3oXauk4aM11a3qmYiCMk");'>
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAFw4K0fruWVlah8vOlo7TdCT3J3heLnUDrBKuWrgSpB4pUWfmnmOp1Cb2xT-7PbygcMCObqaJh1MpKjNN4FGAcrH7MKd0Zmin_SJ3xw4gkHY9pQlDPg7PCi9MkGd82W5PZYyedc8gMsiKKQAqkxD5c-Tt51eqdXO7XF8Map46AUSTmhuIntG1YvugzBQ9mVkMaafw0Ia3s5YgDTQMAUwM3PCUMu7Bl259U582Lo9Yqb4yyugXqx03lCE_3oXauk4aM11a3qmYiCMj");'>
               </div>
             </div>
             <div class="flex flex-1 flex-col p-8">
@@ -1718,79 +1686,6 @@
   </script>
 
 
-  <script>
-  </script>
-
-
-  <script defer>
-    document.addEventListener('DOMContentLoaded', function () {
-
-      // Tooltips dla kart kalkulatorów
-      var karty = [
-        { id: 'karta-obligacje', tooltipId: 'karta-obligacje' },
-        { id: 'karta-wolnosc', tooltipId: 'karta-wolnosc' },
-        { id: 'karta-porownywarka', tooltipId: 'karta-porownywarka' },
-      ];
-
-      karty.forEach(function (k) {
-        var karta = document.getElementById(k.id);
-        if (!karta) return;
-
-        // Znajdź tytuł karty i dodaj ikonę ⓘ
-        var tytul = karta.querySelector('.kalkulator-karta__tytul');
-        if (!tytul || tytul.querySelector('[data-tooltip]')) return;
-
-        tytul.style.display = 'flex';
-        tytul.style.alignItems = 'center';
-        tytul.style.gap = '6px';
-
-        var ikona = stworzIkoneInfo(k.tooltipId);
-        // Na karcie kliknięcie ikony nie powinno przechodzić do linku
-        ikona.addEventListener('click', function (e) { e.preventDefault(); });
-        tytul.appendChild(ikona);
-      });
-    });
-  </script>
-
-  <script defer>
-    // Dark Mode Toggle Logic (Tailwind + Custom)
-    function przelaczTryb() {
-      const html = document.documentElement;
-      const isDark = html.classList.contains('dark');
-
-      if (isDark) {
-        html.classList.remove('dark', 'dark-mode');
-        html.classList.add('light', 'light-mode');
-        localStorage.setItem('etf-tryb', 'jasny');
-      } else {
-        html.classList.add('dark', 'dark-mode');
-        html.classList.remove('light', 'light-mode');
-        localStorage.setItem('etf-tryb', 'ciemny');
-      }
-
-      const d = html.classList.contains('dark');
-      const m = document.getElementById('meta-theme-color');
-      if (m) m.content = d ? '#0f172a' : '#f8fafc';
-    }
-
-    // Initialize Theme - Moved to head for early execution
-    (function () {
-      const html = document.documentElement;
-      const saved = localStorage.getItem('etf-tryb');
-      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-      if (saved === 'ciemny' || (!saved && systemDark)) {
-        html.classList.add('dark', 'dark-mode');
-        html.classList.remove('light', 'light-mode');
-      } else {
-        html.classList.add('light', 'light-mode');
-        html.classList.remove('dark', 'dark-mode');
-      }
-
-      const m = document.getElementById('meta-theme-color');
-      if (m) m.content = html.classList.contains('dark') ? '#0f172a' : '#f8fafc';
-    })();
-  </script>
 
   <!-- MailerLite Success Callback -->
   <script>
@@ -1805,37 +1700,6 @@
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
     type="text/javascript" defer></script>
 
-  <!-- Cookie Consent Script -->
-  <script defer>
-    document.addEventListener('DOMContentLoaded', function () {
-      const cookieConsent = document.getElementById('cookie-consent');
-      if (!cookieConsent) return;
-      const acceptBtn = document.getElementById('cookie-accept');
-      const rejectBtn = document.getElementById('cookie-reject');
-      const choice = localStorage.getItem('etf-cookie-consent');
-
-      if (!choice) {
-        cookieConsent.style.display = 'block';
-        setTimeout(() => {
-          cookieConsent.style.opacity = '1';
-          cookieConsent.style.transform = 'translateY(0)';
-        }, 100);
-      }
-
-      acceptBtn?.addEventListener('click', () => {
-        localStorage.setItem('etf-cookie-consent', 'accepted');
-        cookieConsent.style.display = 'none';
-        if (typeof gtag === 'function') {
-          gtag('consent', 'update', { 'analytics_storage': 'granted' });
-        }
-      });
-
-      rejectBtn?.addEventListener('click', () => {
-        localStorage.setItem('etf-cookie-consent', 'rejected');
-        cookieConsent.style.display = 'none';
-      });
-    });
-  </script>
 </body>
 
 </html>

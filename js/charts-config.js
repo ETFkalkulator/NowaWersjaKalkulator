@@ -20,8 +20,8 @@ window.ETF.charts = (function() {
             accent: '#FF9500',  // Orange
             muted: '#8E8E93',   // Gray
             error: '#FF3B30',   // Red
-            indigo: '#5856D6',
             teal: '#30B0C7',
+            blue: '#0d7ff2',
             grid: 'rgba(0, 0, 0, 0.05)',
             gridDark: 'rgba(255, 255, 255, 0.08)'
         },
