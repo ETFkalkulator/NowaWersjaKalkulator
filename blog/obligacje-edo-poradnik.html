@@ -138,17 +138,21 @@
   </script>
 
   <link rel="icon" href="../images/favicon.png" />
+  <!-- Google Analytics 4 — loads only after cookie consent -->
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
-    gtag("consent", "default", { analytics_storage: "denied" });
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    // Default: analytics denied until user accepts
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied'
+    });
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
   <script>
-    gtag("config", "G-GZECMECQ15", { send_page_view: false });
+    gtag('config', 'G-GZECMECQ15', { 'send_page_view': false });
   </script>
 
   <link

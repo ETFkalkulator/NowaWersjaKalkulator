@@ -99,6 +99,11 @@ window.initCookieConsent = function () {
                 'analytics_storage': status === 'accepted' ? 'granted' : 'denied',
                 'ad_storage': status === 'accepted' ? 'granted' : 'denied'
             });
+            
+            // Manualnie wyślij page_view po przyznaniu zgody, ponieważ send_page_view jest wyłączone w configu
+            if (status === 'accepted') {
+                gtag('event', 'page_view');
+            }
         }
     };
 

@@ -71,7 +71,8 @@
 
     // Default: analytics denied until user accepts
     gtag('consent', 'default', {
-      'analytics_storage': 'denied'
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied'
     });
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
@@ -1425,28 +1426,9 @@
 
 
 
-  <!-- Google Analytics (tylko po zgodzie na cookies) -->
-  <script>
-    // Funkcja do ładowania Google Analytics
-    function loadGoogleAnalytics() {
-      if (document.getElementById('ga-script')) return; // Zapobieganie wielokrotnemu pobieraniu
 
-      var tag = document.createElement('script');
-      tag.id = 'ga-script';
-      tag.async = true;
-      tag.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
-      var firstScript = document.getElementsByTagName('script')[0];
-      firstScript.parentNode.insertBefore(tag, firstScript);
 
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX', {
-        'anonymize_ip': true,
-        'cookie_domain': 'etfkalkulator.pl'
-      });
-    }
-  </script>
+
 
   <!-- Biblioteki zewnętrzne -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
