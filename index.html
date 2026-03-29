@@ -1,25 +1,33 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pl" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#f8f7f2" id="meta-theme-color">
-  <script src="js/utils.js" defer></script>
-  <script src="js/shared.js" defer></script>
+  <script>
+    (function () {
+      const s = localStorage.getItem('etf-tryb');
+      const d = s === 'ciemny' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.classList.toggle('dark', d);
+      document.documentElement.classList.toggle('dark-mode', d);
+      document.documentElement.classList.toggle('light', !d);
+      document.documentElement.classList.toggle('light-mode', !d);
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO: tytuł i opis widoczne w wynikach Google -->
-  <title>ETFkalkulator.pl — Kalkulator Obligacji EDO 2026, ETF i FIRE</title>
+  <title>Kalkulatory ETF i Obligacji EDO 2026 — ETFkalkulator.pl</title>
   <meta name="description"
-    content="Darmowe kalkulatory obligacji EDO, ETF i FIRE. Sprawdz realny zysk po podatku Belki i inflacji oraz porownaj strategie inwestowania.">
+    content="Bezpłatne kalkulatory finansowe dla polskich inwestorów. Oblicz zysk z ETF, obligacji EDO i zaplanuj wolność finansową FIRE. Sprawdź teraz.">
   <meta name="keywords"
     content="kalkulator obligacji EDO 2026, ranking obligacji skarbowych, procent składany ETF, wolność finansowa kalkulator, podatek Belki, inflacja, IKE, IKZE">
   <meta name="author" content="ETFkalkulator.pl">
   <meta name="robots" content="index, follow">
 
   <!-- SEO: Open Graph — jak strona wygląda gdy ktoś udostępni link na Facebooku / Twitterze -->
-  <meta property="og:title" content="ETFkalkulator.pl — Kalkulator Obligacji, ETF i Wolności Finansowej">
+  <meta property="og:title" content="Kalkulatory ETF i Obligacji EDO 2026 — ETFkalkulator.pl">
   <meta property="og:description"
     content="Sprawdź ile realnie zarobisz na obligacjach (EDO 2026) i ETF-ach po podatku Belki i inflacji. Bezpłatne narzędzie FIRE.">
   <meta property="og:type" content="website">
@@ -32,7 +40,7 @@
 
   <!-- SEO: Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ETFkalkulator.pl — Kalkulator Obligacji, ETF i Wolności Finansowej">
+  <meta name="twitter:title" content="Kalkulatory ETF i Obligacji EDO 2026 — ETFkalkulator.pl">
   <meta name="twitter:description"
     content="Sprawdź ile realnie zarobisz na obligacjach i ETF-ach po podatku Belki i inflacji.">
   <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png">
@@ -59,9 +67,32 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ETFkalkulator.pl",
+    "url": "https://etfkalkulator.pl/",
+    "logo": "https://etfkalkulator.pl/images/favicon.png",
+    "description": "Bezpłatne kalkulatory finansowe dla polskich inwestorów — ETF, obligacje skarbowe EDO i wolność finansowa FIRE.",
+    "sameAs": []
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ETFkalkulator.pl",
+    "url": "https://etfkalkulator.pl/",
+    "description": "Bezpłatne kalkulatory finansowe dla polskich inwestorów — ETF, obligacje skarbowe i wolność finansowa FIRE.",
+    "inLanguage": "pl"
+  }
+  </script>
 
   <!-- Favicon — ikona w zakładce przeglądarki -->
   <link rel="icon" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
+  <link rel="manifest" href="/manifest.json">
 
   <!-- Google Analytics 4 — loads only after cookie consent -->
   <script>
@@ -71,8 +102,7 @@
 
     // Default: analytics denied until user accepts
     gtag('consent', 'default', {
-      'analytics_storage': 'denied',
-      'ad_storage': 'denied'
+      'analytics_storage': 'denied'
     });
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
@@ -83,6 +113,12 @@
   <!-- Optyamizowany ładunek czcionek z Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://lh3.googleusercontent.com">
+  <link rel="dns-prefetch" href="https://groot.mailerlite.com">
 
   <!-- Tailwind CSS and Fonts Injection -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -676,7 +712,7 @@
 
 <body>
   <a href="#main"
-    class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-primary">Przejdź
+    class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-stitch-accent">Przejdź
     do głównej treści</a>
 
 
@@ -690,7 +726,7 @@
         <a href="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity" style="text-decoration:none;">
           <div class="bg-primary p-1.5 rounded-stitch text-white flex items-center justify-center"
             style="background-color: #0d7ff2;">
-            <span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-xl">account_balance_wallet</span>
           </div>
           <span class="text-xl font-bold tracking-tight text-stitch-text dark:text-slate-100">ETF<span
               class="font-normal">kalkulator</span>.pl</span>
@@ -717,8 +753,8 @@
         <!-- Theme Toggle -->
         <button onkeydown="if(event.key==='Enter')this.click()" onclick="przelaczTryb()" aria-label="Przełącz tryb"
           class="w-9 h-9 rounded-full border border-stitch-border bg-stitch-surface flex items-center justify-center hover:bg-stitch-bg transition-colors">
-          <span class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
-          <span class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
         </button>
         <!-- CTA Button -->
         <a href="#newsletter-section"
@@ -805,6 +841,7 @@
         </div>
         <img class="w-full h-full object-cover opacity-30 dark:opacity-20 pointer-events-none"
           alt="Serene coastal landscape representing peace and financial freedom"
+          fetchpriority="high" decoding="async"
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHk67hzkPrkmo_h4bn6KFvbxXfbKtItNcqqCP0Ldxg0Jy2THv65fVnI8iYHXUl2_EXQPrPbJVG1RSUDsopFLuvLP7NWeC3HioFHbIND_-1HB12KYMSx2VB8VimnXZ8SS2dGxtZCumbQGZTHfxfZVxNkrr-YOwp3yH83tl9jiGf17yfxqpql6x4rnKhW0YmniL5LpCOVkU2towIvOK_ni-A0heyDA5suOTiLWlFyYF9HuEy4u6x_RvmmpqTMiZ9bTyZ3Ks-WZhb7mk" />
       </div>
       <div class="relative z-10 max-w-4xl text-center pb-12">
@@ -831,7 +868,7 @@
           <a class="bg-primary text-white px-8 py-4 rounded-stitch font-bold text-lg shadow-stitch-soft shadow-primary/20 flex items-center justify-center gap-2 group hover:opacity-95 transition-all w-fit mx-auto"
             href="#kalkulatory" style="background-color: #0d7ff2; text-decoration:none;">
             Zacznij od obliczeń
-            <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+            <span aria-hidden="true" class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
           </a>
         </div>
       </div>
@@ -858,7 +895,7 @@
             <div
               class="w-14 h-14 rounded-stitch bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform"
               style="background-color:rgba(13, 127, 242, 0.1); color:#0d7ff2;">
-              <span class="material-symbols-outlined text-3xl">analytics</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-3xl">analytics</span>
             </div>
             <div>
               <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Polecane</div>
@@ -880,7 +917,7 @@
             <div
               class="w-14 h-14 rounded-stitch bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform"
               style="background-color:rgba(13, 127, 242, 0.1); color:#0d7ff2;">
-              <span class="material-symbols-outlined text-3xl">account_balance</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-3xl">account_balance</span>
             </div>
             <div>
               <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Kalkulator 01</div>
@@ -902,7 +939,7 @@
             <div
               class="w-14 h-14 rounded-stitch bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform"
               style="background-color:rgba(13, 127, 242, 0.1); color:#0d7ff2;">
-              <span class="material-symbols-outlined text-3xl">savings</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-3xl">savings</span>
             </div>
             <div>
               <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Kalkulator 02</div>
@@ -924,7 +961,7 @@
             <div
               class="w-14 h-14 rounded-stitch bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform"
               style="background-color:rgba(13, 127, 242, 0.1); color:#0d7ff2;">
-              <span class="material-symbols-outlined text-3xl">compare_arrows</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-3xl">compare_arrows</span>
             </div>
             <div>
               <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Narzędzie 03</div>
@@ -1049,7 +1086,7 @@
             <div class="space-y-8">
               <div class="flex gap-6">
                 <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-                  <span class="material-symbols-outlined text-primary">verified_user</span>
+                  <span aria-hidden="true" class="material-symbols-outlined text-primary">verified_user</span>
                 </div>
                 <div>
                   <h4 class="text-xl font-bold mb-2">Polskie realia</h4>
@@ -1059,7 +1096,7 @@
               </div>
               <div class="flex gap-6">
                 <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-                  <span class="material-symbols-outlined text-primary">analytics</span>
+                  <span aria-hidden="true" class="material-symbols-outlined text-primary">analytics</span>
                 </div>
                 <div>
                   <h4 class="text-xl font-bold mb-2">Przejrzystość danych</h4>
@@ -1069,7 +1106,7 @@
               </div>
               <div class="flex gap-6">
                 <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-                  <span class="material-symbols-outlined text-primary">security</span>
+                  <span aria-hidden="true" class="material-symbols-outlined text-primary">security</span>
                 </div>
                 <div>
                   <h4 class="text-xl font-bold mb-2">Pełna prywatność</h4>
@@ -1084,6 +1121,7 @@
             <div class="relative rounded-stitch overflow-hidden border border-white/10 shadow-stitch-soft">
               <img class="w-full aspect-square object-cover opacity-60"
                 alt="Premium close-up of currency and financial growth symbols"
+                loading="lazy" decoding="async"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOx0NFyQVcrx9eDB6qjJ6BiS6jWNH05x2mH_hhA2DL0xKBEmqc5dwMkOmnk4bD97rhA_QiLHaNHFmtxrgZXc-BygNgZHZkfrWlNIwMVpGkwp7zxphitwB6yviauW8aGNHK-VH7HaWDusfkSU_Gjt04Xw0VCdhUeNo0FKX-J595tYezFQptyVO5sVwptNbtRvAOd-kvOKkVSo0IDuoHowPOXsKNMYJP_ctqcaR8UQ1BPzC8f_uIGSiHtHgP235e5w0OmC_UowK3JCg" />
               <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
               <div class="absolute bottom-8 left-8 right-8">
@@ -1113,7 +1151,7 @@
             class="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all"
             style="color:#0d7ff2; text-decoration:none;">
             Wszystkie artykuły
-            <span class="material-symbols-outlined">arrow_forward</span>
+            <span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span>
           </a>
         </div>
 
@@ -1151,7 +1189,7 @@
             class="group flex flex-col overflow-hidden rounded-stitch bg-stitch-surface border border-stitch-border transition-all duration-300 hover:-translate-y-1 hover:shadow-stitch-soft">
             <div class="relative aspect-[16/10] overflow-hidden">
               <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDvYckHCEtfYRLDwVcRPunzYSrL10KO-uaEJrcnow57vhQ4ZdN2yZ15jRFEKeZlFQ8AF1UBIFMYzMrY4uJpO_aiKIQG-cXHwIQe_IYdA71g48wa8wM2MCb2LBQRPeJCuEy-GWK_8orY3k3-tNTZbRrHMJp0oEJf-lxxD6-EUh-MadPJCjPKtC9ZX_Uwle4OkV3G5ze5FFsEvT3j9IvUsy2Qw-ngvaLrdps0IgWKRc3Rdg5SGvsUBvoez6_sr5KN_nFqfaV5IAHA3Q");'>
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDvYckHCEtfYRLDwVcRPunzYSrL10KO-uaEJrcnow57vhQ4ZdN2yZ15jRFEKeZlFQ8AF1UBIFMYzMrY4uJpO_aiKIQG-cXHwIQe_IYdA71g48wa8wM2MCb2LBQRPeJCuEy-GWK_8orY3k3-tNTZbRrHMJp0oEJf-lxxD6-EUh-MadPJCjPKtC9ZX_Uwle4OkV3G5ze5FFsEvT3j9IvUsy2Qw-ngvaLrdps0IgjWKRc3Rdg5SGvsUBvoez6_sr5KN_nFqfaV5IAHA3Q");'>
               </div>
             </div>
             <div class="flex flex-1 flex-col p-8">
@@ -1179,7 +1217,7 @@
             class="group flex flex-col overflow-hidden rounded-stitch bg-stitch-surface border border-stitch-border transition-all duration-300 hover:-translate-y-1 hover:shadow-stitch-soft">
             <div class="relative aspect-[16/10] overflow-hidden">
               <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAFw4K0fruWVlah8vOlo7TdCT3J3heLnUDrBKuWrgSpB4pUWfmnmOp1Cb2xT-7PbygcMCObqaJh1MpKjNN4FGAcrH7MKd0Zmin_SJ3xw4gkHY9pQlDPg7PCi9MkGd82W5PZYyedc8gMsiKKQAqkxD5c-Tt51eqdXO7XF8Map46AUSTmhuIntG1YvugzBQ9mVkMaafw0Ia3s5YgDTQMAUwM3PCUMu7Bl259U582Lo9Yqb4yyugXqx03lCE_3oXauk4aM11a3qmYiCMj");'>
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAFw4K0fruWVlah8vOlo7TdCT3J3heLnUDrBKuWrgSpB4pUWfmnmOp1Cb2xT-7PbygcMCObqaJh1MpKjNN4FGAcrH7MKd0Zmin_SJ3xw4gkHY9pQlDPg7PCi9MkGd82W5PZYyedc8gMsiKKQAqkxD5c-Tt51eqdXO7XF8Map46AUSTmhuIntG1YvugzBQ9mVkMaafw0Ia3s5YgDTQMAUwM3PCUMu7Bl259U582Lo9Yqb4yyugXqx03lCE_3oXauk4aM11a3qmYiCMk");'>
               </div>
             </div>
             <div class="flex flex-1 flex-col p-8">
@@ -1335,7 +1373,7 @@
           <div class="flex items-center gap-2">
             <div class="bg-primary p-1.5 rounded-stitch text-white flex items-center justify-center"
               style="background-color: #0d7ff2;">
-              <span class="material-symbols-outlined text-base">account_balance_wallet</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-base">account_balance_wallet</span>
             </div>
             <span class="text-xl font-bold tracking-tight text-stitch-text">ETF<span
                 class="font-normal text-stitch-muted">kalkulator</span>.pl</span>
@@ -1392,11 +1430,11 @@
             <div class="flex gap-4">
               <a href="#"
                 class="w-10 h-10 rounded-stitch bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-stitch-soft">
-                <span class="material-symbols-outlined text-lg">share</span>
+                <span aria-hidden="true" class="material-symbols-outlined text-lg">share</span>
               </a>
               <a href="#"
                 class="w-10 h-10 rounded-stitch bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-stitch-soft">
-                <span class="material-symbols-outlined text-lg">alternate_email</span>
+                <span aria-hidden="true" class="material-symbols-outlined text-lg">alternate_email</span>
               </a>
             </div>
           </div>
@@ -1427,11 +1465,8 @@
 
 
 
-
-
-
   <!-- Biblioteki zewnętrzne -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
 
   <!-- Nasze pliki JavaScript -->
   <script src="js/utils.js" defer></script>
@@ -1669,6 +1704,77 @@
 
 
 
+
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      // Tooltips dla kart kalkulatorów
+      var karty = [
+        { id: 'karta-obligacje', tooltipId: 'karta-obligacje' },
+        { id: 'karta-wolnosc', tooltipId: 'karta-wolnosc' },
+        { id: 'karta-porownywarka', tooltipId: 'karta-porownywarka' },
+      ];
+
+      karty.forEach(function (k) {
+        var karta = document.getElementById(k.id);
+        if (!karta) return;
+
+        // Znajdź tytuł karty i dodaj ikonę ⓘ
+        var tytul = karta.querySelector('.kalkulator-karta__tytul');
+        if (!tytul || tytul.querySelector('[data-tooltip]')) return;
+
+        tytul.style.display = 'flex';
+        tytul.style.alignItems = 'center';
+        tytul.style.gap = '6px';
+
+        var ikona = stworzIkoneInfo(k.tooltipId);
+        // Na karcie kliknięcie ikony nie powinno przechodzić do linku
+        ikona.addEventListener('click', function (e) { e.preventDefault(); });
+        tytul.appendChild(ikona);
+      });
+    });
+  </script>
+
+  <script defer>
+    // Dark Mode Toggle Logic (Tailwind + Custom)
+    function przelaczTryb() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains('dark');
+
+      if (isDark) {
+        html.classList.remove('dark', 'dark-mode');
+        html.classList.add('light', 'light-mode');
+        localStorage.setItem('etf-tryb', 'jasny');
+      } else {
+        html.classList.add('dark', 'dark-mode');
+        html.classList.remove('light', 'light-mode');
+        localStorage.setItem('etf-tryb', 'ciemny');
+      }
+
+      const d = html.classList.contains('dark');
+      const m = document.getElementById('meta-theme-color');
+      if (m) m.content = d ? '#0f172a' : '#f8fafc';
+    }
+
+    // Initialize Theme - Moved to head for early execution
+    (function () {
+      const html = document.documentElement;
+      const saved = localStorage.getItem('etf-tryb');
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      if (saved === 'ciemny' || (!saved && systemDark)) {
+        html.classList.add('dark', 'dark-mode');
+        html.classList.remove('light', 'light-mode');
+      } else {
+        html.classList.add('light', 'light-mode');
+        html.classList.remove('dark', 'dark-mode');
+      }
+
+      const m = document.getElementById('meta-theme-color');
+      if (m) m.content = html.classList.contains('dark') ? '#0f172a' : '#f8fafc';
+    })();
+  </script>
+
   <!-- MailerLite Success Callback -->
   <script>
     function ml_webform_success_37996059() {
@@ -1682,6 +1788,8 @@
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
     type="text/javascript" defer></script>
 
+  <!-- Cookie Consent -->
+  <script src="js/cookie-consent.js" defer></script>
 </body>
 
 </html>

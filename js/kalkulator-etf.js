@@ -193,7 +193,7 @@ function obliczWszystko() {
     const lata = pobierzWartosc('input-horyzont', 10);
     const stopaNom = pobierzWartosc('input-stopa', 7) / 100;
     const inflacjaRoczna = pobierzWartosc('input-inflacja', 2.5) / 100;
-    const isIKE = document.getElementById('input-ike').checked;
+    const isIKE = document.getElementById('input-ike')?.checked ?? false;
 
     const stopaMsc = stopaNom / 12;
     const msc = Math.max(lata * 12, 1);
@@ -210,7 +210,7 @@ function obliczWszystko() {
     };
 
     const tabelaBody = document.getElementById('tabela-body');
-    if (tabelaBody) tabelaBody.textContent = '';
+    if (tabelaBody) tabelaBody.innerHTML = '';
 
     // Symulacja miesiąc po miesiącu
     for (let m = 1; m <= msc; m++) {
@@ -232,33 +232,13 @@ function obliczWszystko() {
             if (tabelaBody) {
                 const tr = document.createElement('tr');
                 tr.className = "hover:bg-slate-50/50 dark:hover:bg-slate-900/50 transition-colors";
-                
-                // Rok column (sticky)
-                const tdRok = document.createElement('td');
-                tdRok.className = "sticky left-0 z-10 bg-white/95 dark:bg-slate-900/95 px-4 py-3 text-xs lg:text-sm font-semibold text-slate-900 dark:text-slate-100 border-r border-slate-100 dark:border-slate-800 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]";
-                tdRok.textContent = `Rok ${rok}`;
-                
-                // Wpłacone
-                const tdWplata = document.createElement('td');
-                tdWplata.className = "px-3 py-4 text-xs lg:text-sm text-slate-600 dark:text-slate-400 font-medium text-right whitespace-nowrap";
-                tdWplata.textContent = formatujZl(zaokraglij(sumaWplat));
-                
-                // Zysk nominalny
-                const tdZysk = document.createElement('td');
-                tdZysk.className = "px-3 py-4 text-xs lg:text-sm text-slate-600 dark:text-slate-400 text-right whitespace-nowrap";
-                tdZysk.textContent = formatujZl(zaokraglij(kapitalNominalny - sumaWplat));
-                
-                // Kapitał nominalny
-                const tdKapitalNom = document.createElement('td');
-                tdKapitalNom.className = "px-3 py-4 text-xs lg:text-sm font-bold text-slate-900 dark:text-white text-right whitespace-nowrap";
-                tdKapitalNom.textContent = formatujZl(zaokraglij(kapitalNominalny));
-                
-                // Kapitał realny
-                const tdKapitalReal = document.createElement('td');
-                tdKapitalReal.className = "px-3 py-4 text-xs lg:text-sm font-bold text-emerald-500 text-right whitespace-nowrap";
-                tdKapitalReal.textContent = formatujZl(zaokraglij(kapitalRealny));
-                
-                tr.append(tdRok, tdWplata, tdZysk, tdKapitalNom, tdKapitalReal);
+                tr.innerHTML = `
+                    <td class="sticky left-0 z-10 bg-white/95 dark:bg-slate-900/95 px-4 py-3 text-xs lg:text-sm font-semibold text-slate-900 dark:text-slate-100 border-r border-slate-100 dark:border-slate-800 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">Rok ${rok}</td>
+                    <td class="px-3 py-4 text-xs lg:text-sm text-slate-600 dark:text-slate-400 font-medium text-right whitespace-nowrap">${formatujZl(zaokraglij(sumaWplat))}</td>
+                    <td class="px-3 py-4 text-xs lg:text-sm text-slate-600 dark:text-slate-400 text-right whitespace-nowrap">${formatujZl(zaokraglij(kapitalNominalny - sumaWplat))}</td>
+                    <td class="px-3 py-4 text-xs lg:text-sm font-bold text-slate-900 dark:text-white text-right whitespace-nowrap">${formatujZl(zaokraglij(kapitalNominalny))}</td>
+                    <td class="px-3 py-4 text-xs lg:text-sm font-bold text-emerald-500 text-right whitespace-nowrap">${formatujZl(zaokraglij(kapitalRealny))}</td>
+                `;
                 tabelaBody.appendChild(tr);
             }
         }
@@ -493,7 +473,7 @@ function renderScenarios() {
     }
 
     section.classList.remove('hidden');
-    container.textContent = '';
+    container.innerHTML = '';
 
     savedScenarios.forEach((scen, index) => {
         const div = document.createElement('div');
@@ -505,71 +485,38 @@ function renderScenarios() {
         const kapitalStr = formatPl.format(scen.kapital);
         const doplataStr = formatPl.format(scen.doplata);
 
-        // Close button
-        const btnDelete = document.createElement('button');
-        btnDelete.className = "absolute top-2 right-2 text-slate-400 hover:text-rose-500 opacity-0 group-hover:opacity-100 transition-opacity p-1 z-20 bg-white/80 dark:bg-slate-800/80 rounded-full backdrop-blur-sm hover:scale-110 shadow-sm";
-        btnDelete.onclick = (e) => deleteScenario(index, e);
-        btnDelete.setAttribute('aria-label', 'Usuń scenariusz');
-        const iconClose = document.createElement('span');
-        iconClose.className = "material-symbols-outlined text-[16px] block";
-        iconClose.textContent = 'close';
-        btnDelete.appendChild(iconClose);
+        div.innerHTML = `
+            <button class="absolute top-2 right-2 text-slate-400 hover:text-rose-500 opacity-0 group-hover:opacity-100 transition-opacity p-1 z-20 bg-white/80 dark:bg-slate-800/80 rounded-full backdrop-blur-sm hover:scale-110 shadow-sm" onclick="deleteScenario(${index}, event)" aria-label="Usuń scenariusz">
+                <span class="material-symbols-outlined text-[16px] block">close</span>
+            </button>
 
-        // Guide Overlay
-        const overlay = document.createElement('div');
-        overlay.className = "absolute inset-0 bg-gradient-to-t from-white/90 via-white/40 to-transparent dark:from-slate-900/95 dark:via-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8 pointer-events-none z-10";
-        const overlaySpan = document.createElement('span');
-        overlaySpan.className = "bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1 translate-y-2 group-hover:translate-y-0 transition-transform duration-300";
-        overlaySpan.style.backgroundColor = "#0d7ff2";
-        const iconDownload = document.createElement('span');
-        iconDownload.className = "material-symbols-outlined text-[14px]";
-        iconDownload.textContent = 'file_download';
-        overlaySpan.append(iconDownload, document.createTextNode(' Kliknij, aby wczytać'));
-        overlay.appendChild(overlaySpan);
+            <!-- Guide Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-white/40 to-transparent dark:from-slate-900/95 dark:via-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-8 pointer-events-none z-10">
+                <span class="bg-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                    <span class="material-symbols-outlined text-[14px]">file_download</span>
+                    Kliknij, aby wczytać
+                </span>
+            </div>
 
-        // Content
-        const contentDiv = document.createElement('div');
-        contentDiv.className = "transition-all duration-300 group-hover:blur-[1.5px] group-hover:opacity-60 relative z-0";
-        
-        const tagsDiv = document.createElement('div');
-        tagsDiv.className = "flex flex-wrap gap-1 mb-4 pr-6";
-        
-        const createTag = (text) => {
-            const span = document.createElement('span');
-            span.className = "text-[9px] bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-slate-600 dark:text-slate-300 font-medium";
-            span.textContent = text;
-            return span;
-        };
-        
-        tagsDiv.append(
-            createTag(`${kapitalStr} zł st.`),
-            createTag(`${doplataStr} zł/msc`),
-            createTag(`${scen.lata} lat`),
-            createTag(`${scen.stopa}% zysk`)
-        );
-
-        const detailsDiv = document.createElement('div');
-        const pLabel1 = document.createElement('p');
-        pLabel1.className = "text-[10px] text-slate-500 uppercase tracking-widest font-semibold mb-1";
-        pLabel1.textContent = 'Przewidywany kapitał końcowy';
-        const pValue = document.createElement('p');
-        pValue.className = "text-2xl sm:text-3xl font-black text-slate-900 dark:text-white leading-none";
-        pValue.textContent = scen.kapitalKoncowyStr;
-        
-        const trendDiv = document.createElement('div');
-        trendDiv.className = "flex items-center gap-1 mt-2 mb-1";
-        const iconTrend = document.createElement('span');
-        iconTrend.className = "material-symbols-outlined text-[13px] text-emerald-500";
-        iconTrend.textContent = 'trending_up';
-        const pLabel2 = document.createElement('p');
-        pLabel2.className = "text-[11px] text-slate-500 dark:text-slate-400 font-medium tracking-wide";
-        pLabel2.textContent = `w tym zysk nominalny: ${scen.zyskNominalnyStr}`;
-        trendDiv.append(iconTrend, pLabel2);
-
-        detailsDiv.append(pLabel1, pValue, trendDiv);
-        contentDiv.append(tagsDiv, detailsDiv);
-
-        div.append(btnDelete, overlay, contentDiv);
+            <div class="transition-all duration-300 group-hover:blur-[1.5px] group-hover:opacity-60 relative z-0">
+                <div class="flex flex-wrap gap-1 mb-4 pr-6">
+                    <span class="text-[9px] bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-slate-600 dark:text-slate-300 font-medium">${kapitalStr} zł st.</span>
+                    <span class="text-[9px] bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-slate-600 dark:text-slate-300 font-medium">${doplataStr} zł/msc</span>
+                    <span class="text-[9px] bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-slate-600 dark:text-slate-300 font-medium">${scen.lata} lat</span>
+                    <span class="text-[9px] bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-slate-600 dark:text-slate-300 font-medium">${scen.stopa}% zysk</span>
+                </div>
+                <div>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-widest font-semibold mb-1">Przewidywany kapitał końcowy</p>
+                    <p class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white leading-none">${escapeHtml(scen.kapitalKoncowyStr)}</p>
+                    <div class="flex items-center gap-1 mt-2 mb-1">
+                        <span class="material-symbols-outlined text-[13px] text-emerald-500">trending_up</span>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 font-medium tracking-wide">
+                            w tym zysk nominalny: ${escapeHtml(scen.zyskNominalnyStr)}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        `;
         container.appendChild(div);
     });
 
@@ -621,7 +568,8 @@ function loadFromLocalStorage() {
     try {
         const data = localStorage.getItem('etf-scenarios');
         if (data) {
-            savedScenarios = JSON.parse(data);
+            const parsed = JSON.parse(data);
+            savedScenarios = Array.isArray(parsed) ? parsed : [];
             if (savedScenarios.length > 0) {
                 renderScenarios();
             }

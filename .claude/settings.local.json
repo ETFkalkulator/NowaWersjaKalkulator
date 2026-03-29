@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd:*)",
+      "Bash(rm -f js/calculators/obligacje.js)",
+      "Bash(rm -rf php .cursor .agent)",
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Read(//c/Users/komptest/Documents/ETFkalkulator 3.0/A wersja do pracy/**)",
+      "Bash(done)",
+      "Bash(grep -rn cookie-consent.js 'C:/Users/komptest/Documents/ETFkalkulator 3.0/A wersja do pracy' --include=*.html)",
+      "Bash(grep -E \"\\\\.html$\")",
+      "Bash(powershell -Command \"Get-ChildItem -Path . -Recurse -Include ''*.html'' | ForEach-Object { $content = Get-Content $_FullName -Raw -Encoding UTF8; $new = $content -replace '', maximum-scale=1\\\\.0'', ''''; if \\($new -ne $content\\) { Set-Content $_FullName -Value $new -Encoding UTF8 -NoNewline; Write-Host ''Updated: '' + $_Name } }\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\komptest\\\\Documents\\\\ETFkalkulator 3.0\\\\A wersja do pracy\\\\fix-viewport.ps1\")",
+      "Bash(del:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\komptest\\\\Documents\\\\ETFkalkulator 3.0\\\\A wersja do pracy\\\\add-skip.ps1\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\komptest\\\\Documents\\\\ETFkalkulator 3.0\\\\A wersja do pracy\\\\fix-skip.ps1\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\komptest\\\\Documents\\\\ETFkalkulator 3.0\\\\A wersja do pracy\\\\fix-skip2.ps1\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\komptest\\\\Documents\\\\ETFkalkulator 3.0\\\\A wersja do pracy\\\\add-aria-hidden.ps1\")",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\komptest\\\\Documents\\\\ETFkalkulator 3.0\\\\A wersja do pracy\\\\add-ogimage-dims.ps1\")",
+      "WebSearch"
+    ]
+  }
+}

@@ -1,0 +1,123 @@
+/* ===================================================
+   ETFkalkulator.pl — Print Stylesheet
+   Loaded only when printing (media="print")
+   =================================================== */
+
+/* --- Hide elements that don't belong in a printout --- */
+@media print {
+
+  /* Fixed top navigation */
+  nav.fixed {
+    display: none !important;
+  }
+
+  /* Newsletter section */
+  #newsletter-section {
+    display: none !important;
+  }
+
+  /* Site footer */
+  footer {
+    display: none !important;
+  }
+
+  /* Cookie bar / consent overlay */
+  #cookie-banner,
+  #cookie-overlay,
+  [id*="cookie"] {
+    display: none !important;
+  }
+
+  /* The print button itself */
+  .btn-print {
+    display: none !important;
+  }
+
+  /* Dark-mode toggles, mobile hamburger */
+  #theme-toggle,
+  #mobile-menu-btn,
+  #mobile-menu {
+    display: none !important;
+  }
+
+  /* --- Force light / readable colours --- */
+  html, body {
+    background: #ffffff !important;
+    color: #1a1a1a !important;
+  }
+
+  /* Remove dark-mode overrides */
+  .dark body,
+  .dark main,
+  .dark section,
+  .dark div {
+    background-color: transparent !important;
+    color: inherit !important;
+  }
+
+  /* Main content area */
+  main {
+    padding-top: 0 !important;
+    background: #ffffff !important;
+  }
+
+  /* --- Collapse two-column grid to single column --- */
+  .grid,
+  .lg\:grid-cols-12,
+  .lg\:grid-cols-2,
+  .lg\:grid-cols-3 {
+    display: block !important;
+  }
+
+  /* Sidebar / aside hidden in print — results only */
+  aside {
+    display: none !important;
+  }
+
+  /* Remove box shadows and heavy borders */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Keep links readable */
+  a {
+    color: #0d7ff2 !important;
+    text-decoration: underline;
+  }
+
+  /* Charts — allow them to render */
+  canvas {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* --- Print-only header (hidden on screen, shown when printing) --- */
+  .print-only {
+    display: block !important;
+    font-family: Georgia, serif;
+    font-size: 11pt;
+    color: #666;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 6pt;
+    margin-bottom: 16pt;
+  }
+
+  /* Page setup */
+  @page {
+    margin: 1.5cm 2cm;
+    size: A4 portrait;
+  }
+
+  /* Avoid breaking result cards across pages */
+  .rounded-stitch,
+  .rounded-\[2\.5rem\] {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
+
+/* --- Screen: hide the print-only header --- */
+.print-only {
+  display: none;
+}

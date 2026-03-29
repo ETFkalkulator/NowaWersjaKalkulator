@@ -1,22 +1,24 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pl" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
-  <title>Jak zacząć inwestować w ETF w Polsce — przewodnik krok po kroku 2026 | ETFkalkulator.pl</title>
-  <meta name="description" content="Jak zacząć inwestować w ETF w Polsce? Krok po kroku: wybór brokera, pierwsze zlecenie, IKE/IKZE, MSCI World vs S&P 500. Kompletny przewodnik dla początkujących 2026.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Jak inwestować w ETF — Poradnik 2026 | ETFkalkulator.pl</title>
+  <meta name="description" content="Jak zacząć inwestować w ETF? Wybór brokera, pierwsze zlecenie, IKE/IKZE, MSCI World vs S&P 500. Przewodnik dla początkujących 2026.">
   <meta name="author" content="ETFkalkulator.pl">
   <link rel="canonical" href="https://etfkalkulator.pl/blog/jak-zaczac-inwestowac-w-etf">
 
-  <meta property="og:title" content="Jak zacząć inwestować w ETF w Polsce — przewodnik 2026">
+  <meta property="og:title" content="Jak inwestować w ETF — Poradnik 2026 | ETFkalkulator.pl">
   <meta property="og:description" content="Krok po kroku: wybór brokera, pierwsze zlecenie, IKE/IKZE i które ETF-y wybrać. Kompletny poradnik dla polskiego inwestora.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://etfkalkulator.pl/blog/jak-zaczac-inwestowac-w-etf">
   <meta property="og:site_name" content="ETFkalkulator.pl">
   <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Jak zacząć inwestować w ETF w Polsce 2026">
+  <meta name="twitter:title" content="Jak inwestować w ETF — Poradnik 2026">
   <meta name="twitter:description" content="Przewodnik krok po kroku dla początkujących. Broker, pierwsze ETF, IKE/IKZE i konkretne liczby.">
 
   <script type="application/ld+json">
@@ -54,7 +56,7 @@
       {
         "@type": "Question",
         "name": "Od jakiej kwoty można zacząć inwestować w ETF?",
-        "acceptedAnswer": {"@type":"Answer","text":"Teoretycznie od kilkudziesięciu złotych — cena jednej jednostki ETF MSCI World to zazwyczaj 20–80 EUR. W XTB dostępne są ułamkowe części ETF-ów (fractional shares), więc możesz zacząć nawet od 50 zł. Rozsądne minimum to jednak 200–500 zł miesięcznie, żeby koszty transakcyjne nie zjadały zysku."}
+        "acceptedAnswer": {"@type":"Answer","text":"Teoretycznie od kilkudziesięciu złotych — cena jednej jednostki ETF MSCI World to zazwyczaj 60–80 EUR. W XTB dostępne są ułamkowe części ETF-ów (fractional shares), więc możesz zacząć nawet od 50 zł. Rozsądne minimum to jednak 200–500 zł miesięcznie, żeby koszty transakcyjne nie zjadały zysku."}
       },
       {
         "@type": "Question",
@@ -90,23 +92,21 @@
   }
   </script>
 
-  <!-- Google Analytics 4 — loads only after cookie consent -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
-    // Default: analytics denied until user accepts
-    gtag('consent', 'default', {
-      'analytics_storage': 'denied',
-      'ad_storage': 'denied'
-    });
+    gtag('consent', 'default', {'analytics_storage': 'denied'});
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
-  <script>
-    gtag('config', 'G-GZECMECQ15', { 'send_page_view': false });
-  </script>
+  <script>gtag('config', 'G-GZECMECQ15', {'send_page_view': false});</script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://groot.mailerlite.com">
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap" rel="stylesheet"/>
   <script>
@@ -118,9 +118,9 @@
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/main.css">
-  <script src="../js/utils.js" defer></script>
-  <script src="../js/shared.js" defer></script>
   <link rel="icon" href="../images/favicon.png">
+  <link rel="apple-touch-icon" href="../images/favicon.png">
+  <link rel="manifest" href="/manifest.json">
 
   <style>
     .glass-effect { background: rgba(255,255,255,0.7); backdrop-filter: blur(12px); }
@@ -148,11 +148,11 @@
   </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-stitch-accent">Przejdź do głównej treści</a>
   <div id="reading-progress"
     class="fixed top-0 left-0 h-[3px] bg-primary z-[200] transition-none rounded-r-full"
     style="width:0%;background-color:#0d7ff2;">
   </div>
-
 
 
   <!-- NAV -->
@@ -160,7 +160,7 @@
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="../index.html" class="flex items-center gap-2" style="text-decoration:none;">
         <div class="bg-primary p-1.5 rounded-xl text-white flex items-center justify-center" style="background-color:#0d7ff2;">
-          <span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-xl">account_balance_wallet</span>
         </div>
         <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">ETFkalkulator.pl</span>
       </a>
@@ -174,8 +174,8 @@
       </div>
       <div class="flex items-center gap-3">
         <button onclick="przelaczTryb()" aria-label="Przełącz tryb" class="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center hover:bg-slate-50 transition-colors">
-          <span class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
-          <span class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
         </button>
         <a href="#newsletter-section" class="bg-primary text-white px-4 h-9 rounded-full flex items-center justify-center text-[13px] font-bold hover:opacity-90 transition-opacity" style="background-color:#0d7ff2;text-decoration:none;">Zapisz się</a>
       </div>
@@ -196,18 +196,18 @@
       <nav aria-label="Breadcrumb" class="mb-6">
         <ol class="flex items-center gap-2 text-white/60 text-sm flex-wrap">
           <li><a href="../index.html" class="hover:text-white transition-colors" style="text-decoration:none;">ETFkalkulator.pl</a></li>
-          <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+          <li><span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span></li>
           <li><a href="index.html" class="hover:text-white transition-colors" style="text-decoration:none;">Blog</a></li>
-          <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+          <li><span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span></li>
           <li class="text-white font-semibold">Jak zacząć w ETF</li>
         </ol>
       </nav>
       <h1 class="text-2xl md:text-4xl font-black text-white leading-tight mb-4">Jak zacząć inwestować w ETF w Polsce — przewodnik krok po kroku 2026</h1>
       <p class="text-white/85 text-base md:text-lg leading-relaxed mb-4">Masz wolne środki i słyszałeś o ETF-ach — ale nie wiesz od czego zacząć? Ten artykuł przeprowadzi Cię przez cały proces: od wyboru brokera, przez pierwsze zlecenie, aż po IKE i IKZE. Bez żargonu, z konkretnymi przykładami.</p>
       <div class="flex flex-wrap gap-4 mt-4 text-white/60 text-sm">
-        <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">calendar_today</span> marzec 2026</span>
-        <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">schedule</span> 10 minut czytania</span>
-        <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">person</span> ETFkalkulator.pl</span>
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">calendar_today</span> marzec 2026</span>
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">schedule</span> 10 minut czytania</span>
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">person</span> ETFkalkulator.pl</span>
       </div>
     </div>
   </section>
@@ -219,7 +219,7 @@
 
     <!-- TOC -->
     <div class="glass-effect rounded-[1.5rem] p-6 mb-10 border-l-4 border-primary bg-primary/5 dark:bg-primary/10">
-      <p class="text-xs font-black uppercase tracking-widest text-primary mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">format_list_bulleted</span> Spis treści</p>
+      <p class="text-xs font-black uppercase tracking-widest text-primary mb-4 flex items-center gap-2"><span aria-hidden="true" class="material-symbols-outlined text-[18px]">format_list_bulleted</span> Spis treści</p>
       <ol class="space-y-2 text-sm list-decimal list-inside">
         <li><a href="#czym-jest-etf" class="text-primary hover:underline font-medium" style="text-decoration:none;">Czym jest ETF — wyjaśnienie w 3 zdaniach</a></li>
         <li><a href="#dlaczego-warto" class="text-primary hover:underline font-medium" style="text-decoration:none;">Dlaczego ETF to dobry wybór dla większości Polaków</a></li>
@@ -242,7 +242,7 @@
     <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-base md:text-lg">Kupując jedną jednostkę ETF-u za 60 EUR masz automatycznie udziały w setkach firm — bez potrzeby analizowania pojedynczych spółek. Jeśli gospodarka światowa rośnie, rośnie wartość Twojego ETF-u.</p>
 
     <div class="rounded-2xl p-5 bg-primary/5 dark:bg-primary/10 border-l-4 border-primary mb-6">
-      <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-primary mb-2"><span class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2">key</span> ETF vs tradycyjny fundusz</p>
+      <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-primary mb-2"><span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2">key</span> ETF vs tradycyjny fundusz</p>
       <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">Tradycyjne fundusze zarządzane aktywnie pobierają <strong>2–3% rocznie</strong> za zarządzanie — nawet jeśli nie pobijają rynku. Najtańsze ETF-y indeksowe kosztują <strong>0,07–0,20% rocznie</strong>. Na 20 latach przy 500 zł/mies. ta różnica kosztów przekłada się na dziesiątki tysięcy złotych na Twoją niekorzyść.</p>
     </div>
 
@@ -321,7 +321,7 @@
     </div>
 
     <div class="rounded-2xl p-5 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 mb-6">
-      <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2"><span class="material-symbols-outlined text-amber-600 text-[18px] shrink-0">warning</span> Uważaj — ETF vs ETF CFD</p>
+      <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2"><span aria-hidden="true" class="material-symbols-outlined text-amber-600 text-[18px] shrink-0">warning</span> Uważaj — ETF vs ETF CFD</p>
       <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">W XTB przy wyszukiwaniu ETF-ów zobaczysz dwa typy: <strong>ETF</strong> i <strong>ETF CFD</strong>. Zawsze wybieraj <strong>ETF</strong> (bez CFD). ETF CFD to kontrakt spekulacyjny z dźwignią finansową — nie jest tym samym co posiadanie udziałów w funduszu. 75% detalicznych inwestorów traci na CFD.</p>
     </div>
 
@@ -379,7 +379,7 @@
     </div>
 
     <div class="rounded-2xl p-5 bg-primary/5 dark:bg-primary/10 border-l-4 border-primary mb-6">
-      <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-primary mb-2"><span class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2">key</span> Akumulujący czy dystrybuujący?</p>
+      <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-primary mb-2"><span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2">key</span> Akumulujący czy dystrybuujący?</p>
       <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">Wybieraj ETF-y z dopiskiem <strong>Acc</strong> (accumulating) — reinwestują dywidendy automatycznie. Ich odpowiedniki <strong>Dist</strong> (distributing) wypłacają dywidendy na konto — co oznacza konieczność ich ręcznego reinwestowania i zapłatę podatku Belki co roku. Na IKE/IKZE różnica jest mniejsza, ale Acc i tak jest prostszy.</p>
     </div>
 
@@ -392,7 +392,7 @@
 
     <div class="relative overflow-hidden glass-effect rounded-2xl p-6 mb-6 shadow-sm border border-white/50 dark:border-slate-800/50">
       <div class="absolute top-0 left-0 right-0 h-1 bg-primary rounded-t-2xl"></div>
-      <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">calculate</span> Dlaczego DCA działa — przykład</p>
+      <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2"><span aria-hidden="true" class="material-symbols-outlined text-[18px]">calculate</span> Dlaczego DCA działa — przykład</p>
       <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-slate-100 dark:border-slate-800">
         <span class="text-sm text-slate-500 dark:text-slate-400">Styczeń — ETF kosztuje 100 zł, kupujesz za 500 zł</span>
         <span class="text-sm font-bold text-slate-900 dark:text-white">= 5 jednostek</span>
@@ -414,7 +414,7 @@
     <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-base md:text-lg">Kupując regularnie <strong class="text-slate-900 dark:text-white">automatycznie uśredniasz cenę zakupu</strong> — kupujesz więcej jednostek gdy są tanie, mniej gdy drogie. Nie musisz zgadywać kiedy jest dno ani szczyt. Wystarczy ustawić stałe zlecenie raz w miesiącu i nie dotykać.</p>
 
     <div class="rounded-2xl p-5 bg-emerald-50 dark:bg-emerald-950/30 border-l-4 border-emerald-500 mb-6">
-      <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2"><span class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span> Od jakiej kwoty zacząć</p>
+      <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2"><span aria-hidden="true" class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span> Od jakiej kwoty zacząć</p>
       <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">Minimum które ma sens to <strong>200–500 zł miesięcznie</strong>. Przy mniejszych kwotach koszt przewalutowania (jeśli ETF jest w EUR) zjada proporcjonalnie więcej zysku. W XTB możesz też kupować ułamkowe jednostki (fractional shares) — więc technicznie start jest możliwy nawet od 50 zł.</p>
     </div>
 
@@ -427,7 +427,7 @@
 
     <div class="relative overflow-hidden glass-effect rounded-2xl p-6 mb-6 shadow-sm border border-white/50 dark:border-slate-800/50">
       <div class="absolute top-0 left-0 right-0 h-1 bg-primary rounded-t-2xl"></div>
-      <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">calculate</span> 500 zł/mies. × 20 lat @ 7% — IKE vs zwykłe konto</p>
+      <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2"><span aria-hidden="true" class="material-symbols-outlined text-[18px]">calculate</span> 500 zł/mies. × 20 lat @ 7% — IKE vs zwykłe konto</p>
       <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-slate-100 dark:border-slate-800">
         <span class="text-sm text-slate-500 dark:text-slate-400">Zwykłe konto maklerskie</span>
         <span class="text-sm font-bold text-rose-600 dark:text-rose-400">~232 600 zł (−27 400 zł podatku)</span>
@@ -446,7 +446,7 @@
       <p class="text-white/80 mb-5 text-sm leading-relaxed">Wpisz swoje liczby w kalkulatorze ETF — zaznacz IKE i porównaj wyniki z kontem standardowym.</p>
       <a href="../pages/kalkulator-etf.html" class="bg-white font-black px-6 py-3 rounded-xl hover:scale-[1.02] transition-all inline-flex items-center gap-2 shadow-lg" style="color:#0d7ff2;text-decoration:none;">
         Otwórz kalkulator ETF
-        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        <span aria-hidden="true" class="material-symbols-outlined text-[18px]">arrow_forward</span>
       </a>
     </div>
 
@@ -477,7 +477,7 @@
     </div>
 
     <div class="rounded-2xl p-5 bg-primary/5 dark:bg-primary/10 border-l-4 border-primary mb-6">
-      <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-primary mb-2"><span class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2">key</span> Kiedy kupować — godziny sesji</p>
+      <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-primary mb-2"><span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2">key</span> Kiedy kupować — godziny sesji</p>
       <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">Europejskie ETF-y (IWDA, CSPX) są notowane na giełdzie Euronext Amsterdam i LSE. Sesja trwa od ok. <strong>9:00 do 17:30</strong> czasu polskiego w dni robocze. Poza godzinami sesji zlecenie zostanie wykonane po otwarciu następnego dnia handlowego.</p>
     </div>
 
@@ -536,7 +536,7 @@
       <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden group">
         <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-sm md:text-base list-none">
           Od jakiej kwoty można zacząć inwestować w ETF?
-          <span class="material-symbols-outlined text-primary shrink-0 expand-icon" style="color:#0d7ff2;">expand_more</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 expand-icon" style="color:#0d7ff2;">expand_more</span>
         </summary>
         <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-4">
           Teoretycznie od kilkudziesięciu złotych — cena jednej jednostki ETF MSCI World to zazwyczaj 60–80 EUR. W XTB dostępne są ułamkowe części ETF-ów (fractional shares), więc możesz zacząć nawet od <strong class="text-slate-800 dark:text-slate-200">50 zł</strong>. Rozsądne minimum to jednak 200–500 zł miesięcznie, żeby koszty przewalutowania nie zjadały proporcjonalnie zbyt dużo zysku.
@@ -546,7 +546,7 @@
       <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden group">
         <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-sm md:text-base list-none">
           Czy inwestowanie w ETF jest bezpieczne?
-          <span class="material-symbols-outlined text-primary shrink-0 expand-icon" style="color:#0d7ff2;">expand_more</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 expand-icon" style="color:#0d7ff2;">expand_more</span>
         </summary>
         <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-4">
           ETF-y są regulowanymi instrumentami finansowymi notowanymi na giełdach UE i podlegają ochronie UCITS. Są bezpieczniejsze niż pojedyncze akcje dzięki dywersyfikacji — jeden ETF MSCI World inwestuje w ponad 1500 spółek. Jednak jak każda inwestycja giełdowa, <strong class="text-slate-800 dark:text-slate-200">ETF może stracić na wartości</strong> — szczególnie krótkoterminowo. Historycznie globalny rynek akcji zawsze odrabiał straty po kryzysach i osiągał nowe maksima.
@@ -556,7 +556,7 @@
       <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden group">
         <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-sm md:text-base list-none">
           Który ETF wybrać na początek — MSCI World czy S&amp;P 500?
-          <span class="material-symbols-outlined text-primary shrink-0 expand-icon" style="color:#0d7ff2;">expand_more</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 expand-icon" style="color:#0d7ff2;">expand_more</span>
         </summary>
         <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-4">
           Oba są doskonałym wyborem. MSCI World (np. IWDA) daje szerszą dywersyfikację geograficzną — ok. 1500 spółek z 23 krajów rozwiniętych. S&amp;P 500 (np. CSPX) to 500 największych firm z USA, nieco tańszy TER (0,07% vs 0,20%). Historyczne stopy zwrotu są podobne. Na początek <strong class="text-slate-800 dark:text-slate-200">MSCI World</strong> jest nieco bezpieczniejszy przez większe rozproszenie geograficzne.
@@ -566,7 +566,7 @@
       <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden group">
         <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-sm md:text-base list-none">
           Czy trzeba płacić podatek od zysku z ETF?
-          <span class="material-symbols-outlined text-primary shrink-0 expand-icon" style="color:#0d7ff2;">expand_more</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 expand-icon" style="color:#0d7ff2;">expand_more</span>
         </summary>
         <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-4">
           Tak — przy sprzedaży ETF z zyskiem płacisz <strong class="text-slate-800 dark:text-slate-200">19% podatku Belki</strong> od zysku kapitałowego. Możesz legalnie uniknąć tego podatku inwestując przez konto IKE (0% podatku po 60. roku życia) lub IKZE (10% ryczałtu po 65. roku, ale odliczasz wpłaty od PIT każdego roku). Inwestowanie przez IKE to najprościej mówiąc darmowe 19% więcej zysku na końcu.
@@ -576,7 +576,7 @@
       <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden group">
         <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-sm md:text-base list-none">
           Kiedy jest dobry moment na zakup ETF?
-          <span class="material-symbols-outlined text-primary shrink-0 expand-icon" style="color:#0d7ff2;">expand_more</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 expand-icon" style="color:#0d7ff2;">expand_more</span>
         </summary>
         <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-4">
           Dla inwestora długoterminowego <strong class="text-slate-800 dark:text-slate-200">nie ma złego momentu</strong>. Strategia DCA (regularne kupowanie co miesiąc stałej kwoty) eliminuje problem timingu. Nie kupujesz na szczycie ani na dnie — kupujesz przez cały cykl i uśredniasz cenę zakupu. Badania pokazują, że inwestor który konsekwentnie kupuje co miesiąc bije w długim terminie inwestora próbującego wyczuć rynek.
@@ -586,7 +586,7 @@
       <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden group">
         <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-sm md:text-base list-none">
           Czy ETF CFD to to samo co ETF?
-          <span class="material-symbols-outlined text-primary shrink-0 expand-icon" style="color:#0d7ff2;">expand_more</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 expand-icon" style="color:#0d7ff2;">expand_more</span>
         </summary>
         <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-4">
           Nie — to zupełnie różne instrumenty. <strong class="text-slate-800 dark:text-slate-200">ETF CFD</strong> to kontrakt na różnicę kursową — instrument spekulacyjny z możliwością dźwigni finansowej. Nie jesteś właścicielem żadnych aktywów. <strong class="text-slate-800 dark:text-slate-200">ETF (bez CFD)</strong> to realne udziały w funduszu — kupujesz i posiadasz aktywa. Jako inwestor długoterminowy zawsze wybieraj ETF, nigdy ETF CFD. Statystyki są jednoznaczne: 75% detalicznych inwestorów traci na CFD.
@@ -596,7 +596,7 @@
       <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden group">
         <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-sm md:text-base list-none">
           Jak często powinienem sprawdzać swój portfel ETF?
-          <span class="material-symbols-outlined text-primary shrink-0 expand-icon" style="color:#0d7ff2;">expand_more</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 expand-icon" style="color:#0d7ff2;">expand_more</span>
         </summary>
         <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-4">
           Raz na kwartał lub raz na pół roku wystarczy. Zbyt częste śledzenie notowań prowadzi do emocjonalnych decyzji — sprzedaży podczas spadków i kupowania na górkach. Pasywne inwestowanie w ETF działa najlepiej gdy <strong class="text-slate-800 dark:text-slate-200">dasz mu czas i nie reagujesz na krótkoterminowe wahania</strong>. Im rzadziej patrzysz na konto, tym spokojniej śpisz i tym lepsze decyzje podejmujesz.
@@ -607,7 +607,7 @@
 
     <!-- Podsumowanie -->
     <div class="rounded-2xl p-5 bg-emerald-50 dark:bg-emerald-950/30 border-l-4 border-emerald-500 mb-8">
-      <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2"><span class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span> Plan działania w 5 krokach</p>
+      <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2"><span aria-hidden="true" class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span> Plan działania w 5 krokach</p>
       <ol class="space-y-1.5 text-sm text-slate-700 dark:text-slate-300 leading-relaxed list-decimal list-inside">
         <li>Otwórz konto maklerskie IKE w XTB lub DM BOŚ (darmowe, online, 15 minut)</li>
         <li>Wybierz jeden ETF globalny — IWDA (MSCI World) lub CSPX (S&amp;P 500)</li>
@@ -619,7 +619,7 @@
 
     <!-- Disclaimer -->
     <div class="glass-effect rounded-2xl p-5 mt-10 border border-slate-200 dark:border-slate-700 flex items-start gap-4">
-      <span class="material-symbols-outlined text-slate-400 shrink-0 mt-0.5">info</span>
+      <span aria-hidden="true" class="material-symbols-outlined text-slate-400 shrink-0 mt-0.5">info</span>
       <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
         <strong class="not-italic">Ważna informacja (Disclaimer):</strong> Materiały na stronie mają charakter wyłącznie edukacyjny i poglądowy. Nie stanowią rekomendacji inwestycyjnej ani porady finansowej. Nazwy brokerów i ETF-ów wymienione są wyłącznie jako przykłady edukacyjne — nie są to rekomendacje zakupu. Inwestowanie wiąże się z ryzykiem utraty części lub całości kapitału. Przed podjęciem decyzji inwestycyjnej skonsultuj się z licencjonowanym doradcą finansowym.
       </p>
@@ -631,7 +631,7 @@
         <div class="sticky top-24 space-y-6">
           <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
             <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
-              <span class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
               W tym artykule
             </p>
             <nav class="sidebar-toc space-y-1">
@@ -648,20 +648,20 @@
           </div>
 
           <div class="bg-gradient-to-br from-blue-700 to-primary rounded-2xl p-5 text-white text-center shadow-xl">
-            <span class="material-symbols-outlined text-3xl mb-2 opacity-80">analytics</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-3xl mb-2 opacity-80">analytics</span>
             <h3 class="font-black text-white text-base mb-1">Policz to sam</h3>
             <p class="text-white/75 text-xs leading-relaxed mb-4">Bezpłatny kalkulator ETF — sprawdź swoje liczby.</p>
             <a href="../pages/kalkulator-etf.html"
               class="bg-white rounded-xl px-4 py-2.5 text-xs font-black hover:scale-[1.02] transition-all inline-flex items-center gap-1.5 shadow-lg"
               style="color:#0d7ff2;text-decoration:none;">
               Otwórz kalkulator
-              <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-[15px]">arrow_forward</span>
             </a>
           </div>
 
           <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
             <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
-              <span class="material-symbols-outlined text-[18px]">auto_stories</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-[18px]">auto_stories</span>
               Czytaj też
             </p>
             <div class="space-y-3">
@@ -695,7 +695,7 @@
     <a href="../pages/kalkulator-etf.html"
       class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-full flex items-center gap-1.5 hover:opacity-90"
       style="background-color:#0d7ff2;text-decoration:none;">
-      <span class="material-symbols-outlined text-[14px]">calculate</span>
+      <span aria-hidden="true" class="material-symbols-outlined text-[14px]">calculate</span>
       Kalkulator
     </a>
   </div>
@@ -749,7 +749,7 @@
                 <div class="ml-form-successBody row-success" style="display:none">
                   <div class="p-10 rounded-3xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 text-center">
                     <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-3xl">verified</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-3xl">verified</span>
                     </div>
                     <h4 class="text-emerald-900 dark:text-emerald-300 font-bold text-xl mb-1">Sukces!</h4>
                     <p class="text-emerald-700 dark:text-emerald-500 text-sm">Sprawdź swoją skrzynkę e-mail, aby potwierdzić zapis.</p>
@@ -768,7 +768,7 @@
     <div class="max-w-7xl mx-auto">
       <div class="mb-12 border-b border-slate-200/50 dark:border-slate-800/50 pb-8">
         <div class="flex items-center gap-2">
-          <div class="bg-primary p-1.5 rounded-lg text-white flex items-center justify-center" style="background-color:#0d7ff2;"><span class="material-symbols-outlined text-base">account_balance_wallet</span></div>
+          <div class="bg-primary p-1.5 rounded-lg text-white flex items-center justify-center" style="background-color:#0d7ff2;"><span aria-hidden="true" class="material-symbols-outlined text-base">account_balance_wallet</span></div>
           <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">ETF<span class="font-normal text-slate-500">kalkulator</span>.pl</span>
         </div>
       </div>
@@ -819,7 +819,23 @@
   </script>
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
   <script>
-
+    (function() {
+      const s = localStorage.getItem('etf-tryb');
+      const d = s === 'ciemny' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.classList.toggle('dark', d);
+      document.documentElement.classList.toggle('light', !d);
+    })();
+    function przelaczTryb() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains('dark') || html.classList.contains('dark-mode');
+      if (isDark) {
+        html.classList.remove('dark','dark-mode'); html.classList.add('light');
+        localStorage.setItem('etf-tryb','jasny');
+      } else {
+        html.classList.add('dark'); html.classList.remove('light','light-mode');
+        localStorage.setItem('etf-tryb','ciemny');
+      }
+    }
     const bar = document.getElementById('reading-progress');
     const article = document.getElementById('main');
     const mobileBar = document.getElementById('reading-progress-mobile');
@@ -852,8 +868,8 @@
     }, { rootMargin: '-20% 0px -70% 0px' });
 
     headings.forEach(h => observer.observe(h));
-
-
   </script>
+  <!-- Cookie Consent -->
+  <script src="../js/cookie-consent.js" defer></script>
 </body>
 </html>

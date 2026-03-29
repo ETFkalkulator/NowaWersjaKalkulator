@@ -1,26 +1,39 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="pl" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="color-scheme" content="light dark" />
   <meta name="theme-color" content="#f8f7f2" id="meta-theme-color" />
+  <script>
+    (function () {
+      const s = localStorage.getItem("etf-tryb");
+      const d =
+        s === "ciemny" ||
+        (!s && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.classList.toggle("dark", d);
+      document.documentElement.classList.toggle("dark-mode", d);
+      document.documentElement.classList.toggle("light", !d);
+      document.documentElement.classList.toggle("light-mode", !d);
+    })();
+  </script>
 
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
-  <title>Obligacje EDO — co to jest i jak działają? Kompletny poradnik 2026 | ETFkalkulator.pl</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Obligacje EDO 2026 — Kompletny Poradnik | ETFkalkulator.pl</title>
   <link rel="canonical" href="https://etfkalkulator.pl/blog/obligacje-edo-poradnik" />
-  <meta name="description" content="Obligacje EDO 2026: oprocentowanie, zakup, podatek Belki i IKE-Obligacje. Praktyczny poradnik krok po kroku dla poczatkujacych." />
+  <meta name="description" content="Obligacje EDO 2026: oprocentowanie, jak kupić, podatek Belki i IKE-Obligacje. Praktyczny poradnik krok po kroku — sprawdź czy się opłacają." />
   <meta name="author" content="ETFkalkulator.pl" />
-  <meta property="og:title" content="Obligacje EDO — kompletny poradnik 2026 | ETFkalkulator.pl" />
+  <meta property="og:title" content="Obligacje EDO 2026 — Kompletny Poradnik | ETFkalkulator.pl" />
   <meta property="og:description" content="Oprocentowanie 5,60% + inflacja. Jak kupić, ile zarobisz i kiedy się opłacają — wyjaśnione po ludzku." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://etfkalkulator.pl/blog/obligacje-edo-poradnik" />
   <meta property="og:site_name" content="ETFkalkulator.pl" />
   <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="pl_PL" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Obligacje EDO — kompletny poradnik 2026 | ETFkalkulator.pl" />
+  <meta name="twitter:title" content="Obligacje EDO 2026 — Kompletny Poradnik" />
   <meta name="twitter:description" content="Oprocentowanie 5,60% + inflacja. Jak kupić, ile zarobisz i kiedy się opłacają — wyjaśnione po ludzku." />
   <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png" />
 
@@ -72,25 +85,6 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Obligacje EDO — co to jest i jak działają? Kompletny poradnik 2026",
-    "description": "Obligacje EDO (10-letnie) indeksowane inflacją — oprocentowanie, jak kupić, podatek Belki, IKE-Obligacje. Aktualny poradnik marzec 2026.",
-    "datePublished": "2026-03-16",
-    "dateModified": "2026-03-16",
-    "author": {
-      "@type": "Organization",
-      "name": "ETFkalkulator.pl"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "ETFkalkulator.pl",
-      "url": "https://etfkalkulator.pl"
-    }
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
       {
@@ -122,7 +116,7 @@
         "name": "Jak uniknąć podatku Belki na obligacjach EDO?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Kupując obligacje EDO przez konto IKE-Obligacje (w PKO BP lub Pekao). Na IKE zysk jest zwolniony z 19% podatku od zysków kapitałowych. Limit wpłat na IKE w 2026 r. wynosi ok. 24 000 zł rocznie."
+          "text": "Kupując obligacje EDO przez konto IKE-Obligacje (w PKO BP lub Pekao). Na IKE zysk jest zwolniony z 19% podatku od zysków kapitałowych. Limit wpłat na IKE w 2026 r. wynosi 28 260 zł rocznie."
         }
       },
       {
@@ -138,21 +132,25 @@
   </script>
 
   <link rel="icon" href="../images/favicon.png" />
-  <!-- Google Analytics 4 — loads only after cookie consent -->
+  <link rel="apple-touch-icon" href="../images/favicon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://groot.mailerlite.com">
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    // Default: analytics denied until user accepts
-    gtag('consent', 'default', {
-      'analytics_storage': 'denied',
-      'ad_storage': 'denied'
-    });
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("consent", "default", { analytics_storage: "denied" });
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
   <script>
-    gtag('config', 'G-GZECMECQ15', { 'send_page_view': false });
+    gtag("config", "G-GZECMECQ15", { send_page_view: false });
   </script>
 
   <link
@@ -563,8 +561,6 @@
   <link rel="stylesheet" href="../css/reset.css" />
   <link rel="stylesheet" href="../css/variables.css" />
   <link rel="stylesheet" href="../css/main.css" />
-  <script src="../js/utils.js" defer></script>
-  <script src="../js/shared.js" defer></script>
 </head>
 
 <body>
@@ -577,7 +573,6 @@
   </div>
 
 
-
   <!-- NAV -->
   <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-stitch-border/50"
     style="font-family: &quot;Inter&quot;, sans-serif">
@@ -587,7 +582,7 @@
           style="text-decoration: none">
           <div class="bg-primary p-1.5 rounded-2xl text-white flex items-center justify-center"
             style="background-color: #0d7ff2">
-            <span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-xl">account_balance_wallet</span>
           </div>
           <span class="text-xl font-bold tracking-tight text-stitch-text">ETFkalkulator.pl</span>
         </a>
@@ -609,8 +604,8 @@
       <div class="flex items-center gap-3">
         <button onkeydown="if (event.key === 'Enter') this.click();" onclick="przelaczTryb()" aria-label="Przełącz tryb"
           class="w-9 h-9 rounded-full border border-stitch-border bg-stitch-surface flex items-center justify-center hover:bg-stitch-bg transition-colors">
-          <span class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
-          <span class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
         </button>
         <a href="#newsletter-section"
           class="bg-primary text-white px-4 h-9 rounded-full flex items-center justify-center text-[13px] font-bold hover:opacity-90 transition-opacity no-underline"
@@ -658,13 +653,13 @@
               style="text-decoration: none">ETFkalkulator.pl</a>
           </li>
           <li>
-            <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span>
           </li>
           <li>
             <a href="index.html" class="hover:text-white transition-colors" style="text-decoration: none">Blog</a>
           </li>
           <li>
-            <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span>
           </li>
           <li class="text-white font-semibold">Obligacje EDO</li>
         </ol>
@@ -675,9 +670,9 @@
         <span class="flex items-center gap-1.5"><span
             class="material-symbols-outlined text-[16px]">calendar_today</span>
           marzec 2026</span>
-        <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">schedule</span>
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">schedule</span>
           8 minut czytania</span>
-        <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">person</span>
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">person</span>
           ETFkalkulator.pl</span>
       </div>
     </div>
@@ -689,7 +684,7 @@
     <article id="main" class="min-w-0 pt-8 pb-16 lg:pb-20">
     <div class="glass-effect rounded-[1.5rem] p-6 mb-10 border-l-4 border-primary bg-primary/5 dark:bg-primary/10">
       <p class="text-xs font-black uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
-        <span class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+        <span aria-hidden="true" class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
         Spis treści
       </p>
       <ol>
@@ -755,7 +750,7 @@
   <p>Aktualna inflacja GUS (dane za styczeń 2026) wynosi <strong>2,2%</strong>. To oznacza, że w drugim roku posiadania obligacji EDO kupionych teraz oprocentowanie wyniosłoby ok. 4,2%. Jeśli inflacja wzrośnie do 4%, oprocentowanie wzrośnie do 6%. Automatycznie, bez żadnego działania z Twojej strony.</p>
 
   <div class="info-box">
-    <strong>Ważne:</strong> Dane dotyczą emisji marcowej 2026 (symbol EDO0336). Ministerstwo Finansów ustala oprocentowanie pierwszego roku co miesiąc — warto sprawdzić aktualne warunki na <a href="https://www.obligacjeskarbowe.pl" target="_blank" rel="noopener">obligacjeskarbowe.pl</a> przed zakupem.
+    <strong>Ważne:</strong> Dane dotyczą emisji marcowej 2026 (symbol EDO0336). Ministerstwo Finansów ustala oprocentowanie pierwszego roku co miesiąc — warto sprawdzić aktualne warunki na <a href="https://www.obligacjeskarbowe.pl" target="_blank" rel="noopener noreferrer">obligacjeskarbowe.pl</a> przed zakupem.
   </div>
 
   <p>Dla porównania — ile oferują inne produkty w Polsce w marcu 2026:</p>
@@ -900,7 +895,7 @@
       <tr>
         <td>Limit roczny wpłat (2026)</td>
         <td>Brak limitu</td>
-        <td>~24 000 zł/rok</td>
+        <td>28 260 zł/rok</td>
       </tr>
       <tr>
         <td>Wcześniejszy dostęp</td>
@@ -1041,7 +1036,7 @@
   <details class="faq-item">
     <summary>Jak uniknąć podatku Belki na obligacjach?</summary>
     <div class="faq-answer">
-      <p>Przez <strong>konto IKE-Obligacje</strong> (Indywidualne Konto Emerytalne). Zakładasz je w oddziale PKO BP lub Pekao. Zysk z obligacji na IKE jest zwolniony z 19% podatku Belki — pod warunkiem wypłaty po 60. roku życia (lub 55. przy wcześniejszej emeryturze). Roczny limit wpłat na IKE wynosi ok. 24 000 zł (2026).</p>
+      <p>Przez <strong>konto IKE-Obligacje</strong> (Indywidualne Konto Emerytalne). Zakładasz je w oddziale PKO BP lub Pekao. Zysk z obligacji na IKE jest zwolniony z 19% podatku Belki — pod warunkiem wypłaty po 60. roku życia (lub 55. przy wcześniejszej emeryturze). Roczny limit wpłat na IKE wynosi 28 260 zł (2026).</p>
     </div>
   </details>
 
@@ -1112,7 +1107,7 @@
 
     <div class="mt-10 pt-6 border-t border-stitch-border">
       <p class="article-disclaimer">
-    <strong>Disclaimer:</strong> Artykuł ma charakter wyłącznie edukacyjny i informacyjny. Nie stanowi rekomendacji inwestycyjnej w rozumieniu obowiązujących przepisów prawa. Dane liczbowe oparte na oficjalnych komunikatach Ministerstwa Finansów (marzec 2026) i GUS. Oprocentowanie obligacji zmienia się co miesiąc — przed zakupem sprawdź aktualne warunki na <a href="https://www.obligacjeskarbowe.pl" target="_blank" rel="noopener">obligacjeskarbowe.pl</a>. Inwestowanie wiąże się z ryzykiem. Przed podjęciem decyzji skonsultuj się z licencjonowanym doradcą finansowym.
+    <strong>Disclaimer:</strong> Artykuł ma charakter wyłącznie edukacyjny i informacyjny. Nie stanowi rekomendacji inwestycyjnej w rozumieniu obowiązujących przepisów prawa. Dane liczbowe oparte na oficjalnych komunikatach Ministerstwa Finansów (marzec 2026) i GUS. Oprocentowanie obligacji zmienia się co miesiąc — przed zakupem sprawdź aktualne warunki na <a href="https://www.obligacjeskarbowe.pl" target="_blank" rel="noopener noreferrer">obligacjeskarbowe.pl</a>. Inwestowanie wiąże się z ryzykiem. Przed podjęciem decyzji skonsultuj się z licencjonowanym doradcą finansowym.
   </p>
     </div>
   </article>
@@ -1120,7 +1115,7 @@
         <div class="sticky top-24 space-y-6">
           <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
             <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
-              <span class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
               W tym artykule
             </p>
             <nav class="sidebar-toc space-y-1">
@@ -1136,19 +1131,19 @@
             </nav>
           </div>
           <div class="bg-gradient-to-br from-blue-700 to-primary rounded-2xl p-5 text-white text-center">
-            <span class="material-symbols-outlined text-3xl mb-2 opacity-80">analytics</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-3xl mb-2 opacity-80">analytics</span>
             <h3 class="font-black text-white text-base mb-1">Policz to sam</h3>
             <p class="text-white/75 text-xs leading-relaxed mb-4">Bezpłatny kalkulator obligacji — sprawdź swoje liczby.</p>
             <a href="../pages/kalkulator-obligacji.html"
               class="bg-white rounded-xl px-4 py-2.5 text-xs font-black hover:scale-[1.02] transition-all inline-flex items-center gap-1.5 shadow-lg"
               style="color:#0d7ff2;text-decoration:none;">
               Otwórz kalkulator
-              <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-[15px]">arrow_forward</span>
             </a>
           </div>
           <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
             <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
-              <span class="material-symbols-outlined text-[18px]">auto_stories</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-[18px]">auto_stories</span>
               Czytaj też
             </p>
             <div class="space-y-3">
@@ -1182,7 +1177,7 @@
     <a href="../pages/kalkulator-obligacji.html"
       class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-full flex items-center gap-1.5 hover:opacity-90"
       style="background-color:#0d7ff2;text-decoration:none;">
-      <span class="material-symbols-outlined text-[14px]">calculate</span>
+      <span aria-hidden="true" class="material-symbols-outlined text-[14px]">calculate</span>
       Kalkulator
     </a>
   </div>
@@ -1322,7 +1317,7 @@
         <div class="flex items-center gap-2">
           <div class="bg-primary p-1.5 rounded-2xl text-white flex items-center justify-center"
             style="background-color: #0d7ff2">
-            <span class="material-symbols-outlined text-base">account_balance_wallet</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-base">account_balance_wallet</span>
           </div>
           <span class="text-xl font-bold tracking-tight text-stitch-text">ETF<span
               class="font-normal text-stitch-muted">kalkulator</span>.pl</span>
@@ -1423,34 +1418,6 @@
   </footer>
   </main>
 
-  <!-- Cookie Consent (Tailwind) -->
-  <div id="cookie-consent-tw"
-    class="fixed bottom-6 left-6 right-6 md:left-auto md:w-[400px] bg-stitch-surface p-6 rounded-2xl shadow-xl border border-stitch-border z-[100] transition-all duration-500 translate-y-20 opacity-0 transform"
-    style="display: none">
-    <div class="flex items-start gap-4 mb-4">
-      <div class="bg-amber-100 dark:bg-amber-900/30 p-2 rounded-2xl text-amber-600 dark:text-amber-400">
-        <span class="material-symbols-outlined">cookie</span>
-      </div>
-      <div>
-        <h4 class="font-bold text-stitch-text">Ciasteczka i Analityka</h4>
-        <p class="text-xs text-stitch-muted leading-relaxed mt-1">
-          Używamy Google Analytics, aby anonimowo analizować ruch na stronie i
-          ulepszać nasze kalkulatory.
-        </p>
-      </div>
-    </div>
-    <div class="flex gap-3">
-      <button id="cookie-accept-tw"
-        class="flex-1 bg-primary text-white text-xs font-bold py-3 rounded-2xl hover:opacity-90 transition-opacity"
-        style="background-color: #0d7ff2">
-        Akceptuję
-      </button>
-      <button id="cookie-reject-tw"
-        class="flex-1 bg-slate-100 text-stitch-muted text-xs font-bold py-3 rounded-2xl hover:bg-slate-200 transition-colors">
-        Odrzuć
-      </button>
-    </div>
-  </div>
 
   <script src="../js/utils.js"></script>
   <script src="../js/shared.js"></script>
@@ -1548,11 +1515,48 @@
       });
     });
   </script>
+  <script defer>
+    function przelaczTryb() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains("dark");
 
+      if (isDark) {
+        html.classList.remove("dark", "dark-mode");
+        html.classList.add("light", "light-mode");
+        localStorage.setItem("etf-tryb", "jasny");
+      } else {
+        html.classList.add("dark", "dark-mode");
+        html.classList.remove("light", "light-mode");
+        localStorage.setItem("etf-tryb", "ciemny");
+      }
+
+      const d = html.classList.contains("dark");
+      const m = document.getElementById("meta-theme-color");
+      if (m) m.content = d ? "#0f172a" : "#f8fafc";
+    }
+
+    (function () {
+      const html = document.documentElement;
+      const saved = localStorage.getItem("etf-tryb");
+      const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      if (saved === "ciemny" || (!saved && systemDark)) {
+        html.classList.add("dark", "dark-mode");
+        html.classList.remove("light", "light-mode");
+      } else {
+        html.classList.add("light", "light-mode");
+        html.classList.remove("dark", "dark-mode");
+      }
+
+      const m = document.getElementById("meta-theme-color");
+      if (m) m.content = html.classList.contains("dark") ? "#0f172a" : "#f8fafc";
+    })();
+  </script>
   <script src="https://www.google.com/recaptcha/api.js" defer></script>
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
     type="text/javascript" defer></script>
-
+  <!-- Cookie Consent -->
+  <script src="../js/cookie-consent.js" defer></script>
 </body>
 
 </html>

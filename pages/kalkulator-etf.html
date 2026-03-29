@@ -1,20 +1,27 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pl" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#f8f7f2" id="meta-theme-color">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
-  <title>Kalkulator ETF — Procent Składany, IKE/IKZE i Inflacja | ETFkalkulator.pl</title>
+  <script>
+    (function () {
+      const s = localStorage.getItem('etf-tryb');
+      const d = s === 'ciemny' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.classList.toggle('dark', d);
+      document.documentElement.classList.toggle('light', !d);
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Kalkulator ETF — Zysk Realny, IKE/IKZE | ETFkalkulator.pl</title>
   <link rel="canonical" href="https://etfkalkulator.pl/pages/kalkulator-etf.html">
   <meta name="description"
-    content="Kalkulator ETF: policz procent skladany, zysk realny po inflacji i podatku Belki oraz sprawdz przewage IKE/IKZE.">
+    content="Kalkulator ETF z procentem składanym, wpływem inflacji i podatkiem Belki. Porównaj IKE i IKZE i oblicz realny zysk z inwestycji. Sprawdź.">
   <meta name="keywords"
     content="procent składany ETF, kalkulator ETF, IKE, IKZE, podatek Belki, inflacja, inwestowanie pasywne">
 
-  <meta property="og:title" content="Kalkulator ETF — Procent Składany, IKE/IKZE i Inflacja | ETFkalkulator.pl">
+  <meta property="og:title" content="Kalkulator ETF — Zysk Realny, IKE/IKZE | ETFkalkulator.pl">
   <meta property="og:description"
     content="Oblicz realny zysk z inwestycji w ETF po podatku Belki i inflacji. Darmowe narzędzie dla polskich inwestorów.">
   <meta property="og:type" content="website">
@@ -27,7 +34,7 @@
 
   <!-- SEO: Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Kalkulator ETF — Procent Składany, IKE/IKZE | ETFkalkulator.pl">
+  <meta name="twitter:title" content="Kalkulator ETF — Zysk Realny, IKE/IKZE">
   <meta name="twitter:description"
     content="Oblicz realny zysk z ETF po podatku i inflacji. Sprawdź opłacalność IKE/IKZE.">
   <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png">
@@ -61,6 +68,9 @@
   </script>
 
   <link rel="icon" href="../images/favicon.png">
+  <link rel="apple-touch-icon" href="../images/favicon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="../css/print.css" media="print">
 
   <!-- Google Analytics 4 — loads only after cookie consent -->
   <script>
@@ -70,8 +80,7 @@
 
     // Default: analytics denied until user accepts
     gtag('consent', 'default', {
-      'analytics_storage': 'denied',
-      'ad_storage': 'denied'
+      'analytics_storage': 'denied'
     });
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
@@ -80,13 +89,18 @@
   </script>
 
   <!-- Tailwind CSS and Fonts Injection -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://groot.mailerlite.com">
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap"
     rel="stylesheet" />
 
-  <script src="../js/utils.js" defer></script>
-  <script src="../js/shared.js" defer></script>
   <script src="../js/tailwind-config.js"></script>
 
   <style>
@@ -366,7 +380,7 @@
           style="text-decoration:none;">
           <div class="bg-primary p-1.5 rounded-stitch text-white flex items-center justify-center"
             style="background-color: #0d7ff2;">
-            <span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-xl">account_balance_wallet</span>
           </div>
           <span class="text-xl font-bold tracking-tight text-stitch-text dark:text-slate-100">ETFkalkulator.pl</span>
         </a>
@@ -392,8 +406,8 @@
         <!-- Theme Toggle -->
         <button onkeydown="if(event.key==='Enter')this.click()" onclick="przelaczTryb()" aria-label="Przełącz tryb"
           class="w-9 h-9 rounded-full border border-stitch-border bg-stitch-surface flex items-center justify-center hover:bg-stitch-bg transition-colors">
-          <span class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
-          <span class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
         </button>
         <!-- CTA Button -->
         <a href="#newsletter-section"
@@ -472,11 +486,13 @@
 
   <main id="main" class="pt-32 pb-20 px-6 min-h-screen bg-stitch-bg dark:bg-slate-950 transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
+      <!-- PRINT HEADER (visible only when printing) -->
+      <div class="print-only">ETFkalkulator.pl — Wydruk wyników kalkulatora ETF</div>
       <!-- HERO / BREADCRUMBS -->
       <div class="mb-12">
         <nav class="flex items-center gap-2 text-xs font-medium text-slate-400 uppercase tracking-widest mb-4">
           <a href="../index.html" class="hover:text-primary transition-colors">ETFkalkulator.pl</a>
-          <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span>
           <span class="text-slate-600 dark:text-slate-300">Kalkulator ETF</span>
         </nav>
         <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-stitch-text mb-4">
@@ -494,7 +510,7 @@
           <div
             class="glass-effect p-8 rounded-[2rem] border border-white/50 /50 shadow-stitch-soft shadow-slate-200/50 dark:shadow-none">
             <h3 class="text-lg font-bold text-stitch-text mb-8 flex items-center gap-3">
-              <span class="material-symbols-outlined text-primary" style="color:#0d7ff2;">tune</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-primary" style="color:#0d7ff2;">tune</span>
               Parametry inwestycji
             </h3>
 
@@ -511,7 +527,7 @@
                       onclick="openEduModal('kapital_start', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span
                       class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md"
@@ -536,7 +552,7 @@
                       onclick="openEduModal('doplata_msc', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span
                       class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md"
@@ -561,7 +577,7 @@
                       onclick="openEduModal('horyzont_lat', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span
                       class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md"
@@ -588,7 +604,7 @@
                       onclick="openEduModal('stopa_zwrotu', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span
                       class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md"
@@ -632,7 +648,7 @@
                       onclick="openEduModal('inflacja_nbp', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span class="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-md">%</span>
                   </div>
@@ -688,7 +704,7 @@
                 <p class="text-5xl md:text-7xl font-black tracking-tighter mb-4" id="etf-wynik-kapital-koncowy">0,00 zł
                 </p>
                 <div class="flex items-center gap-2 text-primary-100/80 text-sm">
-                  <span class="material-symbols-outlined text-base">verified</span>
+                  <span aria-hidden="true" class="material-symbols-outlined text-base">verified</span>
                   <span>Kwota netto po uwzględnieniu podatku Belki i inflacji</span>
                 </div>
                 <p class="mt-4 text-[10px] text-white/60 opacity-0 group-hover:opacity-100 transition-opacity">Kliknij,
@@ -831,7 +847,7 @@
           <div class="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:max-w-xl mx-auto">
             <button id="btn-save-scenario"
               class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 dark:bg-blue-600 text-white antialiased border border-transparent rounded-stitch hover:bg-blue-700 dark:hover:bg-blue-500 transition-all font-semibold text-sm shadow-stitch-soft">
-              <span class="material-symbols-outlined text-[18px]">push_pin</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-[18px]">push_pin</span>
               Zapisz scenariusz
             </button>
             <button id="btn-share-result"
@@ -845,7 +861,7 @@
           <div id="scenario-history-section"
             class="hidden mt-8 w-full p-6 glass-effect rounded-[2rem] border border-white/50 /50 shadow-stitch-soft">
             <h3 class="text-lg font-bold text-stitch-text mb-4 flex items-center gap-3">
-              <span class="material-symbols-outlined text-primary" style="color:#0d7ff2;">history</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-primary" style="color:#0d7ff2;">history</span>
               Porównanie scenariuszy
             </h3>
             <div id="scenario-cards-container"
@@ -859,7 +875,7 @@
           <div class="glass-effect p-8 rounded-[2rem] border border-white/50 /50 shadow-stitch-soft">
             <div class="flex items-center justify-between mb-8">
               <h3 class="text-xl font-extrabold text-stitch-text flex items-center gap-3">
-                <span class="material-symbols-outlined text-primary" style="color:#0d7ff2;">show_chart</span>
+                <span aria-hidden="true" class="material-symbols-outlined text-primary" style="color:#0d7ff2;">show_chart</span>
                 Wzrost kapitału w czasie
               </h3>
               <div class="flex items-center gap-4">
@@ -876,7 +892,7 @@
 
           <div class="glass-effect p-8 rounded-[2rem] border border-white/50 /50 shadow-stitch-soft">
             <h3 class="text-xl font-extrabold text-stitch-text mb-8 flex items-center gap-3">
-              <span class="material-symbols-outlined text-primary" style="color:#0d7ff2;">table_chart</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-primary" style="color:#0d7ff2;">table_chart</span>
               Szczegółowe zestawienie rok po roku
             </h3>
 
@@ -923,7 +939,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div
             class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
-            <span class="material-symbols-outlined text-4xl text-primary mb-6"
+            <span aria-hidden="true" class="material-symbols-outlined text-4xl text-primary mb-6"
               style="color:#0d7ff2;">account_balance</span>
             <h4 class="text-lg font-bold text-stitch-text mb-4">Czym są fundusze ETF?</h4>
             <p class="text-sm text-stitch-muted leading-relaxed">Fundusze notowane na giełdzie, które z
@@ -931,21 +947,21 @@
           </div>
           <div
             class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
-            <span class="material-symbols-outlined text-4xl text-emerald-500 mb-6">insights</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-4xl text-emerald-500 mb-6">insights</span>
             <h4 class="text-lg font-bold text-stitch-text mb-4">Procent składany</h4>
             <p class="text-sm text-stitch-muted leading-relaxed">Twoje zyski generują własne zyski. W
               długim terminie to najpotężniejsza siła w finansach.</p>
           </div>
           <div
             class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
-            <span class="material-symbols-outlined text-4xl text-amber-500 mb-6">workspace_premium</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-4xl text-amber-500 mb-6">workspace_premium</span>
             <h4 class="text-lg font-bold text-stitch-text mb-4">IKE oraz IKZE</h4>
             <p class="text-sm text-stitch-muted leading-relaxed">Konta, które chronią Twoje zyski przed
               19% podatkiem Belki. Klucz do wyższej emerytury.</p>
           </div>
           <div
             class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
-            <span class="material-symbols-outlined text-4xl text-rose-500 mb-6">payments</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-4xl text-rose-500 mb-6">payments</span>
             <h4 class="text-lg font-bold text-stitch-text mb-4">Wartość realna</h4>
             <p class="text-sm text-stitch-muted leading-relaxed">Wynik przeliczony na dzisiejszą siłę
               nabywczą pieniądza, uwzględniający wpływ inflacji.</p>
@@ -954,17 +970,135 @@
 
         <!-- DISCLAIMER -->
         <div class="mt-8 p-8 rounded-stitch bg-slate-100 /50 border border-stitch-border flex gap-6 items-start">
-          <span class="material-symbols-outlined text-slate-400">info</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-slate-400">info</span>
           <p class="text-xs text-stitch-muted leading-relaxed italic">
             <strong>Ważna informacja:</strong> Prezentowane obliczenia mają charakter wyłącznie edukacyjny i poglądowy.
             Inwestowanie na giełdzie wiąże się z ryzykiem utraty kapitału. Wyniki historyczne nie gwarantują podobnych
             stóp zwrotu w przyszłości. Zawsze weryfikuj dane z oficjalnymi dokumentami funduszy.
           </p>
         </div>
+        <!-- PRZYCISK DRUKOWANIA -->
+        <div class="mt-6 flex justify-end">
+          <button onclick="window.print()" class="btn-print inline-flex items-center gap-2 px-5 py-2.5 rounded-stitch bg-slate-100 dark:bg-slate-800 text-stitch-text text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-stitch-border" aria-label="Drukuj wyniki lub zapisz jako PDF">
+            <span aria-hidden="true" class="material-symbols-outlined text-base">print</span>
+            Drukuj / Zapisz PDF
+          </button>
+        </div>
       </section>
     </div>
   </main>
 
+  <!-- FAQ SECTION -->
+  <section class="py-16 px-6 bg-stitch-bg dark:bg-slate-950 transition-colors" aria-labelledby="faq-etf-heading">
+    <div class="max-w-3xl mx-auto">
+      <h2 id="faq-etf-heading" class="text-2xl md:text-3xl font-extrabold tracking-tight text-stitch-text mb-2">Najczęściej zadawane pytania</h2>
+      <p class="text-stitch-muted text-sm mb-10">Odpowiedzi na kluczowe pytania o inwestowanie w ETF.</p>
+
+      <div class="space-y-3">
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Co to jest ETF i czym różni się od zwykłego funduszu inwestycyjnego?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">ETF (Exchange-Traded Fund) to fundusz notowany na giełdzie, który odwzorowuje skład wybranego indeksu — np. S&amp;P 500 lub MSCI World — kupując te same akcje w tych samych proporcjach. W odróżnieniu od tradycyjnych funduszy inwestycyjnych ETF-y możesz kupować i sprzedawać na bieżąco jak akcje, a ich roczny koszt zarządzania (TER) wynosi zwykle 0,07–0,20%, czyli wielokrotnie mniej niż aktywnie zarządzane fundusze w Polsce (często 2–4%). Dzięki temu więcej zysku zostaje w Twoim portfelu.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Jaką stopę zwrotu przyjąć w kalkulatorze?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">Dla globalnych ETF-ów akcyjnych (MSCI World, S&amp;P 500) historyczna średnioroczna stopa zwrotu wynosi ok. 7–10% nominalnie. Przyjmując inflację ~2,5%, realna stopa zwrotu to ok. 4,5–7,5%. Do obliczeń konserwatywnych używaj 6–7% — to dobry punkt odniesienia dla długoterminowego planowania. Pamiętaj, że wyniki historyczne nie gwarantują przyszłych zysków.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Czym jest podatek Belki i ile wynosi od zysku z ETF?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">Podatek Belki to potoczna nazwa podatku od dochodów kapitałowych, który w Polsce wynosi <strong>19%</strong>. Płacisz go od każdego zysku ze sprzedaży ETF oraz od dywidend. Podatek naliczany jest wyłącznie od zysku — nie od całej wartości inwestycji. Kalkulator automatycznie uwzględnia ten podatek w scenariuszu bez IKE/IKZE, pokazując rzeczywistą kwotę netto.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Co to IKE i IKZE — jak chronią przed podatkiem Belki?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">IKE (Indywidualne Konto Emerytalne) i IKZE (Indywidualne Konto Zabezpieczenia Emerytalnego) to konta, które umożliwiają inwestowanie w ETF bez płacenia podatku Belki — pod warunkiem wypłaty po 60. roku życia (IKE) lub 65. roku życia (IKZE). Roczny limit wpłat na IKE w 2026 roku wynosi <strong>28 260 zł</strong>, a na IKZE <strong>11 304 zł</strong>. Dodatkową zaletą IKZE jest możliwość odliczenia wpłat od podstawy opodatkowania PIT. Zaznacz opcję IKE/IKZE w kalkulatorze, aby zobaczyć różnicę w wyniku końcowym.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Jak działa procent składany i dlaczego horyzont inwestycji ma tak duże znaczenie?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">Procent składany sprawia, że Twoje zyski same zarabiają kolejne zyski. Przykład: 10 000 zł przy stopie 8% rocznie przez 10 lat urośnie do ok. 21 589 zł — zysk to 11 589 zł. Ten sam kapitał przez 30 lat urośnie do ok. 100 627 zł — czyli zysk wzrośnie 10-krotnie mimo trzykrotnie dłuższego czasu. Dlatego każdy rok wcześniej zaczętego inwestowania ma ogromne znaczenie. Sprawdź to w kalkulatorze — przesuń suwak lat i obserwuj różnicę.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Co to jest ETF i czym różni się od zwykłego funduszu inwestycyjnego?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ETF (Exchange-Traded Fund) to fundusz notowany na giełdzie, który odwzorowuje skład wybranego indeksu — np. S&P 500 lub MSCI World. W odróżnieniu od tradycyjnych funduszy inwestycyjnych ETF-y możesz kupować i sprzedawać na bieżąco jak akcje, a ich roczny koszt zarządzania (TER) wynosi zwykle 0,07–0,20%, czyli wielokrotnie mniej niż aktywnie zarządzane fundusze w Polsce."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Jaką stopę zwrotu przyjąć w kalkulatorze ETF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Dla globalnych ETF-ów akcyjnych (MSCI World, S&P 500) historyczna średnioroczna stopa zwrotu wynosi ok. 7–10% nominalnie. Przyjmując inflację ok. 2,5%, realna stopa zwrotu to ok. 4,5–7,5%. Do obliczeń konserwatywnych przyjmij 6–7%."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czym jest podatek Belki i ile wynosi od zysku z ETF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Podatek Belki to potoczna nazwa podatku od dochodów kapitałowych, który w Polsce wynosi 19%. Płacisz go od każdego zysku ze sprzedaży ETF oraz od dywidend. Podatek naliczany jest wyłącznie od zysku — nie od całej wartości inwestycji."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Co to IKE i IKZE — jak chronią przed podatkiem Belki?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IKE i IKZE to konta emerytalne umożliwiające inwestowanie w ETF bez płacenia podatku Belki po spełnieniu warunków wiekowych. Roczny limit wpłat na IKE w 2026 roku wynosi 28 260 zł, a na IKZE 11 304 zł. Dodatkową zaletą IKZE jest możliwość odliczenia wpłat od podstawy opodatkowania PIT."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Jak działa procent składany i dlaczego horyzont inwestycji ma tak duże znaczenie?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Procent składany sprawia, że Twoje zyski same zarabiają kolejne zyski. Przykład: 10 000 zł przy stopie 8% rocznie przez 10 lat urośnie do ok. 21 589 zł. Ten sam kapitał przez 30 lat urośnie do ok. 100 627 zł — zysk wzrośnie 10-krotnie mimo trzykrotnie dłuższego czasu."
+        }
+      }
+    ]
+  }
+  </script>
 
   <!-- NEWSLETTER SECTION (Wide Banner) -->
   <section id="newsletter-section"
@@ -1094,7 +1228,7 @@
         <div class="flex items-center gap-2">
           <div class="bg-primary p-1.5 rounded-stitch text-white flex items-center justify-center"
             style="background-color: #0d7ff2;">
-            <span class="material-symbols-outlined text-base">account_balance_wallet</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-base">account_balance_wallet</span>
           </div>
           <span class="text-xl font-bold tracking-tight text-stitch-text">ETF<span
               class="font-normal text-stitch-muted">kalkulator</span>.pl</span>
@@ -1151,11 +1285,11 @@
           <div class="flex gap-4">
             <a href="#"
               class="w-10 h-10 rounded-stitch bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-stitch-soft">
-              <span class="material-symbols-outlined text-lg">share</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-lg">share</span>
             </a>
             <a href="#"
               class="w-10 h-10 rounded-stitch bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-stitch-soft">
-              <span class="material-symbols-outlined text-lg">alternate_email</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-lg">alternate_email</span>
             </a>
           </div>
         </div>
@@ -1187,7 +1321,7 @@
       $('.ml-subscribe-form-37996059 .row-form').hide();
     }
   </script>
-
+  <!-- COOKIE CONSENT BANNER -->
   <!-- EDUCATIONAL MODAL -->
   <div id="edu-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
     <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" tabindex="0" role="button"
@@ -1203,14 +1337,14 @@
           <button onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"
             class="group flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-stitch-muted hover:bg-rose-500 hover:text-white transition-all">
             <span class="text-[10px] font-bold uppercase tracking-widest">Zamknij</span>
-            <span class="material-symbols-outlined text-xl">close</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-xl">close</span>
           </button>
         </div>
 
         <div class="space-y-8">
           <div class="flex gap-4 items-start">
             <div class="w-12 h-12 rounded-stitch bg-primary/10 flex items-center justify-center shrink-0">
-              <span class="material-symbols-outlined text-primary" id="modal-icon">school</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-primary" id="modal-icon">school</span>
             </div>
             <p id="modal-explanation" class="text-slate-600 leading-relaxed text-sm md:text-base">
             </p>
@@ -1219,7 +1353,7 @@
           <div
             class="p-6 bg-stitch-bg /50 rounded-stitch border border-stitch-border group transition-all hover:border-primary/30">
             <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
-              <span class="material-symbols-outlined text-xs">functions</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-xs">functions</span>
               Jak to obliczamy?
             </p>
             <code id="modal-formula" class="text-stitch-text font-mono text-sm block">...</code>
@@ -1234,14 +1368,54 @@
     </div>
   </div>
 
-  <script src="../js/kalkulator-etf.js"></script>
+  <!-- Scripts -->
+  <script src="../js/utils.js" defer></script>
+  <script src="../js/shared.js" defer></script>
+  <script src="../js/kalkulator-etf.js" defer></script>
 
   <!-- Global Logic -->
+
+  <script defer>
+    // Dark Mode Toggle Logic (Tailwind + Custom)
+    function przelaczTryb() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains('dark');
+
+      if (isDark) {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        localStorage.setItem('etf-tryb', 'jasny');
+      } else {
+        html.classList.add('dark');
+        html.classList.remove('light');
+        localStorage.setItem('etf-tryb', 'ciemny');
+      }
+
+      const d = html.classList.contains('dark');
+      const m = document.getElementById('meta-theme-color');
+      if (m) m.content = d ? '#0f172a' : '#f8fafc';
+      window.dispatchEvent(new CustomEvent('theme-changed'));
+    }
+
+    // Initialize Theme - Moved to head for early execution
+    (function () {
+      const html = document.documentElement;
+      const saved = localStorage.getItem('etf-tryb');
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      if (saved === 'ciemny' || (!saved && systemDark)) {
+        html.classList.add('dark');
+      } else if (saved === 'jasny') {
+      }
+    })();
+  </script>
 
   <script src="https://www.google.com/recaptcha/api.js" defer></script>
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
     type="text/javascript" defer></script>
 
+  <!-- Cookie Consent -->
+  <script src="../js/cookie-consent.js" defer></script>
 </body>
 
 </html>

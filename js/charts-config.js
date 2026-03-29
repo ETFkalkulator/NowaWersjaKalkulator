@@ -20,15 +20,15 @@ window.ETF.charts = (function() {
             accent: '#FF9500',  // Orange
             muted: '#8E8E93',   // Gray
             error: '#FF3B30',   // Red
+            indigo: '#5856D6',
             teal: '#30B0C7',
-            blue: '#0d7ff2',
             grid: 'rgba(0, 0, 0, 0.05)',
             gridDark: 'rgba(255, 255, 255, 0.08)'
         },
 
         // Domyślne opcje dla wykresów liniowych (Apple-style)
         getBaseOptions: function(title) {
-            const isDark = document.documentElement.classList.contains('dark-mode');
+            const isDark = document.documentElement.classList.contains('dark');
             const isMobile = window.innerWidth < 768;
             const textColor = isDark ? '#AEAEB2' : '#6E6E73';
             const titleColor = isDark ? '#F5F5F7' : '#1C1C1E';

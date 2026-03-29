@@ -1,26 +1,39 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="pl" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="color-scheme" content="light dark" />
   <meta name="theme-color" content="#f8f7f2" id="meta-theme-color" />
+  <script>
+    (function () {
+      const s = localStorage.getItem("etf-tryb");
+      const d =
+        s === "ciemny" ||
+        (!s && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.classList.toggle("dark", d);
+      document.documentElement.classList.toggle("dark-mode", d);
+      document.documentElement.classList.toggle("light", !d);
+      document.documentElement.classList.toggle("light-mode", !d);
+    })();
+  </script>
 
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
-  <title>EDO vs ETF — co wybrać w 2026 roku? Porównanie dla Polaków | ETFkalkulator.pl</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>EDO vs ETF 2026 — Co wybrać? Porównanie | ETFkalkulator.pl</title>
   <link rel="canonical" href="https://etfkalkulator.pl/blog/edo-vs-etf-2026" />
-  <meta name="description" content="EDO czy ETF w 2026? Porownanie zyskow, ryzyka, podatku Belki i wplywu inflacji dla polskiego inwestora." />
+  <meta name="description" content="EDO czy ETF w 2026? Porównanie zysków, ryzyka, podatku Belki i wpływu inflacji. Sprawdź, która inwestycja jest lepsza dla polskiego inwestora." />
   <meta name="author" content="ETFkalkulator.pl" />
-  <meta property="og:title" content="EDO vs ETF — co wybrać w 2026? Uczciwe porównanie | ETFkalkulator.pl" />
+  <meta property="og:title" content="EDO vs ETF 2026 — Co wybrać? Porównanie | ETFkalkulator.pl" />
   <meta property="og:description" content="Obligacje EDO 5,60% vs ETF MSCI World 7–10%/rok. Które wychodzi lepiej po podatku i inflacji? Konkretne liczby dla polskiego inwestora." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://etfkalkulator.pl/blog/edo-vs-etf-2026" />
   <meta property="og:site_name" content="ETFkalkulator.pl" />
   <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="pl_PL" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="EDO vs ETF — co wybrać w 2026? Uczciwe porównanie | ETFkalkulator.pl" />
+  <meta name="twitter:title" content="EDO vs ETF 2026 — Co wybrać? Porównanie" />
   <meta name="twitter:description" content="Obligacje EDO 5,60% vs ETF MSCI World 7–10%/rok. Które wychodzi lepiej po podatku i inflacji? Konkretne liczby dla polskiego inwestora." />
   <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png" />
 
@@ -54,7 +67,7 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "EDO vs ETF — co wybrać w 2026 roku? Porównanie dla Polaków",
+    "headline": "EDO vs ETF 2026 — Co wybrać? Porównanie dla Polaków",
     "description": "Uczciwe porównanie obligacji EDO i funduszy ETF MSCI World dla polskiego inwestora — oprocentowanie, ryzyko, podatek Belki, IKE i konkretne liczby.",
     "datePublished": "2026-03-16",
     "dateModified": "2026-03-16",
@@ -96,21 +109,25 @@
   </script>
 
   <link rel="icon" href="../images/favicon.png" />
-  <!-- Google Analytics 4 — loads only after cookie consent -->
+  <link rel="apple-touch-icon" href="../images/favicon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://groot.mailerlite.com">
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    // Default: analytics denied until user accepts
-    gtag('consent', 'default', {
-      'analytics_storage': 'denied',
-      'ad_storage': 'denied'
-    });
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("consent", "default", { analytics_storage: "denied" });
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
   <script>
-    gtag('config', 'G-GZECMECQ15', { 'send_page_view': false });
+    gtag("config", "G-GZECMECQ15", { send_page_view: false });
   </script>
 
   <link
@@ -737,8 +754,6 @@
   <link rel="stylesheet" href="../css/reset.css" />
   <link rel="stylesheet" href="../css/variables.css" />
   <link rel="stylesheet" href="../css/main.css" />
-  <script src="../js/utils.js" defer></script>
-  <script src="../js/shared.js" defer></script>
 </head>
 
 <body>
@@ -751,7 +766,6 @@
   </div>
 
 
-
   <!-- NAV -->
   <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-stitch-border/50"
     style="font-family: &quot;Inter&quot;, sans-serif">
@@ -761,7 +775,7 @@
           style="text-decoration: none">
           <div class="bg-primary p-1.5 rounded-2xl text-white flex items-center justify-center"
             style="background-color: #0d7ff2">
-            <span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-xl">account_balance_wallet</span>
           </div>
           <span class="text-xl font-bold tracking-tight text-stitch-text">ETFkalkulator.pl</span>
         </a>
@@ -783,8 +797,8 @@
       <div class="flex items-center gap-3">
         <button onkeydown="if (event.key === 'Enter') this.click();" onclick="przelaczTryb()" aria-label="Przełącz tryb"
           class="w-9 h-9 rounded-full border border-stitch-border bg-stitch-surface flex items-center justify-center hover:bg-stitch-bg transition-colors">
-          <span class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
-          <span class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
         </button>
         <a href="#newsletter-section"
           class="bg-primary text-white px-4 h-9 rounded-full flex items-center justify-center text-[13px] font-bold hover:opacity-90 transition-opacity no-underline"
@@ -832,13 +846,13 @@
               style="text-decoration: none">ETFkalkulator.pl</a>
           </li>
           <li>
-            <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span>
           </li>
           <li>
             <a href="index.html" class="hover:text-white transition-colors" style="text-decoration: none">Blog</a>
           </li>
           <li>
-            <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span>
           </li>
           <li class="text-white font-semibold">EDO vs ETF</li>
         </ol>
@@ -849,8 +863,8 @@
         <span class="flex items-center gap-1.5"><span
             class="material-symbols-outlined text-[16px]">calendar_today</span>
           marzec 2026</span>
-        <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">schedule</span> 10 minut czytania</span>
-        <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">person</span>
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">schedule</span> 10 minut czytania</span>
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">person</span>
           ETFkalkulator.pl</span>
       </div>
     </div>
@@ -861,7 +875,7 @@
       <article id="main" class="min-w-0 pt-8 pb-16 lg:pb-20">
     <div class="glass-effect rounded-[1.5rem] p-6 mb-10 border-l-4 border-primary bg-primary/5 dark:bg-primary/10">
       <p class="text-xs font-black uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
-        <span class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+        <span aria-hidden="true" class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
         Spis treści
       </p>
       <ol>
@@ -996,7 +1010,7 @@
 
   <div class="example-box">
     <div class="example-title">
-      <span class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span>
+      <span aria-hidden="true" class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span>
       Scenariusz: 10 000 zł przez 10 lat
     </div>
 
@@ -1010,9 +1024,9 @@
 
     <p><strong>ETF MSCI World — 3 scenariusze</strong> (stopa roczna, podatek Belki na końcu):</p>
     <ul>
-      <li>📉 Pesymistyczny (4%/rok): ~13 685 zł <em>(+36,9%)</em></li>
-      <li>📈 Bazowy (7%/rok): ~18 294 zł <em>(+82,9%)</em></li>
-      <li>🚀 Optymistyczny (10%/rok): ~23 579 zł <em>(+135,8%)</em></li>
+      <li>📉 Pesymistyczny (4%/rok): ~13 890 zł <em>(+38,9%)</em></li>
+      <li>📈 Bazowy (7%/rok): ~17 834 zł <em>(+78,3%)</em></li>
+      <li>🚀 Optymistyczny (10%/rok): ~22 909 zł <em>(+129,1%)</em></li>
     </ul>
   </div>
 
@@ -1026,20 +1040,20 @@
     <div class="result-card etf-pes">
       <div class="label">🌍 ETF pesymistyczny (4%)</div>
       <div class="w-8 h-0.5 bg-primary/30 mx-auto mt-3 rounded-full" style="background-color:rgba(13,127,242,0.3)"></div>
-      <div class="big-number">13 685 zł</div>
-      <div class="sub">+36,9% po 10 latach</div>
+      <div class="big-number">13 890 zł</div>
+      <div class="sub">+38,9% po 10 latach</div>
     </div>
     <div class="result-card etf-base">
       <div class="label">🌍 ETF bazowy (7%)</div>
       <div class="w-8 h-0.5 bg-primary/30 mx-auto mt-3 rounded-full" style="background-color:rgba(13,127,242,0.3)"></div>
-      <div class="big-number">18 294 zł</div>
-      <div class="sub">+82,9% po 10 latach</div>
+      <div class="big-number">17 834 zł</div>
+      <div class="sub">+78,3% po 10 latach</div>
     </div>
     <div class="result-card etf-opt">
       <div class="label">🌍 ETF optymistyczny (10%)</div>
       <div class="w-8 h-0.5 bg-primary/30 mx-auto mt-3 rounded-full" style="background-color:rgba(13,127,242,0.3)"></div>
-      <div class="big-number">23 579 zł</div>
-      <div class="sub">+135,8% po 10 latach</div>
+      <div class="big-number">22 909 zł</div>
+      <div class="sub">+129,1% po 10 latach</div>
     </div>
   </div>
 
@@ -1047,21 +1061,21 @@
 
   <div class="example-box">
     <div class="example-title">
-      <span class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span>
+      <span aria-hidden="true" class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span>
       Scenariusz: 10 000 zł przez 20 lat
     </div>
     <p>Przy dłuższym horyzoncie procent składany robi coraz większą różnicę na korzyść ETF:</p>
     <ul>
-      <li><strong>EDO</strong> (5%/rok śr., rolowane co 10 lat): ~26 533 zł netto (+165%)</li>
-      <li>📉 ETF 4%/rok: ~20 403 zł (+104%) — EDO <strong>wygrywa</strong></li>
-      <li>📈 ETF 7%/rok: ~36 165 zł (+262%) — ETF <strong>wygrywa o 36%</strong></li>
-      <li>🚀 ETF 10%/rok: ~60 727 zł (+507%) — ETF <strong>wygrywa ponad 2-krotnie</strong></li>
+      <li><strong>EDO</strong> (5%/rok śr., rolowane co 10 lat): ~23 011 zł netto (+130%)</li>
+      <li>📉 ETF 4%/rok: ~19 648 zł (+96%) — EDO <strong>wygrywa</strong></li>
+      <li>📈 ETF 7%/rok: ~33 244 zł (+232%) — ETF <strong>wygrywa o 44%</strong></li>
+      <li>🚀 ETF 10%/rok: ~56 393 zł (+464%) — ETF <strong>wygrywa ponad 2,4-krotnie</strong></li>
     </ul>
-    <p><em>(Przy EDO założono reinwestycję po 10 latach po podobnych warunkach. Wszystkie wyniki po podatku Belki.)</em></p>
+    <p><em>(Przy EDO założono reinwestycję po 10 latach po podobnych warunkach, z podatkiem Belki przy każdym wykupie. Wszystkie wyniki po podatku Belki.)</em></p>
   </div>
 
   <div class="info-box">
-    <strong>Kluczowa obserwacja:</strong> Im dłuższy horyzont, tym bardziej procentuje wyższa historyczna stopa zwrotu ETF. Na 20+ lat różnica między 5% (EDO) a 7% (ETF bazowy) jest ogromna — mówi o 36% więcej kapitału. Ale tylko jeśli ETF faktycznie da te 7% — co jest historycznym średnim wynikiem, nie gwarancją.
+    <strong>Kluczowa obserwacja:</strong> Im dłuższy horyzont, tym bardziej procentuje wyższa historyczna stopa zwrotu ETF. Na 20+ lat różnica między 5% (EDO) a 7% (ETF bazowy) jest ogromna — mówi o 44% więcej kapitału. Ale tylko jeśli ETF faktycznie da te 7% — co jest historycznym średnim wynikiem, nie gwarancją.
   </div>
 
   <p>Użyj naszej porównywarki żeby przetestować własne parametry:</p>
@@ -1149,7 +1163,7 @@
 
   <div class="example-box">
     <div class="example-title">
-      <span class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2">key</span>
+      <span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2">key</span>
       Ile daje IKE przy 10 000 zł przez 20 lat?
     </div>
     <table class="data-table">
@@ -1159,22 +1173,22 @@
       <tbody>
         <tr>
           <td>Bez IKE (z Belką)</td>
-          <td>~26 533 zł</td>
-          <td>~36 165 zł</td>
+          <td>~23 011 zł</td>
+          <td>~33 244 zł</td>
         </tr>
         <tr>
           <td><strong>Z IKE (bez Belki)</strong></td>
-          <td><strong>~26 533 zł</strong> (mała różnica — podatek naliczany jednorazowo)</td>
+          <td><strong>~26 533 zł</strong></td>
           <td><strong>~38 697 zł</strong></td>
         </tr>
         <tr>
           <td>Różnica dzięki IKE</td>
-          <td>~0 zł (EDO: podatek na koniec, IKE mały wpływ)</td>
-          <td><strong>+2 532 zł</strong></td>
+          <td><strong>+3 522 zł</strong></td>
+          <td><strong>+5 453 zł</strong></td>
         </tr>
       </tbody>
     </table>
-    <p><em>Przy EDO IKE daje mniejszą korzyść, bo podatek Belki i tak pobierany jednorazowo na koniec. Przy ETF efekt IKE jest większy, szczególnie gdy regularnie rebalansujesz portfel.</em></p>
+    <p><em>IKE przynosi realną korzyść zarówno dla EDO (+3 522 zł), jak i dla ETF (+5 453 zł). Efekt IKE jest większy dla ETF ze względu na wyższy oczekiwany zysk — więcej zysku oznacza więcej zaoszczędzonego podatku.</em></p>
   </div>
 
   <div class="info-box">
@@ -1306,7 +1320,7 @@
   <!-- Scorecard końcowy -->
   <div class="verdict-box">
     <div class="verdict-title">
-      <span class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2">key</span>
+      <span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2">key</span>
       Podsumowanie — kiedy co wybrać
     </div>
     <p><strong>Wybierz EDO jeśli:</strong> priorytetem jest bezpieczeństwo, masz krótszy horyzont (5–10 lat), nie tolerujesz widoku strat na koncie, to Twoje jedyne oszczędności, lub dopiero zaczynasz przygodę z inwestowaniem.</p>
@@ -1393,7 +1407,7 @@
         <div class="sticky top-24 space-y-6">
           <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
             <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
-              <span class="material-symbols-outlined text-[16px]">format_list_bulleted</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-[16px]">format_list_bulleted</span>
               W tym artykule
             </p>
             <nav class="sidebar-toc">
@@ -1411,19 +1425,19 @@
           </div>
           <div class="bg-gradient-to-br from-blue-700 to-primary rounded-2xl p-5 text-white text-center"
             style="background:linear-gradient(135deg,#1d4ed8,#0d7ff2);">
-            <span class="material-symbols-outlined text-3xl mb-2 opacity-80">analytics</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-3xl mb-2 opacity-80">analytics</span>
             <h3 class="font-black text-white text-base mb-1">Policz to sam</h3>
             <p class="text-white/75 text-xs leading-relaxed mb-4">Bezpłatna porównywarka EDO i ETF — sprawdź swoje liczby.</p>
             <a href="../pages/porownywarka.html"
               class="bg-white rounded-xl px-4 py-2.5 text-xs font-black hover:scale-[1.02] transition-all inline-flex items-center gap-1.5 shadow-lg"
               style="color:#0d7ff2;text-decoration:none;">
               Otwórz porównywarkę
-              <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span>
             </a>
           </div>
           <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
             <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
-              <span class="material-symbols-outlined text-[16px]">auto_stories</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-[16px]">auto_stories</span>
               Czytaj też
             </p>
             <div class="space-y-3">
@@ -1463,7 +1477,7 @@
     <a href="../pages/porownywarka.html"
       class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-full flex items-center gap-1.5 hover:opacity-90"
       style="background-color:#0d7ff2;text-decoration:none;">
-      <span class="material-symbols-outlined text-[14px]">calculate</span>
+      <span aria-hidden="true" class="material-symbols-outlined text-[14px]">calculate</span>
       Porównywarka
     </a>
   </div>
@@ -1603,7 +1617,7 @@
         <div class="flex items-center gap-2">
           <div class="bg-primary p-1.5 rounded-2xl text-white flex items-center justify-center"
             style="background-color: #0d7ff2">
-            <span class="material-symbols-outlined text-base">account_balance_wallet</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-base">account_balance_wallet</span>
           </div>
           <span class="text-xl font-bold tracking-tight text-stitch-text">ETF<span
               class="font-normal text-stitch-muted">kalkulator</span>.pl</span>
@@ -1703,34 +1717,6 @@
     </div>
   </footer>
 
-  <!-- Cookie Consent (Tailwind) -->
-  <div id="cookie-consent-tw"
-    class="fixed bottom-6 left-6 right-6 md:left-auto md:w-[400px] bg-stitch-surface p-6 rounded-2xl shadow-xl border border-stitch-border z-[100] transition-all duration-500 translate-y-20 opacity-0 transform"
-    style="display: none">
-    <div class="flex items-start gap-4 mb-4">
-      <div class="bg-amber-100 dark:bg-amber-900/30 p-2 rounded-2xl text-amber-600 dark:text-amber-400">
-        <span class="material-symbols-outlined">cookie</span>
-      </div>
-      <div>
-        <h4 class="font-bold text-stitch-text">Ciasteczka i Analityka</h4>
-        <p class="text-xs text-stitch-muted leading-relaxed mt-1">
-          Używamy Google Analytics, aby anonimowo analizować ruch na stronie i
-          ulepszać nasze kalkulatory.
-        </p>
-      </div>
-    </div>
-    <div class="flex gap-3">
-      <button id="cookie-accept-tw"
-        class="flex-1 bg-primary text-white text-xs font-bold py-3 rounded-2xl hover:opacity-90 transition-opacity"
-        style="background-color: #0d7ff2">
-        Akceptuję
-      </button>
-      <button id="cookie-reject-tw"
-        class="flex-1 bg-slate-100 text-stitch-muted text-xs font-bold py-3 rounded-2xl hover:bg-slate-200 transition-colors">
-        Odrzuć
-      </button>
-    </div>
-  </div>
 
   <script src="../js/utils.js"></script>
   <script src="../js/shared.js"></script>
@@ -1831,11 +1817,48 @@
     window.addEventListener('scroll', updateProgress, { passive: true });
     updateProgress();
   </script>
+  <script defer>
+    function przelaczTryb() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains("dark");
 
+      if (isDark) {
+        html.classList.remove("dark", "dark-mode");
+        html.classList.add("light", "light-mode");
+        localStorage.setItem("etf-tryb", "jasny");
+      } else {
+        html.classList.add("dark", "dark-mode");
+        html.classList.remove("light", "light-mode");
+        localStorage.setItem("etf-tryb", "ciemny");
+      }
+
+      const d = html.classList.contains("dark");
+      const m = document.getElementById("meta-theme-color");
+      if (m) m.content = d ? "#0f172a" : "#f8fafc";
+    }
+
+    (function () {
+      const html = document.documentElement;
+      const saved = localStorage.getItem("etf-tryb");
+      const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      if (saved === "ciemny" || (!saved && systemDark)) {
+        html.classList.add("dark", "dark-mode");
+        html.classList.remove("light", "light-mode");
+      } else {
+        html.classList.add("light", "light-mode");
+        html.classList.remove("dark", "dark-mode");
+      }
+
+      const m = document.getElementById("meta-theme-color");
+      if (m) m.content = html.classList.contains("dark") ? "#0f172a" : "#f8fafc";
+    })();
+  </script>
   <script src="https://www.google.com/recaptcha/api.js" defer></script>
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
     type="text/javascript" defer></script>
-
+  <!-- Cookie Consent -->
+  <script src="../js/cookie-consent.js" defer></script>
 </body>
 
 </html>

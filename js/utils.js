@@ -55,6 +55,16 @@ function formatujLiczbe(liczba) {
    ---------------------------------------------------------- */
 
 /**
+ * Zabezpiecza string przed wstrzyknięciem HTML (XSS)
+ * Przykład: escapeHtml('<script>') → '&lt;script&gt;'
+ */
+function escapeHtml(str) {
+  const d = document.createElement('div');
+  d.appendChild(document.createTextNode(String(str)));
+  return d.innerHTML;
+}
+
+/**
  * Sprawdza czy wartość jest poprawną dodatnią liczbą
  * Przykład: czyPoprawnaCyfra("abc") → false
  *           czyPoprawnaCyfra(-5)    → false
@@ -154,6 +164,7 @@ window.ETF.utils = {
   pobierzWartosc,
   zaokraglij,
   animujLiczbe,
+  escapeHtml,
 };
 
 /* ----------------------------------------------------------
@@ -168,3 +179,4 @@ window.czyPoprawnaCyfra = czyPoprawnaCyfra;
 window.pobierzWartosc = pobierzWartosc;
 window.zaokraglij = zaokraglij;
 window.animuj = animujLiczbe;  /* alias: animuj() = animujLiczbe() */
+window.escapeHtml = escapeHtml;

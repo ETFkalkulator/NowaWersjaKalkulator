@@ -1,30 +1,39 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pl" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#f8f7f2" id="meta-theme-color">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
-  <title>Kalkulator Wolności Finansowej FIRE — Kiedy przejdziesz na emeryturę?</title>
+  <script>
+    (function () {
+      const s = localStorage.getItem('etf-tryb');
+      const d = s === 'ciemny' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.classList.toggle('dark', d);
+      document.documentElement.classList.toggle('light', !d);
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Kalkulator Wolności Finansowej FIRE 2026 | ETFkalkulator.pl</title>
   <link rel="canonical" href="https://etfkalkulator.pl/pages/kalkulator-wolnosci.html">
   <meta name="description"
     content="Oblicz kiedy osiągniesz wolność finansową (FIRE). Cel FIRE, reguła 4%, wolność finansowa kalkulator, symulacja wypłat i optymalizacja podatkowa IKE/IKZE.">
   <meta name="keywords"
     content="wolność finansowa kalkulator, FIRE, reguła 4%, emerytura, IKE, IKZE, wolność finansowa polska">
-  <meta property="og:title" content="Kalkulator Wolności Finansowej FIRE — Kiedy przejdziesz na emeryturę?">
+  <meta property="og:title" content="Kalkulator Wolności Finansowej FIRE 2026 | ETFkalkulator.pl">
   <meta property="og:description"
     content="Policz swój cel FIRE i dowiedz się kiedy osiągniesz wolność finansową. Konkretne liczby i symulacja wypłat dla polskich inwestorów.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://etfkalkulator.pl/pages/kalkulator-wolnosci.html">
   <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:locale" content="pl_PL">
   <meta property="og:site_name" content="ETFkalkulator.pl">
 
   <!-- SEO: Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Kalkulator Wolności Finansowej FIRE — Kiedy przejdziesz na emeryturę?">
+  <meta name="twitter:title" content="Kalkulator Wolności Finansowej FIRE 2026">
   <meta name="twitter:description" content="Sprawdź swoją datę wolności finansowej! Policz cel FIRE już teraz.">
   <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png">
 
@@ -57,31 +66,33 @@
   </script>
 
   <link rel="icon" href="../images/favicon.png">
-  <!-- Google Analytics 4 — loads only after cookie consent -->
+  <link rel="apple-touch-icon" href="../images/favicon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="../css/print.css" media="print">
+
+  <!-- Core Scripts -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
-    // Default: analytics denied until user accepts
-    gtag('consent', 'default', {
-      'analytics_storage': 'denied',
-      'ad_storage': 'denied'
-    });
+    gtag('consent', 'default', { 'analytics_storage': 'denied' });
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
-  <script>
-    gtag('config', 'G-GZECMECQ15', { 'send_page_view': false });
-  </script>
+  <script> gtag('config', 'G-GZECMECQ15', { 'send_page_view': false }); </script>
 
   <!-- Tailwind CSS and Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://groot.mailerlite.com">
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap"
     rel="stylesheet" />
 
-  <script src="../js/utils.js" defer></script>
-  <script src="../js/shared.js" defer></script>
   <script src="../js/tailwind-config.js"></script>
 
   <style>
@@ -219,7 +230,7 @@
           style="text-decoration:none;">
           <div class="bg-primary p-1.5 rounded-stitch text-white flex items-center justify-center"
             style="background-color: #0d7ff2;">
-            <span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-xl">account_balance_wallet</span>
           </div>
           <span class="text-xl font-bold tracking-tight text-stitch-text dark:text-slate-100">ETFkalkulator.pl</span>
         </a>
@@ -241,8 +252,8 @@
       <div class="flex items-center gap-3">
         <button onkeydown="if(event.key==='Enter')this.click()" onclick="przelaczTryb()" aria-label="Przełącz tryb"
           class="w-9 h-9 rounded-full border border-stitch-border bg-stitch-surface flex items-center justify-center hover:bg-stitch-bg transition-colors">
-          <span class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
-          <span class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
         </button>
         <a href="#newsletter-section"
           class="bg-primary text-white px-4 h-9 rounded-full flex items-center justify-center text-[13px] font-bold hover:opacity-90 transition-opacity no-underline"
@@ -279,6 +290,8 @@
 
   <main id="main" class="pt-32 pb-20 px-6 min-h-screen bg-stitch-bg dark:bg-slate-950 transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
+      <!-- PRINT HEADER (visible only when printing) -->
+      <div class="print-only">ETFkalkulator.pl — Wydruk wyników kalkulatora wolności finansowej FIRE</div>
       <!-- Breadcrumb -->
       <div class="mb-4 text-xs text-slate-400 dark:text-stitch-muted">
         <a href="../index.html" class="hover:text-primary transition-colors"
@@ -302,7 +315,7 @@
         <aside class="lg:col-span-4 space-y-6">
           <div class="glass-effect p-8 rounded-[2rem] border border-white/50 /50 shadow-stitch-soft">
             <h3 class="text-lg font-bold text-stitch-text mb-8 flex items-center gap-3">
-              <span class="material-symbols-outlined text-primary">tune</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-primary">tune</span>
               Parametry FIRE
             </h3>
             <div class="space-y-6">
@@ -321,7 +334,7 @@
                       onclick="openEduModal('wydatki_mies', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span
                       class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md">PLN</span>
@@ -341,7 +354,7 @@
                       onclick="openEduModal('stopa_wyplat', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span class="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-md">%</span>
                   </div>
@@ -380,7 +393,7 @@
                       onclick="openEduModal('oszczednosci_mies', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span
                       class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md">PLN</span>
@@ -400,7 +413,7 @@
                       onclick="openEduModal('kapital_start_fire', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span
                       class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md">PLN</span>
@@ -427,7 +440,7 @@
                       onclick="openEduModal('stopa_zwrotu_fire', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span class="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-md">%</span>
                   </div>
@@ -449,7 +462,7 @@
                       onclick="openEduModal('inflacja_fire', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span class="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-md">%</span>
                   </div>
@@ -472,7 +485,7 @@
                       onclick="openEduModal('lata_cel', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span class="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-md">lat</span>
                   </div>
@@ -493,7 +506,7 @@
                 <input aria-label="wf wiek" type="text" inputmode="decimal" id="wf-wiek" value="30"
                   class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 text-stitch-text text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 outline-none">
                 <div class="flex items-center gap-2 mt-1">
-                  <span class="material-symbols-outlined text-sm text-emerald-500">flag</span>
+                  <span aria-hidden="true" class="material-symbols-outlined text-sm text-emerald-500">flag</span>
                   <span class="text-[11px] text-stitch-muted">Osiągniesz FIRE w wieku: <strong id="wf-wiek-cel"
                       class="text-emerald-600 dark:text-emerald-400">50</strong> lat</span>
                 </div>
@@ -546,7 +559,7 @@
                 </p>
                 <p class="text-5xl md:text-7xl font-black tracking-tighter mb-4" id="wf-wynik-cel">0,00 zł</p>
                 <div class="flex items-center gap-2 text-primary-100/80 text-sm mb-2">
-                  <span class="material-symbols-outlined text-base">verified</span>
+                  <span aria-hidden="true" class="material-symbols-outlined text-base">verified</span>
                   <span>Kwota przy której Twoje oszczędności utrzymają Cię bez pracy</span>
                 </div>
                 <!-- FIRE variant badges -->
@@ -729,11 +742,11 @@
           <div class="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:max-w-xl mx-auto">
             <button id="btn-save-scenario-fire"
               class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-stitch hover:bg-blue-700 transition-all font-semibold text-sm shadow-stitch-soft">
-              <span class="material-symbols-outlined text-[18px]">push_pin</span> Zapisz scenariusz
+              <span aria-hidden="true" class="material-symbols-outlined text-[18px]">push_pin</span> Zapisz scenariusz
             </button>
             <button id="btn-share-result-fire"
               class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-emerald-600 dark:bg-emerald-500 text-white rounded-stitch hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-all font-semibold text-sm shadow-stitch-soft">
-              <span class="material-symbols-outlined text-[18px]">share</span> <span id="txt-btn-share-fire">Udostępnij
+              <span aria-hidden="true" class="material-symbols-outlined text-[18px]">share</span> <span id="txt-btn-share-fire">Udostępnij
                 wynik</span>
             </button>
           </div>
@@ -742,7 +755,7 @@
           <div id="scenario-history-section-fire"
             class="hidden mt-8 w-full p-6 glass-effect rounded-[2rem] border border-white/50 /50 shadow-stitch-soft">
             <h3 class="text-lg font-bold text-stitch-text mb-4 flex items-center gap-3">
-              <span class="material-symbols-outlined text-primary">history</span> Porównanie scenariuszy
+              <span aria-hidden="true" class="material-symbols-outlined text-primary">history</span> Porównanie scenariuszy
             </h3>
             <div id="scenario-cards-container-fire"
               class="flex flex-row overflow-x-auto snap-x snap-mandatory gap-5 pb-12 pt-4 px-4"
@@ -752,7 +765,7 @@
           <!-- CHART 1: Akumulacja -->
           <div class="glass-effect p-8 rounded-[2rem] border border-white/50 /50 shadow-stitch-soft">
             <h3 class="text-xl font-extrabold text-stitch-text mb-2 flex items-center gap-3">
-              <span class="material-symbols-outlined text-primary">show_chart</span> Droga do wolności finansowej
+              <span aria-hidden="true" class="material-symbols-outlined text-primary">show_chart</span> Droga do wolności finansowej
             </h3>
             <p class="text-sm text-slate-400 mb-6">Twój kapitał vs cel FIRE — gdzie przecinają się linie, osiągasz
               wolność</p>
@@ -762,7 +775,7 @@
           <!-- CHART 2: FIRE Phase -->
           <div class="glass-effect p-8 rounded-[2rem] border border-white/50 /50 shadow-stitch-soft">
             <h3 class="text-xl font-extrabold text-stitch-text mb-2 flex items-center gap-3">
-              <span class="material-symbols-outlined text-primary">savings</span> Faza emerytury — jak długo wystarczy
+              <span aria-hidden="true" class="material-symbols-outlined text-primary">savings</span> Faza emerytury — jak długo wystarczy
               kapitał?
             </h3>
             <p class="text-sm text-slate-400 mb-6">Symulacja wypłat z kapitału FIRE przez kolejne lata</p>
@@ -780,7 +793,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div
           class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
-          <span class="material-symbols-outlined text-4xl text-primary mb-6"
+          <span aria-hidden="true" class="material-symbols-outlined text-4xl text-primary mb-6"
             style="color:#0d7ff2;">local_fire_department</span>
           <h4 class="text-lg font-bold text-stitch-text mb-4">Czym jest FIRE?</h4>
           <p class="text-sm text-stitch-muted leading-relaxed">FIRE (Financial Independence, Retire Early) to ruch
@@ -789,14 +802,14 @@
         </div>
         <div
           class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
-          <span class="material-symbols-outlined text-4xl text-emerald-500 mb-6">percent</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-4xl text-emerald-500 mb-6">percent</span>
           <h4 class="text-lg font-bold text-stitch-text mb-4">Reguła 4%</h4>
           <p class="text-sm text-stitch-muted leading-relaxed">Według badania Trinity Study, wypłacanie 4% kapitału
             rocznie jest bezpieczne przez 30+ lat. Potrzebujesz 25-krotności rocznych wydatków jako cel FIRE.</p>
         </div>
         <div
           class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
-          <span class="material-symbols-outlined text-4xl text-amber-500 mb-6">workspace_premium</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-4xl text-amber-500 mb-6">workspace_premium</span>
           <h4 class="text-lg font-bold text-stitch-text mb-4">Procent składany</h4>
           <p class="text-sm text-stitch-muted leading-relaxed">Albert Einstein nazwał procent składany "ósmym cudem
             świata". Im wcześniej zaczniesz, tym bardziej czas pracuje na Twoją korzyść — każda złotówka generuje
@@ -804,22 +817,144 @@
         </div>
         <div
           class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
-          <span class="material-symbols-outlined text-4xl text-rose-500 mb-6">trending_up</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-4xl text-rose-500 mb-6">trending_up</span>
           <h4 class="text-lg font-bold text-stitch-text mb-4">Lean vs Fat FIRE</h4>
           <p class="text-sm text-stitch-muted leading-relaxed">Lean FIRE (×20 wydatków) to minimalistyczny styl życia.
             Fat FIRE (×33 wydatków) pozwala na komfortowe życie. Wybierz cel dopasowany do Twojego stylu.</p>
         </div>
       </div>
       <div class="mt-8 p-8 rounded-stitch bg-slate-100 /50 border border-stitch-border flex gap-6 items-start">
-        <span class="material-symbols-outlined text-slate-400">info</span>
+        <span aria-hidden="true" class="material-symbols-outlined text-slate-400">info</span>
         <p class="text-xs text-stitch-muted leading-relaxed italic">
           <strong>Ważna informacja:</strong> Prezentowane obliczenia mają charakter wyłącznie edukacyjny i poglądowy.
-          Symulacja zakłada stałą stopę zwrotu i inflację, co w rzeczywistości nie występuje. Przed podjęciem decyzji
-          skonsultuj się z doradcą finansowym.
+          Symulacja zakłada stałą stopę zwrotu i inflację, co w rzeczywistości nie występuje.
+          Podatek Belki (19%) jest w obliczeniach traktowany jako roczne obciążenie stopy zwrotu — to podejście konserwatywne.
+          W praktyce, dla ETF-ów akumulacyjnych, podatek jest odroczony do momentu sprzedaży, co oznacza że realne wyniki
+          mogą być nieznacznie lepsze niż pokazuje kalkulator.
+          Przed podjęciem decyzji inwestycyjnych skonsultuj się z doradcą finansowym.
         </p>
+      </div>
+      <!-- PRZYCISK DRUKOWANIA -->
+      <div class="mt-6 flex justify-end">
+        <button onclick="window.print()" class="btn-print inline-flex items-center gap-2 px-5 py-2.5 rounded-stitch bg-slate-100 dark:bg-slate-800 text-stitch-text text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-stitch-border" aria-label="Drukuj wyniki lub zapisz jako PDF">
+          <span aria-hidden="true" class="material-symbols-outlined text-base">print</span>
+          Drukuj / Zapisz PDF
+        </button>
       </div>
     </section>
   </main>
+
+  <!-- FAQ SECTION -->
+  <section class="py-16 px-6 bg-stitch-bg dark:bg-slate-950 transition-colors" aria-labelledby="faq-fire-heading">
+    <div class="max-w-3xl mx-auto">
+      <h2 id="faq-fire-heading" class="text-2xl md:text-3xl font-extrabold tracking-tight text-stitch-text mb-2">Najczęściej zadawane pytania</h2>
+      <p class="text-stitch-muted text-sm mb-10">Odpowiedzi na kluczowe pytania o wolność finansową i FIRE.</p>
+
+      <div class="space-y-3">
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Co to jest FIRE i na czym polega wolność finansowa?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">FIRE (Financial Independence, Retire Early) to strategia polegająca na agresywnym oszczędzaniu i inwestowaniu, aby jak najszybciej osiągnąć punkt, w którym dochód z inwestycji pokrywa wszystkie wydatki. „Wolność finansowa" nie oznacza obowiązkowo zaprzestania pracy — chodzi o <strong>wybór</strong>: możesz pracować, bo chcesz, nie dlatego, że musisz. Kluczem jest zbudowanie wystarczająco dużego portfela inwestycyjnego.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Na czym polega reguła 4% i ile potrzebuję na FIRE?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">Reguła 4% (tzw. Trinity Study) mówi, że wypłacanie <strong>4% portfela rocznie</strong> jest statystycznie bezpieczne przez co najmniej 30 lat — portfel nie wyczerpie się, bo wzrost inwestycji pokrywa wypłaty. Twój cel FIRE to zatem <strong>25-krotność</strong> rocznych wydatków. Przykład: jeśli potrzebujesz 4 000 zł/miesiąc (48 000 zł/rok), Twój cel to 1 200 000 zł. Kalkulator oblicza to automatycznie na podstawie Twoich danych.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Czym różni się Lean FIRE od Fat FIRE?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4"><strong>Lean FIRE</strong> to wolność finansowa przy minimalistycznym stylu życia — niskie wydatki, mniejszy potrzebny kapitał (ok. 20-krotność). <strong>Fat FIRE</strong> to komfortowe życie bez finansowych kompromisów — wyższe wydatki, większy wymagany kapitał (ok. 33-krotność). Jest też <strong>Barista FIRE</strong> — częściowa niezależność, gdzie praca dorywcza uzupełnia dochód z inwestycji. Wybierz model, który odpowiada Twojemu planowanemu stylowi życia.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Czy reguła 4% działa w Polsce z polskim podatkiem i inflacją?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">Reguła 4% pochodzi z badań na danych rynku amerykańskiego. W Polsce trzeba uwzględnić kilka polskich realiów: <strong>podatek Belki (19%)</strong> od każdej wypłaty (można go wyeliminować przez IKE), wyższą historyczną inflację, czy brak dostępu do zleceń dywidendowych bez opodatkowania. Dlatego wielu polskich inwestorów stosuje konserwatywniejszą regułę <strong>3,5%</strong> lub buduje poduszkę bezpieczeństwa. Kalkulator pozwala ustawić własną stopę wypłat — przetestuj różne scenariusze.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Ile lat oszczędzania potrzebuję na wolność finansową?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">Zależy przede wszystkim od <strong>stopy oszczędności</strong> — procenta dochodu, który inwestujesz. Przy stopie 10% potrzebujesz ok. 40+ lat. Przy 30% — ok. 28 lat. Przy 50% — ok. 17 lat. Przy 70% — zaledwie 8–10 lat. Wbrew pozorom wysokość zarobków ma mniejsze znaczenie niż proporcja oszczędności do wydatków. Kalkulator przelicza to w czasie rzeczywistym — zmień miesięczną wpłatę i obserwuj jak skraca się Twoja droga do wolności.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Co to jest FIRE i na czym polega wolność finansowa?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FIRE (Financial Independence, Retire Early) to strategia polegająca na agresywnym oszczędzaniu i inwestowaniu, aby osiągnąć punkt, w którym dochód z inwestycji pokrywa wszystkie wydatki. Kluczem jest zbudowanie wystarczająco dużego portfela inwestycyjnego."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Na czym polega reguła 4% i ile potrzebuję na FIRE?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Reguła 4% (Trinity Study) mówi, że wypłacanie 4% portfela rocznie jest statystycznie bezpieczne przez co najmniej 30 lat. Twój cel FIRE to 25-krotność rocznych wydatków. Przykład: przy wydatkach 4 000 zł/miesiąc cel to 1 200 000 zł."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czym różni się Lean FIRE od Fat FIRE?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lean FIRE to wolność finansowa przy minimalistycznym stylu życia — mniejszy potrzebny kapitał (ok. 20-krotność wydatków). Fat FIRE to komfortowe życie bez finansowych kompromisów — większy wymagany kapitał (ok. 33-krotność wydatków)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy reguła 4% działa w Polsce z polskim podatkiem i inflacją?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Reguła 4% pochodzi z badań na danych rynku amerykańskiego. W Polsce wielu inwestorów stosuje konserwatywniejszą regułę 3,5% ze względu na podatek Belki (19%) od wypłat i wyższą historyczną inflację."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ile lat oszczędzania potrzebuję na wolność finansową?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Zależy przede wszystkim od stopy oszczędności. Przy stopie 10% potrzebujesz ok. 40+ lat. Przy 30% — ok. 28 lat. Przy 50% — ok. 17 lat. Przy 70% — zaledwie 8–10 lat. Wysokość zarobków ma mniejsze znaczenie niż proporcja oszczędności do wydatków."
+        }
+      }
+    ]
+  }
+  </script>
 
   <!-- NEWSLETTER SECTION -->
   <section id="newsletter-section"
@@ -925,7 +1060,7 @@
         <div class="flex items-center gap-2">
           <div class="bg-primary p-1.5 rounded-stitch text-white flex items-center justify-center"
             style="background-color: #0d7ff2;">
-            <span class="material-symbols-outlined text-base">account_balance_wallet</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-base">account_balance_wallet</span>
           </div>
           <span class="text-xl font-bold tracking-tight text-stitch-text">ETF<span
               class="font-normal text-stitch-muted">kalkulator</span>.pl</span>
@@ -1010,20 +1145,20 @@
           <button onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"
             class="group flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-stitch-muted hover:bg-rose-500 hover:text-white transition-all">
             <span class="text-[10px] font-bold uppercase tracking-widest">Zamknij</span>
-            <span class="material-symbols-outlined text-xl">close</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-xl">close</span>
           </button>
         </div>
         <div class="space-y-8">
           <div class="flex gap-4 items-start">
             <div class="w-12 h-12 rounded-stitch bg-primary/10 flex items-center justify-center shrink-0">
-              <span class="material-symbols-outlined text-primary" id="modal-icon">school</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-primary" id="modal-icon">school</span>
             </div>
             <p id="modal-explanation" class="text-slate-600 leading-relaxed text-sm md:text-base"></p>
           </div>
           <div
             class="p-6 bg-stitch-bg /50 rounded-stitch border border-stitch-border group transition-all hover:border-primary/30">
             <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
-              <span class="material-symbols-outlined text-xs">functions</span> Jak to obliczamy?
+              <span aria-hidden="true" class="material-symbols-outlined text-xs">functions</span> Jak to obliczamy?
             </p>
             <code id="modal-formula" class="text-stitch-text font-mono text-sm block">...</code>
           </div>
@@ -1044,14 +1179,46 @@
     }
   </script>
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
-    type="text/javascript"></script>
+    type="text/javascript" defer></script>
   <script src="https://www.google.com/recaptcha/api.js" defer></script>
 
-  <script src="../js/shared.js"></script>
-  <script src="../js/kalkulator-wolnosci.js"></script>
+  <script src="../js/shared.js" defer></script>
+  <script src="../js/utils.js" defer></script>
+  <script src="../js/calculators/wolnosc.js" defer></script>
+  <script src="../js/kalkulator-wolnosci.js" defer></script>
 
+  <script defer>
+    function przelaczTryb() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains('dark');
 
+      if (isDark) {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        localStorage.setItem('etf-tryb', 'jasny');
+      } else {
+        html.classList.add('dark');
+        html.classList.remove('light');
+        localStorage.setItem('etf-tryb', 'ciemny');
+      }
 
+      const d = html.classList.contains('dark');
+      const m = document.getElementById('meta-theme-color');
+      if (m) m.content = d ? '#0f172a' : '#f8fafc';
+      window.dispatchEvent(new CustomEvent('theme-changed'));
+    }
+
+    // Initialize Theme - Moved to head for early execution
+    (function () {
+      const html = document.documentElement;
+      const d = html.classList.contains('dark');
+      const m = document.getElementById('meta-theme-color');
+      if (m) m.content = d ? '#0f172a' : '#f8fafc';
+    })();
+  </script>
+
+  <!-- Cookie Consent -->
+  <script src="../js/cookie-consent.js" defer></script>
 </body>
 
 </html>

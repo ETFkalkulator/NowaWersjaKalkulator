@@ -1,30 +1,39 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pl" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#f8f7f2" id="meta-theme-color">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
-  <title>Porównywarka ETF vs Obligacje vs Lokata — Co wybrać? | ETFkalkulator.pl</title>
+  <script>
+    (function () {
+      const s = localStorage.getItem('etf-tryb');
+      const d = s === 'ciemny' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.classList.toggle('dark', d);
+      document.documentElement.classList.toggle('light', !d);
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Porównywarka ETF vs Obligacje vs Lokata | ETFkalkulator.pl</title>
   <link rel="canonical" href="https://etfkalkulator.pl/pages/porownywarka.html">
   <meta name="description"
     content="Porównaj ETF, obligacje EDO i lokaty po podatku Belki i inflacji. Zobacz który instrument zarobi dla Ciebie najwięcej przy Twoich parametrach.">
   <meta name="keywords"
     content="ETF vs obligacje, porównywarka inwestycyjna, obligacje EDO vs lokata, ranking inwestycji, podatek Belki porównanie">
-  <meta property="og:title" content="Porównywarka ETF vs Obligacje vs Lokata — Co wybrać? | ETFkalkulator.pl">
+  <meta property="og:title" content="Porównywarka ETF vs Obligacje vs Lokata | ETFkalkulator.pl">
   <meta property="og:description"
     content="Porównaj ETF, obligacje EDO i lokaty po podatku Belki i inflacji. Który instrument zarobi więcej przy Twoich parametrach?">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://etfkalkulator.pl/pages/porownywarka.html">
   <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:locale" content="pl_PL">
   <meta property="og:site_name" content="ETFkalkulator.pl">
 
   <!-- SEO: Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Porównywarka ETF vs Obligacje vs Lokata — Co wybrać?">
+  <meta name="twitter:title" content="Porównywarka ETF vs Obligacje vs Lokata">
   <meta name="twitter:description"
     content="Zestawienie najpopularniejszych instrumentów dla polskich inwestorów. Sprawdź wyniki!">
   <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png">
@@ -58,30 +67,31 @@
   </script>
 
   <link rel="icon" href="../images/favicon.png">
-  <!-- Google Analytics 4 — loads only after cookie consent -->
+  <link rel="apple-touch-icon" href="../images/favicon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="../css/print.css" media="print">
+
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
-    // Default: analytics denied until user accepts
-    gtag('consent', 'default', {
-      'analytics_storage': 'denied',
-      'ad_storage': 'denied'
-    });
+    gtag('consent', 'default', { 'analytics_storage': 'denied' });
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
-  <script>
-    gtag('config', 'G-GZECMECQ15', { 'send_page_view': false });
-  </script>
+  <script> gtag('config', 'G-GZECMECQ15', { 'send_page_view': false }); </script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://groot.mailerlite.com">
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap"
     rel="stylesheet" />
 
-  <script src="../js/utils.js" defer></script>
-  <script src="../js/shared.js" defer></script>
   <script src="../js/tailwind-config.js"></script>
 
   <style>
@@ -188,7 +198,7 @@
           style="text-decoration:none;">
           <div class="bg-primary p-1.5 rounded-stitch text-white flex items-center justify-center"
             style="background-color:#0d7ff2;">
-            <span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-xl">account_balance_wallet</span>
           </div>
           <span class="text-xl font-bold tracking-tight text-stitch-text dark:text-slate-100">ETFkalkulator.pl</span>
         </a>
@@ -210,8 +220,8 @@
       <div class="flex items-center gap-3">
         <button onkeydown="if(event.key==='Enter')this.click()" onclick="przelaczTryb()" aria-label="Przełącz tryb"
           class="w-9 h-9 rounded-full border border-stitch-border bg-stitch-surface flex items-center justify-center hover:bg-stitch-bg transition-colors">
-          <span class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
-          <span class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
         </button>
         <a href="#newsletter-section"
           class="bg-primary text-white px-4 h-9 rounded-full flex items-center justify-center text-[13px] font-bold hover:opacity-90 transition-opacity no-underline"
@@ -248,6 +258,8 @@
 
   <main id="main" class="pt-32 pb-20 px-6 min-h-screen bg-stitch-bg dark:bg-slate-950 transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
+      <!-- PRINT HEADER (visible only when printing) -->
+      <div class="print-only">ETFkalkulator.pl — Wydruk wyników porównywarki inwestycji</div>
       <div class="mb-4 text-xs text-slate-400 dark:text-stitch-muted">
         <a href="../index.html" class="hover:text-primary transition-colors"
           style="text-decoration:none;">ETFkalkulator.pl</a>
@@ -269,7 +281,7 @@
         <aside class="lg:col-span-4 space-y-6">
           <div class="glass-effect p-8 rounded-[2rem] border border-white/50 /50 shadow-stitch-soft">
             <h3 class="text-lg font-bold text-stitch-text mb-8 flex items-center gap-3">
-              <span class="material-symbols-outlined text-primary">compare_arrows</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-primary">compare_arrows</span>
               Parametry porównania
             </h3>
             <div class="space-y-6">
@@ -287,7 +299,7 @@
                       onclick="openEduModal('por_kapital', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span
                       class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md">PLN</span>
@@ -308,7 +320,7 @@
                       onclick="openEduModal('por_doplata', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span
                       class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md">PLN</span>
@@ -328,7 +340,7 @@
                       onclick="openEduModal('por_lata', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span class="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-md">lat</span>
                   </div>
@@ -348,7 +360,7 @@
                       onclick="openEduModal('por_inflacja', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span class="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-md">%</span>
                   </div>
@@ -390,7 +402,7 @@
                       onclick="openEduModal('por_stopa_etf', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span class="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-md">%</span>
                   </div>
@@ -426,7 +438,7 @@
                       onclick="openEduModal('por_stopa_rok1', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span class="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-md">%</span>
                   </div>
@@ -444,7 +456,7 @@
                       onclick="openEduModal('por_marza', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span class="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-md">%</span>
                   </div>
@@ -467,7 +479,7 @@
                       onclick="openEduModal('por_stopa_lok', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span class="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-md">%</span>
                   </div>
@@ -498,7 +510,7 @@
             <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
               <div>
                 <p class="text-primary-100/80 font-bold uppercase tracking-widest text-[10px] mb-3 flex items-center">
-                  <span class="material-symbols-outlined text-xl mr-2">emoji_events</span>
+                  <span aria-hidden="true" class="material-symbols-outlined text-xl mr-2">emoji_events</span>
                   Najlepszy wynik
                   <span
                     class="px-1.5 py-0.5 text-[9px] bg-stitch-surface/10 text-white rounded-md font-bold ml-2">INFO</span>
@@ -506,7 +518,7 @@
                 <p class="text-2xl font-bold mb-2" id="por-zwyciezca-nazwa">—</p>
                 <p class="text-5xl md:text-7xl font-black tracking-tighter mb-4" id="por-zwyciezca-kwota">0,00 zł</p>
                 <div class="flex items-center gap-2 text-primary-100/80 text-sm">
-                  <span class="material-symbols-outlined text-base">verified</span>
+                  <span aria-hidden="true" class="material-symbols-outlined text-base">verified</span>
                   <span id="por-zwyciezca-przewaga">—</span>
                 </div>
                 <p class="mt-4 text-[10px] text-white/60 opacity-0 group-hover:opacity-100 transition-opacity">Kliknij,
@@ -664,12 +676,12 @@
           <!-- SCENARIOS SECTION -->
           <div class="glass-effect p-6 rounded-[2rem] border border-white/50 /50 shadow-stitch-soft">
             <h3 class="text-lg font-bold text-stitch-text mb-1 flex items-center gap-3">
-              <span class="material-symbols-outlined text-primary">show_chart</span> Scenariusze ETF
+              <span aria-hidden="true" class="material-symbols-outlined text-primary">show_chart</span> Scenariusze ETF
             </h3>
             <p class="text-sm text-slate-400 mb-6">Kliknij scenariusz żeby ustawić stopę w formularzu</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
               <!-- Pessimistic -->
-              <div id="scen-card-pesymistyczny" tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+              <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
                 onclick="ustawScenariusz('pesymistyczny')"
                 class="p-5 rounded-stitch border-2 border-stitch-border cursor-pointer hover:border-primary/50 hover:scale-105 transition-all">
                 <p class="text-sm font-bold text-stitch-text mb-1">🐻 Pesymistyczny</p>
@@ -684,9 +696,9 @@
                 </div>
               </div>
               <!-- Base -->
-              <div id="scen-card-bazowy" tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+              <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
                 onclick="ustawScenariusz('bazowy')"
-                class="p-5 rounded-stitch border-2 border-blue-500 bg-blue-50/50 ring-2 ring-blue-500/20 cursor-pointer hover:border-primary/50 hover:scale-105 transition-all">
+                class="p-5 rounded-stitch border-2 border-primary/30 bg-primary/5 cursor-pointer hover:border-primary/50 hover:scale-105 transition-all">
                 <p class="text-sm font-bold text-stitch-text mb-1">📈 Bazowy</p>
                 <p class="text-[10px] text-slate-400 mb-3">7%/rok — historyczna średnia</p>
                 <div class="space-y-2">
@@ -699,7 +711,7 @@
                 </div>
               </div>
               <!-- Optimistic -->
-              <div id="scen-card-optymistyczny" tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+              <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
                 onclick="ustawScenariusz('optymistyczny')"
                 class="p-5 rounded-stitch border-2 border-stitch-border cursor-pointer hover:border-primary/50 hover:scale-105 transition-all">
                 <p class="text-sm font-bold text-stitch-text mb-1">🚀 Optymistyczny</p>
@@ -720,11 +732,11 @@
           <div class="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:max-w-xl mx-auto">
             <button id="btn-save-scenario-por"
               class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-stitch hover:bg-blue-700 transition-all font-semibold text-sm shadow-stitch-soft">
-              <span class="material-symbols-outlined text-[18px]">push_pin</span> Zapisz scenariusz
+              <span aria-hidden="true" class="material-symbols-outlined text-[18px]">push_pin</span> Zapisz scenariusz
             </button>
             <button id="btn-share-result-por"
               class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-emerald-600 dark:bg-emerald-500 text-white rounded-stitch hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-all font-semibold text-sm shadow-stitch-soft">
-              <span class="material-symbols-outlined text-[18px]">share</span> <span id="txt-btn-share-por">Udostępnij
+              <span aria-hidden="true" class="material-symbols-outlined text-[18px]">share</span> <span id="txt-btn-share-por">Udostępnij
                 wynik</span>
             </button>
           </div>
@@ -733,7 +745,7 @@
           <div id="scenario-history-section-por"
             class="hidden mt-8 w-full p-6 glass-effect rounded-[2rem] border border-white/50 /50 shadow-stitch-soft">
             <h3 class="text-lg font-bold text-stitch-text mb-4 flex items-center gap-3">
-              <span class="material-symbols-outlined text-primary">history</span> Porównanie scenariuszy
+              <span aria-hidden="true" class="material-symbols-outlined text-primary">history</span> Porównanie scenariuszy
             </h3>
             <div id="scenario-cards-container-por"
               class="flex flex-row overflow-x-auto snap-x snap-mandatory gap-5 pb-12 pt-4 px-4"
@@ -743,7 +755,7 @@
           <!-- CHART -->
           <div class="glass-effect p-8 rounded-[2rem] border border-white/50 /50 shadow-stitch-soft">
             <h3 class="text-xl font-extrabold text-stitch-text mb-2 flex items-center gap-3">
-              <span class="material-symbols-outlined text-primary">show_chart</span> Wzrost kapitału — porównanie
+              <span aria-hidden="true" class="material-symbols-outlined text-primary">show_chart</span> Wzrost kapitału — porównanie
             </h3>
             <div class="flex flex-wrap gap-4 mb-6">
               <div class="flex items-center gap-2">
@@ -765,7 +777,7 @@
           <!-- TABLE -->
           <div class="glass-effect p-8 rounded-[2rem] border border-white/50 /50 shadow-stitch-soft overflow-x-auto">
             <h3 class="text-xl font-extrabold text-stitch-text mb-8 flex items-center gap-3">
-              <span class="material-symbols-outlined text-primary" style="color:#0d7ff2;">table_chart</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-primary" style="color:#0d7ff2;">table_chart</span>
               Kapitał rok po roku
             </h3>
             <div
@@ -807,7 +819,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div
           class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
-          <span class="material-symbols-outlined text-4xl text-primary mb-6"
+          <span aria-hidden="true" class="material-symbols-outlined text-4xl text-primary mb-6"
             style="color:#0d7ff2;">compare_arrows</span>
           <h4 class="text-lg font-bold text-stitch-text mb-4">Dlaczego porównywać?</h4>
           <p class="text-sm text-stitch-muted leading-relaxed">Każdy instrument ma inne cechy — ETF daje potencjalnie
@@ -816,36 +828,155 @@
         </div>
         <div
           class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
-          <span class="material-symbols-outlined text-4xl text-emerald-500 mb-6">shield</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-4xl text-emerald-500 mb-6">shield</span>
           <h4 class="text-lg font-bold text-stitch-text mb-4">Podatek Belki</h4>
           <p class="text-sm text-stitch-muted leading-relaxed">19% podatek od zysków kapitałowych. W ETF i EDO pobierany
             jednorazowo przy sprzedaży/wykupie. W lokacie — co roku od odsetek. IKE/IKZE pozwala go uniknąć.</p>
         </div>
         <div
           class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
-          <span class="material-symbols-outlined text-4xl text-amber-500 mb-6">trending_up</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-4xl text-amber-500 mb-6">trending_up</span>
           <h4 class="text-lg font-bold text-stitch-text mb-4">Inflacja ma znaczenie</h4>
           <p class="text-sm text-stitch-muted leading-relaxed">Nominalny zysk to nie to samo co realny. Przy inflacji
             3,5% i stopie 4,5% lokata realnie zarabia ~1%. Obligacje EDO automatycznie chronią przed tym efektem.</p>
         </div>
         <div
           class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
-          <span class="material-symbols-outlined text-4xl text-rose-500 mb-6">timeline</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-4xl text-rose-500 mb-6">timeline</span>
           <h4 class="text-lg font-bold text-stitch-text mb-4">Horyzont jest kluczowy</h4>
           <p class="text-sm text-stitch-muted leading-relaxed">Na krótkim horyzoncie (1-3 lata) lokata może wygrać. Na
             długim (10+ lat) ETF z procentem składanym zostawia resztę daleko w tyle. Testuj różne horyzonty!</p>
         </div>
       </div>
       <div class="mt-8 p-8 rounded-stitch bg-slate-100 /50 border border-stitch-border flex gap-6 items-start">
-        <span class="material-symbols-outlined text-slate-400">info</span>
+        <span aria-hidden="true" class="material-symbols-outlined text-slate-400">info</span>
         <p class="text-xs text-stitch-muted leading-relaxed italic">
           <strong>Ważna informacja:</strong> Porównanie ma charakter edukacyjny. Rzeczywiste stopy zwrotu ETF zmieniają
           się co roku. Oprocentowanie lokat zależy od stóp NBP. Obligacje EDO mają stałe warunki tylko w ramach jednej
           emisji.
         </p>
       </div>
+      <!-- PRZYCISK DRUKOWANIA -->
+      <div class="mt-6 flex justify-end">
+        <button onclick="window.print()" class="btn-print inline-flex items-center gap-2 px-5 py-2.5 rounded-stitch bg-slate-100 dark:bg-slate-800 text-stitch-text text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-stitch-border" aria-label="Drukuj wyniki lub zapisz jako PDF">
+          <span aria-hidden="true" class="material-symbols-outlined text-base">print</span>
+          Drukuj / Zapisz PDF
+        </button>
+      </div>
     </section>
   </main>
+
+  <!-- FAQ SECTION -->
+  <section class="py-16 px-6 bg-stitch-bg dark:bg-slate-950 transition-colors" aria-labelledby="faq-porownanie-heading">
+    <div class="max-w-3xl mx-auto">
+      <h2 id="faq-porownanie-heading" class="text-2xl md:text-3xl font-extrabold tracking-tight text-stitch-text mb-2">Najczęściej zadawane pytania</h2>
+      <p class="text-stitch-muted text-sm mb-10">Odpowiedzi na kluczowe pytania o porównaniu ETF, obligacji i lokat.</p>
+
+      <div class="space-y-3">
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Kiedy ETF wygrywa z obligacjami i lokatą?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">ETF wygrywa przede wszystkim na <strong>długim horyzoncie</strong> (10+ lat). Dzięki procentowi składanemu i historycznej stopie zwrotu 7–10% rocznie dla globalnych indeksów akcji, ETF w długim terminie znacząco wyprzedza obligacje i lokaty. Na krótkim horyzoncie (1–3 lata) lokata lub obligacje mogą być lepszym wyborem ze względu na brak ryzyka wahań. Sprawdź w porównywarce — ustaw swój horyzont i porównaj wyniki.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Czy lokata bankowa jest bezpieczna i jaka jest jej wada?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">Lokata bankowa jest objęta <strong>gwarancją BFG do 100 000 EUR</strong>, więc jest jedną z najbezpieczniejszych form oszczędzania. Jej główna wada to z reguły <strong>niskie oprocentowanie</strong> — przy inflacji 3–5% lokata oferująca 4–5% brutto daje realny zysk bliski zeru lub wręcz ujemny po podatku Belki. Lokaty sprawdzają się jako poduszka bezpieczeństwa lub parking dla pieniędzy na krótki termin, nie jako narzędzie budowania majątku.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Jak porównać ETF i obligacje po uwzględnieniu podatku i inflacji?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">Aby uczciwie porównać instrumenty, musisz uwzględnić <strong>trzy czynniki</strong>: (1) podatek Belki 19% od zysku — pobierany od ETF, obligacji i lokat; (2) inflację — realny zysk to nominalny zysk minus inflacja; (3) czas trwania inwestycji i ewentualne opłaty (TER dla ETF, opłata za wcześniejszy wykup obligacji). Porównywarka oblicza wszystko automatycznie i pokazuje końcową kwotę netto dla każdego instrumentu przy tych samych założeniach.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Czy warto łączyć ETF z obligacjami w jednym portfelu?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">Tak — łączenie ETF z obligacjami to klasyczna <strong>dywersyfikacja</strong>. ETF-y (akcje) zapewniają wyższy potencjał wzrostu, obligacje — stabilność i ochronę przed inflacją. Popularna alokacja to 60% akcje / 40% obligacje lub dla bardziej agresywnych inwestorów 80/20. Im bliżej emerytury, tym zazwyczaj większy udział obligacji w portfelu. Porównywarka pokazuje wyniki każdego instrumentu osobno — Ty decydujesz o proporcjach.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Jakie ryzyko niesie każdy z trzech instrumentów?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4"><strong>ETF akcyjny:</strong> ryzyko rynkowe — wartość może spaść o 30–50% w czasie bessy. Długoterminowo rynek historycznie się odrabia, ale wymaga cierpliwości i stalowych nerwów. <strong>Obligacje skarbowe:</strong> minimalne ryzyko kredytowe (gwarancja Skarbu Państwa), ryzyko inflacyjne (EDO je neutralizuje). <strong>Lokata:</strong> praktycznie zero ryzyka w granicach gwarancji BFG, ale zysk realny bywa ujemny. Każdy instrument ma swoje miejsce — zależy od Twojego profilu ryzyka i horyzontu.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Kiedy ETF wygrywa z obligacjami i lokatą?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ETF wygrywa przede wszystkim na długim horyzoncie (10+ lat). Dzięki procentowi składanemu i historycznej stopie zwrotu 7–10% rocznie dla globalnych indeksów akcji, ETF w długim terminie znacząco wyprzedza obligacje i lokaty."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy lokata bankowa jest bezpieczna i jaka jest jej wada?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lokata bankowa jest objęta gwarancją BFG do 100 000 EUR. Jej główna wada to niskie oprocentowanie — przy inflacji 3–5% lokata daje realny zysk bliski zeru lub ujemny po podatku Belki."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Jak porównać ETF i obligacje po uwzględnieniu podatku i inflacji?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Uczciwe porównanie wymaga uwzględnienia: podatku Belki 19% od zysku, inflacji (realny zysk = nominalny minus inflacja) oraz czasu trwania inwestycji i ewentualnych opłat. Porównywarka oblicza wszystko automatycznie."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy warto łączyć ETF z obligacjami w jednym portfelu?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tak — łączenie ETF z obligacjami to klasyczna dywersyfikacja. ETF-y zapewniają wyższy potencjał wzrostu, obligacje — stabilność. Popularna alokacja to 60% akcje / 40% obligacje."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Jakie ryzyko niesie każdy z trzech instrumentów?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ETF akcyjny: ryzyko rynkowe — wartość może spaść o 30–50% w czasie bessy, ale historycznie rynek się odrabia. Obligacje skarbowe: minimalne ryzyko kredytowe, EDO neutralizuje inflację. Lokata: praktycznie zero ryzyka w granicach gwarancji BFG, ale zysk realny bywa ujemny."
+        }
+      }
+    ]
+  }
+  </script>
 
   <!-- NEWSLETTER SECTION -->
   <section id="newsletter-section"
@@ -1027,7 +1158,7 @@
           <button onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"
             class="group flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-stitch-muted hover:bg-rose-500 hover:text-white transition-all">
             <span class="text-[10px] font-bold uppercase tracking-widest">Zamknij</span>
-            <span class="material-symbols-outlined text-xl">close</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-xl">close</span>
           </button>
         </div>
         <div class="space-y-8">
@@ -1039,7 +1170,7 @@
           <div
             class="p-6 bg-stitch-bg /50 rounded-stitch border border-stitch-border group transition-all hover:border-primary/30">
             <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
-              <span class="material-symbols-outlined text-xs">functions</span> Jak to obliczamy?</p>
+              <span aria-hidden="true" class="material-symbols-outlined text-xs">functions</span> Jak to obliczamy?</p>
             <code id="modal-formula" class="text-stitch-text font-mono text-sm block">...</code>
           </div>
           <button onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"
@@ -1059,14 +1190,46 @@
     }
   </script>
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
-    type="text/javascript"></script>
+    type="text/javascript" defer></script>
   <script src="https://www.google.com/recaptcha/api.js" defer></script>
 
+  <script src="../js/shared.js" defer></script>
+  <script src="../js/utils.js" defer></script>
+  <script src="../js/calculators/porownywarka.js" defer></script>
+  <script src="../js/porownywarka.js" defer></script>
 
-  <script src="../js/porownywarka.js"></script>
+  <script defer>
+    function przelaczTryb() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains('dark');
 
+      if (isDark) {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        localStorage.setItem('etf-tryb', 'jasny');
+      } else {
+        html.classList.add('dark');
+        html.classList.remove('light');
+        localStorage.setItem('etf-tryb', 'ciemny');
+      }
 
+      const d = html.classList.contains('dark');
+      const m = document.getElementById('meta-theme-color');
+      if (m) m.content = d ? '#0f172a' : '#f8fafc';
+      window.dispatchEvent(new CustomEvent('theme-changed'));
+    }
 
+    // Initialize Theme - Moved to head for early execution
+    (function () {
+      const html = document.documentElement;
+      const d = html.classList.contains('dark');
+      const m = document.getElementById('meta-theme-color');
+      if (m) m.content = d ? '#0f172a' : '#f8fafc';
+    })();
+  </script>
+
+  <!-- Cookie Consent -->
+  <script src="../js/cookie-consent.js" defer></script>
 </body>
 
 </html>

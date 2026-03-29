@@ -1,30 +1,39 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pl" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#f8f7f2" id="meta-theme-color">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
-  <title>Kalkulator Obligacji Skarbowych EDO 2026, COI, TOS | ETFkalkulator.pl</title>
+  <script>
+    (function () {
+      const s = localStorage.getItem('etf-tryb');
+      const d = s === 'ciemny' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.classList.toggle('dark', d);
+      document.documentElement.classList.toggle('light', !d);
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Kalkulator Obligacji EDO 2026 — COI, TOS | ETFkalkulator.pl</title>
   <link rel="canonical" href="https://etfkalkulator.pl/pages/kalkulator-obligacji.html">
   <meta name="description"
-    content="Kalkulator obligacji EDO, COI, TOS, ROR i DOR. Oblicz zysk po podatku Belki i inflacji oraz porownaj emisje.">
+    content="Kalkulator obligacji EDO 2026, COI, TOS, ROR i DOR. Oblicz zysk po podatku Belki i inflacji, porównaj emisje i sprawdź co wybrać. Użyj teraz.">
   <meta name="keywords"
     content="kalkulator obligacji EDO 2026, ranking obligacji skarbowych, obligacje COI, obligacje TOS, podatek Belki IKE">
-  <meta property="og:title" content="Kalkulator Obligacji Skarbowych EDO 2026, COI, TOS | ETFkalkulator.pl">
+  <meta property="og:title" content="Kalkulator Obligacji EDO 2026 — COI, TOS | ETFkalkulator.pl">
   <meta property="og:description"
     content="Oblicz zysk z obligacji skarbowych EDO, COI, TOS po podatku Belki i inflacji. Porównaj różne emisje w jednym kalkulatorze.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://etfkalkulator.pl/pages/kalkulator-obligacji.html">
   <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:locale" content="pl_PL">
   <meta property="og:site_name" content="ETFkalkulator.pl">
 
   <!-- SEO: Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Kalkulator Obligacji Skarbowych EDO 2026, COI, TOS | ETFkalkulator.pl">
+  <meta name="twitter:title" content="Kalkulator Obligacji EDO 2026 — COI, TOS">
   <meta name="twitter:description" content="Ile zarobisz na obligacjach? Sprawdź teraz zysk po podatku i inflacji!">
   <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png">
 
@@ -57,32 +66,33 @@
   </script>
 
   <link rel="icon" href="../images/favicon.png">
+  <link rel="apple-touch-icon" href="../images/favicon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="../css/print.css" media="print">
 
-  <!-- Google Analytics 4 — loads only after cookie consent -->
+  <!-- Core Scripts -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
-    // Default: analytics denied until user accepts
-    gtag('consent', 'default', {
-      'analytics_storage': 'denied',
-      'ad_storage': 'denied'
-    });
+    gtag('consent', 'default', { 'analytics_storage': 'denied' });
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
-  <script>
-    gtag('config', 'G-GZECMECQ15', { 'send_page_view': false });
-  </script>
+  <script> gtag('config', 'G-GZECMECQ15', { 'send_page_view': false }); </script>
 
   <!-- Tailwind CSS and Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://groot.mailerlite.com">
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap"
     rel="stylesheet" />
 
-  <script src="../js/utils.js" defer></script>
-  <script src="../js/shared.js" defer></script>
   <script src="../js/tailwind-config.js"></script>
 
   <style>
@@ -197,7 +207,6 @@
     do głównej treści</a>
 
 
-
   <!-- NAGŁÓWEK TAILWIND -->
   <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-stitch-border/50 /50"
     style="font-family: 'Inter', sans-serif;">
@@ -208,7 +217,7 @@
           style="text-decoration:none;">
           <div class="bg-primary p-1.5 rounded-stitch text-white flex items-center justify-center"
             style="background-color: #0d7ff2;">
-            <span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-xl">account_balance_wallet</span>
           </div>
           <span class="text-xl font-bold tracking-tight text-stitch-text dark:text-slate-100">ETFkalkulator.pl</span>
         </a>
@@ -234,8 +243,8 @@
         <!-- Theme Toggle -->
         <button onkeydown="if(event.key==='Enter')this.click()" onclick="przelaczTryb()" aria-label="Przełącz tryb"
           class="w-9 h-9 rounded-full border border-stitch-border bg-stitch-surface flex items-center justify-center hover:bg-stitch-bg transition-colors">
-          <span class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
-          <span class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
         </button>
         <!-- CTA Button -->
         <a href="#newsletter-section"
@@ -278,10 +287,12 @@
 
   <main id="main" class="pt-32 pb-20 px-6 min-h-screen bg-stitch-bg dark:bg-slate-950 transition-colors duration-300">
     <div class="max-w-7xl mx-auto">
+      <!-- PRINT HEADER (visible only when printing) -->
+      <div class="print-only">ETFkalkulator.pl — Wydruk wyników kalkulatora obligacji</div>
       <div class="mb-12">
         <nav class="flex items-center gap-2 text-xs font-medium text-slate-400 uppercase tracking-widest mb-4">
           <a href="../index.html" class="hover:text-primary transition-colors">ETFkalkulator.pl</a>
-          <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span>
           <span class="text-slate-600 dark:text-slate-300">Kalkulator Obligacji</span>
         </nav>
         <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-stitch-text mb-4">
@@ -299,7 +310,7 @@
         <aside class="lg:col-span-4 space-y-6">
           <div class="glass-effect p-8 rounded-[2rem] border border-white/50 /50 shadow-stitch-soft">
             <h3 class="text-lg font-bold text-stitch-text mb-8 flex items-center gap-3">
-              <span class="material-symbols-outlined text-primary">tune</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-primary">tune</span>
               Parametry bazowe
             </h3>
 
@@ -315,8 +326,8 @@
                   <option value="COI">COI (4-letnie)</option>
                   <option value="TOS">TOS (3-letnie stałe)</option>
                   <option value="ROR">ROR (1-roczne NBP)</option>
-                  <option value="ROS" class="hidden" disabled>ROS (6-letnie)</option>
-                  <option value="ROD" class="hidden" disabled>ROD (12-letnie)</option>
+                  <option value="ROS">ROS (6-letnie, rodzinne)</option>
+                  <option value="ROD">ROD (12-letnie, rodzinne)</option>
                 </select>
                 <div id="bond-info-bar" class="mt-2 flex flex-wrap gap-2 text-[11px] font-semibold">
                   <span
@@ -331,6 +342,10 @@
                     class="px-2 py-1 bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 rounded-stitch">
                     Wykup: <span id="bond-info-penalty">3,00 zł/szt.</span>
                   </span>
+                  <span
+                    class="px-2 py-1 bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded-stitch">
+                    Stawki: <span id="bond-info-date">marzec 2026</span>
+                  </span>
                 </div>
               </div>
 
@@ -344,7 +359,7 @@
                       onclick="openEduModal('kapital_start', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span
                       class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md">PLN</span>
@@ -362,7 +377,7 @@
                     onclick="openEduModal('custom_marza', event)"
                     class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 hover:bg-amber-100 transition-colors touch-target-info">
                     <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                    <span class="material-symbols-outlined text-sm">help</span>
+                    <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                   </button>
                 </div>
                 <div class="flex items-center gap-3">
@@ -386,7 +401,7 @@
                     onclick="openEduModal('custom_yr1', event)"
                     class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 hover:bg-amber-100 transition-colors touch-target-info">
                     <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                    <span class="material-symbols-outlined text-sm">help</span>
+                    <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                   </button>
                 </div>
                 <div class="flex items-center gap-3">
@@ -412,7 +427,7 @@
                       onclick="openEduModal('doplata_msc', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span
                       class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md"
@@ -436,7 +451,7 @@
                       onclick="openEduModal('inflacja_cpi', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                     <span class="text-xs font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-md">%</span>
                   </div>
@@ -456,7 +471,7 @@
                       onclick="openEduModal('wczesny_wykup', event)"
                       class="flex items-center gap-1.5 px-2 py-1 rounded-md bg-rose-50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 hover:bg-rose-100 transition-colors touch-target-info">
                       <span class="text-[10px] font-bold tracking-wider uppercase">INFO</span>
-                      <span class="material-symbols-outlined text-sm">help</span>
+                      <span aria-hidden="true" class="material-symbols-outlined text-sm">help</span>
                     </button>
                   </div>
                   <span class="text-[11px] px-2 py-1 bg-rose-100 text-rose-600 rounded-md font-bold">W ROKU: <span
@@ -499,7 +514,7 @@
                   </div>
                   <div class="flex-1">
                     <span class="block text-sm font-bold text-stitch-text mb-1">Rodzinne (Program 800+)</span>
-                    <span class="block text-xs text-stitch-muted">Odblokowuje obligacje ROS (6 r.) i ROD (12 r.).</span>
+                    <span class="block text-xs text-stitch-muted">Obligacje ROS i ROD dostępne dla uczestników programu Rodzina 800+.</span>
                   </div>
                 </label>
                 <!-- Rolowanie -->
@@ -540,14 +555,14 @@
             <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
               <div>
                 <p class="text-primary-100/80 font-bold uppercase tracking-widest text-[10px] mb-3 flex items-center">
-                  Zysk po opodatkowaniu i wykupie
+                  Kapitał końcowy netto
                   <span
                     class="px-1.5 py-0.5 text-[9px] bg-stitch-surface/10 text-white rounded-md font-bold ml-2">INFO</span>
                 </p>
                 <p class="text-5xl md:text-7xl font-black tracking-tighter mb-4" id="ob-wynik-kapital">0,00 zł</p>
                 <div class="flex items-center gap-2 text-primary-100/80 text-sm mb-2">
-                  <span class="material-symbols-outlined text-base">verified</span>
-                  <span>Kwota netto po potrąceniu podatków i opłat</span>
+                  <span aria-hidden="true" class="material-symbols-outlined text-base">verified</span>
+                  <span>Wkład + odsetki po potrąceniu podatku i kar</span>
                 </div>
                 <p class="mt-2 text-sm text-primary-100">Stopa roczna CAGR: <strong id="ob-wynik-cagr">0.00%</strong>
                 </p>
@@ -696,11 +711,11 @@
           <div class="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:max-w-xl mx-auto">
             <button id="btn-save-scenario"
               class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-stitch hover:bg-blue-700 transition-all font-semibold text-sm shadow-stitch-soft">
-              <span class="material-symbols-outlined text-[18px]">push_pin</span> Zapisz scenariusz
+              <span aria-hidden="true" class="material-symbols-outlined text-[18px]">push_pin</span> Zapisz scenariusz
             </button>
             <button id="btn-share-result"
               class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-emerald-600 dark:bg-emerald-500 text-white rounded-stitch hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-all font-semibold text-sm shadow-stitch-soft">
-              <span class="material-symbols-outlined text-[18px]">share</span> <span id="txt-btn-share">Udostępnij
+              <span aria-hidden="true" class="material-symbols-outlined text-[18px]">share</span> <span id="txt-btn-share">Udostępnij
                 wynik</span>
             </button>
           </div>
@@ -708,7 +723,7 @@
           <div id="scenario-history-section"
             class="hidden mt-8 w-full p-6 glass-effect rounded-[2rem] border border-white/50 /50 shadow-stitch-soft">
             <h3 class="text-lg font-bold text-stitch-text mb-4 flex items-center gap-3">
-              <span class="material-symbols-outlined text-primary">history</span> Porównanie scenariuszy
+              <span aria-hidden="true" class="material-symbols-outlined text-primary">history</span> Porównanie scenariuszy
             </h3>
             <div id="scenario-cards-container"
               class="flex flex-row overflow-x-auto snap-x snap-mandatory gap-5 pb-12 pt-4 px-4"
@@ -719,17 +734,15 @@
           <!-- WYKRES -->
           <div class="glass-effect p-8 rounded-[2rem] border border-white/50 /50 shadow-stitch-soft">
             <h3 class="text-xl font-extrabold text-stitch-text mb-8 flex items-center gap-3">
-              <span class="material-symbols-outlined text-primary">show_chart</span> Wzrost kapitału
+              <span aria-hidden="true" class="material-symbols-outlined text-primary">show_chart</span> Wzrost kapitału
             </h3>
-            <div style="height: 350px; position: relative;" class="mt-4">
-              <canvas id="chartObligacje"></canvas>
-            </div>
+            <canvas id="chartObligacje"></canvas>
           </div>
 
           <!-- TABELA -->
           <div class="glass-effect p-8 rounded-[2rem] border border-white/50 /50 shadow-stitch-soft">
             <h3 class="text-xl font-extrabold text-stitch-text mb-8 flex items-center gap-3">
-              <span class="material-symbols-outlined text-primary" style="color:#0d7ff2;">table_chart</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-primary" style="color:#0d7ff2;">table_chart</span>
               Szczegółowe zestawienie rok po roku
             </h3>
 
@@ -779,7 +792,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div
           class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
-          <span class="material-symbols-outlined text-4xl text-primary mb-6"
+          <span aria-hidden="true" class="material-symbols-outlined text-4xl text-primary mb-6"
             style="color:#0d7ff2;">assured_workload</span>
           <h4 class="text-lg font-bold text-stitch-text mb-4">Czym są obligacje skarbowe?</h4>
           <p class="text-sm text-stitch-muted leading-relaxed">Papiery dłużne emitowane przez Skarb
@@ -788,7 +801,7 @@
         </div>
         <div
           class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
-          <span class="material-symbols-outlined text-4xl text-emerald-500 mb-6">shield</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-4xl text-emerald-500 mb-6">shield</span>
           <h4 class="text-lg font-bold text-stitch-text mb-4">Indeksacja inflacją</h4>
           <p class="text-sm text-stitch-muted leading-relaxed">Obligacje EDO i COI automatycznie
             zwiększają oprocentowanie gdy rośnie inflacja (CPI + marża). Twoje oszczędności są chronione przed utratą
@@ -796,7 +809,7 @@
         </div>
         <div
           class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
-          <span class="material-symbols-outlined text-4xl text-amber-500 mb-6">workspace_premium</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-4xl text-amber-500 mb-6">workspace_premium</span>
           <h4 class="text-lg font-bold text-stitch-text mb-4">IKE oraz IKZE</h4>
           <p class="text-sm text-stitch-muted leading-relaxed">Obligacje skarbowe można kupować
             przez konto IKE/IKZE, eliminując 19% podatek Belki od odsetek. To legalny sposób na wyższy zysk
@@ -804,7 +817,7 @@
         </div>
         <div
           class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
-          <span class="material-symbols-outlined text-4xl text-rose-500 mb-6">money_off</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-4xl text-rose-500 mb-6">money_off</span>
           <h4 class="text-lg font-bold text-stitch-text mb-4">Wcześniejszy wykup</h4>
           <p class="text-sm text-stitch-muted leading-relaxed">Możesz wycofać pieniądze przed
             terminem, ale zapłacisz opłatę manipulacyjną (np. 3 zł/szt. dla EDO). Kara nigdy nie przekroczy
@@ -814,18 +827,138 @@
 
       <!-- DISCLAIMER -->
       <div class="mt-8 p-8 rounded-stitch bg-slate-100 /50 border border-stitch-border flex gap-6 items-start">
-        <span class="material-symbols-outlined text-slate-400">info</span>
+        <span aria-hidden="true" class="material-symbols-outlined text-slate-400">info</span>
         <p class="text-xs text-stitch-muted leading-relaxed italic">
           <strong>Ważna informacja:</strong> Prezentowane obliczenia mają charakter wyłącznie edukacyjny i poglądowy.
-          Warunki emisji obligacji skarbowych mogą ulec zmianie. Aktualne oprocentowanie i zasady dostępne są na
-          stronie <a href="https://www.obligacjeskarbowe.pl" target="_blank" rel="noopener"
+          Stawki obligacji skarbowych użyte w kalkulatorze odpowiadają emisji z marca 2026 i mogą ulec zmianie.
+          Aktualne oprocentowanie i zasady dostępne są na
+          stronie <a href="https://www.obligacjeskarbowe.pl" target="_blank" rel="noopener noreferrer"
             class="underline hover:text-primary">obligacjeskarbowe.pl</a>.
           Zawsze weryfikuj dane z oficjalnymi dokumentami Ministerstwa Finansów.
         </p>
       </div>
+      <!-- PRZYCISK DRUKOWANIA -->
+      <div class="mt-6 flex justify-end">
+        <button onclick="window.print()" class="btn-print inline-flex items-center gap-2 px-5 py-2.5 rounded-stitch bg-slate-100 dark:bg-slate-800 text-stitch-text text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-stitch-border" aria-label="Drukuj wyniki lub zapisz jako PDF">
+          <span aria-hidden="true" class="material-symbols-outlined text-base">print</span>
+          Drukuj / Zapisz PDF
+        </button>
+      </div>
     </section>
 
   </main>
+
+  <!-- FAQ SECTION -->
+  <section class="py-16 px-6 bg-stitch-bg dark:bg-slate-950 transition-colors" aria-labelledby="faq-obligacje-heading">
+    <div class="max-w-3xl mx-auto">
+      <h2 id="faq-obligacje-heading" class="text-2xl md:text-3xl font-extrabold tracking-tight text-stitch-text mb-2">Najczęściej zadawane pytania</h2>
+      <p class="text-stitch-muted text-sm mb-10">Odpowiedzi na kluczowe pytania o obligacje skarbowe.</p>
+
+      <div class="space-y-3">
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Czym są obligacje skarbowe i jak działają?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">Obligacje skarbowe to papiery dłużne emitowane przez Skarb Państwa. Kupujesz je za <strong>100 zł za sztukę</strong> bezpośrednio w PKO BP lub na stronie obligacjeskarbowe.pl. Skarb Państwa zobowiązuje się wypłacić Ci odsetki (oprocentowanie) i zwrócić kapitał w terminie wykupu. To jedna z najbezpieczniejszych form lokowania oszczędności — za zobowiązaniami stoi budżet państwa polskiego.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Czym różnią się obligacje EDO, COI i TOS?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4"><strong>EDO</strong> (10-letnie) — oprocentowanie zmienne: stała stopa w 1. roku + inflacja CPI + marża w kolejnych latach. Najlepiej chronią przed inflacją na długi termin. <strong>COI</strong> (4-letnie) — podobna indeksacja inflacją, krótszy horyzont. <strong>TOS</strong> (3-letnie) — stałe oprocentowanie przez cały okres, bez indeksacji. <strong>ROR</strong> (1-roczne) — oprocentowanie powiązane ze stopą NBP, najbardziej płynne. Kalkulator pozwala porównać wszystkie typy w jednym miejscu.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Co się dzieje gdy wykupię obligacje przed terminem?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">Wcześniejszy wykup jest możliwy po pierwszym roku posiadania obligacji — to ważna zaleta wobec lokat terminowych. Jednak wiąże się z <strong>opłatą za przedterminowy wykup</strong>, która wynosi zależnie od rodzaju obligacji 0,70–2,00 zł od każdej sztuki. Im wcześniej wykupisz, tym więcej stracisz na marży. Kalkulator dokładnie oblicza wpływ tej opłaty — przestaw suwak „rok wykupu" aby zobaczyć różnicę.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Ile wynosi podatek Belki od obligacji i jak go uniknąć?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">Od zysków z obligacji skarbowych pobierany jest <strong>podatek Belki wynoszący 19%</strong> od dochodu. Odprowadzany jest automatycznie przy wypłacie — nie musisz składać żadnych deklaracji. Aby go uniknąć, możesz kupować obligacje na koncie <strong>IKE-Obligacje</strong> (roczny limit wpłat w 2026 r.: 28 260 zł) — po spełnieniu warunków wiekowych całość zysku jest wolna od podatku.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Czy obligacje EDO rzeczywiście chronią przed inflacją?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">W teorii tak — oprocentowanie EDO = inflacja CPI + stała marża, więc Twój zysk zawsze przewyższa wzrost cen. W praktyce jest kilka niuansów: inflacja CPI za poprzedni rok może nie odzwierciedlać Twojej osobistej inflacji, podatek Belki zjada 19% zysku (jeśli nie masz IKE), a przy wcześniejszym wykupie tracisz część odsetek. Użyj kalkulatora z realną stopą inflacji, aby zobaczyć prawdziwy zysk na sile nabywczej.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Czym są obligacje skarbowe i jak działają?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Obligacje skarbowe to papiery dłużne emitowane przez Skarb Państwa. Kupujesz je za 100 zł za sztukę bezpośrednio w PKO BP lub na stronie obligacjeskarbowe.pl. Skarb Państwa zobowiązuje się wypłacić odsetki i zwrócić kapitał w terminie wykupu. To jedna z najbezpieczniejszych form lokowania oszczędności."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czym różnią się obligacje EDO, COI i TOS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "EDO (10-letnie) — oprocentowanie zmienne: stała stopa w 1. roku + inflacja CPI + marża. COI (4-letnie) — podobna indeksacja inflacją, krótszy horyzont. TOS (3-letnie) — stałe oprocentowanie przez cały okres. ROR (1-roczne) — powiązane ze stopą NBP, najbardziej płynne."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Co się dzieje gdy wykupię obligacje przed terminem?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wcześniejszy wykup jest możliwy po pierwszym roku posiadania obligacji. Wiąże się z opłatą za przedterminowy wykup wynoszącą 0,70–2,00 zł od każdej sztuki, zależnie od rodzaju obligacji."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ile wynosi podatek Belki od obligacji i jak go uniknąć?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Od zysków z obligacji skarbowych pobierany jest podatek Belki wynoszący 19% od dochodu. Aby go uniknąć, możesz kupować obligacje na koncie IKE-Obligacje (roczny limit wpłat w 2026 r.: 28 260 zł) — po spełnieniu warunków wiekowych całość zysku jest wolna od podatku."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy obligacje EDO rzeczywiście chronią przed inflacją?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oprocentowanie EDO = inflacja CPI + stała marża, więc zysk nominalnie zawsze przewyższa wzrost cen. W praktyce podatek Belki zjada 19% zysku (chyba że masz IKE), a przy wcześniejszym wykupie tracisz część odsetek."
+        }
+      }
+    ]
+  }
+  </script>
 
   <!-- NEWSLETTER SECTION (Wide Banner) -->
   <section id="newsletter-section"
@@ -955,7 +1088,7 @@
         <div class="flex items-center gap-2">
           <div class="bg-primary p-1.5 rounded-stitch text-white flex items-center justify-center"
             style="background-color: #0d7ff2;">
-            <span class="material-symbols-outlined text-base">account_balance_wallet</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-base">account_balance_wallet</span>
           </div>
           <span class="text-xl font-bold tracking-tight text-stitch-text">ETF<span
               class="font-normal text-stitch-muted">kalkulator</span>.pl</span>
@@ -1012,11 +1145,11 @@
           <div class="flex gap-4">
             <a href="#"
               class="w-10 h-10 rounded-stitch bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-stitch-soft">
-              <span class="material-symbols-outlined text-lg">share</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-lg">share</span>
             </a>
             <a href="#"
               class="w-10 h-10 rounded-stitch bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-stitch-soft">
-              <span class="material-symbols-outlined text-lg">alternate_email</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-lg">alternate_email</span>
             </a>
           </div>
         </div>
@@ -1064,14 +1197,14 @@
           <button onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"
             class="group flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-stitch-muted hover:bg-rose-500 hover:text-white transition-all">
             <span class="text-[10px] font-bold uppercase tracking-widest">Zamknij</span>
-            <span class="material-symbols-outlined text-xl">close</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-xl">close</span>
           </button>
         </div>
 
         <div class="space-y-8">
           <div class="flex gap-4 items-start">
             <div class="w-12 h-12 rounded-stitch bg-primary/10 flex items-center justify-center shrink-0">
-              <span class="material-symbols-outlined text-primary" id="modal-icon">school</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-primary" id="modal-icon">school</span>
             </div>
             <p id="modal-explanation" class="text-slate-600 leading-relaxed text-sm md:text-base">
             </p>
@@ -1080,7 +1213,55 @@
           <div
             class="p-6 bg-stitch-bg /50 rounded-stitch border border-stitch-border group transition-all hover:border-primary/30">
             <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
-              <span class="material-symbols-outlined text-xs">functions</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-xs">functions</span>
+              Jak to obliczamy?
+            </p>
+            <code id="modal-formula" class="text-stitch-text font-mono text-sm block">...</code>
+          </div>
+
+          <button onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"
+            class="w-full py-4 bg-slate-900 dark:bg-stitch-surface text-white dark:text-stitch-text font-bold rounded-stitch hover:bg-primary dark:hover:bg-primary dark:hover:text-white transition-all shadow-stitch-soft">
+            Rozumiem, dziękuję!
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- EDUCATIONAL MODAL -->
+  <div id="edu-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" tabindex="0" role="button"
+      onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"></div>
+    <div
+      class="relative glass-effect modal-anim rounded-[2.5rem] p-8 md:p-12 max-w-lg w-full border border-white/20 shadow-stitch-soft shadow-black/50 overflow-hidden">
+      <!-- Decorative background blur -->
+      <div class="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 rounded-full blur-3xl"></div>
+
+      <div class="relative z-10">
+        <div class="flex justify-between items-center mb-6">
+          <h3 class="text-2xl font-black text-stitch-text" id="modal-title">Edukacja</h3>
+          <button onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"
+            class="group flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-stitch-muted hover:bg-rose-500 hover:text-white transition-all">
+            <span class="text-[10px] font-bold uppercase tracking-widest">Zamknij</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-xl">close</span>
+          </button>
+        </div>
+
+        <div class="space-y-8">
+          <div class="flex gap-4 items-start">
+            <div class="w-12 h-12 rounded-stitch bg-primary/10 flex items-center justify-center shrink-0">
+              <span aria-hidden="true" class="material-symbols-outlined text-primary" id="modal-icon">school</span>
+            </div>
+            <p id="modal-explanation" class="text-slate-600 leading-relaxed text-sm md:text-base">
+            </p>
+          </div>
+
+          <div
+            class="p-6 bg-stitch-bg /50 rounded-stitch border border-stitch-border group transition-all hover:border-primary/30">
+            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+              <span aria-hidden="true" class="material-symbols-outlined text-xs">functions</span>
               Jak to obliczamy?
             </p>
             <code id="modal-formula" class="text-stitch-text font-mono text-sm block">...</code>
@@ -1104,11 +1285,43 @@
     }
   </script>
   <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
-    type="text/javascript"></script>
+    type="text/javascript" defer></script>
   <script src="https://www.google.com/recaptcha/api.js" defer></script>
-  <script src="../js/kalkulator-obligacji.js"></script>
+  <script src="../js/utils.js" defer></script>
+  <script src="../js/shared.js" defer></script>
+  <script src="../js/kalkulator-obligacji.js" defer></script>
+  <script defer>
+    function przelaczTryb() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains('dark');
 
+      if (isDark) {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        localStorage.setItem('etf-tryb', 'jasny');
+      } else {
+        html.classList.add('dark');
+        html.classList.remove('light');
+        localStorage.setItem('etf-tryb', 'ciemny');
+      }
 
+      const d = html.classList.contains('dark');
+      const m = document.getElementById('meta-theme-color');
+      if (m) m.content = d ? '#0f172a' : '#f8fafc';
+      window.dispatchEvent(new CustomEvent('theme-changed'));
+    }
+
+    // Initialize Theme - Moved to head for early execution
+    (function () {
+      const html = document.documentElement;
+      const d = html.classList.contains('dark');
+      const m = document.getElementById('meta-theme-color');
+      if (m) m.content = d ? '#0f172a' : '#f8fafc';
+    })();
+  </script>
+
+  <!-- Cookie Consent -->
+  <script src="../js/cookie-consent.js" defer></script>
 </body>
 
 </html>

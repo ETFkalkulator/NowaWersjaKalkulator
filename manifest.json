@@ -1,0 +1,46 @@
+{
+  "name": "ETFkalkulator.pl",
+  "short_name": "ETFkalkulator",
+  "description": "Bezpłatne kalkulatory ETF, obligacji EDO i wolności finansowej FIRE dla polskich inwestorów.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#0d7ff2",
+  "background_color": "#f8f7f2",
+  "lang": "pl",
+  "categories": ["finance", "education"],
+  "icons": [
+    {
+      "src": "/images/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Kalkulator ETF",
+      "short_name": "ETF",
+      "url": "/pages/kalkulator-etf.html",
+      "description": "Oblicz zysk z ETF z procentem składanym"
+    },
+    {
+      "name": "Kalkulator Obligacji",
+      "short_name": "Obligacje",
+      "url": "/pages/kalkulator-obligacji.html",
+      "description": "Oblicz zysk z obligacji EDO, COI, TOS"
+    },
+    {
+      "name": "Wolność Finansowa FIRE",
+      "short_name": "FIRE",
+      "url": "/pages/kalkulator-wolnosci.html",
+      "description": "Kiedy osiągniesz wolność finansową?"
+    }
+  ]
+}
