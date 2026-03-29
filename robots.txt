@@ -1,4 +1,3 @@
 ﻿User-agent: *
 Allow: /
-Disallow: /.claude/
 Sitemap: https://etfkalkulator.pl/sitemap.xml
