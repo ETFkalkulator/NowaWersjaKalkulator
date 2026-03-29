@@ -18,7 +18,9 @@
       "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\komptest\\\\Documents\\\\ETFkalkulator 3.0\\\\A wersja do pracy\\\\fix-skip2.ps1\")",
       "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\komptest\\\\Documents\\\\ETFkalkulator 3.0\\\\A wersja do pracy\\\\add-aria-hidden.ps1\")",
       "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\komptest\\\\Documents\\\\ETFkalkulator 3.0\\\\A wersja do pracy\\\\add-ogimage-dims.ps1\")",
-      "WebSearch"
+      "WebSearch",
+      "WebFetch(domain:etfkalkulator.pl)",
+      "WebFetch(domain:labs.google)"
     ]
   }
 }

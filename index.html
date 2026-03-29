@@ -887,94 +887,84 @@
             pomogą Ci precyzyjnie zaplanować Twoją finansową przyszłość i zoptymalizować zyski.</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
           <!-- Karta 0: ETF -->
-          <a href="pages/kalkulator-etf.html"
-            class="group flex flex-col p-8 rounded-stitch bg-stitch-surface/80 /80 backdrop-blur-md border border-stitch-border shadow-stitch-soft hover:-translate-y-1 hover:shadow-stitch-soft hover:border-primary/30 transition-all duration-300"
-            id="karta-etf" style="text-decoration:none;">
-            <div
-              class="w-14 h-14 rounded-stitch bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform"
-              style="background-color:rgba(13, 127, 242, 0.1); color:#0d7ff2;">
-              <span aria-hidden="true" class="material-symbols-outlined text-3xl">analytics</span>
+          <a href="pages/kalkulator-etf.html" id="karta-etf" style="text-decoration:none;"
+            class="group relative flex flex-col rounded-[1.5rem] overflow-hidden bg-stitch-surface border border-stitch-border shadow-stitch-soft hover:-translate-y-2 hover:shadow-xl hover:border-primary/40 transition-all duration-300">
+            <div class="relative overflow-hidden h-44 bg-gradient-to-br from-blue-700 to-blue-900 shrink-0">
+              <img src="images/thumb_etf.png" alt="Kalkulator ETF"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-95" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 bg-white/15 backdrop-blur-sm text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full border border-white/25">Polecane</span>
             </div>
-            <div>
-              <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Polecane</div>
-              <h3 class="text-xl font-bold text-stitch-text mb-3">Kalkulator ETF</h3>
-            </div>
-            <p class="text-sm text-stitch-muted leading-relaxed mb-6">Zysk z funduszy ETF, podatek
-              Belki, inflacja i IKE/IKZE. Podejmuj mądre decyzje inwestycyjne.</p>
-            <div class="mt-auto flex items-center gap-2 text-primary font-bold text-sm" style="color:#0d7ff2;">
-              Otwórz kalkulator
-              <span
-                class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            <div class="flex flex-col flex-1 p-6">
+              <h3 class="text-lg font-black text-stitch-text mb-2">Kalkulator ETF</h3>
+              <p class="text-sm text-stitch-muted leading-relaxed mb-5 flex-1">Zysk z funduszy ETF, podatek Belki, inflacja i IKE/IKZE. Podejmuj mądre decyzje inwestycyjne.</p>
+              <div class="flex items-center gap-2 font-bold text-sm" style="color:#0d7ff2;">
+                Otwórz kalkulator
+                <span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </div>
             </div>
           </a>
 
           <!-- Karta 1: Obligacje -->
-          <a href="pages/kalkulator-obligacji.html"
-            class="group flex flex-col p-8 rounded-stitch bg-stitch-surface/80 /80 backdrop-blur-md border border-stitch-border shadow-stitch-soft hover:-translate-y-1 hover:shadow-stitch-soft hover:border-primary/30 transition-all duration-300"
-            id="karta-obligacje" style="text-decoration:none;">
-            <div
-              class="w-14 h-14 rounded-stitch bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform"
-              style="background-color:rgba(13, 127, 242, 0.1); color:#0d7ff2;">
-              <span aria-hidden="true" class="material-symbols-outlined text-3xl">account_balance</span>
+          <a href="pages/kalkulator-obligacji.html" id="karta-obligacje" style="text-decoration:none;"
+            class="group relative flex flex-col rounded-[1.5rem] overflow-hidden bg-stitch-surface border border-stitch-border shadow-stitch-soft hover:-translate-y-2 hover:shadow-xl hover:border-emerald-400/40 transition-all duration-300">
+            <div class="relative overflow-hidden h-44 bg-gradient-to-br from-emerald-700 to-emerald-900 shrink-0">
+              <img src="images/thumb_bonds.png" alt="Kalkulator Obligacji Skarbowych"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-95" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 bg-white/15 backdrop-blur-sm text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full border border-white/25">Obligacje</span>
             </div>
-            <div>
-              <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Kalkulator 01</div>
-              <h3 class="text-xl font-bold text-stitch-text mb-3">Obligacje Skarbowe</h3>
-            </div>
-            <p class="text-sm text-stitch-muted leading-relaxed mb-6">Oblicz realny zysk z obligacji
-              EDO, ROS i ROD po podatku Belki i inflacji. Sprawdź czy biją lokatę.</p>
-            <div class="mt-auto flex items-center gap-2 text-primary font-bold text-sm" style="color:#0d7ff2;">
-              Otwórz kalkulator
-              <span
-                class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            <div class="flex flex-col flex-1 p-6">
+              <h3 class="text-lg font-black text-stitch-text mb-2">Obligacje Skarbowe</h3>
+              <p class="text-sm text-stitch-muted leading-relaxed mb-5 flex-1">Oblicz realny zysk z obligacji EDO, ROS i ROD po podatku Belki i inflacji. Sprawdź czy biją lokatę.</p>
+              <div class="flex items-center gap-2 font-bold text-sm text-emerald-600 dark:text-emerald-400">
+                Otwórz kalkulator
+                <span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </div>
             </div>
           </a>
 
           <!-- Karta 2: Wolność finansowa -->
-          <a href="pages/kalkulator-wolnosci.html"
-            class="group flex flex-col p-8 rounded-stitch bg-stitch-surface/80 /80 backdrop-blur-md border border-stitch-border shadow-stitch-soft hover:-translate-y-1 hover:shadow-stitch-soft hover:border-primary/30 transition-all duration-300"
-            id="karta-wolnosc" style="text-decoration:none;">
-            <div
-              class="w-14 h-14 rounded-stitch bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform"
-              style="background-color:rgba(13, 127, 242, 0.1); color:#0d7ff2;">
-              <span aria-hidden="true" class="material-symbols-outlined text-3xl">savings</span>
+          <a href="pages/kalkulator-wolnosci.html" id="karta-wolnosc" style="text-decoration:none;"
+            class="group relative flex flex-col rounded-[1.5rem] overflow-hidden bg-stitch-surface border border-stitch-border shadow-stitch-soft hover:-translate-y-2 hover:shadow-xl hover:border-violet-400/40 transition-all duration-300">
+            <div class="relative overflow-hidden h-44 bg-gradient-to-br from-violet-700 to-violet-900 shrink-0">
+              <img src="images/thumb_fire.png" alt="Kalkulator Wolności Finansowej FIRE"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-95" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 bg-white/15 backdrop-blur-sm text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full border border-white/25">FIRE</span>
             </div>
-            <div>
-              <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Kalkulator 02</div>
-              <h3 class="text-xl font-bold text-stitch-text mb-3">Wolność Finansowa</h3>
-            </div>
-            <p class="text-sm text-stitch-muted leading-relaxed mb-6">Ile musisz odkładać żeby zastąpić
-              etat pasywnym dochodem? Twój osobisty plan na emeryturę.</p>
-            <div class="mt-auto flex items-center gap-2 text-primary font-bold text-sm" style="color:#0d7ff2;">
-              Otwórz kalkulator
-              <span
-                class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            <div class="flex flex-col flex-1 p-6">
+              <h3 class="text-lg font-black text-stitch-text mb-2">Wolność Finansowa</h3>
+              <p class="text-sm text-stitch-muted leading-relaxed mb-5 flex-1">Ile musisz odkładać żeby zastąpić etat pasywnym dochodem? Twój osobisty plan na emeryturę.</p>
+              <div class="flex items-center gap-2 font-bold text-sm text-violet-600 dark:text-violet-400">
+                Otwórz kalkulator
+                <span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </div>
             </div>
           </a>
 
           <!-- Karta 3: Porównywarka -->
-          <a href="pages/porownywarka.html"
-            class="group flex flex-col p-8 rounded-stitch bg-stitch-surface/80 /80 backdrop-blur-md border border-stitch-border shadow-stitch-soft hover:-translate-y-1 hover:shadow-stitch-soft hover:border-primary/30 transition-all duration-300"
-            id="karta-porownywarka" style="text-decoration:none;">
-            <div
-              class="w-14 h-14 rounded-stitch bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform"
-              style="background-color:rgba(13, 127, 242, 0.1); color:#0d7ff2;">
-              <span aria-hidden="true" class="material-symbols-outlined text-3xl">compare_arrows</span>
+          <a href="pages/porownywarka.html" id="karta-porownywarka" style="text-decoration:none;"
+            class="group relative flex flex-col rounded-[1.5rem] overflow-hidden bg-stitch-surface border border-stitch-border shadow-stitch-soft hover:-translate-y-2 hover:shadow-xl hover:border-amber-400/40 transition-all duration-300">
+            <div class="relative overflow-hidden h-44 bg-gradient-to-br from-slate-600 to-slate-800 shrink-0">
+              <img src="images/thumb_compare.png" alt="Porównywarka Inwestycji ETF vs Obligacje"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-95" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 bg-white/15 backdrop-blur-sm text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full border border-white/25">Porównaj</span>
             </div>
-            <div>
-              <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Narzędzie 03</div>
-              <h3 class="text-xl font-bold text-stitch-text mb-3">ETF vs Obligacje</h3>
-            </div>
-            <p class="text-sm text-stitch-muted leading-relaxed mb-6">Porównaj dwie strategie
-              inwestycyjne przy Twoich parametrach. Wykresy i edukacyjne wnioski.</p>
-            <div class="mt-auto flex items-center gap-2 text-primary font-bold text-sm" style="color:#0d7ff2;">
-              Otwórz narzędzie
-              <span
-                class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            <div class="flex flex-col flex-1 p-6">
+              <h3 class="text-lg font-black text-stitch-text mb-2">ETF vs Obligacje</h3>
+              <p class="text-sm text-stitch-muted leading-relaxed mb-5 flex-1">Porównaj dwie strategie inwestycyjne przy Twoich parametrach. Wykresy i edukacyjne wnioski.</p>
+              <div class="flex items-center gap-2 font-bold text-sm text-amber-600 dark:text-amber-400">
+                Otwórz porównywarkę
+                <span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </div>
             </div>
           </a>
+
         </div>
       </div>
     </section>
@@ -1161,7 +1151,7 @@
             class="group flex flex-col overflow-hidden rounded-stitch bg-stitch-surface border border-stitch-border transition-all duration-300 hover:-translate-y-1 hover:shadow-stitch-soft">
             <div class="relative aspect-[16/10] overflow-hidden">
               <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDNTDOwhvdCZvjutRZnbRYdQYUEAk3T6d06T_oJaIAhjqHNXN7MtQhuMuf83c6xvg8A60uM1IwEjieieonjWRvjFXgsRb40xNjbHIR7jcmrbE-4lA8VB6YXNtcLsT6ddusRiYOOWkRQfcEp98c0WPSSfXyDpH4321eP6pczRNhFLL2pb8_VkWzOruH_kYtTj5q9f7WgBf6r58DvfyzQvEjzlf1tdJMlggt523WCIxJmlUl3Dmn8uW-18kNWGifrONrXPU1wjtPneaE");'>
+                style='background-image: url("images/thumb_article_belka.png");'>
               </div>
             </div>
             <div class="flex flex-1 flex-col p-8">
@@ -1189,7 +1179,7 @@
             class="group flex flex-col overflow-hidden rounded-stitch bg-stitch-surface border border-stitch-border transition-all duration-300 hover:-translate-y-1 hover:shadow-stitch-soft">
             <div class="relative aspect-[16/10] overflow-hidden">
               <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDvYckHCEtfYRLDwVcRPunzYSrL10KO-uaEJrcnow57vhQ4ZdN2yZ15jRFEKeZlFQ8AF1UBIFMYzMrY4uJpO_aiKIQG-cXHwIQe_IYdA71g48wa8wM2MCb2LBQRPeJCuEy-GWK_8orY3k3-tNTZbRrHMJp0oEJf-lxxD6-EUh-MadPJCjPKtC9ZX_Uwle4OkV3G5ze5FFsEvT3j9IvUsy2Qw-ngvaLrdps0IgjWKRc3Rdg5SGvsUBvoez6_sr5KN_nFqfaV5IAHA3Q");'>
+                style='background-image: url("images/thumb_article_ike_ikze.png");'>
               </div>
             </div>
             <div class="flex flex-1 flex-col p-8">
@@ -1217,7 +1207,7 @@
             class="group flex flex-col overflow-hidden rounded-stitch bg-stitch-surface border border-stitch-border transition-all duration-300 hover:-translate-y-1 hover:shadow-stitch-soft">
             <div class="relative aspect-[16/10] overflow-hidden">
               <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAFw4K0fruWVlah8vOlo7TdCT3J3heLnUDrBKuWrgSpB4pUWfmnmOp1Cb2xT-7PbygcMCObqaJh1MpKjNN4FGAcrH7MKd0Zmin_SJ3xw4gkHY9pQlDPg7PCi9MkGd82W5PZYyedc8gMsiKKQAqkxD5c-Tt51eqdXO7XF8Map46AUSTmhuIntG1YvugzBQ9mVkMaafw0Ia3s5YgDTQMAUwM3PCUMu7Bl259U582Lo9Yqb4yyugXqx03lCE_3oXauk4aM11a3qmYiCMk");'>
+                style='background-image: url("images/thumb_article_edo_etf.png");'>
               </div>
             </div>
             <div class="flex flex-1 flex-col p-8">

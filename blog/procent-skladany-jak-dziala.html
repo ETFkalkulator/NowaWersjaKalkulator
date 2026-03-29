@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f8f7f2" id="meta-theme-color">
+  <script>
+    (function () {
+      const s = localStorage.getItem("etf-tryb");
+      const d = s === "ciemny" || (!s && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.classList.toggle("dark", d);
+      document.documentElement.classList.toggle("dark-mode", d);
+      document.documentElement.classList.toggle("light", !d);
+      document.documentElement.classList.toggle("light-mode", !d);
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Procent składany — jak działa i dlaczego czas jest ważniejszy niż kwota | ETFkalkulator.pl</title>
+  <meta name="description" content="Procent składany — jak działa, wzór, przykłady i reguła 72. Dlaczego zacząć inwestować 10 lat wcześniej robi większą różnicę niż odkładać dwa razy więcej. Konkretne liczby dla polskiego inwestora.">
+  <meta name="author" content="ETFkalkulator.pl">
+  <link rel="canonical" href="https://etfkalkulator.pl/blog/procent-skladany-jak-dziala">
+
+  <meta property="og:title" content="Procent składany — jak działa i dlaczego czas jest ważniejszy niż kwota">
+  <meta property="og:description" content="Wzór, reguła 72, przykłady i konkretne liczby. Magia procentu składanego wyjaśniona po polsku.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://etfkalkulator.pl/blog/procent-skladany-jak-dziala">
+  <meta property="og:site_name" content="ETFkalkulator.pl">
+  <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png">
+  <meta property="og:locale" content="pl_PL">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Procent składany — jak działa i dlaczego czas bije kwotę">
+  <meta name="twitter:description" content="Wzór, reguła 72 i konkretne liczby. Procent składany po polsku.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Strona główna","item":"https://etfkalkulator.pl/"},
+      {"@type":"ListItem","position":2,"name":"Blog","item":"https://etfkalkulator.pl/blog/"},
+      {"@type":"ListItem","position":3,"name":"Procent składany — jak działa","item":"https://etfkalkulator.pl/blog/procent-skladany-jak-dziala"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Procent składany — jak działa i dlaczego czas jest ważniejszy niż kwota",
+    "description": "Procent składany wyjaśniony krok po kroku. Wzór, reguła 72, przykłady, ETF Acc i IKE. Konkretne liczby dla polskiego inwestora.",
+    "author": {"@type":"Organization","name":"ETFkalkulator.pl"},
+    "publisher": {"@type":"Organization","name":"ETFkalkulator.pl","url":"https://etfkalkulator.pl"},
+    "datePublished": "2026-03-29",
+    "dateModified": "2026-03-29",
+    "url": "https://etfkalkulator.pl/blog/procent-skladany-jak-dziala",
+    "inLanguage": "pl"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Co to jest procent składany?",
+        "acceptedAnswer": {"@type":"Answer","text":"Procent składany to mechanizm, w którym zyski z inwestycji są reinwestowane i same generują kolejne zyski. Odsetki nie są wypłacane, lecz dołączane do kapitału — w efekcie każdy kolejny rok przynosi zysk od coraz większej kwoty. Im dłużej działa, tym szybciej rośnie — wykładniczo, nie liniowo."}
+      },
+      {
+        "@type": "Question",
+        "name": "Jaki jest wzór na procent składany?",
+        "acceptedAnswer": {"@type":"Answer","text":"Wzór na procent składany to: K = K₀ × (1 + r)ⁿ, gdzie K to kapitał końcowy, K₀ to kapitał startowy, r to roczna stopa zwrotu (np. 0,07 dla 7%), a n to liczba lat. Dla regularnych wpłat stosuje się rozszerzony wzór uwzględniający miesięczne dopłaty."}
+      },
+      {
+        "@type": "Question",
+        "name": "Co to jest reguła 72?",
+        "acceptedAnswer": {"@type":"Answer","text":"Reguła 72 to szybka metoda szacowania czasu potrzebnego do podwojenia kapitału. Wystarczy podzielić liczbę 72 przez roczną stopę zwrotu. Przy 7% rocznie: 72 ÷ 7 = ok. 10 lat do podwojenia. Przy 9%: 72 ÷ 9 = 8 lat. To przydatny skrót do szybkich wyliczeń w głowie."}
+      },
+      {
+        "@type": "Question",
+        "name": "Dlaczego czas jest ważniejszy od kwoty przy procentach składanych?",
+        "acceptedAnswer": {"@type":"Answer","text":"Bo procent składany rośnie wykładniczo — z każdym rokiem przyrost jest coraz większy w bezwzględnych liczbach. Osoba która zaczyna inwestować 10 lat wcześniej, nawet odkładając mniejsze kwoty, może zgromadzić więcej niż ktoś kto odkłada więcej, ale zaczął później. Decyduje matematyka wykładnicza — w końcowych latach portfel rośnie najszybciej."}
+      },
+      {
+        "@type": "Question",
+        "name": "Jak ETF korzysta z procentu składanego?",
+        "acceptedAnswer": {"@type":"Answer","text":"ETF akumulujący (Acc) automatycznie reinwestuje dywidendy spółek wchodzących w skład funduszu — nie wypłaca ich, lecz dodaje do wartości jednostki. Dzięki temu procent składany działa bez żadnej ingerencji inwestora i bez konieczności płacenia podatku Belki co roku od dywidend. To jeden z powodów dla których ETF Acc jest lepszy dla długoterminowego inwestora niż ETF Dist."}
+      },
+      {
+        "@type": "Question",
+        "name": "Jak IKE wzmacnia procent składany?",
+        "acceptedAnswer": {"@type":"Answer","text":"Na IKE nie płacisz podatku Belki (19%) od zysków przez cały okres inwestowania ani przy wypłacie po 60. roku życia. To oznacza, że 100% zysku jest reinwestowane — procent składany działa w pełnej sile. Na zwykłym koncie maklerskim część zysku co roku 'ucieka' do fiskusa, co spowalnia efekt kuli śnieżnej."}
+      }
+    ]
+  }
+  </script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('consent', 'default', {'analytics_storage': 'denied'});
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
+  <script>gtag('config', 'G-GZECMECQ15', {'send_page_view': false});</script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="../js/tailwind-config.js"></script>
+
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="icon" href="../images/favicon.png">
+  <link rel="apple-touch-icon" href="../images/favicon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://groot.mailerlite.com">
+
+  <style>
+    .glass-effect { background: rgba(255,255,255,0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .dark .glass-effect { background: rgba(15,23,42,0.7); }
+    body { font-family: 'Inter', sans-serif; }
+    .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-size: 24px; line-height: 1; -webkit-font-smoothing: antialiased; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    article p { line-height: 1.8; }
+    article h2 { scroll-margin-top: 5rem; }
+    article h3 { scroll-margin-top: 5rem; }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    article h2 { animation: fadeInUp 0.4s ease both; }
+    details summary { user-select: none; list-style: none; }
+    details summary::-webkit-details-marker { display: none; }
+    .expand-icon { transition: transform 0.25s ease; }
+    details[open] .expand-icon { transform: rotate(180deg); }
+    .toc-active { color: #0d7ff2 !important; font-weight: 600; background: rgba(13,127,242,0.08); border-radius: 0.5rem; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 1rem; border: 1px solid rgba(148,163,184,0.2); }
+    .dark .table-scroll { border-color: rgba(71,85,105,0.4); }
+    .table-scroll::-webkit-scrollbar { height: 6px; }
+    .table-scroll::-webkit-scrollbar-track { background: rgba(148,163,184,0.1); border-radius: 999px; }
+    .table-scroll::-webkit-scrollbar-thumb { background: rgba(13,127,242,0.4); border-radius: 999px; }
+
+    /* Snowball animation visual */
+    .snowball-bar { transition: width 0.8s ease; }
+  </style>
+</head>
+
+<body class="bg-white dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
+
+  <!-- Reading progress bar -->
+  <div id="reading-progress" class="fixed top-0 left-0 h-[3px] z-[200] rounded-r-full" style="width:0%;background-color:#0d7ff2;"></div>
+
+  <!-- Cookie Consent -->
+  <div id="cookie-consent" class="cookie-consent" style="display:none;">
+    <div class="cookie-consent__inner">
+      <div class="cookie-consent__content">
+        <h4 class="cookie-consent__title">Prywatność i pliki cookies</h4>
+        <p class="cookie-consent__text">ETFkalkulator.pl używa plików cookies do analizy ruchu.
+          <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__link">Polityka cookies</a>.</p>
+      </div>
+      <div class="cookie-consent__actions">
+        <button id="cookie-accept" class="cookie-consent__btn cookie-consent__btn--accept">Akceptuję</button>
+        <button id="cookie-reject" class="cookie-consent__btn cookie-consent__btn--reject">Odrzuć</button>
+        <a href="../pages/polityka-prywatnosci.html#cookies" class="cookie-consent__btn cookie-consent__btn--settings">Ustawienia</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-slate-200/80 dark:border-slate-800/50" style="font-family:'Inter',sans-serif;">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity" style="text-decoration:none;">
+        <div class="bg-primary p-1.5 rounded-2xl text-white flex items-center justify-center" style="background-color:#0d7ff2;">
+          <span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+        </div>
+        <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">ETFkalkulator.pl</span>
+      </a>
+      <div class="hidden lg:flex items-center gap-6 xl:gap-8 mx-6">
+        <a class="text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="../pages/kalkulator-etf.html" style="text-decoration:none;">Kalkulator ETF</a>
+        <a class="text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="../pages/kalkulator-obligacji.html" style="text-decoration:none;">Obligacje</a>
+        <a class="text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="../pages/kalkulator-wolnosci.html" style="text-decoration:none;">Wolność finansowa</a>
+        <a class="text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="../pages/porownywarka.html" style="text-decoration:none;">Porównywarka</a>
+        <a class="text-sm font-extrabold text-primary hover:opacity-80 transition-colors" href="index.html" style="text-decoration:none;color:#0d7ff2;">Blog</a>
+        <a class="text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="../pages/o-projekcie.html" style="text-decoration:none;">O projekcie</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onclick="przelaczTryb()" aria-label="Przełącz tryb" class="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+          <span class="material-symbols-outlined text-[20px] block dark:hidden text-slate-600">light_mode</span>
+          <span class="material-symbols-outlined text-[20px] hidden dark:block text-slate-400">dark_mode</span>
+        </button>
+        <a href="#newsletter-section" class="bg-primary text-white px-4 h-9 rounded-full flex items-center justify-center text-[13px] font-bold hover:opacity-90 transition-opacity" style="background-color:#0d7ff2;text-decoration:none;">Newsletter</a>
+      </div>
+    </div>
+    <div class="lg:hidden h-11 border-t border-slate-200/30 dark:border-slate-800/30 flex items-center overflow-x-auto no-scrollbar px-4 gap-6" style="-webkit-overflow-scrolling:touch;">
+      <a class="text-[12px] font-bold text-slate-500 dark:text-slate-400 whitespace-nowrap hover:text-primary" href="../pages/kalkulator-etf.html" style="text-decoration:none;">ETF</a>
+      <a class="text-[12px] font-bold text-slate-500 dark:text-slate-400 whitespace-nowrap hover:text-primary" href="../pages/kalkulator-obligacji.html" style="text-decoration:none;">Obligacje</a>
+      <a class="text-[12px] font-bold text-slate-500 dark:text-slate-400 whitespace-nowrap hover:text-primary" href="../pages/kalkulator-wolnosci.html" style="text-decoration:none;">Wolność finansowa</a>
+      <a class="text-[12px] font-bold text-slate-500 dark:text-slate-400 whitespace-nowrap hover:text-primary" href="../pages/porownywarka.html" style="text-decoration:none;">Porównywarka</a>
+      <a class="text-[12px] font-extrabold whitespace-nowrap" href="index.html" style="text-decoration:none;color:#0d7ff2;">Blog</a>
+      <a class="text-[12px] font-bold text-slate-500 dark:text-slate-400 whitespace-nowrap hover:text-primary" href="../pages/o-projekcie.html" style="text-decoration:none;">O projekcie</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative pt-32 pb-16 md:pb-20 px-4 sm:px-6 overflow-hidden" style="background:linear-gradient(135deg,#1e40af 0%,#1d4ed8 40%,#0d7ff2 100%);">
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute -top-40 -right-40 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-20 -left-20 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative z-10 max-w-3xl mx-auto">
+      <nav aria-label="breadcrumb" class="mb-6">
+        <ol class="flex items-center gap-2 text-sm text-white/60 flex-wrap">
+          <li><a href="../index.html" class="hover:text-white transition-colors" style="text-decoration:none;">ETFkalkulator.pl</a></li>
+          <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+          <li><a href="index.html" class="hover:text-white transition-colors" style="text-decoration:none;">Blog</a></li>
+          <li><span class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+          <li class="text-white font-semibold">Procent składany</li>
+        </ol>
+      </nav>
+      <h1 class="text-2xl md:text-4xl font-black text-white leading-tight mb-4">Procent składany — jak działa i dlaczego czas jest ważniejszy niż kwota</h1>
+      <p class="text-white/85 text-base md:text-lg leading-relaxed mb-6">Albert Einstein miał to powiedzieć: "procent składany to ósmy cud świata. Kto go rozumie — zarabia. Kto nie — płaci". Nieważne czy Einstein to rzeczywiście powiedział — matematyka jest niezbita. Ten artykuł tłumaczy jak to naprawdę działa i dlaczego <em>kiedy</em> zaczniesz ma większe znaczenie niż <em>ile</em> zaczniesz odkładać.</p>
+      <div class="flex flex-wrap gap-4 text-white/60 text-sm">
+        <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">calendar_today</span> marzec 2026</span>
+        <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">schedule</span> 9 minut czytania</span>
+        <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">person</span> ETFkalkulator.pl</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN — two column layout -->
+  <main class="bg-white dark:bg-slate-950 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-4 grid grid-cols-1 lg:grid-cols-[1fr_300px] xl:grid-cols-[1fr_320px] gap-10 xl:gap-16 items-start">
+
+      <!-- ARTICLE -->
+      <article id="main" class="min-w-0 pb-16 lg:pb-20">
+
+        <!-- TOC mobile -->
+        <div class="glass-effect rounded-[1.5rem] p-6 mb-10 border-l-4 border-primary bg-primary/5 dark:bg-primary/10 lg:hidden">
+          <p class="text-xs font-black uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px]">format_list_bulleted</span> Spis treści
+          </p>
+          <ol class="space-y-2 text-sm list-decimal list-inside">
+            <li><a href="#czym-jest" class="text-primary hover:underline font-medium" style="text-decoration:none;">Czym jest procent składany — w 2 minuty</a></li>
+            <li><a href="#wzor" class="text-primary hover:underline font-medium" style="text-decoration:none;">Wzór i jak go używać</a></li>
+            <li><a href="#czas-vs-kwota" class="text-primary hover:underline font-medium" style="text-decoration:none;">Czas vs. kwota — kto wygrywa</a></li>
+            <li><a href="#regula-72" class="text-primary hover:underline font-medium" style="text-decoration:none;">Reguła 72 — szybka metoda</a></li>
+            <li><a href="#kula-sniezna" class="text-primary hover:underline font-medium" style="text-decoration:none;">Efekt kuli śnieżnej w liczbach</a></li>
+            <li><a href="#etf-acc" class="text-primary hover:underline font-medium" style="text-decoration:none;">ETF Acc — automatyczny procent składany</a></li>
+            <li><a href="#ike-wzmacnia" class="text-primary hover:underline font-medium" style="text-decoration:none;">IKE — jak wzmacnia efekt składania</a></li>
+            <li><a href="#bledy" class="text-primary hover:underline font-medium" style="text-decoration:none;">Błędy które niszczą procent składany</a></li>
+            <li><a href="#faq" class="text-primary hover:underline font-medium" style="text-decoration:none;">FAQ — najczęstsze pytania</a></li>
+          </ol>
+        </div>
+
+        <!-- SECTION 1 -->
+        <h2 id="czym-jest" class="text-2xl font-black text-slate-900 dark:text-white mt-4 mb-6 pb-4 border-b border-slate-100 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">1</span>
+          Czym jest procent składany — w 2 minuty
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-base md:text-lg">Wyobraź sobie kulę śnieżną która toczy się ze wzgórza. Na początku jest mała i rośnie powoli. Ale im dalej jedzie, tym więcej śniegu zbiera — i każdy kolejny metr przynosi jej więcej masy niż poprzedni. Po pewnym czasie kula jest ogromna, a jej wzrost nie do zatrzymania.</p>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-base md:text-lg">Tak działa procent składany. Inwestujesz pieniądze, zarabiasz zysk. Ale zamiast wypłacać zysk — zostawiasz go w inwestycji. W następnym roku zarabiasz już na kapitale <em>plus</em> poprzednim zysku. W kolejnym roku na tym wszystkim plus nowym zysku. Z każdym rokiem baza jest większa, a przyrost w bezwzględnych liczbach coraz większy.</p>
+
+        <div class="rounded-2xl p-5 bg-primary/5 dark:bg-primary/10 border-l-4 border-primary mb-8">
+          <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-primary mb-2">
+            <span class="material-symbols-outlined text-[18px]">key</span> Procent prosty vs. procent składany — kluczowa różnica
+          </p>
+          <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed"><strong>Procent prosty:</strong> każdy rok zarabiasz tyle samo — bo naliczasz od tej samej kwoty startowej.<br><strong>Procent składany:</strong> każdy rok zarabiasz <em>więcej</em> — bo naliczasz od coraz większej bazy (kapitał + wszystkie poprzednie zyski).<br><br>Na 1 000 zł przy 7% przez 30 lat: procent prosty daje 2 100 zł zysku. Procent składany daje <strong>6 612 zł zysku</strong>. Ta sama stopa, ten sam czas — ponad 3× różnica.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+          <div class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-slate-800/50 shadow-sm">
+            <div class="text-3xl md:text-4xl font-black text-primary mb-1" style="color:#0d7ff2;">7 612 zł</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 leading-tight">z 1 000 zł po 30 latach @ 7% (procent składany)</div>
+            <div class="w-8 h-0.5 mx-auto mt-3 rounded-full" style="background-color:rgba(13,127,242,0.3);"></div>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-slate-800/50 shadow-sm">
+            <div class="text-3xl md:text-4xl font-black text-slate-400 mb-1">3 100 zł</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 leading-tight">z 1 000 zł po 30 latach @ 7% (procent prosty)</div>
+            <div class="w-8 h-0.5 mx-auto mt-3 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-slate-800/50 shadow-sm">
+            <div class="text-3xl md:text-4xl font-black text-emerald-600 mb-1">×7,6</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 leading-tight">tyle razy rośnie kapitał w 30 latach przy 7% rocznie</div>
+            <div class="w-8 h-0.5 mx-auto mt-3 rounded-full bg-emerald-200 dark:bg-emerald-900"></div>
+          </div>
+        </div>
+
+        <!-- SECTION 2 -->
+        <h2 id="wzor" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-100 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">2</span>
+          Wzór i jak go używać
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-base md:text-lg">Matematyka procentu składanego jest prosta — choć jej efekty są nieintuicyjne. Podstawowy wzór wygląda tak:</p>
+
+        <div class="glass-effect rounded-2xl p-6 mb-6 shadow-sm border border-white/50 dark:border-slate-800/50 relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-primary rounded-t-2xl"></div>
+          <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-5 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px]">calculate</span> Wzór na procent składany
+          </p>
+          <div class="bg-slate-50 dark:bg-slate-900 rounded-xl p-5 text-center mb-5">
+            <p class="text-2xl font-black text-slate-900 dark:text-white font-mono tracking-tight">K = K₀ × (1 + r)ⁿ</p>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2.5 border-b border-slate-100 dark:border-slate-800">
+            <span class="text-sm font-mono font-bold text-primary" style="color:#0d7ff2;">K</span>
+            <span class="text-sm text-slate-600 dark:text-slate-400">kapitał końcowy — szukana wartość</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2.5 border-b border-slate-100 dark:border-slate-800">
+            <span class="text-sm font-mono font-bold text-primary" style="color:#0d7ff2;">K₀</span>
+            <span class="text-sm text-slate-600 dark:text-slate-400">kapitał startowy (np. 10 000 zł)</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2.5 border-b border-slate-100 dark:border-slate-800">
+            <span class="text-sm font-mono font-bold text-primary" style="color:#0d7ff2;">r</span>
+            <span class="text-sm text-slate-600 dark:text-slate-400">roczna stopa zwrotu jako ułamek (7% = 0,07)</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2.5">
+            <span class="text-sm font-mono font-bold text-primary" style="color:#0d7ff2;">n</span>
+            <span class="text-sm text-slate-600 dark:text-slate-400">liczba lat inwestowania</span>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 mt-8 mb-3">Przykład: 10 000 zł przez 20 lat @ 7%</h3>
+
+        <div class="glass-effect rounded-2xl p-6 mb-6 shadow-sm border border-white/50 dark:border-slate-800/50 relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-primary rounded-t-2xl"></div>
+          <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px]">calculate</span> Krok po kroku
+          </p>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-slate-100 dark:border-slate-800">
+            <span class="text-sm text-slate-500 dark:text-slate-400">Kapitał startowy (K₀)</span>
+            <span class="text-sm font-bold text-slate-900 dark:text-white">10 000 zł</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-slate-100 dark:border-slate-800">
+            <span class="text-sm text-slate-500 dark:text-slate-400">Wzór: 10 000 × (1 + 0,07)²⁰</span>
+            <span class="text-sm font-bold text-slate-900 dark:text-white">10 000 × 3,8697</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-slate-100 dark:border-slate-800">
+            <span class="text-sm text-slate-500 dark:text-slate-400">Kapitał końcowy</span>
+            <span class="text-sm font-bold text-emerald-600 dark:text-emerald-400">38 697 zł</span>
+          </div>
+          <div class="bg-primary/5 dark:bg-primary/10 rounded-xl px-4 py-3 mt-2 border border-primary/20 flex flex-col sm:flex-row sm:justify-between sm:items-center">
+            <span class="text-sm text-slate-700 dark:text-slate-300 font-semibold">Zysk z procentu składanego</span>
+            <span class="text-base font-black text-primary" style="color:#0d7ff2;">+28 697 zł (bez jednej dopłaty!)</span>
+          </div>
+        </div>
+
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-base md:text-lg">Wpłaciłeś 10 000 zł, nie dotknąłeś przez 20 lat, i masz prawie 39 000 zł. Samo "siedzenie i czekanie" wygenerowało prawie 29 000 zł zysku. To jest właśnie procent składany.</p>
+
+        <!-- SECTION 3 -->
+        <h2 id="czas-vs-kwota" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-100 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">3</span>
+          Czas vs. kwota — kto wygrywa
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-base md:text-lg">To jest najważniejszy insight o procentach składanych i większość ludzi go ignoruje. Oto historia Ani i Tomasza — dwóch inwestorów z tym samym celem, ale inną strategią:</p>
+
+        <div class="rounded-2xl overflow-hidden mb-6 shadow-sm border border-slate-200 dark:border-slate-800">
+          <div class="grid grid-cols-1 sm:grid-cols-2">
+            <!-- Ania -->
+            <div class="p-6 bg-primary/5 dark:bg-primary/10 border-b sm:border-b-0 sm:border-r border-slate-200 dark:border-slate-800">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-black text-sm" style="background-color:#0d7ff2;">A</span>
+                <div>
+                  <p class="font-black text-slate-900 dark:text-white">Ania</p>
+                  <p class="text-xs text-slate-500 dark:text-slate-400">Zaczyna w wieku 25 lat</p>
+                </div>
+              </div>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between"><span class="text-slate-500 dark:text-slate-400">Odkłada rocznie</span><span class="font-bold text-slate-900 dark:text-white">5 000 zł</span></div>
+                <div class="flex justify-between"><span class="text-slate-500 dark:text-slate-400">Inwestuje przez</span><span class="font-bold text-slate-900 dark:text-white">40 lat (do 65 r.ż.)</span></div>
+                <div class="flex justify-between"><span class="text-slate-500 dark:text-slate-400">Łączne wpłaty</span><span class="font-bold text-slate-900 dark:text-white">200 000 zł</span></div>
+                <div class="flex justify-between border-t border-primary/20 pt-2 mt-2"><span class="text-slate-600 dark:text-slate-300 font-semibold">Kapitał w wieku 65</span><span class="font-black text-primary text-base" style="color:#0d7ff2;">~1 400 000 zł</span></div>
+              </div>
+            </div>
+            <!-- Tomasz -->
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="w-10 h-10 rounded-full bg-slate-400 flex items-center justify-center text-white font-black text-sm">T</span>
+                <div>
+                  <p class="font-black text-slate-900 dark:text-white">Tomasz</p>
+                  <p class="text-xs text-slate-500 dark:text-slate-400">Zaczyna w wieku 40 lat</p>
+                </div>
+              </div>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between"><span class="text-slate-500 dark:text-slate-400">Odkłada rocznie</span><span class="font-bold text-slate-900 dark:text-white">10 000 zł</span></div>
+                <div class="flex justify-between"><span class="text-slate-500 dark:text-slate-400">Inwestuje przez</span><span class="font-bold text-slate-900 dark:text-white">25 lat (do 65 r.ż.)</span></div>
+                <div class="flex justify-between"><span class="text-slate-500 dark:text-slate-400">Łączne wpłaty</span><span class="font-bold text-slate-900 dark:text-white">250 000 zł</span></div>
+                <div class="flex justify-between border-t border-slate-200 dark:border-slate-700 pt-2 mt-2"><span class="text-slate-600 dark:text-slate-300 font-semibold">Kapitał w wieku 65</span><span class="font-black text-slate-500 text-base">~800 000 zł</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-slate-50 dark:bg-slate-900/50 p-4 text-center border-t border-slate-200 dark:border-slate-800">
+            <p class="text-sm font-black text-slate-900 dark:text-white">Ania wpłaciła <span class="text-primary" style="color:#0d7ff2;">50 000 zł mniej</span> — a ma <span class="text-primary" style="color:#0d7ff2;">600 000 zł więcej</span>. Stopa zwrotu: 8% rocznie.</p>
+          </div>
+        </div>
+
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-base md:text-lg">Tomasz odkładał dwa razy więcej i więcej łącznie wpłacił — a mimo to ma prawie o połowę mniej. Dlaczego? Bo Ania dała procentowi składanemu 15 dodatkowych lat na pracę. Te pierwsze 15 lat — kiedy kapitał był jeszcze mały — zrobiło kolosalną różnicę na końcu.</p>
+
+        <div class="rounded-2xl p-5 bg-emerald-50 dark:bg-emerald-950/30 border-l-4 border-emerald-500 mb-8">
+          <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2">
+            <span class="material-symbols-outlined text-[18px]">check_circle</span> Wniosek który zmienia perspektywę
+          </p>
+          <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">Najlepszy moment na rozpoczęcie inwestowania był 10 lat temu. <strong>Drugi najlepszy moment jest dziś.</strong> Każdy rok zwlekania kosztuje — nie tylko bieżący zysk, ale całe przyszłe zyski z tych zysków. Im młodszy zaczniesz, tym mniej musisz odkładać żeby osiągnąć ten sam cel.</p>
+        </div>
+
+        <!-- Wizualizacja efektu kuli snieznej przez lata -->
+        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 mt-8 mb-4">Jak rośnie 500 zł/miesiąc przez kolejne dekady @ 7%</h3>
+        <div class="glass-effect rounded-2xl p-6 mb-8 border border-white/50 dark:border-slate-800/50 shadow-sm">
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between items-center mb-1.5">
+                <span class="text-sm font-bold text-slate-700 dark:text-slate-300">Po 10 latach</span>
+                <span class="text-sm font-black text-slate-900 dark:text-white">~86 000 zł <span class="text-xs font-normal text-slate-400">(wpłacono 60 000 zł)</span></span>
+              </div>
+              <div class="h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div class="h-full rounded-full bg-primary/40" style="width:17%;background-color:rgba(13,127,242,0.4);"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between items-center mb-1.5">
+                <span class="text-sm font-bold text-slate-700 dark:text-slate-300">Po 20 latach</span>
+                <span class="text-sm font-black text-slate-900 dark:text-white">~261 000 zł <span class="text-xs font-normal text-slate-400">(wpłacono 120 000 zł)</span></span>
+              </div>
+              <div class="h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div class="h-full rounded-full bg-primary/60" style="width:52%;background-color:rgba(13,127,242,0.55);"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between items-center mb-1.5">
+                <span class="text-sm font-bold text-slate-700 dark:text-slate-300">Po 30 latach</span>
+                <span class="text-sm font-black text-slate-900 dark:text-white">~606 000 zł <span class="text-xs font-normal text-slate-400">(wpłacono 180 000 zł)</span></span>
+              </div>
+              <div class="h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div class="h-full rounded-full" style="width:100%;background-color:rgba(13,127,242,0.7);"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between items-center mb-1.5">
+                <span class="text-sm font-bold text-slate-700 dark:text-slate-300">Po 40 latach</span>
+                <span class="text-sm font-black text-primary text-base" style="color:#0d7ff2;">~1 310 000 zł <span class="text-xs font-normal text-slate-400">(wpłacono 240 000 zł)</span></span>
+              </div>
+              <div class="h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                <div class="h-full rounded-full" style="width:100%;background-color:#0d7ff2;"></div>
+              </div>
+            </div>
+          </div>
+          <p class="text-xs text-slate-400 mt-4 text-center">500 zł miesięcznie, 7% rocznie. Wpłacono łącznie 240 000 zł → wartość 1 310 000 zł. Zysk z procentu składanego: ponad 1 mln zł.</p>
+        </div>
+
+        <!-- SECTION 4 -->
+        <h2 id="regula-72" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-100 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">4</span>
+          Reguła 72 — szybka metoda w głowie
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-base md:text-lg">Reguła 72 to przydatny skrót który pozwala w kilka sekund oszacować <strong class="text-slate-900 dark:text-white">ile lat zajmie podwojenie kapitału</strong> przy danej stopie zwrotu. Wystarczy podzielić 72 przez roczną stopę procentową:</p>
+
+        <div class="glass-effect rounded-2xl p-6 mb-6 shadow-sm border border-white/50 dark:border-slate-800/50 relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-amber-500 rounded-t-2xl"></div>
+          <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px]">calculate</span> Reguła 72 — ile lat do podwojenia
+          </p>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-slate-100 dark:border-slate-800">
+            <span class="text-sm text-slate-500 dark:text-slate-400">Lokata bankowa @ 5%</span>
+            <span class="text-sm font-bold text-slate-900 dark:text-white">72 ÷ 5 = <strong>14,4 lat</strong></span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-slate-100 dark:border-slate-800">
+            <span class="text-sm text-slate-500 dark:text-slate-400">ETF globalny @ 7%</span>
+            <span class="text-sm font-bold text-slate-900 dark:text-white">72 ÷ 7 = <strong>~10,3 lat</strong></span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-slate-100 dark:border-slate-800">
+            <span class="text-sm text-slate-500 dark:text-slate-400">ETF optimistyczny @ 10%</span>
+            <span class="text-sm font-bold text-slate-900 dark:text-white">72 ÷ 10 = <strong>7,2 lat</strong></span>
+          </div>
+          <div class="bg-primary/5 dark:bg-primary/10 rounded-xl px-4 py-3 mt-2 border border-primary/20 flex flex-col sm:flex-row sm:justify-between sm:items-center">
+            <span class="text-sm text-slate-700 dark:text-slate-300 font-semibold">Konto bez oprocentowania @ 0%</span>
+            <span class="text-base font-black text-rose-600 dark:text-rose-400">Nigdy się nie podwoi</span>
+          </div>
+        </div>
+
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-base md:text-lg">Przy 7% rocznie (historyczna średnia ETF globalny) Twój kapitał podwaja się co ok. 10 lat. Zaczynasz z 100 000 zł? Po 10 latach masz 200 000 zł, po 20 latach 400 000 zł, po 30 latach 800 000 zł — <strong class="text-slate-900 dark:text-white">bez ani jednej dopłaty</strong>.</p>
+
+        <!-- SECTION 5 -->
+        <h2 id="kula-sniezna" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-100 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">5</span>
+          Efekt kuli śnieżnej w liczbach — rok po roku
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-base md:text-lg">Abstrakcja zamienia się w konkret gdy zobaczysz jak wygląda to rok po roku. Oto 10 000 zł startowych przy 7% rocznie — bez żadnych dopłat:</p>
+
+        <div class="table-scroll mb-8">
+          <table class="w-full text-sm border-collapse" style="min-width:480px;">
+            <thead>
+              <tr class="bg-primary text-white">
+                <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">Rok</th>
+                <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">Kapitał</th>
+                <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">Zysk w tym roku</th>
+                <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">Łączny zysk</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-slate-100 dark:border-slate-800">
+                <td class="px-4 py-3 font-bold text-slate-900 dark:text-white">1</td>
+                <td class="px-4 py-3 text-slate-600 dark:text-slate-400">10 700 zł</td>
+                <td class="px-4 py-3 text-emerald-600 dark:text-emerald-400">700 zł</td>
+                <td class="px-4 py-3 text-slate-500 dark:text-slate-500">700 zł</td>
+              </tr>
+              <tr class="bg-slate-50/50 dark:bg-slate-900/30 border-b border-slate-100 dark:border-slate-800">
+                <td class="px-4 py-3 font-bold text-slate-900 dark:text-white">5</td>
+                <td class="px-4 py-3 text-slate-600 dark:text-slate-400">14 026 zł</td>
+                <td class="px-4 py-3 text-emerald-600 dark:text-emerald-400">923 zł</td>
+                <td class="px-4 py-3 text-slate-500 dark:text-slate-500">4 026 zł</td>
+              </tr>
+              <tr class="border-b border-slate-100 dark:border-slate-800">
+                <td class="px-4 py-3 font-bold text-slate-900 dark:text-white">10</td>
+                <td class="px-4 py-3 text-slate-600 dark:text-slate-400">19 672 zł</td>
+                <td class="px-4 py-3 text-emerald-600 dark:text-emerald-400">1 297 zł</td>
+                <td class="px-4 py-3 text-slate-500 dark:text-slate-500">9 672 zł</td>
+              </tr>
+              <tr class="bg-slate-50/50 dark:bg-slate-900/30 border-b border-slate-100 dark:border-slate-800">
+                <td class="px-4 py-3 font-bold text-slate-900 dark:text-white">20</td>
+                <td class="px-4 py-3 text-slate-600 dark:text-slate-400">38 697 zł</td>
+                <td class="px-4 py-3 text-emerald-600 dark:text-emerald-400">2 555 zł</td>
+                <td class="px-4 py-3 text-slate-500 dark:text-slate-500">28 697 zł</td>
+              </tr>
+              <tr class="border-b border-slate-100 dark:border-slate-800">
+                <td class="px-4 py-3 font-bold text-slate-900 dark:text-white">30</td>
+                <td class="px-4 py-3 font-bold text-slate-900 dark:text-white">76 123 zł</td>
+                <td class="px-4 py-3 text-emerald-600 dark:text-emerald-400 font-bold">5 027 zł</td>
+                <td class="px-4 py-3 text-slate-700 dark:text-slate-300">66 123 zł</td>
+              </tr>
+              <tr class="bg-primary/5 dark:bg-primary/10">
+                <td class="px-4 py-3 font-black text-slate-900 dark:text-white">40</td>
+                <td class="px-4 py-3 font-black text-primary text-base" style="color:#0d7ff2;">149 745 zł</td>
+                <td class="px-4 py-3 font-black text-primary" style="color:#0d7ff2;">9 887 zł</td>
+                <td class="px-4 py-3 font-black text-primary" style="color:#0d7ff2;">139 745 zł</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-base md:text-lg">Zauważ: w roku 1 zysk wyniósł 700 zł. W roku 40 — <strong class="text-slate-900 dark:text-white">9 887 zł z dokładnie tej samej inwestycji</strong>, bez dopłacania ani jednej złotówki. Kapitał pracuje coraz ciężej za Ciebie z każdym rokiem.</p>
+
+        <!-- SECTION 6 -->
+        <h2 id="etf-acc" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-100 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">6</span>
+          ETF Acc — automatyczny procent składany
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-base md:text-lg">ETF-y dzielą się na dwa typy — i wybór między nimi ma ogromne znaczenie dla procentu składanego:</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          <div class="glass-effect rounded-2xl p-6 border-2 border-primary/30 shadow-sm">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold px-3 py-1 rounded-full">Acc ✅</span>
+              <span class="font-black text-slate-900 dark:text-white">Akumulujący</span>
+            </div>
+            <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+              <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2;"></span>Dywidendy dodawane do wartości jednostki</li>
+              <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2;"></span>Procent składany działa automatycznie</li>
+              <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2;"></span>Zero podatku Belki od dywidend co rok</li>
+              <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" style="background-color:#0d7ff2;"></span>Podatek tylko przy sprzedaży — jednorazowo</li>
+            </ul>
+          </div>
+          <div class="glass-effect rounded-2xl p-6 border-2 border-slate-200 dark:border-slate-700 shadow-sm opacity-80">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="bg-slate-100 dark:bg-slate-800 text-slate-500 text-xs font-bold px-3 py-1 rounded-full">Dist ❌</span>
+              <span class="font-black text-slate-900 dark:text-white">Dystrybuujący</span>
+            </div>
+            <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+              <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-slate-400 mt-2 shrink-0"></span>Dywidendy wypłacane na konto</li>
+              <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-slate-400 mt-2 shrink-0"></span>Musisz ręcznie reinwestować</li>
+              <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-slate-400 mt-2 shrink-0"></span>19% podatku Belki od dywidend co rok</li>
+              <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-slate-400 mt-2 shrink-0"></span>Procent składany osłabiony co roku</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-5 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 mb-8">
+          <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2">
+            <span class="material-symbols-outlined text-[18px]">warning</span> Jak podatek niszczy procent składany
+          </p>
+          <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">Wyobraź sobie ETF z dywidendą 2% rocznie. Na 100 000 zł to 2 000 zł dywidendy. ETF Dist wypłaca te 2 000 zł — po 19% podatku zostajesz z 1 620 zł do reinwestowania. ETF Acc te 2 000 zł zostawia w funduszu i reinwestuje w całości. Na 30 latach ta różnica przekłada się na <strong>dziesiątki tysięcy złotych</strong>. Zawsze wybieraj Acc dla długoterminowego inwestowania.</p>
+        </div>
+
+        <!-- SECTION 7 -->
+        <h2 id="ike-wzmacnia" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-100 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">7</span>
+          IKE — jak wzmacnia efekt procentu składanego
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-base md:text-lg">IKE to najskuteczniejszy legalny sposób wzmocnienia procentu składanego w Polsce. Dlaczego? Bo na IKE podatek Belki nie pomniejsza Twojego kapitału ani w trakcie inwestowania, ani przy wypłacie po 60. roku życia.</p>
+
+        <div class="glass-effect rounded-2xl p-6 mb-6 shadow-sm border border-white/50 dark:border-slate-800/50 relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-primary rounded-t-2xl"></div>
+          <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px]">calculate</span> 500 zł/mies. × 30 lat @ 7% — IKE vs. zwykłe konto
+          </p>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-slate-100 dark:border-slate-800">
+            <span class="text-sm text-slate-500 dark:text-slate-400">Łączne wpłaty</span>
+            <span class="text-sm font-bold text-slate-900 dark:text-white">180 000 zł</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-slate-100 dark:border-slate-800">
+            <span class="text-sm text-slate-500 dark:text-slate-400">Kapitał brutto po 30 latach</span>
+            <span class="text-sm font-bold text-slate-900 dark:text-white">~606 000 zł</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-slate-100 dark:border-slate-800">
+            <span class="text-sm text-slate-500 dark:text-slate-400">Zwykłe konto (po podatku Belki 19%)</span>
+            <span class="text-sm font-bold text-rose-600 dark:text-rose-400">~522 000 zł (−81 000 zł podatku)</span>
+          </div>
+          <div class="bg-primary/5 dark:bg-primary/10 rounded-xl px-4 py-3 mt-2 border border-primary/20 flex flex-col sm:flex-row sm:justify-between sm:items-center">
+            <span class="text-sm text-slate-700 dark:text-slate-300 font-semibold">IKE — zero podatku</span>
+            <span class="text-base font-black text-primary" style="color:#0d7ff2;">~606 000 zł (oszczędzasz 84 000 zł)</span>
+          </div>
+        </div>
+
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-8 text-base md:text-lg">84 000 zł różnicy — to pieniądze które na zwykłym koncie oddałbyś państwu, a na IKE dalej pracują i generują kolejne zyski. To jest prawdziwa siła połączenia procentu składanego z zerowym podatkiem.</p>
+
+        <!-- CTA -->
+        <div class="bg-gradient-to-br from-blue-700 to-primary rounded-[1.5rem] p-8 text-white text-center my-10 shadow-xl">
+          <span class="material-symbols-outlined text-4xl mb-3 block opacity-80">analytics</span>
+          <h3 class="text-xl font-black text-white mb-3">Sprawdź jak procent składany działa na Twoich liczbach</h3>
+          <p class="text-white/80 mb-5 text-sm leading-relaxed">Kalkulator ETF pokazuje rok po roku jak rośnie Twój kapitał — z podatkiem Belki, bez niego (IKE) i po uwzględnieniu inflacji.</p>
+          <a href="../pages/kalkulator-etf.html" class="bg-white font-black px-6 py-3 rounded-xl hover:scale-[1.02] transition-all inline-flex items-center gap-2 shadow-lg" style="color:#0d7ff2;text-decoration:none;">
+            Otwórz kalkulator ETF
+            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- SECTION 8 -->
+        <h2 id="bledy" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-100 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">8</span>
+          Błędy które niszczą procent składany
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start gap-4 p-4 glass-effect rounded-2xl border border-rose-200 dark:border-rose-900/50">
+            <span class="w-8 h-8 rounded-xl bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center text-rose-600 dark:text-rose-400 shrink-0 font-black text-sm">1</span>
+            <div>
+              <p class="text-sm font-bold text-slate-900 dark:text-white mb-1">Sprzedaż podczas korekty rynkowej</p>
+              <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">To największy błąd. Kiedy rynek spada o 30% i sprzedajesz — nie tylko realizujesz stratę, ale tracisz też całe przyszłe zyski które mogłeś zarobić na tym kapitale. Korekty to część procesu — historycznie rynek zawsze wracał do poziomów sprzed kryzysu i rósł wyżej.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 p-4 glass-effect rounded-2xl border border-rose-200 dark:border-rose-900/50">
+            <span class="w-8 h-8 rounded-xl bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center text-rose-600 dark:text-rose-400 shrink-0 font-black text-sm">2</span>
+            <div>
+              <p class="text-sm font-bold text-slate-900 dark:text-white mb-1">Wypłacanie zysków zamiast reinwestowania</p>
+              <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Każda wypłata zysku przerywa efekt kuli śnieżnej. Pieniądze które wypłacasz przestają pracować — nie zarobią kolejnych zysków w przyszłości. ETF Acc rozwiązuje ten problem automatycznie.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 p-4 glass-effect rounded-2xl border border-rose-200 dark:border-rose-900/50">
+            <span class="w-8 h-8 rounded-xl bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center text-rose-600 dark:text-rose-400 shrink-0 font-black text-sm">3</span>
+            <div>
+              <p class="text-sm font-bold text-slate-900 dark:text-white mb-1">Wysokie opłaty za zarządzanie</p>
+              <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Fundusz pobierający 2% rocznie zamiast 0,07% ETF-u — to 1,93% mniej kapitału pracującego co rok. Na 30 latach różnica kosztów opłat zjada dziesiątki tysięcy złotych. Niskie koszty to drugi filar procentu składanego.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 p-4 glass-effect rounded-2xl border border-rose-200 dark:border-rose-900/50">
+            <span class="w-8 h-8 rounded-xl bg-rose-100 dark:bg-rose-900/30 flex items-center justify-center text-rose-600 dark:text-rose-400 shrink-0 font-black text-sm">4</span>
+            <div>
+              <p class="text-sm font-bold text-slate-900 dark:text-white mb-1">Zwlekanie z rozpoczęciem</p>
+              <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Każdy rok zwlekania to rok mniej dla procentu składanego. Czekanie na "właściwy moment", "lepszy kurs" czy "spokojniejszy rynek" kosztuje — bo te lata procentu składanego są bezpowrotnie stracone.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 9 — FAQ -->
+        <h2 id="faq" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-100 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">9</span>
+          FAQ — najczęstsze pytania
+        </h2>
+
+        <div class="space-y-4 mb-10">
+
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-sm md:text-base">
+              Co to jest procent składany?
+              <span class="material-symbols-outlined text-primary shrink-0 expand-icon" style="color:#0d7ff2;">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-4">
+              Procent składany to mechanizm w którym zyski z inwestycji są reinwestowane i same generują kolejne zyski. Odsetki nie są wypłacane, lecz dołączane do kapitału — w efekcie każdy kolejny rok przynosi zysk od coraz większej kwoty. Im dłużej działa, tym szybciej rośnie. Działa wykładniczo — nie liniowo jak procent prosty. <strong class="text-slate-800 dark:text-slate-200">Kluczowy warunek: zyski muszą zostać w inwestycji, a nie być wypłacane.</strong>
+            </div>
+          </details>
+
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-sm md:text-base">
+              Jaki jest wzór na procent składany?
+              <span class="material-symbols-outlined text-primary shrink-0 expand-icon" style="color:#0d7ff2;">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-4">
+              Podstawowy wzór: <strong class="text-slate-800 dark:text-slate-200 font-mono">K = K₀ × (1 + r)ⁿ</strong>, gdzie K to kapitał końcowy, K₀ to kapitał startowy, r to roczna stopa zwrotu (np. 0,07 dla 7%), n to liczba lat. Przykład: 10 000 zł przez 20 lat @ 7% = 10 000 × (1,07)²⁰ = 10 000 × 3,87 = <strong class="text-slate-800 dark:text-slate-200">38 700 zł</strong>. Dla regularnych wpłat stosuje się rozszerzony wzór — kalkulator ETF robi to automatycznie.
+            </div>
+          </details>
+
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-sm md:text-base">
+              Co to jest reguła 72?
+              <span class="material-symbols-outlined text-primary shrink-0 expand-icon" style="color:#0d7ff2;">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-4">
+              Reguła 72 to szybka metoda szacowania czasu podwojenia kapitału. Podziel 72 przez roczną stopę zwrotu. Przy 7%: 72 ÷ 7 = <strong class="text-slate-800 dark:text-slate-200">~10 lat do podwojenia</strong>. Przy 9%: 72 ÷ 9 = 8 lat. Przy 6%: 72 ÷ 6 = 12 lat. To przybliżenie — nie jest idealnie dokładne, ale w głowie działa świetnie do szybkiej oceny inwestycji.
+            </div>
+          </details>
+
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-sm md:text-base">
+              Dlaczego czas jest ważniejszy od kwoty?
+              <span class="material-symbols-outlined text-primary shrink-0 expand-icon" style="color:#0d7ff2;">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-4">
+              Bo procent składany rośnie wykładniczo — z każdym rokiem przyrost jest coraz większy w bezwzględnych liczbach. Osoba zaczynająca 10 lat wcześniej daje procentowi składanemu więcej czasu na akcelerację. W przykładzie Ani i Tomasza: Ania wpłaciła 200 000 zł (mniej!) i zebrała 1 400 000 zł. Tomasz wpłacił 250 000 zł i zebrał 800 000 zł. Różnica: <strong class="text-slate-800 dark:text-slate-200">15 lat wcześniejszego startu</strong> było warte 600 000 zł więcej.
+            </div>
+          </details>
+
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-sm md:text-base">
+              Jak ETF korzysta z procentu składanego?
+              <span class="material-symbols-outlined text-primary shrink-0 expand-icon" style="color:#0d7ff2;">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-4">
+              ETF akumulujący (Acc) automatycznie reinwestuje dywidendy spółek wchodzących w skład funduszu — nie wypłaca ich, lecz dodaje do wartości jednostki. Dzięki temu procent składany działa bez żadnej ingerencji inwestora i <strong class="text-slate-800 dark:text-slate-200">bez podatku Belki od dywidend co roku</strong>. ETF Dist wypłaca dywidendy — musisz je ręcznie reinwestować po zapłaceniu 19% podatku. Zawsze wybieraj Acc dla długoterminowego inwestowania.
+            </div>
+          </details>
+
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-sm md:text-base">
+              Jak IKE wzmacnia procent składany?
+              <span class="material-symbols-outlined text-primary shrink-0 expand-icon" style="color:#0d7ff2;">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 pt-4">
+              Na IKE nie płacisz podatku Belki (19%) od zysków przez cały okres inwestowania, ani przy wypłacie po 60. roku życia. To oznacza że <strong class="text-slate-800 dark:text-slate-200">100% zysku jest reinwestowane</strong> — procent składany działa w pełnej sile. Na zwykłym koncie maklerskim przy sprzedaży ETF część zysku trafia do fiskusa, co spowalnia efekt kuli śnieżnej. Na 30 latach różnica między IKE a zwykłym kontem sięga dziesiątek tysięcy złotych przy tych samych wpłatach.
+            </div>
+          </details>
+
+        </div>
+
+        <!-- Podsumowanie -->
+        <div class="rounded-2xl p-5 bg-emerald-50 dark:bg-emerald-950/30 border-l-4 border-emerald-500 mb-8">
+          <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2">
+            <span class="material-symbols-outlined text-[18px]">check_circle</span> Pięć rzeczy które zapamiętaj
+          </p>
+          <ol class="space-y-1.5 text-sm text-slate-700 dark:text-slate-300 leading-relaxed list-decimal list-inside">
+            <li>Procent składany działa wykładniczo — im dłużej, tym szybszy wzrost</li>
+            <li><strong>Czas jest ważniejszy niż kwota</strong> — zacznij wcześnie, nawet od małych sum</li>
+            <li>Reguła 72: podziel 72 przez stopę zwrotu → ile lat do podwojenia</li>
+            <li>ETF Acc reinwestuje automatycznie i bez podatku od dywidend co rok</li>
+            <li>IKE + ETF Acc = procent składany w maksymalnej sile, legalnie bez podatku</li>
+          </ol>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="glass-effect rounded-2xl p-5 mt-10 border border-slate-200 dark:border-slate-700 flex items-start gap-4">
+          <span class="material-symbols-outlined text-slate-400 shrink-0 mt-0.5">info</span>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
+            <strong class="not-italic">Ważna informacja (Disclaimer):</strong> Materiały na stronie mają charakter wyłącznie edukacyjny i poglądowy. Nie stanowią rekomendacji inwestycyjnej ani porady finansowej. Historyczne stopy zwrotu ETF-ów nie gwarantują przyszłych wyników. Inwestowanie wiąże się z ryzykiem utraty części lub całości kapitału.
+          </p>
+        </div>
+
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-24 space-y-5">
+
+          <!-- TOC -->
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+              <span class="material-symbols-outlined text-[18px]">format_list_bulleted</span> W tym artykule
+            </p>
+            <nav class="sidebar-toc space-y-0.5">
+              <a href="#czym-jest" class="block text-sm py-1.5 px-3 rounded-lg transition-all duration-200 text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5" style="text-decoration:none;">Czym jest procent składany</a>
+              <a href="#wzor" class="block text-sm py-1.5 px-3 rounded-lg transition-all duration-200 text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5" style="text-decoration:none;">Wzór i przykład</a>
+              <a href="#czas-vs-kwota" class="block text-sm py-1.5 px-3 rounded-lg transition-all duration-200 text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5" style="text-decoration:none;">Czas vs. kwota</a>
+              <a href="#regula-72" class="block text-sm py-1.5 px-3 rounded-lg transition-all duration-200 text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5" style="text-decoration:none;">Reguła 72</a>
+              <a href="#kula-sniezna" class="block text-sm py-1.5 px-3 rounded-lg transition-all duration-200 text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5" style="text-decoration:none;">Efekt kuli śnieżnej</a>
+              <a href="#etf-acc" class="block text-sm py-1.5 px-3 rounded-lg transition-all duration-200 text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5" style="text-decoration:none;">ETF Acc</a>
+              <a href="#ike-wzmacnia" class="block text-sm py-1.5 px-3 rounded-lg transition-all duration-200 text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5" style="text-decoration:none;">IKE i procent składany</a>
+              <a href="#bledy" class="block text-sm py-1.5 px-3 rounded-lg transition-all duration-200 text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5" style="text-decoration:none;">Błędy do uniknięcia</a>
+              <a href="#faq" class="block text-sm py-1.5 px-3 rounded-lg transition-all duration-200 text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5" style="text-decoration:none;">FAQ</a>
+            </nav>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-gradient-to-br from-blue-700 to-primary rounded-2xl p-5 text-white text-center shadow-xl">
+            <span class="material-symbols-outlined text-3xl mb-2 block opacity-80">analytics</span>
+            <p class="font-black text-white text-base mb-1">Kalkulator ETF</p>
+            <p class="text-white/75 text-xs leading-relaxed mb-4">Sprawdź procent składany na swoich liczbach — rok po roku.</p>
+            <a href="../pages/kalkulator-etf.html" class="bg-white rounded-xl px-4 py-2.5 text-xs font-black hover:scale-[1.02] transition-all inline-flex items-center gap-1.5 shadow-lg" style="color:#0d7ff2;text-decoration:none;">
+              Otwórz kalkulator
+              <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </a>
+          </div>
+
+          <!-- Related -->
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+              <span class="material-symbols-outlined text-[18px]">auto_stories</span> Czytaj też
+            </p>
+            <div class="space-y-3">
+              <a href="jak-zaczac-inwestowac-w-etf.html" class="flex items-start gap-3 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors group" style="text-decoration:none;">
+                <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 mt-0.5">ETF</span>
+                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 leading-tight group-hover:text-primary transition-colors">Jak zacząć inwestować w ETF — przewodnik 2026</span>
+              </a>
+              <a href="regula-4-procent-fire-po-polsku.html" class="flex items-start gap-3 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors group" style="text-decoration:none;">
+                <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 mt-0.5">FIRE</span>
+                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 leading-tight group-hover:text-primary transition-colors">Reguła 4% i FIRE po polsku — ile potrzebujesz</span>
+              </a>
+              <a href="ike-czy-ikze-co-wybrac.html" class="flex items-start gap-3 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors group" style="text-decoration:none;">
+                <span class="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 mt-0.5">IKE</span>
+                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 leading-tight group-hover:text-primary transition-colors">IKE czy IKZE — co wybrać w 2026?</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- Mobile sticky bottom bar -->
+  <div class="lg:hidden fixed bottom-0 left-0 right-0 z-50 glass-effect border-t border-slate-200 dark:border-slate-800 px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-24 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+        <div id="reading-progress-mobile" class="h-full rounded-full" style="width:0%;background-color:#0d7ff2;"></div>
+      </div>
+      <span id="reading-pct" class="text-xs font-bold text-slate-400">0%</span>
+    </div>
+    <a href="../pages/kalkulator-etf.html" class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-full flex items-center gap-1.5 hover:opacity-90" style="background-color:#0d7ff2;text-decoration:none;">
+      <span class="material-symbols-outlined text-[14px]">analytics</span>
+      Kalkulator ETF
+    </a>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <section id="newsletter-section" class="pt-10 pb-20 px-6 bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 transition-colors">
+    <div class="max-w-7xl mx-auto">
+      <div class="bg-white/70 dark:bg-slate-900/80 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 lg:p-16 shadow-2xl border border-white/50 dark:border-slate-800/50 relative overflow-hidden group">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+          <div class="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+              <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span>
+              Newsletter
+            </div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.1]">Bądź na bieżąco z <span class="text-primary">rynkiem ETF</span> i finansami</h2>
+            <p class="text-slate-500 dark:text-slate-400 text-lg leading-relaxed max-w-xl">Nowe artykuły i aktualizacje kalkulatorów prosto na email. Zero spamu.</p>
+          </div>
+          <div class="w-full lg:max-w-md mx-auto lg:ml-auto">
+            <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
+              <div class="ml-form-embedWrapper embedForm">
+                <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                  <form class="ml-block-form" action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe" method="post" target="_blank">
+                    <div class="flex flex-col space-y-4">
+                      <input aria-label="email" aria-required="true" type="email" class="w-full h-14 px-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-white text-base font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all placeholder:text-slate-400" name="fields[email]" placeholder="Twój adres e-mail">
+                      <label class="flex items-start gap-4 cursor-pointer">
+                        <input type="checkbox" name="gdpr[]" value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl" required class="custom-checkbox mt-1 transition-all">
+                        <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium leading-relaxed">Zgadzam się na otrzymywanie newslettera. Możesz się wypisać w każdej chwili.</span>
+                      </label>
+                      <div class="ml-form-recaptcha py-2 flex justify-center">
+                        <div class="g-recaptcha transform scale-[0.85] origin-center" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                      </div>
+                      <input type="hidden" name="ml-submit" value="1">
+                      <input type="hidden" name="anticsrf" value="true">
+                      <button type="submit" class="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-sm md:text-base uppercase tracking-widest hover:scale-[1.01] active:scale-[0.98] transition-all shadow-xl shadow-primary/20" style="background-color:#0d7ff2;">Zapisz się teraz</button>
+                      <p class="text-[10px] text-slate-400 leading-relaxed pt-2 border-t border-slate-100 dark:border-slate-800">Akceptujesz <a href="../pages/regulamin.html" class="underline hover:text-primary">Regulamin</a> i <a href="../pages/polityka-prywatnosci.html" class="underline hover:text-primary">Politykę Prywatności</a>.</p>
+                    </div>
+                  </form>
+                </div>
+                <div class="ml-form-successBody row-success" style="display:none">
+                  <div class="p-10 rounded-3xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 text-center">
+                    <span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-4xl mb-4 block">verified</span>
+                    <h4 class="text-emerald-900 dark:text-emerald-300 font-bold text-xl mb-1">Sukces!</h4>
+                    <p class="text-emerald-700 dark:text-emerald-500 text-sm">Sprawdź skrzynkę e-mail, aby potwierdzić zapis.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12 border-b border-slate-200/50 dark:border-slate-800/50 pb-8">
+        <div class="flex items-center gap-2">
+          <div class="bg-primary p-1.5 rounded-lg text-white flex items-center justify-center" style="background-color:#0d7ff2;"><span class="material-symbols-outlined text-base">account_balance_wallet</span></div>
+          <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">ETF<span class="font-normal text-slate-500">kalkulator</span>.pl</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Narzędzia</h5>
+          <ul class="space-y-4">
+            <li><a href="../pages/kalkulator-etf.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Kalkulator ETF</a></li>
+            <li><a href="../pages/kalkulator-obligacji.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Obligacje Skarbowe</a></li>
+            <li><a href="../pages/kalkulator-wolnosci.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Wolność Finansowa</a></li>
+            <li><a href="../pages/porownywarka.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Porównywarka ETF</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Projekt</h5>
+          <ul class="space-y-4">
+            <li><a href="index.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Blog i Wiedza</a></li>
+            <li><a href="../pages/o-projekcie.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">O projekcie</a></li>
+            <li><a href="../pages/regulamin.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Regulamin</a></li>
+            <li><a href="../pages/polityka-prywatnosci.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Polityka prywatności</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Kontakt</h5>
+          <p class="text-sm text-slate-500 mb-6">Masz pytania? Pisz śmiało:</p>
+          <a href="mailto:kontakt@etfkalkulator.pl" class="text-sm font-bold text-slate-900 dark:text-white hover:text-primary transition-colors" style="text-decoration:none;">kontakt@etfkalkulator.pl</a>
+        </div>
+      </div>
+      <div class="mt-20 pt-10 border-t border-slate-200 dark:border-slate-900">
+        <p class="text-[11px] text-slate-400 leading-relaxed mb-8 max-w-4xl">Serwis ETFkalkulator.pl ma charakter wyłącznie edukacyjny i informacyjny. Prezentowane obliczenia nie stanowią rekomendacji inwestycyjnej, porady finansowej ani doradztwa podatkowego.</p>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+          <p>© 2026 ETFkalkulator.pl — Made with ❤️ by Florian</p>
+          <span>Wszelkie prawa zastrzeżone</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/shared.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" defer></script>
+  <script>
+    function ml_webform_success_37996059() {
+      var $ = ml_jQuery || jQuery;
+      $('.ml-subscribe-form-37996059 .row-success').show();
+      $('.ml-subscribe-form-37996059 .row-form').hide();
+    }
+  </script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
+
+  <script>
+    // Dark mode
+    (function () {
+      const s = localStorage.getItem('etf-tryb');
+      const d = s === 'ciemny' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.classList.toggle('dark', d);
+      document.documentElement.classList.toggle('light', !d);
+    })();
+    function przelaczTryb() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains('dark') || html.classList.contains('dark-mode');
+      if (isDark) {
+        html.classList.remove('dark', 'dark-mode'); html.classList.add('light');
+        localStorage.setItem('etf-tryb', 'jasny');
+      } else {
+        html.classList.add('dark'); html.classList.remove('light', 'light-mode');
+        localStorage.setItem('etf-tryb', 'ciemny');
+      }
+    }
+
+    // Reading progress
+    const bar = document.getElementById('reading-progress');
+    const mobileBar = document.getElementById('reading-progress-mobile');
+    const pctLabel = document.getElementById('reading-pct');
+    const article = document.getElementById('main');
+    function updateProgress() {
+      if (!bar || !article) return;
+      const rect = article.getBoundingClientRect();
+      const total = article.offsetHeight - window.innerHeight;
+      const scrolled = Math.max(0, -rect.top);
+      const pct = Math.min(100, total > 0 ? (scrolled / total) * 100 : 0);
+      bar.style.width = pct + '%';
+      if (mobileBar) mobileBar.style.width = pct + '%';
+      if (pctLabel) pctLabel.textContent = Math.round(pct) + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    // Sidebar TOC active highlight
+    const headings = document.querySelectorAll('article h2[id]');
+    const tocLinks = document.querySelectorAll('.sidebar-toc a');
+    if (headings.length && tocLinks.length) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            tocLinks.forEach(a => a.classList.remove('toc-active'));
+            const active = document.querySelector('.sidebar-toc a[href="#' + entry.target.id + '"]');
+            if (active) active.classList.add('toc-active');
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+      headings.forEach(h => observer.observe(h));
+    }
+
+    // Cookie consent
+    document.addEventListener('DOMContentLoaded', function () {
+      var consent = document.getElementById('cookie-consent');
+      var accept = document.getElementById('cookie-accept');
+      var reject = document.getElementById('cookie-reject');
+      var choice = localStorage.getItem('etf-cookie-consent');
+      if (!choice && consent) { consent.style.display = 'block'; }
+      else if (choice === 'accepted' && typeof gtag === 'function') {
+        gtag('consent', 'update', { 'analytics_storage': 'granted' });
+        gtag('event', 'page_view');
+      }
+      accept && accept.addEventListener('click', function () {
+        localStorage.setItem('etf-cookie-consent', 'accepted');
+        consent.style.display = 'none';
+        if (typeof gtag === 'function') { gtag('consent', 'update', { 'analytics_storage': 'granted' }); gtag('event', 'page_view'); }
+      });
+      reject && reject.addEventListener('click', function () {
+        localStorage.setItem('etf-cookie-consent', 'rejected');
+        consent.style.display = 'none';
+        if (typeof gtag === 'function') { gtag('consent', 'update', { 'analytics_storage': 'denied' }); }
+      });
+    });
+  </script>
+</body>
+</html>
