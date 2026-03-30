@@ -826,16 +826,19 @@
       </div>
 
       <!-- DISCLAIMER -->
-      <div class="mt-8 p-8 rounded-stitch bg-slate-100 /50 border border-stitch-border flex gap-6 items-start">
-        <span aria-hidden="true" class="material-symbols-outlined text-slate-400">info</span>
-        <p class="text-xs text-stitch-muted leading-relaxed italic">
-          <strong>Ważna informacja:</strong> Prezentowane obliczenia mają charakter wyłącznie edukacyjny i poglądowy.
-          Stawki obligacji skarbowych użyte w kalkulatorze odpowiadają emisji z marca 2026 i mogą ulec zmianie.
-          Aktualne oprocentowanie i zasady dostępne są na
-          stronie <a href="https://www.obligacjeskarbowe.pl" target="_blank" rel="noopener noreferrer"
-            class="underline hover:text-primary">obligacjeskarbowe.pl</a>.
-          Zawsze weryfikuj dane z oficjalnymi dokumentami Ministerstwa Finansów.
-        </p>
+      <div class="mt-8 p-5 md:p-8 rounded-stitch bg-slate-100/50 dark:bg-slate-800/40 border border-stitch-border flex gap-4 items-start">
+        <span aria-hidden="true" class="material-symbols-outlined text-slate-400 shrink-0 mt-0.5">info</span>
+        <div class="text-xs text-stitch-muted leading-relaxed space-y-2">
+          <p class="font-semibold text-stitch-text">Ważna informacja o metodologii i ryzyku</p>
+          <p>Wyniki mają charakter <strong>wyłącznie edukacyjny i poglądowy</strong> — nie stanowią rekomendacji inwestycyjnej ani porady finansowej w rozumieniu ustawy o obrocie instrumentami finansowymi.</p>
+          <ul class="list-disc list-inside space-y-1 pl-1">
+            <li><strong>Stawki obligacji:</strong> dane odpowiadają emisji z marca 2026 i mogą ulec zmianie przy kolejnych emisjach. Aktualne oprocentowanie sprawdź na <a href="https://www.obligacjeskarbowe.pl" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary">obligacjeskarbowe.pl</a>.</li>
+            <li><strong>Typy obligacji:</strong> EDO (10-letnie, zmienne) co roku naliczają odsetki na podstawie inflacji GUS + marża. COI (4-letnie) i TOS (3-letnie) mają inną strukturę oprocentowania — sprawdź szczegóły w prospekcie emisyjnym.</li>
+            <li><strong>Podatek Belki (19%):</strong> dotyczy wszystkich typów obligacji poza IKE-Obligacje w PKO BP. Jeśli posiadasz IKE-Obligacje, zysk jest wolny od podatku — kalkulator uwzględnia obie opcje po wyborze konta IKE.</li>
+            <li><strong>Założenia kalkulatora:</strong> symulacja zakłada reinwestowanie odsetek, stałą marżę i inflację przez cały horyzont. Rzeczywiste wyniki zależą od przyszłej inflacji GUS.</li>
+          </ul>
+          <p>Zawsze weryfikuj dane z oficjalnymi dokumentami Ministerstwa Finansów. Przed podjęciem decyzji inwestycyjnych skonsultuj się z licencjonowanym doradcą finansowym.</p>
+        </div>
       </div>
       <!-- PRZYCISK DRUKOWANIA -->
       <div class="mt-6 flex justify-end">

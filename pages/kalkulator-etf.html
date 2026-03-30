@@ -969,13 +969,19 @@
         </div>
 
         <!-- DISCLAIMER -->
-        <div class="mt-8 p-8 rounded-stitch bg-slate-100 /50 border border-stitch-border flex gap-6 items-start">
-          <span aria-hidden="true" class="material-symbols-outlined text-slate-400">info</span>
-          <p class="text-xs text-stitch-muted leading-relaxed italic">
-            <strong>Ważna informacja:</strong> Prezentowane obliczenia mają charakter wyłącznie edukacyjny i poglądowy.
-            Inwestowanie na giełdzie wiąże się z ryzykiem utraty kapitału. Wyniki historyczne nie gwarantują podobnych
-            stóp zwrotu w przyszłości. Zawsze weryfikuj dane z oficjalnymi dokumentami funduszy.
-          </p>
+        <div class="mt-8 p-5 md:p-8 rounded-stitch bg-slate-100/50 dark:bg-slate-800/40 border border-stitch-border flex gap-4 items-start">
+          <span aria-hidden="true" class="material-symbols-outlined text-slate-400 shrink-0 mt-0.5">info</span>
+          <div class="text-xs text-stitch-muted leading-relaxed space-y-2">
+            <p class="font-semibold text-stitch-text">Ważna informacja o metodologii i ryzyku</p>
+            <p>Wyniki mają charakter <strong>wyłącznie edukacyjny i poglądowy</strong> — nie stanowią rekomendacji inwestycyjnej ani porady finansowej w rozumieniu ustawy o obrocie instrumentami finansowymi.</p>
+            <ul class="list-disc list-inside space-y-1 pl-1">
+              <li><strong>Ryzyko rynkowe:</strong> inwestowanie w ETF wiąże się z ryzykiem utraty części lub całości kapitału. Wyniki historyczne (7–10% rocznie dla globalnych indeksów) nie gwarantują podobnych stóp zwrotu w przyszłości.</li>
+              <li><strong>Założenia kalkulatora:</strong> przyjęto stałą roczną stopę zwrotu i inflację przez cały horyzont. Nie uwzględniono kosztów TER funduszu (0,07–0,5% rocznie) ani ewentualnych opłat maklerskich.</li>
+              <li><strong>Podatek Belki (19%):</strong> dla ETF-ów akumulacyjnych podatek jest odroczony do momentu sprzedaży jednostek — w rzeczywistości wyniki mogą być nieznacznie lepsze niż pokazuje kalkulator.</li>
+              <li><strong>IKE/IKZE:</strong> zaznacz opcję „Konto IKE/IKZE" w kalkulatorze, aby zobaczyć wynik bez podatku Belki. Limit IKE w 2026: 28 260 zł, IKZE: 11 304 zł.</li>
+            </ul>
+            <p>Zawsze weryfikuj dane z oficjalnymi dokumentami funduszy (KIID/KID). Przed podjęciem decyzji inwestycyjnych skonsultuj się z licencjonowanym doradcą finansowym.</p>
+          </div>
         </div>
         <!-- PRZYCISK DRUKOWANIA -->
         <div class="mt-6 flex justify-end">

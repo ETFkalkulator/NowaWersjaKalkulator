@@ -848,13 +848,18 @@
             długim (10+ lat) ETF z procentem składanym zostawia resztę daleko w tyle. Testuj różne horyzonty!</p>
         </div>
       </div>
-      <div class="mt-8 p-8 rounded-stitch bg-slate-100 /50 border border-stitch-border flex gap-6 items-start">
-        <span aria-hidden="true" class="material-symbols-outlined text-slate-400">info</span>
-        <p class="text-xs text-stitch-muted leading-relaxed italic">
-          <strong>Ważna informacja:</strong> Porównanie ma charakter edukacyjny. Rzeczywiste stopy zwrotu ETF zmieniają
-          się co roku. Oprocentowanie lokat zależy od stóp NBP. Obligacje EDO mają stałe warunki tylko w ramach jednej
-          emisji.
-        </p>
+      <div class="mt-8 p-5 md:p-8 rounded-stitch bg-slate-100/50 dark:bg-slate-800/40 border border-stitch-border flex gap-4 items-start">
+        <span aria-hidden="true" class="material-symbols-outlined text-slate-400 shrink-0 mt-0.5">info</span>
+        <div class="text-xs text-stitch-muted leading-relaxed space-y-2">
+          <p class="font-semibold text-stitch-text">Ważna informacja o metodologii i ryzyku</p>
+          <p>Wyniki mają charakter <strong>wyłącznie edukacyjny</strong> i nie stanowią rekomendacji inwestycyjnej ani porady finansowej w rozumieniu ustawy o obrocie instrumentami finansowymi.</p>
+          <ul class="list-disc list-inside space-y-1 pl-1">
+            <li><strong>ETF:</strong> przyjęto historyczną stopę 7% rocznie (realnie ~3,5% po inflacji). Przyszłe wyniki mogą być wyższe lub niższe — rynek akcji wiąże się z ryzykiem zmienności. Zysk pomniejszony o 19% podatku Belki.</li>
+            <li><strong>Obligacje EDO:</strong> oprocentowanie ustalane co roku na podstawie inflacji GUS + marża. Stawki z <span id="por-rates-date-note">bieżącej emisji</span> mogą ulec zmianie przy zakupie nowej serii. Poza IKE-Obligacje zysk pomniejszony o podatek Belki.</li>
+            <li><strong>Lokata:</strong> oprocentowanie zależy od decyzji NBP i polityki banku. Przy każdym odnowieniu lokata może być oprocentowana inaczej. Zysk pomniejszony o 19% podatku Belki.</li>
+          </ul>
+          <p>Kalkulator zakłada regularne wpłaty roczne, brak kosztów transakcyjnych i maklerskich oraz stałe parametry przez cały horyzont. Przed podjęciem decyzji inwestycyjnej skonsultuj się z licencjonowanym doradcą finansowym.</p>
+        </div>
       </div>
       <!-- PRZYCISK DRUKOWANIA -->
       <div class="mt-6 flex justify-end">
