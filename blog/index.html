@@ -110,8 +110,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap"
     rel="stylesheet" />
-  
-  
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="../js/tailwind-config.js"></script>
 
   <style>
     .glass-effect {
@@ -153,8 +153,6 @@
   <noscript>
     <link rel="stylesheet" href="../css/mailerlite.css" />
   </noscript>
-  <link rel="preload" as="style" href="../css/tailwind-compiled.css">
-  <link href="../css/tailwind-compiled.css" rel="stylesheet">
 </head>
 
 <body>
@@ -206,7 +204,7 @@
       <div class="flex flex-wrap gap-3 md:gap-4 mt-6">
         <span
           class="bg-stitch-surface/10 rounded-full px-4 py-2 text-white text-xs md:text-sm font-semibold flex items-center gap-2">📻
-          6 artykułów</span>
+          7 artykułów</span>
         <span
           class="bg-stitch-surface/10 rounded-full px-4 py-2 text-white text-xs md:text-sm font-semibold flex items-center gap-2">📚
           Tematy: ETF, Obligacje, FIRE</span>
@@ -234,7 +232,7 @@
         </div>
 
         <!-- FEATURED ARTICLE -->
-        <a href="podatek-belki-etf-jak-rozliczyc.html" class="block mb-10 group cursor-pointer"
+        <a href="inflacja-niszczy-oszczednosci-co-zrobic.html" class="block mb-10 group cursor-pointer"
           style="text-decoration: none">
           <div
             class="glass-effect rounded-[2rem] border border-white/50 dark:border-stitch-border/50 shadow-2xl overflow-hidden hover:scale-[1.005] transition-all duration-300">
@@ -243,14 +241,13 @@
               style="background: linear-gradient(135deg, #1d4ed8, #0d7ff2)">
               <div class="absolute -top-20 -right-20 w-48 h-48 bg-stitch-surface/10 rounded-full blur-3xl"></div>
               <span
-                class="bg-stitch-surface/20 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 inline-block">ETF ·
-                Podatki</span>
+                class="bg-stitch-surface/20 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 inline-block">Inflacja ·
+                Oszczędności</span>
               <h2 class="text-xl md:text-2xl font-black leading-tight mb-3 text-white">
-                Podatek Belki od ETF — jak rozliczyć PIT-38 i ile faktycznie zapłacisz w 2026
+                Inflacja niszczy oszczędności — i co z tym zrobić w 2026
               </h2>
               <p class="text-white/80 text-sm md:text-base leading-relaxed">
-                Praktyczny przewodnik krok po kroku: PIT-38, PIT-8C, kompensacja strat
-                oraz legalne sposoby na minimalizację podatku.
+                Ile traci konto bankowe na inflacji? ETF, obligacje EDO i konkretny plan ochrony kapitału — z liczbami dla polskiego inwestora.
               </p>
             </div>
             <!-- Bottom bar -->
@@ -259,12 +256,12 @@
               <div class="flex flex-wrap gap-4 text-sm text-stitch-muted">
                 <span class="flex items-center gap-1.5"><span
                     class="material-symbols-outlined text-[16px]">calendar_today</span>
-                  Marzec 2026</span>
+                  Kwiecień 2026</span>
                 <span class="flex items-center gap-1.5"><span
                     class="material-symbols-outlined text-[16px]">schedule</span>
                   9 minut czytania</span>
                 <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">label</span>
-                  ETF, PIT-38, podatek Belki</span>
+                  Inflacja, obligacje EDO, ETF</span>
               </div>
               <span
                 class="inline-flex items-center gap-2 bg-primary text-white font-bold px-5 py-2.5 rounded-xl hover:opacity-90 transition-all shrink-0"
@@ -284,6 +281,38 @@
 
         <!-- Published Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <!-- Published Card: Podatek Belki -->
+          <a href="podatek-belki-etf-jak-rozliczyc.html" class="block" style="text-decoration: none">
+            <div
+              class="glass-effect rounded-[1.5rem] p-6 border border-white/50 dark:border-stitch-border/50 shadow-xl hover:shadow-2xl hover:scale-[1.01] transition-all">
+            <div class="flex items-center justify-between mb-4">
+              <span
+                class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">ETF · Podatki</span>
+              <span
+                class="text-xs font-bold text-emerald-700 bg-emerald-100 dark:text-emerald-400 dark:bg-emerald-900/20 px-2 py-1 rounded-md flex items-center gap-1">
+                <span aria-hidden="true" class="material-symbols-outlined text-[14px]">check_circle</span>
+                Opublikowano
+              </span>
+            </div>
+            <h3 class="text-base font-black text-stitch-text mb-2 leading-snug">
+              Podatek Belki od ETF — jak rozliczyć PIT-38 i ile faktycznie zapłacisz w 2026
+            </h3>
+            <p class="text-sm text-stitch-muted leading-relaxed mb-4">
+              Praktyczny przewodnik krok po kroku: PIT-38, PIT-8C, kompensacja strat i legalne sposoby na minimalizację podatku.
+            </p>
+            <div class="flex items-center justify-between pt-4 border-t border-stitch-border">
+              <span class="text-xs text-slate-400 flex items-center gap-1">
+                <span aria-hidden="true" class="material-symbols-outlined text-[14px]">schedule</span>
+                ~9 minut czytania
+              </span>
+              <span class="text-xs font-bold text-primary flex items-center gap-1">
+                <span aria-hidden="true" class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                Czytaj artykuł
+              </span>
+            </div>
+            </div>
+          </a>
+
           <!-- Published Card: Jak zacząć -->
           <a href="jak-zaczac-inwestowac-w-etf.html" class="block" style="text-decoration: none">
             <div

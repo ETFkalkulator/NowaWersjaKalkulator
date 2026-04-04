@@ -12,7 +12,7 @@ Plik instrukcji dla asystenta AI. Wczytywany automatycznie na początku każdej 
 
 ## Stack technologiczny
 
-- HTML + **Tailwind CSS** (Środowisko Node.js CLI: polecenie `npm run build:css`) + **Vanilla JS**
+- HTML + **Tailwind CSS** (Play CDN) + **Vanilla JS**
 - **Chart.js** przypięty do wersji `@4.4.1` (nie podnosić!)
 - **GA4** z Consent Mode v2
 - **MailerLite** — newsletter
@@ -136,9 +136,3 @@ Styl: glassmorphism, dark background, neony. Szczegóły w `thumbnail-style-guid
 - Styl: Bareja, ~10 sekund, bez nagrywania twarzy/głosu
 - Narzędzia: Google Flow (generowanie scen) + CapCut (montaż + napisy) + ElevenLabs (PL voice opcjonalnie)
 - CTA: "Bo słoik to nie inwestycja. etfkalkulator.pl"
-
----
-
-## Zasady kompilacji CSS (Tailwind)
-
-- Po dodaniu dowolnej nowej klasy kolorystycznej lub zmodyfikowaniu struktury HTML (np. nowa szerokość, margines), musisz uruchomić komendę `npm run build:css`. Zaktualizuje to docelowy plik `css/tailwind-compiled.css`. Skrypt `cdn.tailwindcss.com` nie jest już używany.
