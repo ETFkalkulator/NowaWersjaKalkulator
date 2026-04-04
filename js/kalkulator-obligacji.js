@@ -7,15 +7,15 @@ let savedScenarios = [];
 let myChart = null;
 
 // Aktualizuj tę datę przy każdej zmianie stawek (jedyne miejsce w projekcie)
-const BOND_RATES_DATE = 'marzec 2026';
+const BOND_RATES_DATE = 'kwiecień 2026';
 
 const BOND_CONSTANTS = {
-    EDO: { name: 'EDO (10 letnie)', years: 10, yr1: 0.0560, margin: 0.0200, penalty: 3.00, cap: 'annual', tax: 'end' },
-    COI: { name: 'COI (4 letnie)', years: 4, yr1: 0.0500, margin: 0.0150, penalty: 2.00, cap: 'payout', tax: 'payout' },
-    TOS: { name: 'TOS (3 letnie)', years: 3, fixed: 0.0465, penalty: 1.00, cap: 'annual', tax: 'end' },
-    ROR: { name: 'ROR (1 roczne)', years: 1, fixedYr1: 0.0425, margin: 0.0000, penalty: 0.50, cap: 'payout', tax: 'payout' },
-    ROS: { name: 'ROS (6 letnie)', years: 6, yr1: 0.0520, margin: 0.0200, penalty: 1.50, cap: 'annual', tax: 'end' },
-    ROD: { name: 'ROD (12 letnie)', years: 12, yr1: 0.0585, margin: 0.0250, penalty: 2.00, cap: 'annual', tax: 'end' }
+    EDO: { name: 'EDO (10 letnie)', years: 10, yr1: 0.0535, margin: 0.0200, penalty: 3.00, cap: 'annual', tax: 'end' },
+    COI: { name: 'COI (4 letnie)', years: 4, yr1: 0.0475, margin: 0.0150, penalty: 2.00, cap: 'payout', tax: 'payout' },
+    TOS: { name: 'TOS (3 letnie)', years: 3, fixed: 0.0440, penalty: 1.00, cap: 'annual', tax: 'end' },
+    ROR: { name: 'ROR (1 roczne)', years: 1, fixedYr1: 0.0400, margin: 0.0000, penalty: 0.50, cap: 'payout', tax: 'payout' },
+    ROS: { name: 'ROS (6 letnie)', years: 6, yr1: 0.0500, margin: 0.0200, penalty: 1.50, cap: 'annual', tax: 'end' },
+    ROD: { name: 'ROD (12 letnie)', years: 12, yr1: 0.0560, margin: 0.0250, penalty: 2.00, cap: 'annual', tax: 'end' }
 };
 
 document.addEventListener('DOMContentLoaded', () => {

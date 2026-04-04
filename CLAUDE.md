@@ -12,7 +12,7 @@ Plik instrukcji dla asystenta AI. Wczytywany automatycznie na początku każdej 
 
 ## Stack technologiczny
 
-- HTML + **Tailwind CSS** (Play CDN) + **Vanilla JS**
+- HTML + **Tailwind CSS** (Środowisko Node.js CLI: polecenie `npm run build:css`) + **Vanilla JS**
 - **Chart.js** przypięty do wersji `@4.4.1` (nie podnosić!)
 - **GA4** z Consent Mode v2
 - **MailerLite** — newsletter
@@ -29,8 +29,8 @@ Plik instrukcji dla asystenta AI. Wczytywany automatycznie na początku każdej 
 | Cookie consent | localStorage: `etf-cookie-consent` |
 | IKE limit 2026 | 28 260 zł |
 | IKZE limit 2026 | 11 304 zł |
-| Stawki obligacji (marzec 2026) | ROR 4.25%, ROS 5.20%, ROD 5.85% |
-| Stała w JS | `BOND_RATES_DATE = 'marzec 2026'` |
+| Stawki obligacji (kwiecień 2026) | ROR 4.00%, TOS 4.40%, COI 4.75% yr1, ROS 5.00% yr1, EDO 5.35% yr1, ROD 5.60% yr1 |
+| Stała w JS | `BOND_RATES_DATE = 'kwiecień 2026'` |
 
 ---
 
@@ -136,3 +136,9 @@ Styl: glassmorphism, dark background, neony. Szczegóły w `thumbnail-style-guid
 - Styl: Bareja, ~10 sekund, bez nagrywania twarzy/głosu
 - Narzędzia: Google Flow (generowanie scen) + CapCut (montaż + napisy) + ElevenLabs (PL voice opcjonalnie)
 - CTA: "Bo słoik to nie inwestycja. etfkalkulator.pl"
+
+---
+
+## Zasady kompilacji CSS (Tailwind)
+
+- Po dodaniu dowolnej nowej klasy kolorystycznej lub zmodyfikowaniu struktury HTML (np. nowa szerokość, margines), musisz uruchomić komendę `npm run build:css`. Zaktualizuje to docelowy plik `css/tailwind-compiled.css`. Skrypt `cdn.tailwindcss.com` nie jest już używany.

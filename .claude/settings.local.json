@@ -30,7 +30,9 @@
       "Bash(xargs -I {} wc -l \"C:\\\\Users\\\\komptest\\\\Documents\\\\ETFkalkulator 3.0\\\\A wersja do pracy\\\\js\\\\{}\")",
       "Bash(python migrate_nav.py --dry-run)",
       "Bash(grep -l \"nav-root\" index.html pages/*.html blog/*.html)",
-      "Bash(grep -l \"main-nav\" index.html pages/*.html blog/*.html)"
+      "Bash(grep -l \"main-nav\" index.html pages/*.html blog/*.html)",
+      "WebFetch(domain:www.obligacjeskarbowe.pl)",
+      "Bash(find \"C:/Users/komptest/Documents/ETFkalkulator 3.0/A wersja do pracy\" -name \"*.bak\" -delete)"
     ]
   }
 }
