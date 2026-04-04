@@ -41,6 +41,12 @@
       "short_name": "FIRE",
       "url": "/pages/kalkulator-wolnosci.html",
       "description": "Kiedy osiągniesz wolność finansową?"
+    },
+    {
+      "name": "Podatek Belki",
+      "short_name": "Belka",
+      "url": "/pages/kalkulator-podatku-belki.html",
+      "description": "Oblicz podatek 19% od zysku z inwestycji"
     }
   ]
 }

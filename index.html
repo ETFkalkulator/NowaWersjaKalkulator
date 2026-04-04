@@ -717,83 +717,104 @@
 
 
   <!-- NAGŁÓWEK -->
-  <!-- NAGŁÓWEK TAILWIND -->
-  <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-stitch-border/50 /50"
-    style="font-family: 'Inter', sans-serif;">
-    <!-- Top Row: Logo & Main Actions -->
-    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <div class="flex items-center shrink-0">
-        <a href="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity" style="text-decoration:none;">
-          <div class="bg-primary p-1.5 rounded-stitch text-white flex items-center justify-center"
-            style="background-color: #0d7ff2;">
-            <span aria-hidden="true" class="material-symbols-outlined text-xl">account_balance_wallet</span>
-          </div>
-          <span class="text-xl font-bold tracking-tight text-stitch-text dark:text-slate-100">ETF<span
-              class="font-normal">kalkulator</span>.pl</span>
-        </a>
+  <!-- NAWIGACJA -->
+  <nav id="main-nav" class="fixed top-0 w-full z-[100] glass-effect border-b border-stitch-border/50" style="font-family:'Inter',sans-serif;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2 shrink-0 hover:opacity-80 transition-opacity" style="text-decoration:none;">
+        <div class="p-1.5 rounded-lg text-white flex items-center justify-center" style="background-color:#0d7ff2;">
+          <span class="material-symbols-outlined text-[20px]" aria-hidden="true">account_balance_wallet</span>
+        </div>
+        <span class="text-[17px] font-bold tracking-tight text-stitch-text dark:text-slate-100">ETFkalkulator.pl</span>
+      </a>
+
+      <!-- Desktop links (xl+) -->
+      <div class="hidden xl:flex items-center gap-0.5 flex-1 justify-center px-4">
+        <a href="pages/kalkulator-etf.html" class="px-3 py-2 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-slate-100/60 dark:hover:bg-slate-800/50 rounded-lg transition-colors" style="text-decoration:none;">Kalkulator ETF</a>
+        <a href="pages/kalkulator-obligacji.html" class="px-3 py-2 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-slate-100/60 dark:hover:bg-slate-800/50 rounded-lg transition-colors" style="text-decoration:none;">Obligacje EDO</a>
+        <a href="pages/kalkulator-wolnosci.html" class="px-3 py-2 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-slate-100/60 dark:hover:bg-slate-800/50 rounded-lg transition-colors" style="text-decoration:none;">Kalkulator FIRE</a>
+        <a href="pages/porownywarka.html" class="px-3 py-2 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-slate-100/60 dark:hover:bg-slate-800/50 rounded-lg transition-colors" style="text-decoration:none;">Porównywarka</a>
+        <a href="pages/kalkulator-podatku-belki.html" class="px-3 py-2 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-slate-100/60 dark:hover:bg-slate-800/50 rounded-lg transition-colors" style="text-decoration:none;">Podatek Belki</a>
+        <a href="blog/index.html" class="px-3 py-2 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-slate-100/60 dark:hover:bg-slate-800/50 rounded-lg transition-colors" style="text-decoration:none;">Blog</a>
+        <a href="pages/o-projekcie.html" class="px-3 py-2 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-slate-100/60 dark:hover:bg-slate-800/50 rounded-lg transition-colors" style="text-decoration:none;">O projekcie</a>
       </div>
 
-      <!-- Desktop Links: Visible on lg and up -->
-      <div class="hidden lg:flex items-center gap-6 xl:gap-8 mx-6">
-        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
-          href="pages/kalkulator-etf.html" style="text-decoration:none;">Kalkulator ETF</a>
-        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
-          href="pages/kalkulator-obligacji.html" style="text-decoration:none;">Kalkulator Obligacji</a>
-        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
-          href="pages/kalkulator-wolnosci.html" style="text-decoration:none;">Kalkulator Wolności</a>
-        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
-          href="pages/porownywarka.html" style="text-decoration:none;">Porównywarka</a>
-        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
-          href="blog/index.html" style="text-decoration:none;">Blog</a>
-        <a class="text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary transition-colors"
-          href="pages/o-projekcie.html" style="text-decoration:none;">O projekcie</a>
-      </div>
-
-      <div class="flex items-center gap-3">
-        <!-- Theme Toggle -->
-        <button onkeydown="if(event.key==='Enter')this.click()" onclick="przelaczTryb()" aria-label="Przełącz tryb"
-          class="w-9 h-9 rounded-full border border-stitch-border bg-stitch-surface flex items-center justify-center hover:bg-stitch-bg transition-colors">
-          <span aria-hidden="true" class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
-          <span aria-hidden="true" class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
+      <!-- Right: actions -->
+      <div class="flex items-center gap-2 shrink-0">
+        <button onkeydown="if(event.key==='Enter')this.click()" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny"
+          class="w-9 h-9 rounded-lg border border-stitch-border bg-stitch-surface/80 flex items-center justify-center hover:bg-stitch-bg transition-colors">
+          <span class="material-symbols-outlined text-[19px] block dark:hidden" aria-hidden="true">light_mode</span>
+          <span class="material-symbols-outlined text-[19px] hidden dark:block" aria-hidden="true">dark_mode</span>
         </button>
-        <!-- CTA Button -->
-        <a href="#newsletter-section"
-          class="bg-primary text-white px-4 h-9 rounded-full flex items-center justify-center text-[13px] font-bold hover:opacity-90 transition-opacity no-underline"
-          style="background-color: #0d7ff2;">
-          Zapisz się
-        </a>
+        <a href="#newsletter-section" class="hidden sm:flex items-center bg-primary text-white px-4 h-9 rounded-full text-[13px] font-bold hover:opacity-90 transition-opacity" style="background-color:#0d7ff2; text-decoration:none;">Zapisz się</a>
+        <button id="nav-toggle" onclick="toggleMobileNav()" aria-label="Otwórz menu nawigacji" aria-expanded="false" aria-controls="mobile-nav"
+          class="xl:hidden w-9 h-9 rounded-lg border border-stitch-border bg-stitch-surface/80 flex items-center justify-center hover:bg-stitch-bg transition-colors">
+          <span id="nav-icon-menu" class="material-symbols-outlined text-[20px]" aria-hidden="true">menu</span>
+          <span id="nav-icon-close" class="material-symbols-outlined text-[20px] hidden" aria-hidden="true">close</span>
+        </button>
       </div>
     </div>
 
-    <!-- Bottom Row: Scrollable Menu (Mobile Only) -->
-    <div
-      class="lg:hidden h-11 border-t border-stitch-border/30 /30 flex items-center overflow-x-auto overflow-y-hidden no-scrollbar px-4 gap-6 bg-stitch-surface/10 /10"
-      style="-webkit-overflow-scrolling: touch;">
-      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
-        href="pages/kalkulator-etf.html" style="text-decoration:none;">Kalkulator ETF</a>
-      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
-        href="pages/kalkulator-obligacji.html" style="text-decoration:none;">Obligacje</a>
-      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
-        href="pages/kalkulator-wolnosci.html" style="text-decoration:none;">Wolność finansowa</a>
-      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap"
-        href="pages/porownywarka.html" style="text-decoration:none;">Porównywarka</a>
-      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap" href="blog/index.html"
-        style="text-decoration:none;">Blog</a>
-      <a class="text-[12px] font-bold text-slate-600 hover:text-primary whitespace-nowrap" href="pages/o-projekcie.html"
-        style="text-decoration:none;">O projekcie</a>
+    <!-- Mobile/Tablet dropdown menu -->
+    <div id="mobile-nav" class="hidden xl:hidden border-t border-stitch-border/50 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md shadow-lg">
+      <div class="max-w-7xl mx-auto px-4 pt-3 pb-4">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-1">
+          <a href="pages/kalkulator-etf.html" onclick="closeMobileNav()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-colors" style="text-decoration:none;">
+            <span class="material-symbols-outlined text-[20px] text-slate-400" aria-hidden="true">trending_up</span>Kalkulator ETF
+          </a>
+          <a href="pages/kalkulator-obligacji.html" onclick="closeMobileNav()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-colors" style="text-decoration:none;">
+            <span class="material-symbols-outlined text-[20px] text-slate-400" aria-hidden="true">receipt_long</span>Obligacje EDO
+          </a>
+          <a href="pages/kalkulator-wolnosci.html" onclick="closeMobileNav()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-colors" style="text-decoration:none;">
+            <span class="material-symbols-outlined text-[20px] text-slate-400" aria-hidden="true">savings</span>Kalkulator FIRE
+          </a>
+          <a href="pages/porownywarka.html" onclick="closeMobileNav()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-colors" style="text-decoration:none;">
+            <span class="material-symbols-outlined text-[20px] text-slate-400" aria-hidden="true">compare_arrows</span>Porównywarka
+          </a>
+          <a href="pages/kalkulator-podatku-belki.html" onclick="closeMobileNav()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-colors" style="text-decoration:none;">
+            <span class="material-symbols-outlined text-[20px] text-slate-400" aria-hidden="true">percent</span>Podatek Belki
+          </a>
+          <a href="blog/index.html" onclick="closeMobileNav()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-colors" style="text-decoration:none;">
+            <span class="material-symbols-outlined text-[20px] text-slate-400" aria-hidden="true">article</span>Blog
+          </a>
+          <a href="pages/o-projekcie.html" onclick="closeMobileNav()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-colors" style="text-decoration:none;">
+            <span class="material-symbols-outlined text-[20px] text-slate-400" aria-hidden="true">info</span>O projekcie
+          </a>
+        </div>
+        <div class="mt-3 pt-3 border-t border-stitch-border/40 flex sm:hidden">
+          <a href="#newsletter-section" onclick="closeMobileNav()" class="w-full text-center text-white py-2.5 rounded-xl text-sm font-bold hover:opacity-90 transition-opacity" style="background-color:#0d7ff2; text-decoration:none;">Zapisz się na newsletter</a>
+        </div>
+      </div>
     </div>
   </nav>
-
-  <style>
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-  </style>
+  <script>
+  function toggleMobileNav() {
+    var m = document.getElementById('mobile-nav');
+    var im = document.getElementById('nav-icon-menu');
+    var ic = document.getElementById('nav-icon-close');
+    var b = document.getElementById('nav-toggle');
+    var open = !m.classList.contains('hidden');
+    m.classList.toggle('hidden', open);
+    im.classList.toggle('hidden', !open);
+    ic.classList.toggle('hidden', open);
+    b.setAttribute('aria-expanded', String(!open));
+  }
+  function closeMobileNav() {
+    var m = document.getElementById('mobile-nav');
+    if (!m) return;
+    m.classList.add('hidden');
+    var im = document.getElementById('nav-icon-menu');
+    var ic = document.getElementById('nav-icon-close');
+    var b = document.getElementById('nav-toggle');
+    if (im) im.classList.remove('hidden');
+    if (ic) ic.classList.add('hidden');
+    if (b) b.setAttribute('aria-expanded', 'false');
+  }
+  document.addEventListener('click', function(e) {
+    var nav = document.getElementById('main-nav');
+    if (nav && !nav.contains(e.target)) closeMobileNav();
+  });
+  </script>
 
   <style>
     /* MailerLite Form Custom Styling */
@@ -834,15 +855,14 @@
 
     <!-- HERO TAILWIND -->
     <section
-      class="hero-container-tw relative min-h-[80vh] flex items-center justify-center overflow-hidden px-6 pt-32 lg:pt-16">
+      class="hero-container-tw relative min-h-[80vh] flex items-center justify-center overflow-hidden px-6 pt-20">
       <div class="absolute inset-0 z-0">
-        <div
-          class="absolute inset-0 bg-gradient-to-b from-transparent to-background-light dark:to-background-dark pointer-events-none">
-        </div>
-        <img class="w-full h-full object-cover opacity-30 dark:opacity-20 pointer-events-none"
-          alt="Serene coastal landscape representing peace and financial freedom"
+        <img class="w-full h-full object-cover opacity-50 dark:opacity-30 pointer-events-none"
+          alt="" role="presentation"
           fetchpriority="high" decoding="async"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHk67hzkPrkmo_h4bn6KFvbxXfbKtItNcqqCP0Ldxg0Jy2THv65fVnI8iYHXUl2_EXQPrPbJVG1RSUDsopFLuvLP7NWeC3HioFHbIND_-1HB12KYMSx2VB8VimnXZ8SS2dGxtZCumbQGZTHfxfZVxNkrr-YOwp3yH83tl9jiGf17yfxqpql6x4rnKhW0YmniL5LpCOVkU2towIvOK_ni-A0heyDA5suOTiLWlFyYF9HuEy4u6x_RvmmpqTMiZ9bTyZ3Ks-WZhb7mk" />
+          src="images/hero-bg.webp" />
+        <div class="absolute inset-0 pointer-events-none dark:hidden" style="background: linear-gradient(to bottom, transparent 40%, #f8fafc 100%)"></div>
+        <div class="absolute inset-0 pointer-events-none hidden dark:block" style="background: linear-gradient(to bottom, transparent 40%, #0f172a 100%)"></div>
       </div>
       <div class="relative z-10 max-w-4xl text-center pb-12">
         <span
@@ -893,7 +913,7 @@
           <a href="pages/kalkulator-etf.html" id="karta-etf" style="text-decoration:none;"
             class="group relative flex flex-col rounded-[1.5rem] overflow-hidden bg-stitch-surface border border-stitch-border shadow-stitch-soft hover:-translate-y-2 hover:shadow-xl hover:border-primary/40 transition-all duration-300">
             <div class="relative overflow-hidden h-44 bg-gradient-to-br from-blue-700 to-blue-900 shrink-0">
-              <img src="images/thumb_etf.png" alt="Kalkulator ETF"
+              <img src="images/thumb_etf.webp" alt="Kalkulator ETF"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-95" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
               <span class="absolute top-3 left-3 bg-white/15 backdrop-blur-sm text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full border border-white/25">Polecane</span>
@@ -912,7 +932,7 @@
           <a href="pages/kalkulator-obligacji.html" id="karta-obligacje" style="text-decoration:none;"
             class="group relative flex flex-col rounded-[1.5rem] overflow-hidden bg-stitch-surface border border-stitch-border shadow-stitch-soft hover:-translate-y-2 hover:shadow-xl hover:border-emerald-400/40 transition-all duration-300">
             <div class="relative overflow-hidden h-44 bg-gradient-to-br from-emerald-700 to-emerald-900 shrink-0">
-              <img src="images/thumb_bonds.png" alt="Kalkulator Obligacji Skarbowych"
+              <img src="images/thumb_bonds.webp" alt="Kalkulator Obligacji Skarbowych"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-95" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
               <span class="absolute top-3 left-3 bg-white/15 backdrop-blur-sm text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full border border-white/25">Obligacje</span>
@@ -931,7 +951,7 @@
           <a href="pages/kalkulator-wolnosci.html" id="karta-wolnosc" style="text-decoration:none;"
             class="group relative flex flex-col rounded-[1.5rem] overflow-hidden bg-stitch-surface border border-stitch-border shadow-stitch-soft hover:-translate-y-2 hover:shadow-xl hover:border-violet-400/40 transition-all duration-300">
             <div class="relative overflow-hidden h-44 bg-gradient-to-br from-violet-700 to-violet-900 shrink-0">
-              <img src="images/thumb_fire.png" alt="Kalkulator Wolności Finansowej FIRE"
+              <img src="images/thumb_fire.webp" alt="Kalkulator Wolności Finansowej FIRE"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-95" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
               <span class="absolute top-3 left-3 bg-white/15 backdrop-blur-sm text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full border border-white/25">FIRE</span>
@@ -950,7 +970,7 @@
           <a href="pages/porownywarka.html" id="karta-porownywarka" style="text-decoration:none;"
             class="group relative flex flex-col rounded-[1.5rem] overflow-hidden bg-stitch-surface border border-stitch-border shadow-stitch-soft hover:-translate-y-2 hover:shadow-xl hover:border-amber-400/40 transition-all duration-300">
             <div class="relative overflow-hidden h-44 bg-gradient-to-br from-slate-600 to-slate-800 shrink-0">
-              <img src="images/thumb_compare.png" alt="Porównywarka Inwestycji ETF vs Obligacje"
+              <img src="images/thumb_compare.webp" alt="Porównywarka Inwestycji ETF vs Obligacje"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-95" loading="lazy">
               <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
               <span class="absolute top-3 left-3 bg-white/15 backdrop-blur-sm text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full border border-white/25">Porównaj</span>
@@ -1143,10 +1163,7 @@
           <div class="relative">
             <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
             <div class="relative rounded-stitch overflow-hidden border border-white/10 shadow-stitch-soft">
-              <img class="w-full aspect-square object-cover opacity-60"
-                alt="Premium close-up of currency and financial growth symbols"
-                loading="lazy" decoding="async"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOx0NFyQVcrx9eDB6qjJ6BiS6jWNH05x2mH_hhA2DL0xKBEmqc5dwMkOmnk4bD97rhA_QiLHaNHFmtxrgZXc-BygNgZHZkfrWlNIwMVpGkwp7zxphitwB6yviauW8aGNHK-VH7HaWDusfkSU_Gjt04Xw0VCdhUeNo0FKX-J595tYezFQptyVO5sVwptNbtRvAOd-kvOKkVSo0IDuoHowPOXsKNMYJP_ctqcaR8UQ1BPzC8f_uIGSiHtHgP235e5w0OmC_UowK3JCg" />
+              <div class="w-full aspect-square bg-gradient-to-br from-slate-800 via-blue-950 to-slate-900"></div>
               <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
               <div class="absolute bottom-8 left-8 right-8">
                 <p class="text-sm font-semibold text-primary uppercase tracking-widest mb-1">Edukacja finansowa</p>
@@ -1185,7 +1202,7 @@
             class="group flex flex-col overflow-hidden rounded-stitch bg-stitch-surface border border-stitch-border transition-all duration-300 hover:-translate-y-1 hover:shadow-stitch-soft">
             <div class="relative aspect-[16/10] overflow-hidden">
               <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                style='background-image: url("images/thumb_article_belka.png");'>
+                style='background-image: url("images/thumb_article_belka.webp");'>
               </div>
             </div>
             <div class="flex flex-1 flex-col p-8">
@@ -1213,7 +1230,7 @@
             class="group flex flex-col overflow-hidden rounded-stitch bg-stitch-surface border border-stitch-border transition-all duration-300 hover:-translate-y-1 hover:shadow-stitch-soft">
             <div class="relative aspect-[16/10] overflow-hidden">
               <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                style='background-image: url("images/thumb_article_ike_ikze.png");'>
+                style='background-image: url("images/thumb_article_ike_ikze.webp");'>
               </div>
             </div>
             <div class="flex flex-1 flex-col p-8">
@@ -1241,7 +1258,7 @@
             class="group flex flex-col overflow-hidden rounded-stitch bg-stitch-surface border border-stitch-border transition-all duration-300 hover:-translate-y-1 hover:shadow-stitch-soft">
             <div class="relative aspect-[16/10] overflow-hidden">
               <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                style='background-image: url("images/thumb_article_edo_etf.png");'>
+                style='background-image: url("images/thumb_article_edo_etf.webp");'>
               </div>
             </div>
             <div class="flex flex-1 flex-col p-8">

@@ -151,38 +151,96 @@
 
 
   <!-- NAV -->
-  <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-slate-200/80 dark:border-slate-800/50" style="font-family:'Inter',sans-serif;">
-    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity" style="text-decoration:none;">
-        <div class="p-1.5 rounded-2xl text-white flex items-center justify-center" style="background-color:#0d7ff2;">
-          <span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+  <nav id="main-nav" class="fixed top-0 w-full z-[100] glass-effect border-b border-stitch-border/50" style="font-family:'Inter',sans-serif;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="../index.html" class="flex items-center gap-2 shrink-0 hover:opacity-80 transition-opacity" style="text-decoration:none;">
+        <div class="p-1.5 rounded-lg text-white flex items-center justify-center" style="background-color:#0d7ff2;">
+          <span class="material-symbols-outlined text-[20px]" aria-hidden="true">account_balance_wallet</span>
         </div>
-        <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">ETFkalkulator.pl</span>
+        <span class="text-[17px] font-bold tracking-tight text-stitch-text dark:text-slate-100">ETFkalkulator.pl</span>
       </a>
-      <div class="hidden lg:flex items-center gap-6 xl:gap-8 mx-6">
-        <a class="text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="../pages/kalkulator-etf.html" style="text-decoration:none;">Kalkulator ETF</a>
-        <a class="text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="../pages/kalkulator-obligacji.html" style="text-decoration:none;">Obligacje</a>
-        <a class="text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="../pages/kalkulator-wolnosci.html" style="text-decoration:none;">Wolność finansowa</a>
-        <a class="text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="../pages/porownywarka.html" style="text-decoration:none;">Porównywarka</a>
-        <a class="text-sm font-extrabold hover:opacity-80 transition-colors" href="index.html" style="text-decoration:none;color:#0d7ff2;">Blog</a>
-        <a class="text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-primary transition-colors" href="../pages/o-projekcie.html" style="text-decoration:none;">O projekcie</a>
+      <div class="hidden xl:flex items-center gap-0.5 flex-1 justify-center px-4">
+        <a href="../pages/kalkulator-etf.html" class="px-3 py-2 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-slate-100/60 dark:hover:bg-slate-800/50 rounded-lg transition-colors" style="text-decoration:none;">Kalkulator ETF</a>
+        <a href="../pages/kalkulator-obligacji.html" class="px-3 py-2 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-slate-100/60 dark:hover:bg-slate-800/50 rounded-lg transition-colors" style="text-decoration:none;">Obligacje EDO</a>
+        <a href="../pages/kalkulator-wolnosci.html" class="px-3 py-2 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-slate-100/60 dark:hover:bg-slate-800/50 rounded-lg transition-colors" style="text-decoration:none;">Kalkulator FIRE</a>
+        <a href="../pages/porownywarka.html" class="px-3 py-2 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-slate-100/60 dark:hover:bg-slate-800/50 rounded-lg transition-colors" style="text-decoration:none;">Porównywarka</a>
+        <a href="../pages/kalkulator-podatku-belki.html" class="px-3 py-2 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-slate-100/60 dark:hover:bg-slate-800/50 rounded-lg transition-colors" style="text-decoration:none;">Podatek Belki</a>
+        <a href="index.html" class="px-3 py-2 text-[13px] font-bold rounded-lg transition-colors" style="color:#0d7ff2; background:rgba(13,127,242,0.08); text-decoration:none;">Blog</a>
+        <a href="../pages/o-projekcie.html" class="px-3 py-2 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-slate-100/60 dark:hover:bg-slate-800/50 rounded-lg transition-colors" style="text-decoration:none;">O projekcie</a>
       </div>
-      <div class="flex items-center gap-3">
-        <button onclick="przelaczTryb()" aria-label="Przełącz tryb" class="w-9 h-9 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
-          <span class="material-symbols-outlined text-[20px] block dark:hidden text-slate-600">light_mode</span>
-          <span class="material-symbols-outlined text-[20px] hidden dark:block text-slate-400">dark_mode</span>
+      <div class="flex items-center gap-2 shrink-0">
+        <button onkeydown="if(event.key==='Enter')this.click()" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny"
+          class="w-9 h-9 rounded-lg border border-stitch-border bg-stitch-surface/80 flex items-center justify-center hover:bg-stitch-bg transition-colors">
+          <span class="material-symbols-outlined text-[19px] block dark:hidden" aria-hidden="true">light_mode</span>
+          <span class="material-symbols-outlined text-[19px] hidden dark:block" aria-hidden="true">dark_mode</span>
         </button>
-        <a href="#newsletter-section" class="text-white px-4 h-9 rounded-full flex items-center justify-center text-[13px] font-bold hover:opacity-90 transition-opacity" style="background-color:#0d7ff2;text-decoration:none;">Newsletter</a>
+        <a href="#newsletter-section" class="hidden sm:flex items-center bg-primary text-white px-4 h-9 rounded-full text-[13px] font-bold hover:opacity-90 transition-opacity" style="background-color:#0d7ff2; text-decoration:none;">Zapisz się</a>
+        <button id="nav-toggle" onclick="toggleMobileNav()" aria-label="Otwórz menu nawigacji" aria-expanded="false" aria-controls="mobile-nav"
+          class="xl:hidden w-9 h-9 rounded-lg border border-stitch-border bg-stitch-surface/80 flex items-center justify-center hover:bg-stitch-bg transition-colors">
+          <span id="nav-icon-menu" class="material-symbols-outlined text-[20px]" aria-hidden="true">menu</span>
+          <span id="nav-icon-close" class="material-symbols-outlined text-[20px] hidden" aria-hidden="true">close</span>
+        </button>
       </div>
     </div>
-    <div class="lg:hidden h-11 border-t border-slate-200/30 dark:border-slate-800/30 flex items-center overflow-x-auto no-scrollbar px-4 gap-6">
-      <a class="text-[12px] font-bold text-slate-500 whitespace-nowrap" href="../pages/kalkulator-etf.html" style="text-decoration:none;">ETF</a>
-      <a class="text-[12px] font-bold text-slate-500 whitespace-nowrap" href="../pages/kalkulator-obligacji.html" style="text-decoration:none;">Obligacje</a>
-      <a class="text-[12px] font-bold text-slate-500 whitespace-nowrap" href="../pages/kalkulator-wolnosci.html" style="text-decoration:none;">Wolność</a>
-      <a class="text-[12px] font-bold text-slate-500 whitespace-nowrap" href="../pages/porownywarka.html" style="text-decoration:none;">Porównywarka</a>
-      <a class="text-[12px] font-extrabold whitespace-nowrap" href="index.html" style="text-decoration:none;color:#0d7ff2;">Blog</a>
+    <div id="mobile-nav" class="hidden xl:hidden border-t border-stitch-border/50 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md shadow-lg">
+      <div class="max-w-7xl mx-auto px-4 pt-3 pb-4">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-1">
+          <a href="../pages/kalkulator-etf.html" onclick="closeMobileNav()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-colors" style="text-decoration:none;">
+            <span class="material-symbols-outlined text-[20px] text-slate-400" aria-hidden="true">trending_up</span>Kalkulator ETF
+          </a>
+          <a href="../pages/kalkulator-obligacji.html" onclick="closeMobileNav()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-colors" style="text-decoration:none;">
+            <span class="material-symbols-outlined text-[20px] text-slate-400" aria-hidden="true">receipt_long</span>Obligacje EDO
+          </a>
+          <a href="../pages/kalkulator-wolnosci.html" onclick="closeMobileNav()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-colors" style="text-decoration:none;">
+            <span class="material-symbols-outlined text-[20px] text-slate-400" aria-hidden="true">savings</span>Kalkulator FIRE
+          </a>
+          <a href="../pages/porownywarka.html" onclick="closeMobileNav()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-colors" style="text-decoration:none;">
+            <span class="material-symbols-outlined text-[20px] text-slate-400" aria-hidden="true">compare_arrows</span>Porównywarka
+          </a>
+          <a href="../pages/kalkulator-podatku-belki.html" onclick="closeMobileNav()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-colors" style="text-decoration:none;">
+            <span class="material-symbols-outlined text-[20px] text-slate-400" aria-hidden="true">percent</span>Podatek Belki
+          </a>
+          <a href="index.html" onclick="closeMobileNav()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition-colors" style="color:#0d7ff2; background:rgba(13,127,242,0.08); text-decoration:none;">
+            <span class="material-symbols-outlined text-[20px]" style="color:#0d7ff2;" aria-hidden="true">article</span>Blog
+          </a>
+          <a href="../pages/o-projekcie.html" onclick="closeMobileNav()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-colors" style="text-decoration:none;">
+            <span class="material-symbols-outlined text-[20px] text-slate-400" aria-hidden="true">info</span>O projekcie
+          </a>
+        </div>
+        <div class="mt-3 pt-3 border-t border-stitch-border/40 flex sm:hidden">
+          <a href="#newsletter-section" onclick="closeMobileNav()" class="w-full text-center text-white py-2.5 rounded-xl text-sm font-bold hover:opacity-90 transition-opacity" style="background-color:#0d7ff2; text-decoration:none;">Zapisz się na newsletter</a>
+        </div>
+      </div>
     </div>
   </nav>
+  <script>
+  function toggleMobileNav() {
+    var m = document.getElementById('mobile-nav');
+    var im = document.getElementById('nav-icon-menu');
+    var ic = document.getElementById('nav-icon-close');
+    var b = document.getElementById('nav-toggle');
+    var open = !m.classList.contains('hidden');
+    m.classList.toggle('hidden', open);
+    im.classList.toggle('hidden', !open);
+    ic.classList.toggle('hidden', open);
+    b.setAttribute('aria-expanded', String(!open));
+  }
+  function closeMobileNav() {
+    var m = document.getElementById('mobile-nav');
+    if (!m) return;
+    m.classList.add('hidden');
+    var im = document.getElementById('nav-icon-menu');
+    var ic = document.getElementById('nav-icon-close');
+    var b = document.getElementById('nav-toggle');
+    if (im) im.classList.remove('hidden');
+    if (ic) ic.classList.add('hidden');
+    if (b) b.setAttribute('aria-expanded', 'false');
+  }
+  document.addEventListener('click', function(e) {
+    var nav = document.getElementById('main-nav');
+    if (nav && !nav.contains(e.target)) closeMobileNav();
+  });
+  </script>
 
   <!-- HERO -->
   <section class="relative pt-32 pb-16 md:pb-20 px-4 sm:px-6 overflow-hidden" style="background:linear-gradient(135deg,#1e40af 0%,#1d4ed8 40%,#0d7ff2 100%);">

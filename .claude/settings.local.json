@@ -22,7 +22,8 @@
       "WebFetch(domain:etfkalkulator.pl)",
       "WebFetch(domain:labs.google)",
       "Skill(update-config)",
-      "Bash(jq:*)"
+      "Bash(jq:*)",
+      "WebFetch(domain:pagespeed.web.dev)"
     ]
   }
 }

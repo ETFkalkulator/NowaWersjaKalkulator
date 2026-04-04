@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f8f7f2" id="meta-theme-color">
+  <script>
+    (function () {
+      const s = localStorage.getItem('etf-tryb');
+      const d = s === 'ciemny' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.classList.toggle('dark', d);
+      document.documentElement.classList.toggle('light', !d);
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Kalkulator Podatku Belki — Oblicz Podatek 19% | ETFkalkulator.pl</title>
+  <link rel="canonical" href="https://etfkalkulator.pl/pages/kalkulator-podatku-belki.html">
+  <meta name="description"
+    content="Oblicz podatek Belki od zysku z ETF i akcji. Sprawdź o ile IKE/IKZE zwiększa Twój wynik netto. Bezpłatny kalkulator podatku 19% dla polskich inwestorów.">
+  <meta name="keywords"
+    content="podatek Belki, kalkulator podatku Belki, 19% podatek, zysk z ETF, IKE IKZE podatek, PIT-38, podatek od zysków kapitałowych">
+
+  <meta property="og:title" content="Kalkulator Podatku Belki — Oblicz Podatek 19% | ETFkalkulator.pl">
+  <meta property="og:description"
+    content="Oblicz podatek Belki od zysku z inwestycji. Porównaj wynik z IKE i IKZE. Darmowe narzędzie dla polskich inwestorów.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://etfkalkulator.pl/pages/kalkulator-podatku-belki.html">
+  <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:site_name" content="ETFkalkulator.pl">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kalkulator Podatku Belki — Oblicz Podatek 19%">
+  <meta name="twitter:description"
+    content="Oblicz podatek Belki od zysku z ETF. Sprawdź ile zaoszczędzisz na IKE/IKZE.">
+  <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialProduct",
+    "name": "Kalkulator Podatku Belki",
+    "description": "Narzędzie do obliczania podatku od dochodów kapitałowych (podatek Belki 19%) od zysku z ETF, akcji i innych instrumentów finansowych.",
+    "url": "https://etfkalkulator.pl/pages/kalkulator-podatku-belki.html"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Strona główna",
+      "item": "https://etfkalkulator.pl/"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Kalkulator Podatku Belki",
+      "item": "https://etfkalkulator.pl/pages/kalkulator-podatku-belki.html"
+    }]
+  }
+  </script>
+
+  <link rel="icon" href="../images/favicon.png">
+  <link rel="apple-touch-icon" href="../images/favicon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="../css/print.css" media="print">
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('consent', 'default', { 'analytics_storage': 'denied' });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
+  <script>
+    gtag('config', 'G-GZECMECQ15', { 'send_page_view': false });
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://groot.mailerlite.com">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap"
+    rel="stylesheet" />
+
+  <script src="../js/tailwind-config.js"></script>
+
+  <style>
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .dark .glass-effect {
+      background: rgba(15, 23, 42, 0.7);
+    }
+    body { font-family: 'Inter', sans-serif; }
+
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.95) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal-anim { animation: modalFadeIn 0.3s ease-out forwards; }
+
+    html { scroll-behavior: smooth; }
+
+    input[type="checkbox"].custom-checkbox {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 1.25rem;
+      height: 1.25rem;
+      border: 2px solid #cbd5e1;
+      border-radius: 4px;
+      background-color: #fff;
+      display: grid;
+      place-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    .dark input[type="checkbox"].custom-checkbox {
+      border-color: #334155;
+      background-color: #0f172a;
+    }
+    input[type="checkbox"].custom-checkbox:checked {
+      background-color: #0d7ff2;
+      border-color: #0d7ff2;
+    }
+    input[type="checkbox"].custom-checkbox::before {
+      content: "";
+      width: 0.65rem;
+      height: 0.65rem;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+      background-color: white;
+      clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    }
+    input[type="checkbox"].custom-checkbox:checked::before { transform: scale(1); }
+
+    .touch-target-info {
+      min-width: 44px;
+      min-height: 44px;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tab-belki {
+      flex: 1;
+      padding: 0.6rem 1rem;
+      border-radius: 0.75rem;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      background: transparent;
+      color: var(--color-text-secondary, #64748b);
+    }
+    .tab-belki.aktywna {
+      background: #0d7ff2;
+      color: #fff;
+      box-shadow: 0 2px 12px rgba(13,127,242,0.25);
+    }
+
+    .chart-wrapper {
+      position: relative;
+      width: 100%;
+      height: 320px;
+    }
+    @media (max-width: 768px) {
+      .chart-wrapper { height: 220px; }
+    }
+
+    /* MailerLite Styles */
+    .ml-form-embedSubmitLoad {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+    }
+    .ml-form-embedSubmitLoad:after {
+      content: " ";
+      display: block;
+      width: 11px;
+      height: 11px;
+      margin: 1px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      border-color: #FFFFFF #FFFFFF #FFFFFF transparent;
+      animation: ml-form-embedSubmitLoad 1.2s linear infinite;
+    }
+    @keyframes ml-form-embedSubmitLoad {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    #mlb2-37996059.ml-form-embedContainer,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody form {
+      width: 100% !important;
+      max-width: 100% !important;
+      float: none !important;
+      margin: 0 auto !important;
+    }
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit {
+      width: 100% !important;
+      float: none !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent,
+    #mlb2-37996059.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent {
+      text-align: center !important;
+    }
+  </style>
+  <link rel="preload" as="style" href="../css/mailerlite.css">
+  <link href="../css/mailerlite.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="../css/mailerlite.css"></noscript>
+
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+  <script src="../js/charts-config.js" defer></script>
+</head>
+
+<body>
+  <a href="#main"
+    class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-stitch-accent">Przejdź
+    do głównej treści</a>
+
+  <!-- NAWIGACJA -->
+  <nav id="main-nav" class="fixed top-0 w-full z-[100] glass-effect border-b border-stitch-border/50" style="font-family:'Inter',sans-serif;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="../index.html" class="flex items-center gap-2 shrink-0 hover:opacity-80 transition-opacity" style="text-decoration:none;">
+        <div class="p-1.5 rounded-lg text-white flex items-center justify-center" style="background-color:#0d7ff2;">
+          <span class="material-symbols-outlined text-[20px]" aria-hidden="true">account_balance_wallet</span>
+        </div>
+        <span class="text-[17px] font-bold tracking-tight text-stitch-text dark:text-slate-100">ETFkalkulator.pl</span>
+      </a>
+
+      <!-- Desktop links (xl+) -->
+      <div class="hidden xl:flex items-center gap-0.5 flex-1 justify-center px-4">
+        <a href="kalkulator-etf.html" class="px-3 py-2 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-slate-100/60 dark:hover:bg-slate-800/50 rounded-lg transition-colors" style="text-decoration:none;">Kalkulator ETF</a>
+        <a href="kalkulator-obligacji.html" class="px-3 py-2 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-slate-100/60 dark:hover:bg-slate-800/50 rounded-lg transition-colors" style="text-decoration:none;">Obligacje EDO</a>
+        <a href="kalkulator-wolnosci.html" class="px-3 py-2 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-slate-100/60 dark:hover:bg-slate-800/50 rounded-lg transition-colors" style="text-decoration:none;">Kalkulator FIRE</a>
+        <a href="porownywarka.html" class="px-3 py-2 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-slate-100/60 dark:hover:bg-slate-800/50 rounded-lg transition-colors" style="text-decoration:none;">Porównywarka</a>
+        <a href="kalkulator-podatku-belki.html" class="px-3 py-2 text-[13px] font-bold rounded-lg transition-colors" style="color:#0d7ff2; background:rgba(13,127,242,0.08); text-decoration:none;">Podatek Belki</a>
+        <a href="../blog/index.html" class="px-3 py-2 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-slate-100/60 dark:hover:bg-slate-800/50 rounded-lg transition-colors" style="text-decoration:none;">Blog</a>
+        <a href="o-projekcie.html" class="px-3 py-2 text-[13px] font-semibold text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-slate-100/60 dark:hover:bg-slate-800/50 rounded-lg transition-colors" style="text-decoration:none;">O projekcie</a>
+      </div>
+
+      <!-- Right: actions -->
+      <div class="flex items-center gap-2 shrink-0">
+        <button onkeydown="if(event.key==='Enter')this.click()" onclick="przelaczTryb()" aria-label="Przełącz tryb ciemny/jasny"
+          class="w-9 h-9 rounded-lg border border-stitch-border bg-stitch-surface/80 flex items-center justify-center hover:bg-stitch-bg transition-colors">
+          <span class="material-symbols-outlined text-[19px] block dark:hidden" aria-hidden="true">light_mode</span>
+          <span class="material-symbols-outlined text-[19px] hidden dark:block" aria-hidden="true">dark_mode</span>
+        </button>
+        <a href="#newsletter-section" class="hidden sm:flex items-center bg-primary text-white px-4 h-9 rounded-full text-[13px] font-bold hover:opacity-90 transition-opacity" style="background-color:#0d7ff2; text-decoration:none;">Zapisz się</a>
+        <button id="nav-toggle" onclick="toggleMobileNav()" aria-label="Otwórz menu nawigacji" aria-expanded="false" aria-controls="mobile-nav"
+          class="xl:hidden w-9 h-9 rounded-lg border border-stitch-border bg-stitch-surface/80 flex items-center justify-center hover:bg-stitch-bg transition-colors">
+          <span id="nav-icon-menu" class="material-symbols-outlined text-[20px]" aria-hidden="true">menu</span>
+          <span id="nav-icon-close" class="material-symbols-outlined text-[20px] hidden" aria-hidden="true">close</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile/Tablet dropdown menu -->
+    <div id="mobile-nav" class="hidden xl:hidden border-t border-stitch-border/50 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md shadow-lg">
+      <div class="max-w-7xl mx-auto px-4 pt-3 pb-4">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-1">
+          <a href="kalkulator-etf.html" onclick="closeMobileNav()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-colors" style="text-decoration:none;">
+            <span class="material-symbols-outlined text-[20px] text-slate-400" aria-hidden="true">trending_up</span>Kalkulator ETF
+          </a>
+          <a href="kalkulator-obligacji.html" onclick="closeMobileNav()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-colors" style="text-decoration:none;">
+            <span class="material-symbols-outlined text-[20px] text-slate-400" aria-hidden="true">receipt_long</span>Obligacje EDO
+          </a>
+          <a href="kalkulator-wolnosci.html" onclick="closeMobileNav()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-colors" style="text-decoration:none;">
+            <span class="material-symbols-outlined text-[20px] text-slate-400" aria-hidden="true">savings</span>Kalkulator FIRE
+          </a>
+          <a href="porownywarka.html" onclick="closeMobileNav()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-colors" style="text-decoration:none;">
+            <span class="material-symbols-outlined text-[20px] text-slate-400" aria-hidden="true">compare_arrows</span>Porównywarka
+          </a>
+          <a href="kalkulator-podatku-belki.html" onclick="closeMobileNav()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition-colors" style="color:#0d7ff2; background:rgba(13,127,242,0.08); text-decoration:none;">
+            <span class="material-symbols-outlined text-[20px]" style="color:#0d7ff2;" aria-hidden="true">percent</span>Podatek Belki
+          </a>
+          <a href="../blog/index.html" onclick="closeMobileNav()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-colors" style="text-decoration:none;">
+            <span class="material-symbols-outlined text-[20px] text-slate-400" aria-hidden="true">article</span>Blog
+          </a>
+          <a href="o-projekcie.html" onclick="closeMobileNav()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-300 hover:text-primary hover:bg-slate-100/70 dark:hover:bg-slate-800 transition-colors" style="text-decoration:none;">
+            <span class="material-symbols-outlined text-[20px] text-slate-400" aria-hidden="true">info</span>O projekcie
+          </a>
+        </div>
+        <div class="mt-3 pt-3 border-t border-stitch-border/40 flex sm:hidden">
+          <a href="#newsletter-section" onclick="closeMobileNav()" class="w-full text-center text-white py-2.5 rounded-xl text-sm font-bold hover:opacity-90 transition-opacity" style="background-color:#0d7ff2; text-decoration:none;">Zapisz się na newsletter</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <script>
+  function toggleMobileNav() {
+    var m = document.getElementById('mobile-nav');
+    var im = document.getElementById('nav-icon-menu');
+    var ic = document.getElementById('nav-icon-close');
+    var b = document.getElementById('nav-toggle');
+    var open = !m.classList.contains('hidden');
+    m.classList.toggle('hidden', open);
+    im.classList.toggle('hidden', !open);
+    ic.classList.toggle('hidden', open);
+    b.setAttribute('aria-expanded', String(!open));
+  }
+  function closeMobileNav() {
+    var m = document.getElementById('mobile-nav');
+    if (!m) return;
+    m.classList.add('hidden');
+    var im = document.getElementById('nav-icon-menu');
+    var ic = document.getElementById('nav-icon-close');
+    var b = document.getElementById('nav-toggle');
+    if (im) im.classList.remove('hidden');
+    if (ic) ic.classList.add('hidden');
+    if (b) b.setAttribute('aria-expanded', 'false');
+  }
+  document.addEventListener('click', function(e) {
+    var nav = document.getElementById('main-nav');
+    if (nav && !nav.contains(e.target)) closeMobileNav();
+  });
+  </script>
+
+  <style>
+    .ml-form-embedContainer .ml-block-form { margin-bottom: 0px; }
+    .ml-form-embedContainer .ml-form-embedPermissionsContent { text-align: left; }
+    .ml-form-embedContainer .ml-form-embedPermissionsContent h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--text-primary); }
+    .ml-form-embedContainer .ml-form-embedPermissionsContent p { font-size: 11px; color: var(--text-secondary); margin-bottom: 12px; }
+    .ml-form-embedContainer .label-description { font-size: 11px; color: var(--text-secondary); line-height: 1.4; }
+    .ml-form-embedContainer .ml-form-recaptcha { margin-top: 15px; }
+  </style>
+
+  <main id="main" class="pt-20 pb-20 px-6 min-h-screen bg-stitch-bg dark:bg-slate-950 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto">
+      <div class="print-only hidden">ETFkalkulator.pl — Wydruk wyników kalkulatora podatku Belki</div>
+
+      <!-- HERO / BREADCRUMBS -->
+      <div class="mb-12">
+        <nav class="flex items-center gap-2 text-xs font-medium text-slate-400 uppercase tracking-widest mb-4">
+          <a href="../index.html" class="hover:text-primary transition-colors">ETFkalkulator.pl</a>
+          <span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span>
+          <span class="text-slate-600 dark:text-slate-300">Kalkulator Podatku Belki</span>
+        </nav>
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-stitch-text mb-4">
+          Kalkulator <span class="text-primary" style="color:#0d7ff2;">Podatku Belki</span>
+        </h1>
+        <p class="text-lg text-stitch-muted max-w-2xl leading-relaxed">
+          Oblicz ile zapłacisz podatku od zysku z ETF, akcji lub obligacji. Sprawdź, ile kapitału tracisz bez IKE/IKZE i
+          o ile więcej możesz zaoszczędzić.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <!-- LEWA KOLUMNA: FORMULARZ -->
+        <aside class="lg:col-span-4 space-y-6">
+          <div
+            class="glass-effect p-8 rounded-[2rem] border border-white/50 shadow-stitch-soft shadow-slate-200/50 dark:shadow-none">
+
+            <!-- PRZEŁĄCZNIK TRYBU -->
+            <div class="flex gap-1 p-1.5 bg-slate-100 dark:bg-slate-800 rounded-[1rem] mb-8">
+              <button id="tab-prosty" type="button" onclick="przelaczTrybKalk('prosty')"
+                class="tab-belki aktywna" aria-pressed="true">
+                Tryb prosty
+              </button>
+              <button id="tab-symulacja" type="button" onclick="przelaczTrybKalk('symulacja')"
+                class="tab-belki" aria-pressed="false">
+                Tryb symulacji
+              </button>
+            </div>
+
+            <!-- FORMULARZ: TRYB PROSTY -->
+            <div id="form-prosty">
+              <h3 class="text-lg font-bold text-stitch-text mb-6 flex items-center gap-3">
+                <span aria-hidden="true" class="material-symbols-outlined text-primary" style="color:#0d7ff2;">calculate</span>
+                Oblicz podatek od zysku
+              </h3>
+              <div class="space-y-6">
+
+                <!-- Wartość końcowa -->
+                <div class="space-y-3">
+                  <div class="flex justify-between items-center">
+                    <label for="input-wartosc-koncowa"
+                      class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                      Wartość końcowa
+                    </label>
+                    <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">PLN</span>
+                  </div>
+                  <input type="text" inputmode="decimal" id="input-wartosc-koncowa"
+                    class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 text-stitch-text text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
+                    value="30000" autocomplete="off" oninput="obliczProsty()">
+                  <p class="text-[11px] text-slate-400 mt-1.5">Kwota, którą otrzymałeś ze sprzedaży (lub aktualna wartość portfela).</p>
+                </div>
+
+                <!-- Suma wpłat -->
+                <div class="space-y-3">
+                  <div class="flex justify-between items-center">
+                    <label for="input-suma-wplat"
+                      class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                      Suma wpłat (koszt nabycia)
+                    </label>
+                    <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">PLN</span>
+                  </div>
+                  <input type="text" inputmode="decimal" id="input-suma-wplat"
+                    class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 text-stitch-text text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
+                    value="20000" autocomplete="off" oninput="obliczProsty()">
+                  <p class="text-[11px] text-slate-400 mt-1.5">Ile łącznie zainwestowałeś (koszt nabycia jednostek).</p>
+                </div>
+
+                <hr class="border-slate-100 dark:border-slate-800">
+
+                <!-- Szybkie przykłady -->
+                <div>
+                  <p class="text-[11px] text-slate-400 uppercase tracking-wider font-bold mb-3">Szybkie przykłady:</p>
+                  <div class="grid grid-cols-3 gap-2">
+                    <button type="button"
+                      class="py-2.5 rounded-stitch border border-stitch-border bg-stitch-surface text-[10px] font-bold uppercase tracking-tight text-stitch-muted hover:border-primary/50 transition-all"
+                      onclick="ustawPrzyklad(15000,10000)">15k / 10k<br><span class="font-normal lowercase opacity-70">+5 000 zł</span></button>
+                    <button type="button"
+                      class="py-2.5 rounded-stitch border-2 border-primary/50 bg-primary/5 text-[10px] font-bold uppercase tracking-tight text-primary hover:border-primary transition-all"
+                      onclick="ustawPrzyklad(30000,20000)">30k / 20k<br><span class="font-normal lowercase opacity-70">+10 000 zł</span></button>
+                    <button type="button"
+                      class="py-2.5 rounded-stitch border border-stitch-border bg-stitch-surface text-[10px] font-bold uppercase tracking-tight text-stitch-muted hover:border-primary/50 transition-all"
+                      onclick="ustawPrzyklad(120000,70000)">120k / 70k<br><span class="font-normal lowercase opacity-70">+50 000 zł</span></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- FORMULARZ: TRYB SYMULACJI -->
+            <div id="form-symulacja" class="hidden">
+              <h3 class="text-lg font-bold text-stitch-text mb-6 flex items-center gap-3">
+                <span aria-hidden="true" class="material-symbols-outlined text-primary" style="color:#0d7ff2;">tune</span>
+                Parametry inwestycji
+              </h3>
+              <div class="space-y-7">
+
+                <!-- Kapitał startowy -->
+                <div class="space-y-3">
+                  <div class="flex justify-between items-center">
+                    <label for="input-sim-kapital"
+                      class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                      Kapitał startowy
+                    </label>
+                    <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">PLN</span>
+                  </div>
+                  <input type="text" inputmode="decimal" id="input-sim-kapital"
+                    class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 text-stitch-text text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
+                    value="20000" autocomplete="off" oninput="obliczSymulacja()">
+                  <p class="text-[11px] text-slate-400 mt-1.5">Kwota, od której zaczynasz inwestować.</p>
+                </div>
+
+                <!-- Miesięczna dopłata -->
+                <div class="space-y-3">
+                  <div class="flex justify-between items-center">
+                    <label for="input-sim-doplata"
+                      class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                      Miesięczna dopłata
+                    </label>
+                    <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">PLN</span>
+                  </div>
+                  <input type="text" inputmode="decimal" id="input-sim-doplata"
+                    class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 text-stitch-text text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
+                    value="500" autocomplete="off" oninput="obliczSymulacja()">
+                  <p class="text-[11px] text-slate-400 mt-1.5">Regularność to klucz do potęgi procentu składanego.</p>
+                </div>
+
+                <!-- Horyzont -->
+                <div class="space-y-3">
+                  <div class="flex justify-between items-center">
+                    <label for="input-sim-lata"
+                      class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                      Horyzont inwestycji
+                    </label>
+                    <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">LATA</span>
+                  </div>
+                  <input type="text" inputmode="decimal" id="input-sim-lata"
+                    class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 text-stitch-text text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
+                    value="15" min="1" max="50" autocomplete="off" oninput="obliczSymulacja()">
+                  <p class="text-[11px] text-slate-400 mt-1.5">Dłuższy czas to większy efekt podatku Belki.</p>
+                </div>
+
+                <hr class="border-slate-100 dark:border-slate-800">
+
+                <!-- Stopa zwrotu -->
+                <div class="space-y-4">
+                  <div class="flex justify-between items-center">
+                    <label for="input-sim-stopa"
+                      class="text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
+                      Stopa zwrotu (rocznie)
+                    </label>
+                    <span class="text-xs font-bold text-primary dark:text-primary/80 bg-primary/10 dark:bg-primary/20 px-2 py-1 rounded-md" style="color:#0d7ff2;">%</span>
+                  </div>
+                  <input type="text" inputmode="decimal" id="input-sim-stopa"
+                    class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 text-stitch-text text-lg font-bold focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
+                    value="7" autocomplete="off" oninput="obliczSymulacja()">
+                  <p class="text-[11px] text-slate-400 mt-1.5">Historycznie globalne ETF-y akcyjne: ok. 7–10% rocznie.</p>
+                  <div class="grid grid-cols-3 gap-2">
+                    <button type="button"
+                      class="py-2.5 rounded-stitch border border-stitch-border bg-stitch-surface text-[10px] font-bold uppercase tracking-tight text-stitch-muted hover:border-primary/50 transition-all"
+                      onclick="ustawStope(5)">5%<br><span class="font-normal lowercase opacity-70">Konserwatywna</span></button>
+                    <button type="button"
+                      class="py-2.5 rounded-stitch border-2 border-primary/50 bg-primary/5 text-[10px] font-bold uppercase tracking-tight text-primary hover:border-primary transition-all"
+                      onclick="ustawStope(7)">7%<br><span class="font-normal lowercase opacity-70">Bazowa</span></button>
+                    <button type="button"
+                      class="py-2.5 rounded-stitch border border-stitch-border bg-stitch-surface text-[10px] font-bold uppercase tracking-tight text-stitch-muted hover:border-primary/50 transition-all"
+                      onclick="ustawStope(10)">10%<br><span class="font-normal lowercase opacity-70">Optymistyczna</span></button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </aside>
+
+        <!-- PRAWA KOLUMNA: WYNIKI -->
+        <div class="lg:col-span-8 space-y-8">
+
+          <!-- WYNIKI: TRYB PROSTY -->
+          <div id="wyniki-prosty">
+            <!-- Zysk brutto -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+              <div class="glass-effect p-6 rounded-[1.5rem] border border-white/50 shadow-stitch-soft flex flex-col gap-2">
+                <span aria-hidden="true" class="material-symbols-outlined text-slate-400 text-2xl">trending_up</span>
+                <p class="text-[10px] uppercase tracking-widest font-bold text-stitch-muted">Zysk brutto</p>
+                <p class="text-2xl font-extrabold tracking-tight text-stitch-text" id="wynik-zysk-brutto">10 000,00 zł</p>
+                <p class="text-[11px] text-slate-400">Przed opodatkowaniem</p>
+              </div>
+
+              <div
+                class="relative overflow-hidden glass-effect p-6 rounded-[1.5rem] border border-rose-200/60 dark:border-rose-800/40 shadow-stitch-soft flex flex-col gap-2 bg-rose-50/50 dark:bg-rose-900/10">
+                <span aria-hidden="true" class="material-symbols-outlined text-rose-400 text-2xl">percent</span>
+                <p class="text-[10px] uppercase tracking-widest font-bold text-rose-500">Podatek Belki (19%)</p>
+                <p class="text-2xl font-extrabold tracking-tight text-rose-600 dark:text-rose-400" id="wynik-podatek-prosty">1 900,00 zł</p>
+                <p class="text-[11px] text-rose-400">Oddajesz fiskusowi</p>
+              </div>
+
+              <div
+                class="relative overflow-hidden glass-effect p-6 rounded-[1.5rem] border border-emerald-200/60 dark:border-emerald-800/40 shadow-stitch-soft flex flex-col gap-2 bg-emerald-50/50 dark:bg-emerald-900/10">
+                <span aria-hidden="true" class="material-symbols-outlined text-emerald-500 text-2xl">savings</span>
+                <p class="text-[10px] uppercase tracking-widest font-bold text-emerald-600 dark:text-emerald-400">Zysk netto</p>
+                <p class="text-2xl font-extrabold tracking-tight text-emerald-600 dark:text-emerald-400" id="wynik-zysk-netto">8 100,00 zł</p>
+                <p class="text-[11px] text-emerald-500">Po zapłacie podatku</p>
+              </div>
+            </div>
+
+            <!-- Pasek wizualny -->
+            <div class="glass-effect p-6 md:p-8 rounded-[1.5rem] border border-white/50 shadow-stitch-soft mb-4">
+              <div class="flex justify-between items-center mb-3">
+                <p class="text-sm font-bold text-stitch-text">Podział zysku brutto</p>
+                <p class="text-xs text-stitch-muted">Zysk brutto = <span id="pasek-label-brutto" class="font-bold text-stitch-text">10 000,00 zł</span></p>
+              </div>
+              <div class="flex rounded-full overflow-hidden h-5 gap-0.5">
+                <div id="pasek-netto" class="bg-emerald-500 transition-all duration-500 flex items-center justify-center" style="width:81%">
+                  <span class="text-[10px] font-bold text-white hidden sm:block">81%</span>
+                </div>
+                <div id="pasek-podatek" class="bg-rose-400 transition-all duration-500 flex items-center justify-center" style="width:19%">
+                  <span class="text-[10px] font-bold text-white hidden sm:block">19%</span>
+                </div>
+              </div>
+              <div class="flex gap-4 mt-3">
+                <div class="flex items-center gap-1.5">
+                  <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                  <span class="text-[11px] text-stitch-muted">Zysk netto (81%)</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <div class="w-3 h-3 rounded-full bg-rose-400"></div>
+                  <span class="text-[11px] text-stitch-muted">Podatek Belki (19%)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- IKE savings call-out -->
+            <div
+              class="p-6 md:p-8 rounded-[1.5rem] bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-stitch-soft shadow-blue-500/20 flex items-start gap-5">
+              <span aria-hidden="true" class="material-symbols-outlined text-3xl text-blue-200 shrink-0 mt-0.5">workspace_premium</span>
+              <div>
+                <p class="font-extrabold text-lg mb-1">Na IKE/IKZE zaoszczędziłbyś <span id="wynik-ike-oszczednosc" class="text-yellow-300">1 900,00 zł</span></p>
+                <p class="text-blue-100 text-sm leading-relaxed">Inwestując w ramach IKE lub IKZE nie płacisz podatku Belki przy wypłacie po 60. roku życia (IKE) lub 65. r.ż. (IKZE). Limit IKE w 2026: <strong>28 260 zł</strong>, IKZE: <strong>11 304 zł</strong>.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- WYNIKI: TRYB SYMULACJI -->
+          <div id="wyniki-symulacja" class="hidden space-y-8">
+
+            <!-- Główny wynik — IKE oszczędność -->
+            <div
+              class="relative overflow-hidden bg-primary p-10 md:p-12 rounded-[2.5rem] text-white shadow-stitch-soft shadow-primary/30 border-2 border-transparent"
+              style="background-color: #0d7ff2;">
+              <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+              <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-20 -mt-20"></div>
+              <div class="relative z-10">
+                <p class="text-blue-100/80 font-bold uppercase tracking-widest text-[10px] mb-2 flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-blue-200 inline-block"></span>
+                  Podatek łącznie przez cały okres
+                </p>
+                <p class="text-4xl md:text-5xl font-extrabold tracking-tighter mb-6" id="wynik-sim-podatek-total">—</p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                  <div>
+                    <p class="text-blue-100/70 text-[10px] uppercase tracking-widest font-bold mb-1">Z podatkiem Belki</p>
+                    <p class="text-2xl font-bold" id="wynik-sim-belki">—</p>
+                  </div>
+                  <div>
+                    <p class="text-blue-100/70 text-[10px] uppercase tracking-widest font-bold mb-1">Na IKE (0% podatku)</p>
+                    <p class="text-2xl font-bold" id="wynik-sim-ike">—</p>
+                  </div>
+                  <div>
+                    <p class="text-yellow-200/80 text-[10px] uppercase tracking-widest font-bold mb-1">Różnica (stracony zysk)</p>
+                    <p class="text-2xl font-extrabold text-yellow-300" id="wynik-sim-roznica">—</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- WYKRES -->
+            <div class="glass-effect p-6 md:p-8 rounded-[2rem] border border-white/50 shadow-stitch-soft">
+              <div class="flex items-center justify-between mb-6">
+                <h3 class="text-xl font-extrabold text-stitch-text flex items-center gap-3">
+                  <span aria-hidden="true" class="material-symbols-outlined text-primary" style="color:#0d7ff2;">show_chart</span>
+                  Wpływ podatku Belki na kapitał
+                </h3>
+              </div>
+              <div class="chart-wrapper">
+                <canvas id="chartBelki" aria-label="Porównanie wzrostu kapitału z podatkiem i bez (IKE)"></canvas>
+              </div>
+            </div>
+
+            <!-- TABELA -->
+            <div class="glass-effect p-6 md:p-8 rounded-[2rem] border border-white/50 shadow-stitch-soft">
+              <h3 class="text-xl font-extrabold text-stitch-text mb-6 flex items-center gap-3">
+                <span aria-hidden="true" class="material-symbols-outlined text-primary" style="color:#0d7ff2;">table_chart</span>
+                Zestawienie rok po roku
+              </h3>
+              <div class="relative overflow-x-auto rounded-stitch border border-stitch-border/50">
+                <div class="absolute top-0 right-0 bottom-0 w-8 bg-gradient-to-l from-white/20 to-transparent pointer-events-none z-30 lg:hidden"></div>
+                <table class="w-full text-left border-collapse" aria-label="Wyniki rok po roku z podatkiem">
+                  <thead>
+                    <tr class="bg-stitch-bg/50 border-b border-slate-100">
+                      <th class="sticky left-0 z-20 bg-stitch-bg px-4 py-3 text-xs font-black text-slate-400 uppercase tracking-widest shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)] whitespace-nowrap">Rok</th>
+                      <th class="px-3 py-4 text-xs font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">Suma wpłat</th>
+                      <th class="px-3 py-4 text-xs font-black text-slate-400 uppercase tracking-widest whitespace-nowrap text-right">Saldo brutto</th>
+                      <th class="px-3 py-4 text-xs font-black text-rose-400 uppercase tracking-widest whitespace-nowrap text-right">Podatek 19%</th>
+                      <th class="px-3 py-4 text-xs font-black text-stitch-muted uppercase tracking-widest whitespace-nowrap text-right">Z podatkiem Belki</th>
+                      <th class="px-3 py-4 text-xs font-black text-emerald-500 uppercase tracking-widest whitespace-nowrap text-right">Na IKE</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tabela-sim-body" class="divide-y divide-slate-50 dark:divide-slate-900">
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SŁOWNICZEK / EDUKACJA -->
+      <section class="mt-24 py-20 border-t border-stitch-border dark:border-slate-900">
+        <h2 class="text-3xl font-extrabold text-stitch-text mb-12 text-center italic">Co warto wiedzieć o podatku Belki?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
+            <span aria-hidden="true" class="material-symbols-outlined text-4xl text-primary mb-6" style="color:#0d7ff2;">gavel</span>
+            <h4 class="text-lg font-bold text-stitch-text mb-4">Czym jest podatek Belki?</h4>
+            <p class="text-sm text-stitch-muted leading-relaxed">Podatek od dochodów kapitałowych wynoszący <strong class="text-stitch-text">19%</strong>. Płacisz go od zysku z ETF, akcji, obligacji i lokat — zawsze od dochodu, nigdy od całego kapitału.</p>
+          </div>
+          <div class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
+            <span aria-hidden="true" class="material-symbols-outlined text-4xl text-amber-500 mb-6">schedule</span>
+            <h4 class="text-lg font-bold text-stitch-text mb-4">ETF akumulacyjny — odroczony podatek</h4>
+            <p class="text-sm text-stitch-muted leading-relaxed">ETF-y akumulacyjne reinwestują dywidendy bez potrącania podatku. Płacisz Belkę dopiero przy sprzedaży — cały zysk przez lata pracuje na Ciebie bez uszczuplenia.</p>
+          </div>
+          <div class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
+            <span aria-hidden="true" class="material-symbols-outlined text-4xl text-emerald-500 mb-6">workspace_premium</span>
+            <h4 class="text-lg font-bold text-stitch-text mb-4">IKE — zero podatku</h4>
+            <p class="text-sm text-stitch-muted leading-relaxed">Inwestując przez IKE i wypłacając po 60. r.ż. <strong class="text-stitch-text">nie płacisz podatku Belki w ogóle</strong>. Limit 2026: 28 260 zł. Przy długim horyzoncie oszczędzasz dziesiątki tysięcy złotych.</p>
+          </div>
+          <div class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
+            <span aria-hidden="true" class="material-symbols-outlined text-4xl text-indigo-500 mb-6">receipt_long</span>
+            <h4 class="text-lg font-bold text-stitch-text mb-4">PIT-38 — rozliczenie roczne</h4>
+            <p class="text-sm text-stitch-muted leading-relaxed">Dochody z ETF i akcji rozliczasz w PIT-38 do 30 kwietnia roku następnego. Biuro maklerskie przesyła PIT-8C — dokument z gotowymi danymi do deklaracji.</p>
+          </div>
+        </div>
+
+        <!-- DISCLAIMER -->
+        <div class="mt-8 p-5 md:p-8 rounded-stitch bg-slate-100/50 dark:bg-slate-800/40 border border-stitch-border flex gap-4 items-start">
+          <span aria-hidden="true" class="material-symbols-outlined text-slate-400 shrink-0 mt-0.5">info</span>
+          <div class="text-xs text-stitch-muted leading-relaxed space-y-2">
+            <p class="font-semibold text-stitch-text">Ważna informacja o metodologii i ryzyku</p>
+            <p>Wyniki mają charakter <strong>wyłącznie edukacyjny i poglądowy</strong> — nie stanowią rekomendacji inwestycyjnej, porady finansowej ani doradztwa podatkowego w rozumieniu obowiązujących przepisów prawa.</p>
+            <ul class="list-disc list-inside space-y-1 pl-1">
+              <li><strong>Stawka podatkowa:</strong> kalkulator stosuje stawkę 19% zgodnie z art. 30a ust. 1 pkt 3 ustawy o PIT. Stawka ta może ulec zmianie w wyniku decyzji ustawodawczych.</li>
+              <li><strong>Założenia symulacji:</strong> przyjęto stałą roczną stopę zwrotu i kapitalizację roczną. Podatek w trybie symulacji obliczany jest metodą „realizacja na koniec roku" (jako gdybyś sprzedał cały portfel). ETF akumulacyjny może dawać efektywnie niższy podatek dzięki odroczeniu do momentu faktycznej sprzedaży.</li>
+              <li><strong>IKE/IKZE:</strong> zwolnienie podatkowe przysługuje wyłącznie po spełnieniu warunków wiekowych (IKE: 60 lat, IKZE: 65 lat) i okresu oszczędzania. Wcześniejszy zwrot wiąże się z obowiązkiem zapłaty podatku.</li>
+              <li><strong>PIT-8C:</strong> prawidłowe rozliczenie podatkowe wymaga uwzględnienia wszystkich transakcji w roku podatkowym i skonsultowania się z doradcą podatkowym lub biurem rachunkowym.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PRZYCISK DRUKOWANIA -->
+        <div class="mt-6 flex justify-end">
+          <button onclick="window.print()"
+            class="btn-print inline-flex items-center gap-2 px-5 py-2.5 rounded-stitch bg-slate-100 dark:bg-slate-800 text-stitch-text text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-stitch-border"
+            aria-label="Drukuj wyniki lub zapisz jako PDF">
+            <span aria-hidden="true" class="material-symbols-outlined text-base">print</span>
+            Drukuj / Zapisz PDF
+          </button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- FAQ SECTION -->
+  <section class="py-16 px-6 bg-stitch-bg dark:bg-slate-950 transition-colors" aria-labelledby="faq-belki-heading">
+    <div class="max-w-3xl mx-auto">
+      <h2 id="faq-belki-heading" class="text-2xl md:text-3xl font-extrabold tracking-tight text-stitch-text mb-2">Najczęściej zadawane pytania</h2>
+      <p class="text-stitch-muted text-sm mb-10">Odpowiedzi na kluczowe pytania o podatek Belki i optymalizację podatkową.</p>
+
+      <div class="space-y-3">
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Ile wynosi podatek Belki w 2026 roku?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">Podatek Belki w 2026 roku wynosi <strong>19%</strong> od dochodu kapitałowego. Płacisz go od zysku z: sprzedaży akcji i ETF, dywidend, odsetek z obligacji i lokat. Podstawa prawna: art. 30a ustawy o podatku dochodowym od osób fizycznych. Podatek naliczany jest wyłącznie od zysku (dochodu) — nie od całej wartości inwestycji.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Kiedy płaci się podatek Belki od ETF?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">Podatek od zysku z ETF płacisz przy <strong>sprzedaży jednostek</strong> — nie w trakcie trzymania. ETF-y akumulacyjne (Acc) reinwestują dywidendy bez potrącania podatku, co daje tzw. efekt tarczy podatkowej (tax deferral). Im dłużej trzymasz ETF akumulacyjny bez sprzedaży, tym więcej zysku pracuje bez uszczuplenia przez Belkę. Podatek rozliczasz samodzielnie w deklaracji PIT-38 do 30 kwietnia roku następnego na podstawie PIT-8C od maklera.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Jak legalnie uniknąć podatku Belki?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">Istnieją trzy legalne sposoby minimalizacji podatku Belki:</p>
+            <ul class="mt-3 space-y-2 list-disc list-inside">
+              <li><strong>IKE</strong> — brak podatku przy wypłacie po 60. roku życia. Limit 2026: 28 260 zł rocznie.</li>
+              <li><strong>IKZE</strong> — brak podatku Belki + odliczenie wpłat od PIT (mniejszy PIT teraz). Limit 2026: 11 304 zł. Przy wypłacie po 65. r.ż. płacisz jedynie 10% zryczałtowanego podatku.</li>
+              <li><strong>ETF akumulacyjny</strong> — odroczenie podatku do momentu sprzedaży. Pozwala na reinwestowanie pełnego zysku przez lata.</li>
+            </ul>
+            <p class="mt-3">Połączenie IKE + ETF akumulacyjny to najbardziej efektywna podatkowa strategia dla polskiego inwestora długoterminowego.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Co wpisać w PIT-38 przy sprzedaży ETF?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">Dochody z ETF i akcji notowanych na giełdzie zagranicznej rozliczasz w <strong>PIT-38</strong>. Twoje biuro maklerskie prześle Ci <strong>PIT-8C</strong> z przygotowanymi danymi: przychodem, kosztem nabycia i dochodem. W PIT-38 wpisujesz te kwoty w odpowiednie rubryki (przychód, koszty, dochód, podatek 19%). Termin złożenia: <strong>30 kwietnia</strong> roku następnego. Jeśli inwestujesz przez polskie biuro maklerskie, podatek jest często pobierany automatycznie. Przy zagranicznych brokerach (np. IBKR, Degiro) rozliczasz samodzielnie.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Czy na IKE-Obligacje też nie ma podatku Belki?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">Tak. Obligacje skarbowe zakupione w ramach konta IKE-Obligacje (oferowanego przez PKO Bank Polski) są <strong>zwolnione z podatku Belki</strong> przy wypłacie po 60. roku życia. To jedyna forma obligacji detalicznych, gdzie odsetki są w 100% nieopodatkowane. Standardowe obligacje EDO, COI czy TOS poza IKE podlegają 19% podatkowi od naliczonych odsetek. IKE-Obligacje możesz łączyć z regularnym IKE w innej instytucji (np. maklerskim), zachowując jeden łączny limit wpłat 28 260 zł.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Ile wynosi podatek Belki w 2026 roku?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Podatek Belki w 2026 roku wynosi 19% od dochodu kapitałowego. Płacisz go od zysku z: sprzedaży akcji i ETF, dywidend, odsetek z obligacji i lokat. Podatek naliczany jest wyłącznie od zysku (dochodu) — nie od całej wartości inwestycji."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kiedy płaci się podatek Belki od ETF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Podatek od zysku z ETF płacisz przy sprzedaży jednostek — nie w trakcie trzymania. ETF-y akumulacyjne (Acc) reinwestują dywidendy bez potrącania podatku. Podatek rozliczasz w PIT-38 do 30 kwietnia roku następnego na podstawie PIT-8C od maklera."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Jak legalnie uniknąć podatku Belki?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Trzy legalne sposoby: IKE (brak podatku przy wypłacie po 60. r.ż., limit 28 260 zł w 2026), IKZE (brak podatku Belki + odliczenie od PIT, limit 11 304 zł), ETF akumulacyjny (odroczenie podatku do sprzedaży). Połączenie IKE + ETF akumulacyjny to najbardziej efektywna podatkowa strategia."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Co wpisać w PIT-38 przy sprzedaży ETF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Dochody z ETF rozliczasz w PIT-38. Biuro maklerskie prześle PIT-8C z danymi. W PIT-38 wpisujesz przychód, koszty nabycia, dochód i podatek 19%. Termin: 30 kwietnia roku następnego."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy na IKE-Obligacje też nie ma podatku Belki?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tak. Obligacje skarbowe zakupione w ramach konta IKE-Obligacje są zwolnione z podatku Belki przy wypłacie po 60. roku życia. To jedyna forma obligacji detalicznych, gdzie odsetki są w 100% nieopodatkowane."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- NEWSLETTER SECTION -->
+  <section id="newsletter-section"
+    class="pt-10 pb-20 px-6 bg-slate-100 dark:bg-slate-950 border-t border-stitch-border dark:border-slate-900 transition-colors">
+    <div class="max-w-7xl mx-auto">
+      <div
+        class="bg-stitch-surface/70 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 lg:p-16 shadow-stitch-soft border border-white/50 relative overflow-hidden group">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center lg:justify-items-stretch relative z-10">
+          <div class="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              Newsletter
+            </div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-stitch-text tracking-tight leading-[1.1]">
+              Bądź na bieżąco z <span class="text-primary">rynkiem ETF</span> <span class="hidden md:inline">i finansami</span>
+            </h2>
+            <p class="text-stitch-muted text-lg leading-relaxed max-w-xl">
+              Dołącz do społeczności świadomych inwestorów. Otrzymuj analizy, nowe kalkulatory i rzetelną wiedzę prosto na swoją skrzynkę. Zero spamu.
+            </p>
+          </div>
+
+          <div class="w-full lg:max-w-md mx-auto lg:ml-auto">
+            <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
+              <div class="ml-form-embedWrapper embedForm">
+                <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                  <form class="ml-block-form"
+                    action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe"
+                    method="post" target="_blank">
+                    <div class="flex flex-col space-y-4">
+                      <div class="ml-form-fieldRow">
+                        <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                          <input aria-label="email" aria-required="true" type="email"
+                            class="w-full h-14 px-6 rounded-stitch border border-stitch-border bg-stitch-surface dark:bg-slate-950 text-stitch-text text-base font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all placeholder:text-slate-400"
+                            name="fields[email]" placeholder="Twój adres e-mail">
+                        </div>
+                      </div>
+                      <div class="ml-form-embedPermissions">
+                        <label class="flex items-start gap-4 cursor-pointer group">
+                          <input aria-label="Wprowadź wartość" type="checkbox" name="gdpr[]"
+                            value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl" required
+                            class="custom-checkbox mt-1 transition-all">
+                          <span class="text-[11px] text-stitch-muted font-medium leading-relaxed group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors">Zgadzam się na otrzymywanie newslettera. Możesz się wypisać w każdej chwili.</span>
+                        </label>
+                      </div>
+                      <div class="ml-form-recaptcha ml-validate-required py-2 flex justify-center">
+                        <div class="g-recaptcha transform scale-[0.85] origin-center"
+                          data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                      </div>
+                      <input type="hidden" name="ml-submit" value="1">
+                      <input type="hidden" name="anticsrf" value="true">
+                      <div class="ml-form-embedSubmit">
+                        <button type="submit"
+                          class="w-full h-14 md:h-16 rounded-stitch bg-primary text-white font-bold text-sm md:text-base uppercase tracking-widest hover:scale-[1.01] active:scale-[0.98] transition-all shadow-stitch-soft shadow-primary/20"
+                          style="background-color: #0d7ff2;">
+                          Zapisz się teraz
+                        </button>
+                      </div>
+                      <div class="pt-6 border-t border-slate-100 mt-2">
+                        <p class="text-[10px] text-slate-400 dark:text-stitch-muted leading-relaxed mb-2">
+                          Zapisując się, akceptujesz <a href="regulamin.html" class="underline hover:text-primary">Regulamin</a> i <a href="polityka-prywatnosci.html" class="underline hover:text-primary">Politykę Prywatności</a>.
+                        </p>
+                        <p class="text-[10px] text-slate-400 font-medium italic">
+                          Prezentowane treści nie stanowią rekomendacji inwestycyjnej.
+                        </p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="ml-form-successBody row-success" style="display: none">
+                  <div class="p-10 rounded-stitch bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 text-center">
+                    <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-3xl">verified</span>
+                    </div>
+                    <h4 class="text-emerald-900 dark:text-emerald-300 font-bold text-xl mb-1">Sukces!</h4>
+                    <p class="text-emerald-700 dark:text-emerald-500 text-sm">Sprawdź swoją skrzynkę e-mail, aby potwierdzić zapis.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STOPKA -->
+  <footer class="bg-stitch-bg dark:bg-slate-950 border-t border-stitch-border dark:border-slate-900 py-20 px-6"
+    style="font-family: 'Inter', sans-serif;">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12 border-b border-stitch-border/50 pb-8">
+        <div class="flex items-center gap-2">
+          <div class="bg-primary p-1.5 rounded-stitch text-white flex items-center justify-center"
+            style="background-color: #0d7ff2;">
+            <span aria-hidden="true" class="material-symbols-outlined text-base">account_balance_wallet</span>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-stitch-text">ETF<span class="font-normal text-stitch-muted">kalkulator</span>.pl</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20 items-start">
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">Narzędzia</h5>
+          <ul class="space-y-4">
+            <li><a href="kalkulator-etf.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Kalkulator ETF</a></li>
+            <li><a href="kalkulator-obligacji.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Obligacje Skarbowe</a></li>
+            <li><a href="kalkulator-wolnosci.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Wolność Finansowa</a></li>
+            <li><a href="porownywarka.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Porównywarka ETF</a></li>
+            <li><a href="kalkulator-podatku-belki.html" class="text-sm font-semibold text-primary hover:opacity-80 transition-opacity leading-loose" style="text-decoration:none; color:#0d7ff2;">Podatek Belki</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">Projekt</h5>
+          <ul class="space-y-4">
+            <li><a href="../blog/index.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Blog i Wiedza</a></li>
+            <li><a href="o-projekcie.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration:none;">O projekcie</a></li>
+            <li><a href="regulamin.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Regulamin</a></li>
+            <li><a href="polityka-prywatnosci.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration:none;">Polityka prywatności</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">Kontakt</h5>
+          <p class="text-sm text-stitch-muted mb-6 leading-relaxed">Masz pytania? Pisz śmiało:</p>
+          <a href="mailto:kontakt@etfkalkulator.pl" class="text-sm font-bold text-stitch-text hover:text-primary transition-colors block mb-8" style="text-decoration:none;">kontakt@etfkalkulator.pl</a>
+          <div class="flex gap-4">
+            <a href="#" class="w-10 h-10 rounded-stitch bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-stitch-soft">
+              <span aria-hidden="true" class="material-symbols-outlined text-lg">share</span>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-stitch bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-stitch-soft">
+              <span aria-hidden="true" class="material-symbols-outlined text-lg">alternate_email</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-20 pt-10 border-t border-stitch-border dark:border-slate-900">
+        <p class="text-[11px] text-slate-400 dark:text-stitch-muted leading-relaxed mb-8 max-w-4xl">
+          Serwis ETFkalkulator.pl ma charakter wyłącznie edukacyjny i informacyjny. Prezentowane obliczenia nie stanowią rekomendacji inwestycyjnej, porady finansowej ani doradztwa podatkowego w rozumieniu obowiązujących przepisów prawa. Przed podjęciem decyzji inwestycyjnej skonsultuj się z licencjonowanym doradcą finansowym. Inwestowanie wiąże się z ryzykiem utraty części lub całości zainwestowanego kapitału.
+        </p>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+          <p>© 2026 ETFkalkulator.pl — Made with ❤️ by Florian</p>
+          <div class="flex gap-6">
+            <span>Wszelkie prawa zastrzeżone</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MailerLite Logic -->
+  <script>
+    function ml_webform_success_37996059() {
+      var $ = ml_jQuery || jQuery;
+      $('.ml-subscribe-form-37996059 .row-success').show();
+      $('.ml-subscribe-form-37996059 .row-form').hide();
+    }
+  </script>
+
+  <!-- Scripts -->
+  <script src="../js/utils.js" defer></script>
+  <script src="../js/shared.js" defer></script>
+
+  <!-- LOGIKA KALKULATORA -->
+  <script defer>
+    // ============================================================
+    // KALKULATOR PODATKU BELKI — logika
+    // ============================================================
+
+    let aktywnyTrybKalk = 'prosty';
+    let belkiChart = null;
+
+    // --- Przełącznik trybu ---
+    function przelaczTrybKalk(tryb) {
+      aktywnyTrybKalk = tryb;
+
+      const tabProsty = document.getElementById('tab-prosty');
+      const tabSym = document.getElementById('tab-symulacja');
+      const formProsty = document.getElementById('form-prosty');
+      const formSym = document.getElementById('form-symulacja');
+      const wynikProsty = document.getElementById('wyniki-prosty');
+      const wynikSym = document.getElementById('wyniki-symulacja');
+
+      if (tryb === 'prosty') {
+        tabProsty.classList.add('aktywna');
+        tabSym.classList.remove('aktywna');
+        tabProsty.setAttribute('aria-pressed', 'true');
+        tabSym.setAttribute('aria-pressed', 'false');
+        formProsty.classList.remove('hidden');
+        formSym.classList.add('hidden');
+        wynikProsty.classList.remove('hidden');
+        wynikSym.classList.add('hidden');
+        obliczProsty();
+      } else {
+        tabSym.classList.add('aktywna');
+        tabProsty.classList.remove('aktywna');
+        tabSym.setAttribute('aria-pressed', 'true');
+        tabProsty.setAttribute('aria-pressed', 'false');
+        formSym.classList.remove('hidden');
+        formProsty.classList.add('hidden');
+        wynikSym.classList.remove('hidden');
+        wynikProsty.classList.add('hidden');
+        obliczSymulacja();
+      }
+    }
+
+    // --- Pomocnicze ---
+    function parsePLN(id) {
+      const el = document.getElementById(id);
+      if (!el) return 0;
+      const v = parseFloat(el.value.replace(/\s/g, '').replace(',', '.'));
+      return isNaN(v) || v < 0 ? 0 : v;
+    }
+
+    function fmt(v) {
+      return new Intl.NumberFormat('pl-PL', {
+        style: 'currency',
+        currency: 'PLN',
+        maximumFractionDigits: 2,
+        minimumFractionDigits: 2
+      }).format(v);
+    }
+
+    function setEl(id, val) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = val;
+    }
+
+    // --- TRYB PROSTY ---
+    function obliczProsty() {
+      const koncowa = parsePLN('input-wartosc-koncowa');
+      const wplaty = parsePLN('input-suma-wplat');
+      const zysk = Math.max(0, koncowa - wplaty);
+      const podatek = zysk * 0.19;
+      const netto = zysk - podatek;
+
+      setEl('wynik-zysk-brutto', fmt(zysk));
+      setEl('wynik-podatek-prosty', fmt(podatek));
+      setEl('wynik-zysk-netto', fmt(netto));
+      setEl('wynik-ike-oszczednosc', fmt(podatek));
+      setEl('pasek-label-brutto', fmt(zysk));
+
+      // Pasek wizualny
+      const nettoPct = zysk > 0 ? 81 : 50;
+      const podatekPct = zysk > 0 ? 19 : 50;
+      const pasekN = document.getElementById('pasek-netto');
+      const pasekP = document.getElementById('pasek-podatek');
+      if (pasekN) { pasekN.style.width = nettoPct + '%'; pasekN.querySelector('span').textContent = nettoPct + '%'; }
+      if (pasekP) { pasekP.style.width = podatekPct + '%'; pasekP.querySelector('span').textContent = podatekPct + '%'; }
+    }
+
+    function ustawPrzyklad(koncowa, wplaty) {
+      const ek = document.getElementById('input-wartosc-koncowa');
+      const ew = document.getElementById('input-suma-wplat');
+      if (ek) ek.value = koncowa;
+      if (ew) ew.value = wplaty;
+      obliczProsty();
+    }
+
+    // --- TRYB SYMULACJI ---
+    function ustawStope(val) {
+      const el = document.getElementById('input-sim-stopa');
+      if (el) { el.value = val; obliczSymulacja(); }
+    }
+
+    function obliczSymulacja() {
+      const kapital = parsePLN('input-sim-kapital') || 1000;
+      const doplata = parsePLN('input-sim-doplata');
+      const stopaRaw = parsePLN('input-sim-stopa');
+      const stopa = stopaRaw > 0 ? stopaRaw : 7;
+      const lataRaw = parseInt((document.getElementById('input-sim-lata') || {}).value) || 15;
+      const lata = Math.max(1, Math.min(50, lataRaw));
+
+      const r = stopa / 100;
+
+      const labels = ['Dziś'];
+      const dataWplate = [Math.round(kapital)];
+      const dataBelki = [Math.round(kapital)];
+      const dataIKE = [Math.round(kapital)];
+
+      let saldo = kapital;
+      let wplate = kapital;
+      const tabelaData = [];
+
+      for (let rok = 1; rok <= lata; rok++) {
+        saldo = saldo * (1 + r) + doplata * 12;
+        wplate += doplata * 12;
+
+        const zysk = Math.max(0, saldo - wplate);
+        const podatek = Math.round(zysk * 0.19);
+        const saldonetto = Math.round(saldo - zysk * 0.19);
+
+        labels.push('Rok\u00A0' + rok);
+        dataWplate.push(Math.round(wplate));
+        dataBelki.push(saldonetto);
+        dataIKE.push(Math.round(saldo));
+
+        tabelaData.push({
+          rok,
+          wplate: Math.round(wplate),
+          saldo: Math.round(saldo),
+          zysk: Math.round(zysk),
+          podatek,
+          saldonetto,
+          roznica: Math.round(saldo) - saldonetto
+        });
+      }
+
+      const last = tabelaData[tabelaData.length - 1];
+      setEl('wynik-sim-podatek-total', fmt(last.podatek));
+      setEl('wynik-sim-belki', fmt(last.saldonetto));
+      setEl('wynik-sim-ike', fmt(last.saldo));
+      setEl('wynik-sim-roznica', fmt(last.roznica));
+
+      renderSimChart(labels, dataWplate, dataBelki, dataIKE);
+      renderSimTabela(tabelaData);
+    }
+
+    function renderSimChart(labels, dataWplate, dataBelki, dataIKE) {
+      const canvas = document.getElementById('chartBelki');
+      if (!canvas || typeof Chart === 'undefined' || !window.ETF || !window.ETF.charts) return;
+
+      const ctx = canvas.getContext('2d');
+      if (belkiChart) { belkiChart.destroy(); belkiChart = null; }
+
+      const opts = window.ETF.charts.getBaseOptions();
+
+      belkiChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            window.ETF.charts.createDataset(ctx, 'Wpłacony kapitał', dataWplate, '#8E8E93'),
+            window.ETF.charts.createDataset(ctx, 'Z podatkiem Belki', dataBelki, '#1A56A0'),
+            window.ETF.charts.createDataset(ctx, 'IKE/IKZE (0% podatku)', dataIKE, '#34C759')
+          ]
+        },
+        options: opts
+      });
+    }
+
+    function renderSimTabela(data) {
+      const tbody = document.getElementById('tabela-sim-body');
+      if (!tbody) return;
+
+      tbody.innerHTML = data.map(function(r) {
+        return '<tr class="hover:bg-stitch-surface/50 transition-colors">' +
+          '<td class="sticky left-0 z-10 bg-stitch-bg dark:bg-slate-950 px-4 py-3.5 text-sm font-bold text-stitch-text whitespace-nowrap shadow-[2px_0_5px_-2px_rgba(0,0,0,0.07)]">' + r.rok + '</td>' +
+          '<td class="px-3 py-3.5 text-sm text-stitch-muted text-right whitespace-nowrap">' + fmt(r.wplate) + '</td>' +
+          '<td class="px-3 py-3.5 text-sm text-stitch-text font-semibold text-right whitespace-nowrap">' + fmt(r.saldo) + '</td>' +
+          '<td class="px-3 py-3.5 text-sm font-semibold text-rose-500 dark:text-rose-400 text-right whitespace-nowrap">−' + fmt(r.podatek) + '</td>' +
+          '<td class="px-3 py-3.5 text-sm text-stitch-muted text-right whitespace-nowrap">' + fmt(r.saldonetto) + '</td>' +
+          '<td class="px-3 py-3.5 text-sm font-bold text-emerald-600 dark:text-emerald-400 text-right whitespace-nowrap">' + fmt(r.saldo) + '</td>' +
+          '</tr>';
+      }).join('');
+    }
+
+    // --- INICJALIZACJA ---
+    document.addEventListener('DOMContentLoaded', function () {
+      obliczProsty();
+
+      // Re-render chart on theme change
+      window.addEventListener('theme-changed', function () {
+        if (aktywnyTrybKalk === 'symulacja') obliczSymulacja();
+      });
+    });
+
+    // Fallback if DOMContentLoaded already fired
+    if (document.readyState !== 'loading') {
+      obliczProsty();
+    }
+  </script>
+
+  <!-- Global Logic -->
+  <script defer>
+    function przelaczTryb() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains('dark');
+      if (isDark) {
+        html.classList.remove('dark');
+        html.classList.add('light');
+        localStorage.setItem('etf-tryb', 'jasny');
+      } else {
+        html.classList.add('dark');
+        html.classList.remove('light');
+        localStorage.setItem('etf-tryb', 'ciemny');
+      }
+      const d = html.classList.contains('dark');
+      const m = document.getElementById('meta-theme-color');
+      if (m) m.content = d ? '#0f172a' : '#f8fafc';
+      window.dispatchEvent(new CustomEvent('theme-changed'));
+    }
+
+    (function () {
+      const html = document.documentElement;
+      const saved = localStorage.getItem('etf-tryb');
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (saved === 'ciemny' || (!saved && systemDark)) {
+        html.classList.add('dark');
+      }
+    })();
+  </script>
+
+  <script src="https://www.google.com/recaptcha/api.js" defer></script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
+    type="text/javascript" defer></script>
+  <script src="../js/cookie-consent.js" defer></script>
+</body>
+
+</html>
