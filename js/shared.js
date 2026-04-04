@@ -3,6 +3,24 @@
 
 window.modalData = window.modalData || {};
 
+// Dark mode toggle — kanoniczna wersja dla całego serwisu
+window.przelaczTryb = function () {
+  var html = document.documentElement;
+  var isDark = html.classList.contains('dark');
+  if (isDark) {
+    html.classList.remove('dark', 'dark-mode');
+    html.classList.add('light', 'light-mode');
+    localStorage.setItem('etf-tryb', 'jasny');
+  } else {
+    html.classList.add('dark', 'dark-mode');
+    html.classList.remove('light', 'light-mode');
+    localStorage.setItem('etf-tryb', 'ciemny');
+  }
+  var m = document.getElementById('meta-theme-color');
+  if (m) m.content = html.classList.contains('dark') ? '#0f172a' : '#f8fafc';
+  window.dispatchEvent(new CustomEvent('theme-changed'));
+};
+
 window.debounce = function (func, wait) {
     let timeout;
     return function executedFunction(...args) {
