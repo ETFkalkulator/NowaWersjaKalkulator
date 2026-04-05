@@ -44,7 +44,20 @@
       "WebFetch(domain:www.bm.pkobp.pl)",
       "Bash('C:\\\\Users\\\\komptest\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python312\\\\python.exe' -c ':*)",
       "Bash(\"C:\\\\Users\\\\komptest\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python312\\\\python.exe\" -m pip install pdfplumber --quiet)",
-      "WebFetch(domain:bank.pl)"
+      "WebFetch(domain:bank.pl)",
+      "Bash(python3 -c \"from PIL import Image; img = Image.open\\('C:/Users/komptest/Documents/ETFkalkulator 3.0/A wersja do pracy/images/favicon.png'\\); print\\(img.size\\)\")",
+      "Bash(python -c \"from PIL import Image; img = Image.open\\('C:/Users/komptest/Documents/ETFkalkulator 3.0/A wersja do pracy/images/favicon.png'\\); print\\(img.size\\)\")",
+      "Bash(npm --version)",
+      "Bash(sed 's/\"//g')",
+      "Bash(grep \"\\\\.html$\")",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(grep -E \"\\\\.hidden\\\\s*\\\\{|\\\\.xl\\\\\\\\\\\\\\\\:hidden\\\\s*\\\\{|\\\\.xl\\\\\\\\\\\\\\\\:flex\\\\s*\\\\{\" \"C:\\\\Users\\\\komptest\\\\Documents\\\\ETFkalkulator 3.0\\\\A wersja do pracy\\\\css\\\\tailwind.css\")",
+      "Bash(python3:*)",
+      "Bash(node:*)",
+      "Bash(echo \"glob not available as standalone, checking with find\" ls \"C:\\\\Users\\\\komptest\\\\Documents\\\\ETFkalkulator 3.0\\\\A wersja do pracy\"/*.html)",
+      "Bash(npx tailwindcss:*)"
     ]
   }
 }

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="pl" class="scroll-smooth">
 
 <head>
@@ -18,6 +18,7 @@
   <link rel="canonical" href="https://etfkalkulator.pl/pages/kalkulator-obligacji.html">
   <meta name="description"
     content="Kalkulator obligacji EDO 2026, COI, TOS, ROR i DOR. Oblicz zysk po podatku Belki i inflacji, porównaj emisje i sprawdź co wybrać. Użyj teraz.">
+  <meta name="robots" content="index, follow">
   <meta name="keywords"
     content="kalkulator obligacji EDO 2026, ranking obligacji skarbowych, obligacje COI, obligacje TOS, podatek Belki IKE">
   <meta property="og:title" content="Kalkulator Obligacji EDO 2026 — COI, TOS | ETFkalkulator.pl">
@@ -88,12 +89,10 @@
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   <link rel="dns-prefetch" href="https://groot.mailerlite.com">
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap"
     rel="stylesheet" />
 
-  <script src="../js/tailwind-config.js"></script>
 
   <style>
     .glass-effect {
@@ -198,6 +197,7 @@
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/tailwind.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
 </head>
 
@@ -1110,7 +1110,7 @@
   </script>
 
   <!-- EDUCATIONAL MODAL -->
-  <div id="edu-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+  <div id="edu-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
     <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" tabindex="0" role="button"
       onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"></div>
     <div
@@ -1157,52 +1157,7 @@
 
 
 
-  <!-- EDUCATIONAL MODAL -->
-  <div id="edu-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
-    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" tabindex="0" role="button"
-      onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"></div>
-    <div
-      class="relative glass-effect modal-anim rounded-[2.5rem] p-8 md:p-12 max-w-lg w-full border border-white/20 shadow-stitch-soft shadow-black/50 overflow-hidden">
-      <!-- Decorative background blur -->
-      <div class="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 rounded-full blur-3xl"></div>
-
-      <div class="relative z-10">
-        <div class="flex justify-between items-center mb-6">
-          <h3 class="text-2xl font-black text-stitch-text" id="modal-title">Edukacja</h3>
-          <button onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"
-            class="group flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-stitch-muted hover:bg-rose-500 hover:text-white transition-all">
-            <span class="text-[10px] font-bold uppercase tracking-widest">Zamknij</span>
-            <span aria-hidden="true" class="material-symbols-outlined text-xl">close</span>
-          </button>
-        </div>
-
-        <div class="space-y-8">
-          <div class="flex gap-4 items-start">
-            <div class="w-12 h-12 rounded-stitch bg-primary/10 flex items-center justify-center shrink-0">
-              <span aria-hidden="true" class="material-symbols-outlined text-primary" id="modal-icon">school</span>
-            </div>
-            <p id="modal-explanation" class="text-slate-600 leading-relaxed text-sm md:text-base">
-            </p>
-          </div>
-
-          <div
-            class="p-6 bg-stitch-bg /50 rounded-stitch border border-stitch-border group transition-all hover:border-primary/30">
-            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
-              <span aria-hidden="true" class="material-symbols-outlined text-xs">functions</span>
-              Jak to obliczamy?
-            </p>
-            <code id="modal-formula" class="text-stitch-text font-mono text-sm block">...</code>
-          </div>
-
-          <button onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"
-            class="w-full py-4 bg-slate-900 dark:bg-stitch-surface text-white dark:text-stitch-text font-bold rounded-stitch hover:bg-primary dark:hover:bg-primary dark:hover:text-white transition-all shadow-stitch-soft">
-            Rozumiem, dziękuję!
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  
   <!-- MailerLite Logic -->
   <script>
     function ml_webform_success_37996059() {

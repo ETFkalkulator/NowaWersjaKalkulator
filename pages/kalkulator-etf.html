@@ -18,6 +18,7 @@
   <link rel="canonical" href="https://etfkalkulator.pl/pages/kalkulator-etf.html">
   <meta name="description"
     content="Kalkulator ETF z procentem składanym, wpływem inflacji i podatkiem Belki. Porównaj IKE i IKZE i oblicz realny zysk z inwestycji. Sprawdź.">
+  <meta name="robots" content="index, follow">
   <meta name="keywords"
     content="procent składany ETF, kalkulator ETF, IKE, IKZE, podatek Belki, inflacja, inwestowanie pasywne">
 
@@ -96,12 +97,10 @@
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   <link rel="dns-prefetch" href="https://groot.mailerlite.com">
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap"
     rel="stylesheet" />
 
-  <script src="../js/tailwind-config.js"></script>
 
   <style>
     .glass-effect {
@@ -233,6 +232,7 @@
   <link rel="stylesheet" href="../css/reset.css">
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/tailwind.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
   <script src="../js/charts-config.js" defer></script>
 
@@ -1253,7 +1253,7 @@
   </script>
   <!-- COOKIE CONSENT BANNER -->
   <!-- EDUCATIONAL MODAL -->
-  <div id="edu-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+  <div id="edu-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
     <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" tabindex="0" role="button"
       onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"></div>
     <div

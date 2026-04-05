@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f8f7f2" id="meta-theme-color">
+  <script>
+    (function () {
+      const s = localStorage.getItem('etf-tryb');
+      const d = s === 'ciemny' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.classList.toggle('dark', d);
+      document.documentElement.classList.toggle('light', !d);
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>404 — Strona nie znaleziona | ETFkalkulator.pl</title>
+  <link rel="canonical" href="https://etfkalkulator.pl/404.html">
+  <meta name="description" content="Strona, której szukasz, nie istnieje lub została przeniesiona. Wróć na stronę główną ETFkalkulator.pl.">
+  <meta name="robots" content="noindex, follow">
+
+  <meta property="og:title" content="404 — Strona nie znaleziona | ETFkalkulator.pl">
+  <meta property="og:description" content="Strona nie istnieje lub została przeniesiona. Wróć na stronę główną.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://etfkalkulator.pl/404.html">
+  <meta property="og:site_name" content="ETFkalkulator.pl">
+  <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png">
+  <meta property="og:locale" content="pl_PL">
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('consent', 'default', { 'analytics_storage': 'denied' });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
+  <script>gtag('config', 'G-GZECMECQ15', { 'send_page_view': false });</script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/tailwind.css">
+  <link rel="icon" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+</head>
+
+<body class="bg-white dark:bg-slate-950 text-slate-900 dark:text-white transition-colors min-h-screen flex flex-col">
+
+  <!-- NAV -->
+  <div id="nav-root"></div>
+  <script src="js/nav.js"></script>
+
+  <!-- MAIN -->
+  <main class="flex-1 flex items-center justify-center px-4 py-24">
+    <div class="text-center max-w-lg mx-auto">
+      <!-- Numer 404 -->
+      <div class="mb-8">
+        <span class="text-[120px] font-black leading-none" style="color:#0d7ff2;opacity:0.15;">404</span>
+      </div>
+
+      <!-- Ikona -->
+      <div class="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 -mt-12" style="background:rgba(13,127,242,0.10);">
+        <span class="material-symbols-outlined text-4xl" style="color:#0d7ff2;" aria-hidden="true">search_off</span>
+      </div>
+
+      <!-- Tytuł -->
+      <h1 class="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mb-4">
+        Strona nie znaleziona
+      </h1>
+
+      <!-- Opis -->
+      <p class="text-slate-500 dark:text-slate-400 text-base leading-relaxed mb-10">
+        Strona, której szukasz, nie istnieje lub została przeniesiona.<br>
+        Wróć na stronę główną i skorzystaj z kalkulatorów.
+      </p>
+
+      <!-- Przyciski -->
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="index.html"
+          class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-white transition-opacity hover:opacity-90"
+          style="background:#0d7ff2; text-decoration:none;">
+          <span class="material-symbols-outlined text-[20px]" aria-hidden="true">home</span>
+          Strona główna
+        </a>
+        <a href="blog/index.html"
+          class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold transition-colors border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-primary hover:text-primary dark:hover:text-primary"
+          style="text-decoration:none;">
+          <span class="material-symbols-outlined text-[20px]" aria-hidden="true">article</span>
+          Blog
+        </a>
+      </div>
+
+      <!-- Linki do kalkulatorów -->
+      <div class="mt-12">
+        <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-4">Kalkulatory</p>
+        <div class="flex flex-wrap gap-2 justify-center">
+          <a href="pages/kalkulator-etf.html" class="text-sm px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-primary hover:border-primary transition-colors" style="text-decoration:none;">ETF</a>
+          <a href="pages/kalkulator-obligacji.html" class="text-sm px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-primary hover:border-primary transition-colors" style="text-decoration:none;">Obligacje</a>
+          <a href="pages/kalkulator-wolnosci.html" class="text-sm px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-primary hover:border-primary transition-colors" style="text-decoration:none;">FIRE</a>
+          <a href="pages/kalkulator-podatku-belki.html" class="text-sm px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-primary hover:border-primary transition-colors" style="text-decoration:none;">Podatek Belki</a>
+          <a href="pages/porownywarka.html" class="text-sm px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-primary hover:border-primary transition-colors" style="text-decoration:none;">Porównywarka</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-stitch-border dark:border-slate-900 py-8 px-4">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+      <p>© 2026 ETFkalkulator.pl — Made with ❤️ by Florian</p>
+      <div class="flex gap-6">
+        <a href="pages/polityka-prywatnosci.html" class="hover:text-primary transition-colors" style="text-decoration:none;">Polityka prywatności</a>
+        <a href="pages/regulamin.html" class="hover:text-primary transition-colors" style="text-decoration:none;">Regulamin</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/shared.js" defer></script>
+  <!-- Cookie Consent -->
+  <script src="js/cookie-consent.js" defer></script>
+</body>
+
+</html>

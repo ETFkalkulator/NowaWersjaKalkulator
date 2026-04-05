@@ -90,6 +90,7 @@ window.openEduModal = function (type, event) {
     const modal = document.getElementById('edu-modal');
     if (modal) {
         modal.classList.remove('hidden');
+        modal.classList.add('flex');
         document.body.style.overflow = 'hidden';
     }
 };
@@ -98,6 +99,7 @@ window.closeEduModal = function () {
     const modal = document.getElementById('edu-modal');
     if (modal) {
         modal.classList.add('hidden');
+        modal.classList.remove('flex');
         document.body.style.overflow = '';
     }
 };

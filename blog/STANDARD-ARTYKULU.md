@@ -64,7 +64,24 @@ Wymagane:
   - `IntersectionObserver` dla `article h2[id]`
   - aktywacja klasy `toc-active`.
 
-## 6. Integracja nowego artykulu w serwisie
+## 6. Tailwind CSS — obowiazkowy rebuild po nowym artykule
+
+Projekt uzywa statycznego pliku `css/tailwind.css` (zbudowanego lokalnie, nie CDN).
+Jesli nowy artykul wprowadza nowe klasy Tailwind (np. nieuzywane wczesniej utility), plik musi zostac przebudowany.
+
+**Komenda (uruchom z glownego katalogu projektu):**
+```bash
+npm run build:css
+```
+
+Plik `css/tailwind.css` musi zostac wgrany na serwer razem z HTML artykulu.
+
+Uwagi:
+- Nowe artykuly korzystajace tylko ze znanych klas (np. `text-slate-*`, `dark:bg-*`, `grid-cols-*`) — **rebuild opcjonalny**, stary plik dziala.
+- Jesli artykul uzywa nowej klasy ktora nie pojawia sie nigdzie wczesniej — **rebuild obowiazkowy** (inacej klasa nie bedzie w CSS).
+- Przy watpliwosci: zawsze lepiej przebudowac (komenda trwa ~1s).
+
+## 7. Integracja nowego artykulu w serwisie
 
 Po dodaniu/aktualizacji pliku artykulu zrob:
 
@@ -82,14 +99,14 @@ Po dodaniu/aktualizacji pliku artykulu zrob:
   - `https://etfkalkulator.pl/blog/<slug>.html`
 - ustaw `lastmod` na dzien wdrozenia.
 
-## 7. Kodowanie polskich znakow
+## 8. Kodowanie polskich znakow
 
 - Trzymaj pliki w UTF-8.
 - Nie "naprawiaj" znakow na slepo po samym podgladzie terminala.
 - Jesli terminal pokazuje krzaki, sprawdz bajty/odczyt UTF-8 zanim cokolwiek konwertujesz.
 - Gdy trzeba, stosuj encje HTML tylko lokalnie i celowo.
 
-## 8. Kontrola po wdrozeniu (obowiazkowa)
+## 9. Kontrola po wdrozeniu (obowiazkowa)
 
 Uruchom szybki check:
 
@@ -109,7 +126,7 @@ Uruchom szybki check:
   - `index.html`
   - `sitemap.xml`
 
-## 9. Gotowy prompt do nowej sesji (wklej 1:1)
+## 10. Gotowy prompt do nowej sesji (wklej 1:1)
 
 ```text
 Wdrazamy nowy artykul do projektu. Pracuj zgodnie z plikiem:

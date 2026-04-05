@@ -22,6 +22,7 @@
   if (existing === 'accepted') {
     if (typeof gtag === 'function') {
       gtag('consent', 'update', { analytics_storage: 'granted' });
+      gtag('event', 'page_view');
     }
     return;
   }
@@ -126,6 +127,7 @@
       localStorage.setItem(STORAGE_KEY, 'accepted');
       if (typeof gtag === 'function') {
         gtag('consent', 'update', { analytics_storage: 'granted' });
+        gtag('event', 'page_view');
       }
       hideBanner(el);
     });
