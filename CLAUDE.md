@@ -12,7 +12,7 @@ Plik instrukcji dla asystenta AI. Wczytywany automatycznie na początku każdej 
 
 ## Stack technologiczny
 
-- HTML + **Tailwind CSS** (Play CDN) + **Vanilla JS**
+- HTML + **Tailwind CSS** (Lokalny kompilat CLI) + **Vanilla JS**
 - **Chart.js** przypięty do wersji `@4.4.1` (nie podnosić!)
 - **GA4** z Consent Mode v2
 - **MailerLite** — newsletter
@@ -95,6 +95,17 @@ Szczegółowy standard w `blog/STANDARD-ARTYKULU.md`. Przed każdą pracą z blo
 Wdrażamy nowy artykuł. Pracuj zgodnie z blog/STANDARD-ARTYKULU.md.
 Plik: <ścieżka>
 ```
+
+---
+
+## 🛠️ Lokalny Tailwind CSS (Nowy system - kwiecień 2026)
+
+Projekt zrezygnował z CDN na rzecz wysoce zoptymalizowanego, lokalnego buildu w Node.js. 
+
+**O czym musisz (Asystencie) pamiętać:**
+1. Tailwind przestał generować wszystko "w locie". Jeśli w projektowanym przez Ciebie kodzie HTML (np. nowym artykule) użyjesz **nowej klasy Tailwind**, która do tej pory nie pojawiała się w projekcie, **musisz ją skompilować**.
+2. **Kompilacja:** Użyj komendy terminala: `npm run build:css` by po pracy wygenerować gotowy plik `css/tailwind.css` przed ewentualnym deploymentem.
+3. **Kaskada / Kolejność linków:** Pamiętaj! Plik `css/tailwind.css` na podstronach **MUSI BYĆ ZAŁADOWANY ZAWSZE PO `reset.css`, `variables.css` oraz `main.css`**, nigdy przed nimi! W przeciwnym razie reguły CSS wyższego rzędu zepsują display/kolory elementów.
 
 ---
 
