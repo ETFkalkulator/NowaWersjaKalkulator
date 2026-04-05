@@ -32,7 +32,19 @@
       "Bash(grep -l \"nav-root\" index.html pages/*.html blog/*.html)",
       "Bash(grep -l \"main-nav\" index.html pages/*.html blog/*.html)",
       "WebFetch(domain:www.obligacjeskarbowe.pl)",
-      "Bash(find \"C:/Users/komptest/Documents/ETFkalkulator 3.0/A wersja do pracy\" -name \"*.bak\" -delete)"
+      "Bash(find \"C:/Users/komptest/Documents/ETFkalkulator 3.0/A wersja do pracy\" -name \"*.bak\" -delete)",
+      "WebFetch(domain:bossa.pl)",
+      "WebFetch(domain:www.mbank.pl)",
+      "WebFetch(domain:www.google.com)",
+      "WebFetch(domain:www.bankier.pl)",
+      "WebFetch(domain:inwestomat.eu)",
+      "WebFetch(domain:www.reddit.com)",
+      "WebFetch(domain:jakoszczedzacpieniadze.pl)",
+      "WebFetch(domain:portalfinansowy.pl)",
+      "WebFetch(domain:www.bm.pkobp.pl)",
+      "Bash('C:\\\\Users\\\\komptest\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python312\\\\python.exe' -c ':*)",
+      "Bash(\"C:\\\\Users\\\\komptest\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python312\\\\python.exe\" -m pip install pdfplumber --quiet)",
+      "WebFetch(domain:bank.pl)"
     ]
   }
 }
