@@ -10,12 +10,20 @@
 # Strona 404
 ErrorDocument 404 /404.html
 
-# Clean URLs dla artykułów blogowych (bez .html)
+# Kanonizacja URL-i
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # Redirect /index.html → /
+  RewriteRule ^index\.html$ / [L,R=301]
+
+  # Redirect /blog/index.html → /blog/
+  RewriteRule ^blog/index\.html$ /blog/ [L,R=301]
+
+  # Redirect /blog/artykul (bez .html) → /blog/artykul.html
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^blog/([^/]+)/?$ /blog/$1.html [L,NC]
+  RewriteRule ^(blog/[^/]+)$ /$1.html [R=301,L]
 </IfModule>
 
 # Security headers

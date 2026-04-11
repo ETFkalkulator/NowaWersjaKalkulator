@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f8f7f2" id="meta-theme-color">
+  <script>
+    (function () {
+      const s = localStorage.getItem("etf-tryb");
+      const d = s === "ciemny" || (!s && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.classList.toggle("dark", d);
+      document.documentElement.classList.toggle("light", !d);
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ETF spada — co robić podczas korekty giełdowej 2026 | ETFkalkulator.pl</title>
+  <meta name="description" content="Rynki lecą w dół? Sprawdź co mówią dane historyczne i co NAPRAWDĘ zrobić z ETF podczas korekty. Kalkulator pomoże ocenić straty.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="ETFkalkulator.pl">
+  <link rel="canonical" href="https://etfkalkulator.pl/blog/etf-spada-co-robic-korekta-gieldowa.html">
+
+  <meta property="og:title" content="ETF spada — co robić podczas korekty giełdowej 2026 | ETFkalkulator.pl">
+  <meta property="og:description" content="Rynki lecą w dół? Sprawdź co mówią dane historyczne i co NAPRAWDĘ zrobić z ETF podczas korekty. Kalkulator pomoże ocenić straty.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://etfkalkulator.pl/blog/etf-spada-co-robic-korekta-gieldowa.html">
+  <meta property="og:site_name" content="ETFkalkulator.pl">
+  <meta property="og:image" content="https://etfkalkulator.pl/images/etf-spada-korekta-2026.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="pl_PL">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ETF spada — co robić podczas korekty giełdowej 2026">
+  <meta name="twitter:description" content="Rynki lecą w dół? Sprawdź co mówią dane historyczne i co NAPRAWDĘ zrobić z ETF podczas korekty.">
+  <meta name="twitter:image" content="https://etfkalkulator.pl/images/etf-spada-korekta-2026.webp">
+
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Strona główna","item":"https://etfkalkulator.pl/"},
+      {"@type":"ListItem","position":2,"name":"Blog","item":"https://etfkalkulator.pl/blog/"},
+      {"@type":"ListItem","position":3,"name":"ETF spada — co robić podczas korekty giełdowej 2026","item":"https://etfkalkulator.pl/blog/etf-spada-co-robic-korekta-gieldowa.html"}
+    ]
+  }
+  </script>
+
+  <!-- Schema.org Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "ETF spada — co robić podczas korekty giełdowej 2026",
+    "description": "Rynki lecą w dół? Sprawdź co mówią dane historyczne i co NAPRAWDĘ zrobić z ETF podczas korekty. Kalkulator pomoże ocenić straty.",
+    "author": {"@type":"Organization","name":"ETFkalkulator.pl"},
+    "publisher": {"@type":"Organization","name":"ETFkalkulator.pl","url":"https://etfkalkulator.pl"},
+    "datePublished": "2026-04-11",
+    "dateModified": "2026-04-11",
+    "url": "https://etfkalkulator.pl/blog/etf-spada-co-robic-korekta-gieldowa.html",
+    "inLanguage": "pl"
+  }
+  </script>
+
+  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Co robić gdy ETF spada?",
+        "acceptedAnswer": {"@type":"Answer","text":"W zdecydowanej większości przypadków — nic. Dane historyczne pokazują, że inwestorzy którzy nie sprzedali w dołku, zawsze odrobili straty i wychodzili na plus. Zamiast sprzedawać, możesz kontynuować lub nawet zwiększyć regularne wpłaty (DCA) — kupujesz wtedy więcej jednostek za tę samą kwotę."}
+      },
+      {
+        "@type": "Question",
+        "name": "Ile trwa odrabianie strat po krachu giełdowym?",
+        "acceptedAnswer": {"@type":"Answer","text":"To zależy od głębokości korekty. Krach 2008 (−50% S&P 500) — odrobienie w ok. 5 lat. Krach COVID marzec 2020 (−35%) — odrobienie w ok. 6 miesięcy. Korekta 2022 (−18%) — odrobienie w ok. 12 miesięcy. Kluczowe: inwestorzy którzy wytrzymali, odrobili wszystko. Ci którzy sprzedali w dołku — zrealizowali straty na zawsze."}
+      },
+      {
+        "@type": "Question",
+        "name": "Czy powinienem sprzedać ETF podczas korekty?",
+        "acceptedAnswer": {"@type":"Answer","text":"Prawie nigdy. Jedyne uzasadnione powody sprzedaży to: zmiana sytuacji życiowej (potrzebujesz pieniędzy na konkretny cel), fundamentalna zmiana strategii inwestycyjnej lub rebalancing portfela. Sprzedaż z powodu strachu to najczęstszy błąd inwestorów — realizujesz stratę i tracisz odbicie."}
+      },
+      {
+        "@type": "Question",
+        "name": "Co to jest DCA i jak pomaga podczas krachu?",
+        "acceptedAnswer": {"@type":"Answer","text":"DCA (Dollar Cost Averaging) to strategia regularnych, stałych wpłat bez względu na poziom rynku. Podczas krachu kupujesz więcej jednostek ETF za tę samą kwotę — Twój średni koszt zakupu spada. Przykład: przy cenie 100 zł kupujesz 5 jednostek za 500 zł. Gdy cena spadnie do 70 zł — kupujesz 7,1 jednostki za te same 500 zł. Odbicie przynosi tym większy zysk."}
+      },
+      {
+        "@type": "Question",
+        "name": "Czy IKE chroni przed stratami w czasie korekty?",
+        "acceptedAnswer": {"@type":"Answer","text":"IKE nie chroni przed wahaniami wartości ETF — korekta dotyka portfela IKE tak samo jak zwykłego rachunku. Jednak IKE daje ogromną przewagę psychologiczną: brak podatku Belki przy wypłacie oznacza, że inwestujesz z myślą o długim terminie, co naturalnie zniechęca do panicznej sprzedaży. Limit IKE w 2026 roku wynosi 28 260 zł."}
+      },
+      {
+        "@type": "Question",
+        "name": "Jaka korekta ETF jest 'normalna'?",
+        "acceptedAnswer": {"@type":"Answer","text":"Korekty są absolutnie normalną częścią rynku. Historycznie S&P 500 odnotowuje co roku przeciętnie 1 korektę powyżej 10% i co 3–4 lata spadki powyżej 20% (rynek niedźwiedzia). Krótkie korekty 5–10% zdarzają się kilka razy w roku. Kluczowe: każda dotychczasowa korekta była odrobiona z nawiązką."}
+      }
+    ]
+  }
+  </script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('consent', 'default', {'analytics_storage': 'denied'});
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
+  <script>gtag('config', 'G-GZECMECQ15', {'send_page_view': false});</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://groot.mailerlite.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tailwind.css">
+  <link rel="icon" href="../images/favicon.png">
+  <link rel="apple-touch-icon" href="../images/favicon.png">
+  <link rel="manifest" href="/manifest.json">
+
+  <style>
+    .glass-effect { background: rgba(255,255,255,0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .dark .glass-effect { background: rgba(15,23,42,0.7); }
+    body { font-family: 'Inter', sans-serif; }
+    .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-size: 24px; line-height: 1; -webkit-font-smoothing: antialiased; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    article p { line-height: 1.8; }
+    article h2 { scroll-margin-top: 5rem; }
+    article h3 { scroll-margin-top: 5rem; }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    article h2 { animation: fadeInUp 0.4s ease both; }
+    details summary { user-select: none; }
+    details[open] summary .expand-icon { transform: rotate(180deg); }
+    .expand-icon { transition: transform 0.25s ease; }
+    .sidebar-toc a.toc-active {
+      color: #0d7ff2 !important;
+      font-weight: 600;
+      background: rgba(13, 127, 242, 0.1);
+    }
+  </style>
+  <link rel="preload" as="style" href="../css/mailerlite.css">
+  <link href="../css/mailerlite.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="../css/mailerlite.css"></noscript>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white focus:text-primary">Przejdź do głównej treści</a>
+
+  <div id="reading-progress"
+    class="fixed top-0 left-0 h-[3px] z-[200] transition-none rounded-r-full"
+    style="width:0%;background-color:#0d7ff2;">
+  </div>
+
+  <!-- NAV -->
+  <div id="nav-root"></div>
+  <script defer src="../js/nav.js"></script>
+
+  <!-- HERO -->
+  <section class="relative pt-32 pb-16 md:pb-20 px-4 sm:px-6 overflow-hidden text-white"
+    style="background-image: url('../images/etf-spada-korekta-2026.webp'); background-size: cover; background-position: center;">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(15,23,42,0.35) 0%, rgba(15,23,42,0.70) 55%, rgba(15,23,42,0.93) 100%);"></div>
+    <div class="relative z-10 max-w-3xl mx-auto">
+      <nav class="mb-6" aria-label="breadcrumb">
+        <ol class="flex items-center gap-2 text-sm text-white/60 flex-wrap">
+          <li><a href="../index.html" class="hover:text-white transition-colors" style="text-decoration:none;">ETFkalkulator.pl</a></li>
+          <li><span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+          <li><a href="index.html" class="hover:text-white transition-colors" style="text-decoration:none;">Blog</a></li>
+          <li><span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+          <li class="text-white font-semibold">ETF spada — co robić</li>
+        </ol>
+      </nav>
+      <h1 class="text-2xl md:text-4xl font-black text-white leading-tight mb-4">ETF spada — co robić podczas korekty giełdowej 2026</h1>
+      <p class="text-white/85 text-base md:text-lg leading-relaxed mb-4">Rynki w dół, portfel traci wartość, media straszą. Zanim cokolwiek zrobisz — sprawdź co mówią twarde dane historyczne. Każda dotychczasowa korekta była odrobiona. Pytanie tylko co zrobić, żeby na tym skorzystać, a nie stracić.</p>
+      <div class="flex flex-wrap gap-4 mt-4 text-white/60 text-sm">
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">calendar_today</span> kwiecień 2026</span>
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">schedule</span> 9 minut czytania</span>
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">person</span> ETFkalkulator.pl</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main class="bg-white dark:bg-slate-950 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 grid grid-cols-1 lg:grid-cols-[1fr_300px] xl:grid-cols-[1fr_320px] gap-10 xl:gap-16 items-start">
+
+      <article id="main" class="min-w-0 pt-8 pb-16 lg:pb-20">
+
+        <!-- TOC (mobile/inline) -->
+        <div class="glass-effect rounded-[1.5rem] p-6 mb-10 border-l-4 border-primary bg-primary/5 dark:bg-primary/10">
+          <p class="text-xs font-black uppercase tracking-widest text-primary mb-4 flex items-center gap-2"><span aria-hidden="true" class="material-symbols-outlined text-[18px]">format_list_bulleted</span> Spis treści</p>
+          <ol class="space-y-2 text-sm list-decimal list-inside">
+            <li><a href="#co-sie-dzieje" class="text-primary hover:underline font-medium" style="text-decoration:none;">Rynki spadają — co się właściwie dzieje</a></li>
+            <li><a href="#historia-korekt" class="text-primary hover:underline font-medium" style="text-decoration:none;">Historia korekt: 2008, 2020, 2022 — i co było potem</a></li>
+            <li><a href="#3-bledy" class="text-primary hover:underline font-medium" style="text-decoration:none;">3 błędy których NIE popełniać</a></li>
+            <li><a href="#co-zrobic" class="text-primary hover:underline font-medium" style="text-decoration:none;">Co zrobić zamiast tego — DCA w praktyce</a></li>
+            <li><a href="#kiedy-sprzedac" class="text-primary hover:underline font-medium" style="text-decoration:none;">Kiedy NAPRAWDĘ warto sprzedać ETF</a></li>
+            <li><a href="#ike-tarcza" class="text-primary hover:underline font-medium" style="text-decoration:none;">IKE jako tarcza psychologiczna</a></li>
+            <li><a href="#faq" class="text-primary hover:underline font-medium" style="text-decoration:none;">FAQ — najczęstsze pytania</a></li>
+          </ol>
+        </div>
+
+        <!-- Alert banner -->
+        <div class="rounded-2xl p-5 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 mb-8">
+          <p class="text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2">📉 Kontekst: korekta kwiecień 2026</p>
+          <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">Rynki globalnie odnotowały wyraźne spadki w pierwszych miesiącach 2026 roku. Ten artykuł jest topical — napisany przy korekcie, ale <strong>zasady są wieczne</strong> i sprawdzą się przy każdej kolejnej bessie.</p>
+        </div>
+
+        <!-- SECTION 1 -->
+        <h2 id="co-sie-dzieje" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-200 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">1</span>
+          Rynki spadają — co się właściwie dzieje
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-base md:text-lg">Twój portfel ETF jest na minusie. Może −5%, może −15%, może więcej. Emocje mówią jedno: działaj, ratuj, sprzedaj. Dane mówią coś zupełnie innego.</p>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">Korekty giełdowe są <strong class="text-slate-900 dark:text-white">absolutnie normalną częścią inwestowania</strong>. Historycznie S&P 500 odnotowuje:</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+          <div class="glass-effect rounded-2xl p-5 text-center border border-slate-200 dark:border-slate-700 shadow-sm">
+            <p class="text-3xl font-black text-primary mb-1" style="color:#0d7ff2;">kilka razy/rok</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Korekty 5–10%</p>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 text-center border border-slate-200 dark:border-slate-700 shadow-sm">
+            <p class="text-3xl font-black text-amber-500 mb-1">1× / rok</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Korekta powyżej 10%</p>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 text-center border border-slate-200 dark:border-slate-700 shadow-sm">
+            <p class="text-3xl font-black text-rose-500 mb-1">co 3–4 lata</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Rynek niedźwiedzia (−20%+)</p>
+          </div>
+        </div>
+
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">Innymi słowy: korekty nie są anomalią. Są <em>normalnym kosztem wejściowym</em> do wyższych długoterminowych zysków z akcji. Inwestorzy którzy to rozumieją, zarabiają. Ci którzy za każdym razem sprzedają — tracą.</p>
+
+        <!-- SECTION 2 -->
+        <h2 id="historia-korekt" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-200 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">2</span>
+          Historia korekt: 2008, 2020, 2022 — i co było potem
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6 text-base md:text-lg">Zamiast teorii — twarde liczby z trzech największych krachów ostatnich 20 lat.</p>
+
+        <div class="overflow-x-auto rounded-2xl shadow-sm mb-8">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-primary text-white">
+                <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">Krach</th>
+                <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">Szczyt spadku</th>
+                <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">Czas odrobienia</th>
+                <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">Co było potem</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-slate-100 dark:border-slate-800">
+                <td class="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Kryzys 2008 (GFC)</td>
+                <td class="px-4 py-3"><span class="bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-400 px-2 py-0.5 rounded-md text-xs font-bold">−50%</span></td>
+                <td class="px-4 py-3 text-slate-600 dark:text-slate-400">~5 lat</td>
+                <td class="px-4 py-3 text-slate-600 dark:text-slate-400">Najdłuższa hossa w historii (2009–2020)</td>
+              </tr>
+              <tr class="bg-slate-50/50 dark:bg-slate-900/30 border-b border-slate-100 dark:border-slate-800">
+                <td class="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">COVID marzec 2020</td>
+                <td class="px-4 py-3"><span class="bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 px-2 py-0.5 rounded-md text-xs font-bold">−35%</span></td>
+                <td class="px-4 py-3 text-slate-600 dark:text-slate-400">~6 miesięcy</td>
+                <td class="px-4 py-3 text-slate-600 dark:text-slate-400">Odbicie +80% przez kolejne 1,5 roku</td>
+              </tr>
+              <tr class="border-b border-slate-100 dark:border-slate-800">
+                <td class="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Korekta 2022 (stopy %)</td>
+                <td class="px-4 py-3"><span class="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 px-2 py-0.5 rounded-md text-xs font-bold">−18%</span></td>
+                <td class="px-4 py-3 text-slate-600 dark:text-slate-400">~12 miesięcy</td>
+                <td class="px-4 py-3 text-slate-600 dark:text-slate-400">Nowe historyczne szczyty w 2023–2024</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="rounded-2xl p-5 bg-emerald-50 dark:bg-emerald-950/30 border-l-4 border-emerald-500 mb-8">
+          <p class="text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2">📊 Kluczowy wniosek z historii</p>
+          <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">Każda korekta w historii rynku akcji — bez wyjątku — została <strong>odrobiona z nawiązką</strong>. Inwestorzy którzy wytrzymali i nie sprzedali, wyszli na plus. Ci którzy sprzedali w dołku, zrealizowali stratę na zawsze i często <strong>przegapili odbicie</strong>, bo bali się ponownie kupić.</p>
+        </div>
+
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3 mt-8">Dane behawioralne: ile kosztuje panika?</h3>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">Badania JP Morgan pokazują, że <strong class="text-slate-900 dark:text-white">przeciętny inwestor osiąga wyniki o ~2-4% rocznie gorsze od samego indeksu</strong> — głównie przez kupowanie w euforii i sprzedawanie w panice. Przez 20 lat różnica między indeksem a przeciętnym inwestorem to dziesiątki procent zwrotu.</p>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">Przykład: 10 najlepszych dni sesyjnych w ciągu 20 lat odpowiada za ogromną część całkowitego zwrotu. Problem: te 10 dni często wypada tuż po największej panice. Kto sprzedał — ich nie złapał.</p>
+
+        <!-- SECTION 3 -->
+        <h2 id="3-bledy" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-200 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">3</span>
+          3 błędy których NIE popełniać
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6 text-base md:text-lg">Podczas korekty mózg działa przeciwko Tobie. Oto trzy typowe pułapki i dlaczego są kosztowne.</p>
+
+        <div class="space-y-4 mb-8">
+          <div class="glass-effect rounded-2xl p-5 border-l-4 border-rose-500 shadow-sm">
+            <p class="font-black text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+              <span class="bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 text-xs font-black px-2 py-0.5 rounded-md">BŁĄD 1</span>
+              Sprzedaż "żeby uciąć straty"
+            </p>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Sprzedajesz ETF po −15% licząc, że odkupisz taniej. Problem: <strong>nikt nie wie gdzie jest dno</strong>. Statystycznie odbicia zdarzają się niespodziewanie i gwałtownie. Sprzedając, zamieniasz papierową stratę w realną i ryzykujesz przegapienie powrotu.</p>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 border-l-4 border-amber-500 shadow-sm">
+            <p class="font-black text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+              <span class="bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-xs font-black px-2 py-0.5 rounded-md">BŁĄD 2</span>
+              Sprawdzanie portfela kilka razy dziennie
+            </p>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Badania potwierdzają: im częściej sprawdzasz portfel w czasie korekty, tym większa szansa na emocjonalne decyzje. Właściciele długoterminowych ETF na IKE powinni sprawdzać wartość portfela najwyżej raz w miesiącu. Krótkoterminowy ból to szum — liczy się kierunek za 10 lat.</p>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 border-l-4 border-slate-400 shadow-sm">
+            <p class="font-black text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+              <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-black px-2 py-0.5 rounded-md">BŁĄD 3</span>
+              Czekanie "aż się uspokoi"
+            </p>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Zatrzymanie regularnych wpłat DCA "do czasu stabilizacji" to kosztowny błąd. Korekta to właśnie ten moment, kiedy kupujesz ETF <em>taniej</em>. Czekanie na spokój oznacza kupowanie po wyższych cenach i tracenie efektu uśrednienia.</p>
+          </div>
+        </div>
+
+        <!-- SECTION 4 -->
+        <h2 id="co-zrobic" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-200 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">4</span>
+          Co zrobić zamiast tego — DCA w praktyce podczas krachu
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-base md:text-lg">Strategia DCA (Dollar Cost Averaging — regularne, stałe wpłaty) zamienia korektę z koszmaru w <strong class="text-slate-900 dark:text-white">okazję matematyczną</strong>. Działa tak:</p>
+
+        <div class="rounded-2xl p-6 bg-primary/5 dark:bg-primary/10 border border-primary/20 mb-8">
+          <p class="text-xs font-black uppercase tracking-wider text-primary mb-4">📐 Przykład liczbowy — DCA podczas korekty</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Przed korektą (cena 100 zł/jedn.)</p>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between items-center">
+                  <span class="text-slate-600 dark:text-slate-400">Miesięczna wpłata</span>
+                  <span class="font-bold text-slate-900 dark:text-white">500 zł</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-slate-600 dark:text-slate-400">Kupione jednostki</span>
+                  <span class="font-bold text-slate-900 dark:text-white">5,0 jedn.</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Podczas korekty (cena 70 zł/jedn.)</p>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between items-center">
+                  <span class="text-slate-600 dark:text-slate-400">Miesięczna wpłata</span>
+                  <span class="font-bold text-slate-900 dark:text-white">500 zł</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-slate-600 dark:text-slate-400">Kupione jednostki</span>
+                  <span class="font-bold text-emerald-600 dark:text-emerald-400 text-base">7,14 jedn.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 pt-4 border-t border-primary/20">
+            <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">Za <strong>tę samą kwotę 500 zł</strong> kupujesz o <strong class="text-emerald-600 dark:text-emerald-400">43% więcej jednostek</strong>. Gdy rynek wróci do 100 zł, te "tańsze" jednostki przynoszą proporcjonalnie większy zysk. To właśnie siła DCA: korekta automatycznie obniża Twój średni koszt zakupu.</p>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3 mt-8">Symulacja: 36 miesięcy DCA — spokój vs panika</h3>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">Wyobraź sobie dwóch inwestorów wpłacających po 500 zł/miesiąc przez 3 lata (w tym 12 miesięcy korekty −20%):</p>
+
+        <div class="overflow-x-auto rounded-2xl shadow-sm mb-8">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-slate-800 text-white">
+                <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">Inwestor</th>
+                <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">Zachowanie podczas korekty</th>
+                <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">Wynik po 3 latach</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900">
+                <td class="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Anna (DCA bez przerwy)</td>
+                <td class="px-4 py-3 text-slate-600 dark:text-slate-400">Wpłaca co miesiąc, kupuje więcej w dołku</td>
+                <td class="px-4 py-3"><span class="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 px-2 py-0.5 rounded-md text-xs font-bold">Zysk +18%</span></td>
+              </tr>
+              <tr class="bg-slate-50/50 dark:bg-slate-900/30">
+                <td class="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Bartek (zatrzymał wpłaty)</td>
+                <td class="px-4 py-3 text-slate-600 dark:text-slate-400">Wstrzymał DCA na 12 miesięcy korekty</td>
+                <td class="px-4 py-3"><span class="bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 px-2 py-0.5 rounded-md text-xs font-bold">Zysk +9%</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- SECTION 5 -->
+        <h2 id="kiedy-sprzedac" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-200 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">5</span>
+          Kiedy NAPRAWDĘ warto sprzedać ETF
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6 text-base md:text-lg">Powiedzieliśmy "prawie nigdy nie sprzedawaj". Ale są uzasadnione powody. Oto jedyne sytuacje w których sprzedaż ma sens:</p>
+
+        <div class="space-y-3 mb-8">
+          <div class="glass-effect rounded-2xl p-5 border border-white/50 dark:border-slate-800/50 flex items-start gap-4 shadow-sm">
+            <span class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center shrink-0 mt-0.5">
+              <span aria-hidden="true" class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-[18px]">check_circle</span>
+            </span>
+            <div>
+              <p class="font-bold text-slate-900 dark:text-white mb-1">Zmiana sytuacji życiowej — potrzebujesz pieniędzy</p>
+              <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Kupno mieszkania, ślub, choroba, utrata pracy. Jeśli fundusze inwestycyjne to Twoja jedyna rezerwa i naprawdę potrzebujesz gotówki — to jest uzasadniony powód. Właśnie dlatego poduszka finansowa (3–6 miesięcy wydatków w gotówce) powinna być oddzielna od portfela ETF.</p>
+            </div>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 border border-white/50 dark:border-slate-800/50 flex items-start gap-4 shadow-sm">
+            <span class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center shrink-0 mt-0.5">
+              <span aria-hidden="true" class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-[18px]">check_circle</span>
+            </span>
+            <div>
+              <p class="font-bold text-slate-900 dark:text-white mb-1">Rebalancing portfela — nie panika</p>
+              <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Jeśli Twoja strategia zakłada np. 70% ETF / 30% obligacje, a korekta zmieniła proporcje — rebalancing (sprzedaż części ETF, zakup obligacji) ma sens. To decyzja strategiczna, nie emocjonalna.</p>
+            </div>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 border border-white/50 dark:border-slate-800/50 flex items-start gap-4 shadow-sm">
+            <span class="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center shrink-0 mt-0.5">
+              <span aria-hidden="true" class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-[18px]">check_circle</span>
+            </span>
+            <div>
+              <p class="font-bold text-slate-900 dark:text-white mb-1">Zbliżający się cel inwestycyjny</p>
+              <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Jeśli za 1–2 lata potrzebujesz pieniędzy na konkretny cel (emerytura, edukacja dzieci), stopniowe przesuwanie do bezpieczniejszych aktywów jest zasadne — niezależnie od koniunktury. To nie jest "sprzedaż ze strachu", to zarządzanie ryzykiem.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-5 bg-rose-50 dark:bg-rose-950/30 border-l-4 border-rose-500 mb-8">
+          <p class="text-xs font-black uppercase tracking-wider text-rose-700 dark:text-rose-400 mb-2">❌ Nieuzasadnione powody sprzedaży</p>
+          <ul class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed space-y-1">
+            <li>• "Sprzedam i odkupię taniej" — nikt nie zna dna</li>
+            <li>• "Media piszą, że będzie gorzej" — media zawsze straszą</li>
+            <li>• "Tracę pieniądze" — papierowa strata staje się realna dopiero przy sprzedaży</li>
+            <li>• "To nie wróci" — historycznie zawsze wracało</li>
+          </ul>
+        </div>
+
+        <!-- SECTION 6 -->
+        <h2 id="ike-tarcza" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-200 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">6</span>
+          IKE jako tarcza psychologiczna
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-base md:text-lg">IKE nie chroni portfela przed spadkami wartości ETF — korekta dotyka Cię tak samo. Ale daje coś równie cennego: <strong class="text-slate-900 dark:text-white">psychologiczną barierę przed paniczną sprzedażą</strong>.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          <div class="glass-effect rounded-2xl p-5 border-2 border-blue-200 dark:border-blue-900 shadow-sm">
+            <p class="text-xs font-black uppercase tracking-wider text-primary mb-3" style="color:#0d7ff2;">Dlaczego IKE pomaga w czasie korekty</p>
+            <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-2 leading-relaxed">
+              <li>✓ Wiesz, że inwestujesz na lata — mentalnie ułatwiasz sobie wytrzymanie</li>
+              <li>✓ Brak podatku Belki zachęca do długiego trzymania (po co realizować stratę?)</li>
+              <li>✓ Limit 28 260 zł/rok (2026) — masz powód do regularnych wpłat</li>
+              <li>✓ Zero presji by "coś zrobić z pieniędzmi" przy każdym rynkowym szumie</li>
+            </ul>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 border-2 border-slate-200 dark:border-slate-700 shadow-sm">
+            <p class="text-xs font-black uppercase tracking-wider text-slate-500 mb-3">Dodatkowy efekt korekty na IKE</p>
+            <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-2 leading-relaxed">
+              <li>→ Kupujesz taniej w ramach DCA na IKE</li>
+              <li>→ Zysk z odbicia jest wolny od podatku Belki</li>
+              <li>→ Efekt procentu składanego działa pełną mocą</li>
+              <li>→ Przy 7% rocznie przez 20 lat: <strong class="text-slate-900 dark:text-white">19 435 zł → 75 271 zł</strong> (bez podatku)</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">Jeśli nie masz jeszcze IKE — korekta to dobry moment żeby otworzyć. Zaczynasz z niższych poziomów, więc efekt odbicia będzie tym większy. Sprawdź <a href="jak-zaczac-inwestowac-w-etf.html" class="text-primary hover:underline font-semibold" style="text-decoration:none;">jak zacząć inwestować w ETF przez IKE →</a></p>
+
+        <!-- FAQ -->
+        <h2 id="faq" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-200 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">7</span>
+          FAQ — najczęstsze pytania
+        </h2>
+
+        <div class="space-y-3 mb-10">
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-base gap-4">
+              Co robić gdy ETF spada?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon text-slate-400 shrink-0">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">W zdecydowanej większości przypadków — <strong>nic</strong>. Dane historyczne pokazują, że inwestorzy którzy nie sprzedali w dołku, zawsze odrobili straty i wychodzili na plus. Zamiast sprzedawać, możesz kontynuować lub nawet zwiększyć regularne wpłaty (DCA) — kupujesz wtedy więcej jednostek za tę samą kwotę.</div>
+          </details>
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-base gap-4">
+              Ile trwa odrabianie strat po krachu giełdowym?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon text-slate-400 shrink-0">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">To zależy od głębokości korekty. Krach 2008 (−50% S&P 500) — odrobienie w ok. 5 lat. Krach COVID marzec 2020 (−35%) — odrobienie w ok. 6 miesięcy. Korekta 2022 (−18%) — odrobienie w ok. 12 miesięcy. Kluczowe: inwestorzy którzy wytrzymali, odrobili wszystko. Ci którzy sprzedali w dołku — zrealizowali straty na zawsze.</div>
+          </details>
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-base gap-4">
+              Czy powinienem sprzedać ETF podczas korekty?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon text-slate-400 shrink-0">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Prawie nigdy. Jedyne uzasadnione powody: zmiana sytuacji życiowej (potrzebujesz pieniędzy na konkretny cel), rebalancing portfela lub zbliżający się cel inwestycyjny. Sprzedaż z powodu strachu to najczęstszy błąd — realizujesz stratę i tracisz odbicie.</div>
+          </details>
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-base gap-4">
+              Co to jest DCA i jak pomaga podczas krachu?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon text-slate-400 shrink-0">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">DCA (Dollar Cost Averaging) to strategia regularnych, stałych wpłat bez względu na poziom rynku. Podczas krachu kupujesz więcej jednostek ETF za tę samą kwotę — Twój średni koszt zakupu spada. Przykład: przy cenie 100 zł kupujesz 5 jednostek za 500 zł. Gdy cena spadnie do 70 zł — kupujesz 7,1 jednostki za te same 500 zł. Odbicie przynosi tym większy zysk.</div>
+          </details>
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-base gap-4">
+              Czy IKE chroni przed stratami podczas korekty?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon text-slate-400 shrink-0">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">IKE nie chroni przed wahaniami wartości ETF — korekta dotyka portfela IKE tak samo jak zwykłego rachunku. Jednak IKE daje ogromną przewagę psychologiczną: brak podatku Belki przy wypłacie oznacza, że inwestujesz z myślą o długim terminie, co naturalnie zniechęca do panicznej sprzedaży. Limit IKE w 2026 roku wynosi 28 260 zł.</div>
+          </details>
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-base gap-4">
+              Jaka korekta ETF jest "normalna"?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon text-slate-400 shrink-0">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Korekty są absolutnie normalną częścią rynku. Historycznie S&P 500 odnotowuje co roku przeciętnie 1 korektę powyżej 10% i co 3–4 lata spadki powyżej 20% (rynek niedźwiedzia). Krótkie korekty 5–10% zdarzają się kilka razy w roku. Kluczowe: każda dotychczasowa korekta była odrobiona z nawiązką.</div>
+          </details>
+        </div>
+
+        <!-- Podsumowanie -->
+        <div class="rounded-2xl p-5 bg-emerald-50 dark:bg-emerald-950/30 border-l-4 border-emerald-500 mb-8">
+          <p class="text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2">✅ Podsumowanie — zapamiętaj</p>
+          <ol class="space-y-1.5 text-sm text-slate-700 dark:text-slate-300 leading-relaxed list-decimal list-inside">
+            <li>Korekty są normalne — zdarzają się kilka razy w roku, zawsze były odrabiane</li>
+            <li>Nie sprzedawaj z powodu strachu — papierowa strata staje się realna dopiero przy sprzedaży</li>
+            <li>Kontynuuj DCA — kupujesz taniej, obniżasz średni koszt zakupu</li>
+            <li>Jedyne uzasadnienie sprzedaży: realna potrzeba gotówki, rebalancing lub zbliżający się cel</li>
+            <li>IKE (limit 28 260 zł/2026) = tarcza psychologiczna + 0% podatku Belki przy wypłacie</li>
+          </ol>
+        </div>
+
+        <!-- CTA kalkulator (inline) -->
+        <div class="rounded-2xl p-6 bg-gradient-to-br from-blue-700 to-primary text-white shadow-xl mb-8">
+          <div class="flex flex-col sm:flex-row items-center gap-4">
+            <div class="flex-1">
+              <p class="text-xs font-black uppercase tracking-wider text-white/70 mb-1">Kalkulator ETF</p>
+              <p class="font-black text-white text-lg leading-tight mb-1">Sprawdź ile możesz zarobić mimo korekty</p>
+              <p class="text-white/75 text-sm">Zasymuluj wzrost portfela przy regularnych wpłatach DCA przez 10–30 lat.</p>
+            </div>
+            <a href="../pages/kalkulator-etf.html"
+              class="shrink-0 bg-white text-primary font-black px-6 py-3 rounded-xl hover:scale-[1.02] transition-all inline-flex items-center gap-2 shadow-lg"
+              style="color:#0d7ff2;text-decoration:none;">
+              Uruchom kalkulator
+              <span aria-hidden="true" class="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Linki powiązane -->
+        <div class="glass-effect rounded-2xl p-5 border border-white/50 dark:border-slate-800/50 mb-8">
+          <p class="text-xs font-black uppercase tracking-wider text-slate-400 mb-4">📚 Czytaj też</p>
+          <div class="space-y-2">
+            <a href="jak-zaczac-inwestowac-w-etf.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors group" style="text-decoration:none;">
+              <span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2;">arrow_right</span>
+              <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">Jak zacząć inwestować w ETF — poradnik dla początkujących</span>
+            </a>
+            <a href="podatek-belki-etf-jak-rozliczyc.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors group" style="text-decoration:none;">
+              <span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2;">arrow_right</span>
+              <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">Podatek Belki od ETF — kompletny przewodnik</span>
+            </a>
+            <a href="ike-czy-ikze-co-wybrac.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors group" style="text-decoration:none;">
+              <span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2;">arrow_right</span>
+              <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">IKE czy IKZE — co wybrać w 2026?</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="glass-effect rounded-2xl p-5 mt-10 border border-slate-200 dark:border-slate-700 flex items-start gap-4">
+          <span aria-hidden="true" class="material-symbols-outlined text-slate-400 shrink-0 mt-0.5">info</span>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
+            <strong class="not-italic">Ważna informacja (Disclaimer):</strong> Materiały na stronie mają charakter wyłącznie edukacyjny i poglądowy. Nie stanowią porady finansowej ani rekomendacji inwestycyjnej. Przeszłe wyniki rynków nie gwarantują przyszłych zwrotów. Inwestowanie wiąże się z ryzykiem utraty części lub całości kapitału. Przed podjęciem decyzji inwestycyjnych skonsultuj się z licencjonowanym doradcą finansowym.
+          </p>
+        </div>
+
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-24 space-y-6">
+
+          <!-- TOC -->
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+              <span aria-hidden="true" class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+              W tym artykule
+            </p>
+            <nav class="sidebar-toc space-y-1">
+              <a href="#co-sie-dzieje" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">Co się właściwie dzieje</a>
+              <a href="#historia-korekt" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">Historia korekt</a>
+              <a href="#3-bledy" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">3 błędy których unikać</a>
+              <a href="#co-zrobic" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">DCA w praktyce</a>
+              <a href="#kiedy-sprzedac" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">Kiedy sprzedać ETF</a>
+              <a href="#ike-tarcza" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">IKE jako tarcza</a>
+              <a href="#faq" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">FAQ</a>
+            </nav>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-gradient-to-br from-blue-700 to-primary rounded-2xl p-5 text-white text-center shadow-xl">
+            <span aria-hidden="true" class="material-symbols-outlined text-3xl mb-2 opacity-80">trending_up</span>
+            <h3 class="font-black text-white text-base mb-1">Kalkulator ETF</h3>
+            <p class="text-white/75 text-xs leading-relaxed mb-4">Zasymuluj wzrost portfela przy regularnych wpłatach — z uwzględnieniem korekt.</p>
+            <a href="../pages/kalkulator-etf.html"
+              class="bg-white rounded-xl px-4 py-2.5 text-xs font-black hover:scale-[1.02] transition-all inline-flex items-center gap-1.5 shadow-lg"
+              style="color:#0d7ff2;text-decoration:none;">
+              Uruchom kalkulator
+              <span aria-hidden="true" class="material-symbols-outlined text-[15px]">arrow_forward</span>
+            </a>
+          </div>
+
+          <!-- Related articles -->
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+              <span aria-hidden="true" class="material-symbols-outlined text-[18px]">auto_stories</span>
+              Czytaj też
+            </p>
+            <div class="space-y-3">
+              <a href="jak-zaczac-inwestowac-w-etf.html" class="flex items-start gap-3 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors group cursor-pointer" style="text-decoration:none;">
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 mt-0.5 bg-blue-100 text-blue-700">ETF</span>
+                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 leading-tight group-hover:text-primary transition-colors">Jak zacząć inwestować w ETF?</span>
+              </a>
+              <a href="podatek-belki-etf-jak-rozliczyc.html" class="flex items-start gap-3 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors group cursor-pointer" style="text-decoration:none;">
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 mt-0.5 bg-blue-100 text-blue-700">Podatki</span>
+                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 leading-tight group-hover:text-primary transition-colors">Podatek Belki od ETF — kompletny przewodnik</span>
+              </a>
+              <a href="ike-czy-ikze-co-wybrac.html" class="flex items-start gap-3 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors group cursor-pointer" style="text-decoration:none;">
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 mt-0.5 bg-blue-100 text-blue-700">IKE/IKZE</span>
+                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 leading-tight group-hover:text-primary transition-colors">IKE czy IKZE — co wybrać w 2026?</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- Mobile bottom bar -->
+  <div class="lg:hidden fixed bottom-0 left-0 right-0 z-50 glass-effect border-t border-slate-200 dark:border-slate-800 px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-24 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+        <div id="reading-progress-mobile" class="h-full bg-primary rounded-full transition-none" style="width:0%;background-color:#0d7ff2;"></div>
+      </div>
+      <span id="reading-pct" class="text-xs font-bold text-slate-400">0%</span>
+    </div>
+    <a href="../pages/kalkulator-etf.html"
+      class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-full flex items-center gap-1.5 hover:opacity-90"
+      style="background-color:#0d7ff2;text-decoration:none;">
+      <span aria-hidden="true" class="material-symbols-outlined text-[14px]">trending_up</span>
+      Kalkulator ETF
+    </a>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <section id="newsletter-section" class="pt-10 pb-20 px-6 bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 transition-colors">
+    <div class="max-w-7xl mx-auto">
+      <div class="bg-white/70 dark:bg-slate-900/80 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 lg:p-16 shadow-2xl border border-white/50 dark:border-slate-800/50 relative overflow-hidden group">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+          <div class="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+              <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span>
+              Newsletter
+            </div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.1]">Bądź na bieżąco z <span class="text-primary">rynkiem ETF</span> i finansami</h2>
+            <p class="text-slate-500 dark:text-slate-400 text-lg leading-relaxed max-w-xl">Nowe artykuły i aktualizacje kalkulatorów prosto na email. Zero spamu.</p>
+          </div>
+          <div class="w-full lg:max-w-md mx-auto lg:ml-auto">
+            <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
+              <div class="ml-form-embedWrapper embedForm">
+                <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                  <form class="ml-block-form" action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe" method="post" target="_blank">
+                    <div class="flex flex-col space-y-4">
+                      <div class="ml-form-fieldRow">
+                        <input aria-label="email" aria-required="true" type="email" class="w-full h-14 px-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-white text-base font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all placeholder:text-slate-400" name="fields[email]" placeholder="Twój adres e-mail">
+                      </div>
+                      <div class="ml-form-embedPermissions">
+                        <label class="flex items-start gap-4 cursor-pointer">
+                          <input type="checkbox" name="gdpr[]" value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl" required class="custom-checkbox mt-1 transition-all">
+                          <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium leading-relaxed">Zgadzam się na otrzymywanie newslettera. Możesz się wypisać w każdej chwili.</span>
+                        </label>
+                      </div>
+                      <div class="ml-form-recaptcha ml-validate-required py-2 flex justify-center">
+                        <div class="g-recaptcha transform scale-[0.85] origin-center" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                      </div>
+                      <input type="hidden" name="ml-submit" value="1">
+                      <input type="hidden" name="anticsrf" value="true">
+                      <button type="submit" class="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-sm md:text-base uppercase tracking-widest hover:scale-[1.01] active:scale-[0.98] transition-all shadow-xl shadow-primary/20" style="background-color:#0d7ff2;">Zapisz się teraz</button>
+                      <div class="pt-6 border-t border-slate-100 dark:border-slate-800 mt-2">
+                        <p class="text-[10px] text-slate-400 dark:text-slate-500 leading-relaxed">Zapisując się, akceptujesz <a href="../pages/regulamin.html" class="underline hover:text-primary">Regulamin</a> i <a href="../pages/polityka-prywatnosci.html" class="underline hover:text-primary">Politykę Prywatności</a>.</p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="ml-form-successBody row-success" style="display:none">
+                  <div class="p-10 rounded-3xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 text-center">
+                    <span aria-hidden="true" class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-4xl mb-4 block">verified</span>
+                    <h4 class="text-emerald-900 dark:text-emerald-300 font-bold text-xl mb-1">Sukces!</h4>
+                    <p class="text-emerald-700 dark:text-emerald-500 text-sm">Sprawdź skrzynkę e-mail, aby potwierdzić zapis.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12 border-b border-slate-200/50 dark:border-slate-800/50 pb-8">
+        <div class="flex items-center gap-2">
+          <div class="bg-primary p-1.5 rounded-lg text-white" style="background-color:#0d7ff2;"><span aria-hidden="true" class="material-symbols-outlined text-base">account_balance_wallet</span></div>
+          <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">ETF<span class="font-normal text-slate-500">kalkulator</span>.pl</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Narzędzia</h5>
+          <ul class="space-y-4">
+            <li><a href="../pages/kalkulator-etf.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Kalkulator ETF</a></li>
+            <li><a href="../pages/kalkulator-obligacji.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Obligacje Skarbowe</a></li>
+            <li><a href="../pages/kalkulator-wolnosci.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Wolność Finansowa</a></li>
+            <li><a href="../pages/porownywarka.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Porównywarka ETF</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Projekt</h5>
+          <ul class="space-y-4">
+            <li><a href="index.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Blog i Wiedza</a></li>
+            <li><a href="../pages/o-projekcie.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">O projekcie</a></li>
+            <li><a href="../pages/regulamin.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Regulamin</a></li>
+            <li><a href="../pages/polityka-prywatnosci.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Polityka prywatności</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Kontakt</h5>
+          <p class="text-sm text-slate-500 mb-6">Masz pytania? Pisz śmiało:</p>
+          <a href="mailto:kontakt@etfkalkulator.pl" class="text-sm font-bold text-slate-900 dark:text-white hover:text-primary transition-colors" style="text-decoration:none;">kontakt@etfkalkulator.pl</a>
+        </div>
+      </div>
+      <div class="mt-20 pt-10 border-t border-slate-200 dark:border-slate-900">
+        <p class="text-[11px] text-slate-400 leading-relaxed mb-8 max-w-4xl">Serwis ETFkalkulator.pl ma charakter wyłącznie edukacyjny i informacyjny. Prezentowane obliczenia nie stanowią rekomendacji inwestycyjnej, porady finansowej ani doradztwa podatkowego.</p>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+          <p>© 2026 ETFkalkulator.pl — Made with ❤️ by Florian</p>
+          <span>Wszelkie prawa zastrzeżone</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/shared.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" defer></script>
+  <script>
+    function ml_webform_success_37996059() {
+      var $ = ml_jQuery || jQuery;
+      $('.ml-subscribe-form-37996059 .row-success').show();
+      $('.ml-subscribe-form-37996059 .row-form').hide();
+    }
+  </script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
+  <script>
+    (function() {
+      const s = localStorage.getItem('etf-tryb');
+      const d = s === 'ciemny' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.classList.toggle('dark', d);
+      document.documentElement.classList.toggle('light', !d);
+    })();
+    function przelaczTryb() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains('dark') || html.classList.contains('dark-mode');
+      if (isDark) {
+        html.classList.remove('dark','dark-mode'); html.classList.add('light');
+        localStorage.setItem('etf-tryb','jasny');
+      } else {
+        html.classList.add('dark'); html.classList.remove('light','light-mode');
+        localStorage.setItem('etf-tryb','ciemny');
+      }
+    }
+
+    const bar = document.getElementById('reading-progress');
+    const article = document.getElementById('main');
+    const mobileBar = document.getElementById('reading-progress-mobile');
+    const pctLabel = document.getElementById('reading-pct');
+
+    function updateProgress() {
+      if (!bar || !article) return;
+      const rect = article.getBoundingClientRect();
+      const total = article.offsetHeight - window.innerHeight;
+      const scrolled = Math.max(0, -rect.top);
+      const pct = Math.min(100, (scrolled / total) * 100);
+      bar.style.width = pct + '%';
+      if (mobileBar) mobileBar.style.width = pct + '%';
+      if (pctLabel) pctLabel.textContent = Math.round(pct) + '%';
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    const headings = document.querySelectorAll('article h2[id]');
+    const tocLinks = document.querySelectorAll('.sidebar-toc a');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          tocLinks.forEach(link => {
+            link.classList.remove('toc-active');
+            if (link.getAttribute('href') === '#' + id) {
+              link.classList.add('toc-active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    headings.forEach(h => observer.observe(h));
+  </script>
+</body>
+</html>

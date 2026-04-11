@@ -1,0 +1,117 @@
+{
+  "IWDA": {
+    "name": "iShares Core MSCI World",
+    "fullName": "iShares Core MSCI World UCITS ETF USD (Acc)",
+    "ter": 0.0020,
+    "type": "Acc",
+    "index": "MSCI World",
+    "currency": "USD",
+    "start": "2009-10",
+    "returns": {
+      "2009-10": 0.0000,
+      "2009-11": 0.0401,
+      "2009-12": 0.0183,
+      "2010-01": -0.0382,
+      "2010-02": 0.0285,
+      "2010-03": 0.0584
+    }
+  },
+  "VWCE": {
+    "name": "Vanguard FTSE All-World",
+    "fullName": "Vanguard FTSE All-World UCITS ETF USD Accumulating",
+    "ter": 0.0019,
+    "type": "Acc",
+    "index": "FTSE All-World",
+    "currency": "USD",
+    "start": "2019-07",
+    "returns": {
+      "2019-07": 0.0000,
+      "2019-08": -0.0210,
+      "2019-09": 0.0262
+    }
+  },
+  "CSPX": {
+    "name": "iShares Core S&P 500",
+    "fullName": "iShares Core S&P 500 UCITS ETF USD (Acc)",
+    "ter": 0.0007,
+    "type": "Acc",
+    "index": "S&P 500",
+    "currency": "USD",
+    "start": "2010-05",
+    "returns": {
+      "2010-05": -0.0797,
+      "2010-06": -0.0534,
+      "2010-07": 0.0688
+    }
+  },
+  "EQQQ": {
+    "name": "Invesco Nasdaq-100",
+    "fullName": "Invesco NASDAQ-100 UCITS ETF Acc",
+    "ter": 0.0030,
+    "type": "Acc",
+    "index": "Nasdaq-100",
+    "currency": "USD",
+    "start": "2010-01",
+    "returns": {
+      "2010-01": -0.0059,
+      "2010-02": 0.0409,
+      "2010-03": 0.0726
+    }
+  },
+  "EIMI": {
+    "name": "iShares Core MSCI EM IMI",
+    "fullName": "iShares Core MSCI EM IMI UCITS ETF USD (Acc)",
+    "ter": 0.0018,
+    "type": "Acc",
+    "index": "MSCI Emerging Markets IMI",
+    "currency": "USD",
+    "start": "2012-05",
+    "returns": {
+      "2012-05": -0.0119,
+      "2012-06": 0.0373,
+      "2012-07": 0.0126
+    }
+  },
+  "FWRA": {
+    "name": "Invesco FTSE All-World",
+    "fullName": "Invesco FTSE All-World UCITS ETF Accumulating",
+    "ter": 0.0015,
+    "type": "Acc",
+    "index": "FTSE All-World",
+    "currency": "USD",
+    "start": "2022-01",
+    "returns": {
+      "2022-01": -0.0548,
+      "2022-02": -0.0272,
+      "2022-03": 0.0250
+    }
+  },
+  "VUSA": {
+    "name": "Vanguard S&P 500",
+    "fullName": "Vanguard S&P 500 UCITS ETF (USD) Distributing",
+    "ter": 0.0007,
+    "type": "Dist",
+    "index": "S&P 500",
+    "currency": "USD",
+    "start": "2012-05",
+    "returns": {
+      "2012-05": -0.0048,
+      "2012-06": 0.0394,
+      "2012-07": 0.0131
+    }
+  },
+  "AGGH": {
+    "name": "iShares Global Aggregate Bond",
+    "fullName": "iShares Core Global Aggregate Bond UCITS ETF USD Hedged (Acc)",
+    "ter": 0.0010,
+    "type": "Acc",
+    "index": "Bloomberg Global Aggregate",
+    "currency": "USD",
+    "start": "2017-11",
+    "returns": {
+      "2017-11": 0.0007,
+      "2017-12": 0.0042,
+      "2018-01": 0.0005
+    }
+  }
+}

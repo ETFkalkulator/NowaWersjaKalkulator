@@ -1,0 +1,737 @@
+﻿<!doctype html>
+<html lang="pl" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#f8f7f2" id="meta-theme-color" />
+  <script>
+    (function () {
+      const s = localStorage.getItem("etf-tryb");
+      const d =
+        s === "ciemny" ||
+        (!s && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.classList.toggle("dark", d);
+      document.documentElement.classList.toggle("light", !d);
+    })();
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- SEO: Update these for each article -->
+  <title>ARTICLE_TITLE | ETFkalkulator.pl</title>
+  <link rel="canonical" href="https://etfkalkulator.pl/blog/ARTICLE_SLUG" />
+  <meta name="description" content="ARTICLE_DESCRIPTION" />
+  <meta name="author" content="ETFkalkulator.pl" />
+  <meta property="og:title" content="ARTICLE_TITLE" />
+  <meta property="og:description" content="ARTICLE_DESCRIPTION" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://etfkalkulator.pl/blog/ARTICLE_SLUG" />
+  <meta property="og:site_name" content="ETFkalkulator.pl" />
+  <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ARTICLE_TITLE" />
+  <meta name="twitter:description" content="ARTICLE_DESCRIPTION" />
+  <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png" />
+
+  <!-- Schema.org Article -->
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "ARTICLE_TITLE",
+        "description": "ARTICLE_DESCRIPTION",
+        "author": { "@type": "Organization", "name": "ETFkalkulator.pl" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "ETFkalkulator.pl",
+          "url": "https://etfkalkulator.pl"
+        },
+        "datePublished": "YYYY-MM-DD",
+        "dateModified": "YYYY-MM-DD",
+        "url": "https://etfkalkulator.pl/blog/ARTICLE_SLUG",
+        "inLanguage": "pl"
+      }
+    </script>
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Strona gĹ‚Ăłwna",
+            "item": "https://etfkalkulator.pl/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://etfkalkulator.pl/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "BREADCRUMB_TITLE",
+            "item": "https://etfkalkulator.pl/blog/ARTICLE_SLUG"
+          }
+        ]
+      }
+    </script>
+
+  <link rel="icon" href="../images/favicon.png" />
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("consent", "default", { analytics_storage: "denied" });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
+  <script>
+    gtag("config", "G-GZECMECQ15", { send_page_view: false });
+  </script>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap"
+    rel="stylesheet" />
+  <style>
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .dark .glass-effect {
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+    }
+
+    .material-symbols-outlined {
+      font-family: "Material Symbols Outlined";
+      font-size: 24px;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    article p { line-height: 1.8; }
+    article h2 { scroll-margin-top: 5rem; }
+    article h3 { scroll-margin-top: 5rem; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    article h2 {
+      animation: fadeInUp 0.4s ease both;
+    }
+
+    details summary { user-select: none; }
+    details[open] summary .expand-icon {
+      transform: rotate(180deg);
+    }
+    .expand-icon {
+      transition: transform 0.25s ease;
+    }
+
+    .sidebar-toc a.toc-active {
+      color: #0d7ff2 !important;
+      font-weight: 600;
+      background: rgba(13, 127, 242, 0.1);
+    }
+  </style>
+  <link rel="preload" as="style" href="../css/mailerlite.css" />
+  <link href="../css/mailerlite.css" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="../css/mailerlite.css" />
+  </noscript>
+  <link rel="stylesheet" href="../css/tailwind.css">
+</head>
+
+<body>
+  <a href="#main"
+    class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-primary">PrzejdĹş
+    do gĹ‚Ăłwnej treĹ›ci</a>
+  <div id="reading-progress"
+    class="fixed top-0 left-0 h-[3px] bg-primary z-[200] transition-none rounded-r-full"
+    style="width:0%;background-color:#0d7ff2;">
+  </div>
+
+
+  <!-- NAV -->
+  <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-stitch-border/50"
+    style="font-family: &quot;Inter&quot;, sans-serif">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center shrink-0">
+        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity"
+          style="text-decoration: none">
+          <div class="bg-primary p-1.5 rounded-2xl text-white flex items-center justify-center"
+            style="background-color: #0d7ff2">
+            <span aria-hidden="true" class="material-symbols-outlined text-xl">account_balance_wallet</span>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-stitch-text">ETFkalkulator.pl</span>
+        </a>
+      </div>
+      <div class="hidden lg:flex items-center gap-6 xl:gap-8 mx-6">
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors"
+          href="../pages/kalkulator-etf.html" style="text-decoration: none">Kalkulator ETF</a>
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors"
+          href="../pages/kalkulator-obligacji.html" style="text-decoration: none">Kalkulator Obligacji</a>
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors"
+          href="../pages/kalkulator-wolnosci.html" style="text-decoration: none">Kalkulator WolnoĹ›ci</a>
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors"
+          href="../pages/porownywarka.html" style="text-decoration: none">PorĂłwnywarka</a>
+        <a class="text-sm font-extrabold text-primary transition-colors hover:opacity-80" href="index.html"
+          style="text-decoration: none; color: #0d7ff2">Blog</a>
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors"
+          href="../pages/o-projekcie.html" style="text-decoration: none">O projekcie</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onkeydown="if (event.key === 'Enter') this.click();" onclick="przelaczTryb()"
+          aria-label="PrzeĹ‚Ä…cz tryb"
+          class="w-9 h-9 rounded-full border border-stitch-border bg-stitch-surface flex items-center justify-center hover:bg-stitch-bg transition-colors">
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
+        </button>
+        <a href="../index.html#newsletter"
+          class="bg-primary text-white px-4 h-9 rounded-full flex items-center justify-center text-[13px] font-bold hover:opacity-90 transition-opacity no-underline"
+          style="background-color: #0d7ff2">Zapisz siÄ™</a>
+      </div>
+    </div>
+    <div
+      class="lg:hidden h-11 border-t border-stitch-border/30 flex items-center overflow-x-auto overflow-y-hidden no-scrollbar px-4 gap-6 bg-stitch-surface/10"
+      style="-webkit-overflow-scrolling: touch">
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap"
+        href="../pages/kalkulator-etf.html" style="text-decoration: none">Kalkulator ETF</a>
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap"
+        href="../pages/kalkulator-obligacji.html" style="text-decoration: none">Obligacje</a>
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap"
+        href="../pages/kalkulator-wolnosci.html" style="text-decoration: none">WolnoĹ›Ä‡ finansowa</a>
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap"
+        href="../pages/porownywarka.html" style="text-decoration: none">PorĂłwnywarka</a>
+      <a class="text-[12px] font-extrabold text-primary hover:opacity-80 whitespace-nowrap" href="index.html"
+        style="text-decoration: none; color: #0d7ff2">Blog</a>
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap"
+        href="../pages/o-projekcie.html" style="text-decoration: none">O projekcie</a>
+    </div>
+  </nav>
+
+  <!-- ARTICLE HERO: change H1, lead text, meta (date, read time) -->
+  <section
+    class="relative bg-gradient-to-br from-blue-800 via-blue-700 to-primary pt-32 pb-16 md:pb-20 px-4 sm:px-6 overflow-hidden"
+    style="
+        background: linear-gradient(
+          135deg,
+          #1e40af 0%,
+          #1d4ed8 40%,
+          #0d7ff2 100%
+        );
+      ">
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute -top-40 -right-40 w-96 h-96 bg-stitch-surface/5 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-20 -left-20 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative z-10 max-w-3xl mx-auto">
+      <!-- BREADCRUMB: change last item to article title -->
+      <nav class="mb-6" aria-label="breadcrumb">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li>
+            <a href="../index.html" class="hover:text-white transition-colors"
+              style="text-decoration: none">ETFkalkulator.pl</a>
+          </li>
+          <li>
+            <span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span>
+          </li>
+          <li>
+            <a href="index.html" class="hover:text-white transition-colors" style="text-decoration: none">Blog</a>
+          </li>
+          <li>
+            <span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span>
+          </li>
+          <li class="text-white font-semibold">BREADCRUMB_TITLE</li>
+        </ol>
+      </nav>
+      <h1 class="text-2xl md:text-4xl font-black text-white leading-tight mb-4">
+        ARTICLE_H1_TITLE
+      </h1>
+      <p class="text-white/85 text-base md:text-lg leading-relaxed mb-4">
+        ARTICLE_LEAD_TEXT
+      </p>
+      <div class="flex flex-wrap gap-4 mt-4 text-white/60 text-sm">
+        <span class="flex items-center gap-1.5"><span
+            class="material-symbols-outlined text-[16px]">calendar_today</span>
+          MONTH YEAR</span>
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">schedule</span>
+          X minut czytania</span>
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">person</span>
+          ETFkalkulator.pl</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="bg-white dark:bg-slate-950 transition-colors">
+    <!--
+      CHECKLIST FOR NEW ARTICLE:
+      □ Update title, description, canonical in <head>
+      □ Update Schema.org headline, datePublished, url
+      □ Update BreadcrumbList last item
+      □ Update hero H1, lead paragraph, date, read time
+      □ Update TOC <ol> items + href anchors
+      □ Write article sections with h2[id] anchors
+      □ Update sidebar CARD 2 CTA link to relevant calculator
+      □ Update sidebar CARD 3 related article links (3 articles)
+      □ Newsletter already included — do not remove
+      □ Update blog/index.html — move from Wkrótce to published
+    -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 grid grid-cols-1 lg:grid-cols-[1fr_300px] xl:grid-cols-[1fr_320px] gap-10 xl:gap-16 items-start">
+      <article id="main" class="min-w-0 pt-8 pb-16 lg:pb-20">
+    <!-- TOC: replace with article-specific anchors -->
+    <div class="glass-effect rounded-[1.5rem] p-6 mb-10 border-l-4 border-primary bg-primary/5 dark:bg-primary/10">
+      <p class="text-xs font-black uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
+        <span aria-hidden="true" class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+        Spis treĹ›ci
+      </p>
+      <ol class="space-y-2 text-sm list-decimal list-inside">
+        <li>
+          <a href="#section-1" class="text-primary hover:underline font-medium" style="text-decoration: none">Section 1
+            Title</a>
+        </li>
+        <li>
+          <a href="#section-2" class="text-primary hover:underline font-medium" style="text-decoration: none">Section 2
+            Title</a>
+        </li>
+        <!-- Add more sections as needed -->
+      </ol>
+    </div>
+
+    <!-- SECTION 1: id="section-1" -->
+    <h2 id="section-1"
+      class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+      <span
+        class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0"
+        style="color: #0d7ff2">1</span>
+      Section 1 Title
+    </h2>
+    <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+      Section content goes here...
+    </p>
+
+    <!-- Add sections as needed -->
+
+    <!--
+   AVAILABLE COMPONENTS:
+
+   CALLOUT-KEY (blue):
+   <div class="rounded-2xl p-5 bg-primary/5 dark:bg-primary/10 border-l-4 border-primary mb-6">
+    <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-primary mb-2"><span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2">key</span> Title</p>
+    <p class="text-sm text-stitch-muted leading-relaxed">Content</p>
+   </div>
+
+   CALLOUT-WARNING (amber):
+   <div class="rounded-2xl p-5 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 mb-6">
+    <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2"><span aria-hidden="true" class="material-symbols-outlined text-amber-600 text-[18px] shrink-0">warning</span> Title</p>
+    <p class="text-sm text-stitch-muted leading-relaxed">Content</p>
+   </div>
+
+   CALLOUT-EXAMPLE (emerald):
+   <div class="rounded-2xl p-5 bg-emerald-50 dark:bg-emerald-950/30 border-l-4 border-emerald-500 mb-6">
+    <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2"><span aria-hidden="true" class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span> Title</p>
+    <p class="text-sm text-stitch-muted leading-relaxed">Content</p>
+   </div>
+
+   CALCULATION BOX:
+   <div class="glass-effect relative overflow-hidden rounded-2xl p-6 mb-6 shadow-stitch-soft border border-white/50 dark:border-stitch-border/50">
+    <div class="absolute top-0 left-0 right-0 h-1 bg-primary rounded-t-2xl"></div>
+    <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2"><span aria-hidden="true" class="material-symbols-outlined text-[18px]">calculate</span> Title</p>
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border"><span class="text-sm text-stitch-muted">Label</span><span class="text-sm font-bold text-stitch-text">Value</span></div>
+    <div class="bg-primary/5 dark:bg-primary/10 rounded-xl px-4 py-3 mt-2 border border-primary/20 flex flex-col sm:flex-row sm:justify-between sm:items-center"><span class="text-sm font-semibold">Summary</span><span class="text-base font-black text-primary" style="color:#0d7ff2;">Result</span></div>
+   </div>
+
+   KEY NUMBERS (3 cards):
+   <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+    <div class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft">
+     <div class="text-3xl md:text-4xl font-black text-primary mb-1" style="color:#0d7ff2;">Value</div>
+     <div class="text-xs text-stitch-muted leading-tight">Label</div>
+     <div class="w-8 h-0.5 bg-primary/30 mx-auto mt-3 rounded-full" style="background-color:rgba(13,127,242,0.3)"></div>
+    </div>
+   </div>
+
+   CTA BOX:
+   <div class="bg-gradient-to-br from-blue-700 to-primary rounded-[1.5rem] p-6 md:p-8 text-white text-center my-10 shadow-xl" style="background:linear-gradient(135deg,#1d4ed8,#0d7ff2);">
+    <h3 class="text-xl font-black text-white mb-3">CTA Title</h3>
+    <p class="text-white/80 mb-5 text-sm leading-relaxed">Description</p>
+    <a href="../pages/kalkulator-etf.html" class="bg-stitch-surface text-primary font-black px-6 py-3 rounded-xl hover:scale-[1.02] transition-all inline-flex items-center gap-2 shadow-lg" style="color:#0d7ff2; text-decoration:none;">Button Text <span aria-hidden="true" class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
+   </div>
+  -->
+
+    <!-- DISCLAIMER: keep as-is -->
+    <div class="glass-effect rounded-2xl p-5 mt-10 border border-stitch-border dark:border-slate-700">
+      <div class="flex items-start gap-4">
+        <span aria-hidden="true" class="material-symbols-outlined text-slate-400 shrink-0 mt-0.5 text-[20px]">info</span>
+        <div>
+          <p class="text-xs font-bold text-stitch-muted mb-1">
+            WaĹĽna informacja (Disclaimer)
+          </p>
+          <p class="text-xs text-stitch-muted leading-relaxed italic">
+            MateriaĹ‚y na stronie majÄ… charakter wyĹ‚Ä…cznie edukacyjny i
+            poglÄ…dowy. Nie stanowiÄ… rekomendacji inwestycyjnej ani porady
+            podatkowej w rozumieniu przepisĂłw prawa. Inwestowanie na
+            gieĹ‚dzie zawsze wiÄ…ĹĽe siÄ™ z ryzykiem utraty czÄ™Ĺ›ci lub
+            caĹ‚oĹ›ci kapitaĹ‚u. NarzÄ™dzie moĹĽe zawieraÄ‡ uproszczenia â€”
+            zawsze weryfikuj wyniki z prospektem emisyjnym funduszu.
+          </p>
+        </div>
+      </div>
+    </div>
+  </article>
+      <aside class="hidden lg:block">
+        <div class="sticky top-24 space-y-6">
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+              <span aria-hidden="true" class="material-symbols-outlined text-[16px]">format_list_bulleted</span>
+              W tym artykule
+            </p>
+            <div class="sidebar-toc space-y-1">
+              <!-- SIDEBAR TOC: links auto-generated from H2 ids in article -->
+            </div>
+          </div>
+          <div class="bg-gradient-to-br from-blue-700 to-primary rounded-2xl p-5 text-white text-center"
+            style="background:linear-gradient(135deg,#1d4ed8,#0d7ff2);">
+            <span aria-hidden="true" class="material-symbols-outlined text-3xl mb-2 opacity-80">analytics</span>
+            <h3 class="font-black text-white text-base mb-1">Policz to sam</h3>
+            <p class="text-white/75 text-xs leading-relaxed mb-4">Podłącz link do właściwego kalkulatora dla tego artykułu.</p>
+            <a href="../pages/kalkulator-etf.html"
+              class="bg-white rounded-xl px-4 py-2.5 text-xs font-black hover:scale-[1.02] transition-all inline-flex items-center gap-1.5 shadow-lg"
+              style="color:#0d7ff2;text-decoration:none;">
+              Otwórz kalkulator
+              <span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </a>
+          </div>
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+              <span aria-hidden="true" class="material-symbols-outlined text-[16px]">auto_stories</span>
+              Czytaj też
+            </p>
+            <div class="space-y-3">
+              <!-- RELATED: update 3 article links manually per article -->
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <div class="lg:hidden fixed bottom-0 left-0 right-0 z-50 glass-effect border-t border-slate-200 dark:border-slate-800 px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-24 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+        <div id="reading-progress-mobile"
+          class="h-full bg-primary rounded-full transition-none"
+          style="width:0%;background-color:#0d7ff2;"></div>
+      </div>
+      <span id="reading-pct" class="text-xs font-bold text-slate-400">0%</span>
+    </div>
+    <a href="../pages/kalkulator-etf.html"
+      class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-full flex items-center gap-1.5 hover:opacity-90"
+      style="background-color:#0d7ff2;text-decoration:none;">
+      <span aria-hidden="true" class="material-symbols-outlined text-[14px]">calculate</span>
+      Kalkulator
+    </a>
+  </div>
+
+  <!-- NEWSLETTER SECTION (Wide Banner) -->
+  <section id="newsletter-section"
+    class="pt-10 pb-20 px-6 bg-slate-100 border-t border-stitch-border dark:border-slate-900 transition-colors">
+    <div class="max-w-7xl mx-auto">
+      <div
+        class="bg-stitch-surface/70 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 lg:p-16 shadow-xl border border-white/50 relative overflow-hidden group">
+        <div
+          class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700">
+        </div>
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center lg:justify-items-stretch relative z-10">
+          <div class="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              Newsletter
+            </div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-stitch-text tracking-tight leading-[1.1]">
+              BÄ…dĹş na bieĹĽÄ…co z
+              <span class="text-primary">rynkiem ETF</span>
+              <span class="hidden md:inline">i finansami</span>
+            </h2>
+            <p class="text-stitch-muted text-lg leading-relaxed max-w-xl">
+              DoĹ‚Ä…cz do spoĹ‚ecznoĹ›ci Ĺ›wiadomych inwestorĂłw. Otrzymuj
+              analizy, nowe kalkulatory i rzetelnÄ… wiedzÄ™ prosto na swojÄ…
+              skrzynkÄ™. Zero spamu.
+            </p>
+          </div>
+          <div class="w-full lg:max-w-md mx-auto lg:ml-auto">
+            <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
+              <div class="ml-form-embedWrapper embedForm">
+                <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                  <form class="ml-block-form"
+                    action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe"
+                    method="post" target="_blank">
+                    <div class="flex flex-col space-y-4">
+                      <div class="ml-form-fieldRow">
+                        <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                          <input aria-label="email" aria-required="true" type="email"
+                            class="w-full h-14 px-6 rounded-2xl border border-stitch-border bg-stitch-surface text-stitch-text text-base font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all placeholder:text-slate-400"
+                            name="fields[email]" placeholder="TwĂłj adres e-mail" />
+                        </div>
+                      </div>
+                      <div class="ml-form-embedPermissions">
+                        <label class="flex items-start gap-4 cursor-pointer group">
+                          <input aria-label="WprowadĹş wartoĹ›Ä‡" type="checkbox" name="gdpr[]"
+                            value="Zgadzam siÄ™ na otrzymywanie newslettera ETFkalkulator.pl" required
+                            class="custom-checkbox mt-1 transition-all" />
+                          <span
+                            class="text-[11px] text-stitch-muted font-medium leading-relaxed group-hover:text-stitch-muted dark:group-hover:text-slate-300 transition-colors">Zgadzam
+                            siÄ™ na otrzymywanie newslettera. MoĹĽesz
+                            siÄ™ wypisaÄ‡ w kaĹĽdej chwili.</span>
+                        </label>
+                      </div>
+                      <div class="ml-form-recaptcha ml-validate-required py-2 flex justify-center">
+                        <div class="g-recaptcha transform scale-[0.85] origin-center"
+                          data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                      </div>
+                      <input type="hidden" name="ml-submit" value="1" />
+                      <input type="hidden" name="anticsrf" value="true" />
+                      <div class="ml-form-embedSubmit">
+                        <button type="submit"
+                          class="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-sm md:text-base uppercase tracking-widest hover:scale-[1.01] active:scale-[0.98] transition-all shadow-xl shadow-primary/20"
+                          style="background-color: #0d7ff2">
+                          Zapisz siÄ™ teraz
+                        </button>
+                      </div>
+                      <div class="pt-6 border-t border-stitch-border mt-2">
+                        <p class="text-[10px] text-slate-400 dark:text-stitch-muted leading-relaxed mb-2">
+                          ZapisujÄ…c siÄ™, akceptujesz
+                          <a href="../pages/regulamin.html" class="underline hover:text-primary">Regulamin</a>
+                          i
+                          <a href="../pages/polityka-prywatnosci.html" class="underline hover:text-primary">PolitykÄ™
+                            PrywatnoĹ›ci</a>. Twoje dane sÄ… bezpieczne i sĹ‚uĹĽÄ… wyĹ‚Ä…cznie
+                          do wysyĹ‚ki newslettera.
+                        </p>
+                        <p class="text-[10px] text-slate-400 font-medium italic">
+                          Prezentowane treĹ›ci nie stanowiÄ… rekomendacji
+                          inwestycyjnej.
+                        </p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="ml-form-successBody row-success" style="display: none">
+                  <div
+                    class="p-10 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 text-center">
+                    <div
+                      class="w-16 h-16 bg-emerald-100 dark:bg-emerald-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span
+                        class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-3xl">verified</span>
+                    </div>
+                    <h4 class="text-emerald-900 dark:text-emerald-300 font-bold text-xl mb-1">
+                      Sukces!
+                    </h4>
+                    <p class="text-emerald-700 dark:text-emerald-500 text-sm">
+                      SprawdĹş swojÄ… skrzynkÄ™ e-mail, aby potwierdziÄ‡
+                      zapis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-stitch-bg border-t border-stitch-border dark:border-slate-900 py-20 px-6"
+    style="font-family: &quot;Inter&quot;, sans-serif">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12 border-b border-stitch-border/50 pb-8">
+        <div class="flex items-center gap-2">
+          <div class="bg-primary p-1.5 rounded-2xl text-white flex items-center justify-center"
+            style="background-color: #0d7ff2">
+            <span aria-hidden="true" class="material-symbols-outlined text-base">account_balance_wallet</span>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-stitch-text">ETF<span
+              class="font-normal text-stitch-muted">kalkulator</span>.pl</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20 items-start">
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">
+            NarzÄ™dzia
+          </h5>
+          <ul class="space-y-4">
+            <li>
+              <a href="../pages/kalkulator-etf.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Kalkulator ETF</a>
+            </li>
+            <li>
+              <a href="../pages/kalkulator-obligacji.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Obligacje Skarbowe</a>
+            </li>
+            <li>
+              <a href="../pages/kalkulator-wolnosci.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">WolnoĹ›Ä‡ Finansowa</a>
+            </li>
+            <li>
+              <a href="../pages/porownywarka.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">PorĂłwnywarka ETF</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">
+            Projekt
+          </h5>
+          <ul class="space-y-4">
+            <li>
+              <a href="index.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Blog i Wiedza</a>
+            </li>
+            <li>
+              <a href="../pages/o-projekcie.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">O projekcie</a>
+            </li>
+            <li>
+              <a href="../pages/regulamin.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Regulamin</a>
+            </li>
+            <li>
+              <a href="../pages/polityka-prywatnosci.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Polityka prywatnoĹ›ci</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">
+            Kontakt
+          </h5>
+          <p class="text-sm text-stitch-muted mb-6 leading-relaxed">
+            Masz pytania? Pisz Ĺ›miaĹ‚o:
+          </p>
+          <a href="mailto:kontakt@etfkalkulator.pl"
+            class="text-sm font-bold text-stitch-text hover:text-primary transition-colors block mb-8"
+            style="text-decoration: none">kontakt@etfkalkulator.pl</a>
+          <div class="flex gap-4">
+            <a href="#"
+              class="w-10 h-10 rounded-2xl bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-xl"><span
+                class="material-symbols-outlined text-lg">share</span></a>
+            <a href="#"
+              class="w-10 h-10 rounded-2xl bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-xl"><span
+                class="material-symbols-outlined text-lg">alternate_email</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-20 pt-10 border-t border-stitch-border dark:border-slate-900">
+        <p class="text-[11px] text-slate-400 dark:text-stitch-muted leading-relaxed mb-8 max-w-4xl">
+          Serwis ETFkalkulator.pl ma charakter wyĹ‚Ä…cznie edukacyjny i
+          informacyjny. Prezentowane obliczenia nie stanowiÄ… rekomendacji
+          inwestycyjnej, porady finansowej ani doradztwa podatkowego w
+          rozumieniu obowiÄ…zujÄ…cych przepisĂłw prawa. Przed podjÄ™ciem
+          decyzji inwestycyjnej skonsultuj siÄ™ z licencjonowanym doradcÄ…
+          finansowym. Inwestowanie wiÄ…ĹĽe siÄ™ z ryzykiem utraty czÄ™Ĺ›ci lub
+          caĹ‚oĹ›ci zainwestowanego kapitaĹ‚u.
+        </p>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+          <p>Â© 2026 ETFkalkulator.pl â€” Made with âť¤ď¸Ź by Florian</p>
+          <div class="flex gap-6">
+            <span>Wszelkie prawa zastrzeĹĽone</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/shared.js"></script>
+  <script>
+    const bar = document.getElementById('reading-progress');
+    const article = document.getElementById('main');
+    const mobileBar = document.getElementById('reading-progress-mobile');
+    const pctLabel = document.getElementById('reading-pct');
+    function updateProgress() {
+      if (!bar || !article) return;
+      const rect = article.getBoundingClientRect();
+      const total = article.offsetHeight - window.innerHeight;
+      const scrolled = Math.max(0, -rect.top);
+      const pct = total > 0 ? Math.min(100, (scrolled / total) * 100) : 0;
+      bar.style.width = pct + '%';
+      if (mobileBar) mobileBar.style.width = pct + '%';
+      if (pctLabel) pctLabel.textContent = Math.round(pct) + '%';
+    }
+    const headings = document.querySelectorAll('article h2[id]');
+    const tocLinks = document.querySelectorAll('.sidebar-toc a');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(a => a.classList.remove('toc-active'));
+          const active = document.querySelector('.sidebar-toc a[href="#' + entry.target.id + '"]');
+          if (active) active.classList.add('toc-active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    headings.forEach(h => observer.observe(h));
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  </script>
+  <script defer>
+    function przelaczTryb() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains("dark");
+
+      if (isDark) {
+        html.classList.remove("dark");
+        html.classList.add("light");
+        localStorage.setItem("etf-tryb", "jasny");
+      } else {
+        html.classList.add("dark");
+        html.classList.remove("light");
+        localStorage.setItem("etf-tryb", "ciemny");
+      }
+
+      const d = html.classList.contains("dark");
+      const m = document.getElementById("meta-theme-color");
+      if (m) m.content = d ? "#0f172a" : "#f8fafc";
+    }
+  </script>
+  <script src="https://www.google.com/recaptcha/api.js" defer></script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
+    type="text/javascript" defer></script>
+  <!-- Cookie Consent -->
+  <script src="../js/cookie-consent.js" defer></script>
+</body>
+
+</html>

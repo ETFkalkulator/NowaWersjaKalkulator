@@ -1,3 +1,4 @@
 ﻿User-agent: *
 Allow: /
+Disallow: /blog/_article-template.html
 Sitemap: https://etfkalkulator.pl/sitemap.xml

@@ -1,0 +1,59 @@
+/* ============================================================
+   reset.css — ETFkalkulator.pl
+   Zeruje domyślne style przeglądarek.
+   Nie edytuj tego pliku — jest uniwersalny dla każdego projektu.
+   ============================================================ */
+
+/* Wszystkie elementy: box-sizing border-box oznacza że padding
+   nie powiększa elementu — jest wliczony w jego szerokość */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Płynne przewijanie strony */
+html {
+  scroll-behavior: smooth;
+  /* Zapobiega powiększaniu tekstu na iOS gdy obrócimy telefon */
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Domyślna wysokość — strona zajmuje min. cały ekran */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Obrazy i video nie "wylewają się" poza swój kontener */
+img, video, svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Przyciski i inputy dziedziczą font po rodzicu
+   (domyślnie przeglądarki ustawiają im własny font) */
+button, input, select, textarea {
+  font: inherit;
+}
+
+/* Listy bez punktorów — dodajemy je ręcznie gdy potrzebujemy */
+ul, ol {
+  list-style: none;
+}
+
+/* Linki bez podkreślenia — stylujemy je ręcznie */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Tabele — usuwa domyślne odstępy między komórkami */
+table {
+  border-collapse: collapse;
+}
+
+/* Nagłówki nie są bold domyślnie — stylujemy ręcznie */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: inherit;
+}

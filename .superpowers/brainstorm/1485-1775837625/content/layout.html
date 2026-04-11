@@ -1,0 +1,71 @@
+<h2>Jak ma być zorganizowany kalkulator?</h2>
+<p class="subtitle">4 funkcje w jednym miejscu — jak je pogrupować?</p>
+
+<div class="options">
+
+  <div class="option" data-choice="zakładki" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>4 zakładki — każda funkcja osobno</h3>
+      <div class="mockup" style="margin-top:0.75rem">
+        <div class="mockup-header">Kalkulator ETF — Zaawansowany</div>
+        <div class="mockup-body" style="padding:0">
+          <div style="display:flex; gap:0; border-bottom: 1px solid rgba(255,255,255,0.1)">
+            <div style="padding:0.5rem 1rem; background:rgba(13,127,242,0.3); font-size:0.8rem; border-right:1px solid rgba(255,255,255,0.1)">📈 Backtesting</div>
+            <div style="padding:0.5rem 1rem; font-size:0.8rem; opacity:0.5; border-right:1px solid rgba(255,255,255,0.1)">⚖️ Porównanie</div>
+            <div style="padding:0.5rem 1rem; font-size:0.8rem; opacity:0.5; border-right:1px solid rgba(255,255,255,0.1)">💸 Koszt TER</div>
+          </div>
+          <div style="padding:1rem; font-size:0.8rem; opacity:0.7">
+            Wybierz ETF → ustaw parametry → zobacz wynik<br>
+            Każda zakładka ma własne inputy i wykres
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:0.5rem; font-size:0.85rem">✅ Czyste, nie przytłacza · ✅ Mobile-friendly · ❌ Nie widać wszystkiego naraz</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="wizard" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Wizard — krok po kroku</h3>
+      <div class="mockup" style="margin-top:0.75rem">
+        <div class="mockup-header">Krok 1 z 3</div>
+        <div class="mockup-body" style="font-size:0.8rem; opacity:0.7">
+          <strong>Wybierz ETF</strong><br>
+          ○ IWDA &nbsp; ○ VWCE &nbsp; ○ CSPX …<br><br>
+          → Dalej: ustaw kwoty i daty<br>
+          → Dalej: wyniki i wykres
+        </div>
+      </div>
+      <p style="margin-top:0.5rem; font-size:0.85rem">✅ Bardzo przyjazny dla nowych · ❌ Wolniejszy w użyciu dla zaawansowanych</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="dashboard" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Dashboard — wszystko na raz</h3>
+      <div class="mockup" style="margin-top:0.75rem">
+        <div class="mockup-header">Kalkulator ETF Pro</div>
+        <div class="mockup-body" style="padding:0">
+          <div style="display:flex; gap:0; min-height:80px">
+            <div style="width:40%; padding:0.75rem; border-right:1px solid rgba(255,255,255,0.1); font-size:0.75rem; opacity:0.8">
+              <div>ETF: [IWDA ▼]</div>
+              <div>Start: [2010] Kwota: [10 000]</div>
+              <div>Dopłata: [500/msc]</div>
+              <div style="margin-top:0.5rem; background:rgba(13,127,242,0.4); text-align:center; padding:0.3rem; border-radius:4px">OBLICZ</div>
+            </div>
+            <div style="width:60%; padding:0.75rem; font-size:0.75rem; opacity:0.6">
+              📊 Wykres historyczny<br>
+              💰 Kapitał końcowy: 89 340 zł<br>
+              📈 Zysk: +79 340 zł (+793%)
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:0.5rem; font-size:0.85rem">✅ Wszystko widoczne · ✅ Szybkie dla zaawansowanych · ❌ Cięższy na mobile</p>
+    </div>
+  </div>
+
+</div>
