@@ -1,8 +1,8 @@
 from PIL import Image
 import os
 
-source = r"C:\Users\komptest\.gemini\antigravity\brain\405798ad-877d-4f44-bdaa-e04088048806\etf_spada_korekta_2026_thumbnail_1775896954684.png"
-target = r"c:\Users\komptest\Documents\ETFkalkulator 3.0\A wersja do pracy\images\etf-spada-korekta-2026.webp"
+source = r"C:\Users\komptest\.gemini\antigravity\brain\405798ad-877d-4f44-bdaa-e04088048806\tfi_vs_etf_thumbnail_asset_1775918619481.png"
+target = r"c:\Users\komptest\Documents\ETFkalkulator 3.0\A wersja do pracy\images\tfi-vs-etf-porownanie-2026.webp"
 
 with Image.open(source) as im:
     width, height = im.size

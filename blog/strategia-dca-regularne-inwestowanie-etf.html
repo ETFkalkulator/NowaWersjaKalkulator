@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f8f7f2" id="meta-theme-color">
+  <script>
+    (function () {
+      const s = localStorage.getItem("etf-tryb");
+      const d = s === "ciemny" || (!s && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.classList.toggle("dark", d);
+      document.documentElement.classList.toggle("light", !d);
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Strategia DCA — jak regularnie inwestować w ETF? | ETFkalkulator.pl</title>
+  <meta name="description" content="Dollar Cost Averaging po polsku: przykład 500 zł/mies. przez 20 lat, porównanie z jednorazową inwestycją i jak ustawić auto-zlecenia.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="ETFkalkulator.pl">
+  <link rel="canonical" href="https://etfkalkulator.pl/blog/strategia-dca-regularne-inwestowanie-etf.html">
+
+  <meta property="og:title" content="Strategia DCA — jak regularnie inwestować w ETF? | ETFkalkulator.pl">
+  <meta property="og:description" content="Dollar Cost Averaging po polsku: przykład 500 zł/mies. przez 20 lat, porównanie z jednorazową inwestycją i jak ustawić auto-zlecenia.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://etfkalkulator.pl/blog/strategia-dca-regularne-inwestowanie-etf.html">
+  <meta property="og:site_name" content="ETFkalkulator.pl">
+  <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="pl_PL">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Strategia DCA — jak regularnie inwestować w ETF?">
+  <meta name="twitter:description" content="Dollar Cost Averaging po polsku: przykład 500 zł/mies. przez 20 lat, porównanie z jednorazową inwestycją i jak ustawić auto-zlecenia.">
+  <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png">
+
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Strona główna","item":"https://etfkalkulator.pl/"},
+      {"@type":"ListItem","position":2,"name":"Blog","item":"https://etfkalkulator.pl/blog/"},
+      {"@type":"ListItem","position":3,"name":"Strategia DCA — jak regularnie inwestować w ETF?","item":"https://etfkalkulator.pl/blog/strategia-dca-regularne-inwestowanie-etf.html"}
+    ]
+  }
+  </script>
+
+  <!-- Schema.org Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Strategia DCA — jak regularnie inwestować w ETF?",
+    "description": "Dollar Cost Averaging po polsku: przykład 500 zł/mies. przez 20 lat, porównanie z jednorazową inwestycją i jak ustawić auto-zlecenia.",
+    "author": {"@type":"Organization","name":"ETFkalkulator.pl"},
+    "publisher": {"@type":"Organization","name":"ETFkalkulator.pl","url":"https://etfkalkulator.pl"},
+    "datePublished": "2026-04-11",
+    "dateModified": "2026-04-11",
+    "url": "https://etfkalkulator.pl/blog/strategia-dca-regularne-inwestowanie-etf.html",
+    "inLanguage": "pl"
+  }
+  </script>
+
+  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Co to jest strategia DCA?",
+        "acceptedAnswer": {"@type":"Answer","text":"DCA (Dollar Cost Averaging) to strategia inwestowania stałej kwoty w regularnych odstępach czasu — np. 500 zł każdego 1. dnia miesiąca — niezależnie od aktualnej ceny ETF. Gdy cena spada, za tę samą kwotę kupujesz więcej jednostek. Gdy rośnie — mniej. Efektem jest niższy średni koszt zakupu niż przy jednorazowej dużej inwestycji w złym momencie."}
+      },
+      {
+        "@type": "Question",
+        "name": "DCA czy inwestycja jednorazowa — co jest lepsze?",
+        "acceptedAnswer": {"@type":"Answer","text":"Badania Vanguard pokazują, że jednorazowa inwestycja (Lump Sum) statystycznie wygrywa z DCA w ~67% przypadków na 12-miesięcznym horyzoncie, bo rynki częściej rosną niż spadają. Jednak DCA eliminuje ryzyko wejścia w zły moment i jest praktyczniejszy dla większości inwestorów — bo rzadko mamy dużą kwotę od razu. Dla regularnie oszczędzających 200–500 zł/miesiąc DCA to naturalny i optymalny wybór."}
+      },
+      {
+        "@type": "Question",
+        "name": "Ile minimalnie warto inwestować miesięcznie w ETF?",
+        "acceptedAnswer": {"@type":"Answer","text":"Sensowne minimum to 200–500 zł miesięcznie. Poniżej tego progu koszt przewalutowania (spread walutowy, jeśli ETF notowany w EUR/USD) i ewentualne prowizje mogą zjadać nieproporcjonalnie dużą część zysku. W XTB od 2023 roku nie ma prowizji od ETF do 100 000 EUR miesięcznie, więc głównym kosztem jest spread. Przy 200 zł/mies. efekty procentu składanego są już widoczne po 10–15 latach."}
+      },
+      {
+        "@type": "Question",
+        "name": "Jak ustawić stałe zlecenie w XTB?",
+        "acceptedAnswer": {"@type":"Answer","text":"W XTB możesz skonfigurować Plany Inwestycyjne (zakładka 'Inwestuj'). Wybierz ETF, ustaw kwotę i częstotliwość (np. 500 zł co miesiąc, 1. każdego miesiąca), potwierdź plan. XTB automatycznie zrealizuje zlecenie kupna w wybrany dzień. Alternatywnie możesz ustawić przypomnienie w kalendarzu i składać zlecenie ręcznie — liczy się systematyczność, nie automatyzacja."}
+      },
+      {
+        "@type": "Question",
+        "name": "Czy DCA działa na rachunku IKE?",
+        "acceptedAnswer": {"@type":"Answer","text":"Tak — i jest to najlepsze połączenie. DCA na IKE łączy zalety regularnego uśredniania ceny zakupu z zerowym podatkiem Belki przy wypłacie po 60./65. roku życia. Przy 20 latach DCA (500 zł/mies., 7% rocznie) różnica między IKE a zwykłym rachunkiem to ok. 26 600 zł oszczędzonego podatku. Limit IKE w 2026 roku wynosi 28 260 zł."}
+      },
+      {
+        "@type": "Question",
+        "name": "Czy DCA eliminuje ryzyko inwestycyjne?",
+        "acceptedAnswer": {"@type":"Answer","text":"Nie — DCA redukuje ryzyko wejścia w zły moment, ale nie eliminuje ryzyka inwestycyjnego. Jeśli rynek długoterminowo spada, DCA też przyniesie stratę. Strategia zakłada, że inwestujesz w zdywersyfikowany indeks globalny (np. MSCI World, FTSE All-World) i masz horyzont minimum 10 lat. Na krótki termin DCA nie jest odpowiednią strategią."}
+      }
+    ]
+  }
+  </script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('consent', 'default', {'analytics_storage': 'denied'});
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
+  <script>gtag('config', 'G-GZECMECQ15', {'send_page_view': false});</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://groot.mailerlite.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tailwind.css">
+  <link rel="icon" href="../images/favicon.png">
+  <link rel="apple-touch-icon" href="../images/favicon.png">
+  <link rel="manifest" href="/manifest.json">
+
+  <style>
+    .glass-effect { background: rgba(255,255,255,0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .dark .glass-effect { background: rgba(15,23,42,0.7); }
+    body { font-family: 'Inter', sans-serif; }
+    .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-size: 24px; line-height: 1; -webkit-font-smoothing: antialiased; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    article p { line-height: 1.8; }
+    article h2 { scroll-margin-top: 5rem; }
+    article h3 { scroll-margin-top: 5rem; }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    article h2 { animation: fadeInUp 0.4s ease both; }
+    details summary { user-select: none; }
+    details[open] summary .expand-icon { transform: rotate(180deg); }
+    .expand-icon { transition: transform 0.25s ease; }
+    .sidebar-toc a.toc-active {
+      color: #0d7ff2 !important;
+      font-weight: 600;
+      background: rgba(13, 127, 242, 0.1);
+    }
+  </style>
+  <link rel="preload" as="style" href="../css/mailerlite.css">
+  <link href="../css/mailerlite.css" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="../css/mailerlite.css"></noscript>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transition-colors">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white focus:text-primary">Przejdź do głównej treści</a>
+
+  <div id="reading-progress"
+    class="fixed top-0 left-0 h-[3px] z-[200] transition-none rounded-r-full"
+    style="width:0%;background-color:#0d7ff2;">
+  </div>
+
+  <!-- NAV -->
+  <div id="nav-root"></div>
+  <script defer src="../js/nav.js"></script>
+
+  <!-- HERO -->
+  <section class="relative pt-32 pb-16 md:pb-20 px-4 sm:px-6 overflow-hidden text-white"
+    style="background-image: url('../images/strategia-dca-etf-2026.webp'); background-size: cover; background-position: center;">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(15,23,42,0.35) 0%, rgba(15,23,42,0.70) 55%, rgba(15,23,42,0.93) 100%);"></div>
+    <div class="relative z-10 max-w-3xl mx-auto">
+      <nav class="mb-6" aria-label="breadcrumb">
+        <ol class="flex items-center gap-2 text-sm text-white/60 flex-wrap">
+          <li><a href="../index.html" class="hover:text-white transition-colors" style="text-decoration:none;">ETFkalkulator.pl</a></li>
+          <li><span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+          <li><a href="index.html" class="hover:text-white transition-colors" style="text-decoration:none;">Blog</a></li>
+          <li><span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+          <li class="text-white font-semibold">Strategia DCA — jak regularnie inwestować</li>
+        </ol>
+      </nav>
+      <h1 class="text-2xl md:text-4xl font-black text-white leading-tight mb-4">Strategia DCA — jak regularnie inwestować w ETF?</h1>
+      <p class="text-white/85 text-base md:text-lg leading-relaxed mb-4">Dollar Cost Averaging to najprostszy i najskuteczniejszy sposób na budowanie majątku dla przeciętnego inwestora. Stała kwota co miesiąc, bez prognozowania rynku, bez stresu. Sprawdź co mówią dane i jak zacząć.</p>
+      <div class="flex flex-wrap gap-4 mt-4 text-white/60 text-sm">
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">calendar_today</span> kwiecień 2026</span>
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">schedule</span> 9 minut czytania</span>
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">person</span> ETFkalkulator.pl</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main class="bg-white dark:bg-slate-950 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 grid grid-cols-1 lg:grid-cols-[1fr_300px] xl:grid-cols-[1fr_320px] gap-10 xl:gap-16 items-start">
+
+      <article id="main" class="min-w-0 pt-8 pb-16 lg:pb-20">
+
+        <!-- TOC (mobile/inline) -->
+        <div class="glass-effect rounded-[1.5rem] p-6 mb-10 border-l-4 border-primary bg-primary/5 dark:bg-primary/10">
+          <p class="text-xs font-black uppercase tracking-widest text-primary mb-4 flex items-center gap-2"><span aria-hidden="true" class="material-symbols-outlined text-[18px]">format_list_bulleted</span> Spis treści</p>
+          <ol class="space-y-2 text-sm list-decimal list-inside">
+            <li><a href="#co-to-dca" class="text-primary hover:underline font-medium" style="text-decoration:none;">Co to jest DCA — w 60 sekund</a></li>
+            <li><a href="#dca-vs-lump-sum" class="text-primary hover:underline font-medium" style="text-decoration:none;">DCA vs Lump Sum — co mówią badania</a></li>
+            <li><a href="#przyklad-500-zl" class="text-primary hover:underline font-medium" style="text-decoration:none;">Przykład: 500 zł/miesiąc przez 10 i 20 lat</a></li>
+            <li><a href="#dca-podczas-spadkow" class="text-primary hover:underline font-medium" style="text-decoration:none;">Jak DCA działa podczas spadków</a></li>
+            <li><a href="#auto-zlecenia-xtb" class="text-primary hover:underline font-medium" style="text-decoration:none;">Jak ustawić auto-zlecenia w XTB</a></li>
+            <li><a href="#dca-na-ike" class="text-primary hover:underline font-medium" style="text-decoration:none;">DCA na IKE — dlaczego to idealne połączenie</a></li>
+            <li><a href="#najczestsze-bledy" class="text-primary hover:underline font-medium" style="text-decoration:none;">Najczęstsze błędy inwestorów DCA</a></li>
+            <li><a href="#faq" class="text-primary hover:underline font-medium" style="text-decoration:none;">FAQ — najczęstsze pytania</a></li>
+          </ol>
+        </div>
+
+        <!-- SECTION 1 -->
+        <h2 id="co-to-dca" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-200 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">1</span>
+          Co to jest DCA — w 60 sekund
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-base md:text-lg"><strong class="text-slate-900 dark:text-white">DCA (Dollar Cost Averaging)</strong> to strategia inwestowania stałej kwoty w regularnych odstępach czasu — niezależnie od tego, co robi rynek. Zamiast szukać idealnego momentu, po prostu kupujesz ETF co miesiąc.</p>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">Mechanizm jest prosty: gdy cena ETF spada, za tę samą kwotę kupujesz <strong class="text-slate-900 dark:text-white">więcej jednostek</strong>. Gdy rośnie — mniej. Efektem jest niższy średni koszt zakupu niż przy próbie wyczucia rynku. A wyczucie rynku — jak pokazują dziesiątki badań — nie działa nawet u profesjonalistów.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+          <div class="glass-effect rounded-2xl p-5 text-center border border-slate-200 dark:border-slate-700 shadow-sm">
+            <p class="text-3xl font-black text-primary mb-1" style="color:#0d7ff2;">stała kwota</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Co miesiąc, bez patrzenia na cenę</p>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 text-center border border-slate-200 dark:border-slate-700 shadow-sm">
+            <p class="text-3xl font-black text-emerald-500 mb-1">niższy koszt</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Automatyczne uśrednianie ceny zakupu</p>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 text-center border border-slate-200 dark:border-slate-700 shadow-sm">
+            <p class="text-3xl font-black text-slate-700 dark:text-slate-200 mb-1">mniej stresu</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Brak presji wyczucia "dołka"</p>
+          </div>
+        </div>
+
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">DCA nie jest nową ideą — to strategia stosowana od dekad przez fundusze emerytalne, PPK i miliony inwestorów na świecie. Jej siła leży w prostocie: plan + dyscyplina + czas = wynik.</p>
+
+        <!-- SECTION 2 -->
+        <h2 id="dca-vs-lump-sum" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-200 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">2</span>
+          DCA vs Lump Sum — co mówią badania
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6 text-base md:text-lg">Jeśli masz już sporą kwotę do zainwestowania — czy lepiej wrzucić wszystko od razu (Lump Sum), czy rozłożyć na raty (DCA)? Dane dają nieoczywistą odpowiedź.</p>
+
+        <div class="rounded-2xl p-6 bg-primary/5 dark:bg-primary/10 border border-primary/20 mb-8">
+          <p class="text-xs font-black uppercase tracking-wider text-primary mb-4">📊 Badanie Vanguard — Lump Sum vs DCA (12 miesięcy)</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Lump Sum (jednorazowo)</p>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between items-center">
+                  <span class="text-slate-600 dark:text-slate-400">Wygrywa z DCA</span>
+                  <span class="font-bold text-slate-900 dark:text-white">~67% przypadków</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-slate-600 dark:text-slate-400">Średnia przewaga</span>
+                  <span class="font-bold text-emerald-600 dark:text-emerald-400">+2,4% / rok</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-slate-600 dark:text-slate-400">Ryzyko złego momentu</span>
+                  <span class="font-bold text-rose-600 dark:text-rose-400">wysokie</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">DCA (rozłożone w czasie)</p>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between items-center">
+                  <span class="text-slate-600 dark:text-slate-400">Wygrywa z LS</span>
+                  <span class="font-bold text-slate-900 dark:text-white">~33% przypadków</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-slate-600 dark:text-slate-400">Psychologiczny komfort</span>
+                  <span class="font-bold text-emerald-600 dark:text-emerald-400">bardzo wysoki</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-slate-600 dark:text-slate-400">Ryzyko złego momentu</span>
+                  <span class="font-bold text-emerald-600 dark:text-emerald-400">niskie</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-5 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 mb-8">
+          <p class="text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2">⚠️ Dlaczego mimo to DCA jest lepszy dla większości z nas</p>
+          <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">Lump Sum wygrywa statystycznie, bo rynki częściej rosną niż spadają. Ale badanie zakłada, że masz gotową dużą kwotę. Większość Polaków odkłada 200–1 000 zł miesięcznie — dla nich DCA to <strong>jedyna sensowna opcja</strong>, nie wybór. A w 33% przypadków, gdy wchodzisz tuż przed korektą, DCA jest lepsze. Nikt nie wie, kiedy trafi w tę 33%.</p>
+        </div>
+
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3 mt-8">Prawdziwy koszt wyczekiwania</h3>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">Inwestorzy odkładający decyzję ("poczekam na korektę") często zostają z gotówką przez miesiące, a czasem lata. Przy rynku rosnącym 7% rocznie, każdy miesiąc oczekiwania to realny koszt utraconych zysków. Dane DALBAR pokazują, że przeciętny inwestor traci przez złe wyczucie rynku ok. 1,5–3% rocznie w stosunku do samego indeksu.</p>
+
+        <!-- SECTION 3 -->
+        <h2 id="przyklad-500-zl" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-200 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">3</span>
+          Przykład: 500 zł/miesiąc przez 10 i 20 lat
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6 text-base md:text-lg">Konkretne liczby. Założenie: 500 zł miesięcznie, historyczna stopa zwrotu MSCI World ~7% rocznie, podatek Belki 19%.</p>
+
+        <div class="overflow-x-auto rounded-2xl shadow-sm mb-8">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-primary text-white">
+                <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">Horyzont</th>
+                <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">Wpłacony kapitał</th>
+                <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">Wartość brutto</th>
+                <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">Bez IKE (po podatku)</th>
+                <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">Na IKE (0% podatku)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-slate-100 dark:border-slate-800">
+                <td class="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">10 lat</td>
+                <td class="px-4 py-3 text-slate-600 dark:text-slate-400">60 000 zł</td>
+                <td class="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">86 500 zł</td>
+                <td class="px-4 py-3"><span class="bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 px-2 py-0.5 rounded-md text-xs font-bold">~81 500 zł</span></td>
+                <td class="px-4 py-3"><span class="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 px-2 py-0.5 rounded-md text-xs font-bold">~86 500 zł</span></td>
+              </tr>
+              <tr class="bg-slate-50/50 dark:bg-slate-900/30 border-b border-slate-100 dark:border-slate-800">
+                <td class="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">20 lat</td>
+                <td class="px-4 py-3 text-slate-600 dark:text-slate-400">120 000 zł</td>
+                <td class="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">260 000 zł</td>
+                <td class="px-4 py-3"><span class="bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 px-2 py-0.5 rounded-md text-xs font-bold">~233 400 zł</span></td>
+                <td class="px-4 py-3"><span class="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 px-2 py-0.5 rounded-md text-xs font-bold">~260 000 zł</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="rounded-2xl p-5 bg-emerald-50 dark:bg-emerald-950/30 border-l-4 border-emerald-500 mb-8">
+          <p class="text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2">💡 Co widać w liczbach</p>
+          <ul class="space-y-1.5 text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+            <li>• Przy 20 latach DCA <strong>procent składany robi 2× więcej roboty</strong> niż Twoje wpłaty (140 000 zł zysku vs 120 000 zł wpłaconego)</li>
+            <li>• IKE przy 20 latach daje <strong>~26 600 zł więcej</strong> — wyłącznie dzięki braku podatku Belki</li>
+            <li>• Minimum sensownej inwestycji: 200–500 zł/mies. (poniżej tego koszt spreadu walutowego zjada proporcjonalnie za dużo)</li>
+          </ul>
+        </div>
+
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">Użyj <a href="../pages/kalkulator-etf.html" class="text-primary hover:underline font-semibold" style="text-decoration:none;">naszego kalkulatora ETF →</a> by policzyć swój scenariusz z własną kwotą i horyzontem.</p>
+
+        <!-- SECTION 4 -->
+        <h2 id="dca-podczas-spadkow" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-200 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">4</span>
+          Jak DCA działa w praktyce podczas spadków
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-base md:text-lg">To właśnie tu DCA błyszczy najbardziej. Korekta giełdowa, która psychologicznie boli, matematycznie <strong class="text-slate-900 dark:text-white">obniża Twój średni koszt zakupu</strong>.</p>
+
+        <div class="rounded-2xl p-6 bg-primary/5 dark:bg-primary/10 border border-primary/20 mb-8">
+          <p class="text-xs font-black uppercase tracking-wider text-primary mb-4">📐 Mechanizm uśredniania — przykład liczbowy</p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div>
+              <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Styczeń — cena 100 zł</p>
+              <div class="space-y-1.5 text-sm">
+                <div class="flex justify-between"><span class="text-slate-600 dark:text-slate-400">Wpłata</span><span class="font-bold text-slate-900 dark:text-white">500 zł</span></div>
+                <div class="flex justify-between"><span class="text-slate-600 dark:text-slate-400">Kupione jedn.</span><span class="font-bold text-slate-900 dark:text-white">5,00</span></div>
+              </div>
+            </div>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Luty — korekta, cena 70 zł</p>
+              <div class="space-y-1.5 text-sm">
+                <div class="flex justify-between"><span class="text-slate-600 dark:text-slate-400">Wpłata</span><span class="font-bold text-slate-900 dark:text-white">500 zł</span></div>
+                <div class="flex justify-between"><span class="text-slate-600 dark:text-slate-400">Kupione jedn.</span><span class="font-bold text-emerald-600 dark:text-emerald-400">7,14</span></div>
+              </div>
+            </div>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Marzec — cena 85 zł</p>
+              <div class="space-y-1.5 text-sm">
+                <div class="flex justify-between"><span class="text-slate-600 dark:text-slate-400">Wpłata</span><span class="font-bold text-slate-900 dark:text-white">500 zł</span></div>
+                <div class="flex justify-between"><span class="text-slate-600 dark:text-slate-400">Kupione jedn.</span><span class="font-bold text-slate-900 dark:text-white">5,88</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 pt-4 border-t border-primary/20">
+            <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">Łącznie: wpłacone <strong>1 500 zł</strong>, kupione <strong>18,02 jednostek</strong>. Średni koszt zakupu: <strong class="text-primary" style="color:#0d7ff2;">83,24 zł/jedn.</strong> — niższy niż cena z żadnego z trzech miesięcy z osobna. Właśnie tak działa uśrednianie.</p>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-3 mt-8">Symulacja: DCA przez rok korekty −20%</h3>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">Porównanie dwóch inwestorów wpłacających po 500 zł/miesiąc przez 24 miesiące (12 miesięcy korekty + 12 miesięcy odbicia):</p>
+
+        <div class="overflow-x-auto rounded-2xl shadow-sm mb-8">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-primary text-white">
+                <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">Inwestor</th>
+                <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">Zachowanie podczas korekty</th>
+                <th class="px-4 py-3 text-left font-bold text-xs uppercase tracking-wider">Wynik po 24 mies.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-slate-100 dark:border-slate-800">
+                <td class="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Kasia (DCA bez przerwy)</td>
+                <td class="px-4 py-3 text-slate-600 dark:text-slate-400">500 zł co miesiąc, nie przerywa</td>
+                <td class="px-4 py-3"><span class="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 px-2 py-0.5 rounded-md text-xs font-bold">Zysk +14%</span></td>
+              </tr>
+              <tr class="bg-slate-50/50 dark:bg-slate-900/30">
+                <td class="px-4 py-3 font-semibold text-slate-700 dark:text-slate-300">Marek (wstrzymał DCA)</td>
+                <td class="px-4 py-3 text-slate-600 dark:text-slate-400">Czekał 12 mies. "aż się uspokoi"</td>
+                <td class="px-4 py-3"><span class="bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 px-2 py-0.5 rounded-md text-xs font-bold">Zysk +5%</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- SECTION 5 -->
+        <h2 id="auto-zlecenia-xtb" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-200 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">5</span>
+          Jak ustawić auto-zlecenia w XTB krok po kroku
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6 text-base md:text-lg">XTB oferuje funkcję <strong class="text-slate-900 dark:text-white">Planów Inwestycyjnych</strong>, która automatyzuje DCA. Oto jak ją skonfigurować:</p>
+
+        <div class="space-y-4 mb-8">
+          <div class="glass-effect rounded-2xl p-5 border-l-4 border-primary shadow-sm">
+            <p class="font-black text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+              <span class="bg-primary/10 text-primary text-xs font-black px-2 py-0.5 rounded-md" style="color:#0d7ff2;">KROK 1</span>
+              Zaloguj się do XTB i przejdź do sekcji "Inwestuj"
+            </p>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">W górnym menu wybierz zakładkę <em>Inwestuj</em>, następnie <em>Plany Inwestycyjne</em>. Jeśli nie widzisz tej opcji, sprawdź czy Twoje konto obsługuje inwestowanie w ETF (nie CFD).</p>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 border-l-4 border-primary shadow-sm">
+            <p class="font-black text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+              <span class="bg-primary/10 text-primary text-xs font-black px-2 py-0.5 rounded-md" style="color:#0d7ff2;">KROK 2</span>
+              Utwórz nowy plan i wybierz ETF
+            </p>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Kliknij <em>Utwórz plan</em>. Wyszukaj ETF — np. VWCE (Vanguard FTSE All-World) lub CSPX (iShares Core S&P 500). Możesz dodać kilka ETF do jednego planu z podziałem procentowym.</p>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 border-l-4 border-primary shadow-sm">
+            <p class="font-black text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+              <span class="bg-primary/10 text-primary text-xs font-black px-2 py-0.5 rounded-md" style="color:#0d7ff2;">KROK 3</span>
+              Ustaw kwotę i częstotliwość
+            </p>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Wpisz kwotę miesięczną (np. 500 zł) i wybierz dzień miesiąca realizacji (np. 1. każdego miesiąca). Wybierz źródło finansowania — przelew z konta lub saldo w XTB.</p>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 border-l-4 border-primary shadow-sm">
+            <p class="font-black text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+              <span class="bg-primary/10 text-primary text-xs font-black px-2 py-0.5 rounded-md" style="color:#0d7ff2;">KROK 4</span>
+              Potwierdź plan i ustaw przelew stały
+            </p>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Zatwierdź konfigurację. W swoim banku ustaw stały przelew co miesiąc na konto XTB na kilka dni przed datą realizacji planu. W ten sposób cały cykl jest w pełni automatyczny.</p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-5 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 mb-8">
+          <p class="text-xs font-black uppercase tracking-wider text-slate-500 mb-2">💬 Alternatywa: ręczne zlecenie z kalendarzem</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Jeśli wolisz kontrolę nad każdym zleceniem, możesz nie korzystać z planów. Ustaw cykliczne przypomnienie w kalendarzu na np. 2. dzień każdego miesiąca i ręcznie składaj zlecenie kupna. Liczy się systematyczność — nie automatyzacja. Ważne: <strong class="text-slate-700 dark:text-slate-300">XTB nie pobiera prowizji od zakupu ETF do 100 000 EUR miesięcznie</strong> (kwota przewalutowania + spread walutowy to ok. 0,5%).</p>
+        </div>
+
+        <!-- SECTION 6 -->
+        <h2 id="dca-na-ike" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-200 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">6</span>
+          DCA na IKE — dlaczego to idealne połączenie
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4 text-base md:text-lg">DCA i IKE to dwie strategie, które wzajemnie się wzmacniają. Razem tworzą najefektywniejszą metodę budowania kapitału emerytalnego dla przeciętnego polskiego inwestora.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          <div class="glass-effect rounded-2xl p-5 border-2 border-blue-200 dark:border-blue-900 shadow-sm">
+            <p class="text-xs font-black uppercase tracking-wider text-primary mb-3" style="color:#0d7ff2;">Dlaczego DCA na IKE jest lepsze</p>
+            <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-2 leading-relaxed">
+              <li>✓ <strong class="text-slate-700 dark:text-slate-300">0% podatku Belki</strong> przy wypłacie po 60./65. roku życia</li>
+              <li>✓ Limit 28 260 zł/rok (2026) — zachęca do regularnych wpłat</li>
+              <li>✓ Brak podatku od dywidend ETF Dist w trakcie trwania IKE</li>
+              <li>✓ Procent składany pracuje w pełni — bez "obcięcia" zysku co rok</li>
+            </ul>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 border-2 border-slate-200 dark:border-slate-700 shadow-sm">
+            <p class="text-xs font-black uppercase tracking-wider text-slate-500 mb-3">Ile to daje w liczbach (20 lat, 500 zł/mies.)</p>
+            <ul class="text-sm text-slate-600 dark:text-slate-400 space-y-2 leading-relaxed">
+              <li>→ Bez IKE, po podatku Belki: <strong class="text-slate-700 dark:text-slate-300">~233 400 zł</strong></li>
+              <li>→ Na IKE, bez podatku: <strong class="text-emerald-600 dark:text-emerald-400">~260 000 zł</strong></li>
+              <li>→ Różnica: <strong class="text-emerald-600 dark:text-emerald-400">+26 600 zł</strong> "za darmo"</li>
+              <li>→ To ponad 5 lat Twoich miesięcznych wpłat</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">IKE możesz otworzyć u brokera z dostępem do ETF — m.in. w XTB, DM BOŚ lub Bossa. Sprawdź <a href="gdzie-otworzyc-ike-2026-porownanie-brokerow.html" class="text-primary hover:underline font-semibold" style="text-decoration:none;">porównanie brokerów IKE 2026 →</a></p>
+
+        <div class="rounded-2xl p-5 bg-blue-50 dark:bg-blue-950/30 border-l-4 border-primary mb-8">
+          <p class="text-xs font-black uppercase tracking-wider text-primary mb-2" style="color:#0d7ff2;">📌 Praktyczny plan DCA na IKE</p>
+          <ol class="space-y-1.5 text-sm text-slate-700 dark:text-slate-300 leading-relaxed list-decimal list-inside">
+            <li>Otwórz IKE u brokera z ETF (XTB, DM BOŚ)</li>
+            <li>Ustaw przelew stały 500 zł/mies. na rachunek IKE</li>
+            <li>1. każdego miesiąca: kup ETF (np. VWCE lub CSPX) za całe saldo</li>
+            <li>Nie sprawdzaj wartości częściej niż raz w miesiącu</li>
+            <li>Co rok zweryfikuj, czy nie zbliżasz się do limitu 28 260 zł — możesz dopłacić jednorazowo</li>
+          </ol>
+        </div>
+
+        <!-- SECTION 7 -->
+        <h2 id="najczestsze-bledy" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-200 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">7</span>
+          Najczęstsze błędy inwestorów DCA
+        </h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6 text-base md:text-lg">Strategia jest prosta — ale można ją zepsuć. Oto typowe błędy, które kosztują lata zysku.</p>
+
+        <div class="space-y-4 mb-8">
+          <div class="glass-effect rounded-2xl p-5 border-l-4 border-rose-500 shadow-sm">
+            <p class="font-black text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+              <span class="bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 text-xs font-black px-2 py-0.5 rounded-md">BŁĄD 1</span>
+              Przerywanie DCA podczas korekty
+            </p>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Zatrzymanie wpłat "aż się uspokoi" oznacza rezygnację z tanich zakupów. To dokładnie odwrotność tego, co powinieneś robić. Korekta to nie zagrożenie dla DCA — to jego najcenniejszy moment.</p>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 border-l-4 border-amber-500 shadow-sm">
+            <p class="font-black text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+              <span class="bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-xs font-black px-2 py-0.5 rounded-md">BŁĄD 2</span>
+              Za małe kwoty — poniżej 200 zł/mies.
+            </p>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Przy kwotach poniżej 200 zł koszt przewalutowania (spread walutowy ~0,5%) i minimalne wielkości zleceń mogą zjadać nieproporcjonalnie dużą część wpłaty. Lepiej oszczędzać co miesiąc i inwestować raz na kwartał większą kwotę.</p>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 border-l-4 border-amber-500 shadow-sm">
+            <p class="font-black text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+              <span class="bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-xs font-black px-2 py-0.5 rounded-md">BŁĄD 3</span>
+              Zbyt wiele różnych ETF naraz
+            </p>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Kupowanie 5–8 różnych ETF przy 500 zł/mies. to fałszywa dywersyfikacja. Jeden globalny ETF (np. VWCE — 3 700+ spółek z 50 krajów) daje lepszą dywersyfikację niż 5 tematycznych ETF kupionych po 100 zł. Mniej znaczy więcej.</p>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 border-l-4 border-slate-400 shadow-sm">
+            <p class="font-black text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+              <span class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-black px-2 py-0.5 rounded-md">BŁĄD 4</span>
+              Sprawdzanie portfela codziennie
+            </p>
+            <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Im częściej patrzysz na kurs, tym większa szansa na emocjonalne decyzje. DCA to strategia długoterminowa. Sprawdzaj wartość portfela raz w miesiącu — wystarczy. Reszta czasu to szum, który nie ma znaczenia dla 20-letniego planu.</p>
+          </div>
+        </div>
+
+        <!-- FAQ -->
+        <h2 id="faq" class="text-2xl font-black text-slate-900 dark:text-white mt-16 mb-6 pt-10 border-t border-slate-200 dark:border-slate-800 flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2;">8</span>
+          FAQ — najczęstsze pytania
+        </h2>
+
+        <div class="space-y-3 mb-10">
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-base gap-4">
+              Co to jest strategia DCA?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon text-slate-400 shrink-0">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">DCA (Dollar Cost Averaging) to strategia inwestowania stałej kwoty w regularnych odstępach czasu — np. 500 zł każdego 1. dnia miesiąca — niezależnie od aktualnej ceny ETF. Gdy cena spada, za tę samą kwotę kupujesz więcej jednostek. Gdy rośnie — mniej. Efektem jest niższy średni koszt zakupu niż przy próbie wyczucia rynku.</div>
+          </details>
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-base gap-4">
+              DCA czy inwestycja jednorazowa — co jest lepsze?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon text-slate-400 shrink-0">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Badania Vanguard pokazują, że jednorazowa inwestycja (Lump Sum) statystycznie wygrywa z DCA w ~67% przypadków na 12-miesięcznym horyzoncie, bo rynki częściej rosną niż spadają. Jednak DCA eliminuje ryzyko wejścia w zły moment i jest naturalnym wyborem dla tych, którzy regularnie odkładają 200–1 000 zł miesięcznie — bo rzadko mamy dużą sumę od razu.</div>
+          </details>
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-base gap-4">
+              Ile minimalnie warto inwestować miesięcznie w ETF?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon text-slate-400 shrink-0">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Sensowne minimum to 200–500 zł miesięcznie. Poniżej tego progu koszt przewalutowania (spread walutowy, jeśli ETF notowany w EUR/USD) i ewentualne prowizje mogą zjadać nieproporcjonalnie dużą część zysku. W XTB nie ma prowizji od ETF do 100 000 EUR miesięcznie. Przy kwotach poniżej 200 zł rozważ odkładanie przez kilka miesięcy i inwestowanie raz na kwartał.</div>
+          </details>
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-base gap-4">
+              Jak ustawić stałe zlecenie w XTB?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon text-slate-400 shrink-0">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">W XTB wybierz zakładkę <em>Inwestuj</em> → <em>Plany Inwestycyjne</em> → <em>Utwórz plan</em>. Wybierz ETF, ustaw kwotę i dzień miesiąca realizacji (np. 500 zł co 1. każdego miesiąca), potwierdź. W banku ustaw stały przelew na rachunek XTB na kilka dni przed datą realizacji. Cały cykl jest wtedy automatyczny.</div>
+          </details>
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-base gap-4">
+              Czy DCA działa na rachunku IKE?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon text-slate-400 shrink-0">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Tak — i jest to najlepsze połączenie. DCA na IKE łączy zalety regularnego uśredniania ceny zakupu z zerowym podatkiem Belki przy wypłacie po 60./65. roku życia. Przy 20 latach DCA (500 zł/mies., 7% rocznie) różnica między IKE a zwykłym rachunkiem to ok. 26 600 zł zaoszczędzonego podatku. Limit IKE w 2026 roku wynosi 28 260 zł.</div>
+          </details>
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-sm overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-slate-900 dark:text-white text-base gap-4">
+              Czy DCA eliminuje ryzyko inwestycyjne?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon text-slate-400 shrink-0">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">Nie — DCA redukuje ryzyko wejścia w zły moment, ale nie eliminuje ryzyka inwestycyjnego. Jeśli rynek długoterminowo spada, DCA też przyniesie stratę. Strategia zakłada inwestowanie w zdywersyfikowany indeks globalny (np. MSCI World, FTSE All-World) i horyzont minimum 10 lat. Na krótki termin DCA nie jest odpowiednią strategią.</div>
+          </details>
+        </div>
+
+        <!-- Podsumowanie -->
+        <div class="rounded-2xl p-5 bg-emerald-50 dark:bg-emerald-950/30 border-l-4 border-emerald-500 mb-8">
+          <p class="text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2">✅ Podsumowanie — zapamiętaj</p>
+          <ol class="space-y-1.5 text-sm text-slate-700 dark:text-slate-300 leading-relaxed list-decimal list-inside">
+            <li>DCA = stała kwota co miesiąc, bez patrzenia na cenę — prostota to siła</li>
+            <li>Lump Sum statystycznie wygrywa, ale DCA jest lepszy dla regularnie oszczędzających i psychologicznie zdrowszy</li>
+            <li>500 zł/mies. przez 20 lat (7% rocznie) = 260 000 zł brutto — procent składany robi 2× więcej niż Twoje wpłaty</li>
+            <li>Nie przerywaj DCA podczas korekty — to właśnie wtedy kupujesz najtaniej</li>
+            <li>Minimum sensownej inwestycji: 200–500 zł/mies. — poniżej inwestuj kwartalnie</li>
+            <li>IKE + DCA = 26 600 zł więcej po 20 latach, limit 28 260 zł w 2026</li>
+          </ol>
+        </div>
+
+        <!-- CTA kalkulator (inline) -->
+        <div class="rounded-2xl p-6 bg-gradient-to-br from-blue-700 to-primary text-white shadow-xl mb-8">
+          <div class="flex flex-col sm:flex-row items-center gap-4">
+            <div class="flex-1">
+              <p class="text-xs font-black uppercase tracking-wider text-white/70 mb-1">Kalkulator ETF</p>
+              <p class="font-black text-white text-lg leading-tight mb-1">Policz swój scenariusz DCA</p>
+              <p class="text-white/75 text-sm">Własna kwota, horyzont i stopa zwrotu. Sprawdź ile uzbierasz przy regularnych wpłatach.</p>
+            </div>
+            <a href="../pages/kalkulator-etf.html"
+              class="shrink-0 bg-white text-primary font-black px-6 py-3 rounded-xl hover:scale-[1.02] transition-all inline-flex items-center gap-2 shadow-lg"
+              style="color:#0d7ff2;text-decoration:none;">
+              Uruchom kalkulator
+              <span aria-hidden="true" class="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Linki powiązane -->
+        <div class="glass-effect rounded-2xl p-5 border border-white/50 dark:border-slate-800/50 mb-8">
+          <p class="text-xs font-black uppercase tracking-wider text-slate-400 mb-4">📚 Czytaj też</p>
+          <div class="space-y-2">
+            <a href="jak-zaczac-inwestowac-w-etf.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors group" style="text-decoration:none;">
+              <span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2;">arrow_right</span>
+              <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">Jak zacząć inwestować w ETF — poradnik dla początkujących</span>
+            </a>
+            <a href="etf-spada-co-robic-korekta-gieldowa.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors group" style="text-decoration:none;">
+              <span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2;">arrow_right</span>
+              <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">ETF spada — co robić podczas korekty giełdowej 2026</span>
+            </a>
+            <a href="gdzie-otworzyc-ike-2026-porownanie-brokerow.html" class="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors group" style="text-decoration:none;">
+              <span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2;">arrow_right</span>
+              <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-primary transition-colors">Gdzie otworzyć IKE 2026 — porównanie brokerów</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="glass-effect rounded-2xl p-5 mt-10 border border-slate-200 dark:border-slate-700 flex items-start gap-4">
+          <span aria-hidden="true" class="material-symbols-outlined text-slate-400 shrink-0 mt-0.5">info</span>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
+            <strong class="not-italic">Ważna informacja (Disclaimer):</strong> Materiały na stronie mają charakter wyłącznie edukacyjny i poglądowy. Nie stanowią porady finansowej ani rekomendacji inwestycyjnej. Przeszłe wyniki rynków nie gwarantują przyszłych zwrotów. Inwestowanie wiąże się z ryzykiem utraty części lub całości kapitału. Przed podjęciem decyzji inwestycyjnych skonsultuj się z licencjonowanym doradcą finansowym.
+          </p>
+        </div>
+
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-24 space-y-6">
+
+          <!-- TOC -->
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+              <span aria-hidden="true" class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+              W tym artykule
+            </p>
+            <nav class="sidebar-toc space-y-1">
+              <a href="#co-to-dca" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">Co to jest DCA</a>
+              <a href="#dca-vs-lump-sum" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">DCA vs Lump Sum</a>
+              <a href="#przyklad-500-zl" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">Przykład 500 zł/mies.</a>
+              <a href="#dca-podczas-spadkow" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">DCA podczas spadków</a>
+              <a href="#auto-zlecenia-xtb" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">Auto-zlecenia w XTB</a>
+              <a href="#dca-na-ike" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">DCA na IKE</a>
+              <a href="#najczestsze-bledy" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">Najczęstsze błędy</a>
+              <a href="#faq" class="block text-sm py-1 px-3 rounded-lg transition-all duration-200 cursor-pointer text-slate-500 dark:text-slate-400 hover:text-primary hover:bg-primary/5">FAQ</a>
+            </nav>
+          </div>
+
+          <!-- CTA -->
+          <div class="bg-gradient-to-br from-blue-700 to-primary rounded-2xl p-5 text-white text-center shadow-xl">
+            <span aria-hidden="true" class="material-symbols-outlined text-3xl mb-2 opacity-80">trending_up</span>
+            <h3 class="font-black text-white text-base mb-1">Kalkulator ETF</h3>
+            <p class="text-white/75 text-xs leading-relaxed mb-4">Policz ile uzbierasz przy regularnych wpłatach DCA przez 10–30 lat.</p>
+            <a href="../pages/kalkulator-etf.html"
+              class="bg-white rounded-xl px-4 py-2.5 text-xs font-black hover:scale-[1.02] transition-all inline-flex items-center gap-1.5 shadow-lg"
+              style="color:#0d7ff2;text-decoration:none;">
+              Uruchom kalkulator
+              <span aria-hidden="true" class="material-symbols-outlined text-[15px]">arrow_forward</span>
+            </a>
+          </div>
+
+          <!-- Related articles -->
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+              <span aria-hidden="true" class="material-symbols-outlined text-[18px]">auto_stories</span>
+              Czytaj też
+            </p>
+            <div class="space-y-3">
+              <a href="jak-zaczac-inwestowac-w-etf.html" class="flex items-start gap-3 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors group cursor-pointer" style="text-decoration:none;">
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 mt-0.5 bg-blue-100 text-blue-700">ETF</span>
+                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 leading-tight group-hover:text-primary transition-colors">Jak zacząć inwestować w ETF?</span>
+              </a>
+              <a href="etf-spada-co-robic-korekta-gieldowa.html" class="flex items-start gap-3 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors group cursor-pointer" style="text-decoration:none;">
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 mt-0.5 bg-blue-100 text-blue-700">ETF</span>
+                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 leading-tight group-hover:text-primary transition-colors">ETF spada — co robić podczas korekty?</span>
+              </a>
+              <a href="gdzie-otworzyc-ike-2026-porownanie-brokerow.html" class="flex items-start gap-3 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-colors group cursor-pointer" style="text-decoration:none;">
+                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 mt-0.5 bg-blue-100 text-blue-700">IKE</span>
+                <span class="text-sm font-semibold text-slate-700 dark:text-slate-300 leading-tight group-hover:text-primary transition-colors">Gdzie otworzyć IKE 2026?</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- Mobile bottom bar -->
+  <div class="lg:hidden fixed bottom-0 left-0 right-0 z-50 glass-effect border-t border-slate-200 dark:border-slate-800 px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-24 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+        <div id="reading-progress-mobile" class="h-full bg-primary rounded-full transition-none" style="width:0%;background-color:#0d7ff2;"></div>
+      </div>
+      <span id="reading-pct" class="text-xs font-bold text-slate-400">0%</span>
+    </div>
+    <a href="../pages/kalkulator-etf.html"
+      class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-full flex items-center gap-1.5 hover:opacity-90"
+      style="background-color:#0d7ff2;text-decoration:none;">
+      <span aria-hidden="true" class="material-symbols-outlined text-[14px]">trending_up</span>
+      Kalkulator ETF
+    </a>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <section id="newsletter-section" class="pt-10 pb-20 px-6 bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 transition-colors">
+    <div class="max-w-7xl mx-auto">
+      <div class="bg-white/70 dark:bg-slate-900/80 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 lg:p-16 shadow-2xl border border-white/50 dark:border-slate-800/50 relative overflow-hidden group">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+          <div class="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+              <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span>
+              Newsletter
+            </div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.1]">Bądź na bieżąco z <span class="text-primary">rynkiem ETF</span> i finansami</h2>
+            <p class="text-slate-500 dark:text-slate-400 text-lg leading-relaxed max-w-xl">Nowe artykuły i aktualizacje kalkulatorów prosto na email. Zero spamu.</p>
+          </div>
+          <div class="w-full lg:max-w-md mx-auto lg:ml-auto">
+            <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
+              <div class="ml-form-embedWrapper embedForm">
+                <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                  <form class="ml-block-form" action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe" method="post" target="_blank">
+                    <div class="flex flex-col space-y-4">
+                      <div class="ml-form-fieldRow">
+                        <input aria-label="email" aria-required="true" type="email" class="w-full h-14 px-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-white text-base font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all placeholder:text-slate-400" name="fields[email]" placeholder="Twój adres e-mail">
+                      </div>
+                      <div class="ml-form-embedPermissions">
+                        <label class="flex items-start gap-4 cursor-pointer">
+                          <input type="checkbox" name="gdpr[]" value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl" required class="custom-checkbox mt-1 transition-all">
+                          <span class="text-[11px] text-slate-500 dark:text-slate-400 font-medium leading-relaxed">Zgadzam się na otrzymywanie newslettera. Możesz się wypisać w każdej chwili.</span>
+                        </label>
+                      </div>
+                      <div class="ml-form-recaptcha ml-validate-required py-2 flex justify-center">
+                        <div class="g-recaptcha transform scale-[0.85] origin-center" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                      </div>
+                      <input type="hidden" name="ml-submit" value="1">
+                      <input type="hidden" name="anticsrf" value="true">
+                      <button type="submit" class="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-sm md:text-base uppercase tracking-widest hover:scale-[1.01] active:scale-[0.98] transition-all shadow-xl shadow-primary/20" style="background-color:#0d7ff2;">Zapisz się teraz</button>
+                      <div class="pt-6 border-t border-slate-100 dark:border-slate-800 mt-2">
+                        <p class="text-[10px] text-slate-400 dark:text-slate-500 leading-relaxed">Zapisując się, akceptujesz <a href="../pages/regulamin.html" class="underline hover:text-primary">Regulamin</a> i <a href="../pages/polityka-prywatnosci.html" class="underline hover:text-primary">Politykę Prywatności</a>.</p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="ml-form-successBody row-success" style="display:none">
+                  <div class="p-10 rounded-3xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 text-center">
+                    <span aria-hidden="true" class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-4xl mb-4 block">verified</span>
+                    <h4 class="text-emerald-900 dark:text-emerald-300 font-bold text-xl mb-1">Sukces!</h4>
+                    <p class="text-emerald-700 dark:text-emerald-500 text-sm">Sprawdź skrzynkę e-mail, aby potwierdzić zapis.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-900 py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12 border-b border-slate-200/50 dark:border-slate-800/50 pb-8">
+        <div class="flex items-center gap-2">
+          <div class="bg-primary p-1.5 rounded-lg text-white" style="background-color:#0d7ff2;"><span aria-hidden="true" class="material-symbols-outlined text-base">account_balance_wallet</span></div>
+          <span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">ETF<span class="font-normal text-slate-500">kalkulator</span>.pl</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Narzędzia</h5>
+          <ul class="space-y-4">
+            <li><a href="../pages/kalkulator-etf.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Kalkulator ETF</a></li>
+            <li><a href="../pages/kalkulator-obligacji.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Obligacje Skarbowe</a></li>
+            <li><a href="../pages/kalkulator-wolnosci.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Wolność Finansowa</a></li>
+            <li><a href="../pages/porownywarka.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Porównywarka ETF</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Projekt</h5>
+          <ul class="space-y-4">
+            <li><a href="index.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Blog i Wiedza</a></li>
+            <li><a href="../pages/o-projekcie.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">O projekcie</a></li>
+            <li><a href="../pages/regulamin.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Regulamin</a></li>
+            <li><a href="../pages/polityka-prywatnosci.html" class="text-sm text-slate-500 hover:text-primary transition-colors" style="text-decoration:none;">Polityka prywatności</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-6">Kontakt</h5>
+          <p class="text-sm text-slate-500 mb-6">Masz pytania? Pisz śmiało:</p>
+          <a href="mailto:kontakt@etfkalkulator.pl" class="text-sm font-bold text-slate-900 dark:text-white hover:text-primary transition-colors" style="text-decoration:none;">kontakt@etfkalkulator.pl</a>
+        </div>
+      </div>
+      <div class="mt-20 pt-10 border-t border-slate-200 dark:border-slate-900">
+        <p class="text-[11px] text-slate-400 leading-relaxed mb-8 max-w-4xl">Serwis ETFkalkulator.pl ma charakter wyłącznie edukacyjny i informacyjny. Prezentowane obliczenia nie stanowią rekomendacji inwestycyjnej, porady finansowej ani doradztwa podatkowego.</p>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+          <p>© 2026 ETFkalkulator.pl — Made with ❤️ by Florian</p>
+          <span>Wszelkie prawa zastrzeżone</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/shared.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" defer></script>
+  <script>
+    function ml_webform_success_37996059() {
+      var $ = ml_jQuery || jQuery;
+      $('.ml-subscribe-form-37996059 .row-success').show();
+      $('.ml-subscribe-form-37996059 .row-form').hide();
+    }
+  </script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
+  <script>
+    (function() {
+      const s = localStorage.getItem('etf-tryb');
+      const d = s === 'ciemny' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.classList.toggle('dark', d);
+      document.documentElement.classList.toggle('light', !d);
+    })();
+    function przelaczTryb() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains('dark') || html.classList.contains('dark-mode');
+      if (isDark) {
+        html.classList.remove('dark','dark-mode'); html.classList.add('light');
+        localStorage.setItem('etf-tryb','jasny');
+      } else {
+        html.classList.add('dark'); html.classList.remove('light','light-mode');
+        localStorage.setItem('etf-tryb','ciemny');
+      }
+    }
+
+    const bar = document.getElementById('reading-progress');
+    const article = document.getElementById('main');
+    const mobileBar = document.getElementById('reading-progress-mobile');
+    const pctLabel = document.getElementById('reading-pct');
+
+    function updateProgress() {
+      if (!bar || !article) return;
+      const rect = article.getBoundingClientRect();
+      const total = article.offsetHeight - window.innerHeight;
+      const scrolled = Math.max(0, -rect.top);
+      const pct = Math.min(100, (scrolled / total) * 100);
+      bar.style.width = pct + '%';
+      if (mobileBar) mobileBar.style.width = pct + '%';
+      if (pctLabel) pctLabel.textContent = Math.round(pct) + '%';
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    const headings = document.querySelectorAll('article h2[id]');
+    const tocLinks = document.querySelectorAll('.sidebar-toc a');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          tocLinks.forEach(link => {
+            link.classList.remove('toc-active');
+            if (link.getAttribute('href') === '#' + id) {
+              link.classList.add('toc-active');
+            }
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+
+    headings.forEach(h => observer.observe(h));
+  </script>
+</body>
+</html>
