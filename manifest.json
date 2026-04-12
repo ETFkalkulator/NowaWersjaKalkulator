@@ -48,5 +48,12 @@
       "url": "/pages/kalkulator-podatku-belki.html",
       "description": "Oblicz podatek 19% od zysku z inwestycji"
     }
+    ,{
+      "name": "Backtesting ETF",
+      "short_name": "Backtesting",
+      "description": "Historyczne wyniki inwestycji w ETF",
+      "url": "/pages/kalkulator-etf-historyczny.html",
+      "icons": [{"src": "/images/favicon.png", "sizes": "192x192"}]
+    }
   ]
 }
