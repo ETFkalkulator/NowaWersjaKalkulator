@@ -41,13 +41,13 @@
 
     // Desktop links
     '<div class="hidden xl:flex items-center gap-0.5 flex-1 justify-center px-4">' +
-    '<a href="' + P + 'kalkulator-etf.html" '       + dCls('kalkulator-etf')          + '>Kalkulator ETF</a>' +
+    '<a href="' + P + 'kalkulator-etf.html" '       + dCls('kalkulator-etf.html')     + '>Kalkulator ETF</a>' +
     '<a href="' + P + 'kalkulator-obligacji.html" '  + dCls('kalkulator-obligacji')     + '>Obligacje EDO</a>' +
     '<a href="' + P + 'kalkulator-wolnosci.html" '   + dCls('kalkulator-wolnosci')      + '>Kalkulator FIRE</a>' +
     '<a href="' + P + 'porownywarka.html" '          + dCls('porownywarka')             + '>Porównywarka</a>' +
     '<a href="' + P + 'kalkulator-podatku-belki.html" ' + dCls('kalkulator-podatku-belki') + '>Podatek Belki</a>' +
     '<a href="' + B + 'index.html" '                + (blogActive ? CLS_D_ACT : CLS_D) + '>Blog</a>' +
-    '<a href="' + P + 'o-projekcie.html" '          + dCls('o-projekcie')              + '>O projekcie</a>' +
+    '<a href="' + P + 'kalkulator-etf-historyczny.html" ' + dCls('kalkulator-etf-historyczny') + '>Historia ETF</a>' +
     '</div>' +
 
     // Right: dark mode + newsletter + hamburger
@@ -68,13 +68,14 @@
     '<div id="mobile-nav" class="hidden xl:hidden border-t border-stitch-border/50 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md shadow-lg">' +
     '<div class="max-w-7xl mx-auto px-4 pt-3 pb-4">' +
     '<div class="grid grid-cols-2 sm:grid-cols-4 gap-1">' +
-    '<a href="' + P + 'kalkulator-etf.html" onclick="closeMobileNav()" '          + mCls('kalkulator-etf')          + '><span ' + iCo('kalkulator-etf')          + '>trending_up</span>Kalkulator ETF</a>' +
+    '<a href="' + P + 'kalkulator-etf.html" onclick="closeMobileNav()" '          + mCls('kalkulator-etf.html')     + '><span ' + iCo('kalkulator-etf.html')     + '>trending_up</span>Kalkulator ETF</a>' +
     '<a href="' + P + 'kalkulator-obligacji.html" onclick="closeMobileNav()" '    + mCls('kalkulator-obligacji')     + '><span ' + iCo('kalkulator-obligacji')     + '>receipt_long</span>Obligacje EDO</a>' +
     '<a href="' + P + 'kalkulator-wolnosci.html" onclick="closeMobileNav()" '     + mCls('kalkulator-wolnosci')      + '><span ' + iCo('kalkulator-wolnosci')      + '>savings</span>Kalkulator FIRE</a>' +
     '<a href="' + P + 'porownywarka.html" onclick="closeMobileNav()" '            + mCls('porownywarka')             + '><span ' + iCo('porownywarka')             + '>compare_arrows</span>Porównywarka</a>' +
     '<a href="' + P + 'kalkulator-podatku-belki.html" onclick="closeMobileNav()" ' + mCls('kalkulator-podatku-belki') + '><span ' + iCo('kalkulator-podatku-belki') + '>percent</span>Podatek Belki</a>' +
     '<a href="' + B + 'index.html" onclick="closeMobileNav()" '                   + (blogActive ? CLS_M_ACT : CLS_M) + '><span ' + (blogActive ? ICO_ACT : ICO)    + '>article</span>Blog</a>' +
     '<a href="' + P + 'o-projekcie.html" onclick="closeMobileNav()" '             + mCls('o-projekcie')              + '><span ' + iCo('o-projekcie')              + '>info</span>O projekcie</a>' +
+    '<a href="' + P + 'kalkulator-etf-historyczny.html" onclick="closeMobileNav()" ' + mCls('kalkulator-etf-historyczny') + '><span ' + iCo('kalkulator-etf-historyczny') + '>history</span>Historia ETF</a>' +
     '</div>' +
     '<div class="mt-3 pt-3 border-t border-stitch-border/40 flex sm:hidden">' +
     '<a href="#newsletter-section" onclick="closeMobileNav()" class="w-full text-center text-white py-2.5 rounded-xl text-sm font-bold hover:opacity-90 transition-opacity" style="background-color:#0d7ff2; text-decoration:none;">Zapisz się na newsletter</a>' +

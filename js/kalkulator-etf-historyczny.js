@@ -14,13 +14,9 @@ var terState = {};      // ostatnie wyniki TER
 
 // ── Ładowanie danych ───────────────────────────────────────────────────────
 async function loadData() {
-  var base = window.location.pathname.includes('/pages/') ? '../' : '';
-  var results = await Promise.all([
-    fetch(base + 'js/etf-data.json'),
-    fetch(base + 'js/etf-usdpln.json')
-  ]);
-  ETF_DATA = await results[0].json();
-  USDPLN   = await results[1].json();
+  // Dane ładowane przez <script> tag — działa zarówno przez HTTP jak i file://
+  ETF_DATA = window.__ETF_DATA;
+  USDPLN   = window.__USDPLN;
 }
 
 // ── Inicjalizacja ──────────────────────────────────────────────────────────
@@ -107,7 +103,8 @@ function setPresetBt(preset) {
   var now   = new Date();
   var endMM = String(now.getMonth() + 1).padStart(2, '0');
   var endYY = now.getFullYear();
-  var doVal = endMM + '/' + endYY;
+  var lastKey = USDPLN ? Object.keys(USDPLN).pop() : null;
+  var doVal = lastKey ? lastKey.slice(5, 7) + '/' + lastKey.slice(0, 4) : endMM + '/' + endYY;
 
   var odVal;
   if (preset === 'max') {
@@ -203,9 +200,9 @@ function obliczBacktesting() {
   document.getElementById('bt-empty').classList.add('hidden');
   document.getElementById('bt-wyniki').classList.remove('hidden');
   document.getElementById('bt-res-kapital').textContent  = formatPLN(kapitalNetto);
-  document.getElementById('bt-res-zysk').textContent     = '+' + formatPLN(zyskNetto);
+  document.getElementById('bt-res-zysk').textContent     = (zyskNetto >= 0 ? '+' : '') + formatPLN(zyskNetto);
   document.getElementById('bt-res-wplacono').textContent = formatPLN(wplacono);
-  document.getElementById('bt-res-zwrot').textContent    = '+' + zwrotPct + '%';
+  document.getElementById('bt-res-zwrot').textContent    = (parseFloat(zwrotPct) >= 0 ? '+' : '') + zwrotPct + '%';
 
   // Pokaż przycisk share
   var shareBtn = document.getElementById('bt-share-btn');
@@ -545,7 +542,7 @@ var ShareModule = {
     if (tab === 'bt') {
       return {
         text:  (data.kapitalFinal || 0).toLocaleString('pl-PL') + ' zł',
-        badge: '+' + (data.zwrotPct || 0) + '%'
+        badge: (parseFloat(data.zwrotPct) >= 0 ? '+' : '') + (data.zwrotPct || 0) + '%'
       };
     }
     if (tab === 'cmp') {
@@ -562,8 +559,8 @@ var ShareModule = {
     if (tab === 'bt') {
       return [
         { label: 'Wpłacony kapitał', value: (data.wplacono || 0).toLocaleString('pl-PL') + ' zł', color: '#0d7ff2', valueColor: '#1e293b' },
-        { label: 'Zysk netto',       value: '+' + (data.zyskNetto || 0).toLocaleString('pl-PL') + ' zł', color: '#16a34a', valueColor: '#16a34a' },
-        { label: data.ike ? 'Zwrot %' : 'Oszczędność IKE', value: data.ike ? '+' + data.zwrotPct + '%' : (data.oszczIKE || 0).toLocaleString('pl-PL') + ' zł', color: '#f59e0b', valueColor: '#f59e0b' }
+        { label: 'Zysk netto',       value: ((data.zyskNetto || 0) >= 0 ? '+' : '') + (data.zyskNetto || 0).toLocaleString('pl-PL') + ' zł', color: '#16a34a', valueColor: '#16a34a' },
+        { label: data.ike ? 'Zwrot %' : 'Oszczędność IKE', value: data.ike ? (parseFloat(data.zwrotPct) >= 0 ? '+' : '') + data.zwrotPct + '%' : (data.oszczIKE || 0).toLocaleString('pl-PL') + ' zł', color: '#f59e0b', valueColor: '#f59e0b' }
       ];
     }
     if (tab === 'cmp') {

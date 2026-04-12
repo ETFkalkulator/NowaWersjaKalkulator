@@ -14,39 +14,37 @@
     })();
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Backtesting ETF 2026 — ile byś zarobił na IWDA, VWCE? | ETFkalkulator.pl</title>
+  <title>Historia ETF — ile zarobiłeś na IWDA, VWCE, CSPX? | ETFkalkulator.pl</title>
   <link rel="canonical" href="https://etfkalkulator.pl/pages/kalkulator-etf-historyczny.html">
   <meta name="description"
-    content="Sprawdź ile byś zarobił inwestując w IWDA, VWCE lub CSPX. Backtesting z rzeczywistymi danymi miesięcznymi. Uwzględnia TER, inflację i IKE.">
+    content="Sprawdź ile byś zarobił inwestując w IWDA, VWCE lub CSPX. Dane historyczne miesiąc po miesiącu. Uwzględnia TER, inflację i IKE.">
   <meta name="robots" content="index, follow">
   <meta name="keywords"
     content="procent składany ETF, kalkulator ETF, IKE, IKZE, podatek Belki, inflacja, inwestowanie pasywne">
 
-  <meta property="og:title" content="Backtesting ETF 2026 — ile byś zarobił na IWDA, VWCE?">
+  <meta property="og:title" content="Historia ETF — wyniki historyczne IWDA, VWCE, CSPX">
   <meta property="og:description"
-    content="Sprawdź ile byś zarobił inwestując w IWDA, VWCE lub CSPX. Backtesting ETF z danymi miesięcznymi.">
+    content="Sprawdź ile byś zarobił inwestując w IWDA, VWCE lub CSPX. Historia ETF z rzeczywistymi danymi miesięcznymi.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://etfkalkulator.pl/pages/kalkulator-etf-historyczny.html">
-  <meta property="og:image" content="https://etfkalkulator.pl/images/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:image" content="https://etfkalkulator.pl/images/kalkulator-etf-historyczny.webp">
   <meta property="og:locale" content="pl_PL">
   <meta property="og:site_name" content="ETFkalkulator.pl">
 
   <!-- SEO: Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Backtesting ETF 2026 — ile byś zarobił na IWDA, VWCE?">
+  <meta name="twitter:title" content="Historia ETF — wyniki historyczne IWDA, VWCE, CSPX">
   <meta name="twitter:description"
-    content="Sprawdź ile byś zarobił w IWDA, VWCE lub CSPX. Backtesting ETF z danymi miesięcznymi.">
-  <meta name="twitter:image" content="https://etfkalkulator.pl/images/og-image.png">
+    content="Sprawdź ile byś zarobił w IWDA, VWCE lub CSPX. Historia ETF z rzeczywistymi danymi miesięcznymi.">
+  <meta name="twitter:image" content="https://etfkalkulator.pl/images/kalkulator-etf-historyczny.webp">
 
   <!-- Structured Data: FinancialProduct & Breadcrumb -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FinancialProduct",
-    "name": "Kalkulator ETF Historyczny — Backtesting",
-    "description": "Narzędzie do backtestingu inwestycji w ETF na podstawie rzeczywistych danych miesięcznych.",
+    "name": "Historia ETF",
+    "description": "Narzędzie do analizy historycznej inwestycji w ETF na podstawie rzeczywistych danych miesięcznych.",
     "url": "https://etfkalkulator.pl/pages/kalkulator-etf-historyczny.html"
   }
   </script>
@@ -56,7 +54,7 @@
     "@type": "BreadcrumbList",
     "itemListElement": [
       {"@type":"ListItem","position":1,"name":"Strona główna","item":"https://etfkalkulator.pl/"},
-      {"@type":"ListItem","position":2,"name":"Kalkulator ETF Historyczny","item":"https://etfkalkulator.pl/pages/kalkulator-etf-historyczny.html"}
+      {"@type":"ListItem","position":2,"name":"Historia ETF","item":"https://etfkalkulator.pl/pages/kalkulator-etf-historyczny.html"}
     ]
   }
   </script>
@@ -223,6 +221,8 @@
   </style>
 
   <link rel="stylesheet" href="../css/tailwind.css">
+  <script src="../js/etf-data.js"></script>
+  <script src="../js/etf-usdpln.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
   <script src="../js/charts-config.js" defer></script>
   <script src="../js/kalkulator-etf-historyczny.js" defer></script>
@@ -242,7 +242,7 @@
           <span class="text-slate-600 dark:text-slate-300">Kalkulator ETF Historyczny</span>
         </nav>
         <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-stitch-text mb-4">
-          Backtesting <span class="text-primary" style="color:#0d7ff2;">ETF</span>
+          Historia <span class="text-primary" style="color:#0d7ff2;">ETF</span>
         </h1>
         <p class="text-lg text-stitch-muted max-w-2xl leading-relaxed">
           Ile byś zarobił inwestując regularnie w IWDA, VWCE lub CSPX? Sprawdź wyniki historyczne oparte na rzeczywistych danych miesięcznych.

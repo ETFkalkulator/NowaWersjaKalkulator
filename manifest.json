@@ -49,9 +49,9 @@
       "description": "Oblicz podatek 19% od zysku z inwestycji"
     }
     ,{
-      "name": "Backtesting ETF",
-      "short_name": "Backtesting",
-      "description": "Historyczne wyniki inwestycji w ETF",
+      "name": "Historia ETF",
+      "short_name": "Historia ETF",
+      "description": "Wyniki historyczne inwestycji w ETF — IWDA, VWCE, CSPX",
       "url": "/pages/kalkulator-etf-historyczny.html",
       "icons": [{"src": "/images/favicon.png", "sizes": "192x192"}]
     }

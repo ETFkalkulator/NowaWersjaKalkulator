@@ -821,13 +821,24 @@
             </div>
           </a>
 
-          <a href="pages/kalkulator-etf-historyczny.html" class="group glass-effect p-6 rounded-[1.5rem] border border-white/50 dark:border-slate-700/50 hover:border-primary/30 transition-all hover:-translate-y-1 hover:shadow-xl" style="text-decoration:none;">
-  <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(13,127,242,0.1);">
-    <span class="material-symbols-outlined text-[24px]" style="color:#0d7ff2;">history</span>
-  </div>
-  <h3 class="text-base font-bold text-stitch-text mb-2">Backtesting ETF</h3>
-  <p class="text-sm text-stitch-muted leading-relaxed">Sprawdź ile byś zarobił na IWDA, VWCE lub CSPX. Dane historyczne miesięczne.</p>
-</a>
+          <!-- Karta: Historia ETF -->
+          <a href="pages/kalkulator-etf-historyczny.html" id="karta-historyczny" style="text-decoration:none;"
+            class="group relative flex flex-col rounded-[1.5rem] overflow-hidden bg-stitch-surface border border-stitch-border shadow-stitch-soft hover:-translate-y-2 hover:shadow-xl hover:border-primary/40 transition-all duration-300">
+            <div class="relative overflow-hidden h-44 bg-gradient-to-br from-blue-700 to-blue-900 shrink-0">
+              <img src="images/kalkulator-etf-historyczny.webp" alt="Historia ETF — wyniki historyczne IWDA VWCE CSPX"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-95" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 bg-white/15 backdrop-blur-sm text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full border border-white/25">Historia</span>
+            </div>
+            <div class="flex flex-col flex-1 p-6">
+              <h3 class="text-lg font-black text-stitch-text mb-2">Historia ETF</h3>
+              <p class="text-sm text-stitch-muted leading-relaxed mb-5 flex-1">Sprawdź ile byś zarobił inwestując regularnie w IWDA, VWCE lub CSPX. Rzeczywiste dane historyczne miesiąc po miesiącu.</p>
+              <div class="flex items-center gap-2 font-bold text-sm" style="color:#0d7ff2;">
+                Otwórz kalkulator
+                <span class="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </div>
+            </div>
+          </a>
 
           <!-- Karta 1: Obligacje -->
           <a href="pages/kalkulator-obligacji.html" id="karta-obligacje" style="text-decoration:none;"
