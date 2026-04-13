@@ -12,6 +12,120 @@ var btState  = {};      // ostatnie wyniki backtestingu (do ShareModule)
 var cmpState = {};      // ostatnie wyniki porównania
 var terState = {};      // ostatnie wyniki TER
 
+// ── Month-Year Picker ──────────────────────────────────────────────────────
+var _activePicker = null;
+
+function getDataRange() {
+  var min = '2099-01';
+  Object.keys(ETF_DATA).forEach(function (ticker) {
+    if (ETF_DATA[ticker].start && ETF_DATA[ticker].start < min) {
+      min = ETF_DATA[ticker].start;
+    }
+  });
+  var usdplnKeys = USDPLN ? Object.keys(USDPLN) : [];
+  var max = usdplnKeys.length ? usdplnKeys[usdplnKeys.length - 1] : '2025-12';
+  return { min: min, max: max };
+}
+
+function MonthYearPicker(inputId, minYYYYMM, maxYYYYMM) {
+  this.input    = document.getElementById(inputId);
+  this.minKey   = minYYYYMM;   // "RRRR-MM"
+  this.maxKey   = maxYYYYMM;   // "RRRR-MM"
+  this.el       = null;
+  this._year    = null;
+  var self      = this;
+  this.input.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (_activePicker && _activePicker !== self) { _activePicker.close(); }
+    if (self.el) { self.close(); } else { self.open(); }
+  });
+}
+
+MonthYearPicker.prototype._parseInput = function () {
+  var v = this.input.value; // "MM/RRRR"
+  if (v && v.length === 7) {
+    return { mm: parseInt(v.slice(0, 2)), yyyy: parseInt(v.slice(3)) };
+  }
+  return { mm: null, yyyy: parseInt(this.maxKey.slice(0, 4)) };
+};
+
+MonthYearPicker.prototype._renderHTML = function (year) {
+  var NAMES    = ['sty','lut','mar','kwi','maj','cze','lip','sie','wrz','paź','lis','gru'];
+  var cur      = this._parseInput();
+  var minY     = parseInt(this.minKey.slice(0, 4));
+  var minM     = parseInt(this.minKey.slice(5, 7));
+  var maxY     = parseInt(this.maxKey.slice(0, 4));
+  var maxM     = parseInt(this.maxKey.slice(5, 7));
+
+  var disablePrev = year <= minY ? 'disabled' : '';
+  var disableNext = year >= maxY ? 'disabled' : '';
+
+  var html = '<div class="mypicker-year-row">' +
+    '<button class="mypicker-prev" ' + disablePrev + '>‹</button>' +
+    '<span class="mypicker-year">' + year + '</span>' +
+    '<button class="mypicker-next" ' + disableNext + '>›</button>' +
+    '</div><div class="mypicker-months">';
+
+  NAMES.forEach(function (name, i) {
+    var mm         = i + 1;
+    var isActive   = (mm === cur.mm && year === cur.yyyy);
+    var isDisabled = (year === minY && mm < minM) || (year === maxY && mm > maxM);
+    html += '<button class="mypicker-month' +
+      (isActive   ? ' active'   : '') +
+      (isDisabled ? ' disabled' : '') + '"' +
+      ' data-mm="' + mm + '"' +
+      (isDisabled ? ' disabled' : '') + '>' +
+      name + '</button>';
+  });
+
+  html += '</div>';
+  return html;
+};
+
+MonthYearPicker.prototype.open = function () {
+  _activePicker = this;
+  var parsed    = this._parseInput();
+  this._year    = parsed.yyyy;
+
+  var el        = document.createElement('div');
+  el.className  = 'mypicker';
+  el.innerHTML  = this._renderHTML(this._year);
+  document.body.appendChild(el);
+  this.el       = el;
+
+  var rect      = this.input.getBoundingClientRect();
+  el.style.top  = (rect.bottom + 6) + 'px';
+  el.style.left = rect.left + 'px';
+
+  var self = this;
+  el.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var btn = e.target.closest('button');
+    if (!btn || btn.disabled) return;
+    if (btn.classList.contains('mypicker-prev')) {
+      self._year--;
+      el.innerHTML = self._renderHTML(self._year);
+    } else if (btn.classList.contains('mypicker-next')) {
+      self._year++;
+      el.innerHTML = self._renderHTML(self._year);
+    } else if (btn.classList.contains('mypicker-month')) {
+      var mm = String(btn.dataset.mm).padStart(2, '0');
+      self.input.value = mm + '/' + self._year;
+      self.close();
+    }
+  });
+};
+
+MonthYearPicker.prototype.close = function () {
+  if (this.el) { this.el.remove(); this.el = null; }
+  if (_activePicker === this) { _activePicker = null; }
+};
+
+// Zamknij picker kliknięciem poza nim
+document.addEventListener('click', function () {
+  if (_activePicker) { _activePicker.close(); }
+});
+
 // ── Ładowanie danych ───────────────────────────────────────────────────────
 async function loadData() {
   // Dane ładowane przez <script> tag — działa zarówno przez HTTP jak i file://
@@ -22,6 +136,11 @@ async function loadData() {
 // ── Inicjalizacja ──────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async function () {
   await loadData();
+  var range = getDataRange();
+  new MonthYearPicker('bt-od',  range.min, range.max);
+  new MonthYearPicker('bt-do',  range.min, range.max);
+  new MonthYearPicker('cmp-od', range.min, range.max);
+  new MonthYearPicker('cmp-do', range.min, range.max);
   ShareModule.preloadAssets();           // preładuj favicon do Canvas
   renderEtfSelector('etf-selector-bt', 'bt', null);
   renderEtfSelector('etf-selector-cmp-a', 'cmp-a', 'IWDA');
@@ -120,6 +239,31 @@ function setPresetBt(preset) {
 
   document.getElementById('bt-od').value = odVal;
   document.getElementById('bt-do').value = doVal;
+}
+
+function setPresetCmp(preset) {
+  var now    = new Date();
+  var endMM  = String(now.getMonth() + 1).padStart(2, '0');
+  var endYY  = now.getFullYear();
+  var lastKey = USDPLN ? Object.keys(USDPLN).pop() : null;
+  var doVal  = lastKey ? lastKey.slice(5, 7) + '/' + lastKey.slice(0, 4) : endMM + '/' + endYY;
+
+  var odVal;
+  if (preset === 'max') {
+    var tickerA = getSelectedEtf('etf-selector-cmp-a') || 'IWDA';
+    var tickerB = getSelectedEtf('etf-selector-cmp-b') || 'VWCE';
+    var startA  = (ETF_DATA[tickerA] && ETF_DATA[tickerA].start) ? ETF_DATA[tickerA].start : '2009-10';
+    var startB  = (ETF_DATA[tickerB] && ETF_DATA[tickerB].start) ? ETF_DATA[tickerB].start : '2014-05';
+    var start   = startA > startB ? startA : startB;
+    odVal = start.slice(5, 7) + '/' + start.slice(0, 4);
+  } else if (preset === 'covid') {
+    odVal = '01/2020';
+  } else {
+    odVal = endMM + '/' + (endYY - parseInt(preset));
+  }
+
+  document.getElementById('cmp-od').value = odVal;
+  document.getElementById('cmp-do').value = doVal;
 }
 
 // ── Helpers ────────────────────────────────────────────────────────────────
