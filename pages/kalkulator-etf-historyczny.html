@@ -317,19 +317,21 @@
       </div>
 
       <!-- ZAKŁADKI -->
-      <div class="flex bg-slate-100 dark:bg-slate-800 rounded-xl p-1 gap-1 mb-8">
-        <button id="tab-backtesting" onclick="switchTab('backtesting')"
-          class="tab-btn flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-500 dark:text-slate-400 transition-all whitespace-nowrap">
-          <span class="material-symbols-outlined text-[18px]">history</span>Backtesting
-        </button>
-        <button id="tab-porownanie" onclick="switchTab('porownanie')"
-          class="tab-btn flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-500 dark:text-slate-400 transition-all whitespace-nowrap">
-          <span class="material-symbols-outlined text-[18px]">compare_arrows</span>Porównanie ETF
-        </button>
-        <button id="tab-ter" onclick="switchTab('ter')"
-          class="tab-btn flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-500 dark:text-slate-400 transition-all whitespace-nowrap">
-          <span class="material-symbols-outlined text-[18px]">payments</span>Koszt TER
-        </button>
+      <div class="overflow-x-auto -mx-4 px-4 mb-8">
+        <div class="flex bg-slate-100 dark:bg-slate-800 rounded-xl p-1 gap-1 min-w-max">
+          <button id="tab-backtesting" onclick="switchTab('backtesting')"
+            class="tab-btn flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold text-slate-500 dark:text-slate-400 transition-all whitespace-nowrap">
+            <span class="material-symbols-outlined text-[18px]">history</span>Backtesting
+          </button>
+          <button id="tab-porownanie" onclick="switchTab('porownanie')"
+            class="tab-btn flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold text-slate-500 dark:text-slate-400 transition-all whitespace-nowrap">
+            <span class="material-symbols-outlined text-[18px]">compare_arrows</span>Porównanie ETF
+          </button>
+          <button id="tab-ter" onclick="switchTab('ter')"
+            class="tab-btn flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold text-slate-500 dark:text-slate-400 transition-all whitespace-nowrap">
+            <span class="material-symbols-outlined text-[18px]">payments</span>Koszt TER
+          </button>
+        </div>
       </div>
 
       <!-- PANELE zakładek -->
@@ -382,13 +384,13 @@
       <div class="grid grid-cols-2 gap-3">
         <div>
           <p class="text-[11px] text-slate-400 mb-1">Od (MM/RRRR)</p>
-          <input type="text" id="bt-od" placeholder="01/2015" readonly
+          <input type="text" id="bt-od" placeholder="01/2015" inputmode="numeric"
             class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 dark:border-slate-700 text-stitch-text text-lg font-bold focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all cursor-pointer"
             autocomplete="off">
         </div>
         <div>
           <p class="text-[11px] text-slate-400 mb-1">Do (MM/RRRR)</p>
-          <input type="text" id="bt-do" placeholder="12/2024" readonly
+          <input type="text" id="bt-do" placeholder="12/2024" inputmode="numeric"
             class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 dark:border-slate-700 text-stitch-text text-lg font-bold focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all cursor-pointer"
             autocomplete="off">
         </div>
@@ -600,12 +602,12 @@
     <div class="grid grid-cols-2 gap-3">
       <div>
         <p class="text-[11px] text-slate-400 mb-1">Od</p>
-        <input type="text" id="cmp-od" placeholder="01/2015" readonly
+        <input type="text" id="cmp-od" placeholder="01/2015" inputmode="numeric"
           class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 dark:border-slate-700 text-stitch-text text-lg font-bold focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all cursor-pointer">
       </div>
       <div>
         <p class="text-[11px] text-slate-400 mb-1">Do</p>
-        <input type="text" id="cmp-do" placeholder="12/2024" readonly
+        <input type="text" id="cmp-do" placeholder="12/2024" inputmode="numeric"
           class="w-full h-14 px-5 rounded-stitch bg-stitch-surface border-2 border-slate-100 dark:border-slate-700 text-stitch-text text-lg font-bold focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all cursor-pointer">
       </div>
     </div>

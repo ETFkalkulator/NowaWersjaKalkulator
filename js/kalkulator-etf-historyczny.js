@@ -64,20 +64,49 @@ function getDataRange() {
 
 function MonthYearPicker(inputId, minYYYYMM, maxYYYYMM) {
   this.input = document.getElementById(inputId);
-  this.minKey = minYYYYMM;   // "RRRR-MM"
-  this.maxKey = maxYYYYMM;   // "RRRR-MM"
+  this.minKey = minYYYYMM;
+  this.maxKey = maxYYYYMM;
   this.el = null;
   this._year = null;
+  this._keyHandler = null;
+  this._scrollHandler = null;
+
   var self = this;
+
   this.input.addEventListener('click', function (e) {
     e.stopPropagation();
     if (_activePicker && _activePicker !== self) { _activePicker.close(); }
     if (self.el) { self.close(); } else { self.open(); }
   });
+
+  // Auto-format: wpisywanie MM/RRRR z klawiatury
+  this.input.addEventListener('input', function () {
+    if (_activePicker === self) { self.close(); }
+    var digits = this.value.replace(/\D/g, '').slice(0, 6);
+    this.value = digits.length > 2 ? digits.slice(0, 2) + '/' + digits.slice(2) : digits;
+  });
+
+  this.input.addEventListener('blur', function () {
+    self._validateInput();
+  });
 }
 
+MonthYearPicker.prototype._validateInput = function () {
+  var v = this.input.value;
+  if (!v || v.length < 7) { this.input.value = ''; return; }
+  var mm = parseInt(v.slice(0, 2));
+  var yyyy = parseInt(v.slice(3));
+  var minY = parseInt(this.minKey.slice(0, 4)), minM = parseInt(this.minKey.slice(5, 7));
+  var maxY = parseInt(this.maxKey.slice(0, 4)), maxM = parseInt(this.maxKey.slice(5, 7));
+  if (isNaN(mm) || isNaN(yyyy) || mm < 1 || mm > 12 || yyyy < 1000) { this.input.value = ''; return; }
+  var key = yyyy * 100 + mm;
+  if (key < minY * 100 + minM) { yyyy = minY; mm = minM; }
+  if (key > maxY * 100 + maxM) { yyyy = maxY; mm = maxM; }
+  this.input.value = String(mm).padStart(2, '0') + '/' + yyyy;
+};
+
 MonthYearPicker.prototype._parseInput = function () {
-  var v = this.input.value; // "MM/RRRR"
+  var v = this.input.value;
   if (v && v.length === 7) {
     return { mm: parseInt(v.slice(0, 2)), yyyy: parseInt(v.slice(3)) };
   }
@@ -137,13 +166,13 @@ MonthYearPicker.prototype.open = function () {
   var top = (rect.bottom + 6 + pickerH > vh)
     ? Math.max(4, rect.top - pickerH - 6)
     : rect.bottom + 6;
-
   var left = Math.min(rect.left, Math.max(4, vw - pickerW - 4));
 
   el.style.top = top + 'px';
   el.style.left = left + 'px';
 
   var self = this;
+
   el.addEventListener('click', function (e) {
     e.stopPropagation();
     var btn = e.target.closest('button');
@@ -160,10 +189,62 @@ MonthYearPicker.prototype.open = function () {
       self.close();
     }
   });
+
+  // Nawigacja klawiaturą: ←→ miesiąc, ↑↓ rok, Enter potwierdź, Escape zamknij
+  this._keyHandler = function (e) {
+    if (!self.el) return;
+    var cur = self._parseInput();
+    var mm = cur.mm || 1;
+    var yyyy = self._year;
+    var minY = parseInt(self.minKey.slice(0, 4)), minM = parseInt(self.minKey.slice(5, 7));
+    var maxY = parseInt(self.maxKey.slice(0, 4)), maxM = parseInt(self.maxKey.slice(5, 7));
+
+    if (e.key === 'Escape') {
+      self.close();
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      mm--; if (mm < 1) { mm = 12; yyyy--; }
+      if (yyyy < minY || (yyyy === minY && mm < minM)) return;
+      self._year = yyyy;
+      self.input.value = String(mm).padStart(2, '0') + '/' + yyyy;
+      el.innerHTML = self._renderHTML(yyyy);
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      mm++; if (mm > 12) { mm = 1; yyyy++; }
+      if (yyyy > maxY || (yyyy === maxY && mm > maxM)) return;
+      self._year = yyyy;
+      self.input.value = String(mm).padStart(2, '0') + '/' + yyyy;
+      el.innerHTML = self._renderHTML(yyyy);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (yyyy - 1 < minY) return;
+      self._year = yyyy - 1;
+      el.innerHTML = self._renderHTML(self._year);
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (yyyy + 1 > maxY) return;
+      self._year = yyyy + 1;
+      el.innerHTML = self._renderHTML(self._year);
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      var activeBtn = el.querySelector('.mypicker-month.active');
+      if (activeBtn && !activeBtn.disabled) {
+        self.input.value = String(activeBtn.dataset.mm).padStart(2, '0') + '/' + self._year;
+      }
+      self.close();
+    }
+  };
+  document.addEventListener('keydown', this._keyHandler);
+
+  // Zamknij przy scrollu strony
+  this._scrollHandler = function () { self.close(); };
+  window.addEventListener('scroll', this._scrollHandler, { passive: true });
 };
 
 MonthYearPicker.prototype.close = function () {
   if (this.el) { this.el.remove(); this.el = null; }
+  if (this._keyHandler) { document.removeEventListener('keydown', this._keyHandler); this._keyHandler = null; }
+  if (this._scrollHandler) { window.removeEventListener('scroll', this._scrollHandler); this._scrollHandler = null; }
   if (_activePicker === this) { _activePicker = null; }
 };
 
