@@ -129,8 +129,19 @@ MonthYearPicker.prototype.open = function () {
   this.el = el;
 
   var rect = this.input.getBoundingClientRect();
-  el.style.top = (rect.bottom + 6) + 'px';
-  el.style.left = rect.left + 'px';
+  var pickerH = el.offsetHeight;
+  var pickerW = el.offsetWidth;
+  var vh = window.innerHeight;
+  var vw = window.innerWidth;
+
+  var top = (rect.bottom + 6 + pickerH > vh)
+    ? Math.max(4, rect.top - pickerH - 6)
+    : rect.bottom + 6;
+
+  var left = Math.min(rect.left, Math.max(4, vw - pickerW - 4));
+
+  el.style.top = top + 'px';
+  el.style.left = left + 'px';
 
   var self = this;
   el.addEventListener('click', function (e) {
@@ -186,13 +197,14 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 // ── Zakładki ───────────────────────────────────────────────────────────────
 function switchTab(name) {
+  var isDark = document.documentElement.classList.contains('dark');
   document.querySelectorAll('.tab-panel').forEach(function (p) {
     p.classList.add('hidden');
   });
   document.querySelectorAll('.tab-btn').forEach(function (b) {
-    b.classList.remove('text-primary', 'border-primary');
     b.style.color = '';
-    b.style.borderColor = '';
+    b.style.background = '';
+    b.style.boxShadow = '';
   });
 
   var panel = document.getElementById('panel-' + name);
@@ -200,7 +212,8 @@ function switchTab(name) {
   if (panel) panel.classList.remove('hidden');
   if (btn) {
     btn.style.color = '#0d7ff2';
-    btn.style.borderBottomColor = '#0d7ff2';
+    btn.style.background = isDark ? '#1e293b' : '#ffffff';
+    btn.style.boxShadow = '0 1px 4px rgba(0,0,0,0.10)';
   }
 }
 
@@ -450,6 +463,7 @@ function renderBtChart(labels, kapital, wplacono) {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       interaction: { mode: 'index', intersect: false },
       plugins: {
         legend: { position: 'bottom' },
