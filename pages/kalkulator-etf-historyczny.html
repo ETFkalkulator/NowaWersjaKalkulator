@@ -405,16 +405,17 @@
     </div>
 
     <!-- IKE toggle -->
-    <div class="flex items-center justify-between py-1">
-      <div>
-        <p class="text-sm font-bold text-slate-700 dark:text-slate-300">Konto IKE</p>
-        <p class="text-[11px] text-slate-400">0% podatku Belki od zysku</p>
+    <label class="group flex items-start gap-4 p-4 rounded-stitch border-2 border-transparent hover:border-primary/20 hover:bg-primary/5 transition-all cursor-pointer">
+      <div class="relative flex items-center shrink-0">
+        <input type="checkbox" id="bt-ike" class="peer sr-only">
+        <div class="w-12 h-6 bg-slate-200 dark:bg-slate-700 rounded-full peer peer-checked:bg-primary transition-colors"></div>
+        <div class="absolute left-1 top-1 w-4 h-4 bg-white dark:bg-stitch-surface rounded-full transition-transform peer-checked:translate-x-6"></div>
       </div>
-      <label class="relative inline-flex items-center cursor-pointer">
-        <input type="checkbox" id="bt-ike" class="sr-only peer">
-        <div class="w-11 h-6 bg-slate-200 dark:bg-slate-700 rounded-full peer peer-checked:bg-primary peer-focus:ring-4 peer-focus:ring-primary/20 transition-colors after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-5"></div>
-      </label>
-    </div>
+      <div class="flex-1">
+        <span class="block text-sm font-bold text-stitch-text mb-1">Konto IKE / IKZE (0% podatku)</span>
+        <span class="block text-xs text-stitch-muted leading-normal">Zaznacz, jeśli inwestujesz w ramach limitów bez podatku Belki.</span>
+      </div>
+    </label>
 
     <!-- Przycisk oblicz -->
     <button onclick="obliczBacktesting()"
@@ -436,27 +437,103 @@
 <!-- Wyniki (ukryte domyślnie) -->
 <div id="bt-wyniki" class="hidden space-y-6">
 
-  <!-- 4 kafelki -->
-  <div class="grid grid-cols-2 gap-4">
-    <div class="glass-effect p-6 rounded-[1.5rem] border border-white/50 dark:border-slate-700/50">
-      <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#0d7ff2;">Kapitał końcowy</p>
-      <p id="bt-res-kapital" class="text-3xl font-extrabold" style="color:#0d7ff2;">—</p>
-    </div>
-    <div class="glass-effect p-6 rounded-[1.5rem] border border-white/50 dark:border-slate-700/50">
-      <p class="text-xs font-bold uppercase tracking-wider text-green-600 dark:text-green-400 mb-2">Zysk netto</p>
-      <p id="bt-res-zysk" class="text-3xl font-extrabold text-green-600 dark:text-green-400">—</p>
-    </div>
-    <div class="glass-effect p-6 rounded-[1.5rem] border border-slate-100 dark:border-slate-700/50">
-      <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Wpłacony kapitał</p>
-      <p id="bt-res-wplacono" class="text-3xl font-extrabold text-slate-700 dark:text-slate-200">—</p>
-    </div>
-    <div class="glass-effect p-6 rounded-[1.5rem] border border-slate-100 dark:border-slate-700/50">
-      <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Całkowity zwrot</p>
-      <p id="bt-res-zwrot" class="text-3xl font-extrabold text-slate-700 dark:text-slate-200">—</p>
+  <!-- HERO -->
+  <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+    onclick="openEduModal('bt_kapital', event)"
+    class="relative overflow-hidden group p-8 md:p-10 rounded-[2.5rem] text-white shadow-stitch-soft shadow-primary/30 transition-all hover:scale-[1.01] cursor-help border-2 border-transparent"
+    style="background-color:#0d7ff2;">
+    <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+    <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div>
+        <p class="text-white/75 font-bold uppercase tracking-widest text-[10px] mb-3 flex items-center gap-2">
+          Kapitał końcowy
+          <span class="px-1.5 py-0.5 text-[9px] bg-white/10 text-white rounded-md font-bold">INFO</span>
+        </p>
+        <p class="text-4xl md:text-5xl font-black tracking-tighter" id="bt-res-kapital">—</p>
+        <div id="bt-res-zwrot-chip" class="hidden items-center gap-1.5 mt-2 border rounded-lg px-3 py-1 w-fit"
+          style="background:rgba(134,239,172,.15);border-color:rgba(134,239,172,.3);">
+          <span class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:#86efac;"></span>
+          <span id="bt-res-zwrot-val" class="text-sm font-bold" style="color:#86efac;">—</span>
+          <span class="text-[11px] text-white/60">całkowity zwrot</span>
+        </div>
+        <p class="mt-3 text-[10px] text-white/60 opacity-0 group-hover:opacity-100 transition-opacity">Kliknij, aby zrozumieć ten wynik</p>
+      </div>
+      <div class="bg-white/10 backdrop-blur-md px-5 py-3 rounded-stitch border border-white/20 shrink-0">
+        <p class="text-[10px] font-black uppercase tracking-widest text-white/60 mb-1">Status podatkowy</p>
+        <p class="font-bold whitespace-nowrap" id="bt-ike-status">Opodatkowanie 19%</p>
+      </div>
     </div>
   </div>
 
-  <!-- Przycisk share — ukryty domyślnie, pojawia się po obliczeniu -->
+  <!-- SIATKA KART -->
+  <div class="flex flex-col items-center justify-center w-full lg:grid lg:grid-cols-2 lg:gap-6 lg:items-start lg:justify-items-stretch gap-4">
+
+    <!-- Zysk netto -->
+    <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+      onclick="openEduModal('bt_zysk_netto', event)"
+      class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft bg-stitch-surface/70 backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch border border-slate-100 dark:border-slate-700/50 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+      <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent"></div>
+      <div class="flex items-center justify-center lg:justify-start mb-0.5">
+        <p class="text-[10px] uppercase tracking-widest font-semibold text-stitch-muted">Zysk netto</p>
+        <span class="px-1.5 py-0.5 text-[9px] bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 rounded-md font-bold ml-2">INFO</span>
+      </div>
+      <p class="text-2xl lg:text-3xl font-bold tracking-tight text-emerald-500" id="bt-res-zysk-netto">—</p>
+      <p class="text-[11px] text-slate-400/80 mt-1">po podatku Belki</p>
+      <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity">Kliknij, aby zrozumieć ten wynik</p>
+    </div>
+
+    <!-- Zysk nominalny -->
+    <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+      onclick="openEduModal('bt_zysk_brutto', event)"
+      class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft bg-stitch-surface/70 backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch border border-slate-100 dark:border-slate-700/50 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+      <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"></div>
+      <div class="flex items-center justify-center lg:justify-start mb-0.5">
+        <p class="text-[10px] uppercase tracking-widest font-semibold text-stitch-muted">Zysk nominalny</p>
+        <span class="px-1.5 py-0.5 text-[9px] bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 rounded-md font-bold ml-2">INFO</span>
+      </div>
+      <p class="text-2xl lg:text-3xl font-bold tracking-tight text-stitch-text" id="bt-res-zysk-brutto">—</p>
+      <p class="text-[11px] text-slate-400/80 mt-1">przed podatkiem</p>
+      <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity">Kliknij, aby zrozumieć ten wynik</p>
+    </div>
+
+    <!-- Podatek Belki -->
+    <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+      onclick="openEduModal('bt_podatek', event)"
+      class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft bg-stitch-surface/70 backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch border border-slate-100 dark:border-slate-700/50 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+      <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-rose-500/40 to-transparent"></div>
+      <div class="flex items-center justify-center lg:justify-start mb-0.5">
+        <p class="text-[10px] uppercase tracking-widest font-semibold text-stitch-muted">Podatek Belki</p>
+        <span class="px-1.5 py-0.5 text-[9px] bg-rose-50 text-rose-600 dark:bg-rose-900/30 dark:text-rose-400 rounded-md font-bold ml-2">INFO</span>
+      </div>
+      <p class="text-2xl lg:text-3xl font-bold tracking-tight text-rose-500" id="bt-res-podatek">—</p>
+      <p class="text-[11px] text-slate-400/80 mt-1" id="bt-res-podatek-sub">19% od zysku</p>
+      <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity">Kliknij, aby zrozumieć ten wynik</p>
+    </div>
+
+    <!-- Wpłacono -->
+    <div class="relative overflow-hidden bg-stitch-surface/70 backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch border border-slate-100 dark:border-slate-700/50 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none text-center lg:text-left">
+      <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-slate-400/30 to-transparent"></div>
+      <p class="text-[10px] uppercase tracking-widest font-semibold text-stitch-muted mb-0.5">Wpłacono</p>
+      <p class="text-2xl lg:text-3xl font-bold tracking-tight text-stitch-text" id="bt-res-wplacono">—</p>
+      <p class="text-[11px] text-slate-400/80 mt-1">kapitał startowy + dopłaty</p>
+    </div>
+
+    <!-- CAGR (pełna szerokość na desktop) -->
+    <div tabindex="0" role="button" onkeydown="if(event.key==='Enter')this.click()"
+      onclick="openEduModal('bt_cagr', event)"
+      class="relative overflow-hidden cursor-help group transition-all duration-300 hover:scale-[1.02] hover:shadow-stitch-soft bg-stitch-surface/70 backdrop-blur-md px-4 py-3 lg:p-6 rounded-stitch border border-slate-100 dark:border-slate-700/50 shadow-stitch-soft mx-auto w-full max-w-[340px] lg:max-w-none lg:col-span-2 text-center lg:text-left">
+      <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"></div>
+      <div class="flex items-center justify-center lg:justify-start mb-0.5">
+        <p class="text-[10px] uppercase tracking-widest font-semibold text-stitch-muted">CAGR</p>
+        <span class="px-1.5 py-0.5 text-[9px] bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 rounded-md font-bold ml-2">INFO</span>
+      </div>
+      <p class="text-2xl lg:text-3xl font-bold tracking-tight" style="color:#0d7ff2;" id="bt-res-cagr">—</p>
+      <p class="text-[11px] text-slate-400/80 mt-1">średnioroczna stopa zwrotu netto</p>
+      <p class="mt-1 text-[10px] text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity">Kliknij, aby zrozumieć ten wynik</p>
+    </div>
+  </div>
+
+  <!-- Share -->
   <div class="flex justify-end">
     <button id="bt-share-btn" onclick="ShareModule.share('bt')"
       class="hidden items-center gap-2 text-white font-bold text-sm px-5 py-3 rounded-xl transition-all hover:opacity-90 active:scale-[0.98]"
@@ -565,19 +642,44 @@
 
 <div id="cmp-wyniki" class="hidden space-y-6">
   <div class="grid grid-cols-2 gap-4">
-    <div class="glass-effect p-6 rounded-[1.5rem] border-2" style="border-color:#0d7ff2;">
+
+    <!-- ETF A -->
+    <div class="glass-effect p-5 lg:p-6 rounded-[1.5rem] border-2" style="border-color:#0d7ff2;">
       <p id="cmp-label-a" class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#0d7ff2;">ETF A</p>
-      <p id="cmp-res-a" class="text-3xl font-extrabold" style="color:#0d7ff2;">—</p>
+      <p id="cmp-res-a" class="text-2xl lg:text-3xl font-extrabold" style="color:#0d7ff2;">—</p>
+      <div id="cmp-zwrot-a" class="hidden items-center gap-1.5 mt-2 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 rounded-lg px-2.5 py-1 w-fit">
+        <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0"></span>
+        <span id="cmp-zwrot-val-a" class="text-sm font-bold text-emerald-600 dark:text-emerald-400">—</span>
+        <span class="text-[10px] text-slate-400">całk. zwrot</span>
+      </div>
+      <div class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-700/50">
+        <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Zysk netto</p>
+        <p id="cmp-zysk-a" class="text-base font-bold text-emerald-500">—</p>
+      </div>
     </div>
-    <div class="glass-effect p-6 rounded-[1.5rem] border-2" style="border-color:#f59e0b;">
+
+    <!-- ETF B -->
+    <div class="glass-effect p-5 lg:p-6 rounded-[1.5rem] border-2" style="border-color:#f59e0b;">
       <p id="cmp-label-b" class="text-xs font-bold uppercase tracking-wider mb-2 text-amber-500">ETF B</p>
-      <p id="cmp-res-b" class="text-3xl font-extrabold text-amber-500">—</p>
+      <p id="cmp-res-b" class="text-2xl lg:text-3xl font-extrabold text-amber-500">—</p>
+      <div id="cmp-zwrot-b" class="hidden items-center gap-1.5 mt-2 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg px-2.5 py-1 w-fit">
+        <span class="w-1.5 h-1.5 bg-amber-500 rounded-full flex-shrink-0"></span>
+        <span id="cmp-zwrot-val-b" class="text-sm font-bold text-amber-600 dark:text-amber-400">—</span>
+        <span class="text-[10px] text-slate-400">całk. zwrot</span>
+      </div>
+      <div class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-700/50">
+        <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Zysk netto</p>
+        <p id="cmp-zysk-b" class="text-base font-bold text-emerald-500">—</p>
+      </div>
     </div>
-    <div class="glass-effect p-6 rounded-[1.5rem] border border-slate-100 dark:border-slate-700/50 col-span-2">
+
+    <!-- Różnica -->
+    <div class="glass-effect p-5 lg:p-6 rounded-[1.5rem] border border-slate-100 dark:border-slate-700/50 col-span-2">
       <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Różnica na korzyść lepszego ETF</p>
-      <p id="cmp-res-diff" class="text-3xl font-extrabold text-slate-700 dark:text-slate-200">—</p>
+      <p id="cmp-res-diff" class="text-2xl lg:text-3xl font-extrabold text-slate-700 dark:text-slate-200">—</p>
     </div>
   </div>
+
   <div class="flex justify-end">
     <button id="cmp-share-btn" onclick="ShareModule.share('cmp')"
       class="hidden items-center gap-2 text-white font-bold text-sm px-5 py-3 rounded-xl transition-all hover:opacity-90"
@@ -667,22 +769,94 @@
 
 <div id="ter-wyniki" class="hidden space-y-6">
   <div class="grid grid-cols-2 gap-4">
-    <div class="glass-effect p-6 rounded-[1.5rem] border-2" style="border-color:#0d7ff2;">
-      <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#0d7ff2;">Kapitał z TER A</p>
-      <p id="ter-res-a" class="text-3xl font-extrabold" style="color:#0d7ff2;">—</p>
-      <p id="ter-label-a" class="text-[11px] text-slate-400 mt-1">TER 0,07%</p>
+
+    <!-- TER A -->
+    <div class="glass-effect p-5 lg:p-6 rounded-[1.5rem] border-2" style="border-color:#0d7ff2;">
+      <span id="ter-badge-a" class="inline-block text-[10px] font-bold px-2 py-0.5 rounded-md mb-2" style="background:rgba(13,127,242,.1);color:#0d7ff2;">TER 0,07% / rok</span>
+      <p class="text-[10px] text-slate-400 uppercase tracking-wider font-semibold mb-1">Kapitał końcowy</p>
+      <p id="ter-res-a" class="text-2xl lg:text-3xl font-extrabold" style="color:#0d7ff2;">—</p>
+      <div id="ter-zwrot-chip-a" class="hidden items-center gap-1.5 mt-2 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 rounded-lg px-2.5 py-1 w-fit">
+        <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full flex-shrink-0"></span>
+        <span id="ter-zwrot-val-a" class="text-sm font-bold text-emerald-600 dark:text-emerald-400">—</span>
+        <span class="text-[10px] text-slate-400">całk. zwrot</span>
+      </div>
+      <div class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-700/50 space-y-1.5">
+        <div class="flex justify-between items-center">
+          <span class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Roczny koszt opłaty</span>
+          <span id="ter-koszt-roczny-a" class="text-xs font-bold" style="color:#0d7ff2;">—</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Zysk netto</span>
+          <span id="ter-zysk-a" class="text-xs font-bold text-emerald-500">—</span>
+        </div>
+      </div>
     </div>
-    <div class="glass-effect p-6 rounded-[1.5rem] border-2 border-amber-300 dark:border-amber-600">
-      <p class="text-xs font-bold uppercase tracking-wider text-amber-500 mb-2">Kapitał z TER B</p>
-      <p id="ter-res-b" class="text-3xl font-extrabold text-amber-500">—</p>
-      <p id="ter-label-b" class="text-[11px] text-slate-400 mt-1">TER 1,50%</p>
+
+    <!-- TER B -->
+    <div class="glass-effect p-5 lg:p-6 rounded-[1.5rem] border-2 border-amber-300 dark:border-amber-600">
+      <span id="ter-badge-b" class="inline-block text-[10px] font-bold px-2 py-0.5 rounded-md mb-2 text-amber-700 dark:text-amber-400" style="background:rgba(245,158,11,.1);">TER 1,50% / rok</span>
+      <p class="text-[10px] text-slate-400 uppercase tracking-wider font-semibold mb-1">Kapitał końcowy</p>
+      <p id="ter-res-b" class="text-2xl lg:text-3xl font-extrabold text-amber-500">—</p>
+      <div id="ter-zwrot-chip-b" class="hidden items-center gap-1.5 mt-2 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg px-2.5 py-1 w-fit">
+        <span class="w-1.5 h-1.5 bg-amber-500 rounded-full flex-shrink-0"></span>
+        <span id="ter-zwrot-val-b" class="text-sm font-bold text-amber-600 dark:text-amber-400">—</span>
+        <span class="text-[10px] text-slate-400">całk. zwrot</span>
+      </div>
+      <div class="mt-3 pt-3 border-t border-slate-100 dark:border-slate-700/50 space-y-1.5">
+        <div class="flex justify-between items-center">
+          <span class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Roczny koszt opłaty</span>
+          <span id="ter-koszt-roczny-b" class="text-xs font-bold text-amber-500">—</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Zysk netto</span>
+          <span id="ter-zysk-b" class="text-xs font-bold text-emerald-500">—</span>
+        </div>
+      </div>
     </div>
-    <div class="glass-effect p-6 rounded-[1.5rem] border border-red-200 dark:border-red-900 col-span-2">
-      <p class="text-xs font-bold uppercase tracking-wider text-red-500 mb-2">Kosztuje Cię opłata</p>
-      <p id="ter-res-diff" class="text-3xl font-extrabold text-red-500">—</p>
-      <p id="ter-res-lata" class="text-[11px] text-slate-400 mt-1">przez X lat</p>
+
+    <!-- Karta różnicy (pełna szerokość) -->
+    <div class="glass-effect p-5 lg:p-6 rounded-[1.5rem] border border-red-200 dark:border-red-900 col-span-2">
+      <div class="flex items-start justify-between gap-4 flex-wrap mb-4">
+        <div>
+          <p class="text-[10px] font-bold uppercase tracking-wider text-red-500 mb-1">Tracisz przez wyższą opłatę</p>
+          <p id="ter-res-diff" class="text-3xl font-extrabold text-red-500">—</p>
+          <p id="ter-res-lata" class="text-[11px] text-slate-400 mt-1">przez X lat</p>
+        </div>
+        <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg px-4 py-2.5 shrink-0">
+          <p class="text-[9px] font-bold text-red-400 uppercase tracking-wider mb-0.5">To aż</p>
+          <p id="ter-res-diff-pct" class="text-lg font-extrabold text-red-600 dark:text-red-400">—</p>
+        </div>
+      </div>
+
+      <!-- Rozbicie kosztów -->
+      <div class="bg-slate-50 dark:bg-slate-800/40 rounded-xl p-4 mb-4 space-y-2">
+        <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-3">Rozbicie po zakończeniu okresu</p>
+        <div class="flex justify-between items-center py-1.5 border-b border-slate-100 dark:border-slate-700/50">
+          <span class="text-xs text-slate-500">Suma opłat TER A (tańszy)</span>
+          <span id="ter-breakdown-zap-a" class="text-xs font-bold" style="color:#0d7ff2;">—</span>
+        </div>
+        <div class="flex justify-between items-center py-1.5 border-b border-slate-100 dark:border-slate-700/50">
+          <span class="text-xs text-slate-500">Suma opłat TER B (droższy)</span>
+          <span id="ter-breakdown-zap-b" class="text-xs font-bold text-red-500">—</span>
+        </div>
+        <div class="flex justify-between items-center py-1.5 border-b border-slate-100 dark:border-slate-700/50">
+          <span class="text-xs text-slate-500">Różnica bezpośrednia w opłatach</span>
+          <span id="ter-breakdown-roznica" class="text-xs font-bold text-red-500">—</span>
+        </div>
+        <div class="flex justify-between items-center py-1.5">
+          <span class="text-xs text-slate-500">Utracone odsetki od opłat (proc. składany)</span>
+          <span id="ter-breakdown-utracone" class="text-xs font-bold text-red-500">—</span>
+        </div>
+      </div>
+
+      <!-- Narracja -->
+      <div class="bg-amber-50 dark:bg-amber-900/10 border border-amber-200 dark:border-amber-800/50 rounded-xl p-4">
+        <p class="text-[10px] font-bold uppercase tracking-wider text-amber-600 mb-2">💡 Co to oznacza?</p>
+        <p id="ter-narrative" class="text-sm text-amber-900 dark:text-amber-200 leading-relaxed">—</p>
+      </div>
     </div>
   </div>
+
   <div class="flex justify-end">
     <button id="ter-share-btn" onclick="ShareModule.share('ter')"
       class="hidden items-center gap-2 text-white font-bold text-sm px-5 py-3 rounded-xl transition-all hover:opacity-90"
@@ -694,14 +868,117 @@
   <div class="glass-effect p-6 rounded-[1.5rem] border border-white/50 dark:border-slate-700/50">
     <canvas id="ter-chart"></canvas>
   </div>
-  <p class="text-[11px] text-slate-400">Projekcja przy założonym stałym wzroście 7% rocznie brutto. Nie uwzględnia podatku Belki.</p>
+  <p class="text-[11px] text-slate-400">Projekcja przy założonym stałym wzroście 7% rocznie brutto. Nie uwzględnia podatku Belki. Roczny koszt opłaty jest wartością szacunkową.</p>
 </div>
 </section>
         </div>
       </div>
 
+      <!-- SEKCJA EDUKACYJNA -->
+      <section class="mt-24 py-20 border-t border-stitch-border dark:border-slate-900">
+        <h2 class="text-3xl font-extrabold text-stitch-text mb-12 text-center italic">Co warto wiedzieć o wynikach historycznych ETF?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
+            <span aria-hidden="true" class="material-symbols-outlined text-4xl mb-6" style="color:#0d7ff2;">history</span>
+            <h4 class="text-lg font-bold text-stitch-text mb-4">Co to backtesting?</h4>
+            <p class="text-sm text-stitch-muted leading-relaxed">Sprawdzanie jak strategia inwestycyjna działała na historycznych danych — miesiąc po miesiącu, na prawdziwych cenach zamknięcia ETF.</p>
+          </div>
+          <div class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
+            <span aria-hidden="true" class="material-symbols-outlined text-4xl text-emerald-500 mb-6">dataset</span>
+            <h4 class="text-lg font-bold text-stitch-text mb-4">Skąd dane miesięczne?</h4>
+            <p class="text-sm text-stitch-muted leading-relaxed">Ceny zamknięcia ETF w USD pobrane z Yahoo Finance, kurs USD/PLN z oficjalnych tabel NBP dla każdego miesiąca.</p>
+          </div>
+          <div class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
+            <span aria-hidden="true" class="material-symbols-outlined text-4xl text-amber-500 mb-6">payments</span>
+            <h4 class="text-lg font-bold text-stitch-text mb-4">Jak uwzględniamy TER?</h4>
+            <p class="text-sm text-stitch-muted leading-relaxed">Roczna opłata TER odejmowana proporcjonalnie każdego miesiąca od wartości portfela, obniżając efektywną stopę zwrotu.</p>
+          </div>
+          <div class="p-8 rounded-stitch bg-stitch-surface border border-slate-100 shadow-stitch-soft transition-all hover:shadow-stitch-soft">
+            <span aria-hidden="true" class="material-symbols-outlined text-4xl text-rose-500 mb-6">currency_exchange</span>
+            <h4 class="text-lg font-bold text-stitch-text mb-4">Ryzyko walutowe</h4>
+            <p class="text-sm text-stitch-muted leading-relaxed">ETF-y notowane w USD — zmiany kursu USD/PLN wpływają na wynik w złotówkach niezależnie od zachowania giełdy.</p>
+          </div>
+        </div>
+
+        <!-- DISCLAIMER -->
+        <div class="mt-8 p-5 md:p-8 rounded-stitch bg-slate-100/50 dark:bg-slate-800/40 border border-stitch-border flex gap-4 items-start">
+          <span aria-hidden="true" class="material-symbols-outlined text-slate-400 shrink-0 mt-0.5">info</span>
+          <div class="text-xs text-stitch-muted leading-relaxed space-y-2">
+            <p class="font-semibold text-stitch-text">Ważna informacja o danych i ryzyku</p>
+            <p>Wyniki mają charakter <strong>wyłącznie edukacyjny i poglądowy</strong> — nie stanowią rekomendacji inwestycyjnej ani porady finansowej w rozumieniu ustawy o obrocie instrumentami finansowymi.</p>
+            <ul class="list-disc list-inside space-y-1 pl-1">
+              <li><strong>Dane miesięczne:</strong> kalkulator używa cen zamknięcia z ostatniego dnia roboczego miesiąca. Wyniki mogą się nieznacznie różnić od obliczeń opartych na danych dziennych.</li>
+              <li><strong>Kurs USD/PLN:</strong> używamy średniego kursu NBP. Kurs transakcyjny u brokera może się różnić, co wpływa na ostateczny wynik w złotówkach.</li>
+              <li><strong>TER:</strong> uwzględniamy roczną opłatę funduszu odejmowaną miesięcznie. Nie uwzględniamy prowizji maklerskich ani spreadów.</li>
+              <li><strong>Podatek Belki (19%):</strong> dla ETF-ów akumulacyjnych podatek jest faktycznie odroczony do momentu sprzedaży — wyniki bez IKE mogą być w rzeczywistości nieznacznie lepsze.</li>
+            </ul>
+            <p>Wyniki historyczne nie stanowią gwarancji przyszłych zysków. Zawsze weryfikuj dane z oficjalnymi dokumentami funduszy (KIID/KID).</p>
+          </div>
+        </div>
+        <!-- PRZYCISK DRUKOWANIA -->
+        <div class="mt-6 flex justify-end">
+          <button onclick="window.print()" class="btn-print inline-flex items-center gap-2 px-5 py-2.5 rounded-stitch bg-slate-100 dark:bg-slate-800 text-stitch-text text-sm font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-stitch-border" aria-label="Drukuj wyniki lub zapisz jako PDF">
+            <span aria-hidden="true" class="material-symbols-outlined text-base">print</span>
+            Drukuj / Zapisz PDF
+          </button>
+        </div>
+      </section>
+
     </div><!-- /.max-w-7xl -->
+<div class="max-w-7xl mx-auto px-6 mt-12">
+  <div class="glass-effect p-8 rounded-[2rem] border border-white/50 dark:border-slate-700/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <div>
+      <p class="text-sm font-bold text-stitch-text mb-1">Chcesz policzyć przyszłe wyniki?</p>
+      <p class="text-sm text-stitch-muted">Kalkulator ETF z prognozami, scenariuszami i porównaniem IKE/IKZE.</p>
+    </div>
+    <a href="kalkulator-etf.html"
+      aria-label="Kalkulator ETF"
+      class="shrink-0 flex items-center gap-2 text-white font-bold text-sm px-6 py-3 rounded-xl hover:opacity-90 transition-opacity"
+      style="background-color:#0d7ff2; text-decoration:none;">
+      <span aria-hidden="true" class="material-symbols-outlined text-[18px]">calculate</span>
+      Kalkulator ETF →
+    </a>
+  </div>
+</div>
   </main>
+
+  <!-- EDU MODAL -->
+  <div id="edu-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" tabindex="0" role="button"
+      onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"></div>
+    <div class="relative glass-effect modal-anim rounded-[2.5rem] p-8 md:p-12 max-w-lg w-full border border-white/20 shadow-stitch-soft shadow-black/50 overflow-hidden">
+      <div class="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 rounded-full blur-3xl"></div>
+      <div class="relative z-10">
+        <div class="flex justify-between items-center mb-6">
+          <h3 class="text-2xl font-black text-stitch-text" id="modal-title">Edukacja</h3>
+          <button onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"
+            class="group flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-stitch-muted hover:bg-rose-500 hover:text-white transition-all">
+            <span class="text-[10px] font-bold uppercase tracking-widest">Zamknij</span>
+            <span aria-hidden="true" class="material-symbols-outlined text-xl">close</span>
+          </button>
+        </div>
+        <div class="space-y-8">
+          <div class="flex gap-4 items-start">
+            <div class="w-12 h-12 rounded-stitch bg-primary/10 flex items-center justify-center shrink-0">
+              <span aria-hidden="true" class="material-symbols-outlined text-primary" id="modal-icon">school</span>
+            </div>
+            <p id="modal-explanation" class="text-slate-600 leading-relaxed text-sm md:text-base"></p>
+          </div>
+          <div class="p-6 bg-stitch-bg rounded-stitch border border-stitch-border hover:border-primary/30 transition-all">
+            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+              <span aria-hidden="true" class="material-symbols-outlined text-xs">functions</span>
+              Jak to obliczamy?
+            </p>
+            <code id="modal-formula" class="text-stitch-text font-mono text-sm block">...</code>
+          </div>
+          <button onkeydown="if(event.key==='Enter')this.click()" onclick="closeEduModal()"
+            class="w-full py-4 bg-slate-900 dark:bg-stitch-surface text-white dark:text-stitch-text font-bold rounded-stitch hover:bg-primary dark:hover:bg-primary dark:hover:text-white transition-all shadow-stitch-soft">
+            Rozumiem, dziękuję!
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- TOAST — social sharing -->
   <div id="share-toast" class="fixed bottom-4 right-4 z-50 hidden">
@@ -711,10 +988,252 @@
     </div>
   </div>
 
+  <!-- FAQ SECTION -->
+  <section class="py-16 px-6 bg-stitch-bg dark:bg-slate-950 transition-colors" aria-labelledby="faq-historyczny-heading">
+    <div class="max-w-3xl mx-auto">
+      <h2 id="faq-historyczny-heading" class="text-2xl md:text-3xl font-extrabold tracking-tight text-stitch-text mb-2">Najczęściej zadawane pytania</h2>
+      <p class="text-stitch-muted text-sm mb-10">Odpowiedzi na kluczowe pytania o historyczne wyniki ETF.</p>
+
+      <div class="space-y-3">
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Skąd pochodzą dane historyczne ETF w kalkulatorze?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">Ceny zamknięcia ETF (IWDA, VWCE, CSPX) w USD pobierane są z Yahoo Finance i stooq.pl na podstawie notowań z ostatniego dnia roboczego każdego miesiąca. Kurs USD/PLN pochodzi z oficjalnych tabel kursów średnich NBP. Dostępna historia sięga początku notowań każdego ETF — dla IWDA to ponad 15 lat danych miesięcznych.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Dlaczego wyniki w PLN różnią się od wyników w USD?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">ETF-y takie jak IWDA, VWCE czy CSPX są denominowane w USD, ale Ty inwestujesz w złotówkach. Kurs USD/PLN zmienia się niezależnie od giełdy — gdy złoty umacnia się wobec dolara, Twój zysk w PLN jest niższy niż wskazuje stopa zwrotu ETF w USD. I odwrotnie: słabszy złoty powiększa zysk w PLN. To ryzyko walutowe, którego nie eliminuje nawet szeroka dywersyfikacja geograficzna portfela.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Jak kalkulator uwzględnia opłatę TER funduszu?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">TER (Total Expense Ratio) to roczny koszt zarządzania funduszem, wyrażony jako procent wartości aktywów. W kalkulatorze jest odejmowany proporcjonalnie każdego miesiąca (TER ÷ 12), co zmniejsza efektywną miesięczną stopę wzrostu portfela. Dla IWDA (TER 0,20%) koszt miesięczny wynosi ok. 0,0167% wartości portfela. Prowizje maklerskie i spready nie są uwzględniane.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Co to IKE i IKZE — jak chronią przed podatkiem Belki?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">IKE (Indywidualne Konto Emerytalne) i IKZE (Indywidualne Konto Zabezpieczenia Emerytalnego) to konta, które umożliwiają inwestowanie w ETF bez płacenia podatku Belki — pod warunkiem wypłaty po 60. roku życia (IKE) lub 65. roku życia (IKZE). Roczny limit wpłat na IKE w 2026 roku wynosi <strong>28 260 zł</strong>, a na IKZE <strong>11 304 zł</strong>. Dodatkową zaletą IKZE jest możliwość odliczenia wpłat od podstawy opodatkowania PIT. Zaznacz opcję IKE w kalkulatorze, aby zobaczyć różnicę w wyniku końcowym.</p>
+          </div>
+        </details>
+
+        <details class="group rounded-stitch border border-stitch-border bg-stitch-surface shadow-stitch-soft overflow-hidden">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-stitch-text text-base select-none hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+            Czym jest podatek Belki i ile wynosi od zysku z ETF?
+            <span aria-hidden="true" class="material-symbols-outlined text-primary shrink-0 transition-transform duration-200 group-open:rotate-180" style="color:#0d7ff2;">expand_more</span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border">
+            <p class="mt-4">Podatek Belki to potoczna nazwa podatku od dochodów kapitałowych, który w Polsce wynosi <strong>19%</strong>. Płacisz go od każdego zysku ze sprzedaży ETF oraz od dywidend. Podatek naliczany jest wyłącznie od zysku — nie od całej wartości inwestycji. Dla ETF-ów akumulacyjnych (jak IWDA czy VWCE) podatek jest odroczony do momentu sprzedaży jednostek — w trakcie inwestowania nie płacisz nic. Kalkulator automatycznie uwzględnia ten podatek, gdy opcja IKE jest wyłączona.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Skąd pochodzą dane historyczne ETF w kalkulatorze?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ceny zamknięcia ETF (IWDA, VWCE, CSPX) w USD pobierane są z Yahoo Finance i stooq.pl na podstawie notowań z ostatniego dnia roboczego każdego miesiąca. Kurs USD/PLN pochodzi z oficjalnych tabel kursów średnich NBP. Dostępna historia sięga początku notowań każdego ETF."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Dlaczego wyniki w PLN różnią się od wyników w USD?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ETF-y takie jak IWDA, VWCE czy CSPX są denominowane w USD, ale inwestujesz w złotówkach. Kurs USD/PLN zmienia się niezależnie od giełdy — gdy złoty umacnia się wobec dolara, zysk w PLN jest niższy niż wskazuje stopa zwrotu ETF w USD. To ryzyko walutowe, którego nie eliminuje szeroka dywersyfikacja geograficzna."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Jak kalkulator uwzględnia opłatę TER funduszu?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "TER (Total Expense Ratio) to roczny koszt zarządzania funduszem. W kalkulatorze jest odejmowany proporcjonalnie każdego miesiąca (TER podzielone przez 12), co zmniejsza efektywną miesięczną stopę wzrostu portfela. Prowizje maklerskie i spready nie są uwzględniane."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Co to IKE i IKZE — jak chronią przed podatkiem Belki?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "IKE i IKZE to konta emerytalne umożliwiające inwestowanie w ETF bez płacenia podatku Belki po spełnieniu warunków wiekowych. Roczny limit wpłat na IKE w 2026 roku wynosi 28 260 zł, a na IKZE 11 304 zł. Dodatkową zaletą IKZE jest możliwość odliczenia wpłat od podstawy opodatkowania PIT."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czym jest podatek Belki i ile wynosi od zysku z ETF?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Podatek Belki to potoczna nazwa podatku od dochodów kapitałowych, który w Polsce wynosi 19%. Płacisz go od każdego zysku ze sprzedaży ETF oraz od dywidend. Dla ETF-ów akumulacyjnych podatek jest odroczony do momentu sprzedaży jednostek."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- NEWSLETTER SECTION (Wide Banner) -->
+  <section id="newsletter-section"
+    class="pt-10 pb-20 px-6 bg-slate-100 dark:bg-slate-950 border-t border-stitch-border dark:border-slate-900 transition-colors">
+    <div class="max-w-7xl mx-auto">
+      <div
+        class="bg-stitch-surface/70 /80 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 lg:p-16 shadow-stitch-soft border border-white/50 /50 relative overflow-hidden group">
+        <!-- Decorative element -->
+        <div
+          class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700">
+        </div>
+
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center lg:justify-items-stretch relative z-10">
+          <!-- Left Side: Content -->
+          <div class="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              Newsletter
+            </div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-stitch-text tracking-tight leading-[1.1]">
+              Bądź na bieżąco z <span class="text-primary">rynkiem ETF</span> <span class="hidden md:inline">i
+                finansami</span>
+            </h2>
+            <p class="text-stitch-muted text-lg leading-relaxed max-w-xl">
+              Dołącz do społeczności świadomych inwestorów. Otrzymuj analizy, nowe kalkulatory i rzetelną wiedzę prosto
+              na swoją skrzynkę. Zero spamu.
+            </p>
+          </div>
+
+          <!-- Right Side: Form -->
+          <div class="w-full lg:max-w-md mx-auto lg:ml-auto">
+            <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
+              <div class="ml-form-embedWrapper embedForm">
+                <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                  <form class="ml-block-form"
+                    action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe"
+                    method="post" target="_blank">
+                    <div class="flex flex-col space-y-4">
+                      <!-- Email Input -->
+                      <div class="ml-form-fieldRow">
+                        <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                          <input aria-label="email" aria-required="true" type="email"
+                            class="w-full h-14 px-6 rounded-stitch border border-stitch-border bg-stitch-surface dark:bg-slate-950 text-stitch-text text-base font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all placeholder:text-slate-400"
+                            name="fields[email]" placeholder="Twój adres e-mail">
+                        </div>
+                      </div>
+
+                      <!-- Consents -->
+                      <div class="ml-form-embedPermissions">
+                        <label class="flex items-start gap-4 cursor-pointer group">
+                          <input aria-label="Wprowadź wartość" type="checkbox" name="gdpr[]"
+                            value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl" required
+                            class="custom-checkbox mt-1 transition-all">
+                          <span
+                            class="text-[11px] text-stitch-muted font-medium leading-relaxed group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors">Zgadzam
+                            się na otrzymywanie newslettera. Możesz się wypisać w każdej chwili.</span>
+                        </label>
+                      </div>
+
+                      <!-- reCAPTCHA -->
+                      <div class="ml-form-recaptcha ml-validate-required py-2 flex justify-center">
+                        <div class="g-recaptcha transform scale-[0.85] origin-center"
+                          data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                      </div>
+
+                      <input type="hidden" name="ml-submit" value="1">
+                      <input type="hidden" name="anticsrf" value="true">
+
+                      <!-- Button -->
+                      <div class="ml-form-embedSubmit">
+                        <button type="submit"
+                          class="w-full h-14 md:h-16 rounded-stitch bg-primary text-white font-bold text-sm md:text-base uppercase tracking-widest hover:scale-[1.01] active:scale-[0.98] transition-all shadow-stitch-soft shadow-primary/20"
+                          style="background-color: #0d7ff2;">
+                          Zapisz się teraz
+                        </button>
+                      </div>
+
+                      <!-- Legal & Financial Disclaimers -->
+                      <div class="pt-6 border-t border-slate-100 mt-2">
+                        <p class="text-[10px] text-slate-400 dark:text-stitch-muted leading-relaxed mb-2">
+                          Zapisując się, akceptujesz <a href="regulamin.html"
+                            class="underline hover:text-primary">Regulamin</a> i <a href="polityka-prywatnosci.html"
+                            class="underline hover:text-primary">Politykę Prywatności</a>. Twoje dane są bezpieczne i
+                          służą wyłącznie do wysyłki newslettera.
+                        </p>
+                        <p class="text-[10px] text-slate-400 font-medium italic">
+                          Prezentowane treści nie stanowią rekomendacji inwestycyjnej.
+                        </p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <!-- Success -->
+                <div class="ml-form-successBody row-success" style="display: none">
+                  <div
+                    class="p-10 rounded-stitch bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 text-center">
+                    <div
+                      class="w-16 h-16 bg-emerald-100 dark:bg-emerald-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span
+                        class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-3xl">verified</span>
+                    </div>
+                    <h4 class="text-emerald-900 dark:text-emerald-300 font-bold text-xl mb-1">Sukces!</h4>
+                    <p class="text-emerald-700 dark:text-emerald-500 text-sm">Sprawdź swoją skrzynkę e-mail, aby
+                      potwierdzić zapis.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MailerLite Logic -->
+  <script>
+    function ml_webform_success_37996059() {
+      var $ = ml_jQuery || jQuery;
+      $('.ml-subscribe-form-37996059 .row-success').show();
+      $('.ml-subscribe-form-37996059 .row-form').hide();
+    }
+  </script>
+
   <!-- FOOTER -->
   <div id="cookie-root"></div>
   <script src="../js/shared.js"></script>
   <script src="../js/nav.js"></script>
   <script src="../js/cookie-consent.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" defer></script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript" defer></script>
 </body>
 </html>

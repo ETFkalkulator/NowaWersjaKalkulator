@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="pl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#f8f7f2" id="meta-theme-color" />
+  <script>
+    (function () {
+      const s = localStorage.getItem("etf-tryb");
+      const d = s === "ciemny" || (!s && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.classList.toggle("dark", d);
+      document.documentElement.classList.toggle("light", !d);
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <title>Barista FIRE — jak żyć z inwestycji bez milionów (2026) | ETFkalkulator.pl</title>
+  <link rel="canonical" href="https://etfkalkulator.pl/blog/barista-fire-jak-rzucic-etat.html" />
+  <meta name="description" content="Barista FIRE: portfel pokrywa 60% wydatków, resztę dorabiasz elastycznie. Przykład liczbowy, Coast FIRE i jak IKE przyspiesza cel. Z kalkulatorem wolności finansowej." />
+  <meta name="author" content="ETFkalkulator.pl" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:title" content="Barista FIRE — jak wcześniej rzucić etat i żyć z inwestycji (nie musisz mieć milionów)" />
+  <meta property="og:description" content="Barista FIRE: portfel pokrywa 60% wydatków, resztę dorabiasz elastycznie. Przykład liczbowy, Coast FIRE i jak IKE przyspiesza cel." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://etfkalkulator.pl/blog/barista-fire-jak-rzucic-etat.html" />
+  <meta property="og:site_name" content="ETFkalkulator.pl" />
+  <meta property="og:image" content="https://etfkalkulator.pl/images/barista-fire-jak-rzucic-etat.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Barista FIRE — jak wcześniej rzucić etat i żyć z inwestycji" />
+  <meta name="twitter:description" content="Portfel 720 000 zł + praca 4h/dzień = wolność finansowa. Barista FIRE i Coast FIRE po polsku." />
+  <meta name="twitter:image" content="https://etfkalkulator.pl/images/barista-fire-jak-rzucic-etat.webp" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Barista FIRE — jak wcześniej rzucić etat i żyć z inwestycji (nie musisz mieć milionów)",
+    "description": "Barista FIRE: portfel pokrywa 60% wydatków, resztę dorabiasz elastycznie. Przykład liczbowy, Coast FIRE i jak IKE przyspiesza cel.",
+    "author": { "@type": "Organization", "name": "ETFkalkulator.pl" },
+    "publisher": { "@type": "Organization", "name": "ETFkalkulator.pl", "url": "https://etfkalkulator.pl" },
+    "datePublished": "2026-04-19",
+    "dateModified": "2026-04-19",
+    "url": "https://etfkalkulator.pl/blog/barista-fire-jak-rzucic-etat.html",
+    "image": "https://etfkalkulator.pl/images/barista-fire-jak-rzucic-etat.webp",
+    "inLanguage": "pl"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://etfkalkulator.pl/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://etfkalkulator.pl/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Barista FIRE — jak wcześniej rzucić etat", "item": "https://etfkalkulator.pl/blog/barista-fire-jak-rzucic-etat.html" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Co to jest Barista FIRE?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Barista FIRE to wariant wolności finansowej, w którym portfel inwestycyjny pokrywa ok. 60–70% Twoich miesięcznych wydatków, a pozostałą część uzupełniasz lekką, elastyczną pracą (dorywczą, na pół etatu, freelance). Nie musisz czekać na pełny kapitał FIRE — wcześniej rezygnujesz z etatu i zmieniasz tryb życia. Nazwa pochodzi od baristatów w kawiarniach, którzy dorabiają dla zdrowotnego ubezpieczenia (USA)." }
+      },
+      {
+        "@type": "Question",
+        "name": "Ile kapitału potrzebuję do Barista FIRE?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Zależy od Twoich wydatków i ile chcesz dorabiać. Ogólna zasada: oblicz pełny cel FIRE (wydatki roczne × 25), a następnie odejmij część, którą pokryje praca dorywcza. Jeśli wydajesz 4 000 zł/mies. i planujesz dorabiać 1 600 zł/mies., portfel musi generować 2 400 zł/mies. → cel: 2 400 × 12 × 25 = 720 000 zł. To 60% pełnego celu FIRE." }
+      },
+      {
+        "@type": "Question",
+        "name": "Czym różni się Barista FIRE od Coast FIRE?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Barista FIRE = masz portfel który generuje część dochodu + dorabiasz. Coast FIRE = masz wystarczający kapitał który sam urośnie do pełnego celu FIRE bez dalszego odkładania — nadal pracujesz, ale nie musisz już oszczędzać. Barista to wcześniejsze wyjście z etatu, Coast to zatrzymanie wpłat z zachowaniem pracy." }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy Barista FIRE jest realistyczny w Polsce?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Tak — i jest to jeden z bardziej osiągalnych wariantów FIRE dla polskiego inwestora. Przy wydatkach 3 500–4 500 zł/mies. cel Barista FIRE (przy dorabianiu 1 500–2 000 zł) wynosi 600 000–900 000 zł. To kwota osiągalna przy regularnym inwestowaniu w ETF na IKE przez 15–20 lat. Kluczowe: IKE eliminuje podatek Belki, co przyspiesza cel." }
+      },
+      {
+        "@type": "Question",
+        "name": "Jak obliczyć swój cel Barista FIRE?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Krok 1: policz miesięczne wydatki (np. 4 000 zł). Krok 2: zdecyduj ile chcesz dorabiać (np. 1 500 zł/mies.). Krok 3: oblicz ile musi generować portfel: 4 000 − 1 500 = 2 500 zł/mies. Krok 4: zastosuj regułę 4%: 2 500 × 12 × 25 = 750 000 zł — to Twój cel Barista FIRE. Użyj kalkulatora wolności finansowej na ETFkalkulator.pl, żeby policzyć, kiedy go osiągniesz." }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" href="../images/favicon.png" />
+  <link rel="apple-touch-icon" href="../images/favicon.png" />
+  <link rel="manifest" href="../manifest.json" />
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("consent", "default", { analytics_storage: "denied" });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
+  <script>
+    gtag("config", "G-GZECMECQ15", { send_page_view: false });
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap" rel="stylesheet" />
+
+  <style>
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .dark .glass-effect {
+      background: rgba(15, 23, 42, 0.7);
+    }
+    body { font-family: "Inter", sans-serif; }
+    .material-symbols-outlined {
+      font-family: "Material Symbols Outlined";
+      font-size: 24px;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    article p { line-height: 1.8; }
+    article h2 { scroll-margin-top: 5rem; }
+    article h3 { scroll-margin-top: 5rem; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    article h2 { animation: fadeInUp 0.4s ease both; }
+
+    details summary { user-select: none; }
+    details[open] summary .expand-icon { transform: rotate(180deg); }
+    .expand-icon { transition: transform 0.25s ease; }
+
+    .sidebar-toc a.toc-active {
+      color: #0d7ff2 !important;
+      font-weight: 600;
+      background: rgba(13, 127, 242, 0.1);
+    }
+
+    .fire-card-barista { border-left: 4px solid #0d7ff2; }
+    .fire-card-coast { border-left: 4px solid #8b5cf6; }
+    .fire-card-lean { border-left: 4px solid #10b981; }
+    .fire-card-fat { border-left: 4px solid #f59e0b; }
+  </style>
+
+  <link rel="preload" as="style" href="../css/mailerlite.css" />
+  <link href="../css/mailerlite.css" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="../css/mailerlite.css" /></noscript>
+  <link rel="stylesheet" href="../css/tailwind.css">
+</head>
+
+<body>
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-primary">Przejdź do głównej treści</a>
+  <div id="reading-progress" class="fixed top-0 left-0 h-[3px] bg-primary z-[200] transition-none rounded-r-full" style="width:0%;background-color:#0d7ff2;"></div>
+
+  <!-- NAV -->
+  <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-stitch-border/50" style="font-family: &quot;Inter&quot;, sans-serif">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center shrink-0">
+        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity" style="text-decoration: none">
+          <div class="bg-primary p-1.5 rounded-2xl text-white flex items-center justify-center" style="background-color: #0d7ff2">
+            <span aria-hidden="true" class="material-symbols-outlined text-xl">account_balance_wallet</span>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-stitch-text">ETFkalkulator.pl</span>
+        </a>
+      </div>
+      <div class="hidden lg:flex items-center gap-6 xl:gap-8 mx-6">
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors" href="../pages/kalkulator-etf.html" style="text-decoration: none">Kalkulator ETF</a>
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors" href="../pages/kalkulator-obligacji.html" style="text-decoration: none">Kalkulator Obligacji</a>
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors" href="../pages/kalkulator-wolnosci.html" style="text-decoration: none">Kalkulator Wolności</a>
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors" href="../pages/porownywarka.html" style="text-decoration: none">Porównywarka</a>
+        <a class="text-sm font-extrabold text-primary transition-colors hover:opacity-80" href="index.html" style="text-decoration: none; color: #0d7ff2">Blog</a>
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors" href="../pages/o-projekcie.html" style="text-decoration: none">O projekcie</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onkeydown="if (event.key === 'Enter') this.click();" onclick="przelaczTryb()" aria-label="Przełącz tryb"
+          class="w-9 h-9 rounded-full border border-stitch-border bg-stitch-surface flex items-center justify-center hover:bg-stitch-bg transition-colors">
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
+        </button>
+        <a href="#newsletter-section" class="bg-primary text-white px-4 h-9 rounded-full flex items-center justify-center text-[13px] font-bold hover:opacity-90 transition-opacity no-underline" style="background-color: #0d7ff2">Zapisz się</a>
+      </div>
+    </div>
+    <div class="lg:hidden h-11 border-t border-stitch-border/30 flex items-center overflow-x-auto overflow-y-hidden no-scrollbar px-4 gap-6 bg-stitch-surface/10" style="-webkit-overflow-scrolling: touch">
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap" href="../pages/kalkulator-etf.html" style="text-decoration: none">Kalkulator ETF</a>
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap" href="../pages/kalkulator-obligacji.html" style="text-decoration: none">Obligacje</a>
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap" href="../pages/kalkulator-wolnosci.html" style="text-decoration: none">Wolność finansowa</a>
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap" href="../pages/porownywarka.html" style="text-decoration: none">Porównywarka</a>
+      <a class="text-[12px] font-extrabold text-primary hover:opacity-80 whitespace-nowrap" href="index.html" style="text-decoration: none; color: #0d7ff2">Blog</a>
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap" href="../pages/o-projekcie.html" style="text-decoration: none">O projekcie</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative pt-32 pb-16 md:pb-20 px-4 sm:px-6 overflow-hidden text-white"
+    style="background-image: url('../images/barista-fire-jak-rzucic-etat.webp'); background-size: cover; background-position: center;">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(15,23,42,0.35) 0%, rgba(15,23,42,0.70) 55%, rgba(15,23,42,0.93) 100%);"></div>
+    <div class="relative z-10 max-w-3xl mx-auto">
+      <nav class="mb-6" aria-label="breadcrumb">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li><a href="../index.html" class="hover:text-white transition-colors" style="text-decoration: none">ETFkalkulator.pl</a></li>
+          <li><span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+          <li><a href="index.html" class="hover:text-white transition-colors" style="text-decoration: none">Blog</a></li>
+          <li><span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+          <li class="text-white font-semibold">Barista FIRE</li>
+        </ol>
+      </nav>
+      <h1 class="text-2xl md:text-4xl font-black text-white leading-tight mb-4">
+        Barista FIRE — jak wcześniej rzucić etat i żyć z inwestycji (nie musisz mieć milionów)
+      </h1>
+      <p class="text-white/85 text-base md:text-lg leading-relaxed mb-4">
+        Pełny FIRE wymaga 1–3 mln zł i lat cierpliwości. Barista FIRE wymaga znacznie mniej — bo część wydatków pokrywasz lekką, elastyczną pracą. To najbardziej realistyczny wariant wolności finansowej dla polskiego inwestora.
+      </p>
+      <div class="flex flex-wrap gap-4 mt-4 text-white/60 text-sm">
+        <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">calendar_today</span> Kwiecień 2026</span>
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">schedule</span> 9 minut czytania</span>
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">person</span> ETFkalkulator.pl</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="bg-white dark:bg-slate-950 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 grid grid-cols-1 lg:grid-cols-[1fr_300px] xl:grid-cols-[1fr_320px] gap-10 xl:gap-16 items-start">
+
+      <article id="main" class="min-w-0 pt-8 pb-16 lg:pb-20">
+
+        <!-- TOC -->
+        <div class="glass-effect rounded-[1.5rem] p-6 mb-10 border-l-4 border-primary bg-primary/5 dark:bg-primary/10">
+          <p class="text-xs font-black uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+            Spis treści
+          </p>
+          <ol class="space-y-2 text-sm list-decimal list-inside">
+            <li><a href="#czym-jest-fire" class="text-primary hover:underline font-medium" style="text-decoration: none">Czym jest FIRE? Szybkie przypomnienie</a></li>
+            <li><a href="#cztery-warianty" class="text-primary hover:underline font-medium" style="text-decoration: none">Cztery warianty FIRE — który jest dla Ciebie?</a></li>
+            <li><a href="#barista-fire" class="text-primary hover:underline font-medium" style="text-decoration: none">Barista FIRE — jak to działa?</a></li>
+            <li><a href="#przyklad" class="text-primary hover:underline font-medium" style="text-decoration: none">Przykład liczbowy: Ania rzuca etat w wieku 38 lat</a></li>
+            <li><a href="#coast-fire" class="text-primary hover:underline font-medium" style="text-decoration: none">Coast FIRE — zatrzymaj wpłaty, reszta sama urośnie</a></li>
+            <li><a href="#jak-policzyc" class="text-primary hover:underline font-medium" style="text-decoration: none">Jak obliczyć swój cel Barista FIRE?</a></li>
+            <li><a href="#ike" class="text-primary hover:underline font-medium" style="text-decoration: none">IKE przyspiesza każdy wariant FIRE</a></li>
+            <li><a href="#faq" class="text-primary hover:underline font-medium" style="text-decoration: none">FAQ</a></li>
+          </ol>
+        </div>
+
+        <!-- SECTION 1 -->
+        <h2 id="czym-jest-fire" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color: #0d7ff2">1</span>
+          Czym jest FIRE? Szybkie przypomnienie
+        </h2>
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+          <strong>FIRE</strong> (Financial Independence, Retire Early) to filozofia finansowa oparta na jednej prostej zasadzie: <strong>kiedy Twój portfel generuje pasywny dochód równy Twoim wydatkom — praca staje się wyborem, nie obowiązkiem.</strong>
+        </p>
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          Podstawowe narzędzie to <strong>reguła 4%</strong>: jeśli każdego roku wypłacasz maksymalnie 4% wartości portfela, historycznie rzecz biorąc portfel przeżywa 30-letni okres emerytalny w ponad 95% przypadków (Trinity Study, 1998).
+        </p>
+
+        <div class="glass-effect relative overflow-hidden rounded-2xl p-6 mb-8 shadow-stitch-soft border border-white/50 dark:border-stitch-border/50">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-primary rounded-t-2xl"></div>
+          <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px]">calculate</span>
+            Wzór na pełny cel FIRE
+          </p>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+            <span class="text-sm text-stitch-muted">Wydatki: 3 000 zł/mies. → rocznie 36 000 zł</span>
+            <span class="text-sm font-bold text-stitch-text">cel = 900 000 zł</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+            <span class="text-sm text-stitch-muted">Wydatki: 4 000 zł/mies. → rocznie 48 000 zł</span>
+            <span class="text-sm font-bold text-stitch-text">cel = 1 200 000 zł</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+            <span class="text-sm text-stitch-muted">Wydatki: 6 000 zł/mies. → rocznie 72 000 zł</span>
+            <span class="text-sm font-bold text-stitch-text">cel = 1 800 000 zł</span>
+          </div>
+          <div class="bg-primary/5 dark:bg-primary/10 rounded-xl px-4 py-3 mt-2 border border-primary/20 flex flex-col sm:flex-row sm:justify-between sm:items-center">
+            <span class="text-sm font-semibold">Wzór: wydatki roczne × 25</span>
+            <span class="text-base font-black text-primary" style="color:#0d7ff2;">(reguła 4%)</span>
+          </div>
+        </div>
+
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          Problem? Dla przeciętnej polskiej rodziny zgromadzenie 1–2 mln zł wymaga 20–30 lat systematycznego inwestowania. To dużo. Na szczęście nie musisz czekać na pełny cel — tutaj wchodzi Barista FIRE.
+        </p>
+
+        <!-- SECTION 2 -->
+        <h2 id="cztery-warianty" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color: #0d7ff2">2</span>
+          Cztery warianty FIRE — który jest dla Ciebie?
+        </h2>
+        <p class="text-stitch-muted leading-relaxed mb-6 text-base md:text-lg">
+          FIRE to nie jeden model. To spektrum — od minimalistycznego do luksusowego, od całkowitego zaprzestania pracy do zatrzymania oszczędzania przy dalszym etacie.
+        </p>
+
+        <div class="overflow-x-auto mb-8">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-primary/10 dark:bg-primary/20">
+                <th class="text-left p-3 font-black text-stitch-text rounded-tl-xl">Wariant</th>
+                <th class="text-left p-3 font-black text-stitch-text">Cel (4% rule)</th>
+                <th class="text-left p-3 font-black text-stitch-text">Praca po FIRE</th>
+                <th class="text-left p-3 font-black text-stitch-text rounded-tr-xl">Dla kogo?</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-stitch-border">
+              <tr class="hover:bg-stitch-bg/50 transition-colors">
+                <td class="p-3 font-bold text-emerald-600 dark:text-emerald-400">Lean FIRE</td>
+                <td class="p-3 text-stitch-muted">600 000–900 000 zł</td>
+                <td class="p-3 text-stitch-muted">Brak lub minimalna</td>
+                <td class="p-3 text-stitch-muted">Minimaliści, niskie wydatki ~2 500–3 000 zł/mies.</td>
+              </tr>
+              <tr class="hover:bg-stitch-bg/50 transition-colors bg-primary/5 dark:bg-primary/10">
+                <td class="p-3 font-black text-primary" style="color:#0d7ff2;">Barista FIRE ★</td>
+                <td class="p-3 text-stitch-text font-bold">60–70% pełnego celu</td>
+                <td class="p-3 text-stitch-text">Elastyczna, 10–20h/tyg.</td>
+                <td class="p-3 text-stitch-text">Większość Polaków. Wolność bez czekania na milion.</td>
+              </tr>
+              <tr class="hover:bg-stitch-bg/50 transition-colors">
+                <td class="p-3 font-bold text-violet-600 dark:text-violet-400">Coast FIRE</td>
+                <td class="p-3 text-stitch-muted">Portfel który sam dorośnie</td>
+                <td class="p-3 text-stitch-muted">Tak — ale bez presji oszczędzania</td>
+                <td class="p-3 text-stitch-muted">Wcześni inwestorzy którzy zainwestowali dużo młodo</td>
+              </tr>
+              <tr class="hover:bg-stitch-bg/50 transition-colors">
+                <td class="p-3 font-bold text-amber-600 dark:text-amber-400">Fat FIRE</td>
+                <td class="p-3 text-stitch-muted">3 000 000–5 000 000+ zł</td>
+                <td class="p-3 text-stitch-muted">Brak</td>
+                <td class="p-3 text-stitch-muted">Wysoki standard, duże zarobki, długi horyzont</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="rounded-2xl p-5 bg-primary/5 dark:bg-primary/10 border-l-4 border-primary mb-6">
+          <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-primary mb-2">
+            <span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2">key</span>
+            Barista FIRE — dlaczego najbardziej realistyczny dla Polski?
+          </p>
+          <p class="text-sm text-stitch-muted leading-relaxed">
+            W Polsce mamy relatywnie niskie płace, ale i niższe koszty życia niż na Zachodzie. Barista FIRE pozwala rzucić korporację i przejść na elastyczną pracę (zdalna, freelance, własna działalność) dużo szybciej niż pełny FIRE. <strong>Zamiast 25 lat czekania — może 12–15.</strong>
+          </p>
+        </div>
+
+        <!-- SECTION 3 -->
+        <h2 id="barista-fire" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color: #0d7ff2">3</span>
+          Barista FIRE — jak to działa?
+        </h2>
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+          Nazwa pochodzi z USA, gdzie pracownicy kawiarni (bariści) otrzymują ubezpieczenie zdrowotne od pracodawcy — więc wczesny emeryt może pracować na pół etatu tylko po to, by mieć ubezpieczenie, a resztę pokrywać z portfela.
+        </p>
+        <p class="text-stitch-muted leading-relaxed mb-6 text-base">
+          W polskich realiach chodzi o coś innego: <strong>rezygnujesz z etatu w korporacji, zanim zgromadzisz pełny kapitał FIRE</strong>. Przechodzisz na lekką pracę — kilka zleceń miesięcznie, instruktor fitness, blog, korepetycje, doradztwo — i ta praca pokrywa brakującą część wydatków. Portfel robi resztę.
+        </p>
+
+        <div class="space-y-4 mb-8">
+          <div class="glass-effect rounded-2xl p-5 border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft fire-card-barista">
+            <div class="flex items-start gap-4">
+              <span aria-hidden="true" class="material-symbols-outlined text-primary text-[28px] shrink-0 mt-0.5" style="color:#0d7ff2">coffee</span>
+              <div>
+                <h3 class="font-black text-stitch-text mb-1">Portfel pokrywa 60–70% wydatków</h3>
+                <p class="text-sm text-stitch-muted leading-relaxed">
+                  Twój portfel inwestycyjny generuje co miesiąc ok. 60–70% potrzebnej kwoty. Tę część masz niezależnie od pracy — jest stała, stabilna, Twoja.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-effect rounded-2xl p-5 border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft fire-card-barista">
+            <div class="flex items-start gap-4">
+              <span aria-hidden="true" class="material-symbols-outlined text-primary text-[28px] shrink-0 mt-0.5" style="color:#0d7ff2">schedule</span>
+              <div>
+                <h3 class="font-black text-stitch-text mb-1">Praca: 10–20 godzin tygodniowo, z wyboru</h3>
+                <p class="text-sm text-stitch-muted leading-relaxed">
+                  Resztę dorabiasz lekką pracą, którą lubisz albo przynajmniej akceptujesz. Kluczowe słowo: <strong>wybór</strong>. Nie musisz — chcesz, bo to uzupełnia budżet i daje kontakt ze światem.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-effect rounded-2xl p-5 border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft fire-card-barista">
+            <div class="flex items-start gap-4">
+              <span aria-hidden="true" class="material-symbols-outlined text-primary text-[28px] shrink-0 mt-0.5" style="color:#0d7ff2">trending_up</span>
+              <div>
+                <h3 class="font-black text-stitch-text mb-1">Portfel nadal rośnie</h3>
+                <p class="text-sm text-stitch-muted leading-relaxed">
+                  Ponieważ wypłacasz mniej niż 4% (portfel pokrywa tylko część wydatków), Twój kapitał nadal rośnie realnie. Z czasem możesz zmniejszać pracę lub całkowicie z niej zrezygnować — bez planowania.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 4 -->
+        <h2 id="przyklad" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color: #0d7ff2">4</span>
+          Przykład liczbowy: Ania rzuca etat w wieku 38 lat
+        </h2>
+        <p class="text-stitch-muted leading-relaxed mb-6 text-base md:text-lg">
+          Ania, 38 lat, singielka, Warszawa. Miesięczne wydatki: 4 000 zł. Zarabia 8 000 zł netto, odkłada 2 500 zł/mies. przez ostatnie 10 lat (portfel ETF na IKE). Ma już 420 000 zł.
+        </p>
+
+        <div class="glass-effect relative overflow-hidden rounded-2xl p-6 mb-6 shadow-stitch-soft border border-white/50 dark:border-stitch-border/50">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-amber-500 rounded-t-2xl"></div>
+          <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px]">work</span>
+            Ania — przed Barista FIRE
+          </p>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+            <span class="text-sm text-stitch-muted">Pełny cel FIRE (4 000 zł × 12 × 25)</span>
+            <span class="text-sm font-bold text-stitch-text">1 200 000 zł</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+            <span class="text-sm text-stitch-muted">Obecny portfel</span>
+            <span class="text-sm font-bold text-stitch-text">420 000 zł</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+            <span class="text-sm text-stitch-muted">Brakuje do pełnego FIRE</span>
+            <span class="text-sm font-bold text-amber-600 dark:text-amber-400">780 000 zł (~12 lat przy obecnym tempie)</span>
+          </div>
+          <div class="bg-amber-50 dark:bg-amber-950/30 rounded-xl px-4 py-3 mt-2 border border-amber-500/20">
+            <p class="text-xs text-amber-800 dark:text-amber-300 font-semibold">Pełny FIRE: Ania musiałaby czekać do ok. 50. roku życia. To 12 kolejnych lat korporacji.</p>
+          </div>
+        </div>
+
+        <div class="glass-effect relative overflow-hidden rounded-2xl p-6 mb-8 shadow-stitch-soft border border-white/50 dark:border-stitch-border/50">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-primary rounded-t-2xl"></div>
+          <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px]">coffee</span>
+            Ania — z Barista FIRE (za 3 lata, portfel ~620 000 zł)
+          </p>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+            <span class="text-sm text-stitch-muted">Portfel za 3 lata (7%/rok + wpłaty)</span>
+            <span class="text-sm font-bold text-stitch-text">~620 000 zł</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+            <span class="text-sm text-stitch-muted">Dochód z portfela (3,5%/rok ÷ 12)</span>
+            <span class="text-sm font-bold text-stitch-text">~1 808 zł/mies.</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+            <span class="text-sm text-stitch-muted">Brakująca kwota do pokrycia wydatków</span>
+            <span class="text-sm font-bold text-stitch-text">~2 192 zł/mies.</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+            <span class="text-sm text-stitch-muted">Ania: zdalna praca UX 15h/tyg. (2 200 zł netto)</span>
+            <span class="text-sm font-bold text-emerald-600 dark:text-emerald-400">✅ Budżet zbilansowany</span>
+          </div>
+          <div class="bg-primary/5 dark:bg-primary/10 rounded-xl px-4 py-3 mt-2 border border-primary/20 flex flex-col sm:flex-row sm:justify-between sm:items-center">
+            <span class="text-sm font-semibold">Wiek osiągnięcia Barista FIRE</span>
+            <span class="text-base font-black text-primary" style="color:#0d7ff2;">41 lat (zamiast 50!)</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+          <div class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft">
+            <div class="text-3xl md:text-4xl font-black text-primary mb-1" style="color:#0d7ff2;">9 lat</div>
+            <div class="text-xs text-stitch-muted leading-tight">Wcześniej<br>wychodzi z korporacji</div>
+            <div class="w-8 h-0.5 bg-primary/30 mx-auto mt-3 rounded-full" style="background-color:rgba(13,127,242,0.3)"></div>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft">
+            <div class="text-3xl md:text-4xl font-black text-emerald-600 dark:text-emerald-400 mb-1">52%</div>
+            <div class="text-xs text-stitch-muted leading-tight">Pełnego celu FIRE<br>wystarczy do Barista</div>
+            <div class="w-8 h-0.5 bg-emerald-500/30 mx-auto mt-3 rounded-full"></div>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft">
+            <div class="text-3xl md:text-4xl font-black text-violet-600 dark:text-violet-400 mb-1">15h</div>
+            <div class="text-xs text-stitch-muted leading-tight">Pracy tygodniowo<br>zamiast 40h etatu</div>
+            <div class="w-8 h-0.5 bg-violet-500/30 mx-auto mt-3 rounded-full"></div>
+          </div>
+        </div>
+
+        <!-- SECTION 5 -->
+        <h2 id="coast-fire" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color: #0d7ff2">5</span>
+          Coast FIRE — zatrzymaj wpłaty, reszta sama urośnie
+        </h2>
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+          Coast FIRE to odmienny mechanizm: <strong>zgromadzony kapitał jest wystarczający, żeby — bez żadnych dodatkowych wpłat — urosnąć do pełnego celu FIRE do momentu Twojej planowanej emerytury.</strong> Nadal pracujesz, ale nie musisz już odkładać ani złotówki na inwestycje.
+        </p>
+
+        <div class="glass-effect rounded-2xl p-5 border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft fire-card-coast mb-6">
+          <div class="flex items-start gap-4">
+            <span aria-hidden="true" class="material-symbols-outlined text-violet-600 dark:text-violet-400 text-[28px] shrink-0 mt-0.5">sailing</span>
+            <div>
+              <h3 class="font-black text-stitch-text mb-1">Przykład: Tomasz, 32 lata, portfel 400 000 zł</h3>
+              <p class="text-sm text-stitch-muted leading-relaxed">
+                Tomasz ma 400 000 zł w ETF na IKE. Jego wydatki to 4 000 zł/mies. — pełny cel FIRE to 1 200 000 zł. Przy 7% rocznym wzroście bez żadnych wpłat: <strong>400 000 × 1,07^20 = 1 548 000 zł w wieku 52 lat.</strong> Tomasz przekroczył cel! Może pracować dalej, ale każda złotówka którą odkłada to bonus — nie obowiązek. To jest Coast FIRE.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-5 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 mb-8">
+          <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2">
+            <span aria-hidden="true" class="material-symbols-outlined text-amber-600 text-[18px] shrink-0">warning</span>
+            Coast FIRE — ważna uwaga
+          </p>
+          <p class="text-sm text-stitch-muted leading-relaxed">
+            Coast FIRE działa tylko jeśli <strong>nie ruszasz portfela</strong> — nie wypłacasz, nie sprzedajesz. To sposób myślenia o już zgromadzonym kapitale, nie powód do zaprzestania inwestowania. Jeśli zatrzymasz wpłaty, ale zaczniesz też wydawać z portfela — matematyka się sypie.
+          </p>
+        </div>
+
+        <!-- SECTION 6 -->
+        <h2 id="jak-policzyc" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color: #0d7ff2">6</span>
+          Jak obliczyć swój cel Barista FIRE?
+        </h2>
+        <p class="text-stitch-muted leading-relaxed mb-6 text-base md:text-lg">
+          Cztery kroki. Zajmie Ci 10 minut i kartka papieru (albo kalkulator wolności finansowej niżej).
+        </p>
+
+        <div class="space-y-3 mb-8">
+          <div class="flex items-start gap-3 p-4 rounded-2xl bg-stitch-bg dark:bg-slate-900 border border-stitch-border">
+            <span class="w-7 h-7 rounded-full bg-primary text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5" style="background-color:#0d7ff2;">1</span>
+            <div>
+              <p class="text-sm font-bold text-stitch-text mb-0.5">Policz dokładne miesięczne wydatki</p>
+              <p class="text-xs text-stitch-muted leading-relaxed">Śledź przez 2–3 miesiące lub zajrzyj w historię konta. Uwzględnij wszystko: czynsz, jedzenie, zdrowie, wakacje, rozrywka, subskrypcje. Nie zapomnij o nieregularnych wydatkach — amortyzuj je miesięcznie (np. ubezpieczenie/12).</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-4 rounded-2xl bg-stitch-bg dark:bg-slate-900 border border-stitch-border">
+            <span class="w-7 h-7 rounded-full bg-primary text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5" style="background-color:#0d7ff2;">2</span>
+            <div>
+              <p class="text-sm font-bold text-stitch-text mb-0.5">Zdecyduj ile chcesz dorabiać (i jak)</p>
+              <p class="text-xs text-stitch-muted leading-relaxed">To kluczowa decyzja. Czy chcesz pracować 10h, 20h, 30h tygodniowo? Jako freelancer, zleceniobiorca, na pół etatu? Bądź realny — dorabianie 3 000 zł/mies. przy minimalnym zaangażowaniu jest możliwe, ale wymaga konkretnego pomysłu.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-4 rounded-2xl bg-stitch-bg dark:bg-slate-900 border border-stitch-border">
+            <span class="w-7 h-7 rounded-full bg-primary text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5" style="background-color:#0d7ff2;">3</span>
+            <div>
+              <p class="text-sm font-bold text-stitch-text mb-0.5">Oblicz ile musi generować portfel</p>
+              <p class="text-xs text-stitch-muted leading-relaxed">Wydatki − praca dorywcza = kwota z portfela. Np. 4 000 zł − 1 500 zł = 2 500 zł/mies. z portfela.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 p-4 rounded-2xl bg-stitch-bg dark:bg-slate-900 border border-stitch-border">
+            <span class="w-7 h-7 rounded-full bg-primary text-white text-xs font-black flex items-center justify-center shrink-0 mt-0.5" style="background-color:#0d7ff2;">4</span>
+            <div>
+              <p class="text-sm font-bold text-stitch-text mb-0.5">Zastosuj regułę 4% (lub 3,5% dla ostrożności)</p>
+              <p class="text-xs text-stitch-muted leading-relaxed">Cel Barista FIRE = kwota z portfela × 12 × 25. Dla przykładu: 2 500 × 12 × 25 = <strong>750 000 zł</strong>. To zaledwie 62,5% pełnego celu FIRE (1 200 000 zł). Osiągasz go kilka lat wcześniej.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-effect relative overflow-hidden rounded-2xl p-6 mb-8 shadow-stitch-soft border border-white/50 dark:border-stitch-border/50">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-primary rounded-t-2xl"></div>
+          <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px]">calculate</span>
+            Przykładowe cele Barista FIRE (wydatki 4 000 zł/mies.)
+          </p>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+            <span class="text-sm text-stitch-muted">Dorabiasz 1 000 zł/mies. → portfel: 3 000 zł/mies.</span>
+            <span class="text-sm font-bold text-stitch-text">cel: 900 000 zł</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+            <span class="text-sm text-stitch-muted">Dorabiasz 1 500 zł/mies. → portfel: 2 500 zł/mies.</span>
+            <span class="text-sm font-bold text-stitch-text">cel: 750 000 zł</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+            <span class="text-sm text-stitch-muted">Dorabiasz 2 000 zł/mies. → portfel: 2 000 zł/mies.</span>
+            <span class="text-sm font-bold text-stitch-text">cel: 600 000 zł</span>
+          </div>
+          <div class="bg-primary/5 dark:bg-primary/10 rounded-xl px-4 py-3 mt-2 border border-primary/20 flex flex-col sm:flex-row sm:justify-between sm:items-center">
+            <span class="text-sm font-semibold">Pełny cel FIRE (bez pracy)</span>
+            <span class="text-base font-black text-primary" style="color:#0d7ff2;">1 200 000 zł</span>
+          </div>
+        </div>
+
+        <!-- SECTION 7 -->
+        <h2 id="ike" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color: #0d7ff2">7</span>
+          IKE przyspiesza każdy wariant FIRE
+        </h2>
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+          Na zwykłym koncie maklerskim wypłata z portfela jest opodatkowana podatkiem Belki 19%. Żeby wypłacić 2 500 zł netto, musisz sprzedać ETF za ~3 100 zł (bo 19% z zysku odpada). To powiększa wymagany cel FIRE.
+        </p>
+        <p class="text-stitch-muted leading-relaxed mb-6 text-base">
+          <strong>Na IKE:</strong> wypłata po 60. roku życia → 0% podatku. Sprzedajesz za 2 500 zł, dostajesz 2 500 zł. Reguła 4% działa tak samo jak w kalkulatorach zachodnich.
+        </p>
+
+        <div class="space-y-4 mb-8">
+          <div class="glass-effect rounded-2xl p-5 border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft fire-card-barista">
+            <div class="flex items-start gap-4">
+              <span aria-hidden="true" class="material-symbols-outlined text-primary text-[28px] shrink-0 mt-0.5" style="color:#0d7ff2">shield</span>
+              <div>
+                <h3 class="font-black text-stitch-text mb-1">IKE: tarcza podatkowa + mniejszy wymagany cel</h3>
+                <p class="text-sm text-stitch-muted leading-relaxed">
+                  Przy wydatkach 4 000 zł/mies. na zwykłym koncie cel FIRE (z podatkiem) to ok. 1 440 000 zł. Na IKE — 1 200 000 zł. Różnica: <strong>240 000 zł mniej do uzbierania</strong>. Przy 7% zwrocie i 2 500 zł/mies. wpłat to 3–4 lata inwestowania mniej.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-effect rounded-2xl p-5 border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft fire-card-barista">
+            <div class="flex items-start gap-4">
+              <span aria-hidden="true" class="material-symbols-outlined text-primary text-[28px] shrink-0 mt-0.5" style="color:#0d7ff2">autorenew</span>
+              <div>
+                <h3 class="font-black text-stitch-text mb-1">IKE pozwala sprzedawać i kupować wewnątrz bez podatku</h3>
+                <p class="text-sm text-stitch-muted leading-relaxed">
+                  W fazie pobierania portfela (wypłaty w Barista FIRE) możesz rebalansować portfel, zmieniać proporcje akcji do obligacji — bez żadnego PIT-38 i bez podatku Belki. To ogromna przewaga operacyjna przy rządzeniu portfelem rentierskim.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-effect rounded-2xl p-5 border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft fire-card-barista">
+            <div class="flex items-start gap-4">
+              <span aria-hidden="true" class="material-symbols-outlined text-primary text-[28px] shrink-0 mt-0.5" style="color:#0d7ff2">warning_amber</span>
+              <div>
+                <h3 class="font-black text-stitch-text mb-1">Uwaga: wiek wypłaty z IKE to 60 lat</h3>
+                <p class="text-sm text-stitch-muted leading-relaxed">
+                  Jeśli planujesz Barista FIRE w wieku 38–45 lat, wypłaty bez podatku z IKE dostępne są dopiero po 60. Wcześniej możesz wypłacić, ale zapłacisz Belkę 19% od zysku. <strong>Rozwiązanie:</strong> portfel Barista FIRE dzielisz na dwie pule — IKE (na późniejsze lata) + zwykłe konto (na wcześniejszy dostęp).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA BOX -->
+        <div class="bg-gradient-to-br from-blue-700 to-primary rounded-[1.5rem] p-6 md:p-8 text-white text-center my-10 shadow-xl" style="background:linear-gradient(135deg,#1d4ed8,#0d7ff2);">
+          <h3 class="text-xl font-black text-white mb-3">Policz swój cel FIRE</h3>
+          <p class="text-white/80 mb-5 text-sm leading-relaxed">Kalkulator wolności finansowej policzy, kiedy osiągniesz Barista FIRE — wpisz miesięczne wpłaty, stopę zwrotu i ile chcesz wypłacać co miesiąc.</p>
+          <a href="../pages/kalkulator-wolnosci.html" class="bg-stitch-surface text-primary font-black px-6 py-3 rounded-xl hover:scale-[1.02] transition-all inline-flex items-center gap-2 shadow-lg" style="color:#0d7ff2; text-decoration:none;">
+            Kalkulator wolności finansowej
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px]">arrow_forward</span>
+          </a>
+        </div>
+
+        <!-- SECTION 8 - FAQ -->
+        <h2 id="faq" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color: #0d7ff2">8</span>
+          FAQ
+        </h2>
+
+        <div class="space-y-3 mb-10">
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-stitch-text text-sm gap-3">
+              Co to jest Barista FIRE?
+              <span aria-hidden="true" class="material-symbols-outlined text-slate-400 expand-icon shrink-0 text-[20px]">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border pt-4">
+              Barista FIRE to wariant wolności finansowej, w którym rezygnujesz z etatu zanim zgromadzisz pełny kapitał FIRE. Portfel pokrywa ok. 60–70% Twoich wydatków, a resztę uzupełniasz elastyczną, lżejszą pracą — freelance, pół etatu, doradztwo. Nie musisz czekać na milion złotych — wystarczy 50–65% tej kwoty.
+            </div>
+          </details>
+
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-stitch-text text-sm gap-3">
+              Ile kapitału potrzebuję do Barista FIRE?
+              <span aria-hidden="true" class="material-symbols-outlined text-slate-400 expand-icon shrink-0 text-[20px]">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border pt-4">
+              Zależy od wydatków i ile dorabiasz. Wzór: (wydatki miesięczne − dorabianie) × 12 × 25 = cel. Przykład: wydatki 4 000 zł, praca 1 500 zł → portfel musi generować 2 500 zł/mies. → cel: 2 500 × 12 × 25 = <strong>750 000 zł</strong> (vs 1 200 000 zł przy pełnym FIRE). Użyj kalkulatora wolności finansowej, żeby zobaczyć kiedy to osiągniesz.
+            </div>
+          </details>
+
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-stitch-text text-sm gap-3">
+              Czym różni się Barista FIRE od Coast FIRE?
+              <span aria-hidden="true" class="material-symbols-outlined text-slate-400 expand-icon shrink-0 text-[20px]">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border pt-4">
+              Barista FIRE = masz portfel który generuje część dochodu + dorabiasz elastycznie. Rzucasz etat wcześniej. Coast FIRE = masz kapitał który sam urośnie do pełnego celu FIRE bez żadnych wpłat — ale nadal pracujesz (bo nie wypłacasz jeszcze z portfela). Barista to wyjście z etatu, Coast to zatrzymanie obowiązkowego oszczędzania.
+            </div>
+          </details>
+
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-stitch-text text-sm gap-3">
+              Jak IKE wpływa na FIRE po polsku?
+              <span aria-hidden="true" class="material-symbols-outlined text-slate-400 expand-icon shrink-0 text-[20px]">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border pt-4">
+              Na IKE wypłata po 60. roku życia jest wolna od podatku Belki (19%). To zmniejsza wymagany cel FIRE o ok. 15–20% w porównaniu z kontem zwykłym. Przy Barista FIRE warto trzymać portfel na dwóch kontach: IKE (na fazę po 60.) i zwykłe konto (wcześniejszy dostęp, opodatkowany). Rebalancing wewnątrz IKE jest bezpłatny podatkowo — idealne do zarządzania portfelem rentierskim.
+            </div>
+          </details>
+
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-stitch-text text-sm gap-3">
+              Czy Barista FIRE jest bezpieczny — co jeśli portfel straci na wartości?
+              <span aria-hidden="true" class="material-symbols-outlined text-stitch-text text-sm gap-3 expand-icon shrink-0 text-[20px]">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border pt-4">
+              Barista FIRE jest bezpieczniejszy niż pełny FIRE właśnie dlatego, że dorabiasz. W przypadku korekty rynkowej masz elastyczność: zwiększ nieco pracę przez rok lub dwa, zmniejsz wydatki i poczekaj na odbicie. To ogromna przewaga nad pełnym FIRE, gdzie każda korekta na początku emerytury jest groźna (sekwencja stóp zwrotu). Dorabianie 1 000–2 000 zł/mies. w złym roku jest całkowicie realnym buforem.
+            </div>
+          </details>
+        </div>
+
+        <!-- DISCLAIMER -->
+        <div class="glass-effect rounded-2xl p-5 mt-10 border border-stitch-border dark:border-slate-700">
+          <div class="flex items-start gap-4">
+            <span aria-hidden="true" class="material-symbols-outlined text-slate-400 shrink-0 mt-0.5 text-[20px]">info</span>
+            <div>
+              <p class="text-xs font-bold text-stitch-muted mb-1">Ważna informacja (Disclaimer)</p>
+              <p class="text-xs text-stitch-muted leading-relaxed italic">
+                Materiały na stronie mają charakter wyłącznie edukacyjny i poglądowy. Nie stanowią rekomendacji inwestycyjnej ani porady finansowej. Przykłady liczbowe są uproszczone i służą ilustracji mechanizmów — rzeczywiste wyniki zależą od wielu czynników. Inwestowanie zawsze wiąże się z ryzykiem utraty części lub całości kapitału.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-24 space-y-6">
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+              <span aria-hidden="true" class="material-symbols-outlined text-[16px]">format_list_bulleted</span>
+              W tym artykule
+            </p>
+            <div class="sidebar-toc space-y-1">
+              <a href="#czym-jest-fire" class="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium text-stitch-muted hover:text-primary transition-colors" style="text-decoration:none;">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0" style="background-color:rgba(13,127,242,0.4)"></span>
+                Czym jest FIRE?
+              </a>
+              <a href="#cztery-warianty" class="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium text-stitch-muted hover:text-primary transition-colors" style="text-decoration:none;">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0" style="background-color:rgba(13,127,242,0.4)"></span>
+                4 warianty FIRE
+              </a>
+              <a href="#barista-fire" class="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium text-stitch-muted hover:text-primary transition-colors" style="text-decoration:none;">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0" style="background-color:rgba(13,127,242,0.4)"></span>
+                Barista FIRE — jak działa?
+              </a>
+              <a href="#przyklad" class="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium text-stitch-muted hover:text-primary transition-colors" style="text-decoration:none;">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0" style="background-color:rgba(13,127,242,0.4)"></span>
+                Przykład: Ania, 38 lat
+              </a>
+              <a href="#coast-fire" class="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium text-stitch-muted hover:text-primary transition-colors" style="text-decoration:none;">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0" style="background-color:rgba(13,127,242,0.4)"></span>
+                Coast FIRE
+              </a>
+              <a href="#jak-policzyc" class="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium text-stitch-muted hover:text-primary transition-colors" style="text-decoration:none;">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0" style="background-color:rgba(13,127,242,0.4)"></span>
+                Jak obliczyć swój cel?
+              </a>
+              <a href="#ike" class="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium text-stitch-muted hover:text-primary transition-colors" style="text-decoration:none;">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0" style="background-color:rgba(13,127,242,0.4)"></span>
+                IKE przyspiesza FIRE
+              </a>
+              <a href="#faq" class="flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium text-stitch-muted hover:text-primary transition-colors" style="text-decoration:none;">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0" style="background-color:rgba(13,127,242,0.4)"></span>
+                FAQ
+              </a>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-br from-blue-700 to-primary rounded-2xl p-5 text-white text-center" style="background:linear-gradient(135deg,#1d4ed8,#0d7ff2);">
+            <span aria-hidden="true" class="material-symbols-outlined text-3xl mb-2 opacity-80">savings</span>
+            <h3 class="font-black text-white text-base mb-1">Kalkulator wolności finansowej</h3>
+            <p class="text-white/75 text-xs leading-relaxed mb-4">Oblicz kiedy osiągniesz Barista FIRE — wpisz swoje liczby i sprawdź datę wyjścia z etatu.</p>
+            <a href="../pages/kalkulator-wolnosci.html" class="bg-white rounded-xl px-4 py-2.5 text-xs font-black hover:scale-[1.02] transition-all inline-flex items-center gap-1.5 shadow-lg" style="color:#0d7ff2;text-decoration:none;">
+              Policz teraz
+              <span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </a>
+          </div>
+
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+              <span aria-hidden="true" class="material-symbols-outlined text-[16px]">auto_stories</span>
+              Czytaj też
+            </p>
+            <div class="space-y-3">
+              <a href="regula-4-procent-fire-po-polsku.html" class="flex items-start gap-3 group" style="text-decoration:none;">
+                <span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" style="color:#0d7ff2">article</span>
+                <span class="text-xs text-stitch-muted group-hover:text-primary transition-colors leading-relaxed">Reguła 4% i FIRE po polsku — ile potrzebujesz żeby nie pracować?</span>
+              </a>
+              <a href="procent-skladany-jak-dziala.html" class="flex items-start gap-3 group" style="text-decoration:none;">
+                <span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" style="color:#0d7ff2">article</span>
+                <span class="text-xs text-stitch-muted group-hover:text-primary transition-colors leading-relaxed">Procent składany — jak działa i dlaczego czas to pieniądz</span>
+              </a>
+              <a href="ike-czy-ikze-dla-kogo-2026.html" class="flex items-start gap-3 group" style="text-decoration:none;">
+                <span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5" style="color:#0d7ff2">article</span>
+                <span class="text-xs text-stitch-muted group-hover:text-primary transition-colors leading-relaxed">IKE czy IKZE — dla kogo które konto?</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- MOBILE BOTTOM BAR -->
+  <div class="lg:hidden fixed bottom-0 left-0 right-0 z-50 glass-effect border-t border-slate-200 dark:border-slate-800 px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-24 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+        <div id="reading-progress-mobile" class="h-full bg-primary rounded-full transition-none" style="width:0%;background-color:#0d7ff2;"></div>
+      </div>
+      <span id="reading-pct" class="text-xs font-bold text-slate-400">0%</span>
+    </div>
+    <a href="../pages/kalkulator-wolnosci.html" class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-full flex items-center gap-1.5 hover:opacity-90" style="background-color:#0d7ff2;text-decoration:none;">
+      <span aria-hidden="true" class="material-symbols-outlined text-[14px]">savings</span>
+      Kalkulator FIRE
+    </a>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <section id="newsletter-section" class="pt-10 pb-20 px-6 bg-slate-100 border-t border-stitch-border dark:border-slate-900 transition-colors">
+    <div class="max-w-7xl mx-auto">
+      <div class="bg-stitch-surface/70 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 lg:p-16 shadow-xl border border-white/50 relative overflow-hidden group">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center lg:justify-items-stretch relative z-10">
+          <div class="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              Newsletter
+            </div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-stitch-text tracking-tight leading-[1.1]">
+              Bądź na bieżąco z
+              <span class="text-primary">rynkiem ETF</span>
+              <span class="hidden md:inline">i finansami</span>
+            </h2>
+            <p class="text-stitch-muted text-lg leading-relaxed max-w-xl">
+              Dołącz do społeczności świadomych inwestorów. Otrzymuj analizy, nowe kalkulatory i rzetelną wiedzę prosto na swoją skrzynkę. Zero spamu.
+            </p>
+          </div>
+          <div class="w-full lg:max-w-md mx-auto lg:ml-auto">
+            <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
+              <div class="ml-form-embedWrapper embedForm">
+                <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                  <form class="ml-block-form" action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe" method="post" target="_blank">
+                    <div class="flex flex-col space-y-4">
+                      <div class="ml-form-fieldRow">
+                        <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                          <input aria-label="email" aria-required="true" type="email" class="w-full h-14 px-6 rounded-2xl border border-stitch-border bg-stitch-surface text-stitch-text text-base font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all placeholder:text-slate-400" name="fields[email]" placeholder="Twój adres e-mail" />
+                        </div>
+                      </div>
+                      <div class="ml-form-embedPermissions">
+                        <label class="flex items-start gap-4 cursor-pointer group">
+                          <input aria-label="Wprowadź wartość" type="checkbox" name="gdpr[]" value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl" required class="custom-checkbox mt-1 transition-all" />
+                          <span class="text-[11px] text-stitch-muted font-medium leading-relaxed">Zgadzam się na otrzymywanie newslettera. Możesz się wypisać w każdej chwili.</span>
+                        </label>
+                      </div>
+                      <div class="ml-form-recaptcha ml-validate-required py-2 flex justify-center">
+                        <div class="g-recaptcha transform scale-[0.85] origin-center" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                      </div>
+                      <input type="hidden" name="ml-submit" value="1" />
+                      <input type="hidden" name="anticsrf" value="true" />
+                      <div class="ml-form-embedSubmit">
+                        <button type="submit" class="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-sm md:text-base uppercase tracking-widest hover:scale-[1.01] active:scale-[0.98] transition-all shadow-xl shadow-primary/20" style="background-color: #0d7ff2">
+                          Zapisz się teraz
+                        </button>
+                      </div>
+                      <div class="pt-6 border-t border-stitch-border mt-2">
+                        <p class="text-[10px] text-slate-400 dark:text-stitch-muted leading-relaxed mb-2">
+                          Zapisując się, akceptujesz <a href="../pages/regulamin.html" class="underline hover:text-primary">Regulamin</a> i <a href="../pages/polityka-prywatnosci.html" class="underline hover:text-primary">Politykę Prywatności</a>. Twoje dane są bezpieczne i służą wyłącznie do wysyłki newslettera.
+                        </p>
+                        <p class="text-[10px] text-slate-400 font-medium italic">Prezentowane treści nie stanowią rekomendacji inwestycyjnej.</p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="ml-form-successBody row-success" style="display: none">
+                  <div class="p-10 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 text-center">
+                    <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-3xl">verified</span>
+                    </div>
+                    <h4 class="text-emerald-900 dark:text-emerald-300 font-bold text-xl mb-1">Sukces!</h4>
+                    <p class="text-emerald-700 dark:text-emerald-500 text-sm">Sprawdź swoją skrzynkę e-mail, aby potwierdzić zapis.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-stitch-bg border-t border-stitch-border dark:border-slate-900 py-20 px-6" style="font-family: &quot;Inter&quot;, sans-serif">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12 border-b border-stitch-border/50 pb-8">
+        <div class="flex items-center gap-2">
+          <div class="bg-primary p-1.5 rounded-2xl text-white flex items-center justify-center" style="background-color: #0d7ff2">
+            <span aria-hidden="true" class="material-symbols-outlined text-base">account_balance_wallet</span>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-stitch-text">ETF<span class="font-normal text-stitch-muted">kalkulator</span>.pl</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20 items-start">
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">Narzędzia</h5>
+          <ul class="space-y-4">
+            <li><a href="../pages/kalkulator-etf.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration: none">Kalkulator ETF</a></li>
+            <li><a href="../pages/kalkulator-obligacji.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration: none">Obligacje Skarbowe</a></li>
+            <li><a href="../pages/kalkulator-wolnosci.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration: none">Wolność Finansowa</a></li>
+            <li><a href="../pages/porownywarka.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration: none">Porównywarka ETF</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">Projekt</h5>
+          <ul class="space-y-4">
+            <li><a href="index.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration: none">Blog i Wiedza</a></li>
+            <li><a href="../pages/o-projekcie.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration: none">O projekcie</a></li>
+            <li><a href="../pages/regulamin.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration: none">Regulamin</a></li>
+            <li><a href="../pages/polityka-prywatnosci.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration: none">Polityka prywatności</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">Kontakt</h5>
+          <p class="text-sm text-stitch-muted mb-6 leading-relaxed">Masz pytania? Pisz śmiało:</p>
+          <a href="mailto:kontakt@etfkalkulator.pl" class="text-sm font-bold text-stitch-text hover:text-primary transition-colors block mb-8" style="text-decoration: none">kontakt@etfkalkulator.pl</a>
+          <div class="flex gap-4">
+            <a href="#" class="w-10 h-10 rounded-2xl bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-xl"><span class="material-symbols-outlined text-lg">share</span></a>
+            <a href="#" class="w-10 h-10 rounded-2xl bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-xl"><span class="material-symbols-outlined text-lg">alternate_email</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-20 pt-10 border-t border-stitch-border dark:border-slate-900">
+        <p class="text-[11px] text-slate-400 dark:text-stitch-muted leading-relaxed mb-8 max-w-4xl">
+          Serwis ETFkalkulator.pl ma charakter wyłącznie edukacyjny i informacyjny. Prezentowane obliczenia nie stanowią rekomendacji inwestycyjnej, porady finansowej ani doradztwa podatkowego w rozumieniu obowiązujących przepisów prawa. Przed podjęciem decyzji inwestycyjnej skonsultuj się z licencjonowanym doradcą finansowym. Inwestowanie wiąże się z ryzykiem utraty części lub całości zainwestowanego kapitału.
+        </p>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+          <p>© 2026 ETFkalkulator.pl — Made with ❤️ by Florian</p>
+          <div class="flex gap-6"><span>Wszelkie prawa zastrzeżone</span></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/shared.js"></script>
+  <script>
+    const bar = document.getElementById('reading-progress');
+    const article = document.getElementById('main');
+    const mobileBar = document.getElementById('reading-progress-mobile');
+    const pctLabel = document.getElementById('reading-pct');
+    function updateProgress() {
+      if (!bar || !article) return;
+      const rect = article.getBoundingClientRect();
+      const total = article.offsetHeight - window.innerHeight;
+      const scrolled = Math.max(0, -rect.top);
+      const pct = total > 0 ? Math.min(100, (scrolled / total) * 100) : 0;
+      bar.style.width = pct + '%';
+      if (mobileBar) mobileBar.style.width = pct + '%';
+      if (pctLabel) pctLabel.textContent = Math.round(pct) + '%';
+    }
+    const headings = document.querySelectorAll('article h2[id]');
+    const tocLinks = document.querySelectorAll('.sidebar-toc a');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(a => a.classList.remove('toc-active'));
+          const active = document.querySelector('.sidebar-toc a[href="#' + entry.target.id + '"]');
+          if (active) active.classList.add('toc-active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    headings.forEach(h => observer.observe(h));
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  </script>
+  <script defer>
+    function przelaczTryb() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains("dark");
+      if (isDark) {
+        html.classList.remove("dark");
+        html.classList.add("light");
+        localStorage.setItem("etf-tryb", "jasny");
+      } else {
+        html.classList.add("dark");
+        html.classList.remove("light");
+        localStorage.setItem("etf-tryb", "ciemny");
+      }
+      const d = html.classList.contains("dark");
+      const m = document.getElementById("meta-theme-color");
+      if (m) m.content = d ? "#0f172a" : "#f8fafc";
+    }
+  </script>
+  <script src="https://www.google.com/recaptcha/api.js" defer></script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript" defer></script>
+  <script src="../js/cookie-consent.js" defer></script>
+</body>
+</html>

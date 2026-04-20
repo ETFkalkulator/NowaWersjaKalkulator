@@ -1,14 +1,49 @@
 // js/kalkulator-etf-historyczny.js
 'use strict';
 
+// ── Dane edukacyjne (modalne okienka) ─────────────────────────────────────
+window.modalData = window.modalData || {};
+Object.assign(window.modalData, {
+  bt_kapital: {
+    title: 'Kapitał końcowy',
+    desc: 'Rzeczywista kwota netto, którą miałbyś po zakończeniu inwestycji. Uwzględnia podatek Belki (19% od zysku) oraz koszty TER funduszu pobierane co miesiąc. To jest to, co realnie trafiłoby na Twoje konto przy sprzedaży.',
+    formula: 'Kapitał Netto = Wartość Portfela − Podatek Belki (19% × Zysk)',
+    icon: 'account_balance'
+  },
+  bt_zysk_netto: {
+    title: 'Zysk netto',
+    desc: 'Czysty zysk po odliczeniu podatku Belki (19%). To kwota, o którą realnie wzrósł Twój majątek ponad wpłacony kapitał. Jeśli konto IKE jest włączone, zysk netto = zysk brutto (podatek = 0).',
+    formula: 'Zysk Netto = Kapitał Netto − Suma Wpłat',
+    icon: 'trending_up'
+  },
+  bt_zysk_brutto: {
+    title: 'Zysk nominalny (brutto)',
+    desc: 'Wzrost wartości portfela przed odliczeniem podatku. Pokazuje ile ETF faktycznie zarobił — bez korekty o podatek i inflację. Różnica między zyskiem brutto a netto to właśnie podatek Belki.',
+    formula: 'Zysk Brutto = Wartość Portfela − Suma Wpłat',
+    icon: 'bar_chart'
+  },
+  bt_podatek: {
+    title: 'Podatek Belki',
+    desc: 'Podatek od dochodów kapitałowych wynoszący 19% od zysku. Dla ETF-ów akumulacyjnych odroczony do momentu sprzedaży. Konto IKE lub IKZE pozwala go legalnie uniknąć — zaznacz opcję IKE w formularzu.',
+    formula: 'Podatek = Zysk Brutto × 19%  (lub 0 zł przy IKE)',
+    icon: 'gavel'
+  },
+  bt_cagr: {
+    title: 'CAGR — roczna stopa zwrotu',
+    desc: 'Compound Annual Growth Rate — średnioroczna stopa zwrotu z inwestycji. Uwzględnia efekt procentu składanego i pozwala porównywać wyniki z różnych okresów lub różnych klas aktywów na wspólnej skali.',
+    formula: 'CAGR = (Kapitał Netto / Suma Wpłat)^(1/Lata) − 1',
+    icon: 'percent'
+  }
+});
+
 // ── Stan globalny ──────────────────────────────────────────────────────────
 var ETF_DATA = null;    // załadowane z etf-data.json
-var USDPLN   = null;    // załadowane z etf-usdpln.json
-var btChart  = null;    // instancja Chart.js backtesting
+var USDPLN = null;    // załadowane z etf-usdpln.json
+var btChart = null;    // instancja Chart.js backtesting
 var cmpChart = null;    // instancja Chart.js porównanie
 var terChart = null;    // instancja Chart.js TER
 
-var btState  = {};      // ostatnie wyniki backtestingu (do ShareModule)
+var btState = {};      // ostatnie wyniki backtestingu (do ShareModule)
 var cmpState = {};      // ostatnie wyniki porównania
 var terState = {};      // ostatnie wyniki TER
 
@@ -28,12 +63,12 @@ function getDataRange() {
 }
 
 function MonthYearPicker(inputId, minYYYYMM, maxYYYYMM) {
-  this.input    = document.getElementById(inputId);
-  this.minKey   = minYYYYMM;   // "RRRR-MM"
-  this.maxKey   = maxYYYYMM;   // "RRRR-MM"
-  this.el       = null;
-  this._year    = null;
-  var self      = this;
+  this.input = document.getElementById(inputId);
+  this.minKey = minYYYYMM;   // "RRRR-MM"
+  this.maxKey = maxYYYYMM;   // "RRRR-MM"
+  this.el = null;
+  this._year = null;
+  var self = this;
   this.input.addEventListener('click', function (e) {
     e.stopPropagation();
     if (_activePicker && _activePicker !== self) { _activePicker.close(); }
@@ -50,12 +85,12 @@ MonthYearPicker.prototype._parseInput = function () {
 };
 
 MonthYearPicker.prototype._renderHTML = function (year) {
-  var NAMES    = ['sty','lut','mar','kwi','maj','cze','lip','sie','wrz','paź','lis','gru'];
-  var cur      = this._parseInput();
-  var minY     = parseInt(this.minKey.slice(0, 4));
-  var minM     = parseInt(this.minKey.slice(5, 7));
-  var maxY     = parseInt(this.maxKey.slice(0, 4));
-  var maxM     = parseInt(this.maxKey.slice(5, 7));
+  var NAMES = ['sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie', 'wrz', 'paź', 'lis', 'gru'];
+  var cur = this._parseInput();
+  var minY = parseInt(this.minKey.slice(0, 4));
+  var minM = parseInt(this.minKey.slice(5, 7));
+  var maxY = parseInt(this.maxKey.slice(0, 4));
+  var maxM = parseInt(this.maxKey.slice(5, 7));
 
   var disablePrev = year <= minY ? 'disabled' : '';
   var disableNext = year >= maxY ? 'disabled' : '';
@@ -67,11 +102,11 @@ MonthYearPicker.prototype._renderHTML = function (year) {
     '</div><div class="mypicker-months">';
 
   NAMES.forEach(function (name, i) {
-    var mm         = i + 1;
-    var isActive   = (mm === cur.mm && year === cur.yyyy);
+    var mm = i + 1;
+    var isActive = (mm === cur.mm && year === cur.yyyy);
     var isDisabled = (year === minY && mm < minM) || (year === maxY && mm > maxM);
     html += '<button class="mypicker-month' +
-      (isActive   ? ' active'   : '') +
+      (isActive ? ' active' : '') +
       (isDisabled ? ' disabled' : '') + '"' +
       ' data-mm="' + mm + '"' +
       (isDisabled ? ' disabled' : '') + '>' +
@@ -84,17 +119,17 @@ MonthYearPicker.prototype._renderHTML = function (year) {
 
 MonthYearPicker.prototype.open = function () {
   _activePicker = this;
-  var parsed    = this._parseInput();
-  this._year    = parsed.yyyy;
+  var parsed = this._parseInput();
+  this._year = parsed.yyyy;
 
-  var el        = document.createElement('div');
-  el.className  = 'mypicker';
-  el.innerHTML  = this._renderHTML(this._year);
+  var el = document.createElement('div');
+  el.className = 'mypicker';
+  el.innerHTML = this._renderHTML(this._year);
   document.body.appendChild(el);
-  this.el       = el;
+  this.el = el;
 
-  var rect      = this.input.getBoundingClientRect();
-  el.style.top  = (rect.bottom + 6) + 'px';
+  var rect = this.input.getBoundingClientRect();
+  el.style.top = (rect.bottom + 6) + 'px';
   el.style.left = rect.left + 'px';
 
   var self = this;
@@ -130,15 +165,15 @@ document.addEventListener('click', function () {
 async function loadData() {
   // Dane ładowane przez <script> tag — działa zarówno przez HTTP jak i file://
   ETF_DATA = window.__ETF_DATA;
-  USDPLN   = window.__USDPLN;
+  USDPLN = window.__USDPLN;
 }
 
 // ── Inicjalizacja ──────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async function () {
   await loadData();
   var range = getDataRange();
-  new MonthYearPicker('bt-od',  range.min, range.max);
-  new MonthYearPicker('bt-do',  range.min, range.max);
+  new MonthYearPicker('bt-od', range.min, range.max);
+  new MonthYearPicker('bt-do', range.min, range.max);
   new MonthYearPicker('cmp-od', range.min, range.max);
   new MonthYearPicker('cmp-do', range.min, range.max);
   ShareModule.preloadAssets();           // preładuj favicon do Canvas
@@ -161,7 +196,7 @@ function switchTab(name) {
   });
 
   var panel = document.getElementById('panel-' + name);
-  var btn   = document.getElementById('tab-' + name);
+  var btn = document.getElementById('tab-' + name);
   if (panel) panel.classList.remove('hidden');
   if (btn) {
     btn.style.color = '#0d7ff2';
@@ -219,7 +254,7 @@ function getSelectedEtf(containerId) {
 
 // ── Presety daty ──────────────────────────────────────────────────────────
 function setPresetBt(preset) {
-  var now   = new Date();
+  var now = new Date();
   var endMM = String(now.getMonth() + 1).padStart(2, '0');
   var endYY = now.getFullYear();
   var lastKey = USDPLN ? Object.keys(USDPLN).pop() : null;
@@ -228,7 +263,7 @@ function setPresetBt(preset) {
   var odVal;
   if (preset === 'max') {
     var ticker = getSelectedEtf('etf-selector-bt') || 'IWDA';
-    var start  = ETF_DATA[ticker] ? ETF_DATA[ticker].start : '2009-10';
+    var start = ETF_DATA[ticker] ? ETF_DATA[ticker].start : '2009-10';
     odVal = start.slice(5, 7) + '/' + start.slice(0, 4);
   } else if (preset === 'covid') {
     odVal = '01/2020';
@@ -242,19 +277,19 @@ function setPresetBt(preset) {
 }
 
 function setPresetCmp(preset) {
-  var now    = new Date();
-  var endMM  = String(now.getMonth() + 1).padStart(2, '0');
-  var endYY  = now.getFullYear();
+  var now = new Date();
+  var endMM = String(now.getMonth() + 1).padStart(2, '0');
+  var endYY = now.getFullYear();
   var lastKey = USDPLN ? Object.keys(USDPLN).pop() : null;
-  var doVal  = lastKey ? lastKey.slice(5, 7) + '/' + lastKey.slice(0, 4) : endMM + '/' + endYY;
+  var doVal = lastKey ? lastKey.slice(5, 7) + '/' + lastKey.slice(0, 4) : endMM + '/' + endYY;
 
   var odVal;
   if (preset === 'max') {
     var tickerA = getSelectedEtf('etf-selector-cmp-a') || 'IWDA';
     var tickerB = getSelectedEtf('etf-selector-cmp-b') || 'VWCE';
-    var startA  = (ETF_DATA[tickerA] && ETF_DATA[tickerA].start) ? ETF_DATA[tickerA].start : '2009-10';
-    var startB  = (ETF_DATA[tickerB] && ETF_DATA[tickerB].start) ? ETF_DATA[tickerB].start : '2014-05';
-    var start   = startA > startB ? startA : startB;
+    var startA = (ETF_DATA[tickerA] && ETF_DATA[tickerA].start) ? ETF_DATA[tickerA].start : '2009-10';
+    var startB = (ETF_DATA[tickerB] && ETF_DATA[tickerB].start) ? ETF_DATA[tickerB].start : '2014-05';
+    var start = startA > startB ? startA : startB;
     odVal = start.slice(5, 7) + '/' + start.slice(0, 4);
   } else if (preset === 'covid') {
     odVal = '01/2020';
@@ -294,36 +329,36 @@ function getMonthsBetween(startKey, endKey) {
 
 // ── obliczBacktesting ─────────────────────────────────────────────────────
 function obliczBacktesting() {
-  var ticker  = getSelectedEtf('etf-selector-bt');
+  var ticker = getSelectedEtf('etf-selector-bt');
   var kapital = parseFloat((document.getElementById('bt-kapital').value || '0').replace(/\s/g, '').replace(',', '.'));
   var doplata = parseFloat((document.getElementById('bt-doplata').value || '0').replace(/\s/g, '').replace(',', '.'));
-  var od      = parseInputDate(document.getElementById('bt-od').value);
-  var doD     = parseInputDate(document.getElementById('bt-do').value);
-  var ike     = document.getElementById('bt-ike').checked;
+  var od = parseInputDate(document.getElementById('bt-od').value);
+  var doD = parseInputDate(document.getElementById('bt-do').value);
+  var ike = document.getElementById('bt-ike').checked;
 
   if (!ticker || !od || !doD || isNaN(kapital)) {
     alert('Uzupełnij wszystkie pola.');
     return;
   }
 
-  var etf    = ETF_DATA[ticker];
+  var etf = ETF_DATA[ticker];
   var months = getMonthsBetween(od, doD);
   if (months.length < 2) { alert('Wybierz dłuższy okres.'); return; }
 
   // Symulacja miesiąc po miesiącu
-  var kapitalUSD  = kapital / (USDPLN[od] || 4.0);
-  var wplacono    = kapital;
-  var historiaKapital  = [];
+  var kapitalUSD = kapital / (USDPLN[od] || 4.0);
+  var wplacono = kapital;
+  var historiaKapital = [];
   var historiaWplacono = [];
-  var historiaDaty     = [];
+  var historiaDaty = [];
 
   months.forEach(function (key, idx) {
-    var stopa  = etf.returns[key] !== undefined ? etf.returns[key] : 0;
-    var kurs   = USDPLN[key] || USDPLN[Object.keys(USDPLN).pop()];
+    var stopa = etf.returns[key] !== undefined ? etf.returns[key] : 0;
+    var kurs = USDPLN[key] || USDPLN[Object.keys(USDPLN).pop()];
 
     if (idx > 0) {
       kapitalUSD = kapitalUSD * (1 + stopa - etf.ter / 12) + doplata / kurs;
-      wplacono  += doplata;
+      wplacono += doplata;
     }
 
     var kapitalPLN = kapitalUSD * kurs;
@@ -333,37 +368,52 @@ function obliczBacktesting() {
   });
 
   var kapitalFinal = historiaKapital[historiaKapital.length - 1];
-  var zyskBrutto   = kapitalFinal - wplacono;
-  var podatek      = ike ? 0 : Math.max(0, zyskBrutto * 0.19);
+  var zyskBrutto = kapitalFinal - wplacono;
+  var podatek = ike ? 0 : Math.max(0, zyskBrutto * 0.19);
   var kapitalNetto = kapitalFinal - podatek;
-  var zyskNetto    = kapitalNetto - wplacono;
-  var oszczIKE     = ike ? 0 : Math.max(0, zyskBrutto * 0.19);
-  var zwrotPct     = ((kapitalNetto / wplacono - 1) * 100).toFixed(1);
+  var zyskNetto = kapitalNetto - wplacono;
+  var zwrotPct = wplacono > 0 ? ((kapitalNetto / wplacono - 1) * 100).toFixed(1) : '0.0';
+  var n = (months.length - 1) / 12;
+  var cagr = (n > 0 && wplacono > 0) ? ((Math.pow(kapitalNetto / wplacono, 1 / n) - 1) * 100).toFixed(2) : '0.00';
 
-  // Aktualizuj DOM
+  // ── Aktualizuj DOM ────────────────────────────────────────────────────
   document.getElementById('bt-empty').classList.add('hidden');
   document.getElementById('bt-wyniki').classList.remove('hidden');
-  document.getElementById('bt-res-kapital').textContent  = formatPLN(kapitalNetto);
-  document.getElementById('bt-res-zysk').textContent     = (zyskNetto >= 0 ? '+' : '') + formatPLN(zyskNetto);
-  document.getElementById('bt-res-wplacono').textContent = formatPLN(wplacono);
-  document.getElementById('bt-res-zwrot').textContent    = (parseFloat(zwrotPct) >= 0 ? '+' : '') + zwrotPct + '%';
 
-  // Pokaż przycisk share
+  // Hero
+  document.getElementById('bt-res-kapital').textContent = formatPLN(kapitalNetto);
+  document.getElementById('bt-ike-status').textContent = ike ? 'IKE — 0% podatku' : 'Opodatkowanie 19%';
+
+  // Chip całkowity zwrot
+  var chipEl = document.getElementById('bt-res-zwrot-chip');
+  document.getElementById('bt-res-zwrot-val').textContent = (parseFloat(zwrotPct) >= 0 ? '+' : '') + zwrotPct + '%';
+  chipEl.classList.remove('hidden');
+  chipEl.classList.add('flex');
+
+  // Karty
+  document.getElementById('bt-res-zysk-netto').textContent = (zyskNetto >= 0 ? '+' : '') + formatPLN(zyskNetto);
+  document.getElementById('bt-res-zysk-brutto').textContent = formatPLN(zyskBrutto);
+  document.getElementById('bt-res-podatek').textContent = ike ? '0 zł' : formatPLN(podatek);
+  document.getElementById('bt-res-podatek-sub').textContent = ike ? 'chronione przez IKE ✓' : '19% od zysku';
+  document.getElementById('bt-res-wplacono').textContent = formatPLN(wplacono);
+  document.getElementById('bt-res-cagr').textContent = (parseFloat(cagr) >= 0 ? '+' : '') + cagr + '% / rok';
+
+  // Share button
   var shareBtn = document.getElementById('bt-share-btn');
   shareBtn.classList.remove('hidden');
   shareBtn.classList.add('flex');
 
-  // Renderuj wykres
+  // Wykres
   renderBtChart(historiaDaty, historiaKapital, historiaWplacono);
 
-  // Zapisz stan do ShareModule
+  // Stan do ShareModule
   btState = {
     ticker: ticker, etfName: etf.name,
     od: od, doD: doD,
     kapital: kapital, doplata: doplata, ike: ike,
     kapitalFinal: kapitalNetto, wplacono: wplacono,
     zyskNetto: zyskNetto, zwrotPct: zwrotPct,
-    oszczIKE: oszczIKE
+    oszczIKE: ike ? 0 : Math.max(0, zyskBrutto * 0.19)
   };
 }
 
@@ -426,32 +476,36 @@ function renderBtChart(labels, kapital, wplacono) {
 
 // ── obliczPorownanie ──────────────────────────────────────────────────────
 function obliczPorownanie() {
-  var tickerA  = getSelectedEtf('etf-selector-cmp-a');
-  var tickerB  = getSelectedEtf('etf-selector-cmp-b');
-  var kapital  = parseFloat((document.getElementById('cmp-kapital').value || '0').replace(/\s/g, '').replace(',', '.'));
-  var doplata  = parseFloat((document.getElementById('cmp-doplata').value || '0').replace(/\s/g, '').replace(',', '.'));
-  var od       = parseInputDate(document.getElementById('cmp-od').value);
-  var doD      = parseInputDate(document.getElementById('cmp-do').value);
-  var ike      = document.getElementById('cmp-ike').checked;
+  var tickerA = getSelectedEtf('etf-selector-cmp-a');
+  var tickerB = getSelectedEtf('etf-selector-cmp-b');
+  var kapital = parseFloat((document.getElementById('cmp-kapital').value || '0').replace(/\s/g, '').replace(',', '.'));
+  var doplata = parseFloat((document.getElementById('cmp-doplata').value || '0').replace(/\s/g, '').replace(',', '.'));
+  var od = parseInputDate(document.getElementById('cmp-od').value);
+  var doD = parseInputDate(document.getElementById('cmp-do').value);
+  var ike = document.getElementById('cmp-ike').checked;
 
   if (!tickerA || !tickerB || !od || !doD || isNaN(kapital)) { alert('Uzupełnij wszystkie pola.'); return; }
   if (tickerA === tickerB) { alert('Wybierz dwa różne ETF-y.'); return; }
 
   function simulate(ticker) {
-    var etf    = ETF_DATA[ticker];
+    var etf = ETF_DATA[ticker];
     var months = getMonthsBetween(od, doD);
-    var kUSD   = kapital / (USDPLN[od] || 4.0);
-    var wpl    = kapital;
-    var hist   = [];
+    var kUSD = kapital / (USDPLN[od] || 4.0);
+    var wpl = kapital;
+    var hist = [];
     months.forEach(function (key, idx) {
       var stopa = etf.returns[key] !== undefined ? etf.returns[key] : 0;
-      var kurs  = USDPLN[key] || USDPLN[Object.keys(USDPLN).pop()];
+      var kurs = USDPLN[key] || USDPLN[Object.keys(USDPLN).pop()];
       if (idx > 0) { kUSD = kUSD * (1 + stopa - etf.ter / 12) + doplata / kurs; wpl += doplata; }
       hist.push(Math.round(kUSD * kurs));
     });
     var finalBrutto = hist[hist.length - 1];
     var podatek = ike ? 0 : Math.max(0, (finalBrutto - wpl) * 0.19);
-    return { hist: hist, final: finalBrutto - podatek, wpl: wpl };
+    var finalNetto = finalBrutto - podatek;
+    var zysk = finalNetto - wpl;
+    var n = (months.length - 1) / 12;
+    var zwrotPct = (wpl > 0 && n > 0) ? ((finalNetto / wpl - 1) * 100).toFixed(1) : '0.0';
+    return { hist: hist, final: finalNetto, wpl: wpl, zysk: zysk, zwrotPct: zwrotPct };
   }
 
   var resA = simulate(tickerA);
@@ -463,16 +517,30 @@ function obliczPorownanie() {
 
   document.getElementById('cmp-empty').classList.add('hidden');
   document.getElementById('cmp-wyniki').classList.remove('hidden');
+
   document.getElementById('cmp-label-a').textContent = tickerA;
   document.getElementById('cmp-label-b').textContent = tickerB;
-  document.getElementById('cmp-res-a').textContent   = formatPLN(resA.final);
-  document.getElementById('cmp-res-b').textContent   = formatPLN(resB.final);
-  document.getElementById('cmp-res-diff').textContent = winner + ' lepszy o ' + formatPLN(diff);
+  document.getElementById('cmp-res-a').textContent = formatPLN(resA.final);
+  document.getElementById('cmp-res-b').textContent = formatPLN(resB.final);
+  document.getElementById('cmp-res-diff').textContent = winner + ' lepsze o ' + formatPLN(diff);
+
+  // Chipy zwrotu
+  document.getElementById('cmp-zwrot-val-a').textContent = (parseFloat(resA.zwrotPct) >= 0 ? '+' : '') + resA.zwrotPct + '%';
+  document.getElementById('cmp-zwrot-val-b').textContent = (parseFloat(resB.zwrotPct) >= 0 ? '+' : '') + resB.zwrotPct + '%';
+  var chipA = document.getElementById('cmp-zwrot-a');
+  var chipB = document.getElementById('cmp-zwrot-b');
+  chipA.classList.remove('hidden'); chipA.classList.add('flex');
+  chipB.classList.remove('hidden'); chipB.classList.add('flex');
+
+  // Zysk netto
+  document.getElementById('cmp-zysk-a').textContent = (resA.zysk >= 0 ? '+' : '') + formatPLN(resA.zysk);
+  document.getElementById('cmp-zysk-b').textContent = (resB.zysk >= 0 ? '+' : '') + formatPLN(resB.zysk);
 
   var shareBtn = document.getElementById('cmp-share-btn');
   shareBtn.classList.remove('hidden');
   shareBtn.classList.add('flex');
 
+  // Wykres (bez zmian)
   if (cmpChart) cmpChart.destroy();
   var ctx = document.getElementById('cmp-chart').getContext('2d');
   cmpChart = new Chart(ctx, {
@@ -499,43 +567,97 @@ function obliczPorownanie() {
 function obliczTER() {
   var kapital = parseFloat((document.getElementById('ter-kapital').value || '0').replace(/\s/g, '').replace(',', '.'));
   var doplata = parseFloat((document.getElementById('ter-doplata').value || '0').replace(/\s/g, '').replace(',', '.'));
-  var lata    = parseInt(document.getElementById('ter-lata').value || '0');
-  var terA    = parseFloat((document.getElementById('ter-a').value || '0').replace(',', '.')) / 100;
-  var terB    = parseFloat((document.getElementById('ter-b').value || '0').replace(',', '.')) / 100;
+  var lata = parseInt(document.getElementById('ter-lata').value || '0');
+  var terA = parseFloat((document.getElementById('ter-a').value || '0').replace(',', '.')) / 100;
+  var terB = parseFloat((document.getElementById('ter-b').value || '0').replace(',', '.')) / 100;
 
-  if (isNaN(kapital) || isNaN(lata) || lata < 1) { alert('Uzupełnij pola.'); return; }
+  if (isNaN(kapital) || isNaN(doplata) || isNaN(lata) || lata < 1) { alert('Uzupełnij pola.'); return; }
 
-  var WZROST = 0.07; // założenie 7% rocznie brutto
+  var WZROST = 0.07;
   var months = lata * 12;
 
   function simTER(ter) {
     var k = kapital;
     var hist = [k];
-    var stopaMsc = Math.pow(1 + WZROST - ter, 1 / 12) - 1;
+    var totalFees = 0;
     for (var i = 1; i <= months; i++) {
-      k = k * (1 + stopaMsc) + doplata;
+      var feeMonth = k * (ter / 12);
+      totalFees += feeMonth;
+      k = k * (1 + (WZROST - ter) / 12) + doplata;
       if (i % 12 === 0) hist.push(Math.round(k));
     }
-    return { final: Math.round(k), hist: hist };
+    return { final: Math.round(k), hist: hist, totalFees: Math.round(totalFees) };
   }
 
   var resA = simTER(terA);
   var resB = simTER(terB);
   var diff = Math.abs(resA.final - resB.final);
+  var wplacono = Math.round(kapital + doplata * months);
 
+  // % utraconego kapitału
+  var diffPct = resA.final > 0 ? (diff / resA.final * 100).toFixed(1) : '0.0';
+
+  // Zwrot %
+  var zwrotA = wplacono > 0 ? ((resA.final / wplacono - 1) * 100).toFixed(1) : '0.0';
+  var zwrotB = wplacono > 0 ? ((resB.final / wplacono - 1) * 100).toFixed(1) : '0.0';
+
+  // Zysk netto
+  var zyskA = resA.final - wplacono;
+  var zyskB = resB.final - wplacono;
+
+  // Rozbicie kosztów
+  var roznicaOplat = Math.abs(resB.totalFees - resA.totalFees);
+  var utraconePct = Math.max(0, diff - roznicaOplat); // efekt procentu składanego na opłatach
+  var rocznyKosztA = Math.round(resA.totalFees / lata);
+  var rocznyKosztB = Math.round(resB.totalFees / lata);
+
+  // Narracja — ile lat dopłat
+  var lataDoplat = (doplata > 0) ? (diff / doplata / 12).toFixed(1) : null;
+  var roznicaTer = (Math.abs(terB - terA) * 100).toFixed(2);
+
+  // ── DOM ──────────────────────────────────────────────────────────────
   document.getElementById('ter-empty').classList.add('hidden');
   document.getElementById('ter-wyniki').classList.remove('hidden');
-  document.getElementById('ter-res-a').textContent   = formatPLN(resA.final);
-  document.getElementById('ter-res-b').textContent   = formatPLN(resB.final);
-  document.getElementById('ter-res-diff').textContent = formatPLN(diff);
+
+  // Karty TER A i B
+  document.getElementById('ter-badge-a').textContent = 'TER ' + (terA * 100).toFixed(2) + '% / rok';
+  document.getElementById('ter-badge-b').textContent = 'TER ' + (terB * 100).toFixed(2) + '% / rok';
+  document.getElementById('ter-res-a').textContent = formatPLN(resA.final);
+  document.getElementById('ter-res-b').textContent = formatPLN(resB.final);
+  document.getElementById('ter-zwrot-val-a').textContent = (parseFloat(zwrotA) >= 0 ? '+' : '') + zwrotA + '%';
+  document.getElementById('ter-zwrot-val-b').textContent = (parseFloat(zwrotB) >= 0 ? '+' : '') + zwrotB + '%';
+  document.getElementById('ter-zysk-a').textContent = (zyskA >= 0 ? '+' : '') + formatPLN(zyskA);
+  document.getElementById('ter-zysk-b').textContent = (zyskB >= 0 ? '+' : '') + formatPLN(zyskB);
+  document.getElementById('ter-koszt-roczny-a').textContent = '~' + formatPLN(rocznyKosztA) + ' / rok';
+  document.getElementById('ter-koszt-roczny-b').textContent = '~' + formatPLN(rocznyKosztB) + ' / rok';
+
+  var chipA = document.getElementById('ter-zwrot-chip-a');
+  var chipB = document.getElementById('ter-zwrot-chip-b');
+  chipA.classList.remove('hidden'); chipA.classList.add('flex');
+  chipB.classList.remove('hidden'); chipB.classList.add('flex');
+
+  // Karta różnicy
+  document.getElementById('ter-res-diff').textContent = '−' + formatPLN(diff);
+  document.getElementById('ter-res-diff-pct').textContent = '−' + diffPct + '% kapitału';
+  document.getElementById('ter-breakdown-zap-a').textContent = '~' + formatPLN(resA.totalFees);
+  document.getElementById('ter-breakdown-zap-b').textContent = '~' + formatPLN(resB.totalFees);
+  document.getElementById('ter-breakdown-roznica').textContent = '−' + formatPLN(roznicaOplat);
+  document.getElementById('ter-breakdown-utracone').textContent = '−' + formatPLN(utraconePct);
   document.getElementById('ter-res-lata').textContent = 'przez ' + lata + ' lat';
-  document.getElementById('ter-label-a').textContent  = 'TER ' + (terA * 100).toFixed(2) + '%';
-  document.getElementById('ter-label-b').textContent  = 'TER ' + (terB * 100).toFixed(2) + '%';
+
+  // Narracja
+  var narrativeEl = document.getElementById('ter-narrative');
+  if (lataDoplat) {
+    narrativeEl.innerHTML = 'Przez <strong>' + lata + ' lat</strong> różnica TER <strong>' + roznicaTer + '%</strong> kosztuje Cię <strong>' + formatPLN(diff) + '</strong> — tyle co <strong>' + lataDoplat + ' lat</strong> miesięcznych dopłat po ' + formatPLN(doplata) + '.';
+  } else {
+    narrativeEl.innerHTML = 'Przez <strong>' + lata + ' lat</strong> różnica TER <strong>' + roznicaTer + '%</strong> kosztuje Cię <strong>' + formatPLN(diff) + '</strong> — czyli <strong>' + diffPct + '%</strong> końcowego kapitału ETF.';
+  }
 
   var shareBtn = document.getElementById('ter-share-btn');
   shareBtn.classList.remove('hidden');
   shareBtn.classList.add('flex');
 
+  // Wykres
   var labels = Array.from({ length: lata + 1 }, function (_, i) { return i + ' lat'; });
   if (terChart) terChart.destroy();
   var ctx = document.getElementById('ter-chart').getContext('2d');
@@ -564,7 +686,7 @@ var ShareModule = {
 
   generateCard: function (tab) {
     var canvas = document.createElement('canvas');
-    canvas.width  = 1200;
+    canvas.width = 1200;
     canvas.height = 630;
     var ctx = canvas.getContext('2d');
 
@@ -576,7 +698,7 @@ var ShareModule = {
 
     // ── Obramowanie karty ──
     ctx.strokeStyle = '#e2e8f0';
-    ctx.lineWidth   = 2;
+    ctx.lineWidth = 2;
     ShareModule._roundRect(ctx, 1, 1, 1198, 628, 24);
     ctx.stroke();
 
@@ -623,26 +745,26 @@ var ShareModule = {
       var x = 60 + i * 370;
       var y = 290;
       ctx.strokeStyle = tile.color;
-      ctx.lineWidth   = 4;
+      ctx.lineWidth = 4;
       ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + 310, y); ctx.stroke();
       ctx.fillStyle = '#94a3b8';
-      ctx.font      = '14px Inter, sans-serif';
+      ctx.font = '14px Inter, sans-serif';
       ctx.textAlign = 'left';
       ctx.fillText(tile.label.toUpperCase(), x, y + 26);
       ctx.fillStyle = tile.valueColor || '#1e293b';
-      ctx.font      = 'bold 28px Inter, sans-serif';
+      ctx.font = 'bold 28px Inter, sans-serif';
       ctx.fillText(tile.value, x, y + 64);
     });
 
     // ── Separator stopki ──
     ctx.strokeStyle = '#e2e8f0';
-    ctx.lineWidth   = 1;
+    ctx.lineWidth = 1;
     ctx.beginPath(); ctx.moveTo(60, 540); ctx.lineTo(1140, 540); ctx.stroke();
 
     // ── Stopka ──
     ShareModule._drawLogo(ctx, 60, 570, 22);
     ctx.fillStyle = '#94a3b8';
-    ctx.font      = '16px Inter, sans-serif';
+    ctx.font = '16px Inter, sans-serif';
     ctx.textAlign = 'right';
     ctx.fillText('Oblicz swoje wyniki na etfkalkulator.pl', 1140, 590);
 
@@ -657,16 +779,16 @@ var ShareModule = {
       ctx.drawImage(ShareModule._faviconImg, x, y - size + 4, size, size);
     }
     ctx.fillStyle = '#1e293b';
-    ctx.font      = 'bold ' + (size === 28 ? '20' : '16') + 'px Inter, sans-serif';
+    ctx.font = 'bold ' + (size === 28 ? '20' : '16') + 'px Inter, sans-serif';
     ctx.textAlign = 'left';
     ctx.fillText('ETFkalkulator.pl', x + size + 10, y);
   },
 
   _faviconImg: null,
   preloadAssets: function () {
-    var base  = window.location.pathname.includes('/pages/') ? '../' : '';
-    var img   = new Image();
-    img.src   = base + 'images/favicon.png';
+    var base = window.location.pathname.includes('/pages/') ? '../' : '';
+    var img = new Image();
+    img.src = base + 'images/favicon.png';
     ShareModule._faviconImg = img;
   },
 
@@ -685,7 +807,7 @@ var ShareModule = {
   _buildMainValue: function (tab, data) {
     if (tab === 'bt') {
       return {
-        text:  (data.kapitalFinal || 0).toLocaleString('pl-PL') + ' zł',
+        text: (data.kapitalFinal || 0).toLocaleString('pl-PL') + ' zł',
         badge: (parseFloat(data.zwrotPct) >= 0 ? '+' : '') + (data.zwrotPct || 0) + '%'
       };
     }
@@ -694,7 +816,7 @@ var ShareModule = {
       return { text: labelA, badge: null };
     }
     return {
-      text:  'Różnica: ' + (data.diff || 0).toLocaleString('pl-PL') + ' zł',
+      text: 'Różnica: ' + (data.diff || 0).toLocaleString('pl-PL') + ' zł',
       badge: null
     };
   },
@@ -703,7 +825,7 @@ var ShareModule = {
     if (tab === 'bt') {
       return [
         { label: 'Wpłacony kapitał', value: (data.wplacono || 0).toLocaleString('pl-PL') + ' zł', color: '#0d7ff2', valueColor: '#1e293b' },
-        { label: 'Zysk netto',       value: ((data.zyskNetto || 0) >= 0 ? '+' : '') + (data.zyskNetto || 0).toLocaleString('pl-PL') + ' zł', color: '#16a34a', valueColor: '#16a34a' },
+        { label: 'Zysk netto', value: ((data.zyskNetto || 0) >= 0 ? '+' : '') + (data.zyskNetto || 0).toLocaleString('pl-PL') + ' zł', color: '#16a34a', valueColor: '#16a34a' },
         { label: data.ike ? 'Zwrot %' : 'Oszczędność IKE', value: data.ike ? (parseFloat(data.zwrotPct) >= 0 ? '+' : '') + data.zwrotPct + '%' : (data.oszczIKE || 0).toLocaleString('pl-PL') + ' zł', color: '#f59e0b', valueColor: '#f59e0b' }
       ];
     }
@@ -711,13 +833,13 @@ var ShareModule = {
       return [
         { label: data.tickerA || 'ETF A', value: (data.finalA || 0).toLocaleString('pl-PL') + ' zł', color: '#0d7ff2', valueColor: '#0d7ff2' },
         { label: data.tickerB || 'ETF B', value: (data.finalB || 0).toLocaleString('pl-PL') + ' zł', color: '#f59e0b', valueColor: '#f59e0b' },
-        { label: 'Różnica',               value: (data.diff || 0).toLocaleString('pl-PL') + ' zł',   color: '#64748b', valueColor: '#64748b' }
+        { label: 'Różnica', value: (data.diff || 0).toLocaleString('pl-PL') + ' zł', color: '#64748b', valueColor: '#64748b' }
       ];
     }
     return [
       { label: 'Kapitał TER ' + ((data.terA || 0) * 100).toFixed(2) + '%', value: (data.finalA || 0).toLocaleString('pl-PL') + ' zł', color: '#0d7ff2', valueColor: '#0d7ff2' },
       { label: 'Kapitał TER ' + ((data.terB || 0) * 100).toFixed(2) + '%', value: (data.finalB || 0).toLocaleString('pl-PL') + ' zł', color: '#f59e0b', valueColor: '#f59e0b' },
-      { label: 'Opłata kosztuje',         value: (data.diff || 0).toLocaleString('pl-PL') + ' zł',   color: '#ef4444', valueColor: '#ef4444' }
+      { label: 'Opłata kosztuje', value: (data.diff || 0).toLocaleString('pl-PL') + ' zł', color: '#ef4444', valueColor: '#ef4444' }
     ];
   },
 
@@ -745,26 +867,26 @@ var ShareModule = {
     params.push('tab=' + tab);
 
     if (tab === 'bt') {
-      params.push('etf='     + (btState.ticker  || ''));
-      params.push('start='   + (btState.od      || '').replace('-', ''));
-      params.push('end='     + (btState.doD     || '').replace('-', ''));
+      params.push('etf=' + (btState.ticker || ''));
+      params.push('start=' + (btState.od || '').replace('-', ''));
+      params.push('end=' + (btState.doD || '').replace('-', ''));
       params.push('capital=' + (btState.kapital || 0));
       params.push('monthly=' + (btState.doplata || 0));
-      params.push('ike='     + (btState.ike ? '1' : '0'));
+      params.push('ike=' + (btState.ike ? '1' : '0'));
     } else if (tab === 'cmp') {
-      params.push('etf_a='   + (cmpState.tickerA || ''));
-      params.push('etf_b='   + (cmpState.tickerB || ''));
-      params.push('start='   + (cmpState.od  || '').replace('-', ''));
-      params.push('end='     + (cmpState.doD || '').replace('-', ''));
+      params.push('etf_a=' + (cmpState.tickerA || ''));
+      params.push('etf_b=' + (cmpState.tickerB || ''));
+      params.push('start=' + (cmpState.od || '').replace('-', ''));
+      params.push('end=' + (cmpState.doD || '').replace('-', ''));
       params.push('capital=' + (cmpState.kapital || 0));
       params.push('monthly=' + (cmpState.doplata || 0));
-      params.push('ike='     + (cmpState.ike ? '1' : '0'));
+      params.push('ike=' + (cmpState.ike ? '1' : '0'));
     } else {
       params.push('capital=' + (terState.kapital || 0));
       params.push('monthly=' + (terState.doplata || 0));
-      params.push('years='   + (terState.lata    || 0));
-      params.push('ter_a='   + (terState.terA    || 0));
-      params.push('ter_b='   + (terState.terB    || 0));
+      params.push('years=' + (terState.lata || 0));
+      params.push('ter_a=' + (terState.terA || 0));
+      params.push('ter_b=' + (terState.terB || 0));
     }
 
     var base = window.location.origin + window.location.pathname;
@@ -793,9 +915,9 @@ var ShareModule = {
       if (params.etf) selectEtf('etf-selector-bt', 'bt', params.etf);
       if (params.capital) document.getElementById('bt-kapital').value = params.capital;
       if (params.monthly) document.getElementById('bt-doplata').value = params.monthly;
-      if (params.start)   document.getElementById('bt-od').value      = hashDateToInput(params.start);
-      if (params.end)     document.getElementById('bt-do').value      = hashDateToInput(params.end);
-      if (params.ike)     document.getElementById('bt-ike').checked   = params.ike === '1';
+      if (params.start) document.getElementById('bt-od').value = hashDateToInput(params.start);
+      if (params.end) document.getElementById('bt-do').value = hashDateToInput(params.end);
+      if (params.ike) document.getElementById('bt-ike').checked = params.ike === '1';
       switchTab('backtesting');
       obliczBacktesting();
     } else if (tab === 'cmp') {
@@ -803,17 +925,17 @@ var ShareModule = {
       if (params.etf_b) selectEtf('etf-selector-cmp-b', 'cmp-b', params.etf_b);
       if (params.capital) document.getElementById('cmp-kapital').value = params.capital;
       if (params.monthly) document.getElementById('cmp-doplata').value = params.monthly;
-      if (params.start)   document.getElementById('cmp-od').value      = hashDateToInput(params.start);
-      if (params.end)     document.getElementById('cmp-do').value      = hashDateToInput(params.end);
-      if (params.ike)     document.getElementById('cmp-ike').checked   = params.ike === '1';
+      if (params.start) document.getElementById('cmp-od').value = hashDateToInput(params.start);
+      if (params.end) document.getElementById('cmp-do').value = hashDateToInput(params.end);
+      if (params.ike) document.getElementById('cmp-ike').checked = params.ike === '1';
       switchTab('porownanie');
       obliczPorownanie();
     } else if (tab === 'ter') {
       if (params.capital) document.getElementById('ter-kapital').value = params.capital;
       if (params.monthly) document.getElementById('ter-doplata').value = params.monthly;
-      if (params.years)   document.getElementById('ter-lata').value    = params.years;
-      if (params.ter_a)   document.getElementById('ter-a').value       = params.ter_a;
-      if (params.ter_b)   document.getElementById('ter-b').value       = params.ter_b;
+      if (params.years) document.getElementById('ter-lata').value = params.years;
+      if (params.ter_a) document.getElementById('ter-a').value = params.ter_a;
+      if (params.ter_b) document.getElementById('ter-b').value = params.ter_b;
       switchTab('ter');
       obliczTER();
     }
@@ -821,8 +943,8 @@ var ShareModule = {
 
   share: function (tab) {
     var canvas = ShareModule.generateCard(tab);
-    var url    = ShareModule.buildShareUrl(tab);
-    var title  = 'Moje wyniki ETF — ETFkalkulator.pl';
+    var url = ShareModule.buildShareUrl(tab);
+    var title = 'Moje wyniki ETF — ETFkalkulator.pl';
 
     canvas.toBlob(function (blob) {
       var file = new File([blob], 'wyniki-etf.png', { type: 'image/png' });
@@ -830,13 +952,13 @@ var ShareModule = {
       // MOBILE: Web Share API z plikiem
       if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
         navigator.share({ files: [file], title: title, url: url })
-          .catch(function () {}); // użytkownik anulował — nic nie rób
+          .catch(function () { }); // użytkownik anulował — nic nie rób
         return;
       }
 
       // DESKTOP: pobierz PNG + skopiuj URL + toast
       var a = document.createElement('a');
-      a.href     = URL.createObjectURL(blob);
+      a.href = URL.createObjectURL(blob);
       a.download = 'wyniki-etf.png';
       a.click();
       URL.revokeObjectURL(a.href);
@@ -854,8 +976,8 @@ var ShareModule = {
   },
 
   _showToast: function (msg) {
-    var toast  = document.getElementById('share-toast');
-    var msgEl  = document.getElementById('share-toast-msg');
+    var toast = document.getElementById('share-toast');
+    var msgEl = document.getElementById('share-toast-msg');
     if (!toast) return;
     msgEl.textContent = msg;
     toast.classList.remove('hidden');

@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="pl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#f8f7f2" id="meta-theme-color" />
+  <script>
+    (function () {
+      const s = localStorage.getItem("etf-tryb");
+      const d = s === "ciemny" || (!s && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.classList.toggle("dark", d);
+      document.documentElement.classList.toggle("light", !d);
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <title>Najlepsze ETF do IKE i IKZE 2026 — MSCI World, VWCE czy S&P 500? | ETFkalkulator.pl</title>
+  <link rel="canonical" href="https://etfkalkulator.pl/blog/najlepsze-etf-do-ike-ikze-2026.html" />
+  <meta name="description" content="IWDA, VWCE czy CSPX — który ETF najlepiej pasuje do IKE i IKZE? Porównanie TER, wyników i dywersyfikacji. Konkretna rekomendacja dla polskiego inwestora 2026." />
+  <meta name="author" content="ETFkalkulator.pl" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:title" content="Najlepsze ETF do IKE i IKZE 2026 — MSCI World, VWCE czy S&P 500?" />
+  <meta property="og:description" content="IWDA, VWCE czy CSPX — który ETF najlepiej pasuje do IKE i IKZE? Porównanie TER, wyników i dywersyfikacji. Konkretna rekomendacja dla polskiego inwestora 2026." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://etfkalkulator.pl/blog/najlepsze-etf-do-ike-ikze-2026.html" />
+  <meta property="og:site_name" content="ETFkalkulator.pl" />
+  <meta property="og:image" content="https://etfkalkulator.pl/images/najlepsze-etf-do-ike-ikze-2026.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Najlepsze ETF do IKE i IKZE 2026 — MSCI World, VWCE czy S&P 500?" />
+  <meta name="twitter:description" content="IWDA, VWCE czy CSPX — który ETF najlepiej pasuje do IKE i IKZE? Porównanie TER, wyników i dywersyfikacji." />
+  <meta name="twitter:image" content="https://etfkalkulator.pl/images/najlepsze-etf-do-ike-ikze-2026.webp" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Najlepsze ETF do IKE i IKZE 2026 — MSCI World, VWCE czy S&P 500?",
+    "description": "IWDA, VWCE czy CSPX — który ETF najlepiej pasuje do IKE i IKZE? Porównanie TER, wyników i dywersyfikacji. Konkretna rekomendacja dla polskiego inwestora 2026.",
+    "author": { "@type": "Organization", "name": "ETFkalkulator.pl" },
+    "publisher": { "@type": "Organization", "name": "ETFkalkulator.pl", "url": "https://etfkalkulator.pl" },
+    "datePublished": "2026-04-19",
+    "dateModified": "2026-04-19",
+    "url": "https://etfkalkulator.pl/blog/najlepsze-etf-do-ike-ikze-2026.html",
+    "image": "https://etfkalkulator.pl/images/najlepsze-etf-do-ike-ikze-2026.webp",
+    "inLanguage": "pl"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://etfkalkulator.pl/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://etfkalkulator.pl/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Najlepsze ETF do IKE i IKZE 2026", "item": "https://etfkalkulator.pl/blog/najlepsze-etf-do-ike-ikze-2026.html" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Czy VWCE jest dostępne na IKE i IKZE w Polsce?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Tak, VWCE (Vanguard FTSE All-World Acc) jest dostępne na IKE i IKZE we wszystkich czterech głównych brokerach: XTB, DM BOŚ, mBank eMakler i Santander. Wystarczy wpisać ticker VWCE i wybrać instrument typu ETF (nie ETF CFD)." }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy na IKE lepiej kupować ETF Acc czy Dist?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Na IKE zdecydowanie Acc (akumulacyjny). ETF Acc automatycznie reinwestuje dywidendy bez konieczności ręcznego zlecania ponownego zakupu. Dist (dystrybucyjny) wypłaca dywidendy na konto — na IKE są co prawda wolne od podatku Belki, ale trzeba je ręcznie reinwestować. Acc jest prostszy i bardziej efektywny." }
+      },
+      {
+        "@type": "Question",
+        "name": "Który ETF wybrać do IKE — IWDA, VWCE czy CSPX?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Dla większości polskich inwestorów najlepszy wybór to VWCE (max dywersyfikacja: 49 krajów, TER 0,22%) lub IWDA (23 kraje rozwinięte, TER 0,20%). CSPX (S&P 500, TER 0,07%) jest tańszy, ale daje ekspozycję wyłącznie na USA. Ważniejsze niż wybór indeksu jest regularne wpłacanie i wytrwałość przez 20+ lat." }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy mogę mieć kilka ETF-ów jednocześnie na IKE?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Tak, możesz posiadać dowolną liczbę ETF-ów w ramach jednego IKE, o ile mieszczą się w limicie wpłat (28 260 zł w 2026 roku). Jednak jeden dobrze wybrany ETF (np. VWCE) daje ekspozycję na 3700+ spółek z 49 krajów — dodawanie kolejnych ETF-ów nie zwiększa dywersyfikacji, a utrudnia zarządzanie." }
+      },
+      {
+        "@type": "Question",
+        "name": "Ile wynosi limit wpłat na IKE w 2026 roku?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Limit wpłat na IKE w 2026 roku wynosi 28 260 zł rocznie (2 355 zł miesięcznie). Przy typowych wpłatach 200–1000 zł miesięcznie limit IKE z łatwością wystarczy na całość inwestycji." }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" href="../images/favicon.png" />
+  <link rel="apple-touch-icon" href="../images/favicon.png" />
+  <link rel="manifest" href="/manifest.json" />
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("consent", "default", { analytics_storage: "denied" });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
+  <script>
+    gtag("config", "G-GZECMECQ15", { send_page_view: false });
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://groot.mailerlite.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap" rel="stylesheet" />
+
+  <style>
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .dark .glass-effect { background: rgba(15, 23, 42, 0.7); }
+    body { font-family: "Inter", sans-serif; }
+    .material-symbols-outlined { font-family: "Material Symbols Outlined"; font-size: 24px; line-height: 1; -webkit-font-smoothing: antialiased; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    article p { line-height: 1.8; }
+    article h2 { scroll-margin-top: 5rem; }
+    article h3 { scroll-margin-top: 5rem; }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    article h2 { animation: fadeInUp 0.4s ease both; }
+    details summary { user-select: none; }
+    details[open] summary .expand-icon { transform: rotate(180deg); }
+    .expand-icon { transition: transform 0.25s ease; }
+    .sidebar-toc a.toc-active { color: #0d7ff2 !important; font-weight: 600; background: rgba(13, 127, 242, 0.1); }
+  </style>
+  <link rel="preload" as="style" href="../css/mailerlite.css" />
+  <link href="../css/mailerlite.css" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="../css/mailerlite.css" /></noscript>
+  <link rel="stylesheet" href="../css/tailwind.css" />
+</head>
+
+<body>
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-primary">Przejdź do głównej treści</a>
+  <div id="reading-progress" class="fixed top-0 left-0 h-[3px] bg-primary z-[200] transition-none rounded-r-full" style="width:0%;background-color:#0d7ff2;"></div>
+
+  <!-- NAV -->
+  <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-stitch-border/50" style="font-family:'Inter',sans-serif">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center shrink-0">
+        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity" style="text-decoration:none">
+          <div class="bg-primary p-1.5 rounded-2xl text-white flex items-center justify-center" style="background-color:#0d7ff2">
+            <span aria-hidden="true" class="material-symbols-outlined text-xl">account_balance_wallet</span>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-stitch-text">ETFkalkulator.pl</span>
+        </a>
+      </div>
+      <div class="hidden lg:flex items-center gap-6 xl:gap-8 mx-6">
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors" href="../pages/kalkulator-etf.html" style="text-decoration:none">Kalkulator ETF</a>
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors" href="../pages/kalkulator-obligacji.html" style="text-decoration:none">Kalkulator Obligacji</a>
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors" href="../pages/kalkulator-wolnosci.html" style="text-decoration:none">Kalkulator Wolności</a>
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors" href="../pages/porownywarka.html" style="text-decoration:none">Porównywarka</a>
+        <a class="text-sm font-extrabold text-primary transition-colors hover:opacity-80" href="index.html" style="text-decoration:none;color:#0d7ff2">Blog</a>
+        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors" href="../pages/o-projekcie.html" style="text-decoration:none">O projekcie</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onkeydown="if(event.key==='Enter')this.click();" onclick="przelaczTryb()" aria-label="Przełącz tryb" class="w-9 h-9 rounded-full border border-stitch-border bg-stitch-surface flex items-center justify-center hover:bg-stitch-bg transition-colors">
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
+        </button>
+        <a href="#newsletter-section" class="bg-primary text-white px-4 h-9 rounded-full flex items-center justify-center text-[13px] font-bold hover:opacity-90 transition-opacity no-underline" style="background-color:#0d7ff2">Zapisz się</a>
+      </div>
+    </div>
+    <div class="lg:hidden h-11 border-t border-stitch-border/30 flex items-center overflow-x-auto overflow-y-hidden no-scrollbar px-4 gap-6 bg-stitch-surface/10" style="-webkit-overflow-scrolling:touch">
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap" href="../pages/kalkulator-etf.html" style="text-decoration:none">Kalkulator ETF</a>
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap" href="../pages/kalkulator-obligacji.html" style="text-decoration:none">Obligacje</a>
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap" href="../pages/kalkulator-wolnosci.html" style="text-decoration:none">Wolność finansowa</a>
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap" href="../pages/porownywarka.html" style="text-decoration:none">Porównywarka</a>
+      <a class="text-[12px] font-extrabold text-primary hover:opacity-80 whitespace-nowrap" href="index.html" style="text-decoration:none;color:#0d7ff2">Blog</a>
+      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap" href="../pages/o-projekcie.html" style="text-decoration:none">O projekcie</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative pt-32 pb-16 md:pb-20 px-4 sm:px-6 overflow-hidden text-white"
+    style="background-image: url('../images/najlepsze-etf-do-ike-ikze-2026.webp'); background-size: cover; background-position: center;">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(15,23,42,0.35) 0%, rgba(15,23,42,0.70) 55%, rgba(15,23,42,0.93) 100%);"></div>
+    <div class="relative z-10 max-w-3xl mx-auto">
+      <nav class="mb-6" aria-label="breadcrumb">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li><a href="../index.html" class="hover:text-white transition-colors" style="text-decoration:none">ETFkalkulator.pl</a></li>
+          <li><span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+          <li><a href="index.html" class="hover:text-white transition-colors" style="text-decoration:none">Blog</a></li>
+          <li><span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+          <li class="text-white font-semibold">Najlepsze ETF do IKE i IKZE 2026</li>
+        </ol>
+      </nav>
+      <h1 class="text-2xl md:text-4xl font-black text-white leading-tight mb-4">Najlepsze ETF do IKE i IKZE w 2026 — MSCI World, VWCE czy S&P 500?</h1>
+      <p class="text-white/85 text-base md:text-lg leading-relaxed mb-4">IWDA, VWCE, CSPX — trzy ETF-y, jedna decyzja na całe życie. Porównujemy TER, wyniki historyczne i dywersyfikację, żebyś wiedział co kupić na IKE lub IKZE.</p>
+      <div class="flex flex-wrap gap-4 mt-4 text-white/60 text-sm">
+        <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">calendar_today</span> Kwiecień 2026</span>
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">schedule</span> 10 minut czytania</span>
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">person</span> ETFkalkulator.pl</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="bg-white dark:bg-slate-950 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 grid grid-cols-1 lg:grid-cols-[1fr_300px] xl:grid-cols-[1fr_320px] gap-10 xl:gap-16 items-start">
+      <article id="main" class="min-w-0 pt-8 pb-16 lg:pb-20">
+
+        <!-- In-article TOC -->
+        <div class="glass-effect rounded-[1.5rem] p-6 mb-10 border-l-4 border-primary bg-primary/5 dark:bg-primary/10">
+          <p class="text-xs font-black uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+            Spis treści
+          </p>
+          <ol class="space-y-2 text-sm list-decimal list-inside">
+            <li><a href="#dlaczego-ike" class="text-primary hover:underline font-medium" style="text-decoration:none">Dlaczego IKE/IKZE + ETF to idealne połączenie?</a></li>
+            <li><a href="#acc-nie-dist" class="text-primary hover:underline font-medium" style="text-decoration:none">Zawsze Acc — dlaczego to kluczowe?</a></li>
+            <li><a href="#trzy-etfy" class="text-primary hover:underline font-medium" style="text-decoration:none">Trzy ETF-y warte uwagi: IWDA, VWCE, CSPX</a></li>
+            <li><a href="#porownanie" class="text-primary hover:underline font-medium" style="text-decoration:none">Wyniki historyczne i koszty — twarde liczby</a></li>
+            <li><a href="#ktory-wybrac" class="text-primary hover:underline font-medium" style="text-decoration:none">Który wybrać? Konkretna rekomendacja</a></li>
+            <li><a href="#czego-unikac" class="text-primary hover:underline font-medium" style="text-decoration:none">Czego unikać na IKE</a></li>
+            <li><a href="#faq" class="text-primary hover:underline font-medium" style="text-decoration:none">Najczęstsze pytania</a></li>
+          </ol>
+        </div>
+
+        <!-- KEY NUMBERS -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+          <div class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft">
+            <div class="text-3xl md:text-4xl font-black text-primary mb-1" style="color:#0d7ff2;">0,07%</div>
+            <div class="text-xs text-stitch-muted leading-tight">TER CSPX (S&P 500)<br>najtańszy ETF na rynku</div>
+            <div class="w-8 h-0.5 bg-primary/30 mx-auto mt-3 rounded-full" style="background-color:rgba(13,127,242,0.3)"></div>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft">
+            <div class="text-3xl md:text-4xl font-black text-primary mb-1" style="color:#0d7ff2;">3 700+</div>
+            <div class="text-xs text-stitch-muted leading-tight">spółek w VWCE<br>z 49 krajów świata</div>
+            <div class="w-8 h-0.5 bg-primary/30 mx-auto mt-3 rounded-full" style="background-color:rgba(13,127,242,0.3)"></div>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft">
+            <div class="text-3xl md:text-4xl font-black text-primary mb-1" style="color:#0d7ff2;">27 400 zł</div>
+            <div class="text-xs text-stitch-muted leading-tight">więcej na IKE niż bez<br>500 zł/mies × 20 lat @ 7%</div>
+            <div class="w-8 h-0.5 bg-primary/30 mx-auto mt-3 rounded-full" style="background-color:rgba(13,127,242,0.3)"></div>
+          </div>
+        </div>
+
+        <!-- SECTION 1 -->
+        <h2 id="dlaczego-ike" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">1</span>
+          Dlaczego IKE/IKZE + ETF to idealne połączenie?
+        </h2>
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">Inwestowanie w ETF bez ochrony podatkowej oznacza, że przy sprzedaży oddajesz 19% zysku fiskusowi. Na IKE lub IKZE ta sama strategia działa efektywniej — każda złotówka zysku pracuje dalej, zamiast trafić do urzędu skarbowego.</p>
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">Efekt procenta składanego bez podatku Belki przez 20–30 lat robi ogromną różnicę. Nie jest to abstrakcja — to konkretna kwota, którą zachowujesz w kieszeni.</p>
+
+        <!-- CALCULATION BOX -->
+        <div class="glass-effect relative overflow-hidden rounded-2xl p-6 mb-6 shadow-stitch-soft border border-white/50 dark:border-stitch-border/50">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-primary rounded-t-2xl"></div>
+          <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2"><span aria-hidden="true" class="material-symbols-outlined text-[18px]">calculate</span> Przykład: 500 zł/mies. × 20 lat @ 7% rocznie</p>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border"><span class="text-sm text-stitch-muted">Zwykłe konto maklerskie (19% podatku Belki)</span><span class="text-sm font-bold text-stitch-text">232 600 zł</span></div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border"><span class="text-sm text-stitch-muted">IKE (0% podatku Belki)</span><span class="text-sm font-bold text-stitch-text">260 000 zł</span></div>
+          <div class="bg-primary/5 dark:bg-primary/10 rounded-xl px-4 py-3 mt-2 border border-primary/20 flex flex-col sm:flex-row sm:justify-between sm:items-center">
+            <span class="text-sm font-semibold">Twoja korzyść z IKE</span>
+            <span class="text-base font-black text-primary" style="color:#0d7ff2;">+27 400 zł</span>
+          </div>
+        </div>
+
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">Mając to w głowie, pytanie „który ETF wybrać na IKE?" staje się wtórne wobec pytania „czy w ogóle mam IKE?". Jeśli jeszcze nie — <a href="gdzie-otworzyc-ike-2026-porownanie-brokerow.html" class="text-primary underline hover:no-underline">otwórz je jak najszybciej</a>. Każdy rok bez IKE to odłożona oszczędność podatkowa.</p>
+
+        <!-- SECTION 2 -->
+        <h2 id="acc-nie-dist" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">2</span>
+          Zawsze Acc — dlaczego to kluczowe?
+        </h2>
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">ETF-y dzielą się na dwa typy: <strong class="text-stitch-text">Acc (akumulacyjny)</strong> i <strong class="text-stitch-text">Dist (dystrybucyjny)</strong>. Wybór między nimi ma realny wpływ na efektywność inwestycji.</p>
+
+        <div class="rounded-2xl p-5 bg-primary/5 dark:bg-primary/10 border-l-4 border-primary mb-6">
+          <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-primary mb-2"><span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2">key</span> Zasada numer jeden</p>
+          <p class="text-sm text-stitch-muted leading-relaxed">Na IKE i IKZE zawsze kupuj ETF <strong class="text-stitch-text">Acc</strong> (akumulacyjny). Nazwa będzie zawierać „(Acc)" lub „Accumulating". Przykład: <em>iShares Core MSCI World UCITS ETF (Acc)</em> — ticker IWDA.</p>
+        </div>
+
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg"><strong class="text-stitch-text">ETF Acc</strong> reinwestuje dywidendy automatycznie bez Twojego udziału. Każda wypłacona przez spółkę dywidenda trafia z powrotem do funduszu i powiększa wartość jednostki. Procent składany działa bez przerwy.</p>
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg"><strong class="text-stitch-text">ETF Dist</strong> wypłaca dywidendy na konto. Na zwykłym rachunku od każdej dywidendy płacisz od razu 19% podatku Belki. Na IKE dywidendy są co prawda chronione, ale musisz je ręcznie reinwestować — składać nowe zlecenia zakupu. Więcej pracy, ryzyko przerwy w inwestowaniu.</p>
+
+        <div class="overflow-x-auto mb-8">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b-2 border-stitch-border">
+                <th class="text-left py-3 px-4 text-xs font-black uppercase tracking-wider text-stitch-muted">Kryterium</th>
+                <th class="text-left py-3 px-4 text-xs font-black uppercase tracking-wider text-primary" style="color:#0d7ff2">ETF Acc ✓</th>
+                <th class="text-left py-3 px-4 text-xs font-black uppercase tracking-wider text-stitch-muted">ETF Dist</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-stitch-border">
+                <td class="py-3 px-4 text-stitch-muted">Reinwestowanie dywidend</td>
+                <td class="py-3 px-4 font-semibold text-stitch-text">Automatyczne</td>
+                <td class="py-3 px-4 text-stitch-muted">Ręczne (nowe zlecenie)</td>
+              </tr>
+              <tr class="border-b border-stitch-border bg-stitch-bg/30">
+                <td class="py-3 px-4 text-stitch-muted">Podatek Belki od dywidend</td>
+                <td class="py-3 px-4 font-semibold text-stitch-text">Brak (odroczony do sprzedaży)</td>
+                <td class="py-3 px-4 text-stitch-muted">19% co rok (poza IKE)</td>
+              </tr>
+              <tr class="border-b border-stitch-border">
+                <td class="py-3 px-4 text-stitch-muted">Wygoda na IKE</td>
+                <td class="py-3 px-4 font-semibold text-stitch-text">Wysoka</td>
+                <td class="py-3 px-4 text-stitch-muted">Niska (ręczna obsługa)</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 text-stitch-muted">Efektywność procenta składanego</td>
+                <td class="py-3 px-4 font-semibold text-stitch-text">Maksymalna</td>
+                <td class="py-3 px-4 text-stitch-muted">Niższa</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- SECTION 3 -->
+        <h2 id="trzy-etfy" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">3</span>
+          Trzy ETF-y warte uwagi na IKE/IKZE
+        </h2>
+        <p class="text-stitch-muted leading-relaxed mb-6 text-base md:text-lg">Spośród kilkuset ETF-ów dostępnych w polskich domach maklerskich, trzy zasługują na szczególną uwagę dla długoterminowego inwestora na IKE lub IKZE. Wszystkie to wersje Acc, dostępne w XTB, DM BOŚ, mBank i Santander.</p>
+
+        <div class="overflow-x-auto mb-8">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="border-b-2 border-stitch-border">
+                <th class="text-left py-3 px-4 text-xs font-black uppercase tracking-wider text-stitch-muted">ETF</th>
+                <th class="text-left py-3 px-4 text-xs font-black uppercase tracking-wider text-stitch-muted">Ticker</th>
+                <th class="text-left py-3 px-4 text-xs font-black uppercase tracking-wider text-stitch-muted">Indeks</th>
+                <th class="text-left py-3 px-4 text-xs font-black uppercase tracking-wider text-stitch-muted">TER</th>
+                <th class="text-left py-3 px-4 text-xs font-black uppercase tracking-wider text-stitch-muted">Spółki</th>
+                <th class="text-left py-3 px-4 text-xs font-black uppercase tracking-wider text-stitch-muted">Zasięg</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-stitch-border">
+                <td class="py-3 px-4 font-semibold text-stitch-text">iShares Core MSCI World</td>
+                <td class="py-3 px-4 font-black text-primary" style="color:#0d7ff2">IWDA</td>
+                <td class="py-3 px-4 text-stitch-muted">MSCI World</td>
+                <td class="py-3 px-4 text-stitch-muted">0,20%</td>
+                <td class="py-3 px-4 text-stitch-muted">~1 500</td>
+                <td class="py-3 px-4 text-stitch-muted">23 kraje rozwinięte</td>
+              </tr>
+              <tr class="border-b border-stitch-border bg-primary/5 dark:bg-primary/10">
+                <td class="py-3 px-4 font-semibold text-stitch-text">Vanguard FTSE All-World</td>
+                <td class="py-3 px-4 font-black text-primary" style="color:#0d7ff2">VWCE</td>
+                <td class="py-3 px-4 text-stitch-muted">FTSE All-World</td>
+                <td class="py-3 px-4 text-stitch-muted">0,22%</td>
+                <td class="py-3 px-4 text-stitch-muted">~3 700</td>
+                <td class="py-3 px-4 font-semibold text-stitch-text">49 krajów (rozwinięte + wschodzące)</td>
+              </tr>
+              <tr class="border-b border-stitch-border">
+                <td class="py-3 px-4 font-semibold text-stitch-text">iShares Core S&P 500</td>
+                <td class="py-3 px-4 font-black text-primary" style="color:#0d7ff2">CSPX</td>
+                <td class="py-3 px-4 text-stitch-muted">S&P 500</td>
+                <td class="py-3 px-4 font-semibold text-stitch-text">0,07%</td>
+                <td class="py-3 px-4 text-stitch-muted">503</td>
+                <td class="py-3 px-4 text-stitch-muted">USA (100%)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg"><strong class="text-stitch-text">Bonus: SWRD</strong> — tańsza alternatywa dla IWDA. SPDR MSCI World UCITS ETF (ticker: SWRD) śledzi ten sam indeks co IWDA, ale kosztuje tylko 0,12%/rok. Mniej popularny, nieco mniejszy, ale finansowo identyczny wybór.</p>
+
+        <h3 class="text-xl font-black text-stitch-text mt-10 mb-4">Co kryje się za każdym z nich?</h3>
+
+        <p class="text-stitch-muted leading-relaxed mb-3 text-base"><strong class="text-stitch-text">IWDA (MSCI World)</strong> — to nie jest „cały świat", choć nazwa sugeruje inaczej. Obejmuje tylko 23 kraje <em>rozwinięte</em>: USA (ok. 71%), Japonia (ok. 6%), Wielka Brytania (ok. 4%), reszta Europy i Azji. Bez Chin, Indii, Brazylii czy Korei Południowej. Dla wielu inwestorów to wystarczy — spółki w S&P 500 i MSCI World generują znaczną część przychodów globalnie.</p>
+
+        <p class="text-stitch-muted leading-relaxed mb-3 text-base"><strong class="text-stitch-text">VWCE (FTSE All-World)</strong> — prawdziwa dywersyfikacja globalna. Obok wszystkich rynków rozwiniętych zawiera też rynki wschodzące: Chiny, Indie, Brazylię, Koreę, Tajwan i inne. Ponad 3 700 spółek z 49 krajów. Nieco wyższy TER (0,22%), ale za to „jeden ETF na całe życie".</p>
+
+        <p class="text-stitch-muted leading-relaxed mb-3 text-base"><strong class="text-stitch-text">CSPX (S&P 500)</strong> — 503 największe spółki USA, w tym Apple, Microsoft, NVIDIA, Amazon, Alphabet. Najtańszy TER (0,07%). Dla kogoś, kto świadomie stawia na Stany Zjednoczone i chce minimalizować koszty. Koncentracja geograficzna to ryzyko — ale też szansa, jeśli USA utrzyma dominację.</p>
+
+        <!-- SECTION 4 -->
+        <h2 id="porownanie" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">4</span>
+          Wyniki historyczne i koszty — twarde liczby
+        </h2>
+
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">Lata 2012–2024 to była wyjątkowa dekada: Big Tech USA (Apple, Microsoft, NVIDIA, Meta) rosły w tempie, które trudno ekstrapolować na przyszłość. Liczby wyglądają imponująco:</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+          <div class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft">
+            <div class="text-3xl font-black text-primary mb-1" style="color:#0d7ff2;">+333%</div>
+            <div class="text-xs text-stitch-muted leading-tight">S&P 500 (CSPX)<br>2012–2024 (USD)</div>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft">
+            <div class="text-3xl font-black text-stitch-text mb-1">+183%</div>
+            <div class="text-xs text-stitch-muted leading-tight">MSCI World (IWDA)<br>2012–2024 (USD)</div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-5 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 mb-6">
+          <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2"><span aria-hidden="true" class="material-symbols-outlined text-amber-600 text-[18px] shrink-0">warning</span> Historia nie gwarantuje przyszłości</p>
+          <p class="text-sm text-stitch-muted leading-relaxed">W 1989 roku Japonia stanowiła 45% globalnej kapitalizacji. Kto postawił wtedy na „dominującą gospodarkę", przez kolejne 30 lat miał ujemne wyniki. USA w dekadzie 2000–2009 przyniosły niemal zero zwrotu. Przewaga S&P 500 z lat 2012–2024 może się nie powtórzyć w następnych dwóch dekadach.</p>
+        </div>
+
+        <h3 class="text-xl font-black text-stitch-text mt-10 mb-4">Ile kosztuje różnica w TER?</h3>
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">CSPX kosztuje 0,07%/rok, IWDA — 0,20%/rok. Różnica 0,13% rocznie wydaje się nieistotna. Ale czas i procent składany robią swoje:</p>
+
+        <div class="glass-effect relative overflow-hidden rounded-2xl p-6 mb-6 shadow-stitch-soft border border-white/50 dark:border-stitch-border/50">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-primary rounded-t-2xl"></div>
+          <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2"><span aria-hidden="true" class="material-symbols-outlined text-[18px]">calculate</span> Wpływ TER: 2 000 zł/mies. × 25 lat @ 7% bazowego zwrotu</p>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border"><span class="text-sm text-stitch-muted">CSPX (TER 0,07% → zwrot netto 6,93%)</span><span class="text-sm font-bold text-stitch-text">~1 499 000 zł</span></div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border"><span class="text-sm text-stitch-muted">IWDA (TER 0,20% → zwrot netto 6,80%)</span><span class="text-sm font-bold text-stitch-text">~1 473 000 zł</span></div>
+          <div class="bg-primary/5 dark:bg-primary/10 rounded-xl px-4 py-3 mt-2 border border-primary/20 flex flex-col sm:flex-row sm:justify-between sm:items-center">
+            <span class="text-sm font-semibold">Różnica TER na 25 latach</span>
+            <span class="text-base font-black text-primary" style="color:#0d7ff2;">~26 000 zł</span>
+          </div>
+        </div>
+
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">26 000 zł to dużo — ale jeśli przez te 25 lat USA przeżyją dekadę słabości (jak w latach 2000–2009), a MSCI World dzięki dywersyfikacji geograficznej straci mniej — różnica w TER zostanie wielokrotnie odrobiona. To nie jest decyzja matematyczna. To decyzja o tym, ile geograficznej koncentracji jesteś gotów zaakceptować.</p>
+
+        <!-- CTA BOX -->
+        <div class="bg-gradient-to-br from-blue-700 to-primary rounded-[1.5rem] p-6 md:p-8 text-white text-center my-10 shadow-xl" style="background:linear-gradient(135deg,#1d4ed8,#0d7ff2);">
+          <h3 class="text-xl font-black text-white mb-3">Sprawdź wyniki ETF w konkretnym oknie czasowym</h3>
+          <p class="text-white/80 mb-5 text-sm leading-relaxed">Kalkulator ETF Historyczny pozwala zobaczyć, jak radziłby sobie IWDA lub CSPX gdybyś zainwestował np. w 2007, 2015 lub 2020 roku. Wybierz okres, kwotę i ETF.</p>
+          <a href="../pages/kalkulator-etf-historyczny.html" class="bg-stitch-surface text-primary font-black px-6 py-3 rounded-xl hover:scale-[1.02] transition-all inline-flex items-center gap-2 shadow-lg" style="color:#0d7ff2;text-decoration:none;">Otwórz kalkulator historyczny <span aria-hidden="true" class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
+        </div>
+
+        <!-- SECTION 5 -->
+        <h2 id="ktory-wybrac" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">5</span>
+          Który wybrać? Konkretna rekomendacja
+        </h2>
+
+        <p class="text-stitch-muted leading-relaxed mb-6 text-base md:text-lg">Nie ma jednej odpowiedzi dla wszystkich. Ale jest kilka prostych zasad, które pomagają zdecydować:</p>
+
+        <div class="space-y-4 mb-8">
+          <div class="rounded-2xl p-5 bg-emerald-50 dark:bg-emerald-950/30 border-l-4 border-emerald-500">
+            <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2"><span aria-hidden="true" class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span> Dopiero zaczynasz, chcesz prostoty</p>
+            <p class="text-sm text-stitch-muted leading-relaxed"><strong class="text-stitch-text">VWCE lub IWDA.</strong> Jeden ETF, całe życie. VWCE daje szerszą dywersyfikację (rynki wschodzące), IWDA jest nieco tańszy i starszy (większy, bardziej płynny). Oba są świetnym wyborem.</p>
+          </div>
+          <div class="rounded-2xl p-5 bg-emerald-50 dark:bg-emerald-950/30 border-l-4 border-emerald-500">
+            <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2"><span aria-hidden="true" class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span> Chcesz maksymalnej dywersyfikacji globalnej</p>
+            <p class="text-sm text-stitch-muted leading-relaxed"><strong class="text-stitch-text">VWCE.</strong> 3 700+ spółek, Chiny, Indie, Korea, Tajwan w składzie. Jeśli za 20 lat rynki wschodzące wyprzedzą USA — będziesz uczestniczyć we wzroście.</p>
+          </div>
+          <div class="rounded-2xl p-5 bg-emerald-50 dark:bg-emerald-950/30 border-l-4 border-emerald-500">
+            <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2"><span aria-hidden="true" class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span> Wierzysz w USA, minimalizujesz koszty</p>
+            <p class="text-sm text-stitch-muted leading-relaxed"><strong class="text-stitch-text">CSPX.</strong> Najtańszy TER (0,07%), płynny, dostępny wszędzie. Świadoma decyzja: 100% ekspozycja na największą gospodarkę świata.</p>
+          </div>
+          <div class="rounded-2xl p-5 bg-emerald-50 dark:bg-emerald-950/30 border-l-4 border-emerald-500">
+            <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2"><span aria-hidden="true" class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span> Masz IWDA i chcesz obniżyć koszty</p>
+            <p class="text-sm text-stitch-muted leading-relaxed"><strong class="text-stitch-text">SWRD.</strong> Ten sam indeks co IWDA (MSCI World), TER 0,12% zamiast 0,20%. Mniej popularny, ale finansowo identyczny.</p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-5 bg-primary/5 dark:bg-primary/10 border-l-4 border-primary mb-6">
+          <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-primary mb-2"><span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2">key</span> Ważniejsze niż wybór ETF</p>
+          <p class="text-sm text-stitch-muted leading-relaxed">Portfel regularnie zasilany przez 25 lat pobije „idealny" portfel porzucony po 3 latach słabszych wyników. Wybierz ETF, przy którym wytrwasz — i nie zmieniaj go przy każdej korekcie.</p>
+        </div>
+
+        <!-- SECTION 6 -->
+        <h2 id="czego-unikac" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">6</span>
+          Czego unikać na IKE
+        </h2>
+
+        <div class="space-y-4 mb-8">
+          <div class="rounded-2xl p-5 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500">
+            <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2"><span aria-hidden="true" class="material-symbols-outlined text-amber-600 text-[18px] shrink-0">warning</span> ETF CFD zamiast ETF</p>
+            <p class="text-sm text-stitch-muted leading-relaxed">W XTB wpisując „IWDA" możesz zobaczyć dwa instrumenty: ETF i ETF CFD. CFD to produkt lewarowany — 75% detalicznych traci. Zawsze wybieraj ETF, nigdy ETF CFD.</p>
+          </div>
+          <div class="rounded-2xl p-5 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500">
+            <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2"><span aria-hidden="true" class="material-symbols-outlined text-amber-600 text-[18px] shrink-0">warning</span> ETF dystrybucyjny (Dist) na IKE</p>
+            <p class="text-sm text-stitch-muted leading-relaxed">Technicznie możliwy, ale wymaga ręcznego reinwestowania każdej dywidendy. Niepotrzebna komplikacja skoro ETF Acc jest dostępny i prostszy.</p>
+          </div>
+          <div class="rounded-2xl p-5 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500">
+            <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2"><span aria-hidden="true" class="material-symbols-outlined text-amber-600 text-[18px] shrink-0">warning</span> ETF tematyczne i sektorowe z wysokim TER</p>
+            <p class="text-sm text-stitch-muted leading-relaxed">ETF na AI, zieloną energię czy biotech mają TER często 0,5–0,7% i wąską ekspozycję. Jeden VWCE lub IWDA daje lepszą dywersyfikację przy niższym koszcie.</p>
+          </div>
+          <div class="rounded-2xl p-5 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500">
+            <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2"><span aria-hidden="true" class="material-symbols-outlined text-amber-600 text-[18px] shrink-0">warning</span> Zbyt duże rozproszenie</p>
+            <p class="text-sm text-stitch-muted leading-relaxed">5 ETF-ów na portfelu nie daje przewagi nad jednym VWCE — daje jedynie więcej pracy i ryzyko nakładania się pozycji. CSPX + IWDA to i tak w 71% to samo.</p>
+          </div>
+        </div>
+
+        <!-- SECTION 7 — FAQ -->
+        <h2 id="faq" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">7</span>
+          Najczęstsze pytania
+        </h2>
+
+        <div class="space-y-3 mb-10">
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-stitch-border/50 overflow-hidden group">
+            <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer font-semibold text-stitch-text text-sm md:text-base">
+              Czy VWCE jest dostępne na IKE w Polsce?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon shrink-0 text-primary text-[20px]" style="color:#0d7ff2">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border/50 pt-4">Tak, VWCE jest dostępne na IKE i IKZE we wszystkich czterech głównych brokerach: XTB, DM BOŚ, mBank eMakler i Santander. Wystarczy wpisać ticker VWCE i wybrać instrument typu ETF (nie ETF CFD).</div>
+          </details>
+
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-stitch-border/50 overflow-hidden group">
+            <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer font-semibold text-stitch-text text-sm md:text-base">
+              Czy mogę mieć kilka ETF-ów jednocześnie na IKE?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon shrink-0 text-primary text-[20px]" style="color:#0d7ff2">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border/50 pt-4">Tak, możesz posiadać dowolną liczbę ETF-ów w ramach jednego IKE, o ile mieszczą się w rocznym limicie wpłat (28 260 zł w 2026 r.). Jednak jeden dobrze wybrany ETF (np. VWCE) daje ekspozycję na 3 700+ spółek z 49 krajów — dodawanie kolejnych ETF-ów rzadko zwiększa dywersyfikację, a utrudnia zarządzanie.</div>
+          </details>
+
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-stitch-border/50 overflow-hidden group">
+            <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer font-semibold text-stitch-text text-sm md:text-base">
+              Jak kupić IWDA lub VWCE w XTB?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon shrink-0 text-primary text-[20px]" style="color:#0d7ff2">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border/50 pt-4">W XTB: Rynki → wpisz ticker (IWDA lub VWCE) → wybierz instrument oznaczony jako <strong>ETF</strong> (nie ETF CFD!) → zlecenie rynkowe (Market Order) → podaj kwotę lub liczbę jednostek → sprawdź: symbol, typ, kwotę → Kup. Sesja europejskich ETF: 9:00–17:30 czasu polskiego.</div>
+          </details>
+
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-stitch-border/50 overflow-hidden group">
+            <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer font-semibold text-stitch-text text-sm md:text-base">
+              IWDA czy SWRD — który lepszy?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon shrink-0 text-primary text-[20px]" style="color:#0d7ff2">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border/50 pt-4">Oba śledzą identyczny indeks: MSCI World. IWDA ma TER 0,20% i jest największy (ok. 85 mld EUR AUM) — bardzo płynny. SWRD ma TER 0,12%, jest tańszy, ale mniejszy i mniej płynny. Dla długoterminowego inwestora kupującego raz w miesiącu różnica w płynności nie ma znaczenia. SWRD jest finansowo lepszym wyborem przy dłuższym horyzoncie.</div>
+          </details>
+
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-stitch-border/50 overflow-hidden group">
+            <summary class="flex items-center justify-between gap-4 p-5 cursor-pointer font-semibold text-stitch-text text-sm md:text-base">
+              Kiedy najlepiej sprzedać ETF na IKE?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon shrink-0 text-primary text-[20px]" style="color:#0d7ff2">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border/50 pt-4">Najlepiej dopiero po ukończeniu 60. roku życia (lub 55 lat przy spełnieniu dodatkowych warunków) — wtedy wypłata z IKE jest całkowicie wolna od podatku Belki. Wcześniejsza wypłata oznacza zapłacenie 19% podatku od całego zysku. Jeśli potrzebujesz pieniędzy przed emeryturą, możesz rozważyć częściowy wykup lub pożyczkę pod zastaw.</div>
+          </details>
+        </div>
+
+        <!-- DISCLAIMER -->
+        <div class="glass-effect rounded-2xl p-5 mt-10 border border-stitch-border dark:border-slate-700">
+          <div class="flex items-start gap-4">
+            <span aria-hidden="true" class="material-symbols-outlined text-slate-400 shrink-0 mt-0.5 text-[20px]">info</span>
+            <div>
+              <p class="text-xs font-bold text-stitch-muted mb-1">Ważna informacja (Disclaimer)</p>
+              <p class="text-xs text-stitch-muted leading-relaxed italic">Materiały na stronie mają charakter wyłącznie edukacyjny i poglądowy. Nie stanowią rekomendacji inwestycyjnej ani porady podatkowej w rozumieniu przepisów prawa. Inwestowanie na giełdzie zawsze wiąże się z ryzykiem utraty części lub całości kapitału. Wyniki historyczne ETF-ów nie gwarantują przyszłych wyników. Zawsze weryfikuj dane z prospektem emisyjnym funduszu i aktualnymi warunkami brokera.</p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-24 space-y-6">
+          <!-- TOC -->
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+              <span aria-hidden="true" class="material-symbols-outlined text-[16px]">format_list_bulleted</span>
+              W tym artykule
+            </p>
+            <div class="sidebar-toc space-y-1">
+              <a href="#dlaczego-ike" class="flex items-center gap-2 px-3 py-2 rounded-xl text-sm text-stitch-muted hover:text-primary hover:bg-primary/5 transition-all" style="text-decoration:none">IKE + ETF — dlaczego?</a>
+              <a href="#acc-nie-dist" class="flex items-center gap-2 px-3 py-2 rounded-xl text-sm text-stitch-muted hover:text-primary hover:bg-primary/5 transition-all" style="text-decoration:none">Zawsze Acc</a>
+              <a href="#trzy-etfy" class="flex items-center gap-2 px-3 py-2 rounded-xl text-sm text-stitch-muted hover:text-primary hover:bg-primary/5 transition-all" style="text-decoration:none">IWDA, VWCE, CSPX</a>
+              <a href="#porownanie" class="flex items-center gap-2 px-3 py-2 rounded-xl text-sm text-stitch-muted hover:text-primary hover:bg-primary/5 transition-all" style="text-decoration:none">Wyniki i koszty</a>
+              <a href="#ktory-wybrac" class="flex items-center gap-2 px-3 py-2 rounded-xl text-sm text-stitch-muted hover:text-primary hover:bg-primary/5 transition-all" style="text-decoration:none">Który wybrać?</a>
+              <a href="#czego-unikac" class="flex items-center gap-2 px-3 py-2 rounded-xl text-sm text-stitch-muted hover:text-primary hover:bg-primary/5 transition-all" style="text-decoration:none">Czego unikać</a>
+              <a href="#faq" class="flex items-center gap-2 px-3 py-2 rounded-xl text-sm text-stitch-muted hover:text-primary hover:bg-primary/5 transition-all" style="text-decoration:none">FAQ</a>
+            </div>
+          </div>
+          <!-- CTA -->
+          <div class="bg-gradient-to-br from-blue-700 to-primary rounded-2xl p-5 text-white text-center" style="background:linear-gradient(135deg,#1d4ed8,#0d7ff2);">
+            <span aria-hidden="true" class="material-symbols-outlined text-3xl mb-2 opacity-80">bar_chart</span>
+            <h3 class="font-black text-white text-base mb-1">Kalkulator ETF Historyczny</h3>
+            <p class="text-white/75 text-xs leading-relaxed mb-4">Sprawdź wyniki IWDA lub CSPX w dowolnym przedziale czasowym.</p>
+            <a href="../pages/kalkulator-etf-historyczny.html" class="bg-white rounded-xl px-4 py-2.5 text-xs font-black hover:scale-[1.02] transition-all inline-flex items-center gap-1.5 shadow-lg" style="color:#0d7ff2;text-decoration:none;">
+              Otwórz kalkulator
+              <span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </a>
+          </div>
+          <!-- RELATED -->
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+              <span aria-hidden="true" class="material-symbols-outlined text-[16px]">auto_stories</span>
+              Czytaj też
+            </p>
+            <div class="space-y-3">
+              <a href="msci-world-czy-sp500-ktory-etf-wybrac.html" class="flex items-start gap-3 group" style="text-decoration:none">
+                <span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] mt-0.5 shrink-0" style="color:#0d7ff2">article</span>
+                <span class="text-sm text-stitch-muted group-hover:text-primary transition-colors leading-snug">MSCI World czy S&P 500 — który ETF wybrać?</span>
+              </a>
+              <a href="ike-czy-ikze-co-wybrac.html" class="flex items-start gap-3 group" style="text-decoration:none">
+                <span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] mt-0.5 shrink-0" style="color:#0d7ff2">article</span>
+                <span class="text-sm text-stitch-muted group-hover:text-primary transition-colors leading-snug">IKE czy IKZE — co wybrać w 2026?</span>
+              </a>
+              <a href="gdzie-otworzyc-ike-2026-porownanie-brokerow.html" class="flex items-start gap-3 group" style="text-decoration:none">
+                <span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] mt-0.5 shrink-0" style="color:#0d7ff2">article</span>
+                <span class="text-sm text-stitch-muted group-hover:text-primary transition-colors leading-snug">Gdzie otworzyć IKE w 2026? Porównanie brokerów</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- MOBILE BOTTOM BAR -->
+  <div class="lg:hidden fixed bottom-0 left-0 right-0 z-50 glass-effect border-t border-slate-200 dark:border-slate-800 px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-24 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+        <div id="reading-progress-mobile" class="h-full bg-primary rounded-full transition-none" style="width:0%;background-color:#0d7ff2;"></div>
+      </div>
+      <span id="reading-pct" class="text-xs font-bold text-slate-400">0%</span>
+    </div>
+    <a href="../pages/kalkulator-etf-historyczny.html" class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-full flex items-center gap-1.5 hover:opacity-90" style="background-color:#0d7ff2;text-decoration:none;">
+      <span aria-hidden="true" class="material-symbols-outlined text-[14px]">bar_chart</span>
+      Kalkulator ETF
+    </a>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <section id="newsletter-section" class="pt-10 pb-20 px-6 bg-slate-100 border-t border-stitch-border dark:border-slate-900 transition-colors">
+    <div class="max-w-7xl mx-auto">
+      <div class="bg-stitch-surface/70 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 lg:p-16 shadow-xl border border-white/50 relative overflow-hidden group">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center lg:justify-items-stretch relative z-10">
+          <div class="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+              <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span>
+              Newsletter
+            </div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-stitch-text tracking-tight leading-[1.1]">Bądź na bieżąco z <span class="text-primary">rynkiem ETF</span> i finansami</h2>
+            <p class="text-stitch-muted text-lg leading-relaxed max-w-xl">Dołącz do społeczności świadomych inwestorów. Otrzymuj analizy, nowe kalkulatory i rzetelną wiedzę prosto na swoją skrzynkę. Zero spamu.</p>
+          </div>
+          <div class="w-full lg:max-w-md mx-auto lg:ml-auto">
+            <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
+              <div class="ml-form-embedWrapper embedForm">
+                <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                  <form class="ml-block-form" action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe" method="post" target="_blank">
+                    <div class="flex flex-col space-y-4">
+                      <div class="ml-form-fieldRow">
+                        <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                          <input aria-label="email" aria-required="true" type="email" class="w-full h-14 px-6 rounded-2xl border border-stitch-border bg-stitch-surface text-stitch-text text-base font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all placeholder:text-slate-400" name="fields[email]" placeholder="Twój adres e-mail" />
+                        </div>
+                      </div>
+                      <div class="ml-form-embedPermissions">
+                        <label class="flex items-start gap-4 cursor-pointer group">
+                          <input aria-label="Wprowadź wartość" type="checkbox" name="gdpr[]" value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl" required class="custom-checkbox mt-1 transition-all" />
+                          <span class="text-[11px] text-stitch-muted font-medium leading-relaxed">Zgadzam się na otrzymywanie newslettera. Możesz się wypisać w każdej chwili.</span>
+                        </label>
+                      </div>
+                      <div class="ml-form-recaptcha ml-validate-required py-2 flex justify-center">
+                        <div class="g-recaptcha transform scale-[0.85] origin-center" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                      </div>
+                      <input type="hidden" name="ml-submit" value="1" />
+                      <input type="hidden" name="anticsrf" value="true" />
+                      <div class="ml-form-embedSubmit">
+                        <button type="submit" class="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-sm md:text-base uppercase tracking-widest hover:scale-[1.01] active:scale-[0.98] transition-all shadow-xl shadow-primary/20" style="background-color:#0d7ff2">Zapisz się teraz</button>
+                      </div>
+                      <div class="pt-6 border-t border-stitch-border mt-2">
+                        <p class="text-[10px] text-slate-400 dark:text-stitch-muted leading-relaxed mb-2">Zapisując się, akceptujesz <a href="../pages/regulamin.html" class="underline hover:text-primary">Regulamin</a> i <a href="../pages/polityka-prywatnosci.html" class="underline hover:text-primary">Politykę Prywatności</a>. Twoje dane są bezpieczne i służą wyłącznie do wysyłki newslettera.</p>
+                        <p class="text-[10px] text-slate-400 font-medium italic">Prezentowane treści nie stanowią rekomendacji inwestycyjnej.</p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="ml-form-successBody row-success" style="display:none">
+                  <div class="p-10 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 text-center">
+                    <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-800/50 rounded-full flex items-center justify-center mx-auto mb-4"><span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-3xl">verified</span></div>
+                    <h4 class="text-emerald-900 dark:text-emerald-300 font-bold text-xl mb-1">Sukces!</h4>
+                    <p class="text-emerald-700 dark:text-emerald-500 text-sm">Sprawdź swoją skrzynkę e-mail, aby potwierdzić zapis.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-stitch-bg border-t border-stitch-border dark:border-slate-900 py-20 px-6" style="font-family:'Inter',sans-serif">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12 border-b border-stitch-border/50 pb-8">
+        <div class="flex items-center gap-2">
+          <div class="bg-primary p-1.5 rounded-2xl text-white flex items-center justify-center" style="background-color:#0d7ff2"><span aria-hidden="true" class="material-symbols-outlined text-base">account_balance_wallet</span></div>
+          <span class="text-xl font-bold tracking-tight text-stitch-text">ETF<span class="font-normal text-stitch-muted">kalkulator</span>.pl</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20 items-start">
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">Narzędzia</h5>
+          <ul class="space-y-4">
+            <li><a href="../pages/kalkulator-etf.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration:none">Kalkulator ETF</a></li>
+            <li><a href="../pages/kalkulator-obligacji.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration:none">Obligacje Skarbowe</a></li>
+            <li><a href="../pages/kalkulator-wolnosci.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration:none">Wolność Finansowa</a></li>
+            <li><a href="../pages/porownywarka.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration:none">Porównywarka ETF</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">Projekt</h5>
+          <ul class="space-y-4">
+            <li><a href="index.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration:none">Blog i Wiedza</a></li>
+            <li><a href="../pages/o-projekcie.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration:none">O projekcie</a></li>
+            <li><a href="../pages/regulamin.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration:none">Regulamin</a></li>
+            <li><a href="../pages/polityka-prywatnosci.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration:none">Polityka prywatności</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">Kontakt</h5>
+          <p class="text-sm text-stitch-muted mb-6 leading-relaxed">Masz pytania? Pisz śmiało:</p>
+          <a href="mailto:kontakt@etfkalkulator.pl" class="text-sm font-bold text-stitch-text hover:text-primary transition-colors block mb-8" style="text-decoration:none">kontakt@etfkalkulator.pl</a>
+        </div>
+      </div>
+      <div class="mt-20 pt-10 border-t border-stitch-border dark:border-slate-900">
+        <p class="text-[11px] text-slate-400 dark:text-stitch-muted leading-relaxed mb-8 max-w-4xl">Serwis ETFkalkulator.pl ma charakter wyłącznie edukacyjny i informacyjny. Prezentowane obliczenia nie stanowią rekomendacji inwestycyjnej, porady finansowej ani doradztwa podatkowego w rozumieniu obowiązujących przepisów prawa. Przed podjęciem decyzji inwestycyjnej skonsultuj się z licencjonowanym doradcą finansowym. Inwestowanie wiąże się z ryzykiem utraty części lub całości zainwestowanego kapitału.</p>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+          <p>© 2026 ETFkalkulator.pl — Made with ❤️ by Florian</p>
+          <div class="flex gap-6"><span>Wszelkie prawa zastrzeżone</span></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/shared.js"></script>
+  <script>
+    const bar = document.getElementById('reading-progress');
+    const article = document.getElementById('main');
+    const mobileBar = document.getElementById('reading-progress-mobile');
+    const pctLabel = document.getElementById('reading-pct');
+    function updateProgress() {
+      if (!bar || !article) return;
+      const rect = article.getBoundingClientRect();
+      const total = article.offsetHeight - window.innerHeight;
+      const scrolled = Math.max(0, -rect.top);
+      const pct = total > 0 ? Math.min(100, (scrolled / total) * 100) : 0;
+      bar.style.width = pct + '%';
+      if (mobileBar) mobileBar.style.width = pct + '%';
+      if (pctLabel) pctLabel.textContent = Math.round(pct) + '%';
+    }
+    const headings = document.querySelectorAll('article h2[id]');
+    const tocLinks = document.querySelectorAll('.sidebar-toc a');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(a => a.classList.remove('toc-active'));
+          const active = document.querySelector('.sidebar-toc a[href="#' + entry.target.id + '"]');
+          if (active) active.classList.add('toc-active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    headings.forEach(h => observer.observe(h));
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  </script>
+  <script defer>
+    function przelaczTryb() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains("dark");
+      if (isDark) { html.classList.remove("dark"); html.classList.add("light"); localStorage.setItem("etf-tryb", "jasny"); }
+      else { html.classList.add("dark"); html.classList.remove("light"); localStorage.setItem("etf-tryb", "ciemny"); }
+      const d = html.classList.contains("dark");
+      const m = document.getElementById("meta-theme-color");
+      if (m) m.content = d ? "#0f172a" : "#f8fafc";
+    }
+  </script>
+  <script src="https://www.google.com/recaptcha/api.js" defer></script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript" defer></script>
+  <script src="../js/cookie-consent.js" defer></script>
+</body>
+</html>
