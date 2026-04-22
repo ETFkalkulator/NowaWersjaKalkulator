@@ -446,11 +446,21 @@ function obliczBacktesting() {
   var historiaWplacono = [];
   var historiaDaty = [];
 
+  var rokPoRoku = [];
+  var yearEtfReturn = 1;
+  var curYearTracked = od.slice(0, 4);
+
   months.forEach(function (key, idx) {
     var stopa = etf.returns[key] !== undefined ? etf.returns[key] : 0;
     var kurs = USDPLN[key] || USDPLN[Object.keys(USDPLN).pop()];
+    var keyYear = key.slice(0, 4);
 
     if (idx > 0) {
+      if (keyYear !== curYearTracked) {
+        yearEtfReturn = 1;
+        curYearTracked = keyYear;
+      }
+      yearEtfReturn *= (1 + stopa - etf.ter / 12);
       kapitalUSD = kapitalUSD * (1 + stopa - etf.ter / 12) + doplata / kurs;
       wplacono += doplata;
     }
@@ -459,6 +469,14 @@ function obliczBacktesting() {
     historiaKapital.push(Math.round(kapitalPLN));
     historiaWplacono.push(Math.round(wplacono));
     historiaDaty.push(key.slice(0, 4) + '/' + key.slice(5, 7));
+
+    var isLastMonth = (idx === months.length - 1);
+    var isDecember = key.slice(5, 7) === '12';
+
+    if ((isDecember || isLastMonth) && idx > 0) {
+      var pct = (yearEtfReturn - 1) * 100;
+      rokPoRoku.push({ rok: keyYear, wplacono: Math.round(wplacono), kapital: Math.round(kapitalPLN), pct: pct });
+    }
   });
 
   var kapitalFinal = historiaKapital[historiaKapital.length - 1];
@@ -499,6 +517,33 @@ function obliczBacktesting() {
 
   // Wykres
   renderBtChart(historiaDaty, historiaKapital, historiaWplacono);
+
+  // Tabela rok po roku
+  var tabelaBody = document.getElementById('bt-tabela-body');
+  var tabelaWrapper = document.getElementById('bt-tabela-wrapper');
+  if (tabelaBody) {
+    tabelaBody.innerHTML = '';
+    rokPoRoku.forEach(function (row) {
+      var tr = document.createElement('tr');
+      tr.className = 'hover:bg-slate-50/50 dark:hover:bg-slate-900/50 transition-colors border-b border-slate-50 dark:border-slate-800/50 last:border-0';
+      var pctHtml = '';
+      if (row.pct !== null) {
+        var isPlus = row.pct >= 0;
+        var pctStr = (isPlus ? '+' : '') + row.pct.toFixed(1) + '%';
+        var color = isPlus ? 'text-emerald-500' : 'text-rose-500';
+        pctHtml = '<span class="inline-flex items-center gap-1 font-bold ' + color + '">' + pctStr + '</span>';
+      } else {
+        pctHtml = '<span class="text-slate-400">—</span>';
+      }
+      tr.innerHTML =
+        '<td class="sticky left-0 z-10 bg-white/95 dark:bg-slate-900/95 px-4 py-3 text-xs lg:text-sm font-semibold text-slate-900 dark:text-slate-100 border-r border-slate-100 dark:border-slate-800 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">' + row.rok + '</td>' +
+        '<td class="px-4 py-3 text-xs lg:text-sm text-slate-500 dark:text-slate-400 text-right whitespace-nowrap">' + formatPLN(row.wplacono) + '</td>' +
+        '<td class="px-4 py-3 text-xs lg:text-sm font-bold text-slate-900 dark:text-white text-right whitespace-nowrap">' + formatPLN(row.kapital) + '</td>' +
+        '<td class="px-4 py-3 text-xs lg:text-sm text-right whitespace-nowrap">' + pctHtml + '</td>';
+      tabelaBody.appendChild(tr);
+    });
+    tabelaWrapper.classList.remove('hidden');
+  }
 
   // Stan do ShareModule
   btState = {

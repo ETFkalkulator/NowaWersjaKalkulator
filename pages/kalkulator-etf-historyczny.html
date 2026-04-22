@@ -550,6 +550,29 @@
     </div>
   </div>
 
+  <!-- Zestawienie rok po roku -->
+  <div id="bt-tabela-wrapper" class="hidden glass-effect rounded-[1.5rem] border border-white/50 dark:border-slate-700/50 overflow-hidden">
+    <div class="px-6 pt-5 pb-3 border-b border-slate-100 dark:border-slate-700/50">
+      <h3 class="text-sm font-bold text-stitch-text flex items-center gap-2">
+        <span class="material-symbols-outlined text-[18px]" style="color:#0d7ff2;">table_chart</span>
+        Zestawienie rok po roku
+      </h3>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-slate-100 dark:border-slate-700/50 bg-slate-50/50 dark:bg-slate-800/30">
+            <th class="sticky left-0 z-10 bg-slate-50/90 dark:bg-slate-800/90 px-4 py-3 text-left text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 border-r border-slate-100 dark:border-slate-700/50">Rok</th>
+            <th class="px-4 py-3 text-right text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Wpłacono</th>
+            <th class="px-4 py-3 text-right text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Wartość portfela</th>
+            <th class="px-4 py-3 text-right text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Wynik ETF</th>
+          </tr>
+        </thead>
+        <tbody id="bt-tabela-body"></tbody>
+      </table>
+    </div>
+  </div>
+
   <!-- Disclaimer -->
   <p class="text-[11px] text-slate-400 leading-relaxed">
     Wyniki historyczne nie stanowią gwarancji przyszłych zysków. Dane miesięczne w USD przeliczone na PLN po kursie NBP. Podatek Belki 19% naliczany na koniec okresu (jeśli IKE wyłączone).
