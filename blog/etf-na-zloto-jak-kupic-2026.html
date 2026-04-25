@@ -160,43 +160,8 @@
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-primary">Przejdź do głównej treści</a>
   <div id="reading-progress" class="fixed top-0 left-0 h-[3px] bg-primary z-[200] transition-none rounded-r-full" style="width:0%;background-color:#0d7ff2;"></div>
 
-  <!-- NAV -->
-  <nav class="fixed top-0 w-full z-[100] glass-effect border-b border-stitch-border/50" style="font-family: &quot;Inter&quot;, sans-serif">
-    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <div class="flex items-center shrink-0">
-        <a href="../index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity" style="text-decoration: none">
-          <div class="bg-primary p-1.5 rounded-2xl text-white flex items-center justify-center" style="background-color: #0d7ff2">
-            <span aria-hidden="true" class="material-symbols-outlined text-xl">account_balance_wallet</span>
-          </div>
-          <span class="text-xl font-bold tracking-tight text-stitch-text">ETFkalkulator.pl</span>
-        </a>
-      </div>
-      <div class="hidden lg:flex items-center gap-6 xl:gap-8 mx-6">
-        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors" href="../pages/kalkulator-etf.html" style="text-decoration: none">Kalkulator ETF</a>
-        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors" href="../pages/kalkulator-obligacji.html" style="text-decoration: none">Kalkulator Obligacji</a>
-        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors" href="../pages/kalkulator-wolnosci.html" style="text-decoration: none">Kalkulator Wolności</a>
-        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors" href="../pages/porownywarka.html" style="text-decoration: none">Porównywarka</a>
-        <a class="text-sm font-extrabold text-primary transition-colors hover:opacity-80" href="index.html" style="text-decoration: none; color: #0d7ff2">Blog</a>
-        <a class="text-sm font-semibold text-stitch-muted hover:text-primary transition-colors" href="../pages/o-projekcie.html" style="text-decoration: none">O projekcie</a>
-      </div>
-      <div class="flex items-center gap-3">
-        <button onkeydown="if (event.key === 'Enter') this.click();" onclick="przelaczTryb()" aria-label="Przełącz tryb"
-          class="w-9 h-9 rounded-full border border-stitch-border bg-stitch-surface flex items-center justify-center hover:bg-stitch-bg transition-colors">
-          <span aria-hidden="true" class="material-symbols-outlined text-[20px] block dark:hidden">light_mode</span>
-          <span aria-hidden="true" class="material-symbols-outlined text-[20px] hidden dark:block">dark_mode</span>
-        </button>
-        <a href="#newsletter-section" class="bg-primary text-white px-4 h-9 rounded-full flex items-center justify-center text-[13px] font-bold hover:opacity-90 transition-opacity no-underline" style="background-color: #0d7ff2">Zapisz się</a>
-      </div>
-    </div>
-    <div class="lg:hidden h-11 border-t border-stitch-border/30 flex items-center overflow-x-auto overflow-y-hidden no-scrollbar px-4 gap-6 bg-stitch-surface/10" style="-webkit-overflow-scrolling: touch">
-      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap" href="../pages/kalkulator-etf.html" style="text-decoration: none">Kalkulator ETF</a>
-      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap" href="../pages/kalkulator-obligacji.html" style="text-decoration: none">Obligacje</a>
-      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap" href="../pages/kalkulator-wolnosci.html" style="text-decoration: none">Wolność finansowa</a>
-      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap" href="../pages/porownywarka.html" style="text-decoration: none">Porównywarka</a>
-      <a class="text-[12px] font-extrabold text-primary hover:opacity-80 whitespace-nowrap" href="index.html" style="text-decoration: none; color: #0d7ff2">Blog</a>
-      <a class="text-[12px] font-bold text-stitch-muted hover:text-primary whitespace-nowrap" href="../pages/o-projekcie.html" style="text-decoration: none">O projekcie</a>
-    </div>
-  </nav>
+  <div id="nav-root"></div>
+  <script defer src="../js/nav.js"></script>
 
   <!-- HERO -->
   <section class="relative pt-32 pb-16 md:pb-20 px-4 sm:px-6 overflow-hidden text-white"

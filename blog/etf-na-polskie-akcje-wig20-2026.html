@@ -1,0 +1,870 @@
+<!doctype html>
+<html lang="pl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#f8f7f2" id="meta-theme-color" />
+  <script>
+    (function () {
+      const s = localStorage.getItem("etf-tryb");
+      const d = s === "ciemny" || (!s && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.classList.toggle("dark", d);
+      document.documentElement.classList.toggle("light", !d);
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <title>ETF WIG20 i mWIG40 — jak kupić polskie akcje przez ETF (2026) | ETFkalkulator.pl</title>
+  <link rel="canonical" href="https://etfkalkulator.pl/blog/etf-na-polskie-akcje-wig20-2026.html" />
+  <meta name="description" content="WIG20 zyskał 43% w 2026. Porównujemy ETFW20L, Xtrackers WIG20 i Beta mWIG40 — koszty, dostępność, wyniki. Ile polskich akcji trzymać w portfelu? Sprawdź." />
+  <meta name="author" content="ETFkalkulator.pl" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="ETF WIG20 i mWIG40 — jak kupić polskie akcje przez ETF (2026)" />
+  <meta property="og:description" content="WIG20 zyskał 43% w 2026. Porównujemy ETFW20L, Xtrackers WIG20 i Beta mWIG40 — koszty, dostępność, wyniki. Ile polskich akcji trzymać w portfelu? Sprawdź." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://etfkalkulator.pl/blog/etf-na-polskie-akcje-wig20-2026.html" />
+  <meta property="og:site_name" content="ETFkalkulator.pl" />
+  <meta property="og:image" content="https://etfkalkulator.pl/images/etf-na-polskie-akcje-wig20-2026.webp" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ETF WIG20 i mWIG40 — jak kupić polskie akcje przez ETF (2026)" />
+  <meta name="twitter:description" content="WIG20 zyskał 43% w 2026. Porównujemy ETFW20L, Xtrackers WIG20 i Beta mWIG40 — koszty, dostępność, wyniki." />
+  <meta name="twitter:image" content="https://etfkalkulator.pl/images/etf-na-polskie-akcje-wig20-2026.webp" />
+
+  <!-- Schema.org Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "ETF WIG20 i mWIG40 — jak kupić polskie akcje przez ETF (2026)",
+    "description": "WIG20 zyskał 43% w 2026. Porównujemy ETFW20L, Xtrackers WIG20 i Beta mWIG40 — koszty, dostępność, wyniki. Ile polskich akcji trzymać w portfelu?",
+    "author": { "@type": "Organization", "name": "ETFkalkulator.pl" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ETFkalkulator.pl",
+      "url": "https://etfkalkulator.pl"
+    },
+    "datePublished": "2026-04-22",
+    "dateModified": "2026-04-22",
+    "url": "https://etfkalkulator.pl/blog/etf-na-polskie-akcje-wig20-2026.html",
+    "inLanguage": "pl"
+  }
+  </script>
+
+  <!-- Schema.org BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://etfkalkulator.pl/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://etfkalkulator.pl/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "ETF WIG20 i mWIG40 — jak kupić polskie akcje przez ETF (2026)", "item": "https://etfkalkulator.pl/blog/etf-na-polskie-akcje-wig20-2026.html" }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Czy warto kupować ETF WIG20 po wzrostach +43%?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wzrost ceny ETF nie oznacza, że jest drogi — to zależy od wycen spółek w indeksie. WIG20 wciąż ma niższe wskaźniki P/E niż rynki zachodnie. Jeśli inwestujesz długoterminowo metodą DCA, jednorazowa cena zakupu ma mniejsze znaczenie. Nie należy jednak inwestować wyłącznie z powodu niedawnych wzrostów (FOMO)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ETFW20L czy Xtrackers WIG20 — który ETF wybrać?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ETFW20L (Beta ETF) jest notowany na GPW w PLN — wygodny dla Polaków, dostępny w XTB i mBanku. Xtrackers WIG20 UCITS notowany jest na Xetra we Frankfurcie (EUR) i ma nieco niższy TER (ok. 0,30% vs 0,40%). Jeśli inwestujesz przez XTB lub IBKR, oba są dostępne. Dla prostoty wybierz ETFW20L."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy ETF mWIG40 jest bardziej ryzykowny niż WIG20?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tak — Beta ETF mWIG40TR jest bardziej zmienny niż ETFW20L. Spółki średniej wielkości są mniej płynne i mocniej reagują na korekty. W zamian za wyższe ryzyko mWIG40 historycznie generował wyższe długoterminowe stopy zwrotu. Przeznacz na niego mniejszą część portfela niż na WIG20."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Gdzie kupić ETF na WIG20 — XTB, IBKR czy GPW?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ETFW20L kupisz na GPW przez większość polskich brokerów: XTB, mBank eMakler, Bossa (DM BOŚ), Santander BM. Możesz też kupić go przez IKE lub IKZE — wtedy unikasz podatku Belki od dywidend i zysku kapitałowego. Xtrackers WIG20 dostępny jest przez XTB i IBKR na Xetra."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" href="../images/favicon.png" />
+  <link rel="apple-touch-icon" href="../images/favicon.png" />
+  <link rel="manifest" href="/manifest.json" />
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("consent", "default", { analytics_storage: "denied" });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
+  <script>
+    gtag("config", "G-GZECMECQ15", { send_page_view: false });
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap" rel="stylesheet" />
+
+  <style>
+    .glass-effect { background: rgba(255,255,255,0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .dark .glass-effect { background: rgba(15,23,42,0.7); }
+    body { font-family: "Inter", sans-serif; }
+    .material-symbols-outlined { font-family: "Material Symbols Outlined"; font-size: 24px; line-height: 1; -webkit-font-smoothing: antialiased; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    article p { line-height: 1.8; }
+    article h2 { scroll-margin-top: 5rem; }
+    article h3 { scroll-margin-top: 5rem; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    article h2 { animation: fadeInUp 0.4s ease both; }
+    details summary { user-select: none; }
+    details[open] summary .expand-icon { transform: rotate(180deg); }
+    .expand-icon { transition: transform 0.25s ease; }
+    .sidebar-toc a.toc-active { color: #0d7ff2 !important; font-weight: 600; background: rgba(13,127,242,0.1); }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { padding: 0.6rem 0.8rem; text-align: left; border-bottom: 1px solid rgba(100,116,139,0.2); font-size: 0.875rem; }
+    th { font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; }
+    tr:last-child td { border-bottom: none; }
+  </style>
+
+  <link rel="preload" as="style" href="../css/mailerlite.css" />
+  <link href="../css/mailerlite.css" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="../css/mailerlite.css" /></noscript>
+  <link rel="stylesheet" href="../css/tailwind.css" />
+</head>
+<body>
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white focus:text-primary">Przejdź do głównej treści</a>
+  <div id="reading-progress" class="fixed top-0 left-0 h-[3px] bg-primary z-[200] transition-none rounded-r-full" style="width:0%;background-color:#0d7ff2;"></div>
+
+  <div id="nav-root"></div>
+  <script defer src="../js/nav.js"></script>
+
+  <!-- HERO -->
+  <section class="relative pt-32 pb-16 md:pb-20 px-4 sm:px-6 overflow-hidden text-white"
+    style="background-image: url('../images/etf-na-polskie-akcje-wig20-2026.webp'); background-size: cover; background-position: center;">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(15,23,42,0.35) 0%, rgba(15,23,42,0.70) 55%, rgba(15,23,42,0.93) 100%);"></div>
+    <div class="relative z-10 max-w-3xl mx-auto">
+      <nav class="mb-6" aria-label="breadcrumb">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li><a href="../index.html" class="hover:text-white transition-colors" style="text-decoration:none">ETFkalkulator.pl</a></li>
+          <li><span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+          <li><a href="index.html" class="hover:text-white transition-colors" style="text-decoration:none">Blog</a></li>
+          <li><span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+          <li class="text-white font-semibold">ETF WIG20 i mWIG40</li>
+        </ol>
+      </nav>
+      <h1 class="text-2xl md:text-4xl font-black text-white leading-tight mb-4">
+        ETF na polskie akcje: WIG20, mWIG40 i co powinieneś wiedzieć w 2026 roku
+      </h1>
+      <p class="text-white/85 text-base md:text-lg leading-relaxed mb-4">
+        WIG20 zyskał 43%, a mWIG40 — 33% od początku 2026 roku. Czy to powód, żeby kupować polskie ETF-y? Czy już za późno? Porównujemy produkty, liczymy liczby i odpowiadamy bez ściemy.
+      </p>
+      <div class="flex flex-wrap gap-4 mt-4 text-white/60 text-sm">
+        <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">calendar_today</span> Zaktualizowano: kwiecień 2026</span>
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">schedule</span> 10 minut czytania</span>
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">person</span> ETFkalkulator.pl</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="bg-white dark:bg-slate-950 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 grid grid-cols-1 lg:grid-cols-[1fr_300px] xl:grid-cols-[1fr_320px] gap-10 xl:gap-16 items-start">
+      <article id="main" class="min-w-0 pt-8 pb-16 lg:pb-20">
+
+        <!-- TOC inline -->
+        <div class="glass-effect rounded-[1.5rem] p-6 mb-10 border-l-4 border-primary bg-primary/5 dark:bg-primary/10">
+          <p class="text-xs font-black uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+            Spis treści
+          </p>
+          <ol class="space-y-2 text-sm list-decimal list-inside">
+            <li><a href="#co-to-wig20" class="text-primary hover:underline font-medium" style="text-decoration:none">Co to jest WIG20 i mWIG40?</a></li>
+            <li><a href="#jak-kupic" class="text-primary hover:underline font-medium" style="text-decoration:none">Jak kupić polskie akcje przez ETF?</a></li>
+            <li><a href="#dlaczego-warto" class="text-primary hover:underline font-medium" style="text-decoration:none">Dlaczego warto rozważyć polskie ETF?</a></li>
+            <li><a href="#ryzyka" class="text-primary hover:underline font-medium" style="text-decoration:none">Ryzyka, o których musisz wiedzieć</a></li>
+            <li><a href="#ile-procent" class="text-primary hover:underline font-medium" style="text-decoration:none">Ile % polskich akcji warto mieć w portfelu?</a></li>
+            <li><a href="#faq" class="text-primary hover:underline font-medium" style="text-decoration:none">Najczęstsze pytania (FAQ)</a></li>
+          </ol>
+        </div>
+
+        <!-- Intro -->
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+          Od początku 2026 roku WIG20 zyskał ponad 43%, a mWIG40 — 33%. Polska giełda trafia na pierwsze strony serwisów finansowych. Na forach inwestycyjnych roi się od pytań: <em>czy teraz kupować, czy już za późno?</em>
+        </p>
+        <p class="text-stitch-muted leading-relaxed mb-6 text-base md:text-lg">
+          Ten artykuł nie odpowie Ci, co zrobić. Dostaniesz tu narzędzia: jak wyglądają dostępne ETF-y na polskie akcje, jakie są argumenty za i przeciw, i jak dopasować decyzję do własnego portfela — bez względu na to, czy zaczynasz od zera, czy masz już globalny ETF.
+        </p>
+
+        <!-- Liczby kluczowe -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+          <div class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft">
+            <div class="text-3xl md:text-4xl font-black text-primary mb-1" style="color:#0d7ff2;">+43%</div>
+            <div class="text-xs text-stitch-muted leading-tight">WIG20 YTD 2026</div>
+            <div class="w-8 h-0.5 bg-primary/30 mx-auto mt-3 rounded-full"></div>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft">
+            <div class="text-3xl md:text-4xl font-black text-primary mb-1" style="color:#0d7ff2;">+33%</div>
+            <div class="text-xs text-stitch-muted leading-tight">mWIG40 YTD 2026</div>
+            <div class="w-8 h-0.5 bg-primary/30 mx-auto mt-3 rounded-full"></div>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft">
+            <div class="text-3xl md:text-4xl font-black text-primary mb-1" style="color:#0d7ff2;">0%</div>
+            <div class="text-xs text-stitch-muted leading-tight">Polski udział w MSCI World</div>
+            <div class="w-8 h-0.5 bg-primary/30 mx-auto mt-3 rounded-full"></div>
+          </div>
+        </div>
+
+        <!-- SEKCJA 1 -->
+        <h2 id="co-to-wig20" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">1</span>
+          Co to jest WIG20 i mWIG40?
+        </h2>
+
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          <strong>WIG20</strong> to indeks 20 największych spółek notowanych na Giełdzie Papierów Wartościowych w Warszawie. Wagi są obliczane na podstawie kapitalizacji rynkowej, co oznacza, że kilka największych spółek dominuje — PKO Bank Polski, PKN Orlen, Pekao, PZU i KGHM stanowią łącznie ponad połowę indeksu.
+        </p>
+
+        <div class="rounded-2xl p-5 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 mb-6">
+          <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2"><span aria-hidden="true" class="material-symbols-outlined text-amber-600 text-[18px] shrink-0">warning</span> Ważna cecha WIG20</p>
+          <p class="text-sm text-stitch-muted leading-relaxed">Ponad 50% indeksu WIG20 to spółki z udziałem Skarbu Państwa (banki kontrolowane przez SP, PKN Orlen, PGE, Pekao). To ważne z perspektywy ryzyka politycznego.</p>
+        </div>
+
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          <strong>Skład sektorowy WIG20 (kwiecień 2026):</strong> banki (~40%), energia/surowce (~25%), ubezpieczenia (~10%), telekomunikacja (~10%), pozostałe (~15%). To portfel mocno skupiony na tradycyjnej gospodarce — brak spółek technologicznych.
+        </p>
+
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          <strong>mWIG40</strong> obejmuje 40 spółek średniej wielkości — poziom poniżej WIG20. Jest znacznie bardziej zdywersyfikowany sektorowo: więcej przemysłu, IT, handlu, deweloperów. Historycznie mWIG40 charakteryzuje się wyższą zmiennością, ale też wyższymi długoterminowymi stopami zwrotu.
+        </p>
+
+        <div class="rounded-2xl p-5 bg-primary/5 dark:bg-primary/10 border-l-4 border-primary mb-6">
+          <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-primary mb-2"><span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2">key</span> Kluczowa różnica</p>
+          <p class="text-sm text-stitch-muted leading-relaxed">WIG20 = blue chipy, stabilność, dominacja SP, niska płynność handlu ETF. mWIG40 = spółki wzrostowe, większa dywersyfikacja sektorowa, wyższe ryzyko. Możesz mieć oba — ale zacznij od WIG20 jeśli to Twój pierwszy krok w polskie akcje.</p>
+        </div>
+
+        <!-- SEKCJA 2 -->
+        <h2 id="jak-kupic" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">2</span>
+          Jak kupić polskie akcje przez ETF?
+        </h2>
+
+        <p class="text-stitch-muted leading-relaxed mb-6 text-base">
+          Poniżej porównujemy cztery produkty: trzy ETF-y na polskie indeksy i jeden globalny (IWDA) jako punkt odniesienia. Dane orientacyjne — zweryfikuj aktualne TER na stronie emitenta przed zakupem.
+        </p>
+
+        <div class="overflow-x-auto rounded-2xl border border-stitch-border mb-8 shadow-sm">
+          <table class="bg-stitch-surface dark:bg-slate-900 rounded-2xl overflow-hidden">
+            <thead class="bg-slate-50 dark:bg-slate-800">
+              <tr>
+                <th class="text-stitch-muted">ETF (ticker)</th>
+                <th class="text-stitch-muted">Indeks</th>
+                <th class="text-stitch-muted">TER</th>
+                <th class="text-stitch-muted">Giełda</th>
+                <th class="text-stitch-muted">Waluta</th>
+                <th class="text-stitch-muted">Typ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="hover:bg-primary/5 transition-colors">
+                <td class="font-bold text-stitch-text">Beta ETF WIG20TR (ETFW20L)</td>
+                <td>WIG20TR</td>
+                <td>~0,40%</td>
+                <td>GPW (Warszawa)</td>
+                <td>PLN</td>
+                <td>Akumulacyjny</td>
+              </tr>
+              <tr class="hover:bg-primary/5 transition-colors">
+                <td class="font-bold text-stitch-text">Xtrackers WIG20 UCITS ETF</td>
+                <td>WIG20TR</td>
+                <td>~0,30%</td>
+                <td>Xetra (Frankfurt)</td>
+                <td>EUR</td>
+                <td>Akumulacyjny</td>
+              </tr>
+              <tr class="hover:bg-primary/5 transition-colors">
+                <td class="font-bold text-stitch-text">Beta ETF mWIG40TR</td>
+                <td>mWIG40TR</td>
+                <td>~0,40%</td>
+                <td>GPW (Warszawa)</td>
+                <td>PLN</td>
+                <td>Akumulacyjny</td>
+              </tr>
+              <tr class="hover:bg-primary/5 transition-colors bg-slate-50/50 dark:bg-slate-800/30">
+                <td class="font-bold text-stitch-muted italic">iShares MSCI World (IWDA)</td>
+                <td class="text-stitch-muted italic">MSCI World</td>
+                <td class="text-stitch-muted italic">~0,20%</td>
+                <td class="text-stitch-muted italic">LSE / Euronext</td>
+                <td class="text-stitch-muted italic">USD</td>
+                <td class="text-stitch-muted italic">Akumulacyjny</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="text-xs text-slate-400 px-4 py-3">* IWDA jako benchmark globalny. Dane na kwiecień 2026 — zweryfikuj TER na stronie emitenta. TR = Total Return (dywidendy reinwestowane w indeksie).</p>
+        </div>
+
+        <h3 class="text-lg font-black text-stitch-text mb-3 mt-8">Gdzie kupić?</h3>
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          <strong>ETFW20L i Beta mWIG40TR</strong> kupisz na GPW przez XTB, mBank eMakler, Bossa (DM BOŚ) czy Santander BM. Oba działają też w ramach <a href="gdzie-otworzyc-ike-2026-porownanie-brokerow.html" class="text-primary hover:underline" style="text-decoration:none">IKE i IKZE</a> — wtedy unikasz podatku Belki od zysku.
+        </p>
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          <strong>Xtrackers WIG20</strong> dostępny jest przez XTB i IBKR na Xetra. Przydatny jeśli już handlujesz na rynkach europejskich i zależy Ci na nieco niższym TER.
+        </p>
+
+        <!-- CTA box śródtekstowy -->
+        <div class="bg-gradient-to-br from-blue-700 to-primary rounded-[1.5rem] p-6 md:p-8 text-white text-center my-10 shadow-xl" style="background:linear-gradient(135deg,#1d4ed8,#0d7ff2);">
+          <h3 class="text-xl font-black text-white mb-3">Oblicz zysk z ETF WIG20</h3>
+          <p class="text-white/80 mb-5 text-sm leading-relaxed">Podaj kwotę, horyzont i zakładany zwrot — kalkulator policzy ile zarobisz po uwzględnieniu podatku Belki.</p>
+          <a href="../pages/kalkulator-etf.html" class="bg-white text-primary font-black px-6 py-3 rounded-xl hover:scale-[1.02] transition-all inline-flex items-center gap-2 shadow-lg" style="color:#0d7ff2;text-decoration:none;">Kalkulator ETF <span aria-hidden="true" class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
+        </div>
+
+        <!-- SEKCJA 3 -->
+        <h2 id="dlaczego-warto" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">3</span>
+          Dlaczego warto rozważyć polskie ETF?
+        </h2>
+
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          Argument numer jeden: <strong>MSCI World nie zawiera Polski.</strong> Polska jest klasyfikowana przez MSCI jako rynek rozwijający się (Emerging Markets), a nie rynek rozwinięty. Jeśli trzymasz IWDA lub VWCE jako jedyny ETF — Twoja ekspozycja na polską gospodarkę wynosi 0%. Polskie ETF-y to jedyny sposób, żeby tę lukę wypełnić.
+        </p>
+
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          Drugi argument: <strong>brak ryzyka walutowego.</strong> Kupując ETFW20L na GPW, inwestujesz w PLN — nie masz ekspozycji na USD/EUR jak przy IWDA. To może być zaleta lub wada w zależności od kierunku kursu złotego.
+        </p>
+
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          Trzeci: <strong>historyczne stopy zwrotu.</strong> WIG20 i mWIG40 wielokrotnie w historii znacząco biły rynki globalne w krótkich oknach czasowych. Rok 2026 jest dobrym przykładem. Nie oznacza to, że tak będzie zawsze — ale daje kontekst.
+        </p>
+
+        <p class="text-stitch-muted leading-relaxed mb-6 text-base">
+          Czwarty: <strong>niski koszt ekspozycji.</strong> TER 0,30–0,40% to dużo taniej niż fundusze TFI inwestujące w polskie akcje (często 1,5–2,5% rocznie). Więcej o różnicach piszemy w artykule <a href="fundusze-tfi-vs-etf-co-wybrac-2026.html" class="text-primary hover:underline" style="text-decoration:none">TFI vs ETF — które naprawdę zarabiają?</a>
+        </p>
+
+        <!-- SEKCJA 4 -->
+        <h2 id="ryzyka" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">4</span>
+          Ryzyka, o których musisz wiedzieć
+        </h2>
+
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          <strong>1. Koncentracja sektorowa.</strong> Top 5 spółek WIG20 to ponad 50% indeksu. Kupując ETFW20L, de facto kupujesz przede wszystkim PKO BP, PKN Orlen, Pekao, PZU i KGHM. Jeśli któryś z tych sektorów (banki, energetyka) wpadnie w tarapaty — ETF mocno to odczuje.
+        </p>
+
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          <strong>2. Ryzyko polityczne.</strong> Kilka największych spółek WIG20 ma znaczący udział Skarbu Państwa. Decyzje polityczne (dywidendy na politykę, zmiany zarządów, regulacje energetyczne) mogą wpływać na wyceny niezależnie od sytuacji fundamentalnej spółek.
+        </p>
+
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          <strong>3. Niska płynność ETF mWIG40.</strong> Beta ETF mWIG40TR ma znacznie mniejsze obroty niż ETFW20L. Przy większych kwotach spread bid-ask może być odczuwalny. Przy niewielkich inwestycjach to nie problem, ale warto mieć świadomość.
+        </p>
+
+        <div class="rounded-2xl p-5 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500 mb-6">
+          <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2"><span aria-hidden="true" class="material-symbols-outlined text-amber-600 text-[18px] shrink-0">warning</span> FOMO vs. strategia</p>
+          <p class="text-sm text-stitch-muted leading-relaxed">Kupowanie ETF po dużych wzrostach z powodu strachu przed ominięciem zysku (FOMO) to jeden z najczęstszych błędów inwestycyjnych. Jeśli nie miałeś polskich akcji w planie przed wzrostami — zastanów się, czy teraz to zmiana strategii, czy emocjonalna reakcja. Przeczytaj też: <a href="strategia-dca-regularne-inwestowanie-etf.html" class="text-amber-700 dark:text-amber-400 underline">strategia DCA jako antidotum na timing</a>.</p>
+        </div>
+
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          <strong>4. Historyczne wzrosty nie gwarantują przyszłych.</strong> WIG20 kilkakrotnie w historii zyskiwał 30–40% w krótkim czasie, a potem spędzał lata poniżej poprzednich szczytów (np. 2007–2014). Długoterminowy inwestor wytrzymuje takie okresy — krótkoterminowy może nie.
+        </p>
+
+        <!-- SEKCJA 5 -->
+        <h2 id="ile-procent" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">5</span>
+          Ile % polskich akcji warto mieć w portfelu?
+        </h2>
+
+        <p class="text-stitch-muted leading-relaxed mb-6 text-base">
+          Nie ma jednej poprawnej odpowiedzi — zależy od horyzontu, tolerancji ryzyka i tego, co już masz. Poniżej dwa konkretne profile.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <!-- Profil A -->
+          <div class="rounded-2xl border-2 border-primary/30 bg-primary/5 dark:bg-primary/10 p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-black text-sm shrink-0" style="background-color:#0d7ff2">A</span>
+              <div>
+                <p class="font-black text-stitch-text text-base">Beginner — portfel od zera</p>
+                <p class="text-xs text-stitch-muted">Dopiero zaczynasz inwestować</p>
+              </div>
+            </div>
+            <ul class="space-y-2 text-sm text-stitch-muted">
+              <li class="flex gap-2"><span class="text-primary font-bold shrink-0">→</span> Fundament: globalny ETF (IWDA / VWCE) — 80–90% portfela</li>
+              <li class="flex gap-2"><span class="text-primary font-bold shrink-0">→</span> Polskie akcje (ETFW20L): 0–10% jako "lokalny akcent"</li>
+              <li class="flex gap-2"><span class="text-primary font-bold shrink-0">→</span> mWIG40: opcjonalnie, max 5%</li>
+            </ul>
+            <div class="mt-4 p-3 rounded-xl bg-stitch-surface dark:bg-slate-800 border border-stitch-border text-xs text-stitch-muted">
+              <strong>Przykład (10 000 zł):</strong> 9 000 zł w VWCE + 1 000 zł w ETFW20L. Prosto, zdywersyfikowane, bez over-exposure na jeden rynek.
+            </div>
+          </div>
+
+          <!-- Profil B -->
+          <div class="rounded-2xl border-2 border-emerald-400/40 bg-emerald-50 dark:bg-emerald-950/20 p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-black text-sm shrink-0">B</span>
+              <div>
+                <p class="font-black text-stitch-text text-base">Inwestor z VWCE / IWDA</p>
+                <p class="text-xs text-stitch-muted">Masz globalny portfel ETF</p>
+              </div>
+            </div>
+            <ul class="space-y-2 text-sm text-stitch-muted">
+              <li class="flex gap-2"><span class="text-emerald-600 font-bold shrink-0">→</span> MSCI World = 0% Polski — chcesz ekspozycji? Musisz dodać ręcznie</li>
+              <li class="flex gap-2"><span class="text-emerald-600 font-bold shrink-0">→</span> Rekomendowany zakres: 5–15% portfela w polskich ETF-ach</li>
+              <li class="flex gap-2"><span class="text-emerald-600 font-bold shrink-0">→</span> Podział WIG20 : mWIG40 = 70:30 lub 80:20</li>
+            </ul>
+            <div class="mt-4 p-3 rounded-xl bg-stitch-surface dark:bg-slate-800 border border-stitch-border text-xs text-stitch-muted">
+              <strong>Przykład (50 000 zł portfel, 10% alokacja):</strong> 5 000 zł w polskie ETF — 3 500 zł ETFW20L + 1 500 zł Beta mWIG40TR. Reszta w VWCE/IWDA.
+            </div>
+          </div>
+        </div>
+
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          Pamiętaj, że <a href="jak-zbudowac-pierwszy-portfel-inwestycyjny.html" class="text-primary hover:underline" style="text-decoration:none">budując portfel</a>, kluczowa jest konsekwencja w regularnym inwestowaniu — <a href="strategia-dca-regularne-inwestowanie-etf.html" class="text-primary hover:underline" style="text-decoration:none">strategia DCA</a> działa niezależnie od momentu wejścia.
+        </p>
+
+        <!-- CTA backtesting -->
+        <div class="bg-gradient-to-br from-slate-700 to-slate-900 rounded-[1.5rem] p-6 md:p-8 text-white text-center my-10 shadow-xl">
+          <h3 class="text-xl font-black text-white mb-3">Sprawdź historię WIG20 i IWDA</h3>
+          <p class="text-white/80 mb-5 text-sm leading-relaxed">Kalkulator historyczny pokazuje jak radziły sobie indeksy w przeszłości — ile zarobiłbyś inwestując w konkretnych latach.</p>
+          <a href="../pages/kalkulator-etf-historyczny.html" class="bg-white text-slate-800 font-black px-6 py-3 rounded-xl hover:scale-[1.02] transition-all inline-flex items-center gap-2 shadow-lg" style="text-decoration:none;">Historia ETF <span aria-hidden="true" class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
+        </div>
+
+        <!-- SEKCJA 6 — FAQ -->
+        <h2 id="faq" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color:#0d7ff2">6</span>
+          Najczęstsze pytania (FAQ)
+        </h2>
+
+        <div class="space-y-3 mb-10">
+          <details class="rounded-2xl border border-stitch-border bg-stitch-surface dark:bg-slate-900 overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-stitch-text text-sm md:text-base gap-4">
+              Czy warto kupować ETF WIG20 po wzrostach +43%?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon text-primary text-[20px] shrink-0" style="color:#0d7ff2">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border pt-4">
+              Wzrost ceny ETF nie oznacza automatycznie, że jest drogi — to zależy od wycen spółek (wskaźnik P/E). WIG20 wciąż ma niższe P/E niż rynki zachodnie. Jeśli inwestujesz długoterminowo metodą DCA, jednorazowa cena wejścia ma mniejsze znaczenie. Nie należy jednak kupować wyłącznie z powodu niedawnych wzrostów (FOMO) — to częsty błąd.
+            </div>
+          </details>
+
+          <details class="rounded-2xl border border-stitch-border bg-stitch-surface dark:bg-slate-900 overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-stitch-text text-sm md:text-base gap-4">
+              ETFW20L czy Xtrackers WIG20 — który ETF wybrać?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon text-primary text-[20px] shrink-0" style="color:#0d7ff2">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border pt-4">
+              ETFW20L (Beta ETF) notowany jest na GPW w PLN — wygodny dla Polaków, dostępny w XTB, mBanku, Bossie. Xtrackers WIG20 UCITS notowany jest na Xetra we Frankfurcie (EUR) i ma nieco niższy TER (~0,30% vs ~0,40%). Jeśli inwestujesz przez XTB lub IBKR, oba są dostępne. Dla prostoty i IKE/IKZE: ETFW20L.
+            </div>
+          </details>
+
+          <details class="rounded-2xl border border-stitch-border bg-stitch-surface dark:bg-slate-900 overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-stitch-text text-sm md:text-base gap-4">
+              Czy ETF mWIG40 jest bardziej ryzykowny niż WIG20?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon text-primary text-[20px] shrink-0" style="color:#0d7ff2">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border pt-4">
+              Tak — Beta ETF mWIG40TR jest bardziej zmienny niż ETFW20L. Spółki średniej wielkości są mniej płynne i mocniej reagują na korekty rynkowe. W zamian za wyższe ryzyko mWIG40 historycznie generował wyższe długoterminowe stopy zwrotu. Jeśli decydujesz się go dodać, przeznacz na niego mniejszą część portfela niż na WIG20.
+            </div>
+          </details>
+
+          <details class="rounded-2xl border border-stitch-border bg-stitch-surface dark:bg-slate-900 overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-bold text-stitch-text text-sm md:text-base gap-4">
+              Gdzie kupić ETF na WIG20 — XTB, IBKR czy GPW?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon text-primary text-[20px] shrink-0" style="color:#0d7ff2">expand_more</span>
+            </summary>
+            <div class="px-5 pb-5 text-sm text-stitch-muted leading-relaxed border-t border-stitch-border pt-4">
+              ETFW20L kupisz na GPW przez większość polskich brokerów: XTB, mBank eMakler, Bossa (DM BOŚ), Santander BM. Oba polskie ETF-y działają też w ramach <a href="gdzie-otworzyc-ike-2026-porownanie-brokerow.html" class="text-primary underline">IKE i IKZE</a> — zdecydowanie warto skorzystać z tej możliwości, żeby uniknąć podatku Belki. Xtrackers WIG20 dostępny jest przez XTB i IBKR na Xetra.
+            </div>
+          </details>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="glass-effect rounded-2xl p-5 mt-10 border border-stitch-border dark:border-slate-700">
+          <div class="flex items-start gap-4">
+            <span aria-hidden="true" class="material-symbols-outlined text-slate-400 shrink-0 mt-0.5 text-[20px]">info</span>
+            <div>
+              <p class="text-xs font-bold text-stitch-muted mb-1">Ważna informacja (Disclaimer)</p>
+              <p class="text-xs text-stitch-muted leading-relaxed italic">Materiały na stronie mają charakter wyłącznie edukacyjny i poglądowy. Nie stanowią rekomendacji inwestycyjnej ani porady podatkowej w rozumieniu przepisów prawa. Inwestowanie na giełdzie zawsze wiąże się z ryzykiem utraty części lub całości kapitału. Narzędzie może zawierać uproszczenia — zawsze weryfikuj wyniki z prospektem emisyjnym funduszu.</p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-24 space-y-6">
+          <!-- TOC -->
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+              <span aria-hidden="true" class="material-symbols-outlined text-[16px]">format_list_bulleted</span>
+              W tym artykule
+            </p>
+            <div class="sidebar-toc space-y-1">
+              <a href="#co-to-wig20" class="block text-xs py-1.5 px-2 rounded-lg text-stitch-muted hover:text-primary hover:bg-primary/5 transition-all">Co to jest WIG20 i mWIG40?</a>
+              <a href="#jak-kupic" class="block text-xs py-1.5 px-2 rounded-lg text-stitch-muted hover:text-primary hover:bg-primary/5 transition-all">Jak kupić przez ETF?</a>
+              <a href="#dlaczego-warto" class="block text-xs py-1.5 px-2 rounded-lg text-stitch-muted hover:text-primary hover:bg-primary/5 transition-all">Dlaczego warto rozważyć?</a>
+              <a href="#ryzyka" class="block text-xs py-1.5 px-2 rounded-lg text-stitch-muted hover:text-primary hover:bg-primary/5 transition-all">Ryzyka do rozważenia</a>
+              <a href="#ile-procent" class="block text-xs py-1.5 px-2 rounded-lg text-stitch-muted hover:text-primary hover:bg-primary/5 transition-all">Ile % w portfelu?</a>
+              <a href="#faq" class="block text-xs py-1.5 px-2 rounded-lg text-stitch-muted hover:text-primary hover:bg-primary/5 transition-all">FAQ</a>
+            </div>
+          </div>
+          <!-- CTA -->
+          <div class="rounded-2xl p-5 text-white text-center"
+            style="background:linear-gradient(135deg,#1d4ed8,#0d7ff2);">
+            <span aria-hidden="true" class="material-symbols-outlined text-3xl mb-2 opacity-80 block">analytics</span>
+            <h3 class="font-black text-white text-base mb-1">Oblicz zysk z ETF</h3>
+            <p class="text-white/75 text-xs leading-relaxed mb-4">Sprawdź ile urośnie Twój portfel przy regularnych wpłatach.</p>
+            <a href="../pages/kalkulator-etf.html"
+              class="bg-white rounded-xl px-4 py-2.5 text-xs font-black hover:scale-[1.02] transition-all inline-flex items-center gap-1.5 shadow-lg"
+              style="color:#0d7ff2;text-decoration:none;">
+              Otwórz kalkulator
+              <span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </a>
+          </div>
+          <!-- Related articles -->
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+              <span aria-hidden="true" class="material-symbols-outlined text-[16px]">auto_stories</span>
+              Czytaj też
+            </p>
+            <div class="space-y-3">
+              <a href="msci-world-czy-sp500-ktory-etf-wybrac.html" class="block p-3 rounded-xl hover:bg-primary/5 transition-all group" style="text-decoration:none;">
+                <p class="text-xs font-bold text-stitch-text group-hover:text-primary transition-colors leading-snug">MSCI World czy S&amp;P 500 — który ETF wybrać?</p>
+              </a>
+              <a href="jak-zbudowac-pierwszy-portfel-inwestycyjny.html" class="block p-3 rounded-xl hover:bg-primary/5 transition-all group" style="text-decoration:none;">
+                <p class="text-xs font-bold text-stitch-text group-hover:text-primary transition-colors leading-snug">Jak zbudować pierwszy portfel inwestycyjny?</p>
+              </a>
+              <a href="strategia-dca-regularne-inwestowanie-etf.html" class="block p-3 rounded-xl hover:bg-primary/5 transition-all group" style="text-decoration:none;">
+                <p class="text-xs font-bold text-stitch-text group-hover:text-primary transition-colors leading-snug">Strategia DCA — regularne inwestowanie w ETF</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- MOBILE BOTTOM BAR -->
+  <div class="lg:hidden fixed bottom-0 left-0 right-0 z-50 glass-effect border-t border-slate-200 dark:border-slate-800 px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-20 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+        <div id="reading-progress-mobile"
+          class="h-full bg-primary rounded-full transition-none"
+          style="width:0%;background-color:#0d7ff2;"></div>
+      </div>
+      <span id="reading-pct" class="text-xs font-bold text-slate-400">0%</span>
+    </div>
+    <div class="flex gap-2">
+      <a href="../pages/kalkulator-etf.html"
+        class="bg-primary text-white text-xs font-bold px-3 py-2 rounded-full flex items-center gap-1"
+        style="background-color:#0d7ff2;text-decoration:none;">
+        <span aria-hidden="true" class="material-symbols-outlined text-[14px]">calculate</span>
+        Kalkulator
+      </a>
+      <a href="../pages/kalkulator-etf-historyczny.html"
+        class="text-white text-xs font-bold px-3 py-2 rounded-full flex items-center gap-1"
+        style="background-color:#1e3a5f;text-decoration:none;">
+        <span aria-hidden="true" class="material-symbols-outlined text-[14px]">history</span>
+        Historia
+      </a>
+    </div>
+  </div>
+
+  <!-- NEWSLETTER SECTION -->
+  <section id="newsletter-section"
+    class="pt-10 pb-20 px-6 bg-slate-100 border-t border-stitch-border dark:border-slate-900 transition-colors">
+    <div class="max-w-7xl mx-auto">
+      <div
+        class="bg-stitch-surface/70 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 lg:p-16 shadow-xl border border-white/50 relative overflow-hidden group">
+        <div
+          class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700">
+        </div>
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center lg:justify-items-stretch relative z-10">
+          <div class="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              Newsletter
+            </div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-stitch-text tracking-tight leading-[1.1]">
+              Bądź na bieżąco z
+              <span class="text-primary">rynkiem ETF</span>
+              <span class="hidden md:inline">i finansami</span>
+            </h2>
+            <p class="text-stitch-muted text-lg leading-relaxed max-w-xl">
+              Dołącz do społeczności świadomych inwestorów. Otrzymuj
+              analizy, nowe kalkulatory i rzetelną wiedzę prosto na swoją
+              skrzynkę. Zero spamu.
+            </p>
+          </div>
+          <div class="w-full lg:max-w-md mx-auto lg:ml-auto">
+            <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
+              <div class="ml-form-embedWrapper embedForm">
+                <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                  <form class="ml-block-form"
+                    action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe"
+                    method="post" target="_blank">
+                    <div class="flex flex-col space-y-4">
+                      <div class="ml-form-fieldRow">
+                        <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                          <input aria-label="email" aria-required="true" type="email"
+                            class="w-full h-14 px-6 rounded-2xl border border-stitch-border bg-stitch-surface text-stitch-text text-base font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all placeholder:text-slate-400"
+                            name="fields[email]" placeholder="Twój adres e-mail" />
+                        </div>
+                      </div>
+                      <div class="ml-form-embedPermissions">
+                        <label class="flex items-start gap-4 cursor-pointer group">
+                          <input aria-label="Wprowadź wartość" type="checkbox" name="gdpr[]"
+                            value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl" required
+                            class="custom-checkbox mt-1 transition-all" />
+                          <span
+                            class="text-[11px] text-stitch-muted font-medium leading-relaxed group-hover:text-stitch-muted dark:group-hover:text-slate-300 transition-colors">Zgadzam
+                            się na otrzymywanie newslettera. Możesz
+                            się wypisać w każdej chwili.</span>
+                        </label>
+                      </div>
+                      <div class="ml-form-recaptcha ml-validate-required py-2 flex justify-center">
+                        <div class="g-recaptcha transform scale-[0.85] origin-center"
+                          data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                      </div>
+                      <input type="hidden" name="ml-submit" value="1" />
+                      <input type="hidden" name="anticsrf" value="true" />
+                      <div class="ml-form-embedSubmit">
+                        <button type="submit"
+                          class="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-sm md:text-base uppercase tracking-widest hover:scale-[1.01] active:scale-[0.98] transition-all shadow-xl shadow-primary/20"
+                          style="background-color: #0d7ff2">
+                          Zapisz się teraz
+                        </button>
+                      </div>
+                      <div class="pt-6 border-t border-stitch-border mt-2">
+                        <p class="text-[10px] text-slate-400 dark:text-stitch-muted leading-relaxed mb-2">
+                          Zapisując się, akceptujesz
+                          <a href="../pages/regulamin.html" class="underline hover:text-primary">Regulamin</a>
+                          i
+                          <a href="../pages/polityka-prywatnosci.html" class="underline hover:text-primary">Politykę
+                            Prywatności</a>. Twoje dane są bezpieczne i służą wyłącznie
+                          do wysyłki newslettera.
+                        </p>
+                        <p class="text-[10px] text-slate-400 font-medium italic">
+                          Prezentowane treści nie stanowią rekomendacji
+                          inwestycyjnej.
+                        </p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="ml-form-successBody row-success" style="display: none">
+                  <div
+                    class="p-10 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 text-center">
+                    <div
+                      class="w-16 h-16 bg-emerald-100 dark:bg-emerald-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span
+                        class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-3xl">verified</span>
+                    </div>
+                    <h4 class="text-emerald-900 dark:text-emerald-300 font-bold text-xl mb-1">
+                      Sukces!
+                    </h4>
+                    <p class="text-emerald-700 dark:text-emerald-500 text-sm">
+                      Sprawdź swoją skrzynkę e-mail, aby potwierdzić
+                      zapis.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-stitch-bg border-t border-stitch-border dark:border-slate-900 py-20 px-6"
+    style="font-family: 'Inter', sans-serif">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12 border-b border-stitch-border/50 pb-8">
+        <div class="flex items-center gap-2">
+          <div class="bg-primary p-1.5 rounded-2xl text-white flex items-center justify-center"
+            style="background-color: #0d7ff2">
+            <span aria-hidden="true" class="material-symbols-outlined text-base">account_balance_wallet</span>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-stitch-text">ETF<span
+              class="font-normal text-stitch-muted">kalkulator</span>.pl</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20 items-start">
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">
+            Narzędzia
+          </h5>
+          <ul class="space-y-4">
+            <li>
+              <a href="../pages/kalkulator-etf.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Kalkulator ETF</a>
+            </li>
+            <li>
+              <a href="../pages/kalkulator-obligacji.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Obligacje Skarbowe</a>
+            </li>
+            <li>
+              <a href="../pages/kalkulator-wolnosci.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Wolność Finansowa</a>
+            </li>
+            <li>
+              <a href="../pages/porownywarka.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Porównywarka ETF</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">
+            Projekt
+          </h5>
+          <ul class="space-y-4">
+            <li>
+              <a href="index.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Blog i Wiedza</a>
+            </li>
+            <li>
+              <a href="../pages/o-projekcie.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">O projekcie</a>
+            </li>
+            <li>
+              <a href="../pages/regulamin.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Regulamin</a>
+            </li>
+            <li>
+              <a href="../pages/polityka-prywatnosci.html"
+                class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
+                style="text-decoration: none">Polityka prywatności</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">
+            Kontakt
+          </h5>
+          <p class="text-sm text-stitch-muted mb-6 leading-relaxed">
+            Masz pytania? Pisz śmiało:
+          </p>
+          <a href="mailto:kontakt@etfkalkulator.pl"
+            class="text-sm font-bold text-stitch-text hover:text-primary transition-colors block mb-8"
+            style="text-decoration: none">kontakt@etfkalkulator.pl</a>
+          <div class="flex gap-4">
+            <a href="#"
+              class="w-10 h-10 rounded-2xl bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-xl"><span
+                class="material-symbols-outlined text-lg">share</span></a>
+            <a href="#"
+              class="w-10 h-10 rounded-2xl bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-xl"><span
+                class="material-symbols-outlined text-lg">alternate_email</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-20 pt-10 border-t border-stitch-border dark:border-slate-900">
+        <p class="text-[11px] text-slate-400 dark:text-stitch-muted leading-relaxed mb-8 max-w-4xl">
+          Serwis ETFkalkulator.pl ma charakter wyłącznie edukacyjny i
+          informacyjny. Prezentowane obliczenia nie stanowią rekomendacji
+          inwestycyjnej, porady finansowej ani doradztwa podatkowego w
+          rozumieniu obowiązujących przepisów prawa. Przed podjęciem
+          decyzji inwestycyjnej skonsultuj się z licencjonowanym doradcą
+          finansowym. Inwestowanie wiąże się z ryzykiem utraty części lub
+          całości zainwestowanego kapitału.
+        </p>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+          <p>© 2026 ETFkalkulator.pl — Made with ❤️ by Florian</p>
+          <div class="flex gap-6">
+            <span>Wszelkie prawa zastrzeżone</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/shared.js"></script>
+  <script>
+    const bar = document.getElementById('reading-progress');
+    const article = document.getElementById('main');
+    const mobileBar = document.getElementById('reading-progress-mobile');
+    const pctLabel = document.getElementById('reading-pct');
+    function updateProgress() {
+      if (!bar || !article) return;
+      const rect = article.getBoundingClientRect();
+      const total = article.offsetHeight - window.innerHeight;
+      const scrolled = Math.max(0, -rect.top);
+      const pct = total > 0 ? Math.min(100, (scrolled / total) * 100) : 0;
+      bar.style.width = pct + '%';
+      if (mobileBar) mobileBar.style.width = pct + '%';
+      if (pctLabel) pctLabel.textContent = Math.round(pct) + '%';
+    }
+    const headings = document.querySelectorAll('article h2[id]');
+    const tocLinks = document.querySelectorAll('.sidebar-toc a');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(a => a.classList.remove('toc-active'));
+          const active = document.querySelector('.sidebar-toc a[href="#' + entry.target.id + '"]');
+          if (active) active.classList.add('toc-active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    headings.forEach(h => observer.observe(h));
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  </script>
+  <script defer>
+    function przelaczTryb() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains("dark");
+      if (isDark) {
+        html.classList.remove("dark");
+        html.classList.add("light");
+        localStorage.setItem("etf-tryb", "jasny");
+      } else {
+        html.classList.add("dark");
+        html.classList.remove("light");
+        localStorage.setItem("etf-tryb", "ciemny");
+      }
+      const d = html.classList.contains("dark");
+      const m = document.getElementById("meta-theme-color");
+      if (m) m.content = d ? "#0f172a" : "#f8fafc";
+    }
+  </script>
+  <script src="https://www.google.com/recaptcha/api.js" defer></script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b"
+    type="text/javascript" defer></script>
+  <!-- Cookie Consent -->
+  <script src="../js/cookie-consent.js" defer></script>
+</body>
+
+</html>
