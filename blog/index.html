@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="pl" class="scroll-smooth">
 
 <head>
@@ -143,11 +143,8 @@
     }
   </style>
   <link rel="stylesheet" href="../css/tailwind.css">
-  <link rel="preload" as="style" href="../css/mailerlite.css" />
-  <link href="../css/mailerlite.css" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript>
-    <link rel="stylesheet" href="../css/mailerlite.css" />
-  </noscript>
+  <link rel="preload" as="image" href="../images/ryzyko-walutowe-etf.webp" fetchpriority="high">
+
 </head>
 
 <body>
@@ -1125,9 +1122,9 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20 items-start">
         <!-- Column 1: Narzędzia -->
         <div>
-          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">
+          <p class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">
             Narzędzia
-          </h5>
+          </p>
           <ul class="space-y-4">
             <li>
               <a href="../pages/kalkulator-etf.html"
@@ -1154,9 +1151,9 @@
 
         <!-- Column 2: Projekt -->
         <div>
-          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">
+          <p class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">
             Projekt
-          </h5>
+          </p>
           <ul class="space-y-4">
             <li>
               <a href="index.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose"
@@ -1182,9 +1179,9 @@
 
         <!-- Column 3: Kontakt -->
         <div>
-          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">
+          <p class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">
             Kontakt
-          </h5>
+          </p>
           <p class="text-sm text-stitch-muted mb-6 leading-relaxed">
             Masz pytania? Pisz śmiało:
           </p>
@@ -1192,11 +1189,11 @@
             class="text-sm font-bold text-stitch-text hover:text-primary transition-colors block mb-8"
             style="text-decoration: none">kontakt@etfkalkulator.pl</a>
           <div class="flex gap-4">
-            <a href="#"
+            <a href="#" aria-label="Udostępnij"
               class="w-10 h-10 rounded-2xl bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-xl">
               <span aria-hidden="true" class="material-symbols-outlined text-lg">share</span>
             </a>
-            <a href="#"
+            <a href="mailto:kontakt@etfkalkulator.pl" aria-label="Napisz do nas"
               class="w-10 h-10 rounded-2xl bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-xl">
               <span aria-hidden="true" class="material-symbols-outlined text-lg">alternate_email</span>
             </a>
