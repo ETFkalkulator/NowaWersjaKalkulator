@@ -1,0 +1,924 @@
+<!doctype html>
+<html lang="pl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#f8f7f2" id="meta-theme-color" />
+  <script>
+    (function () {
+      const s = localStorage.getItem("etf-tryb");
+      const d = s === "ciemny" || (!s && window.matchMedia("(prefers-color-scheme: dark)").matches);
+      document.documentElement.classList.toggle("dark", d);
+      document.documentElement.classList.toggle("light", !d);
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <title>Ryzyko walutowe w ETF — co to jest i czy musisz się bać? | ETFkalkulator.pl</title>
+  <link rel="canonical" href="https://etfkalkulator.pl/blog/ryzyko-walutowe-etf.html" />
+  <meta name="description" content="Kupujesz ETF w dolarach lub euro? Dowiedz się jak ryzyko walutowe wpływa na Twój zysk i czy warto wybierać ETF z hedgingiem PLN. Wyjaśnienie bez żargonu." />
+  <meta name="author" content="ETFkalkulator.pl" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:title" content="Ryzyko walutowe w ETF — co to jest i czy musisz się bać?" />
+  <meta property="og:description" content="Kupujesz ETF w dolarach lub euro? Dowiedz się jak ryzyko walutowe wpływa na Twój zysk i czy warto wybierać ETF z hedgingiem PLN. Wyjaśnienie bez żargonu." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://etfkalkulator.pl/blog/ryzyko-walutowe-etf.html" />
+  <meta property="og:site_name" content="ETFkalkulator.pl" />
+  <meta property="og:image" content="https://etfkalkulator.pl/images/ryzyko-walutowe-etf.webp" />
+  <meta property="og:locale" content="pl_PL" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ryzyko walutowe w ETF — co to jest i czy musisz się bać?" />
+  <meta name="twitter:description" content="USD osłabiony w 2026 przez cła Trumpa. Czy Twój ETF w dolarach traci przez kurs? Wyjaśniamy ryzyko walutowe bez żargonu." />
+  <meta name="twitter:image" content="https://etfkalkulator.pl/images/ryzyko-walutowe-etf.webp" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Ryzyko walutowe w ETF — co to jest i czy musisz się bać?",
+    "description": "Kupujesz ETF w dolarach lub euro? Dowiedz się jak ryzyko walutowe wpływa na Twój zysk i czy warto wybierać ETF z hedgingiem PLN. Wyjaśnienie bez żargonu.",
+    "author": { "@type": "Organization", "name": "ETFkalkulator.pl" },
+    "publisher": { "@type": "Organization", "name": "ETFkalkulator.pl", "url": "https://etfkalkulator.pl" },
+    "datePublished": "2026-04-25",
+    "dateModified": "2026-04-25",
+    "url": "https://etfkalkulator.pl/blog/ryzyko-walutowe-etf.html",
+    "inLanguage": "pl"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://etfkalkulator.pl/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://etfkalkulator.pl/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Ryzyko walutowe w ETF", "item": "https://etfkalkulator.pl/blog/ryzyko-walutowe-etf.html" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Co to jest ryzyko walutowe w ETF?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ryzyko walutowe w ETF to możliwość, że zmiana kursu waluty (np. USD/PLN lub EUR/PLN) wpłynie na Twój zysk lub stratę — niezależnie od tego, jak zachował się sam fundusz. Jeśli kupiłeś ETF w dolarach, a dolar osłabł wobec złotego, Twój zwrot w PLN będzie niższy niż wskazuje wycena w USD. I odwrotnie — umocnienie dolara powiększa zyski w złotych." }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy ETF w euro też niesie ryzyko walutowe dla Polaka?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Tak — nawet jeśli ETF jest notowany w euro na giełdzie we Frankfurcie, a jego portfel składa się z akcji globalnych denominowanych w dolarach, jenach czy frankach, Twój zysk w PLN zależy od kursu EUR/PLN oraz od walut aktywów w portfelu funduszu. Waluta notowania ETF to tylko 'opakowanie' — ważniejsza jest waluta aktywów bazowych." }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy ETF z hedgingiem walutowym jest lepszy?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Nie zawsze. ETF z hedgingiem (zabezpieczeniem walutowym) eliminuje ryzyko kursowe, ale kosztuje — zazwyczaj 0,5–1% rocznie więcej opłat niż wersja bez hedgingu. Dla długoterminowych inwestorów (10+ lat) historycznie lepiej wypadała wersja bez hedgingu, bo kursy walut w długim terminie mają tendencję do wyrównywania się (teoria parytetu siły nabywczej). Hedging ma sens głównie przy krótkim horyzoncie lub gdy jesteś przekonany o konkretnym ruchu kursowym." }
+      },
+      {
+        "@type": "Question",
+        "name": "Jak USD osłabiony w 2026 wpłynął na polskich inwestorów ETF?",
+        "acceptedAnswer": { "@type": "Answer", "text": "USD osłabił się wobec PLN o ok. 12–15% od początku 2025 roku (m.in. przez cła Trumpa i niepewność geopolityczną). Inwestorzy trzymający ETF akcji globalnych w dolarach widzieli dobre wyniki samego funduszu, ale ich zwrot przeliczony na złote był znacząco niższy — w skrajnych przypadkach kurs walutowy zjadł kilka punktów procentowych zysku. To właśnie ryzyko walutowe w praktyce." }
+      },
+      {
+        "@type": "Question",
+        "name": "Co zrobić, żeby zmniejszyć ryzyko walutowe w portfelu ETF?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Najprostsze sposoby: (1) Dywersyfikuj walutowo — trzymaj aktywa w kilku walutach, nie tylko w USD. (2) Wydłuż horyzont — przy 15–20 latach ryzyko walutowe spada, bo krótkoterminowe wahania kursów się wyrównują. (3) Rozważ ETF hedged przy krótkim horyzoncie lub dużej ekspozycji na jedną walutę. (4) Nie panikuj po krótkoterminowych ruchach kursowych — są normalną częścią inwestowania globalnego." }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" href="../images/favicon.png" />
+  <link rel="apple-touch-icon" href="../images/favicon.png" />
+  <link rel="manifest" href="../manifest.json" />
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("consent", "default", { analytics_storage: "denied" });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZECMECQ15"></script>
+  <script>
+    gtag("config", "G-GZECMECQ15", { send_page_view: false });
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-25..0&display=swap" rel="stylesheet" />
+
+  <style>
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .dark .glass-effect {
+      background: rgba(15, 23, 42, 0.7);
+    }
+    body { font-family: "Inter", sans-serif; }
+    .material-symbols-outlined {
+      font-family: "Material Symbols Outlined";
+      font-size: 24px;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    article p { line-height: 1.8; }
+    article h2 { scroll-margin-top: 5rem; }
+    article h3 { scroll-margin-top: 5rem; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    article h2 { animation: fadeInUp 0.4s ease both; }
+
+    details summary { user-select: none; }
+    details[open] summary .expand-icon { transform: rotate(180deg); }
+    .expand-icon { transition: transform 0.25s ease; }
+
+    .sidebar-toc a.toc-active {
+      color: #0d7ff2 !important;
+      font-weight: 600;
+      background: rgba(13, 127, 242, 0.1);
+    }
+  </style>
+
+  <link rel="preload" as="style" href="../css/mailerlite.css" />
+  <link href="../css/mailerlite.css" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="../css/mailerlite.css" /></noscript>
+  <link rel="stylesheet" href="../css/tailwind.css">
+</head>
+
+<body>
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-stitch-surface focus:text-primary">Przejdź do głównej treści</a>
+  <div id="reading-progress" class="fixed top-0 left-0 h-[3px] bg-primary z-[200] transition-none rounded-r-full" style="width:0%;background-color:#0d7ff2;"></div>
+
+  <div id="nav-root"></div>
+  <script defer src="../js/nav.js"></script>
+
+  <!-- HERO -->
+  <section class="relative pt-32 pb-16 md:pb-20 px-4 sm:px-6 overflow-hidden text-white"
+    style="background-image: url('../images/ryzyko-walutowe-etf.webp'); background-size: cover; background-position: center;">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(15,23,42,0.35) 0%, rgba(15,23,42,0.70) 55%, rgba(15,23,42,0.93) 100%);"></div>
+    <div class="relative z-10 max-w-3xl mx-auto">
+      <nav class="mb-6" aria-label="breadcrumb">
+        <ol class="flex items-center gap-2 text-sm text-white/60">
+          <li><a href="../index.html" class="hover:text-white transition-colors" style="text-decoration: none">ETFkalkulator.pl</a></li>
+          <li><span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+          <li><a href="index.html" class="hover:text-white transition-colors" style="text-decoration: none">Blog</a></li>
+          <li><span aria-hidden="true" class="material-symbols-outlined text-[14px]">chevron_right</span></li>
+          <li class="text-white font-semibold">Ryzyko walutowe w ETF</li>
+        </ol>
+      </nav>
+      <h1 class="text-2xl md:text-4xl font-black text-white leading-tight mb-4">
+        Ryzyko walutowe w ETF — co to jest i czy musisz się bać?
+      </h1>
+      <p class="text-white/85 text-base md:text-lg leading-relaxed mb-4">
+        USD osłabił się o kilkanaście procent od 2025 roku. Inwestorzy w globalnych ETF odczuli to na własnych wyciągach — fundusz rósł, a zysk w złotych był niższy niż się spodziewali. Wyjaśniamy, jak naprawdę działa ryzyko walutowe i co z nim zrobić.
+      </p>
+      <div class="flex flex-wrap gap-4 mt-4 text-white/60 text-sm">
+        <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px]">calendar_today</span> Kwiecień 2026</span>
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">schedule</span> 8 minut czytania</span>
+        <span class="flex items-center gap-1.5"><span aria-hidden="true" class="material-symbols-outlined text-[16px]">person</span> ETFkalkulator.pl</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="bg-white dark:bg-slate-950 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 grid grid-cols-1 lg:grid-cols-[1fr_300px] xl:grid-cols-[1fr_320px] gap-10 xl:gap-16 items-start">
+
+      <article id="main" class="min-w-0 pt-8 pb-16 lg:pb-20">
+
+        <!-- TOC -->
+        <div class="glass-effect rounded-[1.5rem] p-6 mb-10 border-l-4 border-primary bg-primary/5 dark:bg-primary/10">
+          <p class="text-xs font-black uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+            Spis treści
+          </p>
+          <ol class="space-y-2 text-sm list-decimal list-inside">
+            <li><a href="#co-to-ryzyko-walutowe" class="text-primary hover:underline font-medium" style="text-decoration: none">Co to jest ryzyko walutowe?</a></li>
+            <li><a href="#jak-wplywa-na-zysk" class="text-primary hover:underline font-medium" style="text-decoration: none">Jak kurs waluty wpływa na zysk z ETF?</a></li>
+            <li><a href="#przyklad-liczbowy" class="text-primary hover:underline font-medium" style="text-decoration: none">Przykład liczbowy — USD/PLN w praktyce</a></li>
+            <li><a href="#hedging-walutowy" class="text-primary hover:underline font-medium" style="text-decoration: none">ETF z hedgingiem — czy warto?</a></li>
+            <li><a href="#horyzont-inwestycyjny" class="text-primary hover:underline font-medium" style="text-decoration: none">Ryzyko walutowe a horyzont inwestycyjny</a></li>
+            <li><a href="#jak-ograniczyc" class="text-primary hover:underline font-medium" style="text-decoration: none">Jak ograniczyć ryzyko walutowe?</a></li>
+            <li><a href="#faq" class="text-primary hover:underline font-medium" style="text-decoration: none">FAQ</a></li>
+          </ol>
+        </div>
+
+        <!-- SECTION 1 -->
+        <h2 id="co-to-ryzyko-walutowe" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color: #0d7ff2">1</span>
+          Co to jest ryzyko walutowe?
+        </h2>
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+          Gdy kupujesz ETF notowany w dolarach — np. popularny <strong>VWCE czy iShares Core MSCI World (IWDA)</strong> — wchodzisz w transakcję w obcej walucie. Nawet jeśli płacisz za niego złotymi przez polskiego brokera, wartość Twoich jednostek jest wyrażona w USD lub EUR. I tu pojawia się ryzyko walutowe.
+        </p>
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          <strong>Ryzyko walutowe</strong> to możliwość, że zmiana kursu między walutą aktywów a Twoją walutą (złotym) wpłynie na Twój zysk lub stratę — niezależnie od tego, co robi sam fundusz. Innymi słowy: ETF może rosnąć, ale jeśli dolar w tym czasie osłabł wobec złotego, Twój zysk przeliczony na PLN będzie niższy.
+        </p>
+
+        <div class="rounded-2xl p-5 bg-primary/5 dark:bg-primary/10 border-l-4 border-primary mb-6">
+          <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-primary mb-2">
+            <span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2">key</span>
+            Kluczowa różnica: waluta notowania vs waluta aktywów
+          </p>
+          <p class="text-sm text-stitch-muted leading-relaxed">
+            ETF może być notowany w euro na giełdzie we Frankfurcie, ale jego portfel składa się z akcji amerykańskich, japońskich i brytyjskich — czyli aktywów w USD, JPY i GBP. Waluta notowania to tylko „opakowanie". Liczy się waluta aktywów bazowych — to ona decyduje o rzeczywistym ryzyku walutowym.
+          </p>
+        </div>
+
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          Ryzyko walutowe nie jest niczym złym samo w sobie — to po prostu jeden z elementów inwestowania globalnego. Problem pojawia się, gdy inwestorzy nie zdają sobie z niego sprawy lub nie uwzględniają go przy planowaniu portfela.
+        </p>
+
+        <!-- SECTION 2 -->
+        <h2 id="jak-wplywa-na-zysk" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color: #0d7ff2">2</span>
+          Jak kurs waluty wpływa na zysk z ETF?
+        </h2>
+        <p class="text-stitch-muted leading-relaxed mb-6 text-base md:text-lg">
+          Mechanizm jest prosty, ale jego efekty mogą być zaskakujące. Twój zwrot z ETF w PLN to wypadkowa dwóch składowych: wyniku samego funduszu oraz zmiany kursu walutowego.
+        </p>
+
+        <div class="glass-effect relative overflow-hidden rounded-2xl p-6 mb-8 shadow-stitch-soft border border-white/50 dark:border-stitch-border/50">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-primary rounded-t-2xl"></div>
+          <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px]">calculate</span>
+            Uproszczony wzór
+          </p>
+          <div class="flex flex-col gap-3">
+            <div class="flex items-center gap-3 flex-wrap">
+              <span class="bg-primary/10 text-primary font-black text-sm px-4 py-2 rounded-xl" style="color:#0d7ff2">Zwrot w PLN</span>
+              <span class="text-stitch-muted font-bold">=</span>
+              <span class="bg-slate-100 dark:bg-slate-800 text-stitch-text font-semibold text-sm px-4 py-2 rounded-xl">Wynik ETF w walucie obcej</span>
+              <span class="text-stitch-muted font-bold">+</span>
+              <span class="bg-slate-100 dark:bg-slate-800 text-stitch-text font-semibold text-sm px-4 py-2 rounded-xl">Zmiana kursu walutowego</span>
+            </div>
+            <p class="text-xs text-stitch-muted leading-relaxed mt-2">
+              (przybliżenie; dokładnie: (1 + zwrot ETF) × (1 + zmiana kursu) − 1)
+            </p>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-black text-stitch-text mt-8 mb-4">Scenariusz 1: Dolar się umacnia — inwestor zyskuje podwójnie</h3>
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          ETF rośnie o 10% w USD, a dolar zyskuje 5% wobec złotego. Twój zysk w PLN to ok. <strong>15,5%</strong> — lepiej niż sam wynik funduszu. Waluta pracuje na Twoją korzyść.
+        </p>
+
+        <h3 class="text-lg font-black text-stitch-text mt-8 mb-4">Scenariusz 2: Dolar słabnie — waluta „zjada" zysk</h3>
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          ETF rośnie o 10% w USD, ale dolar traci 8% wobec złotego. Twój zysk w PLN to tylko ok. <strong>1,2%</strong> — mimo że fundusz radził sobie całkiem dobrze. Właśnie to przydarzyło się wielu polskim inwestorom w 2025–2026 roku.
+        </p>
+
+        <h3 class="text-lg font-black text-stitch-text mt-8 mb-4">Scenariusz 3: Najgorszy wariant — strata ETF + osłabienie waluty</h3>
+        <div class="rounded-2xl p-5 bg-red-50 dark:bg-red-950/30 border-l-4 border-red-500 mb-6">
+          <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-red-700 dark:text-red-400 mb-2">
+            <span aria-hidden="true" class="material-symbols-outlined text-red-600 text-[18px] shrink-0">warning</span>
+            Podwójna strata
+          </p>
+          <p class="text-sm text-stitch-muted leading-relaxed">
+            ETF spada o 15% w USD, a dolar traci 10% wobec PLN. Twoja strata w złotych wynosi ok. <strong>−23,5%</strong> — znacznie więcej niż sam wynik funduszu. Ryzyko walutowe może amplifikować straty, nie tylko redukować zyski.
+          </p>
+        </div>
+
+        <!-- SECTION 3 -->
+        <h2 id="przyklad-liczbowy" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color: #0d7ff2">3</span>
+          Przykład liczbowy — USD/PLN w praktyce
+        </h2>
+        <p class="text-stitch-muted leading-relaxed mb-6 text-base md:text-lg">
+          Weźmy konkretny przykład z 2025–2026 roku. Inwestor kupił ETF IWDA (akcje globalne, denominowane w USD) za <strong>10 000 zł</strong> w początku 2025 roku, gdy kurs USD/PLN wynosił ok. 4,10 zł. W ciągu roku fundusz wzrósł o 12% w USD, ale dolar osłabł wobec złotego o ~13%.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+          <div class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft">
+            <div class="text-3xl md:text-4xl font-black text-primary mb-1" style="color:#0d7ff2;">10 000 zł</div>
+            <div class="text-xs text-stitch-muted leading-tight">inwestycja na starcie<br>kurs: 4,10 zł/USD = 2 439 USD</div>
+            <div class="w-8 h-0.5 bg-primary/30 mx-auto mt-3 rounded-full"></div>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft">
+            <div class="text-3xl md:text-4xl font-black text-emerald-600 mb-1">+12%</div>
+            <div class="text-xs text-stitch-muted leading-tight">wynik ETF w USD<br>2 439 → 2 732 USD</div>
+            <div class="w-8 h-0.5 bg-emerald-400/30 mx-auto mt-3 rounded-full"></div>
+          </div>
+          <div class="glass-effect rounded-2xl p-5 text-center border border-white/50 dark:border-stitch-border/50 shadow-stitch-soft">
+            <div class="text-3xl md:text-4xl font-black text-amber-600 mb-1">−13%</div>
+            <div class="text-xs text-stitch-muted leading-tight">osłabienie dolara<br>kurs: 4,10 → 3,57 zł/USD</div>
+            <div class="w-8 h-0.5 bg-amber-400/30 mx-auto mt-3 rounded-full"></div>
+          </div>
+        </div>
+
+        <div class="glass-effect relative overflow-hidden rounded-2xl p-6 mb-8 shadow-stitch-soft border border-white/50 dark:border-stitch-border/50">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-primary rounded-t-2xl"></div>
+          <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px]">calculate</span>
+            Wynik po roku w złotych
+          </p>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+            <span class="text-sm text-stitch-muted">Wartość ETF po roku (w USD)</span>
+            <span class="text-sm font-bold text-stitch-text">2 732 USD</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+            <span class="text-sm text-stitch-muted">Kurs USD/PLN po roku</span>
+            <span class="text-sm font-bold text-stitch-text">3,57 zł</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+            <span class="text-sm text-stitch-muted">Wartość w PLN po roku</span>
+            <span class="text-sm font-bold text-stitch-text">9 753 zł</span>
+          </div>
+          <div class="bg-red-50 dark:bg-red-950/30 rounded-xl px-4 py-3 mt-2 border border-red-200 dark:border-red-900 flex flex-col sm:flex-row sm:justify-between sm:items-center">
+            <span class="text-sm font-semibold text-red-800 dark:text-red-300">Wynik w PLN mimo wzrostu ETF o 12%</span>
+            <span class="text-base font-black text-red-700 dark:text-red-400">−247 zł (−2,5%)</span>
+          </div>
+        </div>
+
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          Fundusz urósł o 12% w dolarach — a inwestor wyszedł na minusie w złotych. To nie jest teoria. Dokładnie tak wyglądało doświadczenie wielu polskich inwestorów w ETF akcji globalnych, gdy USD tracił na wartości przez politykę celną Trumpa i odpływ kapitału z rynku amerykańskiego.
+        </p>
+
+        <div class="rounded-2xl p-5 bg-primary/5 dark:bg-primary/10 border-l-4 border-primary mb-6">
+          <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-primary mb-2">
+            <span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2">key</span>
+            Ważna perspektywa
+          </p>
+          <p class="text-sm text-stitch-muted leading-relaxed">
+            W 2022–2023 roku odwrotnie — silny dolar „dorzucał" polskim inwestorom kilka–kilkanaście procent zysku rocznie. Ryzyko walutowe działa w obie strony. Dlatego przez kilka „dobrych walutowo" lat można nie dostrzegać zagrożenia, które ujawnia się dopiero przy silnym ruchu kursowym w niekorzystnym kierunku.
+          </p>
+        </div>
+
+        <!-- CTA inline -->
+        <div class="bg-gradient-to-br from-blue-700 to-primary rounded-[1.5rem] p-6 md:p-8 text-white text-center my-10 shadow-xl" style="background:linear-gradient(135deg,#1d4ed8,#0d7ff2);">
+          <h3 class="text-xl font-black text-white mb-3">Policz swój potencjalny zysk z ETF</h3>
+          <p class="text-white/80 mb-5 text-sm leading-relaxed">Sprawdź jak różne stopy zwrotu i horyzonty inwestycyjne przekładają się na realne wyniki — zanim zdecydujesz, który ETF wybrać.</p>
+          <a href="../pages/kalkulator-etf.html" class="bg-stitch-surface text-primary font-black px-6 py-3 rounded-xl hover:scale-[1.02] transition-all inline-flex items-center gap-2 shadow-lg" style="color:#0d7ff2; text-decoration:none;">Kalkulator ETF <span aria-hidden="true" class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
+        </div>
+
+        <!-- SECTION 4 -->
+        <h2 id="hedging-walutowy" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color: #0d7ff2">4</span>
+          ETF z hedgingiem walutowym — czy warto?
+        </h2>
+        <p class="text-stitch-muted leading-relaxed mb-6 text-base md:text-lg">
+          Hedging walutowy (zabezpieczenie kursowe) to mechanizm wbudowany w niektóre ETF, który neutralizuje wpływ zmian kursu walutowego na wynik funduszu. Brzmi idealnie — ale ma swoją cenę.
+        </p>
+
+        <h3 class="text-lg font-black text-stitch-text mt-8 mb-4">Jak działa hedging w ETF?</h3>
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          Fundusz używa instrumentów pochodnych (głównie kontraktów forward) do zablokowania kursu wymiany. Jeśli fundusz kupuje akcje w USD i chce zabezpieczyć inwestorów w PLN, zawiera umowy, które kompensują ewentualne straty wynikające z osłabienia dolara. W efekcie wynik funduszu w PLN jest zbliżony do wyniku w USD.
+        </p>
+
+        <div class="overflow-x-auto mb-8">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr class="bg-primary/5 dark:bg-primary/10">
+                <th class="text-left px-4 py-3 font-black text-stitch-text border-b border-stitch-border">Cecha</th>
+                <th class="text-left px-4 py-3 font-black text-stitch-text border-b border-stitch-border">ETF bez hedgingu</th>
+                <th class="text-left px-4 py-3 font-black text-stitch-text border-b border-stitch-border">ETF z hedgingiem (PLN)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-stitch-border/50">
+                <td class="px-4 py-3 font-semibold text-stitch-text">Ryzyko walutowe</td>
+                <td class="px-4 py-3 text-amber-600 dark:text-amber-400">tak — kurs wpływa na wynik</td>
+                <td class="px-4 py-3 text-emerald-600 dark:text-emerald-400">zminimalizowane</td>
+              </tr>
+              <tr class="border-b border-stitch-border/50 bg-stitch-bg/30 dark:bg-slate-900/30">
+                <td class="px-4 py-3 font-semibold text-stitch-text">Roczny koszt hedgingu</td>
+                <td class="px-4 py-3 text-emerald-600 dark:text-emerald-400">brak</td>
+                <td class="px-4 py-3 text-amber-600 dark:text-amber-400">+0,3–1,0% rocznie</td>
+              </tr>
+              <tr class="border-b border-stitch-border/50">
+                <td class="px-4 py-3 font-semibold text-stitch-text">Wynik przy mocnym USD</td>
+                <td class="px-4 py-3 text-emerald-600 dark:text-emerald-400">wyższy (kurs pomaga)</td>
+                <td class="px-4 py-3 text-stitch-muted">zbliżony do wyniku w USD</td>
+              </tr>
+              <tr class="border-b border-stitch-border/50 bg-stitch-bg/30 dark:bg-slate-900/30">
+                <td class="px-4 py-3 font-semibold text-stitch-text">Wynik przy słabym USD</td>
+                <td class="px-4 py-3 text-red-600 dark:text-red-400">niższy (kurs przeszkadza)</td>
+                <td class="px-4 py-3 text-emerald-600 dark:text-emerald-400">zbliżony do wyniku w USD</td>
+              </tr>
+              <tr class="border-b border-stitch-border/50">
+                <td class="px-4 py-3 font-semibold text-stitch-text">Dostępność (PL inwestor)</td>
+                <td class="px-4 py-3 text-stitch-muted">szeroka (IWDA, VWCE, EUNL...)</td>
+                <td class="px-4 py-3 text-stitch-muted">ograniczona dla PLN</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="text-lg font-black text-stitch-text mt-8 mb-4">Kiedy hedging ma sens, a kiedy nie?</h3>
+
+        <div class="space-y-4 mb-8">
+          <div class="rounded-2xl p-5 bg-emerald-50 dark:bg-emerald-950/30 border-l-4 border-emerald-500">
+            <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2">
+              <span aria-hidden="true" class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span>
+              Kiedy hedging warto rozważyć
+            </p>
+            <ul class="text-sm text-stitch-muted leading-relaxed space-y-1 list-disc list-inside">
+              <li>Krótki horyzont inwestycyjny (1–3 lata) — wahania kursowe nie mają czasu się wyrównać</li>
+              <li>Duża ekspozycja na jedną walutę (np. ponad 80% portfela w USD)</li>
+              <li>Bliski cel finansowy — np. zakup nieruchomości za 2 lata, gdy volatilność kursu jest groźna</li>
+              <li>Masz silne przekonanie, że dana waluta będzie słabnąć</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl p-5 bg-amber-50 dark:bg-amber-950/30 border-l-4 border-amber-500">
+            <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2">
+              <span aria-hidden="true" class="material-symbols-outlined text-amber-600 text-[18px] shrink-0">warning</span>
+              Kiedy hedging najprawdopodobniej zaszkodzi
+            </p>
+            <ul class="text-sm text-stitch-muted leading-relaxed space-y-1 list-disc list-inside">
+              <li>Długi horyzont (10+ lat) — hedging kosztuje, a kursy mają tendencję do wyrównywania się</li>
+              <li>Portfel zdywersyfikowany walutowo — USD, EUR, JPY, GBP nawzajem się częściowo zabezpieczają</li>
+              <li>Chcesz korzystać z ewentualnego umocnienia dolara jako „buforu" przeciw polskiej inflacji</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-5 bg-primary/5 dark:bg-primary/10 border-l-4 border-primary mb-6">
+          <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-primary mb-2">
+            <span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2">key</span>
+            Wniosek praktyczny
+          </p>
+          <p class="text-sm text-stitch-muted leading-relaxed">
+            Dla większości polskich inwestorów budujących długoterminowy portfel ETF — <strong>hedging nie jest konieczny i kosztuje</strong>. Wybierz tańszy ETF bez hedgingu i zaakceptuj wahania kursowe jako integralną część inwestowania globalnego. Przy horyzoncie 15–20 lat ryzyko walutowe znacząco się redukuje.
+          </p>
+        </div>
+
+        <!-- SECTION 5 -->
+        <h2 id="horyzont-inwestycyjny" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color: #0d7ff2">5</span>
+          Ryzyko walutowe a horyzont inwestycyjny
+        </h2>
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base md:text-lg">
+          Horyzont inwestycyjny jest kluczowy dla oceny tego, jak bardzo powinieneś się przejmować ryzykiem walutowym. Krótki i długi horyzont to zupełnie różne światy.
+        </p>
+
+        <h3 class="text-lg font-black text-stitch-text mt-8 mb-4">Krótki horyzont (1–3 lata) — ryzyko największe</h3>
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          Przy krótkim horyzoncie pojedynczy silny ruch kursowy może zdominować cały wynik inwestycji. Kurs USD/PLN potrafi zmienić się o 15–20% w ciągu roku — to więcej niż wiele portfeli akcyjnych zarabia w spokojnym roku. Jeśli inwestujesz krótkoterminowo, ryzyko walutowe jest realnym zagrożeniem, które warto ograniczyć.
+        </p>
+
+        <h3 class="text-lg font-black text-stitch-text mt-8 mb-4">Długi horyzont (10–20+ lat) — ryzyko maleje</h3>
+        <p class="text-stitch-muted leading-relaxed mb-4 text-base">
+          W długim terminie działa teoria <strong>parytetu siły nabywczej (PPP)</strong> — waluty krajów z wyższą inflacją mają tendencję do osłabiania się wobec walut krajów z niższą inflacją. W praktyce oznacza to, że ekstremalnie silny dolar w jednej dekadzie często bywa kompensowany jego osłabieniem w następnej.
+        </p>
+
+        <div class="glass-effect relative overflow-hidden rounded-2xl p-6 mb-8 shadow-stitch-soft border border-white/50 dark:border-stitch-border/50">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-primary rounded-t-2xl"></div>
+          <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+            <span aria-hidden="true" class="material-symbols-outlined text-[18px]">timeline</span>
+            USD/PLN — perspektywa historyczna
+          </p>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+            <span class="text-sm text-stitch-muted">2010 rok</span>
+            <span class="text-sm font-bold text-stitch-text">ok. 3,00 zł/USD</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+            <span class="text-sm text-stitch-muted">2022 rok (dolar najsilniejszy)</span>
+            <span class="text-sm font-bold text-stitch-text">ok. 4,90 zł/USD</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-3 border-b border-stitch-border">
+            <span class="text-sm text-stitch-muted">2026 rok (po cłach Trumpa)</span>
+            <span class="text-sm font-bold text-stitch-text">ok. 3,60–3,80 zł/USD</span>
+          </div>
+          <div class="bg-primary/5 dark:bg-primary/10 rounded-xl px-4 py-3 mt-2 border border-primary/20">
+            <p class="text-xs text-stitch-muted leading-relaxed">Kurs USD/PLN oscyluje w długim terminie w szerokim przedziale, ale nie „ucieka" jednostronnie. Inwestor z 15-letnim horyzontem wielokrotnie doświadcza obu kierunków i efekty się częściowo kompensują.</p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-5 bg-emerald-50 dark:bg-emerald-950/30 border-l-4 border-emerald-500 mb-6">
+          <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 mb-2">
+            <span aria-hidden="true" class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span>
+            Dodatkowa korzyść dla polskiego inwestora
+          </p>
+          <p class="text-sm text-stitch-muted leading-relaxed">
+            Inwestując w aktywa zagraniczne, automatycznie dywersyfikujesz się od ryzyka osłabienia złotego. Jeśli Polska weszłaby w okres wysokiej inflacji lub kryzysu walutowego, Twoje aktywa w USD czy EUR zyskałyby na wartości w złotych. Ekspozycja walutowa to też forma zabezpieczenia przed ryzykiem krajowym.
+          </p>
+        </div>
+
+        <!-- SECTION 6 -->
+        <h2 id="jak-ograniczyc" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color: #0d7ff2">6</span>
+          Jak ograniczyć ryzyko walutowe?
+        </h2>
+        <p class="text-stitch-muted leading-relaxed mb-6 text-base md:text-lg">
+          Całkowite wyeliminowanie ryzyka walutowego nie jest ani możliwe, ani wskazane. Ale kilka konkretnych działań pozwala je sensownie zarządzać.
+        </p>
+
+        <div class="space-y-4 mb-8">
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-stitch-border/50 p-5 shadow-stitch-soft">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0" style="color:#0d7ff2;">
+                <span class="text-base font-black" style="color:#0d7ff2;">1</span>
+              </div>
+              <div>
+                <p class="font-black text-stitch-text text-base mb-2">Dywersyfikuj walutowo</p>
+                <p class="text-sm text-stitch-muted leading-relaxed">Nie trzymaj 100% portfela w aktywach jednej waluty. ETF globalny (np. VWCE) automatycznie daje ekspozycję na USD, EUR, JPY, GBP i wiele innych walut jednocześnie. Gdy jedna słabnie, inne mogą to kompensować. To najprostszy i najtańszy sposób zarządzania ryzykiem walutowym.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-stitch-border/50 p-5 shadow-stitch-soft">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <span class="text-base font-black" style="color:#0d7ff2;">2</span>
+              </div>
+              <div>
+                <p class="font-black text-stitch-text text-base mb-2">Wydłuż horyzont inwestycyjny</p>
+                <p class="text-sm text-stitch-muted leading-relaxed">Im dłuższy horyzont, tym mniejszy proporcjonalny wpływ krótkoterminowych wahań kursowych. Inwestor z 20-letnim planem ma czas przeczekać zarówno silny, jak i słaby dolar. Regularne wpłaty (DCA) dodatkowo uśredniają kurs zakupu w czasie.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-stitch-border/50 p-5 shadow-stitch-soft">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <span class="text-base font-black" style="color:#0d7ff2;">3</span>
+              </div>
+              <div>
+                <p class="font-black text-stitch-text text-base mb-2">Dodaj aktywa PLN do portfela</p>
+                <p class="text-sm text-stitch-muted leading-relaxed">Obligacje skarbowe w złotych (EDO, COI, TOS) czy polskie akcje (WIG20 ETF) to naturalne zabezpieczenie walutowe — ich wartość w PLN nie zależy od kursów obcych walut. Portfel z 20–30% aktywów denominowanych w PLN jest mniej podatny na skrajne ruchy kursowe.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-stitch-border/50 p-5 shadow-stitch-soft">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <span class="text-base font-black" style="color:#0d7ff2;">4</span>
+              </div>
+              <div>
+                <p class="font-black text-stitch-text text-base mb-2">Nie panikuj przy krótkoterminowych ruchach</p>
+                <p class="text-sm text-stitch-muted leading-relaxed">Roczna zmiana kursu USD/PLN o 10–15% to dla rynku walutowego norma, nie wyjątek. Sprzedaż ETF po osłabieniu dolara „realizuje" stratę walutową, zamiast dać jej szansę na odreagowanie. Trzymaj kurs — strategia kupuj i trzymaj historycznie wygrywa z aktywnym zarządzaniem kursem.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-5 bg-primary/5 dark:bg-primary/10 border-l-4 border-primary mb-6">
+          <p class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-primary mb-2">
+            <span aria-hidden="true" class="material-symbols-outlined text-primary text-[18px] shrink-0" style="color:#0d7ff2">key</span>
+            Złota zasada
+          </p>
+          <p class="text-sm text-stitch-muted leading-relaxed">
+            Ryzyko walutowe to element inwestowania globalnego, nie jego wada. Kto rezygnuje z zagranicznych ETF z powodu strachu przed kursami, rezygnuje jednocześnie z dywersyfikacji, ekspozycji na największe światowe spółki i historycznie wyższych zwrotów. Akceptacja ryzyka walutowego — ze świadomością jak działa — to część dojrzałej strategii inwestycyjnej.
+          </p>
+        </div>
+
+        <!-- SECTION 7 FAQ -->
+        <h2 id="faq" class="text-2xl font-black text-stitch-text mt-16 mb-6 pt-10 border-t border-stitch-border flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-primary/10 text-primary text-sm font-black flex items-center justify-center shrink-0" style="color: #0d7ff2">7</span>
+          FAQ
+        </h2>
+
+        <div class="space-y-3 mb-10">
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-stitch-border/50 overflow-hidden">
+            <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-bold text-stitch-text text-sm gap-3">
+              Kupuję ETF w euro na XTB — czy mam ryzyko walutowe?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon text-slate-400 shrink-0 text-[20px]">expand_more</span>
+            </summary>
+            <div class="px-6 pb-5 text-sm text-stitch-muted leading-relaxed">
+              Tak, nawet kupując ETF notowany w euro, masz ryzyko walutowe na dwóch poziomach. Po pierwsze, kurs EUR/PLN wpływa na wartość inwestycji przeliczonej na złote. Po drugie, jeśli ETF inwestuje w akcje globalne (głównie USD), masz też ekspozycję na USD/EUR. Waluta notowania na giełdzie to tylko „etykieta" — ważniejsza jest waluta aktywów w portfelu funduszu. Sprawdź prospekt ETF lub dokument KIID, aby dowiedzieć się, w jakich walutach są aktywa bazowe.
+            </div>
+          </details>
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-stitch-border/50 overflow-hidden">
+            <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-bold text-stitch-text text-sm gap-3">
+              Czy VWCE i IWDA różnią się ryzykiem walutowym?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon text-slate-400 shrink-0 text-[20px]">expand_more</span>
+            </summary>
+            <div class="px-6 pb-5 text-sm text-stitch-muted leading-relaxed">
+              Obydwa ETF są denominowane w USD i inwestują globalnie. Oba niosą podobne ryzyko walutowe dla polskiego inwestora. VWCE (Vanguard FTSE All-World) obejmuje rynki rozwinięte i wschodzące, IWDA (iShares Core MSCI World) — tylko rynki rozwinięte. Różnica w ryzyku walutowym jest minimalna; większe znaczenie mają kwestie TER (Total Expense Ratio) i dostępność u brokera.
+            </div>
+          </details>
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-stitch-border/50 overflow-hidden">
+            <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-bold text-stitch-text text-sm gap-3">
+              Czy warto trzymać część portfela w gotówce w USD jako zabezpieczenie?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon text-slate-400 shrink-0 text-[20px]">expand_more</span>
+            </summary>
+            <div class="px-6 pb-5 text-sm text-stitch-muted leading-relaxed">
+              Gotówka w USD nie zarabia — traci na inflacji. Jako „zabezpieczenie walutowe" jest mało efektywna, bo kurs może iść w obie strony i nie wiesz, kiedy będzie Ci potrzebna. Lepszym rozwiązaniem jest zdywersyfikowany portfel ETF, który automatycznie daje ekspozycję na różne waluty, jednocześnie pracując i generując zwroty. Gotówka walutowa ma sens jako krótkoterminowy bufor, nie jako strategia na ryzyko walutowe.
+            </div>
+          </details>
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-stitch-border/50 overflow-hidden">
+            <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-bold text-stitch-text text-sm gap-3">
+              Jak ryzyko walutowe wpływa na podatek Belki?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon text-slate-400 shrink-0 text-[20px]">expand_more</span>
+            </summary>
+            <div class="px-6 pb-5 text-sm text-stitch-muted leading-relaxed">
+              Podatek Belki (19%) liczony jest od zysku w złotych — czyli już po uwzględnieniu kursu walutowego. Jeśli kupiłeś ETF za 10 000 zł i sprzedałeś za 12 000 zł (po przeliczeniu na PLN), podatek liczysz od 2 000 zł zysku, niezależnie od tego, jak wyglądał wynik samego funduszu w USD. Oznacza to, że korzystny kurs walutowy zwiększa podstawę opodatkowania, a niekorzystny ją zmniejsza — waluta wpływa więc bezpośrednio na wysokość podatku.
+            </div>
+          </details>
+          <details class="glass-effect rounded-2xl border border-white/50 dark:border-stitch-border/50 overflow-hidden">
+            <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-bold text-stitch-text text-sm gap-3">
+              Czy ETF na WIG20 też niesie ryzyko walutowe?
+              <span aria-hidden="true" class="material-symbols-outlined expand-icon text-slate-400 shrink-0 text-[20px]">expand_more</span>
+            </summary>
+            <div class="px-6 pb-5 text-sm text-stitch-muted leading-relaxed">
+              ETF na WIG20 (np. Beta ETF WIG20TR) inwestuje w polskie akcje notowane w złotych. Dla polskiego inwestora ryzyko walutowe jest tu bliskie zeru — nie ma przeliczenia na obcą walutę. To właśnie dlatego dodanie polskich akcji lub obligacji skarbowych PLN do portfela zmniejsza ogólną ekspozycję walutową. Pamiętaj jednak, że WIG20 obejmuje spółki, które same mają przychody w różnych walutach (np. KGHM, CD Projekt, PKO BP) — jest więc pośrednia, mniejsza ekspozycja walutowa.
+            </div>
+          </details>
+        </div>
+
+        <!-- DISCLAIMER -->
+        <div class="glass-effect rounded-2xl p-5 mt-10 border border-stitch-border dark:border-slate-700">
+          <div class="flex items-start gap-4">
+            <span aria-hidden="true" class="material-symbols-outlined text-slate-400 shrink-0 mt-0.5 text-[20px]">info</span>
+            <div>
+              <p class="text-xs font-bold text-stitch-muted mb-1">Ważna informacja (Disclaimer)</p>
+              <p class="text-xs text-stitch-muted leading-relaxed italic">
+                Materiały na stronie mają charakter wyłącznie edukacyjny i poglądowy. Nie stanowią rekomendacji inwestycyjnej ani porady podatkowej w rozumieniu przepisów prawa. Inwestowanie na giełdzie zawsze wiąże się z ryzykiem utraty części lub całości kapitału. Kurs walutowy może się zmieniać gwałtownie i nieprzewidywalnie. Narzędzie może zawierać uproszczenia — zawsze weryfikuj wyniki z prospektem emisyjnym funduszu.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-24 space-y-6">
+
+          <!-- TOC sidebar -->
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+              <span aria-hidden="true" class="material-symbols-outlined text-[16px]">format_list_bulleted</span>
+              W tym artykule
+            </p>
+            <div class="sidebar-toc space-y-1 text-sm">
+              <a href="#co-to-ryzyko-walutowe" class="block px-3 py-1.5 rounded-lg text-stitch-muted hover:text-primary transition-colors" style="text-decoration:none;">Co to jest ryzyko walutowe?</a>
+              <a href="#jak-wplywa-na-zysk" class="block px-3 py-1.5 rounded-lg text-stitch-muted hover:text-primary transition-colors" style="text-decoration:none;">Jak kurs wpływa na zysk?</a>
+              <a href="#przyklad-liczbowy" class="block px-3 py-1.5 rounded-lg text-stitch-muted hover:text-primary transition-colors" style="text-decoration:none;">Przykład liczbowy (USD 2025–2026)</a>
+              <a href="#hedging-walutowy" class="block px-3 py-1.5 rounded-lg text-stitch-muted hover:text-primary transition-colors" style="text-decoration:none;">Hedging walutowy — czy warto?</a>
+              <a href="#horyzont-inwestycyjny" class="block px-3 py-1.5 rounded-lg text-stitch-muted hover:text-primary transition-colors" style="text-decoration:none;">Horyzont inwestycyjny</a>
+              <a href="#jak-ograniczyc" class="block px-3 py-1.5 rounded-lg text-stitch-muted hover:text-primary transition-colors" style="text-decoration:none;">Jak ograniczyć ryzyko?</a>
+              <a href="#faq" class="block px-3 py-1.5 rounded-lg text-stitch-muted hover:text-primary transition-colors" style="text-decoration:none;">FAQ</a>
+            </div>
+          </div>
+
+          <!-- CTA kalkulator -->
+          <div class="bg-gradient-to-br from-blue-700 to-primary rounded-2xl p-5 text-white text-center"
+            style="background:linear-gradient(135deg,#1d4ed8,#0d7ff2);">
+            <span aria-hidden="true" class="material-symbols-outlined text-3xl mb-2 opacity-80">show_chart</span>
+            <h3 class="font-black text-white text-base mb-1">Kalkulator ETF</h3>
+            <p class="text-white/75 text-xs leading-relaxed mb-4">Oblicz potencjalny zysk z ETF przy różnych stopach zwrotu i horyzontach inwestycyjnych.</p>
+            <a href="../pages/kalkulator-etf.html"
+              class="bg-white rounded-xl px-4 py-2.5 text-xs font-black hover:scale-[1.02] transition-all inline-flex items-center gap-1.5 shadow-lg"
+              style="color:#0d7ff2;text-decoration:none;">
+              Oblicz zysk
+              <span aria-hidden="true" class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </a>
+          </div>
+
+          <!-- Czytaj też -->
+          <div class="glass-effect rounded-2xl border border-white/50 dark:border-slate-800/50 shadow-xl p-5">
+            <p class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+              <span aria-hidden="true" class="material-symbols-outlined text-[16px]">auto_stories</span>
+              Czytaj też
+            </p>
+            <div class="space-y-3">
+              <a href="msci-world-czy-sp500-ktory-etf-wybrac.html" class="block group" style="text-decoration:none;">
+                <p class="text-sm font-semibold text-stitch-text group-hover:text-primary transition-colors leading-snug">MSCI World czy S&P 500 — który ETF wybrać?</p>
+                <p class="text-xs text-slate-400 mt-0.5">Porównanie ekspozycji walutowej obu indeksów</p>
+              </a>
+              <div class="border-t border-stitch-border/50"></div>
+              <a href="jak-zbudowac-pierwszy-portfel-inwestycyjny.html" class="block group" style="text-decoration:none;">
+                <p class="text-sm font-semibold text-stitch-text group-hover:text-primary transition-colors leading-snug">Jak zbudować pierwszy portfel ETF?</p>
+                <p class="text-xs text-slate-400 mt-0.5">Jak uwzględnić ryzyko walutowe przy budowie portfela</p>
+              </a>
+              <div class="border-t border-stitch-border/50"></div>
+              <a href="rebalancing-portfela-etf.html" class="block group" style="text-decoration:none;">
+                <p class="text-sm font-semibold text-stitch-text group-hover:text-primary transition-colors leading-snug">Rebalancing portfela ETF — kiedy i jak?</p>
+                <p class="text-xs text-slate-400 mt-0.5">Po dużych ruchach kursowych portfel się rozjeżdża</p>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- MOBILE BOTTOM BAR -->
+  <div class="lg:hidden fixed bottom-0 left-0 right-0 z-50 glass-effect border-t border-slate-200 dark:border-slate-800 px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-24 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+        <div id="reading-progress-mobile" class="h-full bg-primary rounded-full transition-none" style="width:0%;background-color:#0d7ff2;"></div>
+      </div>
+      <span id="reading-pct" class="text-xs font-bold text-slate-400">0%</span>
+    </div>
+    <a href="../pages/kalkulator-etf.html"
+      class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-full flex items-center gap-1.5 hover:opacity-90"
+      style="background-color:#0d7ff2;text-decoration:none;">
+      <span aria-hidden="true" class="material-symbols-outlined text-[14px]">show_chart</span>
+      Kalkulator ETF
+    </a>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <section id="newsletter-section"
+    class="pt-10 pb-20 px-6 bg-slate-100 border-t border-stitch-border dark:border-slate-900 transition-colors">
+    <div class="max-w-7xl mx-auto">
+      <div class="bg-stitch-surface/70 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 lg:p-16 shadow-xl border border-white/50 relative overflow-hidden group">
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors duration-700"></div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center lg:justify-items-stretch relative z-10">
+          <div class="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+              Newsletter
+            </div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-stitch-text tracking-tight leading-[1.1]">
+              Bądź na bieżąco z
+              <span class="text-primary">rynkiem ETF</span>
+              <span class="hidden md:inline"> i finansami</span>
+            </h2>
+            <p class="text-stitch-muted text-lg leading-relaxed max-w-xl">
+              Dołącz do społeczności świadomych inwestorów. Otrzymuj analizy, nowe kalkulatory i rzetelną wiedzę prosto na swoją skrzynkę. Zero spamu.
+            </p>
+          </div>
+          <div class="w-full lg:max-w-md mx-auto lg:ml-auto">
+            <div id="mlb2-37996059" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-37996059">
+              <div class="ml-form-embedWrapper embedForm">
+                <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                  <form class="ml-block-form"
+                    action="https://dashboard.mailerlite.com/jsonp/2161270/forms/181031509662107628/subscribe"
+                    method="post" target="_blank">
+                    <div class="flex flex-col space-y-4">
+                      <div class="ml-form-fieldRow">
+                        <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                          <input aria-label="email" aria-required="true" type="email"
+                            class="w-full h-14 px-6 rounded-2xl border border-stitch-border bg-stitch-surface text-stitch-text text-base font-medium focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all placeholder:text-slate-400"
+                            name="fields[email]" placeholder="Twój adres e-mail" />
+                        </div>
+                      </div>
+                      <div class="ml-form-embedPermissions">
+                        <label class="flex items-start gap-4 cursor-pointer group">
+                          <input aria-label="Wprowadź wartość" type="checkbox" name="gdpr[]"
+                            value="Zgadzam się na otrzymywanie newslettera ETFkalkulator.pl" required
+                            class="custom-checkbox mt-1 transition-all" />
+                          <span class="text-[11px] text-stitch-muted font-medium leading-relaxed">Zgadzam się na otrzymywanie newslettera. Możesz się wypisać w każdej chwili.</span>
+                        </label>
+                      </div>
+                      <div class="ml-form-recaptcha ml-validate-required py-2 flex justify-center">
+                        <div class="g-recaptcha transform scale-[0.85] origin-center"
+                          data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                      </div>
+                      <input type="hidden" name="ml-submit" value="1" />
+                      <input type="hidden" name="anticsrf" value="true" />
+                      <div class="ml-form-embedSubmit">
+                        <button type="submit"
+                          class="w-full h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-sm md:text-base uppercase tracking-widest hover:scale-[1.01] active:scale-[0.98] transition-all shadow-xl shadow-primary/20"
+                          style="background-color: #0d7ff2">
+                          Zapisz się teraz
+                        </button>
+                      </div>
+                      <div class="pt-6 border-t border-stitch-border mt-2">
+                        <p class="text-[10px] text-slate-400 dark:text-stitch-muted leading-relaxed mb-2">
+                          Zapisując się, akceptujesz
+                          <a href="../pages/regulamin.html" class="underline hover:text-primary">Regulamin</a>
+                          i
+                          <a href="../pages/polityka-prywatnosci.html" class="underline hover:text-primary">Politykę Prywatności</a>. Twoje dane są bezpieczne i służą wyłącznie do wysyłki newslettera.
+                        </p>
+                        <p class="text-[10px] text-slate-400 font-medium italic">
+                          Prezentowane treści nie stanowią rekomendacji inwestycyjnej.
+                        </p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="ml-form-successBody row-success" style="display: none">
+                  <div class="p-10 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 text-center">
+                    <div class="w-16 h-16 bg-emerald-100 dark:bg-emerald-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-3xl">verified</span>
+                    </div>
+                    <h4 class="text-emerald-900 dark:text-emerald-300 font-bold text-xl mb-1">Sukces!</h4>
+                    <p class="text-emerald-700 dark:text-emerald-500 text-sm">Sprawdź swoją skrzynkę e-mail, aby potwierdzić zapis.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-stitch-bg border-t border-stitch-border dark:border-slate-900 py-20 px-6" style="font-family: &quot;Inter&quot;, sans-serif">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12 border-b border-stitch-border/50 pb-8">
+        <div class="flex items-center gap-2">
+          <div class="bg-primary p-1.5 rounded-2xl text-white flex items-center justify-center" style="background-color: #0d7ff2">
+            <span aria-hidden="true" class="material-symbols-outlined text-base">account_balance_wallet</span>
+          </div>
+          <span class="text-xl font-bold tracking-tight text-stitch-text">ETF<span class="font-normal text-stitch-muted">kalkulator</span>.pl</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20 items-start">
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">Narzędzia</h5>
+          <ul class="space-y-4">
+            <li><a href="../pages/kalkulator-etf.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration: none">Kalkulator ETF</a></li>
+            <li><a href="../pages/kalkulator-obligacji.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration: none">Obligacje Skarbowe</a></li>
+            <li><a href="../pages/kalkulator-wolnosci.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration: none">Wolność Finansowa</a></li>
+            <li><a href="../pages/porownywarka.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration: none">Porównywarka ETF</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">Projekt</h5>
+          <ul class="space-y-4">
+            <li><a href="index.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration: none">Blog i Wiedza</a></li>
+            <li><a href="../pages/o-projekcie.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration: none">O projekcie</a></li>
+            <li><a href="../pages/regulamin.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration: none">Regulamin</a></li>
+            <li><a href="../pages/polityka-prywatnosci.html" class="text-sm text-stitch-muted hover:text-primary transition-colors leading-loose" style="text-decoration: none">Polityka prywatności</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-xs font-bold text-stitch-text uppercase tracking-widest mb-6">Kontakt</h5>
+          <p class="text-sm text-stitch-muted mb-6 leading-relaxed">Masz pytania? Pisz śmiało:</p>
+          <a href="mailto:kontakt@etfkalkulator.pl" class="text-sm font-bold text-stitch-text hover:text-primary transition-colors block mb-8" style="text-decoration: none">kontakt@etfkalkulator.pl</a>
+          <div class="flex gap-4">
+            <a href="#" class="w-10 h-10 rounded-2xl bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-xl"><span class="material-symbols-outlined text-lg">share</span></a>
+            <a href="#" class="w-10 h-10 rounded-2xl bg-stitch-surface border border-stitch-border flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all shadow-xl"><span class="material-symbols-outlined text-lg">alternate_email</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-20 pt-10 border-t border-stitch-border dark:border-slate-900">
+        <p class="text-[11px] text-slate-400 dark:text-stitch-muted leading-relaxed mb-8 max-w-4xl">
+          Serwis ETFkalkulator.pl ma charakter wyłącznie edukacyjny i informacyjny. Prezentowane obliczenia nie stanowią rekomendacji inwestycyjnej, porady finansowej ani doradztwa podatkowego w rozumieniu obowiązujących przepisów prawa. Przed podjęciem decyzji inwestycyjnej skonsultuj się z licencjonowanym doradcą finansowym. Inwestowanie wiąże się z ryzykiem utraty części lub całości zainwestowanego kapitału.
+        </p>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+          <p>© 2026 ETFkalkulator.pl — Made with ❤️ by Florian</p>
+          <div class="flex gap-6"><span>Wszelkie prawa zastrzeżone</span></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/shared.js"></script>
+  <script>
+    const bar = document.getElementById('reading-progress');
+    const article = document.getElementById('main');
+    const mobileBar = document.getElementById('reading-progress-mobile');
+    const pctLabel = document.getElementById('reading-pct');
+    function updateProgress() {
+      if (!bar || !article) return;
+      const rect = article.getBoundingClientRect();
+      const total = article.offsetHeight - window.innerHeight;
+      const scrolled = Math.max(0, -rect.top);
+      const pct = total > 0 ? Math.min(100, (scrolled / total) * 100) : 0;
+      bar.style.width = pct + '%';
+      if (mobileBar) mobileBar.style.width = pct + '%';
+      if (pctLabel) pctLabel.textContent = Math.round(pct) + '%';
+    }
+    const headings = document.querySelectorAll('article h2[id]');
+    const tocLinks = document.querySelectorAll('.sidebar-toc a');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(a => a.classList.remove('toc-active'));
+          const active = document.querySelector('.sidebar-toc a[href="#' + entry.target.id + '"]');
+          if (active) active.classList.add('toc-active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    headings.forEach(h => observer.observe(h));
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  </script>
+  <script defer>
+    function przelaczTryb() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains("dark");
+      if (isDark) {
+        html.classList.remove("dark");
+        html.classList.add("light");
+        localStorage.setItem("etf-tryb", "jasny");
+      } else {
+        html.classList.add("dark");
+        html.classList.remove("light");
+        localStorage.setItem("etf-tryb", "ciemny");
+      }
+      const d = html.classList.contains("dark");
+      const m = document.getElementById("meta-theme-color");
+      if (m) m.content = d ? "#0f172a" : "#f8fafc";
+    }
+  </script>
+  <script src="https://www.google.com/recaptcha/api.js" defer></script>
+  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript" defer></script>
+  <!-- Cookie Consent -->
+  <script src="../js/cookie-consent.js" defer></script>
+</body>
+</html>
